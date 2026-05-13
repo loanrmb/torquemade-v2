@@ -18,7 +18,7 @@ export default function AboutPage() {
 
       <main className="relative z-10 overflow-clip rounded-b-32 bg-bg-primary">
 
-        {/* ── HERO ── */}
+        {/* HERO */}
         <section
           className="relative overflow-hidden pb-16 pt-28 min-720:pt-36"
           style={{ background: 'hsl(var(--bg-secondary))' }}
@@ -43,7 +43,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ── WHAT SETS US APART ── */}
+        {/* DIFFERENTIATORS — index keys prevent DOM recreation on lang change */}
         <section className="px-5 py-20 min-720:py-24">
           <div className="mx-auto max-w-5xl">
             <p className="fade-up section-label">{t.whyEyebrow}</p>
@@ -53,7 +53,8 @@ export default function AboutPage() {
             >
               {t.whyTitle}
             </h2>
-            <div className="grid grid-cols-1 gap-px min-720:grid-cols-2 min-1024:grid-cols-3"
+            <div
+              className="grid grid-cols-1 min-720:grid-cols-2 min-1024:grid-cols-3"
               style={{
                 border: '1px solid hsl(var(--border-subtle))',
                 borderRadius: '16px',
@@ -62,14 +63,12 @@ export default function AboutPage() {
             >
               {t.differentiators.map((d, i) => (
                 <div
-                  key={d.title}
-                  className={`fade-up fade-up-d${Math.min(i + 1, 5)} p-7 flex flex-col gap-3`}
+                  key={i}
+                  className="p-7 flex flex-col gap-3"
                   style={{
                     background: 'hsl(var(--bg-primary))',
-                    borderRight:
-                      (i % 3 < 2) ? '1px solid hsl(var(--border-subtle))' : 'none',
-                    borderBottom:
-                      (i < 3) ? '1px solid hsl(var(--border-subtle))' : 'none',
+                    borderRight: (i % 3 < 2) ? '1px solid hsl(var(--border-subtle))' : 'none',
+                    borderBottom: (i < 3) ? '1px solid hsl(var(--border-subtle))' : 'none',
                   }}
                 >
                   <div
@@ -96,19 +95,16 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ── STATS ── */}
+        {/* STATS */}
         <section
           className="px-5 py-16"
           style={{ background: 'hsl(var(--bg-secondary))' }}
         >
           <div className="mx-auto max-w-3xl">
-            <p className="fade-up section-label text-center mb-10">{t.statsEyebrow}</p>
+            <p className="section-label text-center mb-10">{t.statsEyebrow}</p>
             <div className="grid grid-cols-3 gap-8 text-center">
               {t.stats.map((stat, i) => (
-                <div
-                  key={stat.label}
-                  className={`fade-up fade-up-d${i + 1} flex flex-col gap-1`}
-                >
+                <div key={i} className="flex flex-col gap-1">
                   <span
                     className="text-3xl font-bold tracking-tight"
                     style={{ color: 'hsl(var(--text-primary))' }}
@@ -127,7 +123,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ── CTA ── */}
+        {/* CTA */}
         <section className="px-5 py-20 min-720:py-24">
           <div className="mx-auto max-w-5xl">
             <div className="cta-card p-10 min-720:p-16 text-center fade-up">
