@@ -45,22 +45,54 @@ export function RotatingHero({ lang }: { lang: 'fr' | 'en' }) {
   }, [words.length])
 
   return (
-    <p
-      className="text-xl min-720:text-2xl leading-snug"
-      style={{ color: 'hsl(var(--text-primary))' }}
-    >
-      {prefix}
-      <strong
-        style={{
-          display: 'inline-block',
-          fontWeight: 700,
-          opacity: visible ? 1 : 0,
-          transform: visible ? 'translateY(0)' : 'translateY(8px)',
-          transition: 'opacity 200ms ease, transform 200ms ease',
-        }}
+    <>
+      <style>{`
+        @keyframes rainbowShift {
+          0%   { background-position: 0% 50%; }
+          100% { background-position: 200% 50%; }
+        }
+        .rainbow-word {
+          background: linear-gradient(
+            90deg,
+            #ff6b6b 0%,
+            #ffd93d 20%,
+            #6bcb77 40%,
+            #4d96ff 60%,
+            #c77dff 80%,
+            #ff6b6b 100%
+          );
+          background-size: 200% 100%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          animation: rainbowShift 3s linear infinite;
+          font-weight: 700;
+        }
+      `}</style>
+      <p
+        className="text-xl min-720:text-2xl leading-snug"
+        style={{ color: 'hsl(var(--text-primary))' }}
       >
-        {words[index]}
-      </strong>
-    </p>
+        {prefix}
+        <span
+          style={{
+            display: 'inline-block',
+            padding: '0.05em 0.3em',
+            borderRadius: '0.3em',
+            background: 'rgba(255, 255, 255, 0.08)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            boxShadow:
+              '0 2px 12px rgba(120, 100, 255, 0.15), inset 0 1px 0 rgba(255,255,255,0.25)',
+            opacity: visible ? 1 : 0,
+            transform: visible ? 'translateY(0)' : 'translateY(8px)',
+            transition: 'opacity 200ms ease, transform 200ms ease',
+          }}
+        >
+          <span className="rainbow-word">{words[index]}</span>
+        </span>
+      </p>
+    </>
   )
 }
