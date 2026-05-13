@@ -80,7 +80,7 @@ export const projects: Project[] = [
       { fr: '208 clics organiques — zero publicite', en: '208 organic clicks — zero paid ads' },
       { fr: 'Pages modeles + articles de blog SEO locaux', en: 'Model pages + local SEO blog articles' },
     ],
-    image: 'https://www.torquemade.com/image/voge-bordeaux.png',
+    image: '/image/voge-bordeaux.png',
     url: 'https://vogebordeaux.fr',
     featured: false,
   },
