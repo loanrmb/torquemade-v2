@@ -22,16 +22,16 @@ export const projects: Project[] = [
     location: 'Bordeaux, France',
     type: { fr: 'Site web + SEO', en: 'Website + SEO' },
     headline: {
-      fr: 'De zéro à 791 000 impressions Google.',
+      fr: 'De zero a 791 000 impressions Google.',
       en: 'From zero to 791K Google impressions.',
     },
     description: {
-      fr: "Un concessionnaire moto bordelais sans présence en ligne. Aujourd'hui, sprintmotors.com approche le million d'impressions — plus de 1 000 visites organiques par mois.",
-      en: "A Bordeaux motorcycle dealer with zero online presence. Today, sprintmotors.com is approaching one million Google impressions — over 1,000 organic visits per month.",
+      fr: 'Un concessionnaire moto bordelais sans presence en ligne. Aujourd hui, sprintmotors.com approche le million d impressions. Plus de 1 000 visites organiques par mois.',
+      en: 'A Bordeaux motorcycle dealer with zero online presence. Today, sprintmotors.com is approaching one million Google impressions — over 1,000 organic visits per month.',
     },
     outcomes: [
       { fr: '791 000 impressions Google en 16 mois', en: '791K Google impressions in 16 months' },
-      { fr: '15 290 clics organiques — zéro publicité', en: '15,290 organic clicks — zero paid ads' },
+      { fr: '15 290 clics organiques — zero publicite', en: '15,290 organic clicks — zero paid ads' },
       { fr: '74 541 impressions en un seul mois (pic juillet 2025)', en: '74,541 impressions in one month (peak July 2025)' },
     ],
     image: 'https://www.torquemade.com/image/sprint-hero.png',
@@ -39,25 +39,72 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    id: 'sprint-ecosystem',
+    id: 'cyclone-bordeaux',
     tags: ['web', 'seo'],
-    client: 'Sprint Motors — Ecosysteme marques',
+    client: 'Cyclone Bordeaux',
     location: 'Bordeaux, France',
-    type: { fr: '3 microsites de marque', en: '3 brand microsites' },
+    type: { fr: 'Microsite de marque + SEO', en: 'Brand microsite + SEO' },
     headline: {
-      fr: '3 microsites de marque. 3 positions SEO distinctes.',
-      en: '3 brand microsites. 3 distinct SEO positions.',
+      fr: 'Cyclone Bordeaux — 1 765 impressions en 4 semaines.',
+      en: 'Cyclone Bordeaux — 1,765 impressions in 4 weeks.',
     },
     description: {
-      fr: 'Sprint Motors distribue plusieurs marques. Chaque marque a son propre microsite pour capturer les recherches que le domaine principal ne peut pas classer — Cyclone, Voge, Orcal.',
-      en: "Sprint Motors carries multiple brands. Each brand gets its own microsite to capture search intent the main domain cannot rank for — Cyclone, Voge, Orcal.",
+      fr: 'Microsite dedie a la marque Cyclone pour capturer les recherches que sprintmotors.com ne peut pas classer. Strategie de contenu et pages modeles optimisees.',
+      en: 'Dedicated microsite for the Cyclone brand to capture searches the main domain cannot rank for. Content strategy and optimized model pages.',
     },
     outcomes: [
-      { fr: 'cyclonebordeaux.fr — 1 765 impressions, 118 clics, 4 semaines', en: 'cyclonebordeaux.fr — 1,765 impressions, 118 clicks, 4 weeks' },
-      { fr: 'vogebordeaux.fr — 7 948 impressions, 208 clics, 3 mois', en: 'vogebordeaux.fr — 7,948 impressions, 208 clicks, 3 months' },
-      { fr: 'orcalbordeaux.fr — 473 impressions, 41 clics, 4 semaines', en: 'orcalbordeaux.fr — 473 impressions, 41 clicks, 4 weeks' },
+      { fr: '1 765 impressions Google en 4 semaines', en: '1,765 Google impressions in 4 weeks' },
+      { fr: '118 clics organiques — zero publicite', en: '118 organic clicks — zero paid ads' },
+      { fr: 'Pages modeles + articles de blog SEO', en: 'Model pages + SEO blog articles' },
     ],
     image: 'https://www.torquemade.com/image/cyclone-catalogue.png',
+    url: 'https://cyclonebordeaux.fr',
+    featured: false,
+  },
+  {
+    id: 'voge-bordeaux',
+    tags: ['web', 'seo'],
+    client: 'Voge Bordeaux',
+    location: 'Bordeaux, France',
+    type: { fr: 'Microsite de marque + SEO', en: 'Brand microsite + SEO' },
+    headline: {
+      fr: 'Voge Bordeaux — 7 948 impressions en 3 mois.',
+      en: 'Voge Bordeaux — 7,948 impressions in 3 months.',
+    },
+    description: {
+      fr: 'Microsite dedie a la marque Voge. Strategie de contenu ciblant les recherches locales et les modeles Voge — 208 clics organiques en 3 mois.',
+      en: 'Dedicated microsite for the Voge brand. Content strategy targeting local searches and Voge models — 208 organic clicks in 3 months.',
+    },
+    outcomes: [
+      { fr: '7 948 impressions Google en 3 mois', en: '7,948 Google impressions in 3 months' },
+      { fr: '208 clics organiques — zero publicite', en: '208 organic clicks — zero paid ads' },
+      { fr: 'Pages modeles + articles de blog SEO locaux', en: 'Model pages + local SEO blog articles' },
+    ],
+    image: 'https://www.torquemade.com/image/voge-blog.png',
+    url: 'https://vogebordeaux.fr',
+    featured: false,
+  },
+  {
+    id: 'orcal-bordeaux',
+    tags: ['web', 'seo'],
+    client: 'Orcal Bordeaux',
+    location: 'Bordeaux, France',
+    type: { fr: 'Microsite de marque + SEO', en: 'Brand microsite + SEO' },
+    headline: {
+      fr: 'Orcal Bordeaux — 473 impressions en 4 semaines au lancement.',
+      en: 'Orcal Bordeaux — 473 impressions in 4 weeks at launch.',
+    },
+    description: {
+      fr: 'Microsite dedie a la marque Orcal. Positionnement SEO local des le lancement — 41 clics organiques en 4 semaines sans budget publicitaire.',
+      en: 'Dedicated microsite for the Orcal brand. Local SEO positioning from day one — 41 organic clicks in 4 weeks with zero ad spend.',
+    },
+    outcomes: [
+      { fr: '473 impressions Google en 4 semaines', en: '473 Google impressions in 4 weeks' },
+      { fr: '41 clics organiques des le lancement', en: '41 organic clicks from launch' },
+      { fr: 'Pages modeles + contenu SEO local', en: 'Model pages + local SEO content' },
+    ],
+    image: 'https://www.torquemade.com/image/cyclone-catalogue.png',
+    url: 'https://orcalbordeaux.fr',
     featured: false,
   },
   {
@@ -75,9 +122,9 @@ export const projects: Project[] = [
       en: 'Close to zero traffic before the new site. A clean rebuild combined with a content strategy targeting Pyrenees riders changed everything.',
     },
     outcomes: [
-      { fr: 'Top 3 pour "concessionnaire moto Pyrenees"', en: 'Top 3 for "motorcycle dealer Pyrenees"' },
+      { fr: 'Top 3 pour concessionnaire moto Pyrenees', en: 'Top 3 for motorcycle dealer Pyrenees' },
       { fr: '171 nouveaux mots-cles classes en 30 jours', en: '171 new keywords ranked in 30 days' },
-      { fr: '0 vers Visible sur CFMOTO, VOGE, et les recherches locales', en: '0 to visible on CFMOTO, VOGE, and local searches' },
+      { fr: 'Visible sur CFMOTO, VOGE et les recherches locales', en: 'Visible on CFMOTO, VOGE and local searches' },
     ],
     image: 'https://www.torquemade.com/image/mp65-catalogue.png',
     url: 'https://motopassion65.com',
@@ -94,8 +141,8 @@ export const projects: Project[] = [
       en: 'Premium design. Custom booking system. Long-game SEO.',
     },
     description: {
-      fr: 'Chauffeur prive premium face a Uber et Bolt. Site Apple/Tesla, systeme de reservation sans commission avec Mapbox temps reel, et 59 articles SEO permanents.',
-      en: 'Premium private chauffeur competing against Uber and Bolt. Apple/Tesla-style site, zero-commission booking system with real-time Mapbox, and 59 permanent SEO articles.',
+      fr: 'Chauffeur prive premium face a Uber et Bolt. Site Apple-Tesla, systeme de reservation sans commission avec Mapbox temps reel, et 59 articles SEO permanents.',
+      en: 'Premium private chauffeur competing against Uber and Bolt. Apple-Tesla style site, zero-commission booking system with real-time Mapbox, and 59 permanent SEO articles.',
     },
     outcomes: [
       { fr: 'Reservation complete — 0% de commission', en: 'Full booking flow — 0% commission' },
@@ -135,12 +182,12 @@ export const projects: Project[] = [
     location: 'Arcachon, Gironde',
     type: { fr: 'Site + Reservation + CRM', en: 'Site + Booking + CRM' },
     headline: {
-      fr: "Location de jet ski Sea-Doo sur le Bassin d Arcachon.",
-      en: 'Sea-Doo jet ski rental on the Arcachon Bay.',
+      fr: 'Location Sea-Doo sur le Bassin d Arcachon — du catalogue au CRM.',
+      en: 'Sea-Doo rental on the Arcachon Bay — from catalogue to CRM.',
     },
     description: {
-      fr: "Site avec 3 modeles Sea-Doo, systeme de reservation en ligne avec calendrier de disponibilites et CRM de suivi des reservations. Zero commission, zero plateforme tierce.",
-      en: 'Site with 3 Sea-Doo models, online booking system with availability calendar and reservations CRM. Zero commission, zero third-party platform.',
+      fr: 'Site avec selection des 3 modeles Sea-Doo, systeme de reservation en ligne avec calendrier de disponibilites et CRM de suivi des reservations. Zero commission, zero plateforme tierce.',
+      en: 'Site with 3 Sea-Doo model selection, online booking system with availability calendar and reservations CRM. Zero commission, zero third-party platform.',
     },
     outcomes: [
       { fr: '3 modeles Sea-Doo — presentation complete + tarifs en ligne', en: '3 Sea-Doo models — full presentation + online pricing' },
@@ -149,7 +196,7 @@ export const projects: Project[] = [
     ],
     image: '/images/jetski-arcachon.png',
     url: 'https://jetski-n-arcachon.vercel.app',
-    featured: false,
+    featured: true,
   },
   {
     id: 'spicy-beauty',
@@ -162,7 +209,7 @@ export const projects: Project[] = [
       en: 'A clean site for an independent beauty specialist.',
     },
     description: {
-      fr: 'Site vitrine mobile-first pour une estheticienne a Valenciennes: prestations, tarifs, galerie, localisation. Chargement rapide, contact direct SMS/Instagram, SEO local integre.',
+      fr: 'Site vitrine mobile-first pour une estheticienne a Valenciennes: prestations, tarifs, galerie, localisation. Chargement rapide, contact direct SMS-Instagram, SEO local integre.',
       en: 'Mobile-first showcase site for a beauty specialist in Valenciennes: services, pricing, gallery, location. Fast loading, direct contact, built-in local SEO.',
     },
     outcomes: [
