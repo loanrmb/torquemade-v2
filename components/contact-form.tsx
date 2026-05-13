@@ -10,13 +10,28 @@ export function ContactForm() {
   const lang = useLang()
   const t = strings[lang].contact
   const [state, setState] = useState<FormState>('idle')
-  const [selected, setSelected] = useState<number | null>(null)
+  const [selected, setSelected] = useState<Set<number>>(new Set())
+
+  const toggleService = (i: number) => {
+    setSelected((prev) => {
+      const next = new Set(prev)
+      if (next.has(i)) next.delete(i)
+      else next.add(i)
+      return next
+    })
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setState('loading')
     const form = e.currentTarget
     const data = new FormData(form)
+
+    // Add selected services as a comma-separated string
+    const selectedServices = Array.from(selected)
+      .map((i) => t.services[i])
+      .join(', ')
+    data.set('service', selectedServices)
 
     try {
       const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
@@ -27,7 +42,7 @@ export function ContactForm() {
       if (res.ok) {
         setState('success')
         form.reset()
-        setSelected(null)
+        setSelected(new Set())
       } else {
         setState('error')
       }
@@ -45,10 +60,7 @@ export function ContactForm() {
           border: '1px solid hsl(var(--border-subtle))',
         }}
       >
-        <p
-          className="text-lg font-medium"
-          style={{ color: 'hsl(var(--text-primary))' }}
-        >
+        <p className="text-lg font-medium" style={{ color: 'hsl(var(--text-primary))' }}>
           {t.success}
         </p>
       </div>
@@ -66,39 +78,39 @@ export function ContactForm() {
       <InputField name="email" label={t.email} type="email" required />
       <InputField name="company" label={t.company} />
 
-      {/* Service selector */}
+      {/* Multi-select service selector */}
       <fieldset className="p-0 m-0 border-0">
         <legend
           className="text-caption font-medium mb-2 block"
           style={{ color: 'hsl(var(--text-secondary))' }}
         >
           {t.serviceLabel}
+          <span className="ml-1.5 text-caption" style={{ color: 'hsl(var(--text-tertiary))' }}>
+            ({lang === 'fr' ? 'choix multiple' : 'multiple choice'})
+          </span>
         </legend>
         <div className="flex flex-wrap gap-2">
-          {t.services.map((service, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setSelected(i)}
-              className="rounded-full px-4 py-2 text-sm font-medium transition-all duration-150"
-              style={{
-                background:
-                  selected === i
-                    ? 'hsl(var(--bg-inverse))'
-                    : 'hsl(var(--bg-secondary))',
-                color:
-                  selected === i
-                    ? 'hsl(var(--bg-primary))'
-                    : 'hsl(var(--text-secondary))',
-                border: '1px solid hsl(var(--border-subtle))',
-              }}
-            >
-              {service}
-            </button>
-          ))}
-          {selected !== null && (
-            <input type="hidden" name="service" value={t.services[selected]} />
-          )}
+          {t.services.map((service, i) => {
+            const isActive = selected.has(i)
+            return (
+              <button
+                key={i}
+                type="button"
+                onClick={() => toggleService(i)}
+                className="rounded-full px-4 py-2 text-sm font-medium transition-all duration-150"
+                style={{
+                  background: isActive ? 'hsl(var(--bg-inverse))' : 'hsl(var(--bg-secondary))',
+                  color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',
+                  border: '1px solid hsl(var(--border-subtle))',
+                }}
+              >
+                {isActive && (
+                  <span className="mr-1.5 text-xs">✓</span>
+                )}
+                {service}
+              </button>
+            )
+          })}
         </div>
       </fieldset>
 
@@ -119,12 +131,8 @@ export function ContactForm() {
             border: '1px solid hsl(var(--border-subtle))',
             color: 'hsl(var(--text-primary))',
           }}
-          onFocus={(e) =>
-            (e.currentTarget.style.borderColor = 'hsl(var(--border-hover))')
-          }
-          onBlur={(e) =>
-            (e.currentTarget.style.borderColor = 'hsl(var(--border-subtle))')
-          }
+          onFocus={(e) => (e.currentTarget.style.borderColor = 'hsl(var(--border-hover))')}
+          onBlur={(e) => (e.currentTarget.style.borderColor = 'hsl(var(--border-subtle))')}
         />
       </div>
 
@@ -140,9 +148,7 @@ export function ContactForm() {
         className="btn-primary self-start mt-2 disabled:opacity-50"
       >
         {state === 'loading'
-          ? lang === 'fr'
-            ? 'Envoi...'
-            : 'Sending...'
+          ? lang === 'fr' ? 'Envoi...' : 'Sending...'
           : t.submit}
       </button>
     </form>
@@ -150,10 +156,7 @@ export function ContactForm() {
 }
 
 function InputField({
-  name,
-  label,
-  type = 'text',
-  required = false,
+  name, label, type = 'text', required = false,
 }: {
   name: string
   label: string
@@ -168,9 +171,7 @@ function InputField({
         style={{ color: 'hsl(var(--text-secondary))' }}
       >
         {label}
-        {required && (
-          <span style={{ color: 'hsl(var(--text-tertiary))' }}> *</span>
-        )}
+        {required && <span style={{ color: 'hsl(var(--text-tertiary))' }}> *</span>}
       </label>
       <input
         id={name}
@@ -183,12 +184,8 @@ function InputField({
           border: '1px solid hsl(var(--border-subtle))',
           color: 'hsl(var(--text-primary))',
         }}
-        onFocus={(e) =>
-          (e.currentTarget.style.borderColor = 'hsl(var(--border-hover))')
-        }
-        onBlur={(e) =>
-          (e.currentTarget.style.borderColor = 'hsl(var(--border-subtle))')
-        }
+        onFocus={(e) => (e.currentTarget.style.borderColor = 'hsl(var(--border-hover))')}
+        onBlur={(e) => (e.currentTarget.style.borderColor = 'hsl(var(--border-subtle))')}
       />
     </div>
   )
