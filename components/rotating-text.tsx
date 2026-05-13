@@ -40,7 +40,7 @@ export function RotatingHero({ lang }: { lang: 'fr' | 'en' }) {
         setVisible(true)
       }, 200)
       return () => clearTimeout(timeout)
-    }, 2000)
+    }, 3000)
     return () => clearInterval(interval)
   }, [words.length])
 
