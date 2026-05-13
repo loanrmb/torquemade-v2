@@ -38,28 +38,29 @@ export function RotatingHero({ lang }: { lang: 'fr' | 'en' }) {
       const timeout = setTimeout(() => {
         setIndex((i) => (i + 1) % words.length)
         setVisible(true)
-      }, 350)
+      }, 200)
       return () => clearTimeout(timeout)
-    }, 2800)
+    }, 1000)
     return () => clearInterval(interval)
   }, [words.length])
 
   return (
     <p
-      className="text-xl min-720:text-2xl font-semibold leading-snug"
+      className="text-xl min-720:text-2xl leading-snug"
       style={{ color: 'hsl(var(--text-primary))' }}
     >
       {prefix}
-      <span
+      <strong
         style={{
           display: 'inline-block',
+          fontWeight: 700,
           opacity: visible ? 1 : 0,
-          transform: visible ? 'translateY(0)' : 'translateY(10px)',
-          transition: 'opacity 350ms ease, transform 350ms ease',
+          transform: visible ? 'translateY(0)' : 'translateY(8px)',
+          transition: 'opacity 200ms ease, transform 200ms ease',
         }}
       >
         {words[index]}
-      </span>
+      </strong>
     </p>
   )
 }
