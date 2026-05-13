@@ -8,6 +8,7 @@ import { useLang } from '@/components/app-provider'
 import { strings } from '@/lib/strings'
 import { featuredProjects } from '@/lib/projects'
 import { useScrollReveal } from '@/lib/use-scroll-reveal'
+import { RotatingHero } from '@/components/rotating-text'
 
 export default function HomePage() {
   const lang = useLang()
@@ -31,18 +32,19 @@ export default function HomePage() {
               style={{ color: 'hsl(var(--text-primary))' }}
             >
               {t.hero.headline1}
-              <br />
-              <span style={{ color: 'hsl(var(--text-secondary))' }}>
-                {t.hero.headline2}
-              </span>
             </h1>
 
-            {/* Sub */}
+            {/* Rotating sub-headline */}
+            <div className="fade-up fade-up-d1 mt-6">
+              <RotatingHero lang={lang} />
+            </div>
+
+            {/* Smaller secondary line */}
             <p
-              className="fade-up fade-up-d1 mt-6 text-body-lg max-w-xl"
-              style={{ color: 'hsl(var(--text-secondary))' }}
+              className="fade-up fade-up-d1 mt-3 text-base"
+              style={{ color: 'hsl(var(--text-tertiary))' }}
             >
-              {t.hero.sub}
+              {t.hero.headline2}
             </p>
 
             {/* CTAs */}
