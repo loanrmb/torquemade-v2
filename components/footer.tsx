@@ -65,12 +65,9 @@ export function Footer() {
 
 function FooterLogo() {
   return (
-    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-      <rect width="22" height="22" rx="6" fill="hsl(0 0% 20%)" />
-      <path
-        d="M6 7h4l2 3.5L14 7h2L12 14h-2L6 7z"
-        fill="hsl(0 0% 72%)"
-      />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="22" height="22">
+      <rect width="32" height="32" rx="5" fill="hsl(0 0% 20%)" />
+      <text x="16" y="24" fontFamily="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" fontSize="18" fontWeight="600" fill="hsl(0 0% 72%)" textAnchor="middle" letterSpacing="-1">tm</text>
     </svg>
   )
 }

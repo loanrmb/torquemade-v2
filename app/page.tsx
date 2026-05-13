@@ -23,23 +23,11 @@ export default function HomePage() {
 
         {/* ── HERO ── */}
         <section className="grid place-items-center px-5 pt-28 pb-16 min-720:pt-36 min-720:pb-20 min-1280:pt-44 min-1280:pb-24">
-          <div className="flex flex-col items-center text-center max-w-3xl">
-            {/* Eyebrow */}
-            <div
-              className="fade-up mb-6 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-caption font-semibold uppercase tracking-widest"
-              style={{
-                background: 'hsl(var(--bg-secondary))',
-                border: '1px solid hsl(var(--border-subtle))',
-                color: 'hsl(var(--text-tertiary))',
-              }}
-            >
-              <PulseIcon />
-              {t.hero.eyebrow}
-            </div>
+          <div className="flex flex-col items-center text-center max-w-5xl">
 
             {/* Headline */}
             <h1
-              className="fade-up fade-up-d1 text-title-1 min-720:text-spotlight min-1280:text-showcase font-semibold tracking-tight"
+              className="fade-up text-title-1 min-720:text-spotlight min-1280:text-showcase font-semibold tracking-tight"
               style={{ color: 'hsl(var(--text-primary))' }}
             >
               {t.hero.headline1}
@@ -51,14 +39,14 @@ export default function HomePage() {
 
             {/* Sub */}
             <p
-              className="fade-up fade-up-d2 mt-6 text-body-lg max-w-lg"
+              className="fade-up fade-up-d1 mt-6 text-body-lg max-w-xl"
               style={{ color: 'hsl(var(--text-secondary))' }}
             >
               {t.hero.sub}
             </p>
 
             {/* CTAs */}
-            <div className="fade-up fade-up-d3 mt-8 flex flex-wrap items-center justify-center gap-3">
+            <div className="fade-up fade-up-d2 mt-8 flex flex-wrap items-center justify-center gap-3">
               <Link href="/work" className="btn-primary">
                 {t.hero.cta1}
               </Link>
@@ -69,7 +57,7 @@ export default function HomePage() {
 
             {/* Stats strip */}
             <div
-              className="fade-up fade-up-d4 mt-14 grid grid-cols-3 gap-8 pt-10 w-full"
+              className="fade-up fade-up-d3 mt-14 grid grid-cols-3 gap-8 pt-10 w-full"
               style={{ borderTop: '1px solid hsl(var(--border-subtle))' }}
             >
               {t.stats.map((stat) => (
@@ -278,19 +266,16 @@ export default function HomePage() {
         <section className="px-5 pb-20 min-720:pb-24">
           <div className="mx-auto max-w-5xl">
             <div className="cta-card p-10 min-720:p-16 text-center fade-up">
-              <h2 className="text-title-2 font-semibold tracking-tight mb-4">
+              <h2 className="text-title-2 font-semibold tracking-tight mb-4" style={{ color: '#ffffff' }}>
                 {t.cta.title}
               </h2>
-              <p className="text-body-lg mb-8 opacity-80 max-w-lg mx-auto">
+              <p className="text-body-lg mb-8 max-w-lg mx-auto" style={{ color: 'rgba(255,255,255,0.72)' }}>
                 {t.cta.sub}
               </p>
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-opacity duration-150 hover:opacity-80"
-                style={{
-                  background: 'hsl(var(--bg-primary))',
-                  color: 'hsl(var(--bg-inverse))',
-                }}
+                style={{ background: '#ffffff', color: '#0a0a0a' }}
               >
                 {t.cta.button}
               </Link>

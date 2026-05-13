@@ -60,12 +60,11 @@ export function WorkGrid() {
           </p>
         ) : (
           <div className="flex flex-col gap-4">
-            {filtered.map((project, i) => (
+            {filtered.map((project) => (
               <ProjectCard
                 key={project.id}
                 project={project}
                 lang={lang}
-                delay={i}
               />
             ))}
           </div>
@@ -78,18 +77,14 @@ export function WorkGrid() {
 function ProjectCard({
   project,
   lang,
-  delay,
 }: {
   project: Project
   lang: 'fr' | 'en'
-  delay: number
 }) {
   const t = strings[lang].work
 
   return (
-    <article
-      className={`project-card fade-up fade-up-d${Math.min(delay + 1, 5)}`}
-    >
+    <article className="project-card">
       {/* Image */}
       <div className="project-card-img">
         <img

@@ -1,21 +1,18 @@
 'use client'
 
-const TECH_STACK = [
-  'Next.js',
-  'Shopify',
-  'Supabase',
-  'base44',
-  'n8n',
-  'Vercel',
-  'Mapbox',
-  'Google Search Console',
-  'Figma',
-  'TypeScript',
-  'Tailwind CSS',
+const NICHES = [
+  'Concessionnaires moto',
+  'VTC & Chauffeurs privés',
+  'Esthétique & Beauté',
+  'Location nautique',
+  'Commerce local',
+  'Tourisme & Loisirs',
+  'Services à domicile',
+  'Sport & Outdoor',
 ]
 
 export function TechMarquee() {
-  const doubled = [...TECH_STACK, ...TECH_STACK]
+  const doubled = [...NICHES, ...NICHES]
 
   return (
     <div className="overflow-hidden py-8" aria-hidden="true">
@@ -23,23 +20,17 @@ export function TechMarquee() {
         {doubled.map((name, i) => (
           <div
             key={i}
-            className="flex items-center gap-2 whitespace-nowrap px-1"
+            className="flex items-center gap-3 whitespace-nowrap"
             style={{ color: 'hsl(var(--text-tertiary))' }}
           >
-            <DotIcon />
             <span className="text-sm font-medium tracking-wide">{name}</span>
+            <span
+              className="inline-block w-1 h-1 rounded-full flex-shrink-0"
+              style={{ background: 'hsl(var(--border-hover))' }}
+            />
           </div>
         ))}
       </div>
     </div>
-  )
-}
-
-function DotIcon() {
-  return (
-    <span
-      className="inline-block w-1 h-1 rounded-full flex-shrink-0"
-      style={{ background: 'hsl(var(--border-hover))' }}
-    />
   )
 }

@@ -17,7 +17,7 @@ export function NavPill() {
   ]
 
   return (
-    <header className="fixed left-1/2 top-4 z-50 -translate-x-1/2 w-[calc(100%-2rem)] max-w-xl">
+    <header className="fixed left-1/2 top-4 z-50 -translate-x-1/2 w-[calc(100%-2rem)] max-w-2xl">
       <nav
         className="flex items-center gap-1 rounded-full border px-3 py-2"
         style={{
@@ -29,15 +29,9 @@ export function NavPill() {
         }}
       >
         {/* Logo */}
-        <Link
-          href="/"
-          className="flex items-center gap-1.5 pr-2 mr-1"
-        >
+        <Link href="/" className="flex items-center gap-1.5 pr-2 mr-1 flex-shrink-0">
           <LogoMark />
-          <span
-            className="font-semibold text-sm tracking-tight"
-            style={{ color: 'hsl(var(--text-primary))' }}
-          >
+          <span className="font-semibold text-sm tracking-tight whitespace-nowrap" style={{ color: 'hsl(var(--text-primary))' }}>
             Torquemade
           </span>
         </Link>
@@ -48,16 +42,10 @@ export function NavPill() {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-full px-3 py-1.5 text-sm font-medium transition-colors duration-150"
+              className="rounded-full px-3 py-1.5 text-sm font-medium transition-colors duration-150 whitespace-nowrap"
               style={{
-                color:
-                  pathname === link.href
-                    ? 'hsl(var(--text-primary))'
-                    : 'hsl(var(--text-tertiary))',
-                background:
-                  pathname === link.href
-                    ? 'hsl(var(--bg-secondary))'
-                    : 'transparent',
+                color: pathname === link.href ? 'hsl(var(--text-primary))' : 'hsl(var(--text-tertiary))',
+                background: pathname === link.href ? 'hsl(var(--bg-secondary))' : 'transparent',
               }}
             >
               {link.label}
@@ -65,12 +53,15 @@ export function NavPill() {
           ))}
         </div>
 
+        {/* Separator */}
+        <div className="w-px h-5 mx-1 flex-shrink-0" style={{ background: 'hsl(var(--border-subtle))' }} />
+
         {/* Toggles */}
-        <div className="flex items-center gap-1 ml-auto pl-1">
+        <div className="flex items-center gap-0.5">
           {/* Lang toggle */}
           <button
             onClick={toggleLang}
-            className="flex items-center gap-1 rounded-full px-2.5 py-1.5 text-xs font-semibold transition-colors duration-150 hover:bg-bg-secondary"
+            className="flex items-center gap-1 rounded-full px-2.5 py-1.5 text-xs font-semibold transition-colors duration-150 hover:bg-bg-secondary whitespace-nowrap"
             style={{ color: 'hsl(var(--text-secondary))' }}
             aria-label="Toggle language"
           >
@@ -89,10 +80,7 @@ export function NavPill() {
           </button>
 
           {/* CTA */}
-          <Link
-            href="/contact"
-            className="btn-primary ml-1 !py-1.5 !px-3 !text-sm hidden min-720:flex"
-          >
+          <Link href="/contact" className="btn-primary ml-1 !py-1.5 !px-3 !text-sm hidden min-720:flex whitespace-nowrap">
             {lang === 'fr' ? 'Démarrer →' : 'Start →'}
           </Link>
         </div>
@@ -103,12 +91,9 @@ export function NavPill() {
 
 function LogoMark() {
   return (
-    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-      <rect width="22" height="22" rx="6" fill="hsl(var(--bg-inverse))" />
-      <path
-        d="M6 7h4l2 3.5L14 7h2L12 14h-2L6 7z"
-        fill="hsl(var(--bg-primary))"
-      />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="22" height="22">
+      <rect width="32" height="32" rx="5" fill="hsl(var(--bg-inverse))" />
+      <text x="16" y="24" fontFamily="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" fontSize="18" fontWeight="600" fill="hsl(var(--bg-primary))" textAnchor="middle" letterSpacing="-1">tm</text>
     </svg>
   )
 }

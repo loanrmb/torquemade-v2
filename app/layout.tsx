@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: 'Torquemade — Web Dev & CRM sur mesure',
   description:
     'Studio de développement web et CRM sur mesure. Sites Shopify et Next.js, logiciels de réservation, SEO et optimisation IA.',
+  icons: { icon: '/favicon.svg', shortcut: '/favicon.svg' },
   openGraph: {
     title: 'Torquemade — Web Dev & CRM sur mesure',
     description:
