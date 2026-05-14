@@ -44,32 +44,29 @@ export default function CaseStudyPage() {
     <>
       <NavPill />
 
-{/* ── BACK PILL — liquid glass multicolor ── */}
+{/* ── BACK PILL — liquid glass ── */}
 <div className="fixed top-[4.5rem] left-0 right-0 z-40 px-5 pointer-events-none">
   <div className="mx-auto max-w-5xl flex justify-center pt-2">
     <Link
       href="/work"
       className="pointer-events-auto inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-opacity hover:opacity-75"
       style={{
-        background: 'linear-gradient(hsl(var(--bg-primary) / 0.35), hsl(var(--bg-primary) / 0.35)) padding-box, linear-gradient(135deg, #a855f7, #ec4899, #f97316) border-box',
-        border: '1.5px solid transparent',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
+        background: 'linear-gradient(hsl(var(--bg-primary) / 0.12), hsl(var(--bg-primary) / 0.12)) padding-box, linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #f97316 100%) border-box',
+        border: '1px solid transparent',
+        backdropFilter: 'blur(20px) saturate(180%)',
+        WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+        boxShadow: '0 2px 16px rgba(168,85,247,0.08), inset 0 1px 0 rgba(255,255,255,0.12)',
       }}
     >
-      {/* arrow — gradient */}
-      <svg width="13" height="13" viewBox="0 0 16 16" fill="none"
-        style={{ stroke: 'url(#arrow-grad)' }}
-      >
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
         <defs>
-          <linearGradient id="arrow-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <linearGradient id="ag" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#a855f7"/>
             <stop offset="100%" stopColor="#f97316"/>
           </linearGradient>
         </defs>
-        <path d="M10 12L6 8L10 4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M10 12L6 8L10 4" stroke="url(#ag)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
-      {/* text — gradient */}
       <span style={{
         background: 'linear-gradient(to right, #a855f7, #ec4899, #f97316)',
         WebkitBackgroundClip: 'text',
