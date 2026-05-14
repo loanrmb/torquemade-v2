@@ -28,17 +28,17 @@ export const strings = {
         {
           num: '01',
           title: 'Sites web',
-          desc: 'Shopify et Next.js, construits de zéro. Mobile-first, SEO-ready, livraison en 10 jours ouvrés.',
+          desc: 'Construits de zéro. Mobile-first, SEO-ready, livraison en 15 jours ouvrés.',
         },
         {
           num: '02',
           title: 'CRM & Logiciel sur mesure',
-          desc: 'Systèmes de réservation, CRM tailored, dashboards — construits autour de votre workflow exact.',
+          desc: 'Systèmes de réservation, CRM sur mesure pour votre entreprise, dashboards — construits autour de votre workflow exact.',
         },
         {
           num: '03',
           title: 'SEO & Optimisation IA',
-          desc: 'Contenu qui monte sur Google ET dans les réponses AI : ChatGPT, Perplexity, Claude.',
+          desc: 'Contenu qui rank sur Google ET dans les réponses AI : ChatGPT, Perplexity, Claude, et autres.',
         },
         {
           num: '04',
@@ -48,7 +48,7 @@ export const strings = {
       ],
     },
     workPreview: {
-      eyebrow: 'Travaux sélectionnés',
+      eyebrow: 'Projets à la une',
       title: 'Des sites qui performent, pas juste de beaux designs.',
       cta: 'Voir tous les projets →',
     },
@@ -74,7 +74,7 @@ export const strings = {
     },
     cta: {
       title: 'Parlons de votre projet.',
-      sub: 'Remplissez le formulaire, je reviens vers vous dans les 24h. Pas de pitch, pas de pression.',
+      sub: 'Remplissez le formulaire, on revient vers vous dans les 24h. Pas de pitch, pas de pression.',
       button: 'Démarrer une conversation',
     },
     work: {
@@ -166,7 +166,7 @@ export const strings = {
         {
           num: '01',
           title: 'Websites',
-          desc: 'Shopify and Next.js, built from scratch. Mobile-first, SEO-ready, delivered in 10 business days.',
+          desc: 'Built from scratch. Mobile-first, SEO-ready, delivered in 15 business days.',
         },
         {
           num: '02',
@@ -176,7 +176,7 @@ export const strings = {
         {
           num: '03',
           title: 'SEO & AI Optimization',
-          desc: 'Content that ranks on Google AND appears in AI answers: ChatGPT, Perplexity, Claude.',
+          desc: 'Content that ranks on Google AND appears in AI answers: ChatGPT, Perplexity, Claude & other models.',
         },
         {
           num: '04',
@@ -186,7 +186,7 @@ export const strings = {
       ],
     },
     workPreview: {
-      eyebrow: 'Selected work',
+      eyebrow: 'Featured work',
       title: 'Sites that perform, not just look good.',
       cta: 'See all projects →',
     },
