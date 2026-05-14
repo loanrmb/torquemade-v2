@@ -149,7 +149,7 @@ export const projects: Project[] = [
       { fr: '59 articles publies — capital trafic permanent', en: '59 articles published — permanent traffic asset' },
       { fr: 'Routing Mapbox temps reel + prix fixes automatiques', en: 'Real-time Mapbox routing + automatic fixed pricing' },
     ],
-    image: 'https://www.torquemade.com/image/br-hero.png',
+    image: '/images/bdxride.png',
     url: 'https://bordeauxride.com',
     featured: true,
   },
