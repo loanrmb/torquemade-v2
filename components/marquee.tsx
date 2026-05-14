@@ -1,18 +1,34 @@
+
 'use client'
 
-const NICHES = [
-  'Concessionnaires moto',
-  'VTC & Chauffeurs privés',
-  'Esthétique & Beauté',
-  'Location nautique',
-  'Commerce local',
-  'Tourisme & Loisirs',
-  'Services à domicile',
-  'Sport & Outdoor',
-]
+import { useLang } from './app-provider'
+
+const NICHES = {
+  fr: [
+    'Concessionnaires moto',
+    'VTC & Chauffeurs privés',
+    'Esthétique & Beauté',
+    'Location nautique',
+    'Commerce local',
+    'Tourisme & Loisirs',
+    'Services à domicile',
+    'Sport & Outdoor',
+  ],
+  en: [
+    'Motorcycle Dealers',
+    'Private Chauffeurs & VTC',
+    'Aesthetics & Beauty',
+    'Boat & Nautical Rentals',
+    'Local Businesses',
+    'Tourism & Leisure',
+    'Home Services',
+    'Sport & Outdoor',
+  ],
+}
 
 export function TechMarquee() {
-  const doubled = [...NICHES, ...NICHES]
+  const lang = useLang()
+  const doubled = [...NICHES[lang], ...NICHES[lang]]
 
   return (
     <div className="overflow-hidden py-8" aria-hidden="true">
