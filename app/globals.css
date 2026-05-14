@@ -6,26 +6,21 @@
    DESIGN TOKENS — Light (default)
    ============================================================ */
 :root {
-  /* Backgrounds */
   --bg-primary:    0 0% 100%;
   --bg-secondary:  0 0% 96%;
   --bg-tertiary:   0 0% 93%;
   --bg-inverse:    0 0% 8%;
 
-  /* Text */
   --text-primary:   0 0% 8%;
   --text-secondary: 0 0% 40%;
   --text-tertiary:  0 0% 53%;
 
-  /* Borders */
   --border-subtle: 0 0% 25% / 8%;
   --border-hover:  0 0% 25% / 14%;
 
-  /* Nav glass */
   --nav-bg:        255 255 255 / 0.75;
   --nav-border:    0 0% 0% / 0.06;
 
-  /* Easing */
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -96,7 +91,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1rem;
 }
 
-/* Reveal on scroll — JS toggles .is-visible */
 .fade-up {
   opacity: 0;
   transform: translateY(24px);
@@ -174,7 +168,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================================
-   PERSPECTIVE GRID (hero interior decoration)
+   PERSPECTIVE GRID
    ============================================================ */
 .perspective-grid-wrap {
   position: absolute;
@@ -234,7 +228,6 @@ html.dark .perspective-grid {
   box-shadow: 0 2px 4px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.08);
 }
 
-/* Work card image */
 .work-card-img {
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -250,7 +243,7 @@ html.dark .perspective-grid {
 .work-card-img:hover img { transform: scale(1.03); }
 
 /* ============================================================
-   WORK LISTING (Trajectory-style)
+   WORK LISTING
    ============================================================ */
 .work-layout {
   display: grid;
@@ -293,7 +286,6 @@ html.dark .perspective-grid {
   color: hsl(var(--bg-primary));
 }
 
-/* Big project card (Trajectory layout) */
 .project-card {
   background: hsl(var(--bg-primary));
   border: 1px solid hsl(var(--border-subtle));
@@ -320,7 +312,7 @@ html.dark .perspective-grid {
 .project-card:hover .project-card-img img { transform: scale(1.02); }
 
 /* ============================================================
-   TESTIMONIAL MASONRY
+   TESTIMONIALS
    ============================================================ */
 .testimonials-masonry {
   columns: 1;
@@ -339,8 +331,7 @@ html.dark .perspective-grid {
 }
 
 /* ============================================================
-   FOOTER REVEAL (Mobbin "peel" effect)
-   main has rounded-b-32 + relative z-10, footer is below with dark bg
+   FOOTER
    ============================================================ */
 .site-footer {
   background: hsl(0 0% 6%);
@@ -353,13 +344,16 @@ html.dark .site-footer {
 }
 
 /* ============================================================
-   CTA CARD
+   CTA CARD — toujours sombre dans les deux modes
    ============================================================ */
 .cta-card {
   position: relative;
-  background: hsl(var(--bg-inverse));
-  color: hsl(var(--bg-primary));
+  background: hsl(0 0% 8%);
+  color: hsl(0 0% 96%);
   border-radius: 24px;
   overflow: hidden;
   isolation: isolate;
+}
+html.dark .cta-card {
+  background: hsl(0 0% 12%);
 }
