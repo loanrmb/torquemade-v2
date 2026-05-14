@@ -44,31 +44,35 @@ export default function CaseStudyPage() {
     <>
       <NavPill />
 
+      {/* ── BACK PILL — flottante sous le nav, même style glassmorphism ── */}
+      <div className="fixed top-[4.5rem] left-0 right-0 z-40 px-5 pointer-events-none">
+        <div className="mx-auto max-w-5xl flex justify-start pt-2">
+          <Link
+            href="/work"
+            className="pointer-events-auto inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-opacity hover:opacity-75"
+            style={{
+              background: 'hsl(var(--nav-bg))',
+              color: 'hsl(var(--text-secondary))',
+              border: '1px solid hsl(var(--nav-border))',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+            }}
+          >
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            {lang === 'fr' ? 'Tous les projets' : 'All projects'}
+          </Link>
+        </div>
+      </div>
+
       <main className="relative z-10 overflow-clip rounded-b-32" style={{ background: 'hsl(var(--bg-primary))' }}>
 
-        {/* ── HERO IMAGE + back button superposé ──────────────────────── */}
+        {/* ── HERO IMAGE ───────────────────────────────────────────────── */}
         <div
           className="relative w-full overflow-hidden"
           style={{ aspectRatio: '16/7', background: 'hsl(var(--bg-secondary))' }}
         >
-          {/* Back button — top left, superposé sur le hero */}
-          <div className="absolute top-4 left-4 z-10 min-720:top-6 min-720:left-6">
-            <Link
-              href="/work"
-              className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium backdrop-blur-sm transition-opacity hover:opacity-80"
-              style={{
-                background: 'hsl(var(--bg-primary) / 0.85)',
-                color: 'hsl(var(--text-primary))',
-                border: '1px solid hsl(var(--border) / 0.5)',
-              }}
-            >
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              {lang === 'fr' ? 'Tous les projets' : 'All projects'}
-            </Link>
-          </div>
-
           {heroExternal ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={project.imageHero} alt={project.client} className="w-full h-full object-cover" />
@@ -85,7 +89,7 @@ export default function CaseStudyPage() {
         <section className="px-5 pt-12 pb-10 min-720:pt-16 min-720:pb-14">
           <div className="mx-auto max-w-5xl">
 
-            {/* Eyebrow — alignement corrigé */}
+            {/* Eyebrow */}
             <div className="fade-up flex items-center gap-2 mb-6 flex-wrap">
               <span
                 className="text-xs font-semibold uppercase tracking-widest"
@@ -209,8 +213,6 @@ export default function CaseStudyPage() {
                   {project.challenge[lang]}
                 </p>
               </div>
-
-              {/* Image challenge */}
               <div
                 className="fade-up fade-up-d1 relative overflow-hidden rounded-2xl"
                 style={{
@@ -221,19 +223,9 @@ export default function CaseStudyPage() {
               >
                 {challengeExternal ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={project.imageChallenge}
-                    alt={`${project.client} — challenge`}
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={project.imageChallenge} alt={`${project.client} — challenge`} className="w-full h-full object-cover" />
                 ) : (
-                  <Image
-                    src={project.imageChallenge}
-                    alt={`${project.client} — challenge`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 720px) 100vw, 50vw"
-                  />
+                  <Image src={project.imageChallenge} alt={`${project.client} — challenge`} fill className="object-cover" sizes="(max-width: 720px) 100vw, 50vw" />
                 )}
               </div>
             </div>
@@ -244,8 +236,6 @@ export default function CaseStudyPage() {
         <section className="px-5 py-14 min-720:py-20" style={{ background: 'hsl(var(--bg-secondary))' }}>
           <div className="mx-auto max-w-5xl">
             <div className="grid min-720:grid-cols-[1fr_1fr] gap-12 items-center">
-
-              {/* Image approach — inversée sur desktop */}
               <div
                 className="fade-up relative overflow-hidden rounded-2xl order-2 min-720:order-1"
                 style={{
@@ -256,22 +246,11 @@ export default function CaseStudyPage() {
               >
                 {approachExternal ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={project.imageApproach}
-                    alt={`${project.client} — approche`}
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={project.imageApproach} alt={`${project.client} — approche`} className="w-full h-full object-cover" />
                 ) : (
-                  <Image
-                    src={project.imageApproach}
-                    alt={`${project.client} — approche`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 720px) 100vw, 50vw"
-                  />
+                  <Image src={project.imageApproach} alt={`${project.client} — approche`} fill className="object-cover" sizes="(max-width: 720px) 100vw, 50vw" />
                 )}
               </div>
-
               <div className="order-1 min-720:order-2">
                 <p className="fade-up section-label mb-3" style={{ color: 'hsl(var(--accent))' }}>
                   {lang === 'fr' ? 'Approche' : 'Approach'}
