@@ -44,27 +44,43 @@ export default function CaseStudyPage() {
     <>
       <NavPill />
 
-      {/* ── BACK PILL — flottante sous le nav, même style glassmorphism ── */}
-      <div className="fixed top-[4.5rem] left-0 right-0 z-40 px-5 pointer-events-none">
-        <div className="mx-auto max-w-5xl flex justify-center pt-2">
-          <Link
-            href="/work"
-            className="pointer-events-auto inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-opacity hover:opacity-75"
-            style={{
-              background: 'hsl(var(--nav-bg))',
-              color: 'hsl(var(--text-secondary))',
-              border: '1px solid hsl(var(--nav-border))',
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
-            }}
-          >
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-              <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            {lang === 'fr' ? 'Tous les projets' : 'All projects'}
-          </Link>
-        </div>
-      </div>
+{/* ── BACK PILL — liquid glass multicolor ── */}
+<div className="fixed top-[4.5rem] left-0 right-0 z-40 px-5 pointer-events-none">
+  <div className="mx-auto max-w-5xl flex justify-center pt-2">
+    <Link
+      href="/work"
+      className="pointer-events-auto inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-opacity hover:opacity-75"
+      style={{
+        background: 'linear-gradient(hsl(var(--bg-primary) / 0.35), hsl(var(--bg-primary) / 0.35)) padding-box, linear-gradient(135deg, #a855f7, #ec4899, #f97316) border-box',
+        border: '1.5px solid transparent',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+      }}
+    >
+      {/* arrow — gradient */}
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none"
+        style={{ stroke: 'url(#arrow-grad)' }}
+      >
+        <defs>
+          <linearGradient id="arrow-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#a855f7"/>
+            <stop offset="100%" stopColor="#f97316"/>
+          </linearGradient>
+        </defs>
+        <path d="M10 12L6 8L10 4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+      {/* text — gradient */}
+      <span style={{
+        background: 'linear-gradient(to right, #a855f7, #ec4899, #f97316)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
+      }}>
+        {lang === 'fr' ? 'Tous les projets' : 'All projects'}
+      </span>
+    </Link>
+  </div>
+</div>
 
       <main className="relative z-10 overflow-clip rounded-b-32" style={{ background: 'hsl(var(--bg-primary))' }}>
 
