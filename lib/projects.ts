@@ -57,7 +57,7 @@ export const projects: Project[] = [
       { fr: '118 clics organiques — zero publicite', en: '118 organic clicks — zero paid ads' },
       { fr: 'Pages modeles + articles de blog SEO', en: 'Model pages + SEO blog articles' },
     ],
-    image: 'https://www.torquemade.com/image/cyclone-catalogue.png',
+    image: '/images/cyclone-bordeaux-2.png',
     url: 'https://cyclonebordeaux.fr',
     featured: false,
   },
