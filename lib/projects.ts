@@ -158,7 +158,7 @@ export const projects: Project[] = [
     tags: ['logiciel'],
     client: 'Bordeaux Ride Admin App',
     location: 'Bordeaux, France',
-    type: { fr: 'Application web (base44)', en: 'Web application (base44)' },
+    type: { fr: 'Application web', en: 'Web application' },
     headline: {
       fr: 'Le CRM complet pour un service VTC premium.',
       en: 'The full CRM for a premium chauffeur service.',
@@ -172,7 +172,7 @@ export const projects: Project[] = [
       { fr: 'Modules Revenus, Clients, Chauffeurs, Devis, Analytics, Blog', en: 'Modules: Revenue, Clients, Drivers, Quotes, Analytics, Blog' },
       { fr: 'Interface sombre — design terminal, zero friction', en: 'Dark interface — terminal design, zero friction' },
     ],
-    image: '/images/bdxride-app-3.png',
+    image: '/images/bdxride-crm-2.png',
     featured: false,
   },
   {
