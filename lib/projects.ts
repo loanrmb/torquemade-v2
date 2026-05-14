@@ -217,7 +217,7 @@ export const projects: Project[] = [
       { fr: 'Contact direct SMS et Instagram DM integres', en: 'Direct SMS and Instagram DM contact integrated' },
       { fr: 'Mobile-first — chargement inferieur a 2s', en: 'Mobile-first — loads under 2s' },
     ],
-    image: 'https://www.spicybeautybyt.com/images/gallery-1.jpg',
+    image: '/images/sbbt.png',
     url: 'https://spicybeautybyt.com',
     featured: false,
   },
