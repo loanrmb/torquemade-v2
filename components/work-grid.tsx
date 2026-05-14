@@ -61,7 +61,7 @@ export function WorkGrid() {
           </p>
         ) : (
           filtered.map((project) => {
-            const isExternal = project.image.startsWith('http')
+            const isExternal = project.imageHero.startsWith('http')
             const cardContent = (
               <div
                 key={project.id}
@@ -79,13 +79,13 @@ export function WorkGrid() {
                   {isExternal ? (
                     /* eslint-disable-next-line @next/next/no-img-element */
                     <img
-                      src={project.image}
+                      src={project.imageHero}
                       alt={project.client}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                     />
                   ) : (
                     <Image
-                      src={project.image}
+                      src={project.imageHero}
                       alt={project.client}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
