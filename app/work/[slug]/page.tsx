@@ -46,7 +46,7 @@ export default function CaseStudyPage() {
 
       {/* ── BACK PILL — flottante sous le nav, même style glassmorphism ── */}
       <div className="fixed top-[4.5rem] left-0 right-0 z-40 px-5 pointer-events-none">
-        <div className="mx-auto max-w-5xl flex justify-start pt-2">
+        <div className="mx-auto max-w-5xl flex justify-center pt-2">
           <Link
             href="/work"
             className="pointer-events-auto inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-opacity hover:opacity-75"
