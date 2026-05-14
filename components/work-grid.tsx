@@ -5,20 +5,20 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useLang } from './app-provider'
 import { strings } from '@/lib/strings'
-import { projects, type Project, type ProjectTag } from '@/lib/projects'
+import { projects, type ProjectTag } from '@/lib/projects'
 
-type Filter = 'all' | ProjectTag
+type Filter = 'all' | 'web' | 'logiciel'
 
 export function WorkGrid() {
   const lang = useLang()
   const t = strings[lang].work
   const [activeFilter, setActiveFilter] = useState<Filter>('all')
 
+  // SEO category removed — only 3 filters remain
   const filters: { key: Filter; label: string }[] = [
     { key: 'all',      label: t.filterAll },
     { key: 'web',      label: t.filterWeb },
     { key: 'logiciel', label: t.filterLogiciel },
-    { key: 'seo',      label: t.filterSeo },
   ]
 
   const filtered = projects.filter((p) =>
@@ -27,7 +27,8 @@ export function WorkGrid() {
 
   return (
     <div className="work-layout">
-      {/* Sidebar */}
+
+      {/* ── SIDEBAR FILTERS ─────────────────────────────────────────── */}
       <aside className="work-sidebar">
         <p
           className="section-label mb-4"
@@ -49,150 +50,196 @@ export function WorkGrid() {
         </ul>
       </aside>
 
-      {/* Cards */}
-      <div>
+      {/* ── PROJECT CARDS ───────────────────────────────────────────── */}
+      <div className="flex flex-col gap-6">
         {filtered.length === 0 ? (
           <p
-            className="py-16 text-center text-body"
+            className="text-body py-12 text-center"
             style={{ color: 'hsl(var(--text-tertiary))' }}
           >
             {t.noMatch}
           </p>
         ) : (
-          <div className="flex flex-col gap-4">
-            {filtered.map((project) => (
-              <ProjectCard
+          filtered.map((project) => {
+            const isExternal = project.image.startsWith('http')
+            const cardContent = (
+              <div
                 key={project.id}
-                project={project}
-                lang={lang}
-              />
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  )
-}
-
-function ProjectCard({
-  project,
-  lang,
-}: {
-  project: Project
-  lang: 'fr' | 'en'
-}) {
-  const t = strings[lang].work
-
-  return (
-    <article className="project-card">
-      {/* Image */}
-      <div className="project-card-img">
-        <img
-          src={project.image}
-          alt={project.client}
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-
-      {/* Body */}
-      <div className="p-6 min-720:p-8">
-        {/* Meta */}
-        <div className="flex flex-wrap items-center gap-2 mb-4">
-          <span
-            className="text-caption font-semibold uppercase tracking-wider"
-            style={{ color: 'hsl(var(--text-tertiary))' }}
-          >
-            {project.type[lang]}
-          </span>
-          <span style={{ color: 'hsl(var(--border-hover))' }}>·</span>
-          <span
-            className="text-caption"
-            style={{ color: 'hsl(var(--text-tertiary))' }}
-          >
-            {project.location}
-          </span>
-          {/* Tags */}
-          {project.tags.map((tag) => (
-            <TagBadge key={tag} tag={tag} lang={lang} />
-          ))}
-        </div>
-
-        {/* Headline */}
-        <h3
-          className="text-xl font-semibold tracking-tight mb-3"
-          style={{ color: 'hsl(var(--text-primary))' }}
-        >
-          {project.headline[lang]}
-        </h3>
-
-        {/* Description */}
-        <p
-          className="text-body mb-6 max-w-2xl"
-          style={{ color: 'hsl(var(--text-secondary))' }}
-        >
-          {project.description[lang]}
-        </p>
-
-        {/* Outcomes */}
-        <ul
-          className="grid grid-cols-1 min-720:grid-cols-3 gap-4 mb-6 p-0 m-0 list-none"
-          style={{ borderTop: '1px solid hsl(var(--border-subtle))', paddingTop: '1.5rem' }}
-        >
-          {project.outcomes.map((outcome, i) => (
-            <li key={i}>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: 'hsl(var(--text-secondary))' }}
+                className="group rounded-2xl overflow-hidden border transition-colors"
+                style={{
+                  background: 'hsl(var(--bg-secondary))',
+                  borderColor: 'hsl(var(--border))',
+                }}
               >
-                {outcome[lang]}
-              </p>
-            </li>
-          ))}
-        </ul>
+                {/* Image */}
+                <div
+                  className="relative overflow-hidden"
+                  style={{ aspectRatio: '16/9' }}
+                >
+                  {isExternal ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={project.image}
+                      alt={project.client}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    />
+                  ) : (
+                    <Image
+                      src={project.image}
+                      alt={project.client}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    />
+                  )}
+                </div>
 
-        {/* CTA */}
-        {project.url && (
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm font-medium transition-colors duration-150"
+                {/* Body */}
+                <div className="p-6 min-720:p-8">
+                  {/* Tags row */}
+                  <div className="flex flex-wrap items-center gap-2 mb-4">
+                    <span
+                      className="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium"
+                      style={{
+                        background: 'hsl(var(--bg-primary))',
+                        color: 'hsl(var(--text-secondary))',
+                        border: '1px solid hsl(var(--border))',
+                      }}
+                    >
+                      {project.type[lang]}
+                    </span>
+
+                    {/* SEO badge on ALL web projects */}
+                    {project.tags.includes('web') && (
+                      <span
+                        className="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium"
+                        style={{
+                          background: 'hsl(var(--accent) / 0.12)',
+                          color: 'hsl(var(--accent))',
+                          border: '1px solid hsl(var(--accent) / 0.3)',
+                        }}
+                      >
+                        SEO
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Meta */}
+                  <p
+                    className="text-xs mb-1"
+                    style={{ color: 'hsl(var(--text-tertiary))' }}
+                  >
+                    {project.location}
+                  </p>
+
+                  {/* Headline */}
+                  <h3
+                    className="text-title-3 font-semibold tracking-tight mb-3 transition-colors"
+                    style={{ color: 'hsl(var(--text-primary))' }}
+                  >
+                    {project.headline[lang]}
+                  </h3>
+
+                  {/* Description */}
+                  <p
+                    className="text-body mb-5"
+                    style={{ color: 'hsl(var(--text-secondary))' }}
+                  >
+                    {project.description[lang]}
+                  </p>
+
+                  {/* Outcomes */}
+                  <ul className="flex flex-col gap-2 mb-6 list-none p-0 m-0">
+                    {project.outcomes.slice(0, 3).map((outcome, i) => (
+                      <li key={i} className="flex items-start gap-2.5">
+                        <span
+                          className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full"
+                          style={{
+                            background: 'hsl(var(--accent) / 0.15)',
+                            color: 'hsl(var(--accent))',
+                          }}
+                        >
+                          <svg width="9" height="9" viewBox="0 0 12 12" fill="none">
+                            <path d="M2 6L5 9L10 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </span>
+                        <span
+                          className="text-sm"
+                          style={{ color: 'hsl(var(--text-secondary))' }}
+                        >
+                          {outcome[lang]}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Action row */}
+                  <div className="flex flex-wrap items-center gap-3">
+                    {project.caseStudy && (
+                      <Link
+                        href={`/work/${project.slug}`}
+                        className="inline-flex items-center gap-1.5 text-sm font-medium transition-opacity hover:opacity-70"
+                        style={{ color: 'hsl(var(--accent))' }}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {lang === 'fr' ? 'Voir le case study' : 'View case study'}
+                        <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                          <path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </Link>
+                    )}
+                    {project.url && (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm transition-opacity hover:opacity-60"
+                        style={{ color: 'hsl(var(--text-tertiary))' }}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {t.visitSite}
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )
+
+            return cardContent
+          })
+        )}
+
+        {/* ── CTA CARD ──────────────────────────────────────────────── */}
+        <div
+          className="rounded-2xl border p-8 min-720:p-10 text-center"
+          style={{
+            background: 'hsl(var(--bg-secondary))',
+            borderColor: 'hsl(var(--border))',
+          }}
+        >
+          <h3
+            className="text-title-3 font-semibold mb-2"
             style={{ color: 'hsl(var(--text-primary))' }}
           >
-            {t.visitSite}
-            <ArrowIcon />
-          </a>
-        )}
+            {t.ctaTitle}
+          </h3>
+          <p
+            className="text-body mb-6"
+            style={{ color: 'hsl(var(--text-secondary))' }}
+          >
+            {t.ctaSub}
+          </p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-opacity hover:opacity-80"
+            style={{
+              background: 'hsl(var(--accent))',
+              color: 'hsl(var(--accent-fg))',
+            }}
+          >
+            {t.ctaButton}
+          </Link>
+        </div>
       </div>
-    </article>
-  )
-}
-
-function TagBadge({ tag, lang }: { tag: ProjectTag; lang: 'fr' | 'en' }) {
-  const labels: Record<ProjectTag, { fr: string; en: string }> = {
-    web:      { fr: 'Web', en: 'Web' },
-    seo:      { fr: 'SEO', en: 'SEO' },
-    logiciel: { fr: 'Logiciel', en: 'Software' },
-  }
-  return (
-    <span
-      className="px-2 py-0.5 rounded-full text-caption font-medium"
-      style={{
-        background: 'hsl(var(--bg-secondary))',
-        color: 'hsl(var(--text-secondary))',
-        border: '1px solid hsl(var(--border-subtle))',
-      }}
-    >
-      {labels[tag][lang]}
-    </span>
-  )
-}
-
-function ArrowIcon() {
-  return (
-    <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 8h10M9 4l4 4-4 4" />
-    </svg>
+    </div>
   )
 }
