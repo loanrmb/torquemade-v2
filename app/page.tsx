@@ -170,7 +170,7 @@ export default function HomePage() {
                 >
                   <div className="work-card-img">
                     <img
-                      src={project.image.Hero}
+                      src={project.imageHero}
                       alt={project.client}
                       loading="lazy"
                       decoding="async"
