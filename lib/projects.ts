@@ -387,7 +387,7 @@ export const projects: Project[] = [
       { fr: 'Chat interne pour les demandes de devis', en: 'Internal chat for quote requests' },
       { fr: 'Stats, revenus et analytics — panneau admin complet', en: 'Stats, revenue and analytics — complete admin panel' },
     ],
-    image: '/images/bordeauxride-crm-.png',
+    image: '/images/bordeauxride-crm.png',
     url: 'https://bordeauxride.app',
     featured: true,
     caseStudy: true,
