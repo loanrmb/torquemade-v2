@@ -47,15 +47,32 @@ export default function HomePage() {
               {t.hero.headline2}
             </p>
 
-            {/* CTAs */}
-            <div className="fade-up fade-up-d2 mt-8 flex flex-wrap items-center justify-center gap-3">
-              <Link href="/work" className="btn-primary">
-                {t.hero.cta1}
-              </Link>
-              <Link href="/contact" className="btn-secondary">
-                {t.hero.cta2}
-              </Link>
-            </div>
+            {/* ── CTA ── */}
+<section className="px-5 pb-20 min-720:pb-24">
+  <div className="mx-auto max-w-5xl">
+    <div className="cta-card p-10 min-720:p-16 text-center fade-up">
+      <h2
+        className="text-title-2 font-semibold tracking-tight mb-4"
+        style={{ color: 'hsl(var(--cta-text, 255 255 255))' }}
+      >
+        {t.cta.title}
+      </h2>
+      <p
+        className="text-body-lg mb-8 max-w-lg mx-auto"
+        style={{ color: 'hsl(var(--cta-text, 255 255 255) / 0.72)' }}
+      >
+        {t.cta.sub}
+      </p>
+      <Link
+        href="/contact"
+        className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-opacity duration-150 hover:opacity-80"
+        style={{ background: 'hsl(var(--cta-btn-bg, 255 255 255))', color: 'hsl(var(--cta-btn-text, 10 10 10))' }}
+      >
+        {t.cta.button}
+      </Link>
+    </div>
+  </div>
+</section>
 
             {/* Stats strip */}
             <div
