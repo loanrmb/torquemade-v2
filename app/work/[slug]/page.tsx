@@ -43,7 +43,9 @@ export default function CaseStudyPage() {
     )
   }
 
-  const isExternal = project.image.startsWith('http')
+  const heroExternal = project.imageHero.startsWith('http')
+  const challengeExternal = project.imageChallenge.startsWith('http')
+  const approachExternal = project.imageApproach.startsWith('http')
 
   return (
     <>
@@ -75,16 +77,16 @@ export default function CaseStudyPage() {
 
         {/* ── HERO IMAGE ──────────────────────────────────────────────── */}
         <div className="relative w-full overflow-hidden" style={{ aspectRatio: '16/7', background: 'hsl(var(--bg-secondary))' }}>
-          {isExternal ? (
+          {heroExternal ? (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img
-              src={project.image}
+              src={project.imageHero}
               alt={project.client}
               className="w-full h-full object-cover"
             />
           ) : (
             <Image
-              src={project.image}
+              src={project.imageHero}
               alt={project.client}
               fill
               className="object-cover"
@@ -253,16 +255,16 @@ export default function CaseStudyPage() {
                   border: '1px solid hsl(var(--border))',
                 }}
               >
-                {isExternal ? (
+                {challengeExternal ? (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
-                    src={project.image}
+                    src={project.imageChallenge}
                     alt={`${project.client} — aperçu`}
                     className="w-full h-full object-cover"
                   />
                 ) : (
                   <Image
-                    src={project.image}
+                    src={project.imageChallenge}
                     alt={`${project.client} — aperçu`}
                     fill
                     className="object-cover"
@@ -289,16 +291,16 @@ export default function CaseStudyPage() {
                   border: '1px solid hsl(var(--border))',
                 }}
               >
-                {isExternal ? (
+                {approachExternal ? (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
-                    src={project.image}
+                    src={project.imageApproach}
                     alt={`${project.client} — approche`}
                     className="w-full h-full object-cover"
                   />
                 ) : (
                   <Image
-                    src={project.image}
+                    src={project.imageApproach}
                     alt={`${project.client} — approche`}
                     fill
                     className="object-cover"
