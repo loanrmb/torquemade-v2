@@ -48,7 +48,7 @@ export const projects: Project[] = [
       { fr: 'Stock motos et accessoires visible et indexé en ligne', en: 'Bike and accessory stock visible and indexed online' },
       { fr: 'Site adopté comme outil de vente par l\'équipe commerciale', en: 'Site adopted as a sales tool by the commercial team' },
     ],
-    image: 'https://sprintmotors.com/wp-content/uploads/2023/09/sprint-motors-bordeaux.jpg',
+    image: '/images/sprintmotors.png',
     url: 'https://sprintmotors.com',
     featured: true,
     caseStudy: true,
