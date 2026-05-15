@@ -19,7 +19,7 @@ export function NavPill() {
   return (
     <header className="fixed left-1/2 top-4 z-50 -translate-x-1/2 w-[calc(100%-2rem)] max-w-2xl">
       <nav
-        className="flex items-center gap-1 rounded-full border px-3 py-2"
+        className="flex items-center gap-1 rounded-full border px-2 py-2 min-720:px-3"
         style={{
           background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.78)',
           backdropFilter: 'blur(16px)',
@@ -29,20 +29,23 @@ export function NavPill() {
         }}
       >
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-1.5 pr-2 mr-1 flex-shrink-0">
+        <Link href="/" className="flex items-center gap-1.5 pr-1 min-720:pr-2 mr-0.5 min-720:mr-1 flex-shrink-0">
           <LogoMark />
-          <span className="font-semibold text-sm tracking-tight whitespace-nowrap" style={{ color: 'hsl(var(--text-primary))' }}>
+          <span
+            className="hidden min-[480px]:block font-semibold text-sm tracking-tight whitespace-nowrap"
+            style={{ color: 'hsl(var(--text-primary))' }}
+          >
             Torquemade
           </span>
         </Link>
 
         {/* Nav links */}
-        <div className="flex items-center gap-0.5 flex-1">
+        <div className="flex items-center gap-0 min-720:gap-0.5 flex-1">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-full px-3 py-1.5 text-sm font-medium transition-colors duration-150 whitespace-nowrap"
+              className="rounded-full px-2.5 min-720:px-3 py-1.5 text-sm font-medium transition-colors duration-150 whitespace-nowrap"
               style={{
                 color: pathname === link.href ? 'hsl(var(--text-primary))' : 'hsl(var(--text-tertiary))',
                 background: pathname === link.href ? 'hsl(var(--bg-secondary))' : 'transparent',
@@ -54,25 +57,25 @@ export function NavPill() {
         </div>
 
         {/* Separator */}
-        <div className="w-px h-5 mx-1 flex-shrink-0" style={{ background: 'hsl(var(--border-subtle))' }} />
+        <div className="w-px h-5 mx-0.5 min-720:mx-1 flex-shrink-0" style={{ background: 'hsl(var(--border-subtle))' }} />
 
         {/* Toggles */}
-        <div className="flex items-center gap-0.5">
+        <div className="flex items-center gap-0">
           {/* Lang toggle */}
           <button
             onClick={toggleLang}
-            className="flex items-center gap-1 rounded-full px-2.5 py-1.5 text-xs font-semibold transition-colors duration-150 hover:bg-bg-secondary whitespace-nowrap"
+            className="flex items-center gap-1 rounded-full px-2 min-720:px-2.5 py-1.5 text-xs font-semibold transition-colors duration-150 hover:bg-bg-secondary whitespace-nowrap"
             style={{ color: 'hsl(var(--text-secondary))' }}
             aria-label="Toggle language"
           >
             <span className="text-sm leading-none">{lang === 'fr' ? '🇫🇷' : '🇬🇧'}</span>
-            <span className="uppercase tracking-wider">{lang === 'fr' ? 'FR' : 'EN'}</span>
+            <span className="hidden min-[480px]:inline uppercase tracking-wider">{lang === 'fr' ? 'FR' : 'EN'}</span>
           </button>
 
           {/* Theme toggle */}
           <button
             onClick={toggleTheme}
-            className="flex items-center justify-center w-8 h-8 rounded-full transition-colors duration-150 hover:bg-bg-secondary"
+            className="flex items-center justify-center w-7 h-7 min-720:w-8 min-720:h-8 rounded-full transition-colors duration-150 hover:bg-bg-secondary"
             style={{ color: 'hsl(var(--text-tertiary))' }}
             aria-label="Toggle theme"
           >
