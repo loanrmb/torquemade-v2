@@ -79,8 +79,8 @@ export const strings = {
     },
     work: {
       eyebrow: 'Projets',
-      headline: 'Travaux sélectionnés.',
-      sub: 'Des projets concrets, avec des métriques réelles — tirées de Google Search Console et GA4.',
+      headline: 'Projets à la une.',
+      sub: 'De vrais projets , avec des métriques réelles — tirées de Google Search Console et GA4.',
       filterAll: 'Tous',
       filterWeb: 'Sites web',
       filterLogiciel: 'CRM & Systèmes',
@@ -217,7 +217,7 @@ export const strings = {
     },
     work: {
       eyebrow: 'Work',
-      headline: 'Selected projects.',
+      headline: 'Featured work.',
       sub: 'Real projects, real metrics — pulled directly from Google Search Console and GA4.',
       filterAll: 'All',
       filterWeb: 'Websites',
