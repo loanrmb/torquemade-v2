@@ -205,7 +205,7 @@ export const projects: Project[] = [
     location: 'Bordeaux, France',
     type: { fr: 'Microsite de marque + SEO', en: 'Brand microsite + SEO' },
     headline: {
-      fr: 'Une position SEO dédiée pour Voge en Gironde.',
+      fr: 'Une position SEO dédiée pour Voge à Bordeaux.',
       en: 'A dedicated SEO position for Voge in Gironde.',
     },
     description: {
