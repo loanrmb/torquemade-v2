@@ -283,8 +283,8 @@ export const projects: Project[] = [
       en: 'Orcal: a niche, an uncaptured brand traffic stream',
     },
     challenge: {
-      fr: 'Orcal est une marque de motos électriques haut de gamme à forte identité. Mais les acheteurs qui la cherchaient à Bordeaux tombaient sur des résultats sans rapport avec le concessionnaire local. Sans présence propre, impossible de capter ce trafic niche et très qualifié.',
-      en: 'Orcal is a premium electric motorcycle brand with strong brand identity. But buyers searching for it in Bordeaux landed on results unrelated to the local dealer. Without its own presence, capturing this niche and highly qualified traffic was impossible.',
+      fr: 'Orcal est une marque de motos à forte identité. Mais les acheteurs qui la cherchaient à Bordeaux tombaient sur des résultats sans rapport avec le concessionnaire local. Sans présence propre, impossible de capter ce trafic niche et très qualifié.',
+      en: 'Orcal is a motorcycle brand with a strong brand identity. But buyers searching for it in Bordeaux landed on results unrelated to the local dealer. Without its own presence, capturing this niche and highly qualified traffic was impossible.',
     },
     approachTitle: {
       fr: 'Un microsite à l\'image de la marque, ancré sur les requêtes locales',
@@ -446,8 +446,8 @@ export const projects: Project[] = [
       en: 'A serious business, without a digital storefront',
     },
     challenge: {
-      fr: 'Spicy Beauty by T. exerçait avec une clientèle fidèle, mais sans site internet. Dans un marché local très concurrentiel — les recherches "esthéticienne Valenciennes" affichent de nombreux résultats — l\'absence de présence en ligne freine directement l\'acquisition de nouveaux clients. Par ailleurs, la nature de l\'activité à domicile imposait de communiquer sur une zone sans dévoiler l\'adresse précise.',
-      en: 'Spicy Beauty by T. had a loyal client base but no website. In a highly competitive local market — "esthéticienne Valenciennes" searches return many results — the absence of an online presence directly limits new client acquisition. Additionally, the home-based nature of the business required communicating a service area without revealing the exact address.',
+      fr: 'Spicy Beauty by T. exerçait avec une clientèle fidèle, mais sans site internet. Dans un marché local concurrentiel — les recherches "esthéticienne Valenciennes" affichent de nombreux résultats — l\'absence de présence en ligne freine directement l\'acquisition de nouveaux clients. Par ailleurs, la nature de l\'activité à domicile imposait de communiquer sur une zone sans dévoiler l\'adresse précise.',
+      en: 'Spicy Beauty by T. had a loyal client base but no website. In a competitive local market — "esthéticienne Valenciennes" searches return many results — the absence of an online presence directly limits new client acquisition. Additionally, the home-based nature of the business required communicating a service area without revealing the exact address.',
     },
     approachTitle: {
       fr: 'Mobile-first, mots-clés locaux, et prise de RDV directe',
