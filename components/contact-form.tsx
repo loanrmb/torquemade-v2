@@ -25,19 +25,26 @@ export function ContactForm() {
     e.preventDefault()
     setState('loading')
     const form = e.currentTarget
-    const data = new FormData(form)
 
-    // Add selected services as a comma-separated string
-    const selectedServices = Array.from(selected)
-      .map((i) => t.services[i])
-      .join(', ')
-    data.set('service', selectedServices)
+    const firstName = (form.elements.namedItem('firstName') as HTMLInputElement).value
+    const lastName = (form.elements.namedItem('lastName') as HTMLInputElement).value
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value
+    const company = (form.elements.namedItem('company') as HTMLInputElement).value
+    const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value
+    const selectedServices = Array.from(selected).map((i) => t.services[i]).join(', ')
 
     try {
-      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          company,
+          service: selectedServices,
+          message,
+        }),
       })
       if (res.ok) {
         setState('success')
