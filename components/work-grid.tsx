@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useLang } from './app-provider'
@@ -13,12 +13,18 @@ export function WorkGrid() {
   const lang = useLang()
   const t = strings[lang].work
   const [activeFilter, setActiveFilter] = useState<Filter>('all')
+  const gridRef = useRef<HTMLDivElement>(null)
 
   const filters: { key: Filter; label: string }[] = [
     { key: 'all',      label: t.filterAll },
     { key: 'web',      label: t.filterWeb },
     { key: 'logiciel', label: t.filterLogiciel },
   ]
+
+  function handleFilter(key: Filter) {
+    setActiveFilter(key)
+    gridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   const filtered = projects.filter((p) =>
     activeFilter === 'all' ? true : p.tags.includes(activeFilter as ProjectTag)
@@ -36,7 +42,7 @@ export function WorkGrid() {
           {filters.map((f) => (
             <li key={f.key}>
               <button
-                onClick={() => setActiveFilter(f.key)}
+                onClick={() => handleFilter(f.key)}
                 className={`sidebar-link${activeFilter === f.key ? ' active' : ''}`}
               >
                 {f.label}
@@ -47,7 +53,7 @@ export function WorkGrid() {
       </aside>
 
       {/* ── PROJECT CARDS ───────────────────────────────────────────── */}
-      <div className="flex flex-col gap-6">
+      <div ref={gridRef} className="flex flex-col gap-6">
         {filtered.length === 0 ? (
           <p className="text-body py-12 text-center" style={{ color: 'hsl(var(--text-tertiary))' }}>
             {t.noMatch}
@@ -170,7 +176,7 @@ export function WorkGrid() {
                     ))}
                   </ul>
 
-                  {/* ── Action buttons — plus visibles ── */}
+                  {/* ── Action buttons ── */}
                   <div className="flex flex-wrap items-center gap-3">
                     {project.caseStudy && (
                       <Link
