@@ -37,15 +37,15 @@ export const projects: Project[] = [
     location: 'Bordeaux, France',
     type: { fr: 'Site web + SEO', en: 'Website + SEO' },
     headline: {
-      fr: 'De zéro à 791 000 impressions Google.',
-      en: 'From zero to 791K Google impressions.',
+      fr: 'De zéro à 800 000+ impressions Google.',
+      en: 'From zero to 800K+ Google impressions.',
     },
     description: {
-      fr: 'Sprint Motors est un concessionnaire moto bordelais spécialisé dans la vente de motos neuves, occasions et accessoires. À l\'origine sans présence digitale, le site est aujourd\'hui le premier point de contact commercial avant même l\'appel téléphonique.',
-      en: 'Sprint Motors is a Bordeaux motorcycle dealer specializing in new bikes, used vehicles and accessories. Originally with no digital presence, the site is now the primary commercial touchpoint — before the phone call.',
+      fr: 'Sprint Motors est un concessionnaire moto multimarques à Bordeaux. Vente de motos neuves, occasions et accessoires. À l\'origine sans présence digitale, le site est aujourd\'hui le premier point de contact commercial avant même l\'appel téléphonique.',
+      en: 'Sprint Motors is a multibrand motorcycle dealer in Bordeaux. Specializing in new bikes, used vehicles and accessories. Originally with no digital presence, the site is now the primary commercial touchpoint — before the phone call.',
     },
     outcomes: [
-      { fr: '791 000 impressions Google — en partant de zéro', en: '791K Google impressions — starting from scratch' },
+      { fr: '800 000+ impressions Google — en partant de zéro', en: '800K+ Google impressions — starting from scratch' },
       { fr: 'Plus de 1 000 visites organiques par mois, en hausse constante', en: 'Over 1,000 organic monthly visits and growing' },
       { fr: 'Stock motos et accessoires visible et indexé en ligne', en: 'Bike and accessory stock visible and indexed online' },
       { fr: 'Site adopté comme outil de vente par l\'équipe commerciale', en: 'Site adopted as a sales tool by the commercial team' },
@@ -73,8 +73,8 @@ export const projects: Project[] = [
       en: 'The project started with a full local market audit and keyword opportunity mapping. Then a complete rebuild: SEO-first architecture, dedicated pages per category (new bikes, used, accessories), optimized stock descriptions with structured data, and a clearer service presentation. Alongside this, a local content strategy to anchor Sprint Motors on high-intent Bordeaux search queries.',
     },
     resultsTitle: {
-      fr: 'De zéro à 791 000 impressions — et ça continue',
-      en: 'From zero to 791K impressions — and growing',
+      fr: 'De zéro à 800 000 impressions — et ça continue',
+      en: 'From zero to 800K impressions — and growing',
     },
     results: {
       fr: 'En partant d\'une page blanche côté SEO, sprintmotors.com approche aujourd\'hui le million d\'impressions Google. Plus de 1 000 visites organiques par mois, en croissance constante. Le site est devenu le premier point de contact commercial — avant l\'appel téléphonique. Les résultats ont été suffisamment convaincants pour que Sprint Motors confie ensuite deux missions supplémentaires : deux microsites de marque dédiés pour Cyclone et Voge Bordeaux.',
@@ -98,12 +98,12 @@ export const projects: Project[] = [
       en: 'A Tarbes motorcycle dealer finally visible on Google.',
     },
     description: {
-      fr: 'Moto Passion 65 est un concessionnaire moto tarbais indépendant. Comme beaucoup de petits acteurs locaux, leur présence digitale ne reflétait pas la qualité de leur offre. La refonte a tout changé.',
-      en: 'Moto Passion 65 is an independent motorcycle dealer in Tarbes. Like many small local businesses, their digital presence didn\'t reflect the quality of their offering. The rebuild changed everything.',
+      fr: 'Moto Passion 65 est un concessionnaire moto (VOGE & CF MOTO) aux pieds des Pyrénées. Comme beaucoup de petits acteurs locaux, leur présence digitale ne reflétait pas la qualité de leur offre. La refonte a tout changé.',
+      en: 'Moto Passion 65 is a motorcycle dealer (VOGE & CF MOTO) at the foot of the Pyrenees. Like many small local businesses, their digital presence didn\'t reflect the quality of their offering. The rebuild changed everything.',
     },
     outcomes: [
       { fr: 'Présence SEO locale construite de zéro sur Tarbes et la région', en: 'Local SEO presence built from scratch across Tarbes and the region' },
-      { fr: 'Articles de blog réguliers pour ancrer les positions organiques', en: 'Regular blog content to lock in organic rankings' },
+      { fr: 'Articles de blog ciblés pour ancrer les positions organiques', en: 'Targeted blog content to lock in organic rankings' },
       { fr: 'Stock et services clairement présentés — trafic qualifié en hausse', en: 'Stock and services clearly presented — qualified traffic growing' },
       { fr: 'Très bon retour client — satisfaction immédiate', en: 'Very positive client feedback — immediate satisfaction' },
     ],
@@ -126,8 +126,8 @@ export const projects: Project[] = [
       en: 'Rebuild + long-term local content strategy',
     },
     approach: {
-      fr: 'Refonte complète du site avec une architecture claire par service et type de moto. Mise en place d\'un blog régulier ciblant les requêtes locales (entretien moto Tarbes, achat moto occasion Hautes-Pyrénées…) pour construire une autorité SEO sur la durée. Chaque article est pensé pour répondre à une intention de recherche précise et rediriger vers les pages produits.',
-      en: 'Full site rebuild with a clear architecture by service and bike type. Launch of a regular blog targeting local queries (motorcycle maintenance Tarbes, used bike purchase Hautes-Pyrénées…) to build SEO authority over time. Each article is designed to match a specific search intent and funnel readers toward product pages.',
+      fr: 'Refonte complète du site avec une architecture claire par service et type de moto. Mise en place d\'un blog ciblant les requêtes locales (entretien moto Tarbes, achat moto occasion Hautes-Pyrénées…) pour construire une autorité SEO sur la durée. Chaque article est pensé pour répondre à une intention de recherche précise et rediriger vers les pages produits.',
+      en: 'Full site rebuild with a clear architecture by service and bike type. Launch of a blog targeting local queries (motorcycle maintenance Tarbes, used bike purchase Hautes-Pyrénées…) to build SEO authority over time. Each article is designed to match a specific search intent and funnel readers toward product pages.',
     },
     resultsTitle: {
       fr: 'Visibilité locale construite, satisfaction client immédiate',
