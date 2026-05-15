@@ -19,7 +19,7 @@ export function NavPill() {
   return (
     <header className="fixed left-1/2 top-4 z-50 -translate-x-1/2 w-[calc(100%-2rem)] max-w-2xl">
       <nav
-        className="flex items-center gap-1 rounded-full border px-2 py-2 min-720:px-3"
+        className="flex items-center gap-1 rounded-full border px-2 py-2 min-720:px-3 overflow-hidden"
         style={{
           background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.78)',
           backdropFilter: 'blur(16px)',
@@ -82,10 +82,12 @@ export function NavPill() {
             {theme === 'light' ? <MoonIcon /> : <SunIcon />}
           </button>
 
-          {/* CTA */}
-          <Link href="/contact" className="btn-primary ml-1 !py-1.5 !px-3 !text-sm hidden min-720:flex whitespace-nowrap">
-            {lang === 'fr' ? 'Démarrer →' : 'Start →'}
-          </Link>
+          {/* CTA — desktop uniquement, wrapper div contrôle la visibilité */}
+          <div className="hidden min-720:block ml-1 flex-shrink-0">
+            <Link href="/contact" className="btn-primary !py-1.5 !px-3 !text-sm whitespace-nowrap">
+              {lang === 'fr' ? 'Démarrer →' : 'Start →'}
+            </Link>
+          </div>
         </div>
       </nav>
     </header>
