@@ -206,7 +206,7 @@ export const projects: Project[] = [
     type: { fr: 'Microsite de marque + SEO', en: 'Brand microsite + SEO' },
     headline: {
       fr: 'Une position SEO dédiée pour Voge à Bordeaux.',
-      en: 'A dedicated SEO position for Voge in Gironde.',
+      en: 'A dedicated SEO position for Voge in Bordeaux.',
     },
     description: {
       fr: 'Vogebordeaux.com est le microsite officieux de la marque Voge pour le marché bordelais. Identité de marque, catalogue complet, formulaire par modèle — et un blog pour tenir les positions dans le temps.',
