@@ -87,8 +87,8 @@ export const strings = {
       filterSeo: 'SEO & Contenu',
       visitSite: 'Voir le site →',
       noMatch: 'Aucun projet ne correspond à ce filtre.',
-      ctaTitle: 'Votre projet peut être le suivant sur cette liste.',
-      ctaSub: 'Discutons de ce que vous voulez construire.',
+      ctaTitle: 'Parlons de votre projet.',
+      ctaSub: 'Remplissez le formulaire, on revient vers vous dans les 24h. Pas de pitch, pas de pression.',
       ctaButton: 'Démarrer un projet',
     },
     about: {
