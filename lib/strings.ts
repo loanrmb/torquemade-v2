@@ -17,7 +17,7 @@ export const strings = {
       cta2: 'Nous contacter',
     },
     stats: [
-      { value: '800K+', label: 'Impressions Google' },
+      { value: '1M+', label: 'Impressions Google' },
       { value: '15+',   label: 'Projets livrés' },
       { value: '100%',  label: 'Délais respectés' },
     ],
@@ -108,7 +108,7 @@ export const strings = {
       statsEyebrow: 'En chiffres',
       stats: [
         { value: '15+',    label: 'Projets livrés' },
-        { value: '800K+',  label: 'Impressions Google' },
+        { value: '1M+',  label: 'Impressions Google' },
         { value: '100%',   label: 'Délais respectés' },
       ],
       ctaTitle: 'Prêt pour un site qui performe vraiment ?',
@@ -155,7 +155,7 @@ export const strings = {
       cta2: 'Get in touch',
     },
     stats: [
-      { value: '800K+', label: 'Google impressions' },
+      { value: '1M+', label: 'Google impressions' },
       { value: '15+',   label: 'Projects delivered' },
       { value: '100%',  label: 'Deadlines met' },
     ],
