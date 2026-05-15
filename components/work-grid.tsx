@@ -33,8 +33,36 @@ export function WorkGrid() {
   return (
     <div className="work-layout">
 
-      {/* ── SIDEBAR FILTERS ─────────────────────────────────────────── */}
-      <aside className="work-sidebar">
+      {/* ── MOBILE FILTER — pill flottant sticky ── */}
+      <div className="block min-720:hidden sticky top-20 z-40 mb-6">
+        <div
+          className="inline-flex items-center gap-1 rounded-full border px-2 py-1.5 w-full justify-center"
+          style={{
+            background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.85)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            borderColor: 'hsl(var(--border-subtle))',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
+          }}
+        >
+          {filters.map((f) => (
+            <button
+              key={f.key}
+              onClick={() => handleFilter(f.key)}
+              className="rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-150 whitespace-nowrap"
+              style={{
+                background: activeFilter === f.key ? 'hsl(var(--bg-inverse))' : 'transparent',
+                color: activeFilter === f.key ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-tertiary))',
+              }}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* ── SIDEBAR FILTERS — desktop uniquement ── */}
+      <aside className="work-sidebar hidden min-720:block">
         <p className="section-label mb-4" style={{ color: 'hsl(var(--text-tertiary))' }}>
           {lang === 'fr' ? 'Filtrer' : 'Filter'}
         </p>
@@ -52,7 +80,7 @@ export function WorkGrid() {
         </ul>
       </aside>
 
-      {/* ── PROJECT CARDS ───────────────────────────────────────────── */}
+      {/* ── PROJECT CARDS ── */}
       <div ref={gridRef} className="flex flex-col gap-6">
         {filtered.length === 0 ? (
           <p className="text-body py-12 text-center" style={{ color: 'hsl(var(--text-tertiary))' }}>
@@ -71,7 +99,7 @@ export function WorkGrid() {
                   borderColor: 'hsl(var(--border))',
                 }}
               >
-                {/* ── Image — cliquable vers le case study ── */}
+                {/* Image */}
                 {project.caseStudy ? (
                   <Link href={`/work/${project.slug}`} className="relative block overflow-hidden" style={{ aspectRatio: '16/9' }}>
                     {isExternal ? (
@@ -176,7 +204,7 @@ export function WorkGrid() {
                     ))}
                   </ul>
 
-                  {/* ── Action buttons ── */}
+                  {/* Action buttons */}
                   <div className="flex flex-wrap items-center gap-3">
                     {project.caseStudy && (
                       <Link
@@ -215,7 +243,7 @@ export function WorkGrid() {
           })
         )}
 
-        {/* ── CTA CARD ── */}
+        {/* CTA CARD */}
         <div
           className="rounded-2xl border p-8 min-720:p-10 text-center"
           style={{ background: 'hsl(var(--bg-secondary))', borderColor: 'hsl(var(--border))' }}
