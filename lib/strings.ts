@@ -256,7 +256,7 @@ export const strings = {
     contact: {
       eyebrow: 'Contact',
       headline: 'Let\'s talk about your project.',
-      sub: 'Fill in the form below, I\'ll get back to you within 24h. No pitch, no pressure.',
+      sub: 'Fill in the form below, We\'ll get back to you within 24h. No pitch, no pressure.',
       firstName: 'First name',
       lastName: 'Last name',
       email: 'Email',
