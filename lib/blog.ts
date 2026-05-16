@@ -64,5 +64,13 @@ export const posts: Post[] = [
     category: 'Web & Développement',
     readingTime: 4,
   },
+  {
+    slug: 'core-web-vitals-explication',
+    title: 'Core Web Vitals : ce que Google mesure vraiment sur votre site',
+    description: 'LCP, INP, CLS — les trois métriques que Google utilise pour évaluer l\'expérience utilisateur de votre site et les intégrer dans son algorithme de classement.',
+    date: 'Mars 2025',
+    category: 'Web & Développement',
+    readingTime: 5,
+  },
   // → Ajouter les prochains articles ici
 ]
