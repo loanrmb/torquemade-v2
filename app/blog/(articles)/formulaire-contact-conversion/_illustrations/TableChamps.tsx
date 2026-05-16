@@ -1,11 +1,11 @@
 const rows = [
-  { champ: 'Nom', verdict: 'Garder', raison: 'Indispensable pour personnaliser la r\u00e9ponse' },
-  { champ: 'Email', verdict: 'Garder', raison: 'Canal de r\u00e9ponse principal' },
-  { champ: 'Message', verdict: 'Garder', raison: 'Contexte minimal n\u00e9cessaire' },
-  { champ: 'T\u00e9l\u00e9phone', verdict: 'Supprimer', raison: 'Peut \u00eatre demand\u00e9 lors de l\u2019\u00e9change suivant' },
-  { champ: 'Budget', verdict: 'Supprimer', raison: 'Freine les ind\u00e9cis \u2014 \u00e0 qualifier en appel' },
-  { champ: 'Soci\u00e9t\u00e9', verdict: 'Optionnel', raison: 'Utile en B2B, inutile en B2C' },
-  { champ: 'Comment avez-vous entendu parler de nous\u202f?', verdict: 'Supprimer', raison: 'Friction inutile, donn\u00e9e peu fiable' },
+  { champ: 'Nom', verdict: 'Garder', raison: 'Indispensable pour personnaliser la réponse' },
+  { champ: 'Email', verdict: 'Garder', raison: 'Canal de réponse principal' },
+  { champ: 'Message', verdict: 'Garder', raison: 'Contexte minimal nécessaire' },
+  { champ: 'Téléphone', verdict: 'Supprimer', raison: 'Peut être demandé lors de l\'échange suivant' },
+  { champ: 'Budget', verdict: 'Supprimer', raison: 'Freine les indécis — à qualifier en appel' },
+  { champ: 'Société', verdict: 'Optionnel', raison: 'Utile en B2B, inutile en B2C' },
+  { champ: 'Comment avez-vous entendu parler de nous ?', verdict: 'Supprimer', raison: 'Friction inutile, donnée peu fiable' },
 ]
 
 export default function TableChamps() {
@@ -35,7 +35,7 @@ export default function TableChamps() {
         </tbody>
       </table>
       <figcaption className="mt-3 font-mono text-[10px] uppercase tracking-widest opacity-30">
-        Analyse champ par champ &mdash; formulaire de contact type
+        Analyse champ par champ — formulaire de contact type
       </figcaption>
     </figure>
   )
