@@ -24,5 +24,13 @@ export const posts: Post[] = [
     category: 'Web & Développement',
     readingTime: 4,
   },
+  {
+    slug: 'site-vitrine-professionnel-pme-locale',
+    title: 'Ce qu\'un site vitrine professionnel apporte à une PME locale',
+    description: 'Visibilité Google, crédibilité, leads entrants — ce qu\'un site vitrine bien construit change concrètement pour une PME ou un commerce de proximité.',
+    date: 'Janvier 2025',
+    category: 'Web & Développement',
+    readingTime: 4,
+  },
   // → Ajouter les prochains articles ici
 ]
