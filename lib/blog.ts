@@ -48,5 +48,13 @@ export const posts: Post[] = [
     category: 'Web & Développement',
     readingTime: 5,
   },
+  {
+    slug: 'erreurs-vitesse-site-web',
+    title: 'Les 7 erreurs qui plombent la vitesse d\'un site web',
+    description: 'Images non compressées, plugins inutiles, hébergement sous-dimensionné — les 7 erreurs les plus fréquentes qui ralentissent un site et comment les corriger.',
+    date: 'Février 2025',
+    category: 'Web & Développement',
+    readingTime: 5,
+  },
   // → Ajouter les prochains articles ici
 ]
