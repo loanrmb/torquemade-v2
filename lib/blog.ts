@@ -80,5 +80,13 @@ export const posts: Post[] = [
     category: 'Web & Développement',
     readingTime: 4,
   },
+  {
+    slug: 'systeme-reservation-sans-commission',
+    title: 'Comment intégrer un système de réservation sans commission',
+    description: 'Planity, Booksy, ResaOnline prennent entre 1 % et 3 % de chaque réservation. Un système sur mesure intégré à votre site vous coûte moins et vous appartient.',
+    date: 'Mars 2025',
+    category: 'Web & Développement',
+    readingTime: 5,
+  },
   // → Ajouter les prochains articles ici
 ]
