@@ -72,5 +72,13 @@ export const posts: Post[] = [
     category: 'Web & Développement',
     readingTime: 5,
   },
+  {
+    slug: 'landing-page-vs-site-complet',
+    title: 'Landing page vs site complet : quand opter pour quelle solution ?',
+    description: 'Une landing page ou un site complet ? La réponse dépend de votre objectif, de votre stade de développement et de ce que vous voulez que votre visiteur fasse.',
+    date: 'Mars 2025',
+    category: 'Web & Développement',
+    readingTime: 4,
+  },
   // → Ajouter les prochains articles ici
 ]
