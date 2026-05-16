@@ -1,202 +1,88 @@
 export const metadata = {
-  title: 'Shopify vs Next.js : lequel choisir pour votre commerce en 2025 ?',
-  description: 'Shopify ou Next.js pour votre e-commerce ? Nous comparons les deux solutions pour vous aider à faire le bon choix selon votre projet et vos ambitions.',
+  title: 'Pourquoi votre formulaire de contact ne convertit pas (et comment le fixer)',
+  description: 'Un formulaire trop long, mal placé ou sans retour visuel fait fuir les visiteurs. Voici les erreurs les plus fréquentes et comment les corriger.',
 }
 
-export function IllustrationComparaison() {
-  return (
-    <div className="my-12 overflow-hidden border border-black">
-      <svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" className="block w-full">
+import SchemaFunnel from './_illustrations/SchemaFunnel'
+import TableChamps from './_illustrations/TableChamps'
+import SchemaUX from './_illustrations/SchemaUX'
 
-        {/* === SHOPIFY — panneau gauche === */}
-        <rect x="0" y="0" width="350" height="320" fill="white"/>
+<header className="mb-16">
+  <p className="mb-4 font-mono text-[10px] uppercase tracking-widest opacity-40">Web & Développement · Mars 2025</p>
+  <h1 className="text-4xl font-bold leading-tight md:text-5xl" style={{ color: 'hsl(var(--text-primary))' }}>
+    Pourquoi votre formulaire de contact ne convertit pas (et comment le fixer)
+  </h1>
+  <p className="mt-6 text-lg leading-relaxed opacity-60">
+    Le formulaire de contact est souvent le dernier obstacle entre un visiteur intéressé et un client potentiel. La plupart des sites le traitent comme une formalité. Résultat : des taux d'abandon proches de 70 %, et des leads qui partent sans laisser de trace.
+  </p>
+</header>
 
-        {/* Icône sac de shopping */}
-        <rect x="145" y="55" width="60" height="56" rx="3" fill="none" stroke="black" strokeWidth="2"/>
-        <path d="M158 55 C158 40 202 40 202 55" fill="none" stroke="black" strokeWidth="2"/>
-        <line x1="145" y1="73" x2="205" y2="73" stroke="black" strokeWidth="1" strokeDasharray="5,4"/>
-        <circle cx="160" cy="55" r="2.5" fill="black"/>
-        <circle cx="190" cy="55" r="2.5" fill="black"/>
+<SchemaFunnel />
 
-        {/* Label */}
-        <text x="175" y="148" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="14" fontWeight="bold" fill="black">SHOPIFY</text>
-        <text x="175" y="167" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#999">Clé en main</text>
+## Le problème n'est pas le trafic
 
-        {/* Tags */}
-        <rect x="38" y="188" width="66" height="22" rx="11" fill="none" stroke="black" strokeWidth="1.5"/>
-        <text x="71" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="black">Rapide</text>
+Quand un site ne génère pas de contacts, le réflexe est d'augmenter le trafic — plus de SEO, plus de publicité. C'est souvent la mauvaise réponse.
 
-        <rect x="117" y="188" width="92" height="22" rx="11" fill="none" stroke="black" strokeWidth="1.5"/>
-        <text x="163" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="black">Abonnement</text>
+Si votre formulaire convertit à 5 % et que vous doublez votre trafic, vous doublez vos contacts mais vous laissez toujours 95 visiteurs sur 100 repartir sans rien. Corriger le formulaire d'abord est presque toujours plus rentable que d'investir davantage en acquisition.
 
-        <rect x="222" y="188" width="102" height="22" rx="11" fill="none" stroke="black" strokeWidth="1.5"/>
-        <text x="273" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="black">Commission 2%</text>
+Un formulaire bien conçu convertit entre 15 % et 25 % des visiteurs qui arrivent sur la page de contact. Un formulaire mal conçu tourne à 3-8 %. La différence tient rarement à des détails techniques — elle tient à des choix de conception que nous allons détailler.
 
-        {/* Note bas */}
-        <text x="175" y="256" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#bbb">Idéal pour lancer rapidement</text>
-        <text x="175" y="274" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#bbb">avec un budget limité</text>
+## Erreur n°1 : trop de champs
 
-        {/* === VS — séparateur central === */}
-        <rect x="350" y="0" width="60" height="320" fill="black"/>
-        <text x="380" y="168" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="20" fontWeight="bold" fill="white">VS</text>
+C'est l'erreur la plus documentée et la plus répandue. Chaque champ supplémentaire est un obstacle supplémentaire. Les études sur le comportement des formulaires montrent systématiquement qu'au-delà de 3 à 4 champs, le taux de complétion chute.
 
-        {/* === NEXT.JS — panneau droit === */}
-        <rect x="410" y="0" width="350" height="320" fill="black"/>
+La question à poser pour chaque champ : **est-ce que j'en ai absolument besoin pour répondre à ce contact ?** Le numéro de téléphone, le budget, la taille de l'entreprise — tout ce qui peut être demandé lors de l'échange suivant n'a pas sa place dans le formulaire initial.
 
-        {/* Graphique performance */}
-        <line x1="450" y1="55" x2="450" y2="125" stroke="white" strokeWidth="1" opacity="0.25"/>
-        <line x1="450" y1="125" x2="645" y2="125" stroke="white" strokeWidth="1" opacity="0.25"/>
-        <polyline points="455,120 490,98 528,74 570,52 612,34" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="612" cy="34" r="4.5" fill="white"/>
+Le minimum viable pour un formulaire de contact B2B : nom, email, message. Trois champs. C'est tout.
 
-        {/* Label */}
-        <text x="585" y="148" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="14" fontWeight="bold" fill="white">NEXT.JS</text>
-        <text x="585" y="167" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#666">Sur mesure</text>
+<TableChamps />
 
-        {/* Tags blancs */}
-        <rect x="422" y="188" width="100" height="22" rx="11" fill="none" stroke="white" strokeWidth="1.5"/>
-        <text x="472" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="white">Performance</text>
+## Erreur n°2 : aucun retour visuel après l'envoi
 
-        <rect x="533" y="188" width="100" height="22" rx="11" fill="none" stroke="white" strokeWidth="1.5"/>
-        <text x="583" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="white">0 commission</text>
+C'est l'erreur la plus sous-estimée. L'utilisateur clique sur "Envoyer", rien ne se passe visuellement — ou pire, la page se recharge à blanc. Il ne sait pas si son message est parti. Il doute, il envoie une deuxième fois, ou il abandonne en pensant que le site est cassé.
 
-        <rect x="644" y="188" width="88" height="22" rx="11" fill="none" stroke="white" strokeWidth="1.5"/>
-        <text x="688" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="white">SEO natif</text>
+Un formulaire qui convertit confirme clairement l'envoi : message de succès visible, changement d'état du bouton, ou redirection vers une page de confirmation. Ce retour visuel rassure et ferme proprement l'interaction.
 
-        {/* Note bas */}
-        <text x="585" y="256" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#555">Idéal pour performer</text>
-        <text x="585" y="274" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#555">sur le long terme</text>
+L'état de chargement compte aussi. Si le formulaire met deux secondes à envoyer sans indicateur, l'utilisateur pense que son clic n'a pas fonctionné. Un spinner ou un changement de texte sur le bouton pendant l'envoi suffit à éliminer ce doute.
 
-      </svg>
-    </div>
-  )
-}
+## Erreur n°3 : le formulaire est introuvable
 
-export function IllustrationDecision() {
-  return (
-    <div className="my-12 overflow-hidden border border-black">
-      <svg viewBox="0 0 760 268" xmlns="http://www.w3.org/2000/svg" className="block w-full">
+Beaucoup de sites ont un bon formulaire — mais il est enfoui. Lien dans le footer uniquement, page de contact absente de la navigation principale, aucun appel à l'action dans le corps des pages de service.
 
-        {/* Header */}
-        <rect x="0" y="0" width="760" height="46" fill="black"/>
-        <text x="380" y="28" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="11" fill="white" letterSpacing="4">QUEL PROFIL ÊTES-VOUS ?</text>
+Un visiteur intéressé ne cherche pas longtemps. Si le chemin vers le formulaire n'est pas évident en moins de deux clics, il part.
 
-        {/* Panneau gauche — Shopify */}
-        <rect x="0" y="46" width="374" height="222" fill="white"/>
+Les bonnes pratiques : lien de contact dans la navigation principale, CTA visible sur la page d'accueil et les pages de service, et idéalement un formulaire directement accessible sur la page de contact sans avoir à scroller.
 
-        <text x="52" y="90" fontFamily="'Courier New', monospace" fontSize="11" fontWeight="bold" fill="black" letterSpacing="2">SHOPIFY</text>
+<SchemaUX />
 
-        <rect x="52" y="105" width="12" height="12" rx="2" fill="black"/>
-        <text x="75" y="116" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#333">Budget serré ou projet de test</text>
+## Erreur n°4 : un message générique au-dessus du formulaire
 
-        <rect x="52" y="128" width="12" height="12" rx="2" fill="black"/>
-        <text x="75" y="139" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#333">Lancement en quelques jours</text>
+"Remplissez ce formulaire pour nous contacter" n'aide personne. Ce texte par défaut ne dit rien sur ce qui se passe après l'envoi, sur le délai de réponse, ou sur pourquoi ça vaut la peine de prendre 30 secondes pour écrire.
 
-        <rect x="52" y="151" width="12" height="12" rx="2" fill="black"/>
-        <text x="75" y="162" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#333">Produits standards, catalogue simple</text>
+Un texte court mais concret fait la différence. Quelque chose comme : *"Décrivez votre projet en quelques mots. Nous vous répondons dans les 24h avec une première analyse et, si le projet nous correspond, une proposition de call."* C'est une promesse claire. Elle réduit l'incertitude et augmente le taux de complétion.
 
-        <rect x="52" y="174" width="12" height="12" rx="2" fill="black"/>
-        <text x="75" y="185" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#333">Pas de développeur dans l&apos;équipe</text>
+## Erreur n°5 : la validation d'erreur est punitive
 
-        <rect x="52" y="216" width="164" height="32" rx="16" fill="black"/>
-        <text x="134" y="236" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10.5" fill="white">→ Choisissez Shopify</text>
+Quand un utilisateur oublie de remplir un champ et clique sur "Envoyer", deux choses peuvent se passer.
 
-        {/* Séparateur */}
-        <line x1="375" y1="46" x2="375" y2="268" stroke="black" strokeWidth="2"/>
+Version punitive : la page remonte en haut, tous les champs sont vidés, un message rouge générique dit "Erreur de formulaire". L'utilisateur doit tout recommencer.
 
-        {/* Panneau droit — Next.js */}
-        <rect x="386" y="46" width="374" height="222" fill="black"/>
+Version correcte : les champs déjà remplis sont conservés, le champ manquant est mis en évidence avec un message d'erreur précis ("Votre adresse email est invalide"), et le focus est mis sur ce champ spécifique.
 
-        <text x="436" y="90" fontFamily="'Courier New', monospace" fontSize="11" fontWeight="bold" fill="white" letterSpacing="2">NEXT.JS</text>
+La différence de taux de conversion entre ces deux approches est mesurable. La version punitive génère des abandons ; la version correcte guide vers la complétion.
 
-        <rect x="432" y="105" width="12" height="12" rx="2" fill="white"/>
-        <text x="455" y="116" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#ccc">Design sur mesure, identité forte</text>
+## Ce qu'un formulaire bien conçu ressemble à concrètement
 
-        <rect x="432" y="128" width="12" height="12" rx="2" fill="white"/>
-        <text x="455" y="139" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#ccc">SEO prioritaire, vision long terme</text>
+Pour Torquemade, notre propre formulaire de contact suit ces principes : trois champs (nom, email, message), un état de chargement pendant l'envoi, un message de succès clair, et un texte d'introduction qui précise le délai de réponse. Pas de téléphone, pas de budget, pas de case à cocher.
 
-        <rect x="432" y="151" width="12" height="12" rx="2" fill="white"/>
-        <text x="455" y="162" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#ccc">Modèle de vente spécifique</text>
+Nous avons appliqué la même logique aux formulaires de nos clients — Bordeaux Ride, Jetski'n Arcachon — avec des résultats mesurables sur les taux de contact entrants dans les semaines suivant la mise en ligne.
 
-        <rect x="432" y="174" width="12" height="12" rx="2" fill="white"/>
-        <text x="455" y="185" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#ccc">Volume de ventes {'>'}  5 000 €/mois</text>
+## Un chantier de deux heures, pas deux semaines
 
-        <rect x="432" y="216" width="164" height="32" rx="16" fill="white"/>
-        <text x="514" y="236" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10.5" fill="black">→ Choisissez Next.js</text>
+Corriger un formulaire de contact n'est pas un projet long. Dans la plupart des cas, les modifications sont dans le front-end uniquement : réduire les champs, ajouter un état de succès, revoir le texte d'introduction, s'assurer que la validation est non-destructive.
 
-      </svg>
-    </div>
-  )
-}
-
-# Shopify vs Next.js : lequel choisir pour votre commerce en 2025 ?
-
-<div className="mb-12 flex flex-wrap items-center gap-3 border-b border-black pb-8 font-mono text-[10px] uppercase tracking-widest">
-  <span className="opacity-40">Web & Développement</span>
-  <span className="opacity-20">·</span>
-  <span className="opacity-30">Janvier 2025</span>
-  <span className="opacity-20">·</span>
-  <span className="opacity-30">4 min de lecture</span>
-</div>
-
-La question revient dans presque toutes nos conversations avec des clients e-commerce. Shopify ou Next.js ? Les deux permettent de vendre en ligne — mais ils ne s'adressent pas aux mêmes projets, ni aux mêmes ambitions.
-
-Voici notre comparaison directe, sans jargon inutile.
-
-<IllustrationComparaison />
-
-## Shopify : vendre vite, sans développeur
-
-Shopify est une plateforme SaaS pensée pour lancer rapidement une boutique en ligne. Abonnement mensuel, thème prêt à l'emploi, produits ajoutés en quelques clics — vous pouvez être opérationnel en quelques jours.
-
-**Ses points forts :**
-
-- Gestion des paiements, des stocks et des expéditions intégrée nativement
-- Plus de 2 000 applications disponibles dans l'App Store Shopify
-- Sécurité et mises à jour gérées par la plateforme, sans intervention technique
-- Idéal pour les marchands qui veulent se concentrer sur la vente, pas sur le code
-
-**Ses limites :**
-
-- Abonnement mensuel de 29 $ à 299 $ auquel s'ajoute une commission sur chaque vente (jusqu'à 2 %)
-- Personnalisation du design limitée sans développeur Shopify spécialisé
-- Dépendance totale à la plateforme : si Shopify change ses conditions, vous suivez
-- SEO technique parfois bridé par les contraintes imposées par le thème
-
-## Next.js : performer, sans compromis
-
-Next.js est un framework React open-source qui permet de construire un site e-commerce entièrement sur mesure. Aucun thème, aucune commission, aucune contrainte imposée par un tiers. Vous partez de zéro et contrôlez tout.
-
-**Ses points forts :**
-
-- Performances maximales : génération statique, rendu serveur, optimisation d'images native
-- SEO technique irréprochable dès la conception — structure HTML propre, Core Web Vitals, métadonnées maîtrisées
-- Design pixel-perfect, adapté exactement à votre identité visuelle
-- Zéro commission sur les ventes : vous intégrez Stripe directement, sans intermédiaire
-- Évolutif et stable : de 10 à 100 000 visiteurs sans changer de plateforme
-
-**Ses limites :**
-
-- Nécessite un développeur pour la création initiale et la maintenance
-- Délai de mise en ligne plus long — plusieurs semaines, pas quelques jours
-- Stocks, paiements et logistique doivent être connectés via API
-
-<IllustrationDecision />
-
-## Le calcul que personne ne fait
-
-Sur 10 000 € de ventes mensuelles, la commission Shopify représente entre 50 € et 200 € par mois. Sur trois ans, c'est potentiellement le coût d'un site Next.js sur mesure — développé une fois, sans commission à perpétuité.
-
-C'est la raison pour laquelle la grande majorité de nos clients e-commerce choisissent Next.js après notre première conversation. Non pas parce que c'est plus technique, mais parce que c'est plus rentable à moyen terme.
-
-**Si votre volume dépasse les 5 000 € de ventes mensuelles, le calcul penche clairement vers Next.js.**
-
-## Notre position
-
-Nous développons les deux solutions selon les besoins du projet. Pour un artisan qui veut tester sa première boutique avec 30 références, Shopify est souvent la réponse pragmatique. Pour un commerce établi qui veut dominer son marché local sur Google et maximiser ses marges, Next.js s'impose presque systématiquement.
-
-Dans les deux cas, l'objectif reste le même : un site qui vous amène des clients, pas un site vitrine qui dort.
+C'est souvent l'un des meilleurs retours sur investissement en optimisation de site — rapide à implémenter, impact direct sur les leads entrants.
 
 ---
 
-*Vous hésitez entre les deux pour votre projet ? [Contactez-nous](/contact) — nous vous donnons une recommandation claire en 30 minutes.*
+*Votre formulaire est en ligne mais les contacts ne rentrent pas ? [Contactez-nous](/contact) — nous auditrons votre page de contact et vous proposerons des corrections concrètes.*
