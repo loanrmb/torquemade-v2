@@ -1,7 +1,12 @@
+'use client'
+
 import Link from 'next/link'
+import { useLang } from '@/components/app-provider'
 import type { Post } from '@/lib/blog'
 
 export function PostCard({ post }: { post: Post }) {
+  const lang = useLang()
+
   return (
     <Link
       href={`/blog/${post.slug}`}
@@ -12,20 +17,17 @@ export function PostCard({ post }: { post: Post }) {
           {post.category}
         </span>
         <span className="font-mono text-[10px] opacity-30 transition-opacity group-hover:opacity-50">
-          {post.date}
+          {post.date[lang]}
         </span>
       </div>
-
       <h2 className="mb-4 text-lg font-bold leading-snug">
-        {post.title}
+        {post.title[lang]}
       </h2>
-
       <p className="mb-8 text-sm leading-relaxed opacity-50 transition-opacity group-hover:opacity-70">
-        {post.description}
+        {post.description[lang]}
       </p>
-
       <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest">
-        Lire l&apos;article
+        {lang === 'fr' ? "Lire l'article" : 'Read article'}
         <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
       </span>
     </Link>
