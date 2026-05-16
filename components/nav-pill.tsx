@@ -40,8 +40,8 @@ export function NavPill() {
           </span>
         </Link>
 
-        {/* Nav links */}
-        <div className="flex items-center gap-0 min-720:gap-0.5 flex-1">
+        {/* Nav links — flex-1 + overflow-hidden : se compresse en interne, ne pousse pas les toggles */}
+        <div className="flex items-center gap-0 min-720:gap-0.5 flex-1 overflow-hidden">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -57,11 +57,11 @@ export function NavPill() {
           ))}
         </div>
 
-        {/* Separator */}
+        {/* Separator — flex-shrink-0 : toujours visible */}
         <div className="w-px h-5 mx-0.5 min-720:mx-1 flex-shrink-0" style={{ background: 'hsl(var(--border-subtle))' }} />
 
-        {/* Toggles */}
-        <div className="flex items-center gap-0">
+        {/* Toggles — flex-shrink-0 : jamais écrasés par les liens */}
+        <div className="flex items-center gap-0 flex-shrink-0">
           {/* Lang toggle */}
           <button
             onClick={toggleLang}
@@ -83,7 +83,7 @@ export function NavPill() {
             {theme === 'light' ? <MoonIcon /> : <SunIcon />}
           </button>
 
-          {/* CTA — desktop uniquement, wrapper div contrôle la visibilité */}
+          {/* CTA — desktop uniquement */}
           <div className="hidden min-720:block ml-1 flex-shrink-0">
             <Link href="/contact" className="btn-primary !py-1.5 !px-3 !text-sm whitespace-nowrap">
               {lang === 'fr' ? 'Démarrer →' : 'Start →'}
