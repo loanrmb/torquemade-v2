@@ -32,5 +32,13 @@ export const posts: Post[] = [
     category: 'Web & Développement',
     readingTime: 4,
   },
+  {
+    slug: 'site-sur-mesure-vs-template',
+    title: 'Site web sur mesure vs template : ce que votre client voit vraiment',
+    description: 'Un template peut ressembler à un site professionnel. Mais ce que voit votre client — et ce que lit Google — raconte une autre histoire.',
+    date: 'Février 2025',
+    category: 'Web & Développement',
+    readingTime: 4,
+  },
   // → Ajouter les prochains articles ici
 ]
