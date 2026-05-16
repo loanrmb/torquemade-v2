@@ -176,4 +176,18 @@ export const posts: Post[] = [
     category: 'Web & Développement',
     readingTime: 6,
   },
+  {
+    slug: 'seo-local-2025-guide',
+    title: {
+      fr: 'SEO local en 2025 : le guide complet pour les commerces de proximité',
+      en: 'Local SEO in 2025: The Complete Guide for Local Businesses',
+    },
+    description: {
+      fr: "Google Business Profile, avis clients, mots-clés locaux, schema markup — tout ce qu'il faut maîtriser pour apparaître en tête des recherches locales en 2025.",
+      en: "Google Business Profile, customer reviews, local keywords, schema markup — everything you need to master to appear at the top of local search results in 2025.",
+    },
+    date: { fr: 'Avril 2025', en: 'April 2025' },
+    category: 'SEO & Contenu',
+    readingTime: 9,
+  },
 ]
