@@ -14,7 +14,7 @@ export default function ArticleLayout({ children }: { children: React.ReactNode 
             className="font-mono text-[10px] uppercase tracking-widest opacity-40 transition-opacity hover:opacity-100"
             style={{ color: 'hsl(var(--text-primary))' }}
           >
-            ← Blog
+            {'←'} Blog
           </a>
         </div>
 
@@ -36,7 +36,7 @@ export default function ArticleLayout({ children }: { children: React.ReactNode 
               href="/contact"
               className="inline-block border border-white px-6 py-3 font-mono text-xs uppercase tracking-widest text-white transition-colors duration-200 hover:bg-white hover:text-black"
             >
-              Prendre contact →
+              Prendre contact {'→'}
             </a>
           </div>
         </div>
