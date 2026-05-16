@@ -1,202 +1,92 @@
 export const metadata = {
-  title: 'Shopify vs Next.js : lequel choisir pour votre commerce en 2025 ?',
-  description: 'Shopify ou Next.js pour votre e-commerce ? Nous comparons les deux solutions pour vous aider à faire le bon choix selon votre projet et vos ambitions.',
+  title: 'Comment intégrer un système de réservation sans commission',
+  description: 'Planity, Booksy, ResaOnline prennent entre 1 % et 3 % de chaque réservation. Un système sur mesure intégré à votre site vous coûte moins et vous appartient.',
 }
 
-export function IllustrationComparaison() {
-  return (
-    <div className="my-12 overflow-hidden border border-black">
-      <svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" className="block w-full">
+import SchemaCommission from './_illustrations/SchemaCommission'
+import TableComparaison from './_illustrations/TableComparaison'
+import SchemaFlux from './_illustrations/SchemaFlux'
 
-        {/* === SHOPIFY — panneau gauche === */}
-        <rect x="0" y="0" width="350" height="320" fill="white"/>
+<header className="mb-16">
+  <p className="mb-4 font-mono text-[10px] uppercase tracking-widest opacity-40">Web & Développement · Mars 2025</p>
+  <h1 className="text-4xl font-bold leading-tight md:text-5xl" style={{ color: 'hsl(var(--text-primary))' }}>
+    Comment intégrer un système de réservation sans commission
+  </h1>
+  <p className="mt-6 text-lg leading-relaxed opacity-60">
+    Planity, Booksy, ResaOnline prennent entre 1 % et 3 % de chaque réservation. Sur un an, c'est plusieurs milliers d'euros offerts à une plateforme tierce. Un système sur mesure intégré à votre site vous coûte moins, vous appartient entièrement, et donne une meilleure expérience à vos clients.
+  </p>
+</header>
 
-        {/* Icône sac de shopping */}
-        <rect x="145" y="55" width="60" height="56" rx="3" fill="none" stroke="black" strokeWidth="2"/>
-        <path d="M158 55 C158 40 202 40 202 55" fill="none" stroke="black" strokeWidth="2"/>
-        <line x1="145" y1="73" x2="205" y2="73" stroke="black" strokeWidth="1" strokeDasharray="5,4"/>
-        <circle cx="160" cy="55" r="2.5" fill="black"/>
-        <circle cx="190" cy="55" r="2.5" fill="black"/>
+<SchemaCommission />
 
-        {/* Label */}
-        <text x="175" y="148" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="14" fontWeight="bold" fill="black">SHOPIFY</text>
-        <text x="175" y="167" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#999">Clé en main</text>
+## Le modèle à commission : à quel coût réel ?
 
-        {/* Tags */}
-        <rect x="38" y="188" width="66" height="22" rx="11" fill="none" stroke="black" strokeWidth="1.5"/>
-        <text x="71" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="black">Rapide</text>
+Les plateformes de réservation en ligne se sont imposées ces dix dernières années avec une promesse simple : installation facile, zéro développement, visible sur leur marketplace. Le revers de la médaille est rarement affiché aussi clairement.
 
-        <rect x="117" y="188" width="92" height="22" rx="11" fill="none" stroke="black" strokeWidth="1.5"/>
-        <text x="163" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="black">Abonnement</text>
+Prenons un exemple concret. Un prestataire de loisirs nautiques réalise 200 réservations par mois à 60 € en moyenne. Avec une commission de 2 %, c'est 2 400 € par an qui partent directement à la plateforme. À 3 %, on arrive à 3 600 €. Sur cinq ans, le "outil gratuit" a coûté entre 12 000 € et 18 000 €.
 
-        <rect x="222" y="188" width="102" height="22" rx="11" fill="none" stroke="black" strokeWidth="1.5"/>
-        <text x="273" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="black">Commission 2%</text>
+C'est le modèle sur lequel nous sommes intervenus pour Jetski'n Arcachon. Le client payait une commission sur chaque sortie, tout en n'ayant aucune visibilité sur les données de ses clients et aucun contrôle sur les horaires affichés en dehors de sa propre interface. Un système propriétaire intégré à son site a changé l'équation.
 
-        {/* Note bas */}
-        <text x="175" y="256" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#bbb">Idéal pour lancer rapidement</text>
-        <text x="175" y="274" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#bbb">avec un budget limité</text>
+## Ce que "sans commission" implique techniquement
 
-        {/* === VS — séparateur central === */}
-        <rect x="350" y="0" width="60" height="320" fill="black"/>
-        <text x="380" y="168" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="20" fontWeight="bold" fill="white">VS</text>
+Un système de réservation sans commission, c'est un module que vous possédez et hébergez. Il est intégré directement à votre site — pas un iframe vers une plateforme externe, pas un lien qui redirige ailleurs.
 
-        {/* === NEXT.JS — panneau droit === */}
-        <rect x="410" y="0" width="350" height="320" fill="black"/>
+Voici ce qu'il comprend dans sa version de base :
 
-        {/* Graphique performance */}
-        <line x1="450" y1="55" x2="450" y2="125" stroke="white" strokeWidth="1" opacity="0.25"/>
-        <line x1="450" y1="125" x2="645" y2="125" stroke="white" strokeWidth="1" opacity="0.25"/>
-        <polyline points="455,120 490,98 528,74 570,52 612,34" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="612" cy="34" r="4.5" fill="white"/>
+**Un calendrier de disponibilités** que le prestataire gère lui-même — ouverture de créneaux, fermetures exceptionnelles, gestion de la capacité.
 
-        {/* Label */}
-        <text x="585" y="148" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="14" fontWeight="bold" fill="white">NEXT.JS</text>
-        <text x="585" y="167" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#666">Sur mesure</text>
+**Un formulaire de réservation** rattaché à chaque créneau, avec les informations nécessaires au service : nombre de participants, préférences, niveau, etc.
 
-        {/* Tags blancs */}
-        <rect x="422" y="188" width="100" height="22" rx="11" fill="none" stroke="white" strokeWidth="1.5"/>
-        <text x="472" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="white">Performance</text>
+**Un système de confirmation** par email — automatique à la réservation, et optionnellement un rappel 24h avant.
 
-        <rect x="533" y="188" width="100" height="22" rx="11" fill="none" stroke="white" strokeWidth="1.5"/>
-        <text x="583" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="white">0 commission</text>
+**Un back-office simple** pour voir les réservations à venir, gérer les annulations, et exporter les données clients.
 
-        <rect x="644" y="188" width="88" height="22" rx="11" fill="none" stroke="white" strokeWidth="1.5"/>
-        <text x="688" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="white">SEO natif</text>
+<TableComparaison />
 
-        {/* Note bas */}
-        <text x="585" y="256" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#555">Idéal pour performer</text>
-        <text x="585" y="274" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#555">sur le long terme</text>
+## Pourquoi l'intégration à votre site est décisive
 
-      </svg>
-    </div>
-  )
-}
+La différence entre un lien vers une plateforme externe et un module intégré n'est pas que technique. Elle change l'expérience perçue de votre service.
 
-export function IllustrationDecision() {
-  return (
-    <div className="my-12 overflow-hidden border border-black">
-      <svg viewBox="0 0 760 268" xmlns="http://www.w3.org/2000/svg" className="block w-full">
+Quand un client clique sur "Réserver" et atterrit sur un site qui ressemble à votre site — même police, même couleurs, même ton — la confiance reste intacte. Quand il bascule sur une interface générique d'une plateforme tierce, il y a une rupture. Pour un service à plusieurs dizaines ou centaines d'euros, cette rupture peut suffire à déclencher une hésitation.
 
-        {/* Header */}
-        <rect x="0" y="0" width="760" height="46" fill="black"/>
-        <text x="380" y="28" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="11" fill="white" letterSpacing="4">QUEL PROFIL ÊTES-VOUS ?</text>
+Sur le plan SEO, un module intégré maintient le visiteur sur votre domaine. Chaque interaction — navigation dans les créneaux, remplissage du formulaire — compte comme temps passé sur votre site. Un lien vers l'extérieur envoie le visiteur ailleurs et interrompt la session Google Analytics.
 
-        {/* Panneau gauche — Shopify */}
-        <rect x="0" y="46" width="374" height="222" fill="white"/>
+## Les options techniques : de la plus simple à la plus sur mesure
 
-        <text x="52" y="90" fontFamily="'Courier New', monospace" fontSize="11" fontWeight="bold" fill="black" letterSpacing="2">SHOPIFY</text>
+Il n'y a pas une seule façon de construire un système de réservation sans commission. Le bon choix dépend du volume de réservations, de la complexité des créneaux, et du budget disponible.
 
-        <rect x="52" y="105" width="12" height="12" rx="2" fill="black"/>
-        <text x="75" y="116" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#333">Budget serré ou projet de test</text>
+**Option 1 — Un outil no-code intégré par API.** Des solutions comme Cal.com (open source) ou Tidycal permettent de créer des créneaux et d'intégrer le module sur votre site via un composant embarqué. Pas de commission, hébergement sur leurs serveurs. Limite : personnalisation graphique partielle, branding de l'outil visible.
 
-        <rect x="52" y="128" width="12" height="12" rx="2" fill="black"/>
-        <text x="75" y="139" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#333">Lancement en quelques jours</text>
+**Option 2 — Un formulaire connecté à un CRM.** On construit un formulaire sur mesure qui envoie les réservations dans une base de données que vous contrôlez — Airtable, Notion, ou une base SQL — avec des confirmations automatiques par email via un service comme Resend. C'est la solution que nous avons mise en place pour Bordeaux Ride. Entièrement personnalisée, données 100 % propriétaires.
 
-        <rect x="52" y="151" width="12" height="12" rx="2" fill="black"/>
-        <text x="75" y="162" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#333">Produits standards, catalogue simple</text>
+**Option 3 — Un module de réservation complet développé sur mesure.** Pour des activités avec forte saisonnalité, multi-produits, ou gestion de groupes, on développe un système dédié : gestion des disponibilités en temps réel, paiement intégré (Stripe), confirmation automatique, back-office admin. C'est le niveau d'intégration déployé pour Jetski'n Arcachon.
 
-        <rect x="52" y="174" width="12" height="12" rx="2" fill="black"/>
-        <text x="75" y="185" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#333">Pas de développeur dans l&apos;équipe</text>
+<SchemaFlux />
 
-        <rect x="52" y="216" width="164" height="32" rx="16" fill="black"/>
-        <text x="134" y="236" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10.5" fill="white">→ Choisissez Shopify</text>
+## La question du paiement en ligne
 
-        {/* Séparateur */}
-        <line x1="375" y1="46" x2="375" y2="268" stroke="black" strokeWidth="2"/>
+Beaucoup de prestataires pensent que la commission est le prix à payer pour avoir le paiement en ligne. Ce n'est pas exact.
 
-        {/* Panneau droit — Next.js */}
-        <rect x="386" y="46" width="374" height="222" fill="black"/>
+Stripe, le standard actuel du paiement web, prend 1,5 % + 0,25 € par transaction pour les cartes européennes. C'est nettement moins que les 2 à 3 % des plateformes de réservation — et vous gardez la relation directe avec le client, les données de transaction, et la maîtrise des remboursements.
 
-        <text x="436" y="90" fontFamily="'Courier New', monospace" fontSize="11" fontWeight="bold" fill="white" letterSpacing="2">NEXT.JS</text>
+L'intégration Stripe dans un site Next.js est aujourd'hui documentée, testée, et déployable en quelques jours. Ce n'est pas un chantier de développement lourd.
 
-        <rect x="432" y="105" width="12" height="12" rx="2" fill="white"/>
-        <text x="455" y="116" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#ccc">Design sur mesure, identité forte</text>
+## Ce que vous gagnez en dehors des économies
 
-        <rect x="432" y="128" width="12" height="12" rx="2" fill="white"/>
-        <text x="455" y="139" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#ccc">SEO prioritaire, vision long terme</text>
+Au-delà du coût direct, un système propriétaire vous donne quelque chose que les plateformes ne donnent jamais : les données de vos clients.
 
-        <rect x="432" y="151" width="12" height="12" rx="2" fill="white"/>
-        <text x="455" y="162" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#ccc">Modèle de vente spécifique</text>
+Sur une plateforme tierce, vous voyez vos réservations mais vous n'avez souvent pas accès aux emails, aux historiques d'achats, ni à la possibilité de relancer ou fidéliser. Les données appartiennent à la plateforme.
 
-        <rect x="432" y="174" width="12" height="12" rx="2" fill="white"/>
-        <text x="455" y="185" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#ccc">Volume de ventes {'>'}  5 000 €/mois</text>
+Avec votre propre système, chaque réservation enrichit votre base client. Vous pouvez envoyer un récapitulatif personnalisé, relancer une semaine avant la saison, proposer une offre de fidélité. Ce sont des leviers qui valent largement plus que les économies sur les commissions.
 
-        <rect x="432" y="216" width="164" height="32" rx="16" fill="white"/>
-        <text x="514" y="236" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10.5" fill="black">→ Choisissez Next.js</text>
+## Par où commencer
 
-      </svg>
-    </div>
-  )
-}
+La démarche que nous recommandons est la même que pour tout projet digital : commencer par l'essentiel et itérer.
 
-# Shopify vs Next.js : lequel choisir pour votre commerce en 2025 ?
+Une première version fonctionnelle — formulaire de réservation, confirmation email, back-office basique — peut être opérationnelle en deux à trois semaines. Elle remplace la plateforme à commission dès le lancement. Les fonctionnalités supplémentaires (paiement intégré, rappels automatiques, statistiques) s'ajoutent ensuite selon les besoins réels.
 
-<div className="mb-12 flex flex-wrap items-center gap-3 border-b border-black pb-8 font-mono text-[10px] uppercase tracking-widest">
-  <span className="opacity-40">Web & Développement</span>
-  <span className="opacity-20">·</span>
-  <span className="opacity-30">Janvier 2025</span>
-  <span className="opacity-20">·</span>
-  <span className="opacity-30">4 min de lecture</span>
-</div>
-
-La question revient dans presque toutes nos conversations avec des clients e-commerce. Shopify ou Next.js ? Les deux permettent de vendre en ligne — mais ils ne s'adressent pas aux mêmes projets, ni aux mêmes ambitions.
-
-Voici notre comparaison directe, sans jargon inutile.
-
-<IllustrationComparaison />
-
-## Shopify : vendre vite, sans développeur
-
-Shopify est une plateforme SaaS pensée pour lancer rapidement une boutique en ligne. Abonnement mensuel, thème prêt à l'emploi, produits ajoutés en quelques clics — vous pouvez être opérationnel en quelques jours.
-
-**Ses points forts :**
-
-- Gestion des paiements, des stocks et des expéditions intégrée nativement
-- Plus de 2 000 applications disponibles dans l'App Store Shopify
-- Sécurité et mises à jour gérées par la plateforme, sans intervention technique
-- Idéal pour les marchands qui veulent se concentrer sur la vente, pas sur le code
-
-**Ses limites :**
-
-- Abonnement mensuel de 29 $ à 299 $ auquel s'ajoute une commission sur chaque vente (jusqu'à 2 %)
-- Personnalisation du design limitée sans développeur Shopify spécialisé
-- Dépendance totale à la plateforme : si Shopify change ses conditions, vous suivez
-- SEO technique parfois bridé par les contraintes imposées par le thème
-
-## Next.js : performer, sans compromis
-
-Next.js est un framework React open-source qui permet de construire un site e-commerce entièrement sur mesure. Aucun thème, aucune commission, aucune contrainte imposée par un tiers. Vous partez de zéro et contrôlez tout.
-
-**Ses points forts :**
-
-- Performances maximales : génération statique, rendu serveur, optimisation d'images native
-- SEO technique irréprochable dès la conception — structure HTML propre, Core Web Vitals, métadonnées maîtrisées
-- Design pixel-perfect, adapté exactement à votre identité visuelle
-- Zéro commission sur les ventes : vous intégrez Stripe directement, sans intermédiaire
-- Évolutif et stable : de 10 à 100 000 visiteurs sans changer de plateforme
-
-**Ses limites :**
-
-- Nécessite un développeur pour la création initiale et la maintenance
-- Délai de mise en ligne plus long — plusieurs semaines, pas quelques jours
-- Stocks, paiements et logistique doivent être connectés via API
-
-<IllustrationDecision />
-
-## Le calcul que personne ne fait
-
-Sur 10 000 € de ventes mensuelles, la commission Shopify représente entre 50 € et 200 € par mois. Sur trois ans, c'est potentiellement le coût d'un site Next.js sur mesure — développé une fois, sans commission à perpétuité.
-
-C'est la raison pour laquelle la grande majorité de nos clients e-commerce choisissent Next.js après notre première conversation. Non pas parce que c'est plus technique, mais parce que c'est plus rentable à moyen terme.
-
-**Si votre volume dépasse les 5 000 € de ventes mensuelles, le calcul penche clairement vers Next.js.**
-
-## Notre position
-
-Nous développons les deux solutions selon les besoins du projet. Pour un artisan qui veut tester sa première boutique avec 30 références, Shopify est souvent la réponse pragmatique. Pour un commerce établi qui veut dominer son marché local sur Google et maximiser ses marges, Next.js s'impose presque systématiquement.
-
-Dans les deux cas, l'objectif reste le même : un site qui vous amène des clients, pas un site vitrine qui dort.
+C'est l'approche que nous avons suivie avec Bordeaux Ride et Jetski'n Arcachon : un premier périmètre minimal mais complet, déployé rapidement, amélioré ensuite sur la base de l'usage réel.
 
 ---
 
-*Vous hésitez entre les deux pour votre projet ? [Contactez-nous](/contact) — nous vous donnons une recommandation claire en 30 minutes.*
+*Vous payez des commissions sur vos réservations et vous voulez reprendre la main ? [Contactez-nous](/contact) — nous analysons votre situation et vous proposons une solution adaptée à votre volume et à votre budget.*
