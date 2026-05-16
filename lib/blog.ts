@@ -96,5 +96,13 @@ export const posts: Post[] = [
     category: 'Web & Développement',
     readingTime: 5,
   },
+  {
+    slug: 'refonte-site-web-seo',
+    title: 'Refonte de site web : comment l\'aborder sans perdre son SEO',
+    description: 'Une refonte mal préparée peut effacer des mois de travail SEO en quelques jours. Voici la méthode pour migrer sans perdre vos positions Google.',
+    date: 'Avril 2025',
+    category: 'Web & Développement',
+    readingTime: 6,
+  },
   // → Ajouter les prochains articles ici
 ]
