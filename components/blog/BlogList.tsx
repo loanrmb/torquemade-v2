@@ -21,15 +21,13 @@ const LABELS = {
 export function BlogList() {
   const lang = useLang()
   const t = LABELS[lang]
-
   const ALL = t.all
 
-  // Rebuild categories label when lang changes
   const categories = [ALL, ...Array.from(new Set(posts.map((p) => p.category)))]
-  const [activeKey, setActiveKey] = useState<'all' | string>('all')
+  const [activeKey, setActiveKey] = useState<string>('all')
   const listRef = useRef<HTMLDivElement>(null)
 
-  function handleFilter(key: 'all' | string) {
+  function handleFilter(key: string) {
     setActiveKey(key)
     listRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
@@ -41,7 +39,7 @@ export function BlogList() {
     <section className="px-6 pb-24 md:px-12 lg:px-24">
       <div className="mx-auto max-w-4xl">
 
-        {/* ── FILTRES — pill flottant sticky (desktop + mobile) ── */}
+        {/* ── FILTRES — pill flottant sticky ── */}
         <div className="sticky top-20 z-40 mb-16 flex justify-center">
           <div
             className="inline-flex items-center gap-1 rounded-full border px-2 py-1.5"
