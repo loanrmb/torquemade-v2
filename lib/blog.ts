@@ -88,5 +88,13 @@ export const posts: Post[] = [
     category: 'Web & Développement',
     readingTime: 5,
   },
+  {
+    slug: 'formulaire-contact-conversion',
+    title: 'Pourquoi votre formulaire de contact ne convertit pas (et comment le fixer)',
+    description: 'Un formulaire trop long, mal placé ou sans retour visuel fait fuir les visiteurs. Voici les erreurs les plus fréquentes et comment les corriger.',
+    date: 'Mars 2025',
+    category: 'Web & Développement',
+    readingTime: 5,
+  },
   // → Ajouter les prochains articles ici
 ]
