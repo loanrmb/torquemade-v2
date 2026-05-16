@@ -1,0 +1,33 @@
+import Link from 'next/link'
+import type { Post } from '@/lib/blog'
+
+export function PostCard({ post }: { post: Post }) {
+  return (
+    <Link
+      href={`/blog/${post.slug}`}
+      className="group block bg-white p-8 transition-colors duration-200 hover:bg-black hover:text-white"
+    >
+      <div className="mb-8 flex items-center justify-between">
+        <span className="font-mono text-[10px] uppercase tracking-widest opacity-40 transition-opacity group-hover:opacity-60">
+          {post.category}
+        </span>
+        <span className="font-mono text-[10px] opacity-30 transition-opacity group-hover:opacity-50">
+          {post.date}
+        </span>
+      </div>
+
+      <h2 className="mb-4 text-lg font-bold leading-snug">
+        {post.title}
+      </h2>
+
+      <p className="mb-8 text-sm leading-relaxed opacity-50 transition-opacity group-hover:opacity-70">
+        {post.description}
+      </p>
+
+      <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest">
+        Lire l&apos;article
+        <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+      </span>
+    </Link>
+  )
+}
