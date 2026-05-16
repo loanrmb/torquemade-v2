@@ -5,6 +5,7 @@ export const strings = {
     nav: {
       work: 'Projets',
       about: 'À propos',
+      blog: 'Blog',
       contact: 'Contact',
       cta: 'Démarrer un projet →',
     },
@@ -132,10 +133,20 @@ export const strings = {
     },
     footer: {
       tagline: 'Web dev & CRM sur mesure.',
-      nav: ['Projets', 'À propos', 'Contact'],
-      navHref: ['/work', '/about', '/contact'],
+      nav: ['Projets', 'À propos', 'Blog', 'Contact'],
+      navHref: ['/work', '/about', '/blog', '/contact'],
       copy: '© 2025 Torquemade.',
       email: 'loanrmb@gmail.com',
+    },
+    blog: {
+      eyebrow: 'Blog',
+      headline: 'Ressources pour les\nprofessionnels du web\net du CRM.',
+      sub: 'Stratégies, analyses et retours d\'expérience — sans jargon inutile.',
+      backLabel: '← Blog',
+      readingTime: 'min de lecture',
+      ctaEyebrow: 'Un projet ?',
+      ctaTitle: 'Parlons de votre site web ou de votre CRM.',
+      ctaButton: 'Prendre contact →',
     },
   },
 
@@ -143,6 +154,7 @@ export const strings = {
     nav: {
       work: 'Work',
       about: 'About',
+      blog: 'Blog',
       contact: 'Contact',
       cta: 'Start a project →',
     },
@@ -270,10 +282,20 @@ export const strings = {
     },
     footer: {
       tagline: 'Custom web dev & CRM.',
-      nav: ['Work', 'About', 'Contact'],
-      navHref: ['/work', '/about', '/contact'],
+      nav: ['Work', 'About', 'Blog', 'Contact'],
+      navHref: ['/work', '/about', '/blog', '/contact'],
       copy: '© 2025 Torquemade.',
       email: 'loanrmb@gmail.com',
+    },
+    blog: {
+      eyebrow: 'Blog',
+      headline: 'Resources for web\nand CRM professionals.',
+      sub: 'Strategy, analysis and real-world experience — no unnecessary jargon.',
+      backLabel: '← Blog',
+      readingTime: 'min read',
+      ctaEyebrow: 'A project in mind?',
+      ctaTitle: 'Let\'s talk about your website or CRM.',
+      ctaButton: 'Get in touch →',
     },
   },
 } as const
