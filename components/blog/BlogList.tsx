@@ -99,7 +99,7 @@ export function BlogList() {
                   {String(i + 1).padStart(2, '0')}
                 </p>
                 <p className="font-mono text-[10px] uppercase tracking-widest opacity-40 mb-3">
-                  {post.date}
+                  {post.date[lang]}
                 </p>
                 <span
                   className="inline-block font-mono text-[9px] uppercase tracking-widest px-2 py-0.5 border"
@@ -118,10 +118,10 @@ export function BlogList() {
                   className="text-xl font-bold leading-snug mb-3 transition-opacity duration-150 group-hover:opacity-60"
                   style={{ color: 'hsl(var(--text-primary))' }}
                 >
-                  {post.title}
+                  {post.title[lang]}
                 </h2>
                 <p className="text-sm leading-relaxed mb-5 max-w-xl opacity-50">
-                  {post.description}
+                  {post.description[lang]}
                 </p>
                 <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest opacity-40 transition-all duration-150 group-hover:opacity-100">
                   {t.read}
