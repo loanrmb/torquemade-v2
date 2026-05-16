@@ -1,202 +1,142 @@
 export const metadata = {
-  title: 'Shopify vs Next.js : lequel choisir pour votre commerce en 2025 ?',
-  description: 'Shopify ou Next.js pour votre e-commerce ? Nous comparons les deux solutions pour vous aider à faire le bon choix selon votre projet et vos ambitions.',
+  title: 'Core Web Vitals : ce que Google mesure vraiment sur votre site',
+  description: 'LCP, INP, CLS — les trois métriques que Google utilise pour évaluer l\'expérience utilisateur de votre site et les intégrer dans son algorithme de classement.',
 }
 
-export function IllustrationComparaison() {
+export function TableMetriques() {
+  const rows = [
+    { metrique: 'LCP — Largest Contentful Paint', mesure: 'Temps avant que le plus grand élément visible soit chargé', bon: '< 2,5 s', mauvais: '> 4 s' },
+    { metrique: 'INP — Interaction to Next Paint', mesure: 'Délai entre une action utilisateur et la réponse visuelle', bon: '< 200 ms', mauvais: '> 500 ms' },
+    { metrique: 'CLS — Cumulative Layout Shift', mesure: 'Stabilité visuelle — les éléments bougent-ils pendant le chargement ?', bon: '< 0,1', mauvais: '> 0,25' },
+  ]
   return (
-    <div className="my-12 overflow-hidden border border-black">
-      <svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" className="block w-full">
-
-        {/* === SHOPIFY — panneau gauche === */}
-        <rect x="0" y="0" width="350" height="320" fill="white"/>
-
-        {/* Icône sac de shopping */}
-        <rect x="145" y="55" width="60" height="56" rx="3" fill="none" stroke="black" strokeWidth="2"/>
-        <path d="M158 55 C158 40 202 40 202 55" fill="none" stroke="black" strokeWidth="2"/>
-        <line x1="145" y1="73" x2="205" y2="73" stroke="black" strokeWidth="1" strokeDasharray="5,4"/>
-        <circle cx="160" cy="55" r="2.5" fill="black"/>
-        <circle cx="190" cy="55" r="2.5" fill="black"/>
-
-        {/* Label */}
-        <text x="175" y="148" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="14" fontWeight="bold" fill="black">SHOPIFY</text>
-        <text x="175" y="167" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#999">Clé en main</text>
-
-        {/* Tags */}
-        <rect x="38" y="188" width="66" height="22" rx="11" fill="none" stroke="black" strokeWidth="1.5"/>
-        <text x="71" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="black">Rapide</text>
-
-        <rect x="117" y="188" width="92" height="22" rx="11" fill="none" stroke="black" strokeWidth="1.5"/>
-        <text x="163" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="black">Abonnement</text>
-
-        <rect x="222" y="188" width="102" height="22" rx="11" fill="none" stroke="black" strokeWidth="1.5"/>
-        <text x="273" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="black">Commission 2%</text>
-
-        {/* Note bas */}
-        <text x="175" y="256" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#bbb">Idéal pour lancer rapidement</text>
-        <text x="175" y="274" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#bbb">avec un budget limité</text>
-
-        {/* === VS — séparateur central === */}
-        <rect x="350" y="0" width="60" height="320" fill="black"/>
-        <text x="380" y="168" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="20" fontWeight="bold" fill="white">VS</text>
-
-        {/* === NEXT.JS — panneau droit === */}
-        <rect x="410" y="0" width="350" height="320" fill="black"/>
-
-        {/* Graphique performance */}
-        <line x1="450" y1="55" x2="450" y2="125" stroke="white" strokeWidth="1" opacity="0.25"/>
-        <line x1="450" y1="125" x2="645" y2="125" stroke="white" strokeWidth="1" opacity="0.25"/>
-        <polyline points="455,120 490,98 528,74 570,52 612,34" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="612" cy="34" r="4.5" fill="white"/>
-
-        {/* Label */}
-        <text x="585" y="148" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="14" fontWeight="bold" fill="white">NEXT.JS</text>
-        <text x="585" y="167" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#666">Sur mesure</text>
-
-        {/* Tags blancs */}
-        <rect x="422" y="188" width="100" height="22" rx="11" fill="none" stroke="white" strokeWidth="1.5"/>
-        <text x="472" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="white">Performance</text>
-
-        <rect x="533" y="188" width="100" height="22" rx="11" fill="none" stroke="white" strokeWidth="1.5"/>
-        <text x="583" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="white">0 commission</text>
-
-        <rect x="644" y="188" width="88" height="22" rx="11" fill="none" stroke="white" strokeWidth="1.5"/>
-        <text x="688" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="white">SEO natif</text>
-
-        {/* Note bas */}
-        <text x="585" y="256" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#555">Idéal pour performer</text>
-        <text x="585" y="274" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#555">sur le long terme</text>
-
-      </svg>
+    <div className="my-12 overflow-x-auto border border-black">
+      <table className="w-full border-collapse text-sm">
+        <thead>
+          <tr className="bg-black text-white">
+            <th className="p-3 text-left font-mono text-[10px] uppercase tracking-widest">Métrique</th>
+            <th className="p-3 text-left font-mono text-[10px] uppercase tracking-widest" style={{borderLeft:'1px solid rgba(255,255,255,0.15)'}}>Ce qu&apos;elle mesure</th>
+            <th className="p-3 text-left font-mono text-[10px] uppercase tracking-widest" style={{borderLeft:'1px solid rgba(255,255,255,0.15)'}}>Bon</th>
+            <th className="p-3 text-left font-mono text-[10px] uppercase tracking-widest" style={{borderLeft:'1px solid rgba(255,255,255,0.15)'}}>Mauvais</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <tr key={i} style={{borderTop:'1px solid black', background: i % 2 === 1 ? '#fafafa' : 'white'}}>
+              <td className="p-3 font-mono text-xs font-medium">{row.metrique}</td>
+              <td className="p-3 text-xs" style={{borderLeft:'1px solid black'}}>{row.mesure}</td>
+              <td className="p-3 text-xs font-medium" style={{borderLeft:'1px solid black'}}>{row.bon}</td>
+              <td className="p-3 text-xs" style={{borderLeft:'1px solid black'}}>{row.mauvais}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }
 
-export function IllustrationDecision() {
+export function TableCauses() {
+  const rows = [
+    { metrique: 'LCP élevé', causes: 'Image hero non optimisée, serveur lent, CSS bloquant', correction: 'WebP + preload, CDN statique, supprimer CSS inutilisé' },
+    { metrique: 'INP élevé', causes: 'JavaScript lourd exécuté au clic, trop de listeners', correction: 'Code splitting, différer le JS non critique' },
+    { metrique: 'CLS élevé', causes: 'Images sans dimensions, polices qui se chargent tard, publicités', correction: 'Définir width/height sur toutes les images, font-display: swap' },
+  ]
   return (
-    <div className="my-12 overflow-hidden border border-black">
-      <svg viewBox="0 0 760 268" xmlns="http://www.w3.org/2000/svg" className="block w-full">
-
-        {/* Header */}
-        <rect x="0" y="0" width="760" height="46" fill="black"/>
-        <text x="380" y="28" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="11" fill="white" letterSpacing="4">QUEL PROFIL ÊTES-VOUS ?</text>
-
-        {/* Panneau gauche — Shopify */}
-        <rect x="0" y="46" width="374" height="222" fill="white"/>
-
-        <text x="52" y="90" fontFamily="'Courier New', monospace" fontSize="11" fontWeight="bold" fill="black" letterSpacing="2">SHOPIFY</text>
-
-        <rect x="52" y="105" width="12" height="12" rx="2" fill="black"/>
-        <text x="75" y="116" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#333">Budget serré ou projet de test</text>
-
-        <rect x="52" y="128" width="12" height="12" rx="2" fill="black"/>
-        <text x="75" y="139" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#333">Lancement en quelques jours</text>
-
-        <rect x="52" y="151" width="12" height="12" rx="2" fill="black"/>
-        <text x="75" y="162" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#333">Produits standards, catalogue simple</text>
-
-        <rect x="52" y="174" width="12" height="12" rx="2" fill="black"/>
-        <text x="75" y="185" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#333">Pas de développeur dans l&apos;équipe</text>
-
-        <rect x="52" y="216" width="164" height="32" rx="16" fill="black"/>
-        <text x="134" y="236" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10.5" fill="white">→ Choisissez Shopify</text>
-
-        {/* Séparateur */}
-        <line x1="375" y1="46" x2="375" y2="268" stroke="black" strokeWidth="2"/>
-
-        {/* Panneau droit — Next.js */}
-        <rect x="386" y="46" width="374" height="222" fill="black"/>
-
-        <text x="436" y="90" fontFamily="'Courier New', monospace" fontSize="11" fontWeight="bold" fill="white" letterSpacing="2">NEXT.JS</text>
-
-        <rect x="432" y="105" width="12" height="12" rx="2" fill="white"/>
-        <text x="455" y="116" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#ccc">Design sur mesure, identité forte</text>
-
-        <rect x="432" y="128" width="12" height="12" rx="2" fill="white"/>
-        <text x="455" y="139" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#ccc">SEO prioritaire, vision long terme</text>
-
-        <rect x="432" y="151" width="12" height="12" rx="2" fill="white"/>
-        <text x="455" y="162" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#ccc">Modèle de vente spécifique</text>
-
-        <rect x="432" y="174" width="12" height="12" rx="2" fill="white"/>
-        <text x="455" y="185" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#ccc">Volume de ventes {'>'}  5 000 €/mois</text>
-
-        <rect x="432" y="216" width="164" height="32" rx="16" fill="white"/>
-        <text x="514" y="236" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10.5" fill="black">→ Choisissez Next.js</text>
-
-      </svg>
+    <div className="my-12 overflow-x-auto border border-black">
+      <table className="w-full border-collapse text-sm">
+        <thead>
+          <tr className="bg-black text-white">
+            <th className="p-3 text-left font-mono text-[10px] uppercase tracking-widest">Problème</th>
+            <th className="p-3 text-left font-mono text-[10px] uppercase tracking-widest" style={{borderLeft:'1px solid rgba(255,255,255,0.15)'}}>Causes fréquentes</th>
+            <th className="p-3 text-left font-mono text-[10px] uppercase tracking-widest" style={{borderLeft:'1px solid rgba(255,255,255,0.15)'}}>Corrections</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <tr key={i} style={{borderTop:'1px solid black', background: i % 2 === 1 ? '#fafafa' : 'white'}}>
+              <td className="p-3 font-mono text-xs font-medium">{row.metrique}</td>
+              <td className="p-3 text-xs" style={{borderLeft:'1px solid black'}}>{row.causes}</td>
+              <td className="p-3 text-xs" style={{borderLeft:'1px solid black'}}>{row.correction}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }
 
-# Shopify vs Next.js : lequel choisir pour votre commerce en 2025 ?
+# Core Web Vitals : ce que Google mesure vraiment sur votre site
 
-<div className="mb-12 flex flex-wrap items-center gap-3 border-b border-black pb-8 font-mono text-[10px] uppercase tracking-widest">
-  <span className="opacity-40">Web & Développement</span>
+<div className="mb-12 flex flex-wrap items-center gap-3 pb-8 font-mono text-[10px] uppercase tracking-widest" style={{borderBottom:'1px solid hsl(var(--border-subtle))'}}>
+  <span className="opacity-40">Web &amp; Développement</span>
   <span className="opacity-20">·</span>
-  <span className="opacity-30">Janvier 2025</span>
+  <span className="opacity-30">Mars 2025</span>
   <span className="opacity-20">·</span>
-  <span className="opacity-30">4 min de lecture</span>
+  <span className="opacity-30">5 min de lecture</span>
 </div>
 
-La question revient dans presque toutes nos conversations avec des clients e-commerce. Shopify ou Next.js ? Les deux permettent de vendre en ligne — mais ils ne s'adressent pas aux mêmes projets, ni aux mêmes ambitions.
+Depuis 2021, Google intègre les Core Web Vitals dans son algorithme de classement. Ce ne sont pas des métriques techniques abstraites réservées aux développeurs — ce sont des mesures directes de l&apos;expérience que vos visiteurs ont sur votre site. Et Google les utilise pour décider si vous méritez d&apos;apparaître en haut de ses résultats.
 
-Voici notre comparaison directe, sans jargon inutile.
+Trois métriques composent les Core Web Vitals. Chacune mesure un aspect précis de ce que ressent un utilisateur réel.
 
-<IllustrationComparaison />
+<TableMetriques />
 
-## Shopify : vendre vite, sans développeur
+## LCP — Largest Contentful Paint : la vitesse perçue
 
-Shopify est une plateforme SaaS pensée pour lancer rapidement une boutique en ligne. Abonnement mensuel, thème prêt à l'emploi, produits ajoutés en quelques clics — vous pouvez être opérationnel en quelques jours.
+Le LCP mesure le temps qu&apos;il faut pour que **le plus grand élément visible** de la page soit affiché — typiquement l&apos;image principale, le titre hero, ou une vidéo. C&apos;est ce que l&apos;utilisateur perçoit comme &ldquo;la page a chargé&rdquo;.
 
-**Ses points forts :**
+Un LCP sous 2,5 secondes est considéré comme bon. Au-delà de 4 secondes, c&apos;est mauvais — et Google le note en conséquence.
 
-- Gestion des paiements, des stocks et des expéditions intégrée nativement
-- Plus de 2 000 applications disponibles dans l'App Store Shopify
-- Sécurité et mises à jour gérées par la plateforme, sans intervention technique
-- Idéal pour les marchands qui veulent se concentrer sur la vente, pas sur le code
+Les coupables les plus fréquents d&apos;un mauvais LCP :
 
-**Ses limites :**
+- Une image hero volumineuse non convertie en WebP
+- Un hébergement lent avec un TTFB élevé
+- Des feuilles de style CSS qui bloquent le rendu
 
-- Abonnement mensuel de 29 $ à 299 $ auquel s'ajoute une commission sur chaque vente (jusqu'à 2 %)
-- Personnalisation du design limitée sans développeur Shopify spécialisé
-- Dépendance totale à la plateforme : si Shopify change ses conditions, vous suivez
-- SEO technique parfois bridé par les contraintes imposées par le thème
+Sur un site Next.js correctement configuré, le LCP est naturellement bas : les pages sont pré-générées, servies depuis un CDN, et le composant `<Image />` optimise automatiquement les images.
 
-## Next.js : performer, sans compromis
+## INP — Interaction to Next Paint : la réactivité
 
-Next.js est un framework React open-source qui permet de construire un site e-commerce entièrement sur mesure. Aucun thème, aucune commission, aucune contrainte imposée par un tiers. Vous partez de zéro et contrôlez tout.
+L&apos;INP a remplacé le FID (First Input Delay) en mars 2024. Il mesure le délai entre n&apos;importe quelle interaction utilisateur — clic, tap, frappe clavier — et la réponse visuelle de la page.
 
-**Ses points forts :**
+Un site avec un INP élevé donne une impression de lenteur, de &ldquo;lag&rdquo;, même si la page s&apos;est chargée rapidement. C&apos;est l&apos;équivalent d&apos;une application qui répond en retard à chaque action.
 
-- Performances maximales : génération statique, rendu serveur, optimisation d'images native
-- SEO technique irréprochable dès la conception — structure HTML propre, Core Web Vitals, métadonnées maîtrisées
-- Design pixel-perfect, adapté exactement à votre identité visuelle
-- Zéro commission sur les ventes : vous intégrez Stripe directement, sans intermédiaire
-- Évolutif et stable : de 10 à 100 000 visiteurs sans changer de plateforme
+Les causes habituelles :
 
-**Ses limites :**
+- Du JavaScript lourd exécuté au moment d&apos;un clic
+- Trop d&apos;event listeners actifs simultanément
+- Du code tiers (analytics, chat, publicités) qui monopolise le thread principal
 
-- Nécessite un développeur pour la création initiale et la maintenance
-- Délai de mise en ligne plus long — plusieurs semaines, pas quelques jours
-- Stocks, paiements et logistique doivent être connectés via API
+## CLS — Cumulative Layout Shift : la stabilité visuelle
 
-<IllustrationDecision />
+Le CLS mesure à quel point les éléments de la page **bougent pendant le chargement**. Vous avez tous vécu cette expérience : vous allez cliquer sur un bouton, et à la dernière milliseconde une image se charge et décale tout le contenu — vous cliquez sur autre chose.
 
-## Le calcul que personne ne fait
+Ce phénomène est pénalisé par Google, et pour de bonnes raisons : il génère des erreurs de clic et frustre les utilisateurs.
 
-Sur 10 000 € de ventes mensuelles, la commission Shopify représente entre 50 € et 200 € par mois. Sur trois ans, c'est potentiellement le coût d'un site Next.js sur mesure — développé une fois, sans commission à perpétuité.
+Les causes les plus fréquentes de CLS élevé :
 
-C'est la raison pour laquelle la grande majorité de nos clients e-commerce choisissent Next.js après notre première conversation. Non pas parce que c'est plus technique, mais parce que c'est plus rentable à moyen terme.
+- Des images sans attributs `width` et `height` définis — le navigateur ne réserve pas l&apos;espace avant le chargement
+- Des polices web qui remplacent une police de secours après chargement
+- Des publicités ou embeds dont la taille n&apos;est pas connue à l&apos;avance
 
-**Si votre volume dépasse les 5 000 € de ventes mensuelles, le calcul penche clairement vers Next.js.**
+<TableCauses />
 
-## Notre position
+## Comment mesurer vos Core Web Vitals
 
-Nous développons les deux solutions selon les besoins du projet. Pour un artisan qui veut tester sa première boutique avec 30 références, Shopify est souvent la réponse pragmatique. Pour un commerce établi qui veut dominer son marché local sur Google et maximiser ses marges, Next.js s'impose presque systématiquement.
+Deux sources complémentaires donnent une image complète :
 
-Dans les deux cas, l'objectif reste le même : un site qui vous amène des clients, pas un site vitrine qui dort.
+**PageSpeed Insights** (pagespeed.web.dev) analyse une URL spécifique et donne les scores LCP, INP et CLS mesurés sur de vraies visites utilisateurs (données du Chrome User Experience Report). C&apos;est ce que Google voit réellement.
+
+**Google Search Console** — section &ldquo;Expérience&rdquo; puis &ldquo;Signaux Web essentiels&rdquo; — donne une vue globale sur l&apos;ensemble du site, avec les pages classées en &ldquo;Bonnes&rdquo;, &ldquo;À améliorer&rdquo; et &ldquo;Mauvaises&rdquo;. C&apos;est le point de départ pour prioriser les corrections.
+
+## Core Web Vitals et classement Google : ce qu&apos;il faut retenir
+
+Les Core Web Vitals sont un **signal de classement parmi d&apos;autres** — ils ne compensent pas un contenu pauvre ou un manque de backlinks. Mais à contenu équivalent entre deux sites concurrents, celui qui a de meilleurs Core Web Vitals prend l&apos;avantage.
+
+Dans des marchés locaux concurrentiels — artisans, commerçants, prestataires de services — où le contenu des sites se ressemble souvent, les performances techniques peuvent faire la différence entre la première et la troisième position.
+
+Nos sites obtiennent systématiquement des scores Core Web Vitals dans le vert dès le lancement. Ce n&apos;est pas un bonus — c&apos;est une exigence de base.
 
 ---
 
-*Vous hésitez entre les deux pour votre projet ? [Contactez-nous](/contact) — nous vous donnons une recommandation claire en 30 minutes.*
+*Vos Core Web Vitals sont dans le rouge ? [Contactez-nous](/contact) — nous identifions les causes et vous proposons un plan de correction priorisé.*
