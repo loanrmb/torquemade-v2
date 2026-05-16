@@ -1,74 +1,74 @@
 export const metadata = {
-  title: 'Refonte de site web : comment l\'aborder sans perdre son SEO',
-  description: 'Une refonte mal pr\u00e9par\u00e9e peut effacer des mois de travail SEO en quelques jours. Voici la m\u00e9thode pour migrer sans perdre vos positions Google.',
+  title: "Refonte de site web : comment l'aborder sans perdre son SEO",
+  description: "Une refonte mal préparée peut effacer des mois de travail SEO en quelques jours. Voici la méthode pour migrer sans perdre vos positions Google.",
 }
 
 import TableRisques from './_illustrations/TableRisques'
 
 <header className="mb-16">
-  <p className="mb-4 font-mono text-[10px] uppercase tracking-widest opacity-40">Web & D\u00e9veloppement \u00b7 Avril 2025</p>
+  <p className="mb-4 font-mono text-[10px] uppercase tracking-widest opacity-40">Web & Développement · Avril 2025</p>
   <h1 className="text-4xl font-bold leading-tight md:text-5xl" style={{ color: 'hsl(var(--text-primary))' }}>
-    Refonte de site web : comment l\u2019aborder sans perdre son SEO
+    Refonte de site web : comment l'aborder sans perdre son SEO
   </h1>
   <p className="mt-6 text-lg leading-relaxed opacity-60">
-    Une refonte est l\u2019un des moments les plus risqu\u00e9s pour le r\u00e9f\u00e9rencement d\u2019un site. Des URLs qui changent, des pages qui disparaissent, une structure qui se restructure \u2014 autant de signaux qui peuvent faire chuter les positions en quelques jours. La bonne nouvelle : ces risques sont enti\u00e8rement \u00e9vitables si la migration est pr\u00e9par\u00e9e correctement.
+    Une refonte est l'un des moments les plus risqués pour le référencement d'un site. Des URLs qui changent, des pages qui disparaissent, une structure qui se restructure — autant de signaux qui peuvent faire chuter les positions en quelques jours. La bonne nouvelle : ces risques sont entièrement évitables si la migration est préparée correctement.
   </p>
 </header>
 
 ## Pourquoi une refonte fait chuter le SEO
 
-Google indexe des URLs pr\u00e9cises. Quand vous modifiez l\u2019architecture de votre site sans pr\u00e9venir le moteur, il interpr\u00e8te les changements comme des disparitions de contenu. Une page qui \u00e9tait positionn\u00e9e sur une requ\u00eate pr\u00e9cise devient introuvable \u2014 Google supprime son entr\u00e9e de l\u2019index, et la position s\u2019\u00e9vapore.
+Google indexe des URLs précises. Quand vous modifiez l'architecture de votre site sans prévenir le moteur, il interprète les changements comme des disparitions de contenu. Une page qui était positionnée sur une requête précise devient introuvable — Google supprime son entrée de l'index, et la position s'évapore.
 
-Le probl\u00e8me se produit \u00e0 trois niveaux distincts.
+Le problème se produit à trois niveaux distincts.
 
-**Au niveau des URLs.** Si `/services/creation-site-web` devient `/web/creation-site` lors de la refonte, Google consid\u00e8re que la premi\u00e8re page a disparu et que la seconde est nouvelle. Tout le capital SEO accumul\u00e9 sur l\u2019ancienne URL repart de z\u00e9ro.
+**Au niveau des URLs.** Si `/services/creation-site-web` devient `/web/creation-site` lors de la refonte, Google considère que la première page a disparu et que la seconde est nouvelle. Tout le capital SEO accumulé sur l'ancienne URL repart de zéro.
 
-**Au niveau du contenu.** Une refonte est souvent l\u2019occasion de simplifier les textes, r\u00e9duire les pages, fusionner des rubriques. Ce qui para\u00eet logique du point de vue \u00e9ditorial peut supprimer des signaux de pertinence sur lesquels Google s\u2019appuyait pour positionner le site.
+**Au niveau du contenu.** Une refonte est souvent l'occasion de simplifier les textes, réduire les pages, fusionner des rubriques. Ce qui paraît logique du point de vue éditorial peut supprimer des signaux de pertinence sur lesquels Google s'appuyait pour positionner le site.
 
-**Au niveau de la structure technique.** Balises title qui changent, balises H1 r\u00e9\u00e9crites, structure de maillage interne modifi\u00e9e \u2014 chaque changement est un signal que Google devra r\u00e9interpr\u00e9ter.
+**Au niveau de la structure technique.** Balises title qui changent, balises H1 réécrites, structure de maillage interne modifiée — chaque changement est un signal que Google devra réinterpréter.
 
-## \u00c9tape 1 : auditer avant de toucher quoi que ce soit
+## Étape 1 : auditer avant de toucher quoi que ce soit
 
-Avant d\u2019\u00e9crire une seule ligne de code, il faut photographier l\u2019\u00e9tat SEO du site existant.
+Avant d'écrire une seule ligne de code, il faut photographier l'état SEO du site existant.
 
-Cela signifie exporter depuis Google Search Console la liste compl\u00e8te des pages index\u00e9es avec leur trafic et leurs positions. Identifier les pages qui g\u00e9n\u00e8rent des clics \u2014 m\u00eame peu \u2014 car ce sont celles \u00e0 prot\u00e9ger en priorit\u00e9. Lister toutes les URLs actuelles et noter pour chacune si elle sera conserv\u00e9e, modifi\u00e9e ou supprim\u00e9e dans la nouvelle version.
+Cela signifie exporter depuis Google Search Console la liste complète des pages indexées avec leur trafic et leurs positions. Identifier les pages qui génèrent des clics — même peu — car ce sont celles à protéger en priorité. Lister toutes les URLs actuelles et noter pour chacune si elle sera conservée, modifiée ou supprimée dans la nouvelle version.
 
-Cette cartographie prend quelques heures. Elle conditionne tout le travail de migration qui suit. Sauter cette \u00e9tape, c\u2019est r\u00e9nover un appartement sans plan.
+Cette cartographie prend quelques heures. Elle conditionne tout le travail de migration qui suit. Sauter cette étape, c'est rénover un appartement sans plan.
 
-## \u00c9tape 2 : les redirections 301, non n\u00e9gociables
+## Étape 2 : les redirections 301, non négociables
 
-Une redirection 301 dit \u00e0 Google : \u00ab\u202fcette page a d\u00e9finitivement d\u00e9m\u00e9nag\u00e9 \u00e0 cette nouvelle adresse\u202f\u00bb. Elle transf\u00e8re le capital SEO de l\u2019ancienne URL vers la nouvelle.
+Une redirection 301 dit à Google : cette page a définitivement déménagé à cette nouvelle adresse. Elle transfère le capital SEO de l'ancienne URL vers la nouvelle.
 
-La r\u00e8gle est simple : toute URL existante qui change doit avoir une redirection 301 vers sa nouvelle version. Sans exception. Y compris les pages \u00e0 faible trafic \u2014 un jour elles pourraient avoir des backlinks entrants qu\u2019on ne conna\u00eet pas.
+La règle est simple : toute URL existante qui change doit avoir une redirection 301 vers sa nouvelle version. Sans exception. Y compris les pages à faible trafic — un jour elles pourraient avoir des backlinks entrants qu'on ne connaît pas.
 
-Le fichier de redirections se pr\u00e9pare avant le lancement. On liste toutes les paires ancienne URL \u2192 nouvelle URL dans un tableur, puis on les impl\u00e9mente dans le code (via `next.config.js` pour un site Next.js) avant de mettre le nouveau site en ligne.
+Le fichier de redirections se prépare avant le lancement. On liste toutes les paires ancienne URL vers nouvelle URL dans un tableur, puis on les implémente dans le code (via `next.config.js` pour un site Next.js) avant de mettre le nouveau site en ligne.
 
-Ce qui se passe si on oublie : Google tombe sur des erreurs 404, retire les pages de l\u2019index, et les positions s\u2019effondrent dans les semaines suivantes.
+Ce qui se passe si on oublie : Google tombe sur des erreurs 404, retire les pages de l'index, et les positions s'effondrent dans les semaines suivantes.
 
-## \u00c9tape 3 : ne pas changer les balises qui fonctionnent
+## Étape 3 : ne pas changer les balises qui fonctionnent
 
-C\u2019est un r\u00e9flexe naturel lors d\u2019une refonte : tout r\u00e9\u00e9crire. Nouveaux textes, nouveaux titres, nouvelle structure \u00e9ditoriale. C\u2019est souvent une erreur SEO.
+C'est un réflexe naturel lors d'une refonte : tout réécrire. Nouveaux textes, nouveaux titres, nouvelle structure éditoriale. C'est souvent une erreur SEO.
 
-Les balises title et les meta descriptions qui existent sur les pages bien positionn\u00e9es ont \u00e9t\u00e9 valid\u00e9es par Google. Les modifier revient \u00e0 demander au moteur de r\u00e9\u00e9valuer la pertinence de la page. Parfois la r\u00e9\u00e9valuation est favorable, souvent elle prend du temps, et parfois elle d\u00e9grade la position.
+Les balises title et les meta descriptions qui existent sur les pages bien positionnées ont été validées par Google. Les modifier revient à demander au moteur de réévaluer la pertinence de la page. Parfois la réévaluation est favorable, souvent elle prend du temps, et parfois elle dégrade la position.
 
-La bonne approche : conserver \u00e0 l\u2019identique les balises des pages qui performent, et ne les optimiser qu\u2019apr\u00e8s la migration, une par une, en mesurant l\u2019impact.
+La bonne approche : conserver à l'identique les balises des pages qui performent, et ne les optimiser qu'après la migration, une par une, en mesurant l'impact.
 
 <TableRisques />
 
-## \u00c9tape 4 : le lancement en douceur
+## Étape 4 : le lancement en douceur
 
-Mettre un nouveau site en ligne d\u2019un coup, un vendredi soir, sans monitoring \u2014 c\u2019est prendre un risque inutile.
+Mettre un nouveau site en ligne d'un coup, un vendredi soir, sans monitoring — c'est prendre un risque inutile.
 
-Le protocole recommand\u00e9 : lancer en semaine pour pouvoir r\u00e9agir rapidement, surveiller la Search Console dans les 48h suivant le lancement, v\u00e9rifier que les redirections fonctionnent via un outil de test d\u2019URLs, et soumettre le nouveau sitemap imm\u00e9diatement apr\u00e8s la mise en ligne.
+Le protocole recommandé : lancer en semaine pour pouvoir réagir rapidement, surveiller la Search Console dans les 48h suivant le lancement, vérifier que les redirections fonctionnent via un outil de test d'URLs, et soumettre le nouveau sitemap immédiatement après la mise en ligne.
 
-Les premi\u00e8res semaines post-lancement sont normalement marqu\u00e9es par une l\u00e9g\u00e8re instabilit\u00e9 des positions \u2014 Google recrawle et r\u00e9\u00e9value. C\u2019est attendu. Ce qui ne l\u2019est pas, c\u2019est une chute de 50\u202f% du trafic organique qui persiste au-del\u00e0 de 4 \u00e0 6 semaines : c\u2019est le signe qu\u2019une erreur de migration n\u2019a pas \u00e9t\u00e9 rattrap\u00e9e.
+Les premières semaines post-lancement sont normalement marquées par une légère instabilité des positions — Google recrawle et réévalue. C'est attendu. Ce qui ne l'est pas, c'est une chute de 50 % du trafic organique qui persiste au-delà de 4 à 6 semaines : c'est le signe qu'une erreur de migration n'a pas été rattrapée.
 
 ## Ce qui ne devrait jamais attendre la refonte
 
-La refonte est souvent le moment o\u00f9 l\u2019on r\u00e8gle tout ce qui \u00e9tait en suspens depuis des mois. Structure des URLs, balises manquantes, pages orphelines. C\u2019est la bonne occasion \u2014 \u00e0 condition de tout documenter et de faire les migrations correctement.
+La refonte est souvent le moment où l'on règle tout ce qui était en suspens depuis des mois. Structure des URLs, balises manquantes, pages orphelines. C'est la bonne occasion — à condition de tout documenter et de faire les migrations correctement.
 
-Une refonte bien pr\u00e9par\u00e9e ne fait pas perdre de SEO. Dans la plupart des cas, elle permet d\u2019en gagner \u2014 parce qu\u2019une architecture propre et un code l\u00e9ger donnent \u00e0 Google plus de signaux positifs que l\u2019ancien site ne pouvait en produire.
+Une refonte bien préparée ne fait pas perdre de SEO. Dans la plupart des cas, elle permet d'en gagner — parce qu'une architecture propre et un code léger donnent à Google plus de signaux positifs que l'ancien site ne pouvait en produire.
 
 ---
 
-*Vous planifiez une refonte et vous ne voulez pas repartir de z\u00e9ro c\u00f4t\u00e9 SEO\u202f? [Contactez-nous](/contact) \u2014 nous pr\u00e9parons la migration avec vous avant le premier commit.*
+*Vous planifiez une refonte et vous ne voulez pas repartir de zéro côté SEO ? [Contactez-nous](/contact) — nous préparons la migration avec vous avant le premier commit.*
