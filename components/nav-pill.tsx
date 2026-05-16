@@ -13,6 +13,7 @@ export function NavPill() {
   const links = [
     { href: '/work',    label: t.work },
     { href: '/about',   label: t.about },
+    { href: '/blog',    label: t.blog },
     { href: '/contact', label: t.contact },
   ]
 
