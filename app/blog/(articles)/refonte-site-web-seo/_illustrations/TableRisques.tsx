@@ -1,10 +1,10 @@
 const rows = [
-  { action: 'Changer les URLs sans redirection', risque: 'Critique', impact: 'Perte totale du capital SEO des pages concern\u00e9es' },
-  { action: 'Supprimer des pages sans redirection', risque: 'Critique', impact: 'Erreurs 404, d\u00e9sindexation, chute de trafic' },
-  { action: 'R\u00e9\u00e9crire les balises title des pages performantes', risque: '\u00c9lev\u00e9', impact: 'R\u00e9\u00e9valuation par Google, instabilit\u00e9 temporaire ou durable' },
-  { action: 'Modifier la structure de maillage interne', risque: 'Moyen', impact: 'Red\u00e9finition de l\u2019arborescence per\u00e7ue par Google' },
-  { action: 'Changer le CMS ou le framework', risque: 'Moyen', impact: 'Neutre si les URLs et redirections sont g\u00e9r\u00e9es' },
-  { action: 'Am\u00e9liorer la vitesse et le code', risque: 'Positif', impact: 'Meilleurs Core Web Vitals, signal favorable pour Google' },
+  { action: 'Changer les URLs sans redirection', risque: 'Critique', impact: 'Perte totale du capital SEO des pages concernées' },
+  { action: 'Supprimer des pages sans redirection', risque: 'Critique', impact: 'Erreurs 404, désindexation, chute de trafic' },
+  { action: 'Réécrire les balises title des pages performantes', risque: 'Élevé', impact: 'Réévaluation par Google, instabilité temporaire ou durable' },
+  { action: 'Modifier la structure de maillage interne', risque: 'Moyen', impact: 'Redéfinition de l\'arborescence perçue par Google' },
+  { action: 'Changer le CMS ou le framework', risque: 'Moyen', impact: 'Neutre si les URLs et redirections sont gérées' },
+  { action: 'Améliorer la vitesse et le code', risque: 'Positif', impact: 'Meilleurs Core Web Vitals, signal favorable pour Google' },
 ]
 
 export default function TableRisques() {
@@ -24,7 +24,7 @@ export default function TableRisques() {
               <td className="py-3 pr-6 opacity-80">{r.action}</td>
               <td
                 className="py-3 pr-6 font-semibold font-mono text-xs"
-                style={{ opacity: r.risque === 'Critique' ? 0.9 : r.risque === '\u00c9lev\u00e9' ? 0.6 : r.risque === 'Moyen' ? 0.45 : 0.3 }}
+                style={{ opacity: r.risque === 'Critique' ? 0.9 : r.risque === 'Élevé' ? 0.6 : r.risque === 'Moyen' ? 0.45 : 0.3 }}
               >
                 {r.risque}
               </td>
