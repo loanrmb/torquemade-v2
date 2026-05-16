@@ -56,5 +56,13 @@ export const posts: Post[] = [
     category: 'Web & Développement',
     readingTime: 5,
   },
+  {
+    slug: 'site-mobile-first-2025',
+    title: 'Pourquoi votre site doit être mobile-first en 2025',
+    description: '63 % du trafic web mondial vient du mobile. Google indexe en priorité la version mobile de votre site. Ce que ça implique concrètement pour votre présence en ligne.',
+    date: 'Mars 2025',
+    category: 'Web & Développement',
+    readingTime: 4,
+  },
   // → Ajouter les prochains articles ici
 ]
