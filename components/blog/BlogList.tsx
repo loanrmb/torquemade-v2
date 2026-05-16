@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Link from 'next/link'
 import { posts } from '@/lib/blog'
 
@@ -9,6 +9,12 @@ const ALL = 'Tous'
 export function BlogList() {
   const categories = [ALL, ...Array.from(new Set(posts.map((p) => p.category)))]
   const [active, setActive] = useState(ALL)
+  const listRef = useRef<HTMLDivElement>(null)
+
+  function handleFilter(cat: string) {
+    setActive(cat)
+    listRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   const filtered = active === ALL ? posts : posts.filter((p) => p.category === active)
 
@@ -16,30 +22,40 @@ export function BlogList() {
     <section className="px-6 pb-24 md:px-12 lg:px-24">
       <div className="mx-auto max-w-4xl">
 
-        {/* Filtres */}
-        <div className="flex flex-wrap justify-center gap-2 mb-16">
-          {categories.map((cat) => {
-            const count = cat === ALL ? posts.length : posts.filter((p) => p.category === cat).length
-            return (
-              <button
-                key={cat}
-                onClick={() => setActive(cat)}
-                className="flex items-center gap-2 rounded-full border px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-colors duration-150"
-                style={{
-                  background: active === cat ? 'hsl(var(--bg-inverse))' : 'transparent',
-                  color: active === cat ? 'hsl(var(--text-inverse))' : 'hsl(var(--text-tertiary))',
-                  borderColor: active === cat ? 'hsl(var(--bg-inverse))' : 'hsl(var(--border-subtle))',
-                }}
-              >
-                {cat}
-                <span className="opacity-50">{count}</span>
-              </button>
-            )
-          })}
+        {/* ── FILTRES — pill flottant sticky (desktop + mobile) ── */}
+        <div className="sticky top-20 z-40 mb-16 flex justify-center">
+          <div
+            className="inline-flex items-center gap-1 rounded-full border px-2 py-1.5"
+            style={{
+              background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.85)',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
+              borderColor: 'hsl(var(--border-subtle))',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
+            }}
+          >
+            {categories.map((cat) => {
+              const count = cat === ALL ? posts.length : posts.filter((p) => p.category === cat).length
+              return (
+                <button
+                  key={cat}
+                  onClick={() => handleFilter(cat)}
+                  className="flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-all duration-150 whitespace-nowrap"
+                  style={{
+                    background: active === cat ? 'hsl(var(--bg-inverse))' : 'transparent',
+                    color: active === cat ? 'hsl(var(--text-inverse))' : 'hsl(var(--text-tertiary))',
+                  }}
+                >
+                  {cat}
+                  <span style={{ opacity: 0.5 }}>{count}</span>
+                </button>
+              )
+            })}
+          </div>
         </div>
 
-        {/* Liste d'articles */}
-        <div style={{ borderTop: '1px solid hsl(var(--border-subtle))' }}>
+        {/* ── LISTE D'ARTICLES ── */}
+        <div ref={listRef} style={{ borderTop: '1px solid hsl(var(--border-subtle))' }}>
           {filtered.length === 0 && (
             <p className="py-20 text-center font-mono text-sm opacity-40">
               Aucun article dans cette catégorie.
