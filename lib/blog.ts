@@ -40,5 +40,13 @@ export const posts: Post[] = [
     category: 'Web & Développement',
     readingTime: 4,
   },
+  {
+    slug: 'structurer-site-web-seo-conception',
+    title: 'Comment structurer un site web pour le SEO dès la conception',
+    description: 'L\'architecture d\'un site web conditionne son SEO bien avant que le premier mot de contenu soit écrit. Voici comment l\'aborder correctement dès le départ.',
+    date: 'Février 2025',
+    category: 'Web & Développement',
+    readingTime: 5,
+  },
   // → Ajouter les prochains articles ici
 ]
