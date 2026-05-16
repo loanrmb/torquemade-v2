@@ -2,21 +2,40 @@
 
 import { useState, useRef } from 'react'
 import Link from 'next/link'
+import { useLang } from '@/components/app-provider'
 import { posts } from '@/lib/blog'
 
-const ALL = 'Tous'
+const LABELS = {
+  fr: {
+    all: 'Tous',
+    read: "Lire l'article",
+    empty: 'Aucun article dans cette catégorie.',
+  },
+  en: {
+    all: 'All',
+    read: 'Read article',
+    empty: 'No articles in this category.',
+  },
+}
 
 export function BlogList() {
+  const lang = useLang()
+  const t = LABELS[lang]
+
+  const ALL = t.all
+
+  // Rebuild categories label when lang changes
   const categories = [ALL, ...Array.from(new Set(posts.map((p) => p.category)))]
-  const [active, setActive] = useState(ALL)
+  const [activeKey, setActiveKey] = useState<'all' | string>('all')
   const listRef = useRef<HTMLDivElement>(null)
 
-  function handleFilter(cat: string) {
-    setActive(cat)
+  function handleFilter(key: 'all' | string) {
+    setActiveKey(key)
     listRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
-  const filtered = active === ALL ? posts : posts.filter((p) => p.category === active)
+  const filtered =
+    activeKey === 'all' ? posts : posts.filter((p) => p.category === activeKey)
 
   return (
     <section className="px-6 pb-24 md:px-12 lg:px-24">
@@ -35,15 +54,20 @@ export function BlogList() {
             }}
           >
             {categories.map((cat) => {
-              const count = cat === ALL ? posts.length : posts.filter((p) => p.category === cat).length
+              const key = cat === ALL ? 'all' : cat
+              const isActive = activeKey === key
+              const count =
+                cat === ALL
+                  ? posts.length
+                  : posts.filter((p) => p.category === cat).length
               return (
                 <button
-                  key={cat}
-                  onClick={() => handleFilter(cat)}
+                  key={key}
+                  onClick={() => handleFilter(key)}
                   className="flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-all duration-150 whitespace-nowrap"
                   style={{
-                    background: active === cat ? 'hsl(var(--bg-inverse))' : 'transparent',
-                    color: active === cat ? 'hsl(var(--text-inverse))' : 'hsl(var(--text-tertiary))',
+                    background: isActive ? 'hsl(var(--bg-inverse))' : 'transparent',
+                    color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-tertiary))',
                   }}
                 >
                   {cat}
@@ -58,7 +82,7 @@ export function BlogList() {
         <div ref={listRef} style={{ borderTop: '1px solid hsl(var(--border-subtle))' }}>
           {filtered.length === 0 && (
             <p className="py-20 text-center font-mono text-sm opacity-40">
-              Aucun article dans cette catégorie.
+              {t.empty}
             </p>
           )}
           {filtered.map((post, i) => (
@@ -70,7 +94,10 @@ export function BlogList() {
             >
               {/* Gauche : numéro + date + catégorie */}
               <div className="w-32 flex-shrink-0">
-                <p className="font-mono text-3xl font-bold mb-3 opacity-15" style={{ color: 'hsl(var(--text-primary))' }}>
+                <p
+                  className="font-mono text-3xl font-bold mb-3 opacity-15"
+                  style={{ color: 'hsl(var(--text-primary))' }}
+                >
                   {String(i + 1).padStart(2, '0')}
                 </p>
                 <p className="font-mono text-[10px] uppercase tracking-widest opacity-40 mb-3">
@@ -78,7 +105,10 @@ export function BlogList() {
                 </p>
                 <span
                   className="inline-block font-mono text-[9px] uppercase tracking-widest px-2 py-0.5 border"
-                  style={{ borderColor: 'hsl(var(--border-subtle))', color: 'hsl(var(--text-tertiary))' }}
+                  style={{
+                    borderColor: 'hsl(var(--border-subtle))',
+                    color: 'hsl(var(--text-tertiary))',
+                  }}
                 >
                   {post.category.split(' & ')[0]}
                 </span>
@@ -96,8 +126,10 @@ export function BlogList() {
                   {post.description}
                 </p>
                 <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest opacity-40 transition-all duration-150 group-hover:opacity-100">
-                  Lire l&apos;article
-                  <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+                  {t.read}
+                  <span className="transition-transform duration-200 group-hover:translate-x-1">
+                    →
+                  </span>
                 </span>
               </div>
             </Link>
