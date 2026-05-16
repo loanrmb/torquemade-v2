@@ -190,4 +190,18 @@ export const posts: Post[] = [
     category: 'SEO & Contenu',
     readingTime: 9,
   },
+  {
+    slug: 'impressions-google-sans-publicite',
+    title: {
+      fr: 'Comment passer de 0 à 800 000 impressions Google sans publicité',
+      en: 'How to Go from 0 to 800,000 Google Impressions Without Advertising',
+    },
+    description: {
+      fr: "Pas un euro en Google Ads. Sprint Motors est passé de zéro à 791 000 impressions organiques en moins de 18 mois. Voici exactement comment.",
+      en: "Not a single euro in Google Ads. Sprint Motors went from zero to 791,000 organic impressions in under 18 months. Here's exactly how.",
+    },
+    date: { fr: 'Avril 2025', en: 'April 2025' },
+    category: 'SEO & Contenu',
+    readingTime: 8,
+  },
 ]
