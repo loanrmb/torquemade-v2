@@ -1,202 +1,124 @@
 export const metadata = {
-  title: 'Shopify vs Next.js : lequel choisir pour votre commerce en 2025 ?',
-  description: 'Shopify ou Next.js pour votre e-commerce ? Nous comparons les deux solutions pour vous aider à faire le bon choix selon votre projet et vos ambitions.',
+  title: 'Comment structurer un site web pour le SEO dès la conception',
+  description: 'L\'architecture d\'un site web conditionne son SEO bien avant que le premier mot de contenu soit écrit. Voici comment l\'aborder correctement dès le départ.',
 }
 
-export function IllustrationComparaison() {
+export function TableStructure() {
+  const rows = [
+    { element: 'Architecture des URLs', mauvaise: '/page?id=42 ou /p/123', bonne: '/services/creation-site-web' },
+    { element: 'Hiérarchie des titres', mauvaise: 'Plusieurs H1, H2 utilisés comme titres décoratifs', bonne: 'Un seul H1 par page, H2/H3 structurent le contenu' },
+    { element: 'Maillage interne', mauvaise: 'Pages isolées sans liens entre elles', bonne: 'Chaque page pointe vers des pages liées' },
+    { element: 'Nommage des pages', mauvaise: 'page1.html, untitled, new-page', bonne: 'Slug descriptif avec le mot-clé cible' },
+    { element: 'Profondeur de navigation', mauvaise: 'Contenu à 5+ clics de la page d\'accueil', bonne: 'Tout contenu accessible en 3 clics maximum' },
+    { element: 'Métadonnées', mauvaise: 'Titre et description identiques sur toutes les pages', bonne: 'Title et meta description uniques, optimisés par page' },
+  ]
   return (
-    <div className="my-12 overflow-hidden border border-black">
-      <svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" className="block w-full">
-
-        {/* === SHOPIFY — panneau gauche === */}
-        <rect x="0" y="0" width="350" height="320" fill="white"/>
-
-        {/* Icône sac de shopping */}
-        <rect x="145" y="55" width="60" height="56" rx="3" fill="none" stroke="black" strokeWidth="2"/>
-        <path d="M158 55 C158 40 202 40 202 55" fill="none" stroke="black" strokeWidth="2"/>
-        <line x1="145" y1="73" x2="205" y2="73" stroke="black" strokeWidth="1" strokeDasharray="5,4"/>
-        <circle cx="160" cy="55" r="2.5" fill="black"/>
-        <circle cx="190" cy="55" r="2.5" fill="black"/>
-
-        {/* Label */}
-        <text x="175" y="148" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="14" fontWeight="bold" fill="black">SHOPIFY</text>
-        <text x="175" y="167" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#999">Clé en main</text>
-
-        {/* Tags */}
-        <rect x="38" y="188" width="66" height="22" rx="11" fill="none" stroke="black" strokeWidth="1.5"/>
-        <text x="71" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="black">Rapide</text>
-
-        <rect x="117" y="188" width="92" height="22" rx="11" fill="none" stroke="black" strokeWidth="1.5"/>
-        <text x="163" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="black">Abonnement</text>
-
-        <rect x="222" y="188" width="102" height="22" rx="11" fill="none" stroke="black" strokeWidth="1.5"/>
-        <text x="273" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="black">Commission 2%</text>
-
-        {/* Note bas */}
-        <text x="175" y="256" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#bbb">Idéal pour lancer rapidement</text>
-        <text x="175" y="274" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#bbb">avec un budget limité</text>
-
-        {/* === VS — séparateur central === */}
-        <rect x="350" y="0" width="60" height="320" fill="black"/>
-        <text x="380" y="168" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="20" fontWeight="bold" fill="white">VS</text>
-
-        {/* === NEXT.JS — panneau droit === */}
-        <rect x="410" y="0" width="350" height="320" fill="black"/>
-
-        {/* Graphique performance */}
-        <line x1="450" y1="55" x2="450" y2="125" stroke="white" strokeWidth="1" opacity="0.25"/>
-        <line x1="450" y1="125" x2="645" y2="125" stroke="white" strokeWidth="1" opacity="0.25"/>
-        <polyline points="455,120 490,98 528,74 570,52 612,34" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="612" cy="34" r="4.5" fill="white"/>
-
-        {/* Label */}
-        <text x="585" y="148" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="14" fontWeight="bold" fill="white">NEXT.JS</text>
-        <text x="585" y="167" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#666">Sur mesure</text>
-
-        {/* Tags blancs */}
-        <rect x="422" y="188" width="100" height="22" rx="11" fill="none" stroke="white" strokeWidth="1.5"/>
-        <text x="472" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="white">Performance</text>
-
-        <rect x="533" y="188" width="100" height="22" rx="11" fill="none" stroke="white" strokeWidth="1.5"/>
-        <text x="583" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="white">0 commission</text>
-
-        <rect x="644" y="188" width="88" height="22" rx="11" fill="none" stroke="white" strokeWidth="1.5"/>
-        <text x="688" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="white">SEO natif</text>
-
-        {/* Note bas */}
-        <text x="585" y="256" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#555">Idéal pour performer</text>
-        <text x="585" y="274" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#555">sur le long terme</text>
-
-      </svg>
+    <div className="my-12 overflow-x-auto border border-black">
+      <table className="w-full border-collapse text-sm">
+        <thead>
+          <tr className="bg-black text-white">
+            <th className="p-3 text-left font-mono text-[10px] uppercase tracking-widest">Élément</th>
+            <th className="p-3 text-left font-mono text-[10px] uppercase tracking-widest" style={{borderLeft:'1px solid rgba(255,255,255,0.15)'}}>Erreur fréquente</th>
+            <th className="p-3 text-left font-mono text-[10px] uppercase tracking-widest" style={{borderLeft:'1px solid rgba(255,255,255,0.15)'}}>Bonne pratique</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <tr key={i} style={{borderTop:'1px solid black', background: i % 2 === 1 ? '#fafafa' : 'white'}}>
+              <td className="p-3 font-mono text-xs font-medium">{row.element}</td>
+              <td className="p-3 text-xs" style={{borderLeft:'1px solid black'}}>{row.mauvaise}</td>
+              <td className="p-3 text-xs font-medium" style={{borderLeft:'1px solid black'}}>{row.bonne}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }
 
-export function IllustrationDecision() {
-  return (
-    <div className="my-12 overflow-hidden border border-black">
-      <svg viewBox="0 0 760 268" xmlns="http://www.w3.org/2000/svg" className="block w-full">
+# Comment structurer un site web pour le SEO dès la conception
 
-        {/* Header */}
-        <rect x="0" y="0" width="760" height="46" fill="black"/>
-        <text x="380" y="28" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="11" fill="white" letterSpacing="4">QUEL PROFIL ÊTES-VOUS ?</text>
-
-        {/* Panneau gauche — Shopify */}
-        <rect x="0" y="46" width="374" height="222" fill="white"/>
-
-        <text x="52" y="90" fontFamily="'Courier New', monospace" fontSize="11" fontWeight="bold" fill="black" letterSpacing="2">SHOPIFY</text>
-
-        <rect x="52" y="105" width="12" height="12" rx="2" fill="black"/>
-        <text x="75" y="116" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#333">Budget serré ou projet de test</text>
-
-        <rect x="52" y="128" width="12" height="12" rx="2" fill="black"/>
-        <text x="75" y="139" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#333">Lancement en quelques jours</text>
-
-        <rect x="52" y="151" width="12" height="12" rx="2" fill="black"/>
-        <text x="75" y="162" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#333">Produits standards, catalogue simple</text>
-
-        <rect x="52" y="174" width="12" height="12" rx="2" fill="black"/>
-        <text x="75" y="185" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#333">Pas de développeur dans l&apos;équipe</text>
-
-        <rect x="52" y="216" width="164" height="32" rx="16" fill="black"/>
-        <text x="134" y="236" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10.5" fill="white">→ Choisissez Shopify</text>
-
-        {/* Séparateur */}
-        <line x1="375" y1="46" x2="375" y2="268" stroke="black" strokeWidth="2"/>
-
-        {/* Panneau droit — Next.js */}
-        <rect x="386" y="46" width="374" height="222" fill="black"/>
-
-        <text x="436" y="90" fontFamily="'Courier New', monospace" fontSize="11" fontWeight="bold" fill="white" letterSpacing="2">NEXT.JS</text>
-
-        <rect x="432" y="105" width="12" height="12" rx="2" fill="white"/>
-        <text x="455" y="116" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#ccc">Design sur mesure, identité forte</text>
-
-        <rect x="432" y="128" width="12" height="12" rx="2" fill="white"/>
-        <text x="455" y="139" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#ccc">SEO prioritaire, vision long terme</text>
-
-        <rect x="432" y="151" width="12" height="12" rx="2" fill="white"/>
-        <text x="455" y="162" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#ccc">Modèle de vente spécifique</text>
-
-        <rect x="432" y="174" width="12" height="12" rx="2" fill="white"/>
-        <text x="455" y="185" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#ccc">Volume de ventes {'>'}  5 000 €/mois</text>
-
-        <rect x="432" y="216" width="164" height="32" rx="16" fill="white"/>
-        <text x="514" y="236" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10.5" fill="black">→ Choisissez Next.js</text>
-
-      </svg>
-    </div>
-  )
-}
-
-# Shopify vs Next.js : lequel choisir pour votre commerce en 2025 ?
-
-<div className="mb-12 flex flex-wrap items-center gap-3 border-b border-black pb-8 font-mono text-[10px] uppercase tracking-widest">
-  <span className="opacity-40">Web & Développement</span>
+<div className="mb-12 flex flex-wrap items-center gap-3 pb-8 font-mono text-[10px] uppercase tracking-widest" style={{borderBottom:'1px solid hsl(var(--border-subtle))'}}>
+  <span className="opacity-40">Web &amp; Développement</span>
   <span className="opacity-20">·</span>
-  <span className="opacity-30">Janvier 2025</span>
+  <span className="opacity-30">Février 2025</span>
   <span className="opacity-20">·</span>
-  <span className="opacity-30">4 min de lecture</span>
+  <span className="opacity-30">5 min de lecture</span>
 </div>
 
-La question revient dans presque toutes nos conversations avec des clients e-commerce. Shopify ou Next.js ? Les deux permettent de vendre en ligne — mais ils ne s'adressent pas aux mêmes projets, ni aux mêmes ambitions.
+La plupart des propriétaires de sites pensent au SEO après la conception — une fois que le site est en ligne et que le trafic ne vient pas. C&apos;est une erreur coûteuse. L&apos;architecture d&apos;un site conditionne son potentiel SEO bien avant que la première ligne de contenu soit écrite.
 
-Voici notre comparaison directe, sans jargon inutile.
+Corriger une mauvaise structure après coup est possible, mais c&apos;est long, risqué et souvent incomplet. Le faire dès le départ ne coûte rien de plus — à condition de savoir quoi regarder.
 
-<IllustrationComparaison />
+## L&apos;architecture des URLs : votre première décision SEO
 
-## Shopify : vendre vite, sans développeur
+L&apos;URL d&apos;une page est l&apos;un des signaux les plus directs que vous envoyez à Google. Une URL comme `/services/creation-site-next-js-bordeaux` dit immédiatement à Google de quoi parle la page, pour qui, et où. Une URL comme `/page?id=42` ne dit rien.
 
-Shopify est une plateforme SaaS pensée pour lancer rapidement une boutique en ligne. Abonnement mensuel, thème prêt à l'emploi, produits ajoutés en quelques clics — vous pouvez être opérationnel en quelques jours.
+Les règles de base :
 
-**Ses points forts :**
+- Utilisez des tirets pour séparer les mots, jamais des underscores
+- Incluez le mot-clé cible dans l&apos;URL de chaque page importante
+- Restez court et descriptif — évitez les paramètres dynamiques inutiles
+- Créez une cohérence logique : `/blog/categorie/titre-article`
 
-- Gestion des paiements, des stocks et des expéditions intégrée nativement
-- Plus de 2 000 applications disponibles dans l'App Store Shopify
-- Sécurité et mises à jour gérées par la plateforme, sans intervention technique
-- Idéal pour les marchands qui veulent se concentrer sur la vente, pas sur le code
+Une fois vos URLs définies et indexées, les changer coûte cher en SEO (redirections, perte de liens entrants). Décidez-en une bonne fois pour toutes avant le lancement.
 
-**Ses limites :**
+## La hiérarchie des pages : dire à Google ce qui compte
 
-- Abonnement mensuel de 29 $ à 299 $ auquel s'ajoute une commission sur chaque vente (jusqu'à 2 %)
-- Personnalisation du design limitée sans développeur Shopify spécialisé
-- Dépendance totale à la plateforme : si Shopify change ses conditions, vous suivez
-- SEO technique parfois bridé par les contraintes imposées par le thème
+Google explore votre site comme un lecteur qui parcourt un livre : il cherche la structure, les chapitres, les niveaux d&apos;importance. Cette hiérarchie doit être explicite.
 
-## Next.js : performer, sans compromis
+Concrètement, cela signifie :
 
-Next.js est un framework React open-source qui permet de construire un site e-commerce entièrement sur mesure. Aucun thème, aucune commission, aucune contrainte imposée par un tiers. Vous partez de zéro et contrôlez tout.
+- Une page d&apos;accueil qui pointe vers vos pages services principales
+- Des pages services qui pointent vers des pages plus spécifiques ou des études de cas
+- Des articles de blog qui renvoient vers les pages services pertinentes
 
-**Ses points forts :**
+Plus une page reçoit de liens internes depuis d&apos;autres pages de votre site, plus Google lui attribue d&apos;importance. C&apos;est le principe du **PageRank interne** — et il est totalement sous votre contrôle.
 
-- Performances maximales : génération statique, rendu serveur, optimisation d'images native
-- SEO technique irréprochable dès la conception — structure HTML propre, Core Web Vitals, métadonnées maîtrisées
-- Design pixel-perfect, adapté exactement à votre identité visuelle
-- Zéro commission sur les ventes : vous intégrez Stripe directement, sans intermédiaire
-- Évolutif et stable : de 10 à 100 000 visiteurs sans changer de plateforme
+<TableStructure />
 
-**Ses limites :**
+## Les silos thématiques : organiser par sujet, pas par format
 
-- Nécessite un développeur pour la création initiale et la maintenance
-- Délai de mise en ligne plus long — plusieurs semaines, pas quelques jours
-- Stocks, paiements et logistique doivent être connectés via API
+Une erreur commune est d&apos;organiser un site par type de contenu : &ldquo;Services&rdquo;, &ldquo;Blog&rdquo;, &ldquo;À propos&rdquo;. Cette organisation est logique pour les humains, mais insuffisante pour Google.
 
-<IllustrationDecision />
+Une structure SEO efficace organise le contenu par **thème** : tous les contenus sur le SEO local se retrouvent liés entre eux, tous les contenus sur le développement Next.js forment un cluster cohérent. Google comprend alors que vous faites autorité sur ces sujets spécifiques.
 
-## Le calcul que personne ne fait
+Exemple concret pour un studio web :
 
-Sur 10 000 € de ventes mensuelles, la commission Shopify représente entre 50 € et 200 € par mois. Sur trois ans, c'est potentiellement le coût d'un site Next.js sur mesure — développé une fois, sans commission à perpétuité.
+- Page pilier : &ldquo;Création de site web pour PME locales&rdquo;
+- Articles satellites : &ldquo;Pourquoi un site vitrine est essentiel&rdquo;, &ldquo;Site sur mesure vs template&rdquo;, &ldquo;Structure SEO d&apos;un site&rdquo;
+- Tous ces contenus se lient les uns aux autres
 
-C'est la raison pour laquelle la grande majorité de nos clients e-commerce choisissent Next.js après notre première conversation. Non pas parce que c'est plus technique, mais parce que c'est plus rentable à moyen terme.
+Ce maillage thématique renforce l&apos;autorité de la page pilier — qui remonte dans les résultats Google.
 
-**Si votre volume dépasse les 5 000 € de ventes mensuelles, le calcul penche clairement vers Next.js.**
+## La profondeur de navigation : trois clics maximum
 
-## Notre position
+Google accorde moins d&apos;importance aux pages difficiles à atteindre. Si un contenu important se trouve à cinq clics de votre page d&apos;accueil, il sera moins bien indexé que s&apos;il était accessible en deux.
 
-Nous développons les deux solutions selon les besoins du projet. Pour un artisan qui veut tester sa première boutique avec 30 références, Shopify est souvent la réponse pragmatique. Pour un commerce établi qui veut dominer son marché local sur Google et maximiser ses marges, Next.js s'impose presque systématiquement.
+La règle des trois clics n&apos;est pas absolue, mais elle force une discipline utile : si vous ne pouvez pas accéder à une page importante en trois clics depuis l&apos;accueil, votre architecture mérite d&apos;être revue.
 
-Dans les deux cas, l'objectif reste le même : un site qui vous amène des clients, pas un site vitrine qui dort.
+## Les métadonnées : une page, un sujet, un message
+
+Chaque page de votre site doit avoir un `title` et une `meta description` uniques. Ces éléments sont ce que Google affiche dans ses résultats — et ce que l&apos;utilisateur lit pour décider de cliquer ou non.
+
+Un `title` efficace :
+- Contient le mot-clé principal en début de phrase
+- Reste sous 60 caractères
+- Est différent sur chaque page du site
+
+Une `meta description` efficace :
+- Résume la page en une ou deux phrases
+- Incite au clic avec un bénéfice clair
+- Reste sous 155 caractères
+
+Sur un site Next.js, ces métadonnées sont définies directement dans le code de chaque page — aucun plugin requis, aucun risque d&apos;oubli.
+
+## Construire la structure avant le contenu
+
+Notre approche sur chaque projet : avant d&apos;écrire une seule ligne de contenu, nous définissons l&apos;arborescence complète du site, les URLs cibles, la hiérarchie des pages et le maillage interne prévu. Cette phase prend quelques heures — et elle conditionne les performances SEO des mois suivants.
+
+Un site bien structuré dès le départ indexe plus vite, se positionne mieux, et résiste mieux aux mises à jour d&apos;algorithme Google. C&apos;est un investissement de conception qui se mesure en résultats concrets dans Search Console.
 
 ---
 
-*Vous hésitez entre les deux pour votre projet ? [Contactez-nous](/contact) — nous vous donnons une recommandation claire en 30 minutes.*
+*Vous construisez un nouveau site ou envisagez une refonte ? [Contactez-nous](/contact) — nous réalisons l&apos;audit de votre architecture actuelle et vous proposons une structure optimisée.*
