@@ -16,5 +16,13 @@ export const posts: Post[] = [
     category: 'Web & Développement',
     readingTime: 4,
   },
+  {
+    slug: 'nextjs-plus-rapide-que-wordpress',
+    title: 'Pourquoi un site Next.js est plus rapide qu\'un site WordPress',
+    description: 'WordPress génère ses pages à la demande, Next.js les prépare à l\'avance. Cette différence fondamentale explique tout — performances, SEO, Core Web Vitals.',
+    date: 'Janvier 2025',
+    category: 'Web & Développement',
+    readingTime: 4,
+  },
   // → Ajouter les prochains articles ici
 ]
