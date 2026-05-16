@@ -1,202 +1,74 @@
 export const metadata = {
-  title: 'Shopify vs Next.js : lequel choisir pour votre commerce en 2025 ?',
-  description: 'Shopify ou Next.js pour votre e-commerce ? Nous comparons les deux solutions pour vous aider à faire le bon choix selon votre projet et vos ambitions.',
+  title: 'Refonte de site web : comment l\'aborder sans perdre son SEO',
+  description: 'Une refonte mal pr\u00e9par\u00e9e peut effacer des mois de travail SEO en quelques jours. Voici la m\u00e9thode pour migrer sans perdre vos positions Google.',
 }
 
-export function IllustrationComparaison() {
-  return (
-    <div className="my-12 overflow-hidden border border-black">
-      <svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" className="block w-full">
+import TableRisques from './_illustrations/TableRisques'
 
-        {/* === SHOPIFY — panneau gauche === */}
-        <rect x="0" y="0" width="350" height="320" fill="white"/>
+<header className="mb-16">
+  <p className="mb-4 font-mono text-[10px] uppercase tracking-widest opacity-40">Web & D\u00e9veloppement \u00b7 Avril 2025</p>
+  <h1 className="text-4xl font-bold leading-tight md:text-5xl" style={{ color: 'hsl(var(--text-primary))' }}>
+    Refonte de site web : comment l\u2019aborder sans perdre son SEO
+  </h1>
+  <p className="mt-6 text-lg leading-relaxed opacity-60">
+    Une refonte est l\u2019un des moments les plus risqu\u00e9s pour le r\u00e9f\u00e9rencement d\u2019un site. Des URLs qui changent, des pages qui disparaissent, une structure qui se restructure \u2014 autant de signaux qui peuvent faire chuter les positions en quelques jours. La bonne nouvelle : ces risques sont enti\u00e8rement \u00e9vitables si la migration est pr\u00e9par\u00e9e correctement.
+  </p>
+</header>
 
-        {/* Icône sac de shopping */}
-        <rect x="145" y="55" width="60" height="56" rx="3" fill="none" stroke="black" strokeWidth="2"/>
-        <path d="M158 55 C158 40 202 40 202 55" fill="none" stroke="black" strokeWidth="2"/>
-        <line x1="145" y1="73" x2="205" y2="73" stroke="black" strokeWidth="1" strokeDasharray="5,4"/>
-        <circle cx="160" cy="55" r="2.5" fill="black"/>
-        <circle cx="190" cy="55" r="2.5" fill="black"/>
+## Pourquoi une refonte fait chuter le SEO
 
-        {/* Label */}
-        <text x="175" y="148" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="14" fontWeight="bold" fill="black">SHOPIFY</text>
-        <text x="175" y="167" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#999">Clé en main</text>
+Google indexe des URLs pr\u00e9cises. Quand vous modifiez l\u2019architecture de votre site sans pr\u00e9venir le moteur, il interpr\u00e8te les changements comme des disparitions de contenu. Une page qui \u00e9tait positionn\u00e9e sur une requ\u00eate pr\u00e9cise devient introuvable \u2014 Google supprime son entr\u00e9e de l\u2019index, et la position s\u2019\u00e9vapore.
 
-        {/* Tags */}
-        <rect x="38" y="188" width="66" height="22" rx="11" fill="none" stroke="black" strokeWidth="1.5"/>
-        <text x="71" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="black">Rapide</text>
+Le probl\u00e8me se produit \u00e0 trois niveaux distincts.
 
-        <rect x="117" y="188" width="92" height="22" rx="11" fill="none" stroke="black" strokeWidth="1.5"/>
-        <text x="163" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="black">Abonnement</text>
+**Au niveau des URLs.** Si `/services/creation-site-web` devient `/web/creation-site` lors de la refonte, Google consid\u00e8re que la premi\u00e8re page a disparu et que la seconde est nouvelle. Tout le capital SEO accumul\u00e9 sur l\u2019ancienne URL repart de z\u00e9ro.
 
-        <rect x="222" y="188" width="102" height="22" rx="11" fill="none" stroke="black" strokeWidth="1.5"/>
-        <text x="273" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="black">Commission 2%</text>
+**Au niveau du contenu.** Une refonte est souvent l\u2019occasion de simplifier les textes, r\u00e9duire les pages, fusionner des rubriques. Ce qui para\u00eet logique du point de vue \u00e9ditorial peut supprimer des signaux de pertinence sur lesquels Google s\u2019appuyait pour positionner le site.
 
-        {/* Note bas */}
-        <text x="175" y="256" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#bbb">Idéal pour lancer rapidement</text>
-        <text x="175" y="274" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#bbb">avec un budget limité</text>
+**Au niveau de la structure technique.** Balises title qui changent, balises H1 r\u00e9\u00e9crites, structure de maillage interne modifi\u00e9e \u2014 chaque changement est un signal que Google devra r\u00e9interpr\u00e9ter.
 
-        {/* === VS — séparateur central === */}
-        <rect x="350" y="0" width="60" height="320" fill="black"/>
-        <text x="380" y="168" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="20" fontWeight="bold" fill="white">VS</text>
+## \u00c9tape 1 : auditer avant de toucher quoi que ce soit
 
-        {/* === NEXT.JS — panneau droit === */}
-        <rect x="410" y="0" width="350" height="320" fill="black"/>
+Avant d\u2019\u00e9crire une seule ligne de code, il faut photographier l\u2019\u00e9tat SEO du site existant.
 
-        {/* Graphique performance */}
-        <line x1="450" y1="55" x2="450" y2="125" stroke="white" strokeWidth="1" opacity="0.25"/>
-        <line x1="450" y1="125" x2="645" y2="125" stroke="white" strokeWidth="1" opacity="0.25"/>
-        <polyline points="455,120 490,98 528,74 570,52 612,34" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="612" cy="34" r="4.5" fill="white"/>
+Cela signifie exporter depuis Google Search Console la liste compl\u00e8te des pages index\u00e9es avec leur trafic et leurs positions. Identifier les pages qui g\u00e9n\u00e8rent des clics \u2014 m\u00eame peu \u2014 car ce sont celles \u00e0 prot\u00e9ger en priorit\u00e9. Lister toutes les URLs actuelles et noter pour chacune si elle sera conserv\u00e9e, modifi\u00e9e ou supprim\u00e9e dans la nouvelle version.
 
-        {/* Label */}
-        <text x="585" y="148" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="14" fontWeight="bold" fill="white">NEXT.JS</text>
-        <text x="585" y="167" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#666">Sur mesure</text>
+Cette cartographie prend quelques heures. Elle conditionne tout le travail de migration qui suit. Sauter cette \u00e9tape, c\u2019est r\u00e9nover un appartement sans plan.
 
-        {/* Tags blancs */}
-        <rect x="422" y="188" width="100" height="22" rx="11" fill="none" stroke="white" strokeWidth="1.5"/>
-        <text x="472" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="white">Performance</text>
+## \u00c9tape 2 : les redirections 301, non n\u00e9gociables
 
-        <rect x="533" y="188" width="100" height="22" rx="11" fill="none" stroke="white" strokeWidth="1.5"/>
-        <text x="583" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="white">0 commission</text>
+Une redirection 301 dit \u00e0 Google : \u00ab\u202fcette page a d\u00e9finitivement d\u00e9m\u00e9nag\u00e9 \u00e0 cette nouvelle adresse\u202f\u00bb. Elle transf\u00e8re le capital SEO de l\u2019ancienne URL vers la nouvelle.
 
-        <rect x="644" y="188" width="88" height="22" rx="11" fill="none" stroke="white" strokeWidth="1.5"/>
-        <text x="688" y="203" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="9" fill="white">SEO natif</text>
+La r\u00e8gle est simple : toute URL existante qui change doit avoir une redirection 301 vers sa nouvelle version. Sans exception. Y compris les pages \u00e0 faible trafic \u2014 un jour elles pourraient avoir des backlinks entrants qu\u2019on ne conna\u00eet pas.
 
-        {/* Note bas */}
-        <text x="585" y="256" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#555">Idéal pour performer</text>
-        <text x="585" y="274" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10" fill="#555">sur le long terme</text>
+Le fichier de redirections se pr\u00e9pare avant le lancement. On liste toutes les paires ancienne URL \u2192 nouvelle URL dans un tableur, puis on les impl\u00e9mente dans le code (via `next.config.js` pour un site Next.js) avant de mettre le nouveau site en ligne.
 
-      </svg>
-    </div>
-  )
-}
+Ce qui se passe si on oublie : Google tombe sur des erreurs 404, retire les pages de l\u2019index, et les positions s\u2019effondrent dans les semaines suivantes.
 
-export function IllustrationDecision() {
-  return (
-    <div className="my-12 overflow-hidden border border-black">
-      <svg viewBox="0 0 760 268" xmlns="http://www.w3.org/2000/svg" className="block w-full">
+## \u00c9tape 3 : ne pas changer les balises qui fonctionnent
 
-        {/* Header */}
-        <rect x="0" y="0" width="760" height="46" fill="black"/>
-        <text x="380" y="28" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="11" fill="white" letterSpacing="4">QUEL PROFIL ÊTES-VOUS ?</text>
+C\u2019est un r\u00e9flexe naturel lors d\u2019une refonte : tout r\u00e9\u00e9crire. Nouveaux textes, nouveaux titres, nouvelle structure \u00e9ditoriale. C\u2019est souvent une erreur SEO.
 
-        {/* Panneau gauche — Shopify */}
-        <rect x="0" y="46" width="374" height="222" fill="white"/>
+Les balises title et les meta descriptions qui existent sur les pages bien positionn\u00e9es ont \u00e9t\u00e9 valid\u00e9es par Google. Les modifier revient \u00e0 demander au moteur de r\u00e9\u00e9valuer la pertinence de la page. Parfois la r\u00e9\u00e9valuation est favorable, souvent elle prend du temps, et parfois elle d\u00e9grade la position.
 
-        <text x="52" y="90" fontFamily="'Courier New', monospace" fontSize="11" fontWeight="bold" fill="black" letterSpacing="2">SHOPIFY</text>
+La bonne approche : conserver \u00e0 l\u2019identique les balises des pages qui performent, et ne les optimiser qu\u2019apr\u00e8s la migration, une par une, en mesurant l\u2019impact.
 
-        <rect x="52" y="105" width="12" height="12" rx="2" fill="black"/>
-        <text x="75" y="116" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#333">Budget serré ou projet de test</text>
+<TableRisques />
 
-        <rect x="52" y="128" width="12" height="12" rx="2" fill="black"/>
-        <text x="75" y="139" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#333">Lancement en quelques jours</text>
+## \u00c9tape 4 : le lancement en douceur
 
-        <rect x="52" y="151" width="12" height="12" rx="2" fill="black"/>
-        <text x="75" y="162" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#333">Produits standards, catalogue simple</text>
+Mettre un nouveau site en ligne d\u2019un coup, un vendredi soir, sans monitoring \u2014 c\u2019est prendre un risque inutile.
 
-        <rect x="52" y="174" width="12" height="12" rx="2" fill="black"/>
-        <text x="75" y="185" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#333">Pas de développeur dans l&apos;équipe</text>
+Le protocole recommand\u00e9 : lancer en semaine pour pouvoir r\u00e9agir rapidement, surveiller la Search Console dans les 48h suivant le lancement, v\u00e9rifier que les redirections fonctionnent via un outil de test d\u2019URLs, et soumettre le nouveau sitemap imm\u00e9diatement apr\u00e8s la mise en ligne.
 
-        <rect x="52" y="216" width="164" height="32" rx="16" fill="black"/>
-        <text x="134" y="236" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10.5" fill="white">→ Choisissez Shopify</text>
+Les premi\u00e8res semaines post-lancement sont normalement marqu\u00e9es par une l\u00e9g\u00e8re instabilit\u00e9 des positions \u2014 Google recrawle et r\u00e9\u00e9value. C\u2019est attendu. Ce qui ne l\u2019est pas, c\u2019est une chute de 50\u202f% du trafic organique qui persiste au-del\u00e0 de 4 \u00e0 6 semaines : c\u2019est le signe qu\u2019une erreur de migration n\u2019a pas \u00e9t\u00e9 rattrap\u00e9e.
 
-        {/* Séparateur */}
-        <line x1="375" y1="46" x2="375" y2="268" stroke="black" strokeWidth="2"/>
+## Ce qui ne devrait jamais attendre la refonte
 
-        {/* Panneau droit — Next.js */}
-        <rect x="386" y="46" width="374" height="222" fill="black"/>
+La refonte est souvent le moment o\u00f9 l\u2019on r\u00e8gle tout ce qui \u00e9tait en suspens depuis des mois. Structure des URLs, balises manquantes, pages orphelines. C\u2019est la bonne occasion \u2014 \u00e0 condition de tout documenter et de faire les migrations correctement.
 
-        <text x="436" y="90" fontFamily="'Courier New', monospace" fontSize="11" fontWeight="bold" fill="white" letterSpacing="2">NEXT.JS</text>
-
-        <rect x="432" y="105" width="12" height="12" rx="2" fill="white"/>
-        <text x="455" y="116" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#ccc">Design sur mesure, identité forte</text>
-
-        <rect x="432" y="128" width="12" height="12" rx="2" fill="white"/>
-        <text x="455" y="139" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#ccc">SEO prioritaire, vision long terme</text>
-
-        <rect x="432" y="151" width="12" height="12" rx="2" fill="white"/>
-        <text x="455" y="162" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#ccc">Modèle de vente spécifique</text>
-
-        <rect x="432" y="174" width="12" height="12" rx="2" fill="white"/>
-        <text x="455" y="185" fontFamily="'Courier New', monospace" fontSize="10.5" fill="#ccc">Volume de ventes {'>'}  5 000 €/mois</text>
-
-        <rect x="432" y="216" width="164" height="32" rx="16" fill="white"/>
-        <text x="514" y="236" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="10.5" fill="black">→ Choisissez Next.js</text>
-
-      </svg>
-    </div>
-  )
-}
-
-# Shopify vs Next.js : lequel choisir pour votre commerce en 2025 ?
-
-<div className="mb-12 flex flex-wrap items-center gap-3 border-b border-black pb-8 font-mono text-[10px] uppercase tracking-widest">
-  <span className="opacity-40">Web & Développement</span>
-  <span className="opacity-20">·</span>
-  <span className="opacity-30">Janvier 2025</span>
-  <span className="opacity-20">·</span>
-  <span className="opacity-30">4 min de lecture</span>
-</div>
-
-La question revient dans presque toutes nos conversations avec des clients e-commerce. Shopify ou Next.js ? Les deux permettent de vendre en ligne — mais ils ne s'adressent pas aux mêmes projets, ni aux mêmes ambitions.
-
-Voici notre comparaison directe, sans jargon inutile.
-
-<IllustrationComparaison />
-
-## Shopify : vendre vite, sans développeur
-
-Shopify est une plateforme SaaS pensée pour lancer rapidement une boutique en ligne. Abonnement mensuel, thème prêt à l'emploi, produits ajoutés en quelques clics — vous pouvez être opérationnel en quelques jours.
-
-**Ses points forts :**
-
-- Gestion des paiements, des stocks et des expéditions intégrée nativement
-- Plus de 2 000 applications disponibles dans l'App Store Shopify
-- Sécurité et mises à jour gérées par la plateforme, sans intervention technique
-- Idéal pour les marchands qui veulent se concentrer sur la vente, pas sur le code
-
-**Ses limites :**
-
-- Abonnement mensuel de 29 $ à 299 $ auquel s'ajoute une commission sur chaque vente (jusqu'à 2 %)
-- Personnalisation du design limitée sans développeur Shopify spécialisé
-- Dépendance totale à la plateforme : si Shopify change ses conditions, vous suivez
-- SEO technique parfois bridé par les contraintes imposées par le thème
-
-## Next.js : performer, sans compromis
-
-Next.js est un framework React open-source qui permet de construire un site e-commerce entièrement sur mesure. Aucun thème, aucune commission, aucune contrainte imposée par un tiers. Vous partez de zéro et contrôlez tout.
-
-**Ses points forts :**
-
-- Performances maximales : génération statique, rendu serveur, optimisation d'images native
-- SEO technique irréprochable dès la conception — structure HTML propre, Core Web Vitals, métadonnées maîtrisées
-- Design pixel-perfect, adapté exactement à votre identité visuelle
-- Zéro commission sur les ventes : vous intégrez Stripe directement, sans intermédiaire
-- Évolutif et stable : de 10 à 100 000 visiteurs sans changer de plateforme
-
-**Ses limites :**
-
-- Nécessite un développeur pour la création initiale et la maintenance
-- Délai de mise en ligne plus long — plusieurs semaines, pas quelques jours
-- Stocks, paiements et logistique doivent être connectés via API
-
-<IllustrationDecision />
-
-## Le calcul que personne ne fait
-
-Sur 10 000 € de ventes mensuelles, la commission Shopify représente entre 50 € et 200 € par mois. Sur trois ans, c'est potentiellement le coût d'un site Next.js sur mesure — développé une fois, sans commission à perpétuité.
-
-C'est la raison pour laquelle la grande majorité de nos clients e-commerce choisissent Next.js après notre première conversation. Non pas parce que c'est plus technique, mais parce que c'est plus rentable à moyen terme.
-
-**Si votre volume dépasse les 5 000 € de ventes mensuelles, le calcul penche clairement vers Next.js.**
-
-## Notre position
-
-Nous développons les deux solutions selon les besoins du projet. Pour un artisan qui veut tester sa première boutique avec 30 références, Shopify est souvent la réponse pragmatique. Pour un commerce établi qui veut dominer son marché local sur Google et maximiser ses marges, Next.js s'impose presque systématiquement.
-
-Dans les deux cas, l'objectif reste le même : un site qui vous amène des clients, pas un site vitrine qui dort.
+Une refonte bien pr\u00e9par\u00e9e ne fait pas perdre de SEO. Dans la plupart des cas, elle permet d\u2019en gagner \u2014 parce qu\u2019une architecture propre et un code l\u00e9ger donnent \u00e0 Google plus de signaux positifs que l\u2019ancien site ne pouvait en produire.
 
 ---
 
-*Vous hésitez entre les deux pour votre projet ? [Contactez-nous](/contact) — nous vous donnons une recommandation claire en 30 minutes.*
+*Vous planifiez une refonte et vous ne voulez pas repartir de z\u00e9ro c\u00f4t\u00e9 SEO\u202f? [Contactez-nous](/contact) \u2014 nous pr\u00e9parons la migration avec vous avant le premier commit.*
