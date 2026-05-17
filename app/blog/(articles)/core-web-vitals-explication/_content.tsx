@@ -115,7 +115,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
         <span className="opacity-30">5 min de lecture</span>
       </div>
 
-      <h1>Core Web Vitals : ce que Google mesure vraiment sur votre site</h1>
+      <h1 className="blog-article-title">Core Web Vitals : ce que Google mesure vraiment sur votre site</h1>
 
       <p>Depuis 2021, Google intègre les Core Web Vitals dans son algorithme de classement. Ce ne sont pas des métriques techniques abstraites réservées aux développeurs — ce sont des mesures directes de l&apos;expérience que vos visiteurs ont sur votre site. Et Google les utilise pour décider si vous méritez d&apos;apparaître en haut de ses résultats.</p>
 
@@ -206,7 +206,7 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
         <span className="opacity-30">5 min read</span>
       </div>
 
-      <h1>Core Web Vitals: What Google Really Measures on Your Site</h1>
+      <h1 className="blog-article-title">Core Web Vitals: What Google Really Measures on Your Site</h1>
 
       <p>Since 2021, Google has integrated Core Web Vitals into its ranking algorithm. These are not abstract technical metrics reserved for developers — they are direct measures of the experience your visitors have on your site. And Google uses them to decide whether you deserve to appear at the top of its results.</p>
 
