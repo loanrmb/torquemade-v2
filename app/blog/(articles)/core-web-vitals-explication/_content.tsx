@@ -106,14 +106,6 @@ export function CoreWebVitalsContent() {
 function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
   return (
     <>
-      <div className="mb-12 flex flex-wrap items-center gap-3 pb-8 font-mono text-[10px] uppercase tracking-widest"
-        style={{ borderBottom: '1px solid hsl(var(--border-subtle))' }}>
-        <span className="opacity-40">Web &amp; Développement</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">Mars 2025</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">5 min de lecture</span>
-      </div>
 
       <h1 className="blog-article-title">Core Web Vitals : ce que Google mesure vraiment sur votre site</h1>
 
@@ -197,14 +189,6 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
 function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
   return (
     <>
-      <div className="mb-12 flex flex-wrap items-center gap-3 pb-8 font-mono text-[10px] uppercase tracking-widest"
-        style={{ borderBottom: '1px solid hsl(var(--border-subtle))' }}>
-        <span className="opacity-40">Web &amp; Development</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">March 2025</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">5 min read</span>
-      </div>
 
       <h1 className="blog-article-title">Core Web Vitals: What Google Really Measures on Your Site</h1>
 
