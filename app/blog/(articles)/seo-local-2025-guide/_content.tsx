@@ -13,10 +13,6 @@ function ArticleFR() {
     <article className="blog-article">
 
       <header className="blog-header">
-        <div className="blog-meta">
-          <span className="blog-category">SEO &amp; Contenu</span>
-          <span className="blog-read-time">9 min de lecture</span>
-        </div>
         <h1 className="blog-article-title">SEO local en 2025 : le guide complet pour les commerces de proximité</h1>
         <p className="blog-intro">
           Un restaurant, un garage, un salon de coiffure ou un cabinet de kiné : tous partagent
@@ -381,10 +377,6 @@ function ArticleEN() {
     <article className="blog-article">
 
       <header className="blog-header">
-        <div className="blog-meta">
-          <span className="blog-category">SEO &amp; Content</span>
-          <span className="blog-read-time">9 min read</span>
-        </div>
         <h1 className="blog-article-title">Local SEO in 2025: The Complete Guide for Local Businesses</h1>
         <p className="blog-intro">
           A restaurant, a garage, a hair salon, or a physiotherapy practice — all share the same
