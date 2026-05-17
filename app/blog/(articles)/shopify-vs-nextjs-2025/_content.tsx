@@ -112,7 +112,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
         <span className="opacity-30">4 min de lecture</span>
       </div>
 
-      <h1>Shopify vs Next.js : lequel choisir pour votre commerce en 2025 ?</h1>
+      <h1 className="blog-article-title">Shopify vs Next.js : lequel choisir pour votre commerce en 2025 ?</h1>
 
       <p>La question revient dans presque toutes nos conversations avec des clients e-commerce. Shopify ou Next.js ? Les deux permettent de vendre en ligne — mais ils ne s&apos;adressent pas aux mêmes projets, ni aux mêmes ambitions.</p>
 
@@ -195,7 +195,7 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
         <span className="opacity-30">4 min read</span>
       </div>
 
-      <h1>Shopify vs Next.js: Which to Choose for Your Online Store in 2025?</h1>
+      <h1 className="blog-article-title">Shopify vs Next.js: Which to Choose for Your Online Store in 2025?</h1>
 
       <p>The question comes up in nearly every conversation we have with e-commerce clients. Shopify or Next.js? Both let you sell online — but they&apos;re not built for the same projects or the same ambitions.</p>
 
