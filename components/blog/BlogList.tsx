@@ -57,7 +57,7 @@ export function BlogList() {
                 /* Gradient plus saturé pour lisibilité sur fond blanc */
                 background: 'linear-gradient(-45deg, rgba(140,60,255,0.72), rgba(60,130,255,0.68), rgba(255,100,60,0.62), rgba(230,50,170,0.68), rgba(40,200,255,0.65), rgba(140,60,255,0.72))',
                 backgroundSize: '400% 400%',
-                animation: 'liquidShift 8s ease infinite',
+                animation: 'liquidShift 22s ease infinite',
                 /* Verre */
                 backdropFilter: 'blur(20px) saturate(160%)',
                 WebkitBackdropFilter: 'blur(20px) saturate(160%)',
