@@ -72,7 +72,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
         <span className="opacity-30">4 min de lecture</span>
       </div>
 
-      <h1>Landing page vs site complet : quand opter pour quelle solution ?</h1>
+      <h1 className="blog-article-title">Landing page vs site complet : quand opter pour quelle solution ?</h1>
 
       <p>La question revient régulièrement en début de projet : est-ce qu&apos;il nous faut une landing page ou un site complet ? Les deux peuvent sembler interchangeables — une page web, c&apos;est une page web. Mais ils répondent à des logiques différentes, servent des objectifs différents, et s&apos;adressent à des stades de développement différents.</p>
 
@@ -135,7 +135,7 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
         <span className="opacity-30">4 min read</span>
       </div>
 
-      <h1>Landing Page vs Full Site: When to Choose Which?</h1>
+      <h1 className="blog-article-title">Landing Page vs Full Site: When to Choose Which?</h1>
 
       <p>The question comes up regularly at the start of a project: do we need a landing page or a full site? The two can seem interchangeable — a web page is a web page. But they follow different logic, serve different objectives, and suit different stages of development.</p>
 
