@@ -33,20 +33,20 @@ export function NavPill() {
         <Link href="/" className="flex items-center gap-1.5 pr-1 min-720:pr-2 mr-0.5 min-720:mr-1 flex-shrink-0">
           <LogoMark />
           <span
-            className="hidden min-[480px]:block font-semibold text-sm tracking-tight whitespace-nowrap"
+            className="hidden min-[560px]:block font-semibold text-sm tracking-tight whitespace-nowrap"
             style={{ color: 'hsl(var(--text-primary))' }}
           >
             Torquemade
           </span>
         </Link>
 
-        {/* Nav links — flex-1 + overflow-hidden : se compresse en interne, ne pousse pas les toggles */}
+        {/* Nav links */}
         <div className="flex items-center gap-0 min-720:gap-0.5 flex-1 overflow-hidden">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-full px-2.5 min-720:px-3 py-1.5 text-sm font-medium transition-colors duration-150 whitespace-nowrap"
+              className="rounded-full px-2 min-720:px-3 py-1.5 text-[13px] min-720:text-sm font-medium transition-colors duration-150 whitespace-nowrap"
               style={{
                 color: pathname === link.href ? 'hsl(var(--text-primary))' : 'hsl(var(--text-tertiary))',
                 background: pathname === link.href ? 'hsl(var(--bg-secondary))' : 'transparent',
@@ -57,10 +57,10 @@ export function NavPill() {
           ))}
         </div>
 
-        {/* Separator — flex-shrink-0 : toujours visible */}
+        {/* Separator */}
         <div className="w-px h-5 mx-0.5 min-720:mx-1 flex-shrink-0" style={{ background: 'hsl(var(--border-subtle))' }} />
 
-        {/* Toggles — flex-shrink-0 : jamais écrasés par les liens */}
+        {/* Toggles */}
         <div className="flex items-center gap-0 flex-shrink-0">
           {/* Lang toggle */}
           <button
