@@ -357,3 +357,60 @@ html.dark .site-footer {
 html.dark .cta-card {
   background: hsl(0 0% 12%);
 }
+
+/* ============================================================
+   BLOG ARTICLE
+   ============================================================ */
+.blog-article {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 0 5rem;
+}
+
+.blog-article-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: hsl(var(--text-primary));
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid hsl(var(--border-subtle));
+}
+
+.blog-article h2 {
+  font-size: 1.2rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: hsl(var(--text-primary));
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.blog-article p {
+  color: hsl(var(--text-secondary));
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+}
+
+.blog-article ul,
+.blog-article ol {
+  padding-left: 1.25rem;
+  margin-bottom: 1.25rem;
+  color: hsl(var(--text-secondary));
+  line-height: 1.75;
+}
+
+.blog-article li { margin-bottom: 0.6rem; }
+.blog-article li strong { color: hsl(var(--text-primary)); }
+
+.blog-article hr {
+  border: none;
+  border-top: 1px solid hsl(var(--border-subtle));
+  margin: 2.5rem 0;
+}
+
+.blog-article code {
+  font-size: 0.875em;
+  background: hsl(var(--bg-secondary));
+  border-r
