@@ -72,7 +72,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
         <span className="opacity-30">4 min de lecture</span>
       </div>
 
-      <h1>Pourquoi un site Next.js est plus rapide qu&apos;un site WordPress</h1>
+      <h1 className="blog-article-title">Pourquoi un site Next.js est plus rapide qu&apos;un site WordPress</h1>
 
       <p>La vitesse d&apos;un site web n&apos;est pas qu&apos;une question de confort utilisateur. Google la mesure, la note, et s&apos;en sert pour décider qui apparaît en premier dans les résultats de recherche. Un site lent perd sur deux tableaux : le SEO et la conversion.</p>
 
@@ -142,7 +142,7 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
         <span className="opacity-30">4 min read</span>
       </div>
 
-      <h1>Why a Next.js Site Is Faster Than a WordPress Site</h1>
+      <h1 className="blog-article-title">Why a Next.js Site Is Faster Than a WordPress Site</h1>
 
       <p>Website speed isn&apos;t just a matter of user comfort. Google measures it, scores it, and uses it to decide who appears first in search results. A slow site loses on two fronts: SEO and conversion.</p>
 
