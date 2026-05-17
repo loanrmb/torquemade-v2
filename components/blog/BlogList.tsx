@@ -18,14 +18,6 @@ const LABELS = {
   },
 }
 
-const LIQUID_GLASS_KEYFRAMES = `
-  @keyframes liquidShift {
-    0%   { background-position: 0% 50%; }
-    50%  { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-`
-
 export function BlogList() {
   const lang = useLang()
   const t = LABELS[lang]
@@ -45,58 +37,44 @@ export function BlogList() {
 
   return (
     <section className="px-6 pb-24 md:px-12 lg:px-24">
-      <style>{LIQUID_GLASS_KEYFRAMES}</style>
       <div className="mx-auto max-w-4xl">
 
-        {/* ── FILTRES — pill sticky, bordure liquid glass ── */}
+        {/* ── FILTRES — pill sticky liquid glass ── */}
         <div className="sticky top-20 z-40 mb-16">
           <div className="overflow-x-auto -mx-6 px-6 md:mx-0 md:px-0 md:flex md:justify-center scrollbar-hide">
-
-            {/* Wrapper externe : gradient animé visible uniquement en bordure */}
             <div
-              className="flex-shrink-0 rounded-full"
+              className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 flex-shrink-0"
               style={{
-                padding: '1.5px',
-                background: 'linear-gradient(-45deg, rgba(140,60,255,1), rgba(60,130,255,1), rgba(255,100,60,1), rgba(230,50,170,1), rgba(40,200,255,1), rgba(140,60,255,1))',
-                backgroundSize: '400% 400%',
-                animation: 'liquidShift 22s ease infinite',
-                boxShadow: '0 4px 20px rgba(120,60,255,0.15)',
+                background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.72)',
+                backdropFilter: 'blur(20px) saturate(150%)',
+                WebkitBackdropFilter: 'blur(20px) saturate(150%)',
+                border: '1px solid rgba(var(--nav-bg-raw, 255 255 255), 0.25)',
+                boxShadow: '0 2px 16px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.5) inset',
               }}
             >
-              {/* Div interne : fond neutre classique */}
-              <div
-                className="inline-flex items-center gap-1 rounded-full px-2 py-1.5"
-                style={{
-                  background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.85)',
-                  backdropFilter: 'blur(16px)',
-                  WebkitBackdropFilter: 'blur(16px)',
-                }}
-              >
-                {categories.map((cat) => {
-                  const key = cat === ALL ? 'all' : cat
-                  const isActive = activeKey === key
-                  const count =
-                    cat === ALL
-                      ? posts.length
-                      : posts.filter((p) => p.category === cat).length
-                  return (
-                    <button
-                      key={key}
-                      onClick={() => handleFilter(key)}
-                      className="flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-all duration-150 whitespace-nowrap"
-                      style={{
-                        background: isActive ? 'hsl(var(--bg-inverse))' : 'transparent',
-                        color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-tertiary))',
-                      }}
-                    >
-                      {cat}
-                      <span style={{ opacity: 0.5 }}>{count}</span>
-                    </button>
-                  )
-                })}
-              </div>
+              {categories.map((cat) => {
+                const key = cat === ALL ? 'all' : cat
+                const isActive = activeKey === key
+                const count =
+                  cat === ALL
+                    ? posts.length
+                    : posts.filter((p) => p.category === cat).length
+                return (
+                  <button
+                    key={key}
+                    onClick={() => handleFilter(key)}
+                    className="flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-all duration-150 whitespace-nowrap"
+                    style={{
+                      background: isActive ? 'hsl(var(--bg-inverse))' : 'transparent',
+                      color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-tertiary))',
+                    }}
+                  >
+                    {cat}
+                    <span style={{ opacity: 0.5 }}>{count}</span>
+                  </button>
+                )
+              })}
             </div>
-
           </div>
         </div>
 
