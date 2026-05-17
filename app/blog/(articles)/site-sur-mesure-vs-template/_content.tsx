@@ -63,16 +63,8 @@ export function SiteSurMesureVsTemplateContent() {
 function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
   return (
     <>
-      <div className="mb-12 flex flex-wrap items-center gap-3 pb-8 font-mono text-[10px] uppercase tracking-widest"
-        style={{ borderBottom: '1px solid hsl(var(--border-subtle))' }}>
-        <span className="opacity-40">Web &amp; Développement</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">Février 2025</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">4 min de lecture</span>
-      </div>
 
-      <h1>Site web sur mesure vs template : ce que votre client voit vraiment</h1>
+      <h1 className="blog-article-title">Site web sur mesure vs template : ce que votre client voit vraiment</h1>
 
       <p>Un template bien choisi peut donner l&apos;illusion d&apos;un site professionnel. Pour quelques dizaines d&apos;euros par mois, on obtient une mise en page propre, des images d&apos;illustration et une structure qui semble cohérente. Le problème ? Votre client, lui, a déjà vu ce site.</p>
 
@@ -134,16 +126,8 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
 function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
   return (
     <>
-      <div className="mb-12 flex flex-wrap items-center gap-3 pb-8 font-mono text-[10px] uppercase tracking-widest"
-        style={{ borderBottom: '1px solid hsl(var(--border-subtle))' }}>
-        <span className="opacity-40">Web &amp; Development</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">February 2025</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">4 min read</span>
-      </div>
 
-      <h1>Custom Website vs Template: What Your Client Really Sees</h1>
+      <h1 className="blog-article-title">Custom Website vs Template: What Your Client Really Sees</h1>
 
       <p>A well-chosen template can give the illusion of a professional site. For a few dozen euros a month, you get a clean layout, stock images, and a structure that seems coherent. The problem? Your client has already seen this site.</p>
 
