@@ -70,7 +70,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
         <span className="opacity-30">5 min de lecture</span>
       </div>
 
-      <h1>Comment structurer un site web pour le SEO dès la conception</h1>
+      <h1 className="blog-article-title">Comment structurer un site web pour le SEO dès la conception</h1>
 
       <p>La plupart des propriétaires de sites pensent au SEO après la conception — une fois que le site est en ligne et que le trafic ne vient pas. C&apos;est une erreur coûteuse. L&apos;architecture d&apos;un site conditionne son potentiel SEO bien avant que la première ligne de contenu soit écrite.</p>
 
@@ -171,7 +171,7 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
         <span className="opacity-30">5 min read</span>
       </div>
 
-      <h1>How to Structure a Website for SEO from Day One</h1>
+      <h1 className="blog-article-title">How to Structure a Website for SEO from Day One</h1>
 
       <p>Most site owners think about SEO after the build — once the site is live and traffic isn&apos;t coming. That&apos;s a costly mistake. A site&apos;s architecture determines its SEO potential long before the first line of content is written.</p>
 
