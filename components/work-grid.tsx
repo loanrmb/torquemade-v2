@@ -9,22 +9,6 @@ import { projects, type ProjectTag } from '@/lib/projects'
 
 type Filter = 'all' | 'web' | 'logiciel'
 
-const LIQUID_GLASS_KEYFRAMES = `
-  @keyframes liquidShift {
-    0%   { background-position: 0% 50%; }
-    50%  { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-`
-
-const LIQUID_BORDER_STYLE = {
-  padding: '1.5px',
-  background: 'linear-gradient(-45deg, rgba(140,60,255,1), rgba(60,130,255,1), rgba(255,100,60,1), rgba(230,50,170,1), rgba(40,200,255,1), rgba(140,60,255,1))',
-  backgroundSize: '400% 400%',
-  animation: 'liquidShift 22s ease infinite',
-  boxShadow: '0 4px 20px rgba(120,60,255,0.15)',
-} as const
-
 export function WorkGrid() {
   const lang = useLang()
   const t = strings[lang].work
@@ -37,6 +21,14 @@ export function WorkGrid() {
     { key: 'logiciel', label: t.filterLogiciel },
   ]
 
+  const glassStyle = {
+    background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.72)',
+    backdropFilter: 'blur(20px) saturate(150%)',
+    WebkitBackdropFilter: 'blur(20px) saturate(150%)',
+    border: '1px solid rgba(var(--nav-bg-raw, 255 255 255), 0.25)',
+    boxShadow: '0 2px 16px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.5) inset',
+  } as const
+
   function handleFilter(key: Filter) {
     setActiveFilter(key)
     gridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -48,70 +40,47 @@ export function WorkGrid() {
 
   return (
     <div className="work-layout">
-      <style>{LIQUID_GLASS_KEYFRAMES}</style>
 
-      {/* ── MOBILE FILTER — pill liquid border sticky ── */}
-      <div className="block min-720:hidden sticky top-20 z-40 mb-6 flex justify-center">
-        {/* Wrapper externe : bordure gradient */}
+      {/* ── MOBILE FILTER — pill liquid glass sticky ── */}
+      <div className="block min-720:hidden sticky top-20 z-40 mb-6">
         <div
-          className="rounded-full w-full"
-          style={LIQUID_BORDER_STYLE}
+          className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 w-full justify-center"
+          style={glassStyle}
         >
-          {/* Div interne : fond neutre */}
-          <div
-            className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 w-full justify-center"
-            style={{
-              background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.85)',
-              backdropFilter: 'blur(16px)',
-              WebkitBackdropFilter: 'blur(16px)',
-            }}
-          >
-            {filters.map((f) => (
-              <button
-                key={f.key}
-                onClick={() => handleFilter(f.key)}
-                className="rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-150 whitespace-nowrap"
-                style={{
-                  background: activeFilter === f.key ? 'hsl(var(--bg-inverse))' : 'transparent',
-                  color: activeFilter === f.key ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-tertiary))',
-                }}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
+          {filters.map((f) => (
+            <button
+              key={f.key}
+              onClick={() => handleFilter(f.key)}
+              className="rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-150 whitespace-nowrap"
+              style={{
+                background: activeFilter === f.key ? 'hsl(var(--bg-inverse))' : 'transparent',
+                color: activeFilter === f.key ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-tertiary))',
+              }}
+            >
+              {f.label}
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* ── SIDEBAR FILTERS — desktop liquid border ── */}
+      {/* ── SIDEBAR FILTERS — desktop liquid glass ── */}
       <aside className="work-sidebar hidden min-720:block">
         <p className="section-label mb-4" style={{ color: 'hsl(var(--text-tertiary))' }}>
           {lang === 'fr' ? 'Filtrer' : 'Filter'}
         </p>
-        {/* Wrapper externe : bordure gradient */}
         <div
-          className="rounded-2xl"
-          style={LIQUID_BORDER_STYLE}
+          className="rounded-2xl p-1.5 flex flex-col gap-0.5"
+          style={glassStyle}
         >
-          {/* Div interne : fond neutre */}
-          <div
-            className="rounded-2xl p-1.5 flex flex-col gap-0.5"
-            style={{
-              background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.85)',
-              backdropFilter: 'blur(16px)',
-              WebkitBackdropFilter: 'blur(16px)',
-            }}
-          >
-            {filters.map((f) => (
-              <button
-                key={f.key}
-                onClick={() => handleFilter(f.key)}
-                className={`sidebar-link${activeFilter === f.key ? ' active' : ''}`}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
+          {filters.map((f) => (
+            <button
+              key={f.key}
+              onClick={() => handleFilter(f.key)}
+              className={`sidebar-link${activeFilter === f.key ? ' active' : ''}`}
+            >
+              {f.label}
+            </button>
+          ))}
         </div>
       </aside>
 
