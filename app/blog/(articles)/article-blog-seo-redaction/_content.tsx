@@ -1,10 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-import { useLang } from '@/lib/strings'
+import { useLang } from '@/components/app-provider'
 
 export function ArticleBlogSeoContent() {
-  const { lang } = useLang()
+  const lang = useLang()
 
   if (lang === 'en') return (
     <article className="blog-article">
