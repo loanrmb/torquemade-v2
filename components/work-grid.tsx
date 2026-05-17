@@ -9,6 +9,24 @@ import { projects, type ProjectTag } from '@/lib/projects'
 
 type Filter = 'all' | 'web' | 'logiciel'
 
+const LIQUID_GLASS_KEYFRAMES = `
+  @keyframes liquidShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+`
+
+const LIQUID_GLASS_BG = {
+  background: 'linear-gradient(-45deg, rgba(140,60,255,0.72), rgba(60,130,255,0.68), rgba(255,100,60,0.62), rgba(230,50,170,0.68), rgba(40,200,255,0.65), rgba(140,60,255,0.72))',
+  backgroundSize: '400% 400%',
+  animation: 'liquidShift 22s ease infinite',
+  backdropFilter: 'blur(20px) saturate(160%)',
+  WebkitBackdropFilter: 'blur(20px) saturate(160%)',
+  border: '1px solid rgba(255,255,255,0.5)',
+  boxShadow: '0 4px 28px rgba(120,60,255,0.25), 0 1.5px 0 rgba(255,255,255,0.25) inset, 0 -1px 0 rgba(0,0,0,0.1) inset',
+} as const
+
 export function WorkGrid() {
   const lang = useLang()
   const t = strings[lang].work
@@ -32,27 +50,27 @@ export function WorkGrid() {
 
   return (
     <div className="work-layout">
+      <style>{LIQUID_GLASS_KEYFRAMES}</style>
 
-      {/* ── MOBILE FILTER — pill flottant sticky ── */}
+      {/* ── MOBILE FILTER — pill liquid glass sticky ── */}
       <div className="block min-720:hidden sticky top-20 z-40 mb-6">
         <div
-          className="inline-flex items-center gap-1 rounded-full border px-2 py-1.5 w-full justify-center"
-          style={{
-            background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.85)',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
-            borderColor: 'hsl(var(--border-subtle))',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
-          }}
+          className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 w-full justify-center"
+          style={LIQUID_GLASS_BG}
         >
           {filters.map((f) => (
             <button
               key={f.key}
               onClick={() => handleFilter(f.key)}
-              className="rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-150 whitespace-nowrap"
+              className="rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 whitespace-nowrap"
               style={{
-                background: activeFilter === f.key ? 'hsl(var(--bg-inverse))' : 'transparent',
-                color: activeFilter === f.key ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-tertiary))',
+                background: activeFilter === f.key ? 'rgba(255,255,255,0.32)' : 'transparent',
+                color: activeFilter === f.key ? 'rgba(255,255,255,1)' : 'rgba(255,255,255,0.88)',
+                fontWeight: activeFilter === f.key ? '600' : '500',
+                boxShadow: activeFilter === f.key
+                  ? '0 1px 6px rgba(0,0,0,0.15), 0 1px 0 rgba(255,255,255,0.25) inset'
+                  : 'none',
+                textShadow: '0 1px 3px rgba(0,0,0,0.25)',
               }}
             >
               {f.label}
@@ -61,23 +79,35 @@ export function WorkGrid() {
         </div>
       </div>
 
-      {/* ── SIDEBAR FILTERS — desktop uniquement ── */}
+      {/* ── SIDEBAR FILTERS — desktop liquid glass ── */}
       <aside className="work-sidebar hidden min-720:block">
         <p className="section-label mb-4" style={{ color: 'hsl(var(--text-tertiary))' }}>
           {lang === 'fr' ? 'Filtrer' : 'Filter'}
         </p>
-        <ul className="flex flex-col gap-0.5 list-none p-0 m-0">
+        {/* Conteneur liquid glass vertical */}
+        <div
+          className="rounded-2xl p-1.5 flex flex-col gap-0.5"
+          style={LIQUID_GLASS_BG}
+        >
           {filters.map((f) => (
-            <li key={f.key}>
-              <button
-                onClick={() => handleFilter(f.key)}
-                className={`sidebar-link${activeFilter === f.key ? ' active' : ''}`}
-              >
-                {f.label}
-              </button>
-            </li>
+            <button
+              key={f.key}
+              onClick={() => handleFilter(f.key)}
+              className="w-full text-left rounded-xl px-4 py-2.5 text-sm transition-all duration-200 whitespace-nowrap"
+              style={{
+                background: activeFilter === f.key ? 'rgba(255,255,255,0.32)' : 'transparent',
+                color: activeFilter === f.key ? 'rgba(255,255,255,1)' : 'rgba(255,255,255,0.88)',
+                fontWeight: activeFilter === f.key ? '600' : '500',
+                boxShadow: activeFilter === f.key
+                  ? '0 1px 6px rgba(0,0,0,0.15), 0 1px 0 rgba(255,255,255,0.25) inset'
+                  : 'none',
+                textShadow: '0 1px 3px rgba(0,0,0,0.25)',
+              }}
+            >
+              {f.label}
+            </button>
           ))}
-        </ul>
+        </div>
       </aside>
 
       {/* ── PROJECT CARDS ── */}
