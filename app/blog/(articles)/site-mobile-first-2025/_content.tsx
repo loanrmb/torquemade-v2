@@ -70,7 +70,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
         <span className="opacity-30">4 min de lecture</span>
       </div>
 
-      <h1>Pourquoi votre site doit être mobile-first en 2025</h1>
+      <h1 className="blog-article-title">Pourquoi votre site doit être mobile-first en 2025</h1>
 
       <p>Il y a dix ans, concevoir un site pour desktop puis &ldquo;l&apos;adapter&rdquo; pour mobile était une pratique acceptable. En 2025, c&apos;est une erreur stratégique. Le mobile n&apos;est plus un format secondaire — c&apos;est le format principal, pour vos visiteurs comme pour Google.</p>
 
@@ -152,7 +152,7 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
         <span className="opacity-30">4 min read</span>
       </div>
 
-      <h1>Why Your Site Must Be Mobile-First in 2025</h1>
+      <h1 className="blog-article-title">Why Your Site Must Be Mobile-First in 2025</h1>
 
       <p>Ten years ago, designing a site for desktop then &ldquo;adapting&rdquo; it for mobile was acceptable practice. In 2025, it&apos;s a strategic mistake. Mobile is no longer a secondary format — it&apos;s the primary one, for your visitors and for Google.</p>
 
