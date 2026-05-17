@@ -63,14 +63,6 @@ export function LandingPageVsSiteCompletContent() {
 function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
   return (
     <>
-      <div className="mb-12 flex flex-wrap items-center gap-3 pb-8 font-mono text-[10px] uppercase tracking-widest"
-        style={{ borderBottom: '1px solid hsl(var(--border-subtle))' }}>
-        <span className="opacity-40">Web &amp; Développement</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">Mars 2025</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">4 min de lecture</span>
-      </div>
 
       <h1 className="blog-article-title">Landing page vs site complet : quand opter pour quelle solution ?</h1>
 
@@ -126,14 +118,6 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
 function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
   return (
     <>
-      <div className="mb-12 flex flex-wrap items-center gap-3 pb-8 font-mono text-[10px] uppercase tracking-widest"
-        style={{ borderBottom: '1px solid hsl(var(--border-subtle))' }}>
-        <span className="opacity-40">Web &amp; Development</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">March 2025</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">4 min read</span>
-      </div>
 
       <h1 className="blog-article-title">Landing Page vs Full Site: When to Choose Which?</h1>
 
