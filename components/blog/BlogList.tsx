@@ -54,17 +54,17 @@ export function BlogList() {
             <div
               className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 flex-shrink-0"
               style={{
-                /* Gradient multicolor animé */
-                background: 'linear-gradient(-45deg, rgba(168,100,255,0.45), rgba(80,160,255,0.4), rgba(255,130,80,0.35), rgba(240,80,180,0.4), rgba(60,210,255,0.38), rgba(168,100,255,0.45))',
+                /* Gradient plus saturé pour lisibilité sur fond blanc */
+                background: 'linear-gradient(-45deg, rgba(140,60,255,0.72), rgba(60,130,255,0.68), rgba(255,100,60,0.62), rgba(230,50,170,0.68), rgba(40,200,255,0.65), rgba(140,60,255,0.72))',
                 backgroundSize: '400% 400%',
                 animation: 'liquidShift 8s ease infinite',
                 /* Verre */
-                backdropFilter: 'blur(20px) saturate(180%)',
-                WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-                /* Bordure iridescente */
-                border: '1px solid rgba(255,255,255,0.35)',
+                backdropFilter: 'blur(20px) saturate(160%)',
+                WebkitBackdropFilter: 'blur(20px) saturate(160%)',
+                /* Bordure */
+                border: '1px solid rgba(255,255,255,0.5)',
                 /* Ombres */
-                boxShadow: '0 4px 24px rgba(120,80,255,0.18), 0 1.5px 0 rgba(255,255,255,0.18) inset, 0 -1px 0 rgba(0,0,0,0.08) inset',
+                boxShadow: '0 4px 28px rgba(120,60,255,0.25), 0 1.5px 0 rgba(255,255,255,0.25) inset, 0 -1px 0 rgba(0,0,0,0.1) inset',
               }}
             >
               {categories.map((cat) => {
@@ -81,20 +81,21 @@ export function BlogList() {
                     className="flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-all duration-200 whitespace-nowrap"
                     style={{
                       background: isActive
-                        ? 'rgba(255,255,255,0.28)'
+                        ? 'rgba(255,255,255,0.32)'
                         : 'transparent',
+                      /* Texte blanc sur gradient sombre = bonne lisibilité */
                       color: isActive
-                        ? 'rgba(255,255,255,0.95)'
-                        : 'rgba(255,255,255,0.65)',
+                        ? 'rgba(255,255,255,1)'
+                        : 'rgba(255,255,255,0.88)',
+                      fontWeight: isActive ? '600' : '500',
                       boxShadow: isActive
-                        ? '0 1px 4px rgba(0,0,0,0.12), 0 1px 0 rgba(255,255,255,0.2) inset'
+                        ? '0 1px 6px rgba(0,0,0,0.15), 0 1px 0 rgba(255,255,255,0.25) inset'
                         : 'none',
-                      backdropFilter: isActive ? 'blur(8px)' : 'none',
-                      WebkitBackdropFilter: isActive ? 'blur(8px)' : 'none',
+                      textShadow: '0 1px 3px rgba(0,0,0,0.25)',
                     }}
                   >
                     {cat}
-                    <span style={{ opacity: 0.55 }}>{count}</span>
+                    <span style={{ opacity: 0.7 }}>{count}</span>
                   </button>
                 )
               })}
