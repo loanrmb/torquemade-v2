@@ -204,4 +204,18 @@ export const posts: Post[] = [
     category: 'SEO & Contenu',
     readingTime: 8,
   },
+  {
+  slug: 'article-blog-seo-redaction',
+  title: {
+    fr: "Qu'est-ce qu'un article de blog SEO et comment en écrire un qui classe ?",
+    en: 'What Is an SEO Blog Post and How Do You Write One That Ranks?',
+  },
+  description: {
+    fr: "Un article de blog SEO n'est pas un article de blog ordinaire. Voici exactement comment le structurer, le rédiger et l'optimiser pour qu'il remonte sur Google.",
+    en: "An SEO blog post isn't an ordinary blog post. Here's exactly how to structure, write and optimise it to rank on Google.",
+  },
+  date: { fr: 'Mai 2025', en: 'May 2025' },
+  category: 'SEO & Contenu',
+  readingTime: 7,
+},
 ]
