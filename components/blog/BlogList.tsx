@@ -48,58 +48,55 @@ export function BlogList() {
       <style>{LIQUID_GLASS_KEYFRAMES}</style>
       <div className="mx-auto max-w-4xl">
 
-        {/* ── FILTRES — pill sticky liquid glass ── */}
+        {/* ── FILTRES — pill sticky, bordure liquid glass ── */}
         <div className="sticky top-20 z-40 mb-16">
           <div className="overflow-x-auto -mx-6 px-6 md:mx-0 md:px-0 md:flex md:justify-center scrollbar-hide">
+
+            {/* Wrapper externe : gradient animé visible uniquement en bordure */}
             <div
-              className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 flex-shrink-0"
+              className="flex-shrink-0 rounded-full"
               style={{
-                /* Gradient plus saturé pour lisibilité sur fond blanc */
-                background: 'linear-gradient(-45deg, rgba(140,60,255,0.72), rgba(60,130,255,0.68), rgba(255,100,60,0.62), rgba(230,50,170,0.68), rgba(40,200,255,0.65), rgba(140,60,255,0.72))',
+                padding: '1.5px',
+                background: 'linear-gradient(-45deg, rgba(140,60,255,1), rgba(60,130,255,1), rgba(255,100,60,1), rgba(230,50,170,1), rgba(40,200,255,1), rgba(140,60,255,1))',
                 backgroundSize: '400% 400%',
                 animation: 'liquidShift 22s ease infinite',
-                /* Verre */
-                backdropFilter: 'blur(20px) saturate(160%)',
-                WebkitBackdropFilter: 'blur(20px) saturate(160%)',
-                /* Bordure */
-                border: '1px solid rgba(255,255,255,0.5)',
-                /* Ombres */
-                boxShadow: '0 4px 28px rgba(120,60,255,0.25), 0 1.5px 0 rgba(255,255,255,0.25) inset, 0 -1px 0 rgba(0,0,0,0.1) inset',
+                boxShadow: '0 4px 20px rgba(120,60,255,0.15)',
               }}
             >
-              {categories.map((cat) => {
-                const key = cat === ALL ? 'all' : cat
-                const isActive = activeKey === key
-                const count =
-                  cat === ALL
-                    ? posts.length
-                    : posts.filter((p) => p.category === cat).length
-                return (
-                  <button
-                    key={key}
-                    onClick={() => handleFilter(key)}
-                    className="flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-all duration-200 whitespace-nowrap"
-                    style={{
-                      background: isActive
-                        ? 'rgba(255,255,255,0.32)'
-                        : 'transparent',
-                      /* Texte blanc sur gradient sombre = bonne lisibilité */
-                      color: isActive
-                        ? 'rgba(255,255,255,1)'
-                        : 'rgba(255,255,255,0.88)',
-                      fontWeight: isActive ? '600' : '500',
-                      boxShadow: isActive
-                        ? '0 1px 6px rgba(0,0,0,0.15), 0 1px 0 rgba(255,255,255,0.25) inset'
-                        : 'none',
-                      textShadow: '0 1px 3px rgba(0,0,0,0.25)',
-                    }}
-                  >
-                    {cat}
-                    <span style={{ opacity: 0.7 }}>{count}</span>
-                  </button>
-                )
-              })}
+              {/* Div interne : fond neutre classique */}
+              <div
+                className="inline-flex items-center gap-1 rounded-full px-2 py-1.5"
+                style={{
+                  background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.85)',
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
+                }}
+              >
+                {categories.map((cat) => {
+                  const key = cat === ALL ? 'all' : cat
+                  const isActive = activeKey === key
+                  const count =
+                    cat === ALL
+                      ? posts.length
+                      : posts.filter((p) => p.category === cat).length
+                  return (
+                    <button
+                      key={key}
+                      onClick={() => handleFilter(key)}
+                      className="flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-all duration-150 whitespace-nowrap"
+                      style={{
+                        background: isActive ? 'hsl(var(--bg-inverse))' : 'transparent',
+                        color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-tertiary))',
+                      }}
+                    >
+                      {cat}
+                      <span style={{ opacity: 0.5 }}>{count}</span>
+                    </button>
+                  )
+                })}
+              </div>
             </div>
+
           </div>
         </div>
 
