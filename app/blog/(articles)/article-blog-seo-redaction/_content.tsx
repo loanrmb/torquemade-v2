@@ -8,6 +8,7 @@ export function ArticleBlogSeoContent() {
 
   if (lang === 'en') return (
     <article className="blog-article">
+      <h1 className="blog-article-title">What Is an SEO Blog Post and How to Write One That Ranks?</h1>
       <p>
         A blog post is a blog post. An SEO blog post is a document engineered to answer
         a specific search query — and to prove to Google that it deserves a top spot.
@@ -172,6 +173,7 @@ export function ArticleBlogSeoContent() {
 
   return (
     <article className="blog-article">
+      <h1 className="blog-article-title">Qu&apos;est-ce qu&apos;un article de blog SEO et comment en écrire un qui classe ?</h1>
       <p>
         Un article de blog est un article de blog. Un article de blog SEO est un document
         conçu pour répondre à une requête précise — et pour convaincre Google qu'il mérite
