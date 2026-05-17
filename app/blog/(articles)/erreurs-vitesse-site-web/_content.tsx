@@ -63,14 +63,6 @@ export function ErreursVitesseContent() {
 function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
   return (
     <>
-      <div className="mb-12 flex flex-wrap items-center gap-3 pb-8 font-mono text-[10px] uppercase tracking-widest"
-        style={{ borderBottom: '1px solid hsl(var(--border-subtle))' }}>
-        <span className="opacity-40">Web &amp; Développement</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">Février 2025</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">5 min de lecture</span>
-      </div>
 
       <h1 className="blog-article-title">Les 7 erreurs qui plombent la vitesse d&apos;un site web</h1>
 
@@ -142,14 +134,6 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
 function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
   return (
     <>
-      <div className="mb-12 flex flex-wrap items-center gap-3 pb-8 font-mono text-[10px] uppercase tracking-widest"
-        style={{ borderBottom: '1px solid hsl(var(--border-subtle))' }}>
-        <span className="opacity-40">Web &amp; Development</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">February 2025</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">5 min read</span>
-      </div>
 
       <h1 className="blog-article-title">The 7 Mistakes That Kill Your Website&apos;s Speed</h1>
 
