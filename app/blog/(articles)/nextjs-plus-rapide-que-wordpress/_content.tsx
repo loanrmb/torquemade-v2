@@ -63,14 +63,6 @@ export function NextjsVsWordpressContent() {
 function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
   return (
     <>
-      <div className="mb-12 flex flex-wrap items-center gap-3 pb-8 font-mono text-[10px] uppercase tracking-widest"
-        style={{ borderBottom: '1px solid hsl(var(--border-subtle))' }}>
-        <span className="opacity-40">Web &amp; Développement</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">Janvier 2025</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">4 min de lecture</span>
-      </div>
 
       <h1 className="blog-article-title">Pourquoi un site Next.js est plus rapide qu&apos;un site WordPress</h1>
 
@@ -133,14 +125,6 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
 function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
   return (
     <>
-      <div className="mb-12 flex flex-wrap items-center gap-3 pb-8 font-mono text-[10px] uppercase tracking-widest"
-        style={{ borderBottom: '1px solid hsl(var(--border-subtle))' }}>
-        <span className="opacity-40">Web &amp; Development</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">January 2025</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">4 min read</span>
-      </div>
 
       <h1 className="blog-article-title">Why a Next.js Site Is Faster Than a WordPress Site</h1>
 
