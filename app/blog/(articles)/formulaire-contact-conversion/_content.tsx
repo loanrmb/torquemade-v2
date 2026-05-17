@@ -13,10 +13,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
   return (
     <>
       <header className="mb-16">
-        <p className="mb-4 font-mono text-[10px] uppercase tracking-widest opacity-40">
-          Web &amp; Développement · Mars 2025
-        </p>
-        <h1 className="text-4xl font-bold leading-tight md:text-5xl" style={{ color: 'hsl(var(--text-primary))' }}>
+        <h1 className="blog-article-title" style={{ color: 'hsl(var(--text-primary))' }}>
           Pourquoi votre formulaire de contact ne convertit pas (et comment le fixer)
         </h1>
         <p className="mt-6 text-lg leading-relaxed opacity-60">
@@ -93,10 +90,7 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
   return (
     <>
       <header className="mb-16">
-        <p className="mb-4 font-mono text-[10px] uppercase tracking-widest opacity-40">
-          Web &amp; Development · March 2025
-        </p>
-        <h1 className="text-4xl font-bold leading-tight md:text-5xl" style={{ color: 'hsl(var(--text-primary))' }}>
+        <h1 className="blog-article-title" style={{ color: 'hsl(var(--text-primary))' }}>
           Why Your Contact Form Isn&apos;t Converting (And How to Fix It)
         </h1>
         <p className="mt-6 text-lg leading-relaxed opacity-60">
