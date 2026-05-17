@@ -13,10 +13,6 @@ function ArticleFR() {
     <article className="blog-article">
 
       <header className="blog-header">
-        <div className="blog-meta">
-          <span className="blog-category">SEO &amp; Contenu</span>
-          <span className="blog-read-time">8 min de lecture</span>
-        </div>
         <h1 className="blog-article-title">Comment passer de 0 à 800 000 impressions Google sans publicité</h1>
         <p className="blog-intro">
           En janvier 2024, le site de Sprint Motors n&apos;existait pas. Dix-huit mois plus
@@ -318,10 +314,6 @@ function ArticleEN() {
     <article className="blog-article">
 
       <header className="blog-header">
-        <div className="blog-meta">
-          <span className="blog-category">SEO &amp; Content</span>
-          <span className="blog-read-time">8 min read</span>
-        </div>
         <h1 className="blog-article-title">How to Go from 0 to 800,000 Google Impressions Without Advertising</h1>
         <p className="blog-intro">
           In January 2024, Sprint Motors&apos; website didn&apos;t exist. Eighteen months later,
