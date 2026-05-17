@@ -70,7 +70,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
         <span className="opacity-30">4 min de lecture</span>
       </div>
 
-      <h1>Ce qu&apos;un site vitrine professionnel apporte à une PME locale</h1>
+      <h1 className="blog-article-title">Ce qu&apos;un site vitrine professionnel apporte à une PME locale</h1>
 
       <p>En 2025, 76 % des consommateurs recherchent un commerce ou un prestataire local sur Google avant de le contacter. Si vous n&apos;apparaissez pas dans ces résultats, vous n&apos;existez pas pour eux — peu importe la qualité de votre travail.</p>
 
@@ -139,7 +139,7 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
         <span className="opacity-30">4 min read</span>
       </div>
 
-      <h1>What a Professional Website Brings to a Local SME</h1>
+      <h1 className="blog-article-title">What a Professional Website Brings to a Local SME</h1>
 
       <p>In 2025, 76% of consumers search for a local business or service provider on Google before contacting them. If you don&apos;t appear in those results, you don&apos;t exist for them — regardless of the quality of your work.</p>
 
