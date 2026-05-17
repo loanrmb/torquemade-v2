@@ -18,6 +18,14 @@ const LABELS = {
   },
 }
 
+const LIQUID_GLASS_KEYFRAMES = `
+  @keyframes liquidShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+`
+
 export function BlogList() {
   const lang = useLang()
   const t = LABELS[lang]
@@ -37,20 +45,26 @@ export function BlogList() {
 
   return (
     <section className="px-6 pb-24 md:px-12 lg:px-24">
+      <style>{LIQUID_GLASS_KEYFRAMES}</style>
       <div className="mx-auto max-w-4xl">
 
-        {/* ── FILTRES — pill sticky scrollable sur mobile ── */}
+        {/* ── FILTRES — pill sticky liquid glass ── */}
         <div className="sticky top-20 z-40 mb-16">
-          {/* Wrapper scrollable : déborde sur les marges de la section pour éviter le clip */}
           <div className="overflow-x-auto -mx-6 px-6 md:mx-0 md:px-0 md:flex md:justify-center scrollbar-hide">
             <div
-              className="inline-flex items-center gap-1 rounded-full border px-2 py-1.5 flex-shrink-0"
+              className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 flex-shrink-0"
               style={{
-                background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.85)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
-                borderColor: 'hsl(var(--border-subtle))',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
+                /* Gradient multicolor animé */
+                background: 'linear-gradient(-45deg, rgba(168,100,255,0.45), rgba(80,160,255,0.4), rgba(255,130,80,0.35), rgba(240,80,180,0.4), rgba(60,210,255,0.38), rgba(168,100,255,0.45))',
+                backgroundSize: '400% 400%',
+                animation: 'liquidShift 8s ease infinite',
+                /* Verre */
+                backdropFilter: 'blur(20px) saturate(180%)',
+                WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                /* Bordure iridescente */
+                border: '1px solid rgba(255,255,255,0.35)',
+                /* Ombres */
+                boxShadow: '0 4px 24px rgba(120,80,255,0.18), 0 1.5px 0 rgba(255,255,255,0.18) inset, 0 -1px 0 rgba(0,0,0,0.08) inset',
               }}
             >
               {categories.map((cat) => {
@@ -64,14 +78,23 @@ export function BlogList() {
                   <button
                     key={key}
                     onClick={() => handleFilter(key)}
-                    className="flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-all duration-150 whitespace-nowrap"
+                    className="flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-all duration-200 whitespace-nowrap"
                     style={{
-                      background: isActive ? 'hsl(var(--bg-inverse))' : 'transparent',
-                      color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-tertiary))',
+                      background: isActive
+                        ? 'rgba(255,255,255,0.28)'
+                        : 'transparent',
+                      color: isActive
+                        ? 'rgba(255,255,255,0.95)'
+                        : 'rgba(255,255,255,0.65)',
+                      boxShadow: isActive
+                        ? '0 1px 4px rgba(0,0,0,0.12), 0 1px 0 rgba(255,255,255,0.2) inset'
+                        : 'none',
+                      backdropFilter: isActive ? 'blur(8px)' : 'none',
+                      WebkitBackdropFilter: isActive ? 'blur(8px)' : 'none',
                     }}
                   >
                     {cat}
-                    <span style={{ opacity: 0.5 }}>{count}</span>
+                    <span style={{ opacity: 0.55 }}>{count}</span>
                   </button>
                 )
               })}
