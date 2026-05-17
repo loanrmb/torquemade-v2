@@ -103,14 +103,6 @@ export function ShopifyVsNextjsContent() {
 function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
   return (
     <>
-      <div className="mb-12 flex flex-wrap items-center gap-3 pb-8 font-mono text-[10px] uppercase tracking-widest"
-        style={{ borderBottom: '1px solid hsl(var(--border-subtle))' }}>
-        <span className="opacity-40">Web &amp; Développement</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">Janvier 2025</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">4 min de lecture</span>
-      </div>
 
       <h1 className="blog-article-title">Shopify vs Next.js : lequel choisir pour votre commerce en 2025 ?</h1>
 
@@ -186,14 +178,6 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
 function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
   return (
     <>
-      <div className="mb-12 flex flex-wrap items-center gap-3 pb-8 font-mono text-[10px] uppercase tracking-widest"
-        style={{ borderBottom: '1px solid hsl(var(--border-subtle))' }}>
-        <span className="opacity-40">Web &amp; Development</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">January 2025</span>
-        <span className="opacity-20">·</span>
-        <span className="opacity-30">4 min read</span>
-      </div>
 
       <h1 className="blog-article-title">Shopify vs Next.js: Which to Choose for Your Online Store in 2025?</h1>
 
