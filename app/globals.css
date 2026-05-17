@@ -361,10 +361,11 @@ html.dark .cta-card {
 /* ============================================================
    BLOG ARTICLE
    ============================================================ */
-.blog-article {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 2rem 0 5rem;
+.blog-article code {
+  font-size: 0.875em;
+  background: hsl(var(--bg-secondary));
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
 }
 
 .blog-article-title {
