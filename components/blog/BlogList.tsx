@@ -39,40 +39,43 @@ export function BlogList() {
     <section className="px-6 pb-24 md:px-12 lg:px-24">
       <div className="mx-auto max-w-4xl">
 
-        {/* ── FILTRES — pill flottant sticky ── */}
-        <div className="sticky top-20 z-40 mb-16 flex justify-center">
-          <div
-            className="inline-flex items-center gap-1 rounded-full border px-2 py-1.5"
-            style={{
-              background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.85)',
-              backdropFilter: 'blur(16px)',
-              WebkitBackdropFilter: 'blur(16px)',
-              borderColor: 'hsl(var(--border-subtle))',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
-            }}
-          >
-            {categories.map((cat) => {
-              const key = cat === ALL ? 'all' : cat
-              const isActive = activeKey === key
-              const count =
-                cat === ALL
-                  ? posts.length
-                  : posts.filter((p) => p.category === cat).length
-              return (
-                <button
-                  key={key}
-                  onClick={() => handleFilter(key)}
-                  className="flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-all duration-150 whitespace-nowrap"
-                  style={{
-                    background: isActive ? 'hsl(var(--bg-inverse))' : 'transparent',
-                    color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-tertiary))',
-                  }}
-                >
-                  {cat}
-                  <span style={{ opacity: 0.5 }}>{count}</span>
-                </button>
-              )
-            })}
+        {/* ── FILTRES — pill sticky scrollable sur mobile ── */}
+        <div className="sticky top-20 z-40 mb-16">
+          {/* Wrapper scrollable : déborde sur les marges de la section pour éviter le clip */}
+          <div className="overflow-x-auto -mx-6 px-6 md:mx-0 md:px-0 md:flex md:justify-center scrollbar-hide">
+            <div
+              className="inline-flex items-center gap-1 rounded-full border px-2 py-1.5 flex-shrink-0"
+              style={{
+                background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.85)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                borderColor: 'hsl(var(--border-subtle))',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
+              }}
+            >
+              {categories.map((cat) => {
+                const key = cat === ALL ? 'all' : cat
+                const isActive = activeKey === key
+                const count =
+                  cat === ALL
+                    ? posts.length
+                    : posts.filter((p) => p.category === cat).length
+                return (
+                  <button
+                    key={key}
+                    onClick={() => handleFilter(key)}
+                    className="flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-all duration-150 whitespace-nowrap"
+                    style={{
+                      background: isActive ? 'hsl(var(--bg-inverse))' : 'transparent',
+                      color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-tertiary))',
+                    }}
+                  >
+                    {cat}
+                    <span style={{ opacity: 0.5 }}>{count}</span>
+                  </button>
+                )
+              })}
+            </div>
           </div>
         </div>
 
@@ -87,18 +90,18 @@ export function BlogList() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group flex gap-8 py-10 px-4 -mx-4 transition-colors duration-150 rounded-sm"
+              className="group flex gap-4 sm:gap-8 py-8 sm:py-10 px-4 -mx-4 transition-colors duration-150 rounded-sm"
               style={{ borderBottom: '1px solid hsl(var(--border-subtle))' }}
             >
               {/* Gauche : numéro + date + catégorie */}
-              <div className="w-32 flex-shrink-0">
+              <div className="w-24 sm:w-32 flex-shrink-0">
                 <p
-                  className="font-mono text-3xl font-bold mb-3 opacity-15"
+                  className="font-mono text-2xl sm:text-3xl font-bold mb-2 opacity-15"
                   style={{ color: 'hsl(var(--text-primary))' }}
                 >
                   {String(i + 1).padStart(2, '0')}
                 </p>
-                <p className="font-mono text-[10px] uppercase tracking-widest opacity-40 mb-3">
+                <p className="font-mono text-[10px] uppercase tracking-widest opacity-40 mb-2">
                   {post.date[lang]}
                 </p>
                 <span
@@ -115,7 +118,7 @@ export function BlogList() {
               {/* Droite : titre + description + lien */}
               <div className="flex-1 min-w-0">
                 <h2
-                  className="text-xl font-bold leading-snug mb-3 transition-opacity duration-150 group-hover:opacity-60"
+                  className="text-lg sm:text-xl font-bold leading-snug mb-3 transition-opacity duration-150 group-hover:opacity-60"
                   style={{ color: 'hsl(var(--text-primary))' }}
                 >
                   {post.title[lang]}
