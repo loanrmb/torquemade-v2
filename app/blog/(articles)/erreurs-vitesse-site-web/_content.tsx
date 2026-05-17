@@ -72,7 +72,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
         <span className="opacity-30">5 min de lecture</span>
       </div>
 
-      <h1>Les 7 erreurs qui plombent la vitesse d&apos;un site web</h1>
+      <h1 className="blog-article-title">Les 7 erreurs qui plombent la vitesse d&apos;un site web</h1>
 
       <p>Un site lent perd sur tous les fronts : Google le pénalise dans ses classements, les visiteurs le quittent avant même de l&apos;avoir vu, et les conversions chutent à chaque seconde de chargement supplémentaire. Pourtant, dans la grande majorité des cas, les causes sont identifiables et corrigeables.</p>
 
@@ -151,7 +151,7 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
         <span className="opacity-30">5 min read</span>
       </div>
 
-      <h1>The 7 Mistakes That Kill Your Website&apos;s Speed</h1>
+      <h1 className="blog-article-title">The 7 Mistakes That Kill Your Website&apos;s Speed</h1>
 
       <p>A slow site loses on every front: Google penalizes it in rankings, visitors leave before they&apos;ve even seen it, and conversions drop with every extra second of load time. Yet in the vast majority of cases, the causes are identifiable and fixable.</p>
 
