@@ -460,3 +460,12 @@ html.dark .cta-card {
 .blog-related a:hover {
   text-decoration-color: hsl(var(--text-primary));
 }
+/* ============================================================
+   CONTAINERS RESPONSIVES — s'adaptent à l'écran
+   ============================================================ */
+@layer utilities {
+  .max-w-5xl { max-width: min(90vw, 80rem);  }   /* 64rem → jusqu'à 80rem (1280px) */
+  .max-w-6xl { max-width: min(90vw, 90rem);  }   /* 72rem → jusqu'à 90rem (1440px) */
+  .max-w-7xl { max-width: min(92vw, 104rem); }   /* 80rem → jusqu'à 104rem (1664px) */
+  .max-w-2xl { max-width: min(90vw, 42rem);  }   /* nav-pill — inchangé */
+}
