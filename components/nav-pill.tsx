@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useApp, useLang } from './app-provider'
+import { useApp } from './app-provider'
 import { strings } from '@/lib/strings'
 
 export function NavPill() {
@@ -65,11 +65,11 @@ export function NavPill() {
           {/* Lang toggle */}
           <button
             onClick={toggleLang}
-            className="flex items-center gap-1 rounded-full px-2 min-720:px-2.5 py-1.5 text-xs font-semibold transition-colors duration-150 hover:bg-bg-secondary whitespace-nowrap"
+            className="flex items-center gap-1.5 rounded-full px-2 min-720:px-2.5 py-1.5 text-xs font-semibold transition-colors duration-150 hover:bg-bg-secondary whitespace-nowrap"
             style={{ color: 'hsl(var(--text-secondary))' }}
             aria-label="Toggle language"
           >
-            <span className="text-sm leading-none">{lang === 'fr' ? '🇫🇷' : '🇬🇧'}</span>
+            {lang === 'fr' ? <FrFlag /> : <GbFlag />}
             <span className="hidden min-[480px]:inline uppercase tracking-wider">{lang === 'fr' ? 'FR' : 'EN'}</span>
           </button>
 
@@ -92,6 +92,40 @@ export function NavPill() {
         </div>
       </nav>
     </header>
+  )
+}
+
+/** Drapeau France — SVG inline, marche sur tous les OS */
+function FrFlag() {
+  return (
+    <svg width="20" height="14" viewBox="0 0 20 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+      style={{ display: 'block', borderRadius: '2px', flexShrink: 0 }}>
+      <rect width="20" height="14" fill="#ED2939" />
+      <rect width="13.33" height="14" fill="#fff" />
+      <rect width="6.67" height="14" fill="#002395" />
+    </svg>
+  )
+}
+
+/** Drapeau Royaume-Uni — SVG inline, marche sur tous les OS */
+function GbFlag() {
+  return (
+    <svg width="20" height="14" viewBox="0 0 60 42" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+      style={{ display: 'block', borderRadius: '2px', flexShrink: 0 }}>
+      {/* Fond bleu */}
+      <rect width="60" height="42" fill="#012169" />
+      {/* Diagonales blanches (saltire écossais) */}
+      <path d="M0,0 L60,42 M60,0 L0,42" stroke="#fff" strokeWidth="8" />
+      {/* Diagonales rouges (croix saint-Patrick) */}
+      <path d="M0,0 L60,42" stroke="#C8102E" strokeWidth="4" />
+      <path d="M60,0 L0,42" stroke="#C8102E" strokeWidth="4" />
+      {/* Croix blanche (saint-Georges) */}
+      <rect x="24" width="12" height="42" fill="#fff" />
+      <rect y="15" width="60" height="12" fill="#fff" />
+      {/* Croix rouge (saint-Georges) */}
+      <rect x="26" width="8" height="42" fill="#C8102E" />
+      <rect y="17" width="60" height="8" fill="#C8102E" />
+    </svg>
   )
 }
 
