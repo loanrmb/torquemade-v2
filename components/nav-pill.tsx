@@ -258,7 +258,7 @@ export function NavPill() {
 
               <div
                 className="px-3 pt-4 pb-1 text-xs font-semibold uppercase tracking-wider"
-                style={{ color: 'hsl(var(--text-tertiary))' }}
+                style={{ color: 'hsl(var(--text-secondary))' }}
               >
                 {t.services}
               </div>
@@ -269,7 +269,7 @@ export function NavPill() {
                   onClick={() => setMenuOpen(false)}
                   className="rounded-lg ml-3 px-3 py-2 text-sm transition-colors duration-150"
                   style={{
-                    color: pathname === s.href ? 'hsl(var(--text-primary))' : 'hsl(var(--text-secondary))',
+                    color: pathname === s.href ? 'hsl(var(--text-primary))' : 'hsl(var(--text-primary))',
                     background: pathname === s.href ? 'hsl(var(--bg-secondary))' : 'transparent',
                   }}
                 >
