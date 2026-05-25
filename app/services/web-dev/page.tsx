@@ -43,6 +43,189 @@ export default function WebDevPage() {
           </div>
         </section>
 
+        {/* TWO TYPES OF SITES */}
+        <section className="px-5 py-20 min-720:py-24">
+          <div className="mx-auto max-w-5xl">
+            <div className="grid grid-cols-1 min-720:grid-cols-2 gap-4">
+              <div
+                className="fade-up p-8 min-720:p-10 rounded-2xl flex flex-col gap-4"
+                style={{
+                  background: 'hsl(var(--bg-primary))',
+                  border: '1px solid hsl(var(--border-subtle))',
+                }}
+              >
+                <span
+                  className="text-caption font-semibold tracking-widest uppercase"
+                  style={{ color: 'hsl(var(--text-tertiary))' }}
+                >
+                  01
+                </span>
+                <h2
+                  className="text-headline font-semibold"
+                  style={{ color: 'hsl(var(--text-primary))' }}
+                >
+                  {t.nextjsTitle}
+                </h2>
+                <p
+                  className="text-body leading-relaxed"
+                  style={{ color: 'hsl(var(--text-secondary))' }}
+                >
+                  {t.nextjsBody}
+                </p>
+                <div
+                  className="mt-2 pt-4"
+                  style={{ borderTop: '1px solid hsl(var(--border-subtle))' }}
+                >
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: 'hsl(var(--text-tertiary))' }}
+                  >
+                    {t.nextjsFor}
+                  </p>
+                </div>
+              </div>
+
+              <div
+                className="fade-up fade-up-d1 p-8 min-720:p-10 rounded-2xl flex flex-col gap-4"
+                style={{
+                  background: 'hsl(var(--bg-primary))',
+                  border: '1px solid hsl(var(--border-subtle))',
+                }}
+              >
+                <span
+                  className="text-caption font-semibold tracking-widest uppercase"
+                  style={{ color: 'hsl(var(--text-tertiary))' }}
+                >
+                  02
+                </span>
+                <h2
+                  className="text-headline font-semibold"
+                  style={{ color: 'hsl(var(--text-primary))' }}
+                >
+                  {t.shopifyTitle}
+                </h2>
+                <p
+                  className="text-body leading-relaxed"
+                  style={{ color: 'hsl(var(--text-secondary))' }}
+                >
+                  {t.shopifyBody}
+                </p>
+                <div
+                  className="mt-2 pt-4"
+                  style={{ borderTop: '1px solid hsl(var(--border-subtle))' }}
+                >
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: 'hsl(var(--text-tertiary))' }}
+                  >
+                    {t.shopifyFor}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* DIFFERENCE TABLE */}
+        <section
+          className="px-5 py-20 min-720:py-24"
+          style={{ background: 'hsl(var(--bg-secondary))' }}
+        >
+          <div className="mx-auto max-w-5xl">
+            <h2
+              className="fade-up text-title-2 font-semibold tracking-tight mb-10 text-center"
+              style={{ color: 'hsl(var(--text-primary))' }}
+            >
+              {t.differenceTitle}
+            </h2>
+
+            <div
+              className="fade-up overflow-hidden rounded-2xl"
+              style={{
+                background: 'hsl(var(--bg-primary))',
+                border: '1px solid hsl(var(--border-subtle))',
+              }}
+            >
+              <div
+                className="hidden min-720:grid grid-cols-[1.2fr_1.4fr_1.4fr]"
+                style={{ borderBottom: '1px solid hsl(var(--border-subtle))' }}
+              >
+                <div
+                  className="px-6 py-4 text-caption font-semibold tracking-widest uppercase"
+                  style={{ color: 'hsl(var(--text-tertiary))' }}
+                >
+                  {t.differenceHeaderAspect}
+                </div>
+                <div
+                  className="px-6 py-4 text-caption font-semibold tracking-widest uppercase"
+                  style={{
+                    color: 'hsl(var(--text-tertiary))',
+                    borderLeft: '1px solid hsl(var(--border-subtle))',
+                  }}
+                >
+                  {t.differenceHeaderNextjs}
+                </div>
+                <div
+                  className="px-6 py-4 text-caption font-semibold tracking-widest uppercase"
+                  style={{
+                    color: 'hsl(var(--text-tertiary))',
+                    borderLeft: '1px solid hsl(var(--border-subtle))',
+                  }}
+                >
+                  {t.differenceHeaderShopify}
+                </div>
+              </div>
+
+              {t.differenceItems.map((row, i) => (
+                <div
+                  key={i}
+                  className="grid grid-cols-1 min-720:grid-cols-[1.2fr_1.4fr_1.4fr]"
+                  style={{
+                    borderTop: i > 0 ? '1px solid hsl(var(--border-subtle))' : 'none',
+                  }}
+                >
+                  <div
+                    className="px-6 py-4 text-sm font-semibold"
+                    style={{ color: 'hsl(var(--text-primary))' }}
+                  >
+                    {row.aspect}
+                  </div>
+                  <div
+                    className="px-6 py-4 text-sm"
+                    style={{
+                      color: 'hsl(var(--text-secondary))',
+                      borderLeft: '1px solid hsl(var(--border-subtle))',
+                    }}
+                  >
+                    <span
+                      className="block min-720:hidden text-caption font-semibold tracking-widest uppercase mb-1"
+                      style={{ color: 'hsl(var(--text-tertiary))' }}
+                    >
+                      {t.differenceHeaderNextjs}
+                    </span>
+                    {row.nextjs}
+                  </div>
+                  <div
+                    className="px-6 py-4 text-sm"
+                    style={{
+                      color: 'hsl(var(--text-secondary))',
+                      borderLeft: '1px solid hsl(var(--border-subtle))',
+                    }}
+                  >
+                    <span
+                      className="block min-720:hidden text-caption font-semibold tracking-widest uppercase mb-1"
+                      style={{ color: 'hsl(var(--text-tertiary))' }}
+                    >
+                      {t.differenceHeaderShopify}
+                    </span>
+                    {row.shopify}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* DELIVERY */}
         <section className="px-5 py-20 min-720:py-24">
           <div className="mx-auto max-w-4xl">
@@ -83,44 +266,8 @@ export default function WebDevPage() {
           </div>
         </section>
 
-        {/* FOR + STAT */}
-        <section
-          className="px-5 py-20 min-720:py-24"
-          style={{ background: 'hsl(var(--bg-secondary))' }}
-        >
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="fade-up section-label">{t.forTitle}</p>
-            <p
-              className="fade-up fade-up-d1 text-title-2 font-semibold tracking-tight mb-12"
-              style={{ color: 'hsl(var(--text-primary))' }}
-            >
-              {t.for}
-            </p>
-            <div
-              className="fade-up fade-up-d2 inline-flex items-center gap-3 px-6 py-4 rounded-2xl"
-              style={{
-                background: 'hsl(var(--bg-primary))',
-                border: '1px solid hsl(var(--border-subtle))',
-              }}
-            >
-              <span
-                className="text-caption font-semibold uppercase tracking-widest"
-                style={{ color: 'hsl(var(--text-tertiary))' }}
-              >
-                {t.statLabel}
-              </span>
-              <span
-                className="text-base font-semibold"
-                style={{ color: 'hsl(var(--text-primary))' }}
-              >
-                {t.stat}
-              </span>
-            </div>
-          </div>
-        </section>
-
         {/* CTA */}
-        <section className="px-5 py-20 min-720:py-24">
+        <section className="px-5 pb-20 min-720:pb-24">
           <div className="mx-auto max-w-5xl">
             <div className="cta-card p-10 min-720:p-16 text-center fade-up">
               <h2 className="text-title-2 font-semibold tracking-tight mb-4" style={{ color: '#ffffff' }}>
