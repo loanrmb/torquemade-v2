@@ -43,6 +43,46 @@ export default function CrmPage() {
           </div>
         </section>
 
+        {/* TARGETS */}
+        <section
+          className="px-5 py-20 min-720:py-24"
+          style={{ background: 'hsl(var(--bg-secondary))' }}
+        >
+          <div className="mx-auto max-w-5xl">
+            <h2
+              className="fade-up text-title-2 font-semibold tracking-tight mb-12 text-center"
+              style={{ color: 'hsl(var(--text-primary))' }}
+            >
+              {t.targetsTitle}
+            </h2>
+            <div className="grid grid-cols-1 gap-4 min-720:grid-cols-2 min-1024:grid-cols-3">
+              {t.targets.map((target, i) => (
+                <div
+                  key={i}
+                  className={`fade-up fade-up-d${Math.min(i + 1, 5)} p-6 min-720:p-7 rounded-2xl flex flex-col gap-3`}
+                  style={{
+                    background: 'hsl(var(--bg-primary))',
+                    border: '1px solid hsl(var(--border-subtle))',
+                  }}
+                >
+                  <h3
+                    className="text-base font-semibold"
+                    style={{ color: 'hsl(var(--text-primary))' }}
+                  >
+                    {target.title}
+                  </h3>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: 'hsl(var(--text-secondary))' }}
+                  >
+                    {target.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* DELIVERY */}
         <section className="px-5 py-20 min-720:py-24">
           <div className="mx-auto max-w-4xl">

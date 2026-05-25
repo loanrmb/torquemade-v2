@@ -137,7 +137,7 @@ export const strings = {
       intro: 'Tous les sites ne se ressemblent pas. Selon votre activité, vos objectifs et votre façon de vendre, nous choisissons la technologie la plus adaptée — et nous vous expliquons pourquoi.',
       nextjsTitle: 'Site Next.js sur mesure',
       nextjsBody: 'Pour les entreprises de services, studios, agences et marques qui ont besoin d\'un site entièrement personnalisé. Aucune contrainte de plateforme, aucun template — tout est construit de zéro autour de votre identité et de vos objectifs. Performance maximale, flexibilité totale, intégrations sur mesure (CRM, API, outils métier).',
-      nextjsFor: 'Idéal pour : agences, studios, SaaS, entreprises B2B, portfolios avancés, sites avec logique métier complexe.',
+      nextjsFor: 'Idéal pour tout type de projet : entreprise de BTP, cabinet, restaurant, artisan, agence, studio, SaaS, marque — que vous ayez besoin d\'un site vitrine, d\'un site qui génère des leads, ou d\'un outil plus complexe avec des intégrations sur mesure.',
       shopifyTitle: 'Site Shopify e-commerce',
       shopifyBody: 'Pour les commerces qui vendent en ligne. Shopify est la plateforme e-commerce la plus aboutie du marché : gestion produits intuitive, checkout optimisé, paiements intégrés, fiabilité éprouvée. Nous construisons votre boutique de A à Z — design sur mesure, migration catalogue, configuration complète.',
       shopifyFor: 'Idéal pour : boutiques en ligne, magasins avec vente physique et digitale, marques produits, revendeurs.',
@@ -150,7 +150,7 @@ export const strings = {
         { aspect: 'Gestion produits', nextjs: 'Manuelle ou via CMS/API', shopify: 'Interface dédiée, native et intuitive' },
         { aspect: 'Checkout & paiements', nextjs: 'Intégration sur mesure', shopify: 'Intégré, optimisé, prêt à l\'emploi' },
         { aspect: 'Flexibilité design', nextjs: 'Totale — aucune contrainte', shopify: 'Élevée dans le cadre Shopify' },
-        { aspect: 'Intégrations métier', nextjs: 'Illimitées (CRM, ERP, API...)', shopify: 'Via apps ou connecteurs custom' },
+        { aspect: 'Connexion à vos outils', nextjs: 'Illimitée — votre site peut communiquer avec n\'importe quel logiciel : CRM, ERP, outil de facturation, base de données...', shopify: 'Via les apps Shopify ou des connecteurs développés sur mesure' },
       ],
       deliveryTitle: 'Dans tous les cas, on livre',
       delivery: [
@@ -169,6 +169,33 @@ export const strings = {
       eyebrow: 'Services',
       hero: 'Des outils pensés pour votre métier',
       intro: 'Les logiciels génériques ne correspondent jamais parfaitement à votre façon de travailler. Nous construisons des CRM et outils de gestion sur mesure, adaptés à vos processus.',
+      targetsTitle: 'Qui en a besoin ?',
+      targets: [
+        {
+          title: 'Entreprises de location',
+          desc: 'Véhicules, matériel, équipements — gérez vos disponibilités, réservations et clients en un seul endroit.',
+        },
+        {
+          title: 'Chauffeurs privés & VTC',
+          desc: 'Courses, clients récurrents, facturation — un outil pensé pour votre activité mobile.',
+        },
+        {
+          title: 'Salles de sport & studios',
+          desc: 'Abonnements, présences, cours collectifs — pilotez votre activité sans jongler entre dix outils.',
+        },
+        {
+          title: 'Prestataires de services',
+          desc: 'Agences, artisans, consultants — suivez vos prospects, devis, projets et relances depuis une seule interface.',
+        },
+        {
+          title: 'Professions médicales & paramédicales',
+          desc: 'Rendez-vous, patients, historique — une solution confidentielle et adaptée à votre pratique.',
+        },
+        {
+          title: 'Tout métier avec des clients récurrents',
+          desc: 'Si vous avez des clients, un historique à suivre et des actions à automatiser — un CRM sur mesure vous fait gagner du temps chaque jour.',
+        },
+      ],
       deliveryTitle: 'Ce qu\'on livre',
       delivery: [
         'CRM sur mesure adapté à vos processus exacts',
@@ -395,7 +422,7 @@ export const strings = {
       intro: 'Not all websites are the same. Depending on your business, your goals and how you sell, we choose the right technology — and explain why.',
       nextjsTitle: 'Custom Next.js website',
       nextjsBody: 'For service businesses, studios, agencies and brands that need a fully custom site. No platform constraints, no templates — everything built from scratch around your identity and goals. Maximum performance, total flexibility, custom integrations (CRM, API, business tools).',
-      nextjsFor: 'Ideal for: agencies, studios, SaaS, B2B companies, advanced portfolios, sites with complex business logic.',
+      nextjsFor: 'Ideal for any type of project: construction company, practice, restaurant, craftsman, agency, studio, SaaS, brand — whether you need a showcase site, a lead generation site, or a more complex tool with custom integrations.',
       shopifyTitle: 'Shopify e-commerce website',
       shopifyBody: 'For businesses that sell online. Shopify is the most complete e-commerce platform available: intuitive product management, optimized checkout, integrated payments, proven reliability. We build your store from A to Z — custom design, catalogue migration, full configuration.',
       shopifyFor: 'Ideal for: online stores, retailers with physical and digital sales, product brands, resellers.',
@@ -408,7 +435,7 @@ export const strings = {
         { aspect: 'Product management', nextjs: 'Manual or via CMS/API', shopify: 'Dedicated, native, intuitive interface' },
         { aspect: 'Checkout & payments', nextjs: 'Custom integration', shopify: 'Built-in, optimized, ready to use' },
         { aspect: 'Design flexibility', nextjs: 'Total — no constraints', shopify: 'High within the Shopify framework' },
-        { aspect: 'Business integrations', nextjs: 'Unlimited (CRM, ERP, API...)', shopify: 'Via apps or custom connectors' },
+        { aspect: 'Connection to your tools', nextjs: 'Unlimited — your site can communicate with any software: CRM, ERP, invoicing tool, database...', shopify: 'Via Shopify apps or custom-built connectors' },
       ],
       deliveryTitle: 'In every case, we deliver',
       delivery: [
@@ -427,6 +454,33 @@ export const strings = {
       eyebrow: 'Services',
       hero: 'Software built around your business',
       intro: 'Generic software never fits perfectly. We build custom CRMs and management tools tailored to your exact processes.',
+      targetsTitle: 'Who needs it?',
+      targets: [
+        {
+          title: 'Rental businesses',
+          desc: 'Vehicles, equipment, gear — manage your availability, bookings and clients in one place.',
+        },
+        {
+          title: 'Private drivers & ride services',
+          desc: 'Rides, recurring clients, invoicing — a tool built for your mobile business.',
+        },
+        {
+          title: 'Gyms & fitness studios',
+          desc: 'Memberships, attendance, group classes — run your business without juggling ten different tools.',
+        },
+        {
+          title: 'Service providers',
+          desc: 'Agencies, tradespeople, consultants — track your leads, quotes, projects and follow-ups from one interface.',
+        },
+        {
+          title: 'Medical & paramedical practices',
+          desc: 'Appointments, patients, history — a confidential solution adapted to your practice.',
+        },
+        {
+          title: 'Any business with recurring clients',
+          desc: 'If you have clients, history to track and actions to automate — a custom CRM saves you time every day.',
+        },
+      ],
       deliveryTitle: 'What we deliver',
       delivery: [
         'CRM tailored to your exact processes',
