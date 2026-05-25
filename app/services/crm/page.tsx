@@ -83,44 +83,8 @@ export default function CrmPage() {
           </div>
         </section>
 
-        {/* FOR + STAT */}
-        <section
-          className="px-5 py-20 min-720:py-24"
-          style={{ background: 'hsl(var(--bg-secondary))' }}
-        >
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="fade-up section-label">{t.forTitle}</p>
-            <p
-              className="fade-up fade-up-d1 text-title-2 font-semibold tracking-tight mb-12"
-              style={{ color: 'hsl(var(--text-primary))' }}
-            >
-              {t.for}
-            </p>
-            <div
-              className="fade-up fade-up-d2 inline-flex items-center gap-3 px-6 py-4 rounded-2xl"
-              style={{
-                background: 'hsl(var(--bg-primary))',
-                border: '1px solid hsl(var(--border-subtle))',
-              }}
-            >
-              <span
-                className="text-caption font-semibold uppercase tracking-widest"
-                style={{ color: 'hsl(var(--text-tertiary))' }}
-              >
-                {t.statLabel}
-              </span>
-              <span
-                className="text-base font-semibold"
-                style={{ color: 'hsl(var(--text-primary))' }}
-              >
-                {t.stat}
-              </span>
-            </div>
-          </div>
-        </section>
-
         {/* CTA */}
-        <section className="px-5 py-20 min-720:py-24">
+        <section className="px-5 pb-20 min-720:pb-24">
           <div className="mx-auto max-w-5xl">
             <div className="cta-card p-10 min-720:p-16 text-center fade-up">
               <h2 className="text-title-2 font-semibold tracking-tight mb-4" style={{ color: '#ffffff' }}>
