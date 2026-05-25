@@ -8,7 +8,6 @@ import { useLang } from '@/components/app-provider'
 import { strings } from '@/lib/strings'
 import { featuredProjects } from '@/lib/projects'
 import { useScrollReveal } from '@/lib/use-scroll-reveal'
-import { RotatingHero } from '@/components/rotating-text'
 
 export default function HomePage() {
   const lang = useLang()
@@ -32,8 +31,19 @@ export default function HomePage() {
               {t.hero.headline1}
             </h1>
 
-            <div className="fade-up fade-up-d1 mt-6">
-              <RotatingHero lang={lang} />
+            <div className="fade-up fade-up-d1 mt-6 text-xl min-720:text-2xl leading-snug">
+              <span
+                className="block"
+                style={{ color: 'hsl(var(--text-secondary))' }}
+              >
+                {t.hero.tagline}
+              </span>
+              <span
+                className="block font-bold"
+                style={{ color: 'hsl(var(--text-primary))' }}
+              >
+                {t.hero.tagline2}
+              </span>
             </div>
 
             <p
@@ -218,6 +228,153 @@ export default function HomePage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── HOME ERP ── */}
+        <section className="px-5 py-20 min-720:py-24">
+          <div className="mx-auto max-w-5xl">
+            <h2
+              className="fade-up text-title-2 font-semibold tracking-tight text-center mb-4"
+              style={{ color: 'hsl(var(--text-primary))' }}
+            >
+              {t.home.erp.title}
+            </h2>
+            <p
+              className="fade-up fade-up-d1 text-body-lg text-center max-w-2xl mx-auto mb-14"
+              style={{ color: 'hsl(var(--text-secondary))' }}
+            >
+              {t.home.erp.subtitle}
+            </p>
+
+            {/* Flow diagram — desktop (horizontal) */}
+            <div className="fade-up fade-up-d2 hidden min-720:flex items-stretch gap-4 max-w-4xl mx-auto mb-12">
+              <div className="flex-1 flex items-center">
+                <div className="flow-box w-full">{t.home.erp.erpBox}</div>
+              </div>
+              <div className="flex items-center flex-1">
+                <div className="flow-track flow-track-h">
+                  <span className="flow-dot flow-dot-h" />
+                </div>
+              </div>
+              <div className="flex-1 flex flex-col items-center">
+                <div className="flow-box w-full">{t.home.erp.syncBox}</div>
+                <div
+                  className="flex justify-center gap-2 mt-2 text-xs"
+                  style={{ color: 'hsl(var(--text-tertiary))' }}
+                >
+                  <span>{t.home.erp.syncItem1}</span>
+                  <span>·</span>
+                  <span>{t.home.erp.syncItem2}</span>
+                  <span>·</span>
+                  <span>{t.home.erp.syncItem3}</span>
+                </div>
+              </div>
+              <div className="flex items-center flex-1">
+                <div className="flow-track flow-track-h">
+                  <span className="flow-dot flow-dot-h" />
+                </div>
+              </div>
+              <div className="flex-1 flex items-center">
+                <div className="flow-box w-full">{t.home.erp.siteBox}</div>
+              </div>
+            </div>
+
+            {/* Flow diagram — mobile (vertical) */}
+            <div className="fade-up fade-up-d2 flex flex-col min-720:hidden items-stretch max-w-xs mx-auto mb-12">
+              <div className="flow-box">{t.home.erp.erpBox}</div>
+              <div className="my-3 mx-auto">
+                <div className="flow-track flow-track-v">
+                  <span className="flow-dot flow-dot-v" />
+                </div>
+              </div>
+              <div>
+                <div className="flow-box">{t.home.erp.syncBox}</div>
+                <div
+                  className="flex justify-center gap-2 mt-2 text-xs"
+                  style={{ color: 'hsl(var(--text-tertiary))' }}
+                >
+                  <span>{t.home.erp.syncItem1}</span>
+                  <span>·</span>
+                  <span>{t.home.erp.syncItem2}</span>
+                  <span>·</span>
+                  <span>{t.home.erp.syncItem3}</span>
+                </div>
+              </div>
+              <div className="my-3 mx-auto">
+                <div className="flow-track flow-track-v">
+                  <span className="flow-dot flow-dot-v" />
+                </div>
+              </div>
+              <div className="flow-box">{t.home.erp.siteBox}</div>
+            </div>
+
+            {/* Comparison table */}
+            <div
+              className="fade-up fade-up-d3 grid grid-cols-1 min-720:grid-cols-2 gap-px rounded-2xl overflow-hidden"
+              style={{
+                background: 'hsl(var(--border-subtle))',
+                border: '1px solid hsl(var(--border-subtle))',
+              }}
+            >
+              <div
+                className="p-6 min-720:p-8"
+                style={{ background: 'hsl(var(--bg-secondary))' }}
+              >
+                <h3
+                  className="text-base font-semibold mb-5"
+                  style={{ color: 'hsl(var(--text-secondary))' }}
+                >
+                  {t.home.erp.comparisonWithoutHeader}
+                </h3>
+                <ul className="flex flex-col gap-3">
+                  {t.home.erp.comparisonRows.map((row, i) => (
+                    <li
+                      key={i}
+                      className="text-sm line-through"
+                      style={{ color: 'hsl(var(--text-tertiary))' }}
+                    >
+                      {row[0]}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div
+                className="p-6 min-720:p-8"
+                style={{ background: 'hsl(var(--bg-primary))' }}
+              >
+                <h3
+                  className="text-base font-semibold mb-5"
+                  style={{ color: 'hsl(var(--text-primary))' }}
+                >
+                  {t.home.erp.comparisonWithHeader}
+                </h3>
+                <ul className="flex flex-col gap-3">
+                  {t.home.erp.comparisonRows.map((row, i) => (
+                    <li
+                      key={i}
+                      className="text-sm flex items-start gap-2"
+                      style={{ color: 'hsl(var(--text-primary))' }}
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="font-bold flex-shrink-0 text-emerald-600"
+                      >
+                        ✓
+                      </span>
+                      <span>{row[1]}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="fade-up fade-up-d4 mt-12 text-center">
+              <Link href="/services/erp-ecommerce" className="btn-outline">
+                {t.home.erp.ctaButton}
+              </Link>
             </div>
           </div>
         </section>

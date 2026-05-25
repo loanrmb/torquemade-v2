@@ -469,3 +469,71 @@ html.dark .cta-card {
   .max-w-7xl { max-width: min(92vw, 104rem); }   /* 80rem → jusqu'à 104rem (1664px) */
   .max-w-2xl { max-width: min(90vw, 42rem);  }   /* nav-pill — inchangé */
 }
+
+/* ============================================================
+   HOME ERP — Flow diagram + comparison
+   ============================================================ */
+.flow-box {
+  padding: 1rem 1.25rem;
+  border: 1px solid hsl(var(--border-subtle));
+  border-radius: 14px;
+  background: hsl(var(--bg-primary));
+  color: hsl(var(--text-primary));
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1.25;
+}
+
+.flow-track {
+  position: relative;
+  background: hsl(var(--border-subtle));
+  flex-shrink: 0;
+}
+.flow-track-h {
+  height: 1px;
+  flex: 1 1 auto;
+  min-width: 32px;
+}
+.flow-track-v {
+  width: 1px;
+  height: 28px;
+}
+
+.flow-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: hsl(var(--text-primary));
+}
+.flow-dot-h {
+  top: 50%;
+  transform: translateY(-50%);
+  animation: flow-data-h 3s ease-in-out infinite;
+}
+.flow-dot-v {
+  left: 50%;
+  transform: translateX(-50%);
+  animation: flow-data-v 3s ease-in-out infinite;
+}
+
+@keyframes flow-data-h {
+  0%   { left: -4px;                opacity: 0; }
+  15%  {                            opacity: 1; }
+  85%  {                            opacity: 1; }
+  100% { left: calc(100% + 4px);    opacity: 0; }
+}
+@keyframes flow-data-v {
+  0%   { top: -4px;                 opacity: 0; }
+  15%  {                            opacity: 1; }
+  85%  {                            opacity: 1; }
+  100% { top: calc(100% + 4px);     opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-dot-h, .flow-dot-v {
+    animation: none;
+    opacity: 0.5;
+  }
+}
