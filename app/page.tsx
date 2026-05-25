@@ -19,14 +19,12 @@ export default function HomePage() {
     <>
       <NavPill />
 
-      {/* main: rounded bottom + overflow clip creates the "peel" footer reveal */}
       <main className="relative z-10 overflow-clip rounded-b-32 bg-bg-primary">
 
         {/* ── HERO ── */}
         <section className="grid place-items-center px-5 pt-28 pb-16 min-720:pt-36 min-720:pb-20 min-1280:pt-44 min-1280:pb-24">
           <div className="flex flex-col items-center text-center max-w-5xl">
 
-            {/* Headline */}
             <h1
               className="fade-up text-title-1 min-720:text-spotlight min-1280:text-showcase font-semibold tracking-tight"
               style={{ color: 'hsl(var(--text-primary))' }}
@@ -34,12 +32,10 @@ export default function HomePage() {
               {t.hero.headline1}
             </h1>
 
-            {/* Rotating sub-headline */}
             <div className="fade-up fade-up-d1 mt-6">
               <RotatingHero lang={lang} />
             </div>
 
-            {/* Smaller secondary line */}
             <p
               className="fade-up fade-up-d1 mt-3 text-base"
               style={{ color: 'hsl(var(--text-tertiary))' }}
@@ -47,7 +43,6 @@ export default function HomePage() {
               {t.hero.headline2}
             </p>
 
-            {/* Stats strip */}
             <div
               className="fade-up fade-up-d3 mt-14 grid grid-cols-3 gap-8 pt-10 w-full"
               style={{ borderTop: '1px solid hsl(var(--border-subtle))' }}
@@ -92,37 +87,73 @@ export default function HomePage() {
             <div className="grid grid-cols-1 gap-px min-720:grid-cols-2"
               style={{ border: '1px solid hsl(var(--border-subtle))', borderRadius: '16px', overflow: 'hidden' }}
             >
-              {t.services.items.map((item, i) => (
-                <div
-                  key={item.num}
-                  className={`fade-up fade-up-d${i + 1} p-8 flex flex-col gap-3`}
-                  style={{
-                    background: 'hsl(var(--bg-primary))',
-                    borderRight: i % 2 === 0 ? '1px solid hsl(var(--border-subtle))' : 'none',
-                    borderBottom: i < 2 ? '1px solid hsl(var(--border-subtle))' : 'none',
-                  }}
-                >
-                  <span
-                    className="text-caption font-semibold tracking-widest uppercase"
-                    style={{ color: 'hsl(var(--text-tertiary))' }}
+              {t.services.items.map((item, i) => {
+                const cardStyle = {
+                  background: 'hsl(var(--bg-primary))',
+                  borderRight: i % 2 === 0 ? '1px solid hsl(var(--border-subtle))' : 'none',
+                  borderBottom: i < 2 ? '1px solid hsl(var(--border-subtle))' : 'none',
+                }
+                const inner = (
+                  <>
+                    <span
+                      className="text-caption font-semibold tracking-widest uppercase"
+                      style={{ color: 'hsl(var(--text-tertiary))' }}
+                    >
+                      {item.num}
+                    </span>
+                    <h3
+                      className="text-headline font-semibold"
+                      style={{ color: 'hsl(var(--text-primary))' }}
+                    >
+                      {item.title}
+                    </h3>
+                    <p
+                      className="text-body"
+                      style={{ color: 'hsl(var(--text-secondary))' }}
+                    >
+                      {item.desc}
+                    </p>
+                  </>
+                )
+                const href = 'href' in item ? item.href : undefined
+                return href ? (
+                  <Link
+                    key={item.num}
+                    href={href}
+                    className={`fade-up fade-up-d${i + 1} p-8 flex flex-col gap-3 transition-opacity duration-150 hover:opacity-80`}
+                    style={cardStyle}
                   >
-                    {item.num}
-                  </span>
-                  <h3
-                    className="text-headline font-semibold"
-                    style={{ color: 'hsl(var(--text-primary))' }}
+                    {inner}
+                  </Link>
+                ) : (
+                  <div
+                    key={item.num}
+                    className={`fade-up fade-up-d${i + 1} p-8 flex flex-col gap-3`}
+                    style={cardStyle}
                   >
-                    {item.title}
-                  </h3>
-                  <p
-                    className="text-body"
-                    style={{ color: 'hsl(var(--text-secondary))' }}
-                  >
-                    {item.desc}
-                  </p>
-                </div>
-              ))}
+                    {inner}
+                  </div>
+                )
+              })}
             </div>
+          </div>
+        </section>
+
+        {/* ── PARTNER ── */}
+        <section className="px-5 pb-20 min-720:pb-24">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2
+              className="fade-up text-title-2 font-semibold tracking-tight mb-5"
+              style={{ color: 'hsl(var(--text-primary))' }}
+            >
+              {t.home.partnerTitle}
+            </h2>
+            <p
+              className="fade-up fade-up-d1 text-body-lg"
+              style={{ color: 'hsl(var(--text-secondary))' }}
+            >
+              {t.home.partnerBody}
+            </p>
           </div>
         </section>
 
@@ -151,7 +182,6 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Featured cards grid */}
             <div className="grid grid-cols-1 gap-4 min-720:grid-cols-2">
               {featuredProjects.slice(0, 4).map((project, i) => (
                 <div
@@ -278,15 +308,6 @@ export default function HomePage() {
 
       <Footer />
     </>
-  )
-}
-
-function PulseIcon() {
-  return (
-    <span
-      className="inline-block w-1.5 h-1.5 rounded-full animate-pulse"
-      style={{ background: 'currentColor' }}
-    />
   )
 }
 
