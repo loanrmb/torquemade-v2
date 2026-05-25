@@ -69,100 +69,58 @@ export default function ErpEcommercePage() {
           </div>
         </section>
 
-        {/* TWO OPTIONS */}
+        {/* OPTION A */}
         <section
           className="px-5 py-20 min-720:py-24"
           style={{ background: 'hsl(var(--bg-secondary))' }}
         >
-          <div className="mx-auto max-w-5xl">
-            <h2
-              className="fade-up text-title-2 font-semibold tracking-tight mb-12 text-center"
-              style={{ color: 'hsl(var(--text-primary))' }}
-            >
-              {t.twoOptionsTitle}
-            </h2>
-            <div className="grid grid-cols-1 min-720:grid-cols-2 gap-4">
-              <div
-                className="fade-up p-8 min-720:p-10 rounded-2xl flex flex-col gap-4"
-                style={{
-                  background: 'hsl(var(--bg-primary))',
-                  border: '1px solid hsl(var(--border-subtle))',
-                }}
-              >
-                <span
-                  className="text-caption font-semibold tracking-widest uppercase"
-                  style={{ color: 'hsl(var(--text-tertiary))' }}
-                >
-                  01
-                </span>
-                <h3
-                  className="text-headline font-semibold"
-                  style={{ color: 'hsl(var(--text-primary))' }}
-                >
-                  {t.option1Title}
-                </h3>
-                <p
-                  className="text-body leading-relaxed"
-                  style={{ color: 'hsl(var(--text-secondary))' }}
-                >
-                  {t.option1Body}
-                </p>
-              </div>
-              <div
-                className="fade-up fade-up-d1 p-8 min-720:p-10 rounded-2xl flex flex-col gap-4"
-                style={{
-                  background: 'hsl(var(--bg-primary))',
-                  border: '1px solid hsl(var(--border-subtle))',
-                }}
-              >
-                <span
-                  className="text-caption font-semibold tracking-widest uppercase"
-                  style={{ color: 'hsl(var(--text-tertiary))' }}
-                >
-                  02
-                </span>
-                <h3
-                  className="text-headline font-semibold"
-                  style={{ color: 'hsl(var(--text-primary))' }}
-                >
-                  {t.option2Title}
-                </h3>
-                <p
-                  className="text-body leading-relaxed"
-                  style={{ color: 'hsl(var(--text-secondary))' }}
-                >
-                  {t.option2Body}
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* DELIVERY */}
-        <section className="px-5 py-20 min-720:py-24">
           <div className="mx-auto max-w-4xl">
-            <h2
-              className="fade-up text-title-2 font-semibold tracking-tight mb-10 text-center"
-              style={{ color: 'hsl(var(--text-primary))' }}
-            >
-              {t.deliveryTitle}
-            </h2>
+            <div className="fade-up flex flex-col items-start mb-10">
+              <span
+                className="inline-flex items-center px-3 py-1 rounded-full text-caption font-semibold tracking-widest uppercase mb-5"
+                style={{
+                  background: 'hsl(var(--bg-primary))',
+                  color: 'hsl(var(--text-primary))',
+                  border: '1px solid hsl(var(--border-subtle))',
+                }}
+              >
+                {t.option1Badge}
+              </span>
+              <h2
+                className="text-title-2 font-semibold tracking-tight mb-3"
+                style={{ color: 'hsl(var(--text-primary))' }}
+              >
+                {t.option1Title}
+              </h2>
+              <p
+                className="text-headline font-medium mb-6"
+                style={{ color: 'hsl(var(--text-secondary))' }}
+              >
+                {t.option1Subtitle}
+              </p>
+              <p
+                className="text-body leading-relaxed"
+                style={{ color: 'hsl(var(--text-secondary))' }}
+              >
+                {t.option1Body}
+              </p>
+            </div>
             <ul
-              className="grid grid-cols-1 min-720:grid-cols-2"
+              className="fade-up fade-up-d1 grid grid-cols-1 min-720:grid-cols-2"
               style={{
+                background: 'hsl(var(--bg-primary))',
                 border: '1px solid hsl(var(--border-subtle))',
                 borderRadius: '16px',
                 overflow: 'hidden',
               }}
             >
-              {t.delivery.map((item, i) => (
+              {t.option1Delivery.map((item, i) => (
                 <li
                   key={i}
-                  className="fade-up flex items-start gap-3 p-6"
+                  className="flex items-start gap-3 p-6"
                   style={{
-                    background: 'hsl(var(--bg-primary))',
-                    borderRight: i % 2 === 0 && i < t.delivery.length - 1 ? '1px solid hsl(var(--border-subtle))' : 'none',
-                    borderBottom: i < t.delivery.length - (t.delivery.length % 2 === 0 ? 2 : 1) ? '1px solid hsl(var(--border-subtle))' : 'none',
+                    borderRight: i % 2 === 0 && i < t.option1Delivery.length - 1 ? '1px solid hsl(var(--border-subtle))' : 'none',
+                    borderBottom: i < t.option1Delivery.length - (t.option1Delivery.length % 2 === 0 ? 2 : 1) ? '1px solid hsl(var(--border-subtle))' : 'none',
                   }}
                 >
                   <CheckIcon />
@@ -178,44 +136,72 @@ export default function ErpEcommercePage() {
           </div>
         </section>
 
-        {/* FOR + STAT */}
-        <section
-          className="px-5 py-20 min-720:py-24"
-          style={{ background: 'hsl(var(--bg-secondary))' }}
-        >
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="fade-up section-label">{t.forTitle}</p>
-            <p
-              className="fade-up fade-up-d1 text-title-2 font-semibold tracking-tight mb-12"
-              style={{ color: 'hsl(var(--text-primary))' }}
-            >
-              {t.for}
-            </p>
-            <div
-              className="fade-up fade-up-d2 inline-flex items-center gap-3 px-6 py-4 rounded-2xl"
+        {/* OPTION B */}
+        <section className="px-5 py-20 min-720:py-24">
+          <div className="mx-auto max-w-4xl">
+            <div className="fade-up flex flex-col items-start mb-10">
+              <span
+                className="inline-flex items-center px-3 py-1 rounded-full text-caption font-semibold tracking-widest uppercase mb-5"
+                style={{
+                  background: 'hsl(var(--bg-secondary))',
+                  color: 'hsl(var(--text-primary))',
+                  border: '1px solid hsl(var(--border-subtle))',
+                }}
+              >
+                {t.option2Badge}
+              </span>
+              <h2
+                className="text-title-2 font-semibold tracking-tight mb-3"
+                style={{ color: 'hsl(var(--text-primary))' }}
+              >
+                {t.option2Title}
+              </h2>
+              <p
+                className="text-headline font-medium mb-6"
+                style={{ color: 'hsl(var(--text-secondary))' }}
+              >
+                {t.option2Subtitle}
+              </p>
+              <p
+                className="text-body leading-relaxed"
+                style={{ color: 'hsl(var(--text-secondary))' }}
+              >
+                {t.option2Body}
+              </p>
+            </div>
+            <ul
+              className="fade-up fade-up-d1 grid grid-cols-1 min-720:grid-cols-2"
               style={{
                 background: 'hsl(var(--bg-primary))',
                 border: '1px solid hsl(var(--border-subtle))',
+                borderRadius: '16px',
+                overflow: 'hidden',
               }}
             >
-              <span
-                className="text-caption font-semibold uppercase tracking-widest"
-                style={{ color: 'hsl(var(--text-tertiary))' }}
-              >
-                {t.statLabel}
-              </span>
-              <span
-                className="text-base font-semibold"
-                style={{ color: 'hsl(var(--text-primary))' }}
-              >
-                {t.stat}
-              </span>
-            </div>
+              {t.option2Delivery.map((item, i) => (
+                <li
+                  key={i}
+                  className="flex items-start gap-3 p-6"
+                  style={{
+                    borderRight: i % 2 === 0 && i < t.option2Delivery.length - 1 ? '1px solid hsl(var(--border-subtle))' : 'none',
+                    borderBottom: i < t.option2Delivery.length - (t.option2Delivery.length % 2 === 0 ? 2 : 1) ? '1px solid hsl(var(--border-subtle))' : 'none',
+                  }}
+                >
+                  <CheckIcon />
+                  <span
+                    className="text-body"
+                    style={{ color: 'hsl(var(--text-primary))' }}
+                  >
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
         {/* CTA */}
-        <section className="px-5 py-20 min-720:py-24">
+        <section className="px-5 pb-20 min-720:pb-24">
           <div className="mx-auto max-w-5xl">
             <div className="cta-card p-10 min-720:p-16 text-center fade-up">
               <h2 className="text-title-2 font-semibold tracking-tight mb-4" style={{ color: '#ffffff' }}>
