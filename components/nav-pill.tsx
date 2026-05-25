@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import { useApp } from './app-provider'
 import { strings } from '@/lib/strings'
 
@@ -10,92 +11,335 @@ export function NavPill() {
   const t = strings[lang].nav
   const pathname = usePathname()
 
-  const links = [
-    { href: '/work',    label: t.work },
-    { href: '/about',   label: t.about },
-    { href: '/blog',    label: t.blog },
-    { href: '/contact', label: t.contact },
-  ]
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
+
+  useEffect(() => {
+    setMenuOpen(false)
+    setServicesOpen(false)
+  }, [pathname])
+
+  useEffect(() => {
+    if (!menuOpen) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMenuOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [menuOpen])
+
+  useEffect(() => {
+    if (menuOpen) document.body.style.overflow = 'hidden'
+    else document.body.style.overflow = ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [menuOpen])
+
+  const servicesActive = pathname.startsWith('/services')
 
   return (
-    <header className="fixed left-1/2 top-4 z-50 -translate-x-1/2 w-[calc(100%-2rem)] max-w-2xl">
-      <nav
-        className="flex items-center gap-1 rounded-full border px-2 py-2 min-720:px-3 overflow-hidden"
-        style={{
-          background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.78)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-          borderColor: 'hsl(var(--border-subtle))',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06)',
-        }}
-      >
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-1.5 pr-1 min-720:pr-2 mr-0.5 min-720:mr-1 flex-shrink-0">
-          <LogoMark />
-          <span
-            className="hidden min-[560px]:block font-semibold text-sm tracking-tight whitespace-nowrap"
-            style={{ color: 'hsl(var(--text-primary))' }}
-          >
-            Torquemade
-          </span>
-        </Link>
+    <>
+      <header className="fixed left-1/2 top-4 z-50 -translate-x-1/2 w-[calc(100%-2rem)] max-w-2xl">
+        <nav
+          className="flex items-center gap-1 rounded-full border px-2 py-2 min-720:px-3"
+          style={{
+            background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.78)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            borderColor: 'hsl(var(--border-subtle))',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06)',
+          }}
+        >
+          <Link href="/" className="flex items-center gap-1.5 pr-1 min-720:pr-2 mr-0.5 min-720:mr-1 flex-shrink-0">
+            <LogoMark />
+            <span
+              className="hidden min-[560px]:block font-semibold text-sm tracking-tight whitespace-nowrap"
+              style={{ color: 'hsl(var(--text-primary))' }}
+            >
+              Torquemade
+            </span>
+          </Link>
 
-        {/* Nav links */}
-        <div className="flex items-center gap-0 min-720:gap-0.5 flex-1 overflow-hidden">
-          {links.map((link) => (
+          <div className="hidden min-720:flex items-center gap-0.5 flex-1">
             <Link
-              key={link.href}
-              href={link.href}
-              className="rounded-full px-2 min-720:px-3 py-1.5 text-[13px] min-720:text-sm font-medium transition-colors duration-150 whitespace-nowrap"
+              href="/work"
+              className="rounded-full px-3 py-1.5 text-sm font-medium transition-colors duration-150 whitespace-nowrap"
               style={{
-                color: pathname === link.href ? 'hsl(var(--text-primary))' : 'hsl(var(--text-tertiary))',
-                background: pathname === link.href ? 'hsl(var(--bg-secondary))' : 'transparent',
+                color: pathname === '/work' ? 'hsl(var(--text-primary))' : 'hsl(var(--text-tertiary))',
+                background: pathname === '/work' ? 'hsl(var(--bg-secondary))' : 'transparent',
               }}
             >
-              {link.label}
+              {t.work}
             </Link>
-          ))}
-        </div>
 
-        {/* Separator */}
-        <div className="w-px h-5 mx-0.5 min-720:mx-1 flex-shrink-0" style={{ background: 'hsl(var(--border-subtle))' }} />
+            <div
+              className="relative"
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
+            >
+              <button
+                type="button"
+                className="flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-medium transition-colors duration-150 whitespace-nowrap"
+                style={{
+                  color: servicesActive || servicesOpen ? 'hsl(var(--text-primary))' : 'hsl(var(--text-tertiary))',
+                  background: servicesActive ? 'hsl(var(--bg-secondary))' : 'transparent',
+                }}
+                aria-haspopup="true"
+                aria-expanded={servicesOpen}
+              >
+                {t.services}
+                <CaretIcon open={servicesOpen} />
+              </button>
 
-        {/* Toggles */}
-        <div className="flex items-center gap-0 flex-shrink-0">
-          {/* Lang toggle */}
-          <button
-            onClick={toggleLang}
-            className="flex items-center gap-1.5 rounded-full px-2 min-720:px-2.5 py-1.5 text-xs font-semibold transition-colors duration-150 hover:bg-bg-secondary whitespace-nowrap"
-            style={{ color: 'hsl(var(--text-secondary))' }}
-            aria-label="Toggle language"
-          >
-            {lang === 'fr' ? <FrFlag /> : <GbFlag />}
-            <span className="hidden min-[480px]:inline uppercase tracking-wider">{lang === 'fr' ? 'FR' : 'EN'}</span>
-          </button>
+              {servicesOpen && (
+                <div className="absolute left-0 top-full pt-3 min-w-[320px] z-50">
+                  <div
+                    className="rounded-2xl border p-2 flex flex-col"
+                    style={{
+                      background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.96)',
+                      backdropFilter: 'blur(16px)',
+                      WebkitBackdropFilter: 'blur(16px)',
+                      borderColor: 'hsl(var(--border-subtle))',
+                      boxShadow: '0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.06)',
+                    }}
+                  >
+                    {t.servicesItems.map((s) => (
+                      <Link
+                        key={s.href}
+                        href={s.href}
+                        className="rounded-xl px-3 py-2.5 text-sm font-medium transition-colors duration-150"
+                        style={{
+                          color: pathname === s.href ? 'hsl(var(--text-primary))' : 'hsl(var(--text-secondary))',
+                          background: pathname === s.href ? 'hsl(var(--bg-secondary))' : 'transparent',
+                        }}
+                      >
+                        {s.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
 
-          {/* Theme toggle */}
-          <button
-            onClick={toggleTheme}
-            className="flex items-center justify-center w-7 h-7 min-720:w-8 min-720:h-8 rounded-full transition-colors duration-150 hover:bg-bg-secondary"
-            style={{ color: 'hsl(var(--text-tertiary))' }}
-            aria-label="Toggle theme"
-          >
-            {theme === 'light' ? <MoonIcon /> : <SunIcon />}
-          </button>
-
-          {/* CTA — desktop uniquement */}
-          <div className="hidden min-720:block ml-1 flex-shrink-0">
-            <Link href="/contact" className="btn-primary !py-1.5 !px-3 !text-sm whitespace-nowrap">
-              {lang === 'fr' ? 'Démarrer →' : 'Start →'}
+            <Link
+              href="/about"
+              className="rounded-full px-3 py-1.5 text-sm font-medium transition-colors duration-150 whitespace-nowrap"
+              style={{
+                color: pathname === '/about' ? 'hsl(var(--text-primary))' : 'hsl(var(--text-tertiary))',
+                background: pathname === '/about' ? 'hsl(var(--bg-secondary))' : 'transparent',
+              }}
+            >
+              {t.about}
+            </Link>
+            <Link
+              href="/blog"
+              className="rounded-full px-3 py-1.5 text-sm font-medium transition-colors duration-150 whitespace-nowrap"
+              style={{
+                color: pathname === '/blog' ? 'hsl(var(--text-primary))' : 'hsl(var(--text-tertiary))',
+                background: pathname === '/blog' ? 'hsl(var(--bg-secondary))' : 'transparent',
+              }}
+            >
+              {t.blog}
+            </Link>
+            <Link
+              href="/contact"
+              className="rounded-full px-3 py-1.5 text-sm font-medium transition-colors duration-150 whitespace-nowrap"
+              style={{
+                color: pathname === '/contact' ? 'hsl(var(--text-primary))' : 'hsl(var(--text-tertiary))',
+                background: pathname === '/contact' ? 'hsl(var(--bg-secondary))' : 'transparent',
+              }}
+            >
+              {t.contact}
             </Link>
           </div>
+
+          <div className="flex-1 min-720:hidden" />
+
+          <div
+            className="hidden min-720:block w-px h-5 mx-1 flex-shrink-0"
+            style={{ background: 'hsl(var(--border-subtle))' }}
+          />
+
+          <div className="flex items-center gap-0 flex-shrink-0">
+            <button
+              onClick={toggleLang}
+              className="flex items-center gap-1.5 rounded-full px-2 min-720:px-2.5 py-1.5 text-xs font-semibold transition-colors duration-150 hover:bg-bg-secondary whitespace-nowrap"
+              style={{ color: 'hsl(var(--text-secondary))' }}
+              aria-label="Toggle language"
+            >
+              {lang === 'fr' ? <FrFlag /> : <GbFlag />}
+              <span className="hidden min-[480px]:inline uppercase tracking-wider">{lang === 'fr' ? 'FR' : 'EN'}</span>
+            </button>
+
+            <button
+              onClick={toggleTheme}
+              className="flex items-center justify-center w-7 h-7 min-720:w-8 min-720:h-8 rounded-full transition-colors duration-150 hover:bg-bg-secondary"
+              style={{ color: 'hsl(var(--text-tertiary))' }}
+              aria-label="Toggle theme"
+            >
+              {theme === 'light' ? <MoonIcon /> : <SunIcon />}
+            </button>
+
+            <div className="hidden min-720:block ml-1 flex-shrink-0">
+              <Link href="/contact" className="btn-primary !py-1.5 !px-3 !text-sm whitespace-nowrap">
+                {lang === 'fr' ? 'Démarrer →' : 'Start →'}
+              </Link>
+            </div>
+
+            <button
+              onClick={() => setMenuOpen(true)}
+              className="min-720:hidden flex items-center justify-center w-7 h-7 rounded-full ml-0.5 transition-colors duration-150 hover:bg-bg-secondary"
+              style={{ color: 'hsl(var(--text-secondary))' }}
+              aria-label={t.menuLabel}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
+            >
+              <BurgerIcon />
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      {menuOpen && (
+        <div
+          id="mobile-menu"
+          className="fixed inset-0 z-[60] min-720:hidden"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className="absolute inset-0"
+            style={{ background: 'rgba(0, 0, 0, 0.4)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}
+            onClick={() => setMenuOpen(false)}
+          />
+
+          <div
+            className="absolute left-1/2 top-4 -translate-x-1/2 w-[calc(100%-2rem)] max-w-md rounded-3xl border p-4 max-h-[calc(100vh-2rem)] overflow-y-auto"
+            style={{
+              background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.98)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              borderColor: 'hsl(var(--border-subtle))',
+              boxShadow: '0 12px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06)',
+            }}
+          >
+            <div className="flex items-center justify-between mb-2">
+              <Link
+                href="/"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center gap-1.5"
+              >
+                <LogoMark />
+                <span
+                  className="font-semibold text-sm tracking-tight"
+                  style={{ color: 'hsl(var(--text-primary))' }}
+                >
+                  Torquemade
+                </span>
+              </Link>
+              <button
+                onClick={() => setMenuOpen(false)}
+                className="w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-150 hover:bg-bg-secondary"
+                style={{ color: 'hsl(var(--text-secondary))' }}
+                aria-label={t.closeLabel}
+              >
+                <CloseIcon />
+              </button>
+            </div>
+
+            <nav className="flex flex-col gap-0.5 mt-2">
+              <MobileLink
+                href="/work"
+                label={t.work}
+                pathname={pathname}
+                onClick={() => setMenuOpen(false)}
+              />
+
+              <div
+                className="px-3 pt-4 pb-1 text-xs font-semibold uppercase tracking-wider"
+                style={{ color: 'hsl(var(--text-tertiary))' }}
+              >
+                {t.services}
+              </div>
+              {t.servicesItems.map((s) => (
+                <Link
+                  key={s.href}
+                  href={s.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="rounded-lg ml-3 px-3 py-2 text-sm transition-colors duration-150"
+                  style={{
+                    color: pathname === s.href ? 'hsl(var(--text-primary))' : 'hsl(var(--text-secondary))',
+                    background: pathname === s.href ? 'hsl(var(--bg-secondary))' : 'transparent',
+                  }}
+                >
+                  {s.label}
+                </Link>
+              ))}
+
+              <div className="my-3 h-px" style={{ background: 'hsl(var(--border-subtle))' }} />
+
+              <MobileLink
+                href="/about"
+                label={t.about}
+                pathname={pathname}
+                onClick={() => setMenuOpen(false)}
+              />
+              <MobileLink
+                href="/blog"
+                label={t.blog}
+                pathname={pathname}
+                onClick={() => setMenuOpen(false)}
+              />
+              <MobileLink
+                href="/contact"
+                label={t.contact}
+                pathname={pathname}
+                onClick={() => setMenuOpen(false)}
+              />
+
+              <Link
+                href="/contact"
+                onClick={() => setMenuOpen(false)}
+                className="btn-primary mt-4 text-center"
+              >
+                {lang === 'fr' ? 'Démarrer →' : 'Start →'}
+              </Link>
+            </nav>
+          </div>
         </div>
-      </nav>
-    </header>
+      )}
+    </>
   )
 }
 
-/** Drapeau France — SVG inline, marche sur tous les OS */
+function MobileLink({
+  href,
+  label,
+  pathname,
+  onClick,
+}: {
+  href: string
+  label: string
+  pathname: string
+  onClick: () => void
+}) {
+  const active = pathname === href
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      className="rounded-lg px-3 py-2.5 text-base font-medium transition-colors duration-150"
+      style={{
+        color: active ? 'hsl(var(--text-primary))' : 'hsl(var(--text-secondary))',
+        background: active ? 'hsl(var(--bg-secondary))' : 'transparent',
+      }}
+    >
+      {label}
+    </Link>
+  )
+}
+
 function FrFlag() {
   return (
     <svg width="20" height="14" viewBox="0 0 20 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
@@ -107,22 +351,16 @@ function FrFlag() {
   )
 }
 
-/** Drapeau Royaume-Uni — SVG inline, marche sur tous les OS */
 function GbFlag() {
   return (
     <svg width="20" height="14" viewBox="0 0 60 42" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
       style={{ display: 'block', borderRadius: '2px', flexShrink: 0 }}>
-      {/* Fond bleu */}
       <rect width="60" height="42" fill="#012169" />
-      {/* Diagonales blanches (saltire écossais) */}
       <path d="M0,0 L60,42 M60,0 L0,42" stroke="#fff" strokeWidth="8" />
-      {/* Diagonales rouges (croix saint-Patrick) */}
       <path d="M0,0 L60,42" stroke="#C8102E" strokeWidth="4" />
       <path d="M60,0 L0,42" stroke="#C8102E" strokeWidth="4" />
-      {/* Croix blanche (saint-Georges) */}
       <rect x="24" width="12" height="42" fill="#fff" />
       <rect y="15" width="60" height="12" fill="#fff" />
-      {/* Croix rouge (saint-Georges) */}
       <rect x="26" width="8" height="42" fill="#C8102E" />
       <rect y="17" width="60" height="8" fill="#C8102E" />
     </svg>
@@ -158,6 +396,47 @@ function SunIcon() {
       <line x1="21" y1="12" x2="23" y2="12" />
       <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
       <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+    </svg>
+  )
+}
+
+function CaretIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      width="10"
+      height="10"
+      viewBox="0 0 12 12"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      style={{
+        transition: 'transform 150ms ease',
+        transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
+      }}
+      aria-hidden="true"
+    >
+      <path d="M3 5l3 3 3-3" />
+    </svg>
+  )
+}
+
+function BurgerIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <line x1="4" y1="7" x2="20" y2="7" />
+      <line x1="4" y1="12" x2="20" y2="12" />
+      <line x1="4" y1="17" x2="20" y2="17" />
+    </svg>
+  )
+}
+
+function CloseIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <line x1="6" y1="6" x2="18" y2="18" />
+      <line x1="18" y1="6" x2="6" y2="18" />
     </svg>
   )
 }
