@@ -19,7 +19,8 @@ export const strings = {
     },
     hero: {
       eyebrow: 'Studio',
-      headline1: 'Web dev — CRM sur mesure & Connexion ERP ↔ site e-commerce.',
+      headline1a: 'Web dev — CRM sur mesure',
+      headline1b: '& Connexion ERP ↔ site e-commerce.',
       headline2: 'Du design à la base de données.',
       sub: 'Nous construisons des sites qui performent — et les systèmes derrière.',
       tagline: 'On ne construit pas des vitrines.',
@@ -327,7 +328,8 @@ export const strings = {
     },
     hero: {
       eyebrow: 'Studio',
-      headline1: 'Web dev — Custom CRM & ERP connection ↔ e-commerce.',
+      headline1a: 'Web dev — Custom CRM',
+      headline1b: '& ERP connection ↔ e-commerce.',
       headline2: 'From design to database.',
       sub: 'We build sites that perform — and the systems behind them.',
       tagline: 'We don\'t build showcases.',

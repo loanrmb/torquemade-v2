@@ -10,6 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       screens: {
+        'min-480': '480px',
         'min-720': '720px',
         'min-1024': '1024px',
         'min-1280': '1280px',
