@@ -31,17 +31,14 @@ export default function HomePage() {
               {t.hero.headline1}
             </h1>
 
-            <div className="fade-up fade-up-d1 mt-6 text-xl min-720:text-2xl leading-snug">
+            <div className="fade-up fade-up-d1 mt-6 text-3xl min-720:text-4xl min-1280:text-5xl leading-snug">
               <span
                 className="block"
                 style={{ color: 'hsl(var(--text-secondary))' }}
               >
                 {t.hero.tagline}
               </span>
-              <span
-                className="block font-bold"
-                style={{ color: 'hsl(var(--text-primary))' }}
-              >
+              <span className="block font-bold rainbow-text">
                 {t.hero.tagline2}
               </span>
             </div>
@@ -332,10 +329,16 @@ export default function HomePage() {
                   {t.home.erp.comparisonRows.map((row, i) => (
                     <li
                       key={i}
-                      className="text-sm line-through"
-                      style={{ color: 'hsl(var(--text-tertiary))' }}
+                      className="text-sm flex items-start gap-2"
+                      style={{ color: 'hsl(var(--text-secondary))' }}
                     >
-                      {row[0]}
+                      <span
+                        aria-hidden="true"
+                        className="font-bold flex-shrink-0 text-red-500"
+                      >
+                        ✗
+                      </span>
+                      <span>{row[0]}</span>
                     </li>
                   ))}
                 </ul>

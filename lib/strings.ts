@@ -66,7 +66,7 @@ export const strings = {
       partnerBody: 'Site e-commerce, logiciel métier, stock connecté — nous construisons l\'ensemble et assurons que tout fonctionne ensemble.',
       erp: {
         title: 'Votre stock, votre site, votre logiciel — connectés.',
-        subtitle: 'Nous connectons votre ERP à votre site e-commerce. Stock synchronisé en temps réel, commandes remontées automatiquement, zéro double saisie.',
+        subtitle: 'ERP existant ou sur mesure — nous le construisons selon vos besoins et le connectons à votre site e-commerce. Stock synchronisé en temps réel, commandes remontées automatiquement, zéro double saisie.',
         erpBox: 'ERP / Logiciel de gestion',
         syncBox: 'Synchronisation',
         siteBox: 'Site e-commerce',
@@ -78,8 +78,10 @@ export const strings = {
         comparisonRows: [
           ['Mise à jour manuelle du stock', 'Stock synchronisé en temps réel'],
           ['Erreurs de saisie fréquentes', 'Zéro double saisie'],
-          ['Survente et ruptures', 'Alertes automatiques'],
-          ['2h/jour de gestion admin', '10 minutes/jour'],
+          ['Survente et ruptures de stock', 'Alertes de stock automatiques'],
+          ['Commandes traitées à la main', 'Commandes remontées instantanément'],
+          ['Aucune visibilité temps réel', 'Dashboard centralisé'],
+          ['Données éparpillées entre 3 outils', 'Un seul système, une seule source de vérité'],
         ],
         ctaButton: 'En savoir plus',
       },
@@ -372,7 +374,7 @@ export const strings = {
       partnerBody: 'E-commerce site, business software, connected inventory — we build the whole stack and make sure everything works together.',
       erp: {
         title: 'Your inventory, your site, your software — connected.',
-        subtitle: 'We connect your ERP to your e-commerce site. Real-time stock sync, automatic order flow, zero double entry.',
+        subtitle: 'Existing ERP or custom-built — we build it around your business needs and connect it to your e-commerce site. Real-time stock sync, automatic order flow, zero double entry.',
         erpBox: 'ERP / Management Software',
         syncBox: 'Synchronization',
         siteBox: 'E-commerce site',
@@ -384,8 +386,10 @@ export const strings = {
         comparisonRows: [
           ['Manual stock updates', 'Real-time stock sync'],
           ['Frequent data entry errors', 'Zero double entry'],
-          ['Overselling and stockouts', 'Automatic alerts'],
-          ['2h/day admin work', '10 minutes/day'],
+          ['Overselling and stockouts', 'Automatic stock alerts'],
+          ['Orders processed by hand', 'Orders flow back instantly'],
+          ['No real-time visibility', 'Centralized dashboard'],
+          ['Data scattered across 3 tools', 'One system, one source of truth'],
         ],
         ctaButton: 'Learn more',
       },
