@@ -25,15 +25,15 @@ export default function HomePage() {
           <div className="flex flex-col items-center text-center max-w-5xl">
 
             <h1
-              className="fade-up text-2xl min-480:text-3xl min-720:text-4xl min-1280:text-5xl font-semibold tracking-tight leading-tight"
+              className="fade-up text-3xl min-480:text-4xl min-720:text-5xl min-1280:text-6xl font-semibold tracking-tight leading-tight"
               style={{ color: 'hsl(var(--text-primary))' }}
             >
               {t.hero.headline1a}
               <br />
-              <span className="whitespace-nowrap">{t.hero.headline1b}</span>
+              <span className="min-720:whitespace-nowrap">{t.hero.headline1b}</span>
             </h1>
 
-            <div className="fade-up fade-up-d1 mt-6 text-3xl min-720:text-4xl min-1280:text-5xl leading-snug">
+            <div className="fade-up fade-up-d1 mt-6 text-lg min-480:text-xl min-720:text-2xl min-1280:text-3xl leading-snug">
               <span
                 className="block"
                 style={{ color: 'hsl(var(--text-secondary))' }}
