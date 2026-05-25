@@ -217,9 +217,7 @@ export function NavPill() {
           <div
             className="absolute left-1/2 top-4 -translate-x-1/2 w-[calc(100%-2rem)] max-w-md rounded-3xl border p-4 max-h-[calc(100vh-2rem)] overflow-y-auto"
             style={{
-              background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.98)',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
+              background: 'hsl(var(--bg-primary))',
               borderColor: 'hsl(var(--border-subtle))',
               boxShadow: '0 12px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06)',
             }}
@@ -331,7 +329,7 @@ function MobileLink({
       onClick={onClick}
       className="rounded-lg px-3 py-2.5 text-base font-medium transition-colors duration-150"
       style={{
-        color: active ? 'hsl(var(--text-primary))' : 'hsl(var(--text-secondary))',
+        color: active ? 'hsl(var(--text-primary))' : 'hsl(var(--text-primary))',
         background: active ? 'hsl(var(--bg-secondary))' : 'transparent',
       }}
     >
