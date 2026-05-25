@@ -97,7 +97,7 @@ export function NavPill() {
                   <div
                     className="rounded-2xl border p-2 flex flex-col"
                     style={{
-                      background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.96)',
+                      background: 'hsl(var(--bg-primary))',
                       backdropFilter: 'blur(16px)',
                       WebkitBackdropFilter: 'blur(16px)',
                       borderColor: 'hsl(var(--border-subtle))',
