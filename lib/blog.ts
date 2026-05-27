@@ -656,4 +656,46 @@ export const posts: Post[] = [
     category: 'GESTION DE STOCK',
     readingTime: 7,
   },
+  {
+    slug: 'temps-perdu-ressaisie-stock-manuel',
+    title: {
+      fr: 'Combien de temps perdez-vous à ressaisir votre stock manuellement ?',
+      en: 'How much time are you losing on manual inventory entry?',
+    },
+    description: {
+      fr: "Saisir son stock à la main, c'est plusieurs heures par semaine qui partent en fumée. Calculons ensemble le coût réel et voyons comment l'automatiser.",
+      en: 'Manually entering inventory burns hours every week. Let\'s calculate the real cost and see how to automate it.',
+    },
+    date: { fr: '24 avril 2026', en: 'April 24, 2026' },
+    category: 'GESTION DE STOCK',
+    readingTime: 6,
+  },
+  {
+    slug: 'quel-logiciel-gestion-stock-commerce-2026',
+    title: {
+      fr: 'Quel logiciel de gestion de stock pour un commerce physique en 2026 ?',
+      en: 'Which inventory management software for a physical store in 2026?',
+    },
+    description: {
+      fr: "Cegid, Hiboutik, EBP, Tactill, Odoo… Comment choisir le bon logiciel de stock selon votre taille, votre budget et vos besoins de connexion e-commerce.",
+      en: 'Cegid, Hiboutik, EBP, Tactill, Odoo… How to choose the right inventory software based on your size, budget, and e-commerce integration needs.',
+    },
+    date: { fr: '8 mai 2026', en: 'May 8, 2026' },
+    category: 'GESTION DE STOCK',
+    readingTime: 8,
+  },
+  {
+    slug: 'synchronisation-stock-temps-reel',
+    title: {
+      fr: "Synchronisation stock en temps réel : comment ça marche et pourquoi c'est indispensable",
+      en: "Real-time inventory sync: how it works and why it's essential",
+    },
+    description: {
+      fr: "Webhooks, API, push automatique : on démystifie la synchronisation stock temps réel entre votre logiciel de caisse et votre site e-commerce.",
+      en: "Webhooks, APIs, automatic push: we demystify real-time inventory sync between your POS software and your e-commerce site.",
+    },
+    date: { fr: '19 mai 2026', en: 'May 19, 2026' },
+    category: 'GESTION DE STOCK',
+    readingTime: 7,
+  },
 ]
