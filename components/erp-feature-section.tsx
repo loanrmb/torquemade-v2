@@ -2,15 +2,29 @@
 
 /**
  * ErpFeatureSection — Torquemade
- * Figure area: Linear.app-style floating UI panels
- *   - LEFT  — stock software mockup with product table
- *   - CENTER — floating monospace API code + animated beam
- *   - RIGHT  — e-commerce site with synced inventory
- * Comparison table (FIG. 1.2) is unchanged.
+ *
+ * FIG. 1.1 — three overlapping panels (Linear.app style):
+ *   LEFT   — dark ERP stock table
+ *   MIDDLE — dark API webhook code block
+ *   RIGHT  — light Shopify-style inventory panel
+ *
+ * FIG. 1.2 — comparison table (Sans / Avec connexion ERP)
+ *
+ * Adapted from HeroSyncTopology.jsx (designer export):
+ *   - Named export, useLang() FR/EN, min-720: breakpoints
+ *   - Panel widths use % (41.67 % each) so the overlap scales
+ *     correctly from 720 px up; Connectors SVG uses the same
+ *     proportions via preserveAspectRatio="none"
+ *   - Mobile (<720px): panels stacked in a flex column
  */
 
 import { motion } from 'framer-motion'
 import { useLang } from '@/components/app-provider'
+
+/* ============================================================
+   Shared ease
+   ============================================================ */
+const EASE_OUT: [number, number, number, number] = [0, 0, 0.2, 1]
 
 /* ============================================================
    Bilingual content
@@ -23,16 +37,25 @@ const CONTENT: Record<
     figMain: string
     figShort: string
     live: string
-    panelLeft: string
-    panelRight: string
+    /* left panel */
+    panelLeftTitle: string
     connected: string
-    lastSync: string
     colProduct: string
     colSku: string
     colStock: string
     colPrice: string
+    /* middle panel */
+    apiLabel: string
+    realtimeLabel: string
+    /* right panel */
+    panelRightTitle: string
+    colStatus: string
+    statusActive: string
+    lastSync: string
+    /* caption */
     title: string
     description: string
+    /* comparison table */
     figTable: string
     badHeader: string
     goodHeader: string
@@ -46,299 +69,434 @@ const CONTENT: Record<
     figMain:  'FIG. 1.1 — TOPOLOGIE SYNC STOCK',
     figShort: 'FIG. 1.1',
     live:     'LIVE · v2.4',
-    panelLeft:  'Logiciel de stock',
-    panelRight: 'Site e-commerce',
-    connected:  'Connecté',
-    lastSync:   'Dernière sync : 2s',
+
+    panelLeftTitle: 'Logiciel de stock',
+    connected:      'Connecté',
     colProduct: 'Produit',
     colSku:     'SKU',
     colStock:   'Stock',
     colPrice:   'Prix',
+
+    apiLabel:      'API · Webhook sync',
+    realtimeLabel: 'mise à jour en temps réel',
+
+    panelRightTitle: 'Site e-commerce',
+    colStatus:    'Statut',
+    statusActive: 'Actif',
+    lastSync:     'Dernière sync : il y a 2 s',
+
     title: 'Votre stock, votre site, votre logiciel — connectés.',
     description:
       'On branche votre ERP existant — ou on en construit un sur mesure — directement à votre boutique en ligne. Une seule source de vérité, mise à jour en quelques secondes, sans intervention manuelle.',
+
     figTable:   'FIG. 1.2 — DIFFÉRENCIATEURS',
     badHeader:  'Sans connexion ERP',
     goodHeader: 'Avec connexion ERP',
-    stateOff: 'État · 00',
-    stateOn:  'État · 01',
+    stateOff:   'État · 00',
+    stateOn:    'État · 01',
     rowsBad: [
-      ['Stock mis à jour à la main, en CSV',     '~2h / jour'],
-      ['Ventes de produits déjà épuisés',         '~8 / mois'],
-      ['Prix désynchronisés entre canaux',         'manuel'],
-      ['Commandes ressaisies dans l’ERP',    'erreurs'],
-      ['Pas de source de vérité unique',           '2 bases'],
-      ['Réconciliation comptable manuelle',        'fin de mois'],
+      ['Stock mis à jour à la main, en CSV',  '~2h / jour'],
+      ['Ventes de produits déjà épuisés',      '~8 / mois'],
+      ['Prix désynchronisés entre canaux',      'manuel'],
+      ["Commandes ressaisies dans l’ERP",  'erreurs'],
+      ['Pas de source de vérité unique',        '2 bases'],
+      ['Réconciliation comptable manuelle',     'fin de mois'],
     ],
     rowsGood: [
-      ['Stock synchronisé en temps réel',                        '< 3 s'],
-      ['Mises hors‑ligne automatiques à zéro',              'auto'],
-      ['Prix poussés depuis l’ERP, un seul endroit',        'bi‑dir'],
-      ['Commandes web créées directement dans l’ERP',       'webhook'],
-      ['Une seule base — l’ERP fait foi',                   '1 base'],
-      ['Export comptable automatisé',                            'quotidien'],
+      ['Stock synchronisé en temps réel',                       '< 3 s'],
+      ['Mises hors‑ligne automatiques à zéro',             'auto'],
+      ["Prix poussés depuis l'ERP, un seul endroit",       'bi‑dir'],
+      ["Commandes web créées directement dans l'ERP",      'webhook'],
+      ["Une seule base — l'ERP fait foi",                  '1 base'],
+      ['Export comptable automatisé',                           'quotidien'],
     ],
   },
   en: {
     figMain:  'FIG. 1.1 — STOCK SYNC TOPOLOGY',
     figShort: 'FIG. 1.1',
     live:     'LIVE · v2.4',
-    panelLeft:  'Stock software',
-    panelRight: 'E-commerce site',
-    connected:  'Connected',
-    lastSync:   'Last sync: 2s',
+
+    panelLeftTitle: 'Stock software',
+    connected:      'Connected',
     colProduct: 'Product',
     colSku:     'SKU',
     colStock:   'Stock',
     colPrice:   'Price',
+
+    apiLabel:      'API · Webhook sync',
+    realtimeLabel: 'real-time update',
+
+    panelRightTitle: 'E-commerce site',
+    colStatus:    'Status',
+    statusActive: 'Active',
+    lastSync:     'Last sync: 2s ago',
+
     title: 'Your stock, your site, your software — connected.',
     description:
       'We connect your existing ERP — or build a custom one — directly to your online store. One single source of truth, updated in seconds, with no manual intervention.',
+
     figTable:   'FIG. 1.2 — DIFFERENTIATORS',
     badHeader:  'Without ERP connection',
     goodHeader: 'With ERP connection',
-    stateOff: 'State · 00',
-    stateOn:  'State · 01',
+    stateOff:   'State · 00',
+    stateOn:    'State · 01',
     rowsBad: [
-      ['Stock updated manually, via CSV',           '~2h / day'],
-      ['Sales of already out-of-stock items',        '~8 / month'],
-      ['Prices out of sync between channels',        'manual'],
-      ['Orders re-keyed into the ERP',               'errors'],
-      ['No single source of truth',                  '2 databases'],
-      ['Manual accounting reconciliation',           'end of month'],
+      ['Stock updated manually, via CSV',        '~2h / day'],
+      ['Sales of already out-of-stock items',    '~8 / month'],
+      ['Prices out of sync between channels',    'manual'],
+      ['Orders re-keyed into the ERP',           'errors'],
+      ['No single source of truth',              '2 databases'],
+      ['Manual accounting reconciliation',       'end of month'],
     ],
     rowsGood: [
-      ['Stock synced in real time',                  '< 3 s'],
-      ['Automatic zero-stock takedowns',             'auto'],
-      ['Prices pushed from ERP, one place',          'bi‑dir'],
-      ['Web orders created directly in ERP',         'webhook'],
-      ['One database — ERP is the authority',        '1 db'],
-      ['Automated accounting export',                'daily'],
+      ['Stock synced in real time',               '< 3 s'],
+      ['Automatic zero-stock takedowns',          'auto'],
+      ['Prices pushed from ERP, one place',       'bi‑dir'],
+      ['Web orders created directly in ERP',      'webhook'],
+      ['One database — ERP is the authority',     '1 db'],
+      ['Automated accounting export',             'daily'],
     ],
   },
 }
 
 /* ============================================================
-   Static product data — same in both languages
+   Product data — same in both languages, moto-industry context
    ============================================================ */
-const PRODUCTS = [
-  { name: 'Casque Shoei',      sku: 'SH-001', stock: 12, price: '389 €' },
-  { name: "Veste Rev'It",      sku: 'RV-204', stock: 8,  price: '299 €' },
-  { name: 'Gants Alpinestars', sku: 'AL-110', stock: 23, price: '129 €' },
-  { name: 'Botte TCX',         sku: 'TX-550', stock: 5,  price: '189 €' },
+const ERP_ROWS = [
+  { name: 'Casque Shoei',      sku: 'SH-001', stock: '12', price: '389 €' },
+  { name: "Veste Rev'It",      sku: 'RV-204', stock: '8',  price: '299 €' },
+  { name: 'Gants Alpinestars', sku: 'AL-110', stock: '23', price: '129 €' },
+  { name: 'Botte TCX',         sku: 'TX-550', stock: '5',  price: '189 €' },
 ] as const
 
+const ECOM_ROWS = [
+  { emoji: '🪖', name: 'Casque Shoei',      stock: '12' },
+  { emoji: '🧥', name: "Veste Rev'It",      stock: '8'  },
+  { emoji: '🧤', name: 'Gants Alpinestars', stock: '23' },
+  { emoji: '👢', name: 'Botte TCX',         stock: '5'  },
+] as const
+
+/*
+ * Right-panel grid: 4 cols (emoji · name · stock · status)
+ * Using minmax so the name column never goes below 60 px
+ * — works from the 267 px panel width at 720 px screen upwards.
+ */
+const ECOM_GRID = '36px minmax(60px,1fr) 48px 72px'
+
 /* ============================================================
-   Dot grid — shared background texture
+   GreenDot — shared pulsing indicator
    ============================================================ */
-function DotGrid() {
+function GreenDot({ size = 6 }: { size?: number }) {
   return (
-    <div
-      aria-hidden
-      className="absolute inset-0 pointer-events-none"
+    <motion.span
+      className="block rounded-full flex-shrink-0"
       style={{
-        backgroundImage:
-          'radial-gradient(circle at center, rgba(255,255,255,0.06) 0.5px, transparent 0.6px)',
-        backgroundSize: '24px 24px',
-        backgroundPosition: '50% 50%',
-        opacity: 0.5,
-        WebkitMaskImage:
-          'radial-gradient(ellipse 65% 75% at 50% 50%, #000 30%, transparent 75%)',
-        maskImage:
-          'radial-gradient(ellipse 65% 75% at 50% 50%, #000 30%, transparent 75%)',
+        width: size, height: size,
+        background: '#4ade80',
+        boxShadow: '0 0 7px rgba(74,222,128,0.55)',
       }}
+      animate={{ opacity: [1, 0.45, 1] }}
+      transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
     />
   )
 }
 
 /* ============================================================
-   LEFT PANEL — stock software (ERP / logiciel de stock)
+   Connectors — two dashed-flow SVG lines (desktop only)
+   viewBox="0 0 1200 380" + preserveAspectRatio="none" means
+   x-coordinates map proportionally to container width, so the
+   connectors stay in the correct overlap zones at any size.
    ============================================================ */
-function LeftPanel({ t }: { t: typeof CONTENT['fr'] }) {
+function Connectors() {
   return (
-    <div
-      className="rounded-xl overflow-hidden w-full"
+    <svg
+      className="pointer-events-none absolute inset-0 z-[5] h-full w-full overflow-visible"
+      viewBox="0 0 1200 380"
+      preserveAspectRatio="none"
+      aria-hidden
+    >
+      <DashedFlow x1={280} x2={432} y={362} delay={0} />
+      <DashedFlow x1={630} x2={782} y={362} delay={1.2} />
+    </svg>
+  )
+}
+
+function DashedFlow({
+  x1, x2, y, delay,
+}: {
+  x1: number; x2: number; y: number; delay: number
+}) {
+  return (
+    <g>
+      <motion.line
+        x1={x1} y1={y} x2={x2} y2={y}
+        stroke="rgba(255,255,255,0.22)"
+        strokeWidth={1}
+        strokeDasharray="4 5"
+        fill="none"
+        animate={{ strokeDashoffset: [0, -90] }}
+        transition={{ duration: 2.4, repeat: Infinity, ease: 'linear', delay }}
+      />
+      {/* arrow tip */}
+      <polyline
+        points={`${x2 - 6},${y - 4} ${x2},${y} ${x2 - 6},${y + 4}`}
+        stroke="rgba(255,255,255,0.50)"
+        strokeWidth={1}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+      {/* pulsing origin dot */}
+      <motion.circle
+        cx={x1} cy={y}
+        fill="rgba(255,255,255,0.55)"
+        animate={{ opacity: [0.55, 1, 0.55], r: [2.5, 3.5, 2.5] }}
+        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay }}
+      />
+    </g>
+  )
+}
+
+/* ============================================================
+   LEFT PANEL — ERP stock table (dark)
+   ============================================================ */
+function ErpPanel({ t }: { t: typeof CONTENT['fr'] }) {
+  return (
+    <article
+      aria-label={t.panelLeftTitle}
+      className="h-full overflow-hidden rounded-[14px] border border-white/[0.08] bg-[#0d0d0d] text-white flex flex-col"
       style={{
-        background: '#0d0d0d',
-        border: '1px solid rgba(255,255,255,0.09)',
-        boxShadow: '0 8px 32px rgba(0,0,0,0.55)',
+        boxShadow:
+          '0 0 0 1px rgba(255,255,255,0.015), 0 18px 40px rgba(0,0,0,0.45), 0 4px 12px rgba(0,0,0,0.35)',
+        WebkitFontSmoothing: 'antialiased',
       }}
     >
-      {/* Header */}
-      <div
-        className="px-4 py-[11px] flex items-center justify-between"
-        style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}
-      >
-        <span
-          className="text-white font-semibold tracking-tight"
-          style={{ fontSize: 13 }}
-        >
-          {t.panelLeft}
+      <header className="flex items-center justify-between border-b border-white/[0.08] px-5 py-4">
+        <span className="whitespace-nowrap text-[13.5px] font-semibold tracking-tight">
+          {t.panelLeftTitle}
         </span>
         <span
-          className="font-mono uppercase"
-          style={{ fontSize: 9, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.28)' }}
+          className="text-[10px] font-medium uppercase tracking-[0.14em] text-white/40"
+          style={{ fontFamily: 'var(--font-mono, monospace)' }}
         >
           ERP
         </span>
+      </header>
+
+      <div className="flex-1 overflow-hidden">
+        <table className="w-full border-collapse">
+          <thead>
+            <tr>
+              {[t.colProduct, t.colSku, t.colStock, t.colPrice].map((h, i) => (
+                <th
+                  key={h}
+                  className={`border-b border-white/[0.08] px-5 pb-2.5 pt-3 text-[10px] font-normal uppercase tracking-[0.12em] text-white/40 ${
+                    i === 3 ? 'text-right' : 'text-left'
+                  }`}
+                  style={{ fontFamily: 'var(--font-mono, monospace)' }}
+                >
+                  {h}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {ERP_ROWS.map((r, i) => (
+              <tr
+                key={r.sku}
+                className={i < ERP_ROWS.length - 1 ? 'border-b border-white/[0.04]' : ''}
+              >
+                <td
+                  className="max-w-0 overflow-hidden text-ellipsis whitespace-nowrap px-5 py-3 align-middle text-[13px] text-white/90"
+                  style={{ maxWidth: '1px' /* forces truncation in table */ }}
+                >
+                  {r.name}
+                </td>
+                <td
+                  className="whitespace-nowrap px-5 py-3 align-middle text-[11.5px] tracking-[0.02em] text-white/40"
+                  style={{ fontFamily: 'var(--font-mono, monospace)' }}
+                >
+                  {r.sku}
+                </td>
+                <td
+                  className="whitespace-nowrap px-5 py-3 align-middle text-[13px] text-white tabular-nums"
+                  style={{ fontFamily: 'var(--font-mono, monospace)' }}
+                >
+                  {r.stock}
+                </td>
+                <td
+                  className="whitespace-nowrap px-5 py-3 align-middle text-right text-[13px] text-white/90 tabular-nums"
+                  style={{ fontFamily: 'var(--font-mono, monospace)' }}
+                >
+                  {r.price}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
-      {/* Column headers */}
-      <div
-        className="px-4 pt-3 pb-1.5 grid"
-        style={{ gridTemplateColumns: '1fr 56px 36px 48px' }}
-      >
-        {[t.colProduct, t.colSku, t.colStock, t.colPrice].map((col) => (
-          <span
-            key={col}
-            className="font-mono uppercase"
-            style={{ fontSize: 9.5, letterSpacing: '0.10em', color: 'rgba(255,255,255,0.28)' }}
-          >
-            {col}
-          </span>
-        ))}
-      </div>
-
-      {/* Product rows */}
-      <div className="px-4 pb-2">
-        {PRODUCTS.map((p, i) => (
-          <div
-            key={p.sku}
-            className="grid py-[6px]"
-            style={{
-              gridTemplateColumns: '1fr 56px 36px 48px',
-              borderTop: i > 0 ? '1px solid rgba(255,255,255,0.04)' : 'none',
-            }}
-          >
-            <span
-              className="truncate"
-              style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.78)', letterSpacing: '-0.01em' }}
-            >
-              {p.name}
-            </span>
-            <span
-              className="font-mono"
-              style={{ fontSize: 11, color: 'rgba(255,255,255,0.30)' }}
-            >
-              {p.sku}
-            </span>
-            <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.68)' }}>{p.stock}</span>
-            <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.48)' }}>{p.price}</span>
-          </div>
-        ))}
-      </div>
-
-      {/* Footer — connected status */}
-      <div
-        className="px-4 py-2 flex items-center gap-1.5"
-        style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
-      >
-        <motion.span
-          className="block rounded-full flex-shrink-0"
-          style={{ width: 5, height: 5, background: 'rgba(110,210,110,0.65)' }}
-          animate={{ opacity: [0.4, 0.9, 0.4] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)' }}>{t.connected}</span>
-      </div>
-    </div>
+      <footer className="flex items-center gap-2 border-t border-white/[0.08] bg-white/[0.012] px-5 py-3 text-[12px] text-white/55">
+        <GreenDot size={6} />
+        {t.connected}
+      </footer>
+    </article>
   )
 }
 
 /* ============================================================
-   RIGHT PANEL — e-commerce site (Shopify-style inventory)
+   Syntax token helpers for the code block
    ============================================================ */
-function RightPanel({ t }: { t: typeof CONTENT['fr'] }) {
+const CLine  = ({ children }: { children: React.ReactNode }) => <span className="block whitespace-pre">{children}</span>
+const Verb   = ({ children }: { children: React.ReactNode }) => <span className="font-medium text-white">{children}</span>
+const CPath  = ({ children }: { children: React.ReactNode }) => <span className="text-white/90">{children}</span>
+const CKey   = ({ children }: { children: React.ReactNode }) => <span className="text-white/[0.78]">{children}</span>
+const CStr   = ({ children }: { children: React.ReactNode }) => <span className="text-white/[0.62]">{children}</span>
+const CNum   = ({ children }: { children: React.ReactNode }) => <span className="text-white">{children}</span>
+const CMute  = ({ children }: { children: React.ReactNode }) => <span className="text-white/40">{children}</span>
+const CBrace = ({ children }: { children: React.ReactNode }) => <span className="text-white/40">{children}</span>
+
+/* ============================================================
+   MIDDLE PANEL — API webhook code block (dark)
+   ============================================================ */
+function ApiPanel({ t }: { t: typeof CONTENT['fr'] }) {
   return (
-    <div
-      className="rounded-xl overflow-hidden w-full"
+    <aside
+      aria-label="Requête API sync"
+      className="h-full flex flex-col rounded-[12px] border border-white/[0.08] px-5 pb-3.5 pt-4 text-white/55"
       style={{
-        background: '#111111',
-        border: '1px solid rgba(255,255,255,0.13)',
+        background: 'rgba(13,13,13,0.94)',
+        backdropFilter: 'blur(6px)',
+        WebkitBackdropFilter: 'blur(6px)',
         boxShadow:
-          '0 20px 56px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.03)',
+          '0 0 0 1px rgba(255,255,255,0.02), 0 24px 50px rgba(0,0,0,0.55), 0 6px 18px rgba(0,0,0,0.4)',
+        fontFamily: 'var(--font-mono, monospace)',
+        fontSize: 12.5,
+        lineHeight: 1.75,
+        WebkitFontSmoothing: 'antialiased',
       }}
     >
-      {/* Header */}
-      <div
-        className="px-4 py-[11px] flex items-center justify-between"
-        style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}
-      >
-        <span
-          className="text-white font-semibold tracking-tight"
-          style={{ fontSize: 13 }}
-        >
-          {t.panelRight}
-        </span>
-        <span
-          className="font-mono uppercase"
-          style={{ fontSize: 9, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.28)' }}
-        >
-          Shopify
-        </span>
+      {/* top label */}
+      <div className="mb-2 flex items-center gap-2 whitespace-nowrap border-b border-white/[0.06] pb-2.5 text-[10.5px] uppercase tracking-[0.14em] text-white/40">
+        <GreenDot size={6} />
+        <span>{t.apiLabel}</span>
       </div>
 
-      {/* Column headers */}
-      <div
-        className="px-4 pt-3 pb-1.5 grid"
-        style={{ gridTemplateColumns: '1fr 44px 14px' }}
-      >
-        {[t.colProduct, t.colStock].map((col) => (
-          <span
-            key={col}
-            className="font-mono uppercase"
-            style={{ fontSize: 9.5, letterSpacing: '0.10em', color: 'rgba(255,255,255,0.28)' }}
-          >
-            {col}
-          </span>
-        ))}
-        <span />
+      {/* code body */}
+      <div className="flex-1 overflow-hidden">
+        <CLine><Verb>POST</Verb> <CPath>/api/sync</CPath> <CMute>HTTP/1.1</CMute></CLine>
+        <CLine><CKey>Authorization:</CKey> <CMute>Bearer</CMute> <CStr>sk_live_***</CStr></CLine>
+        <span className="block h-1.5" />
+        <CLine><CBrace>{'{'}</CBrace></CLine>
+        <CLine>{'  '}<CKey>&quot;sku&quot;</CKey><CMute>:</CMute> <CStr>&quot;SH-001&quot;</CStr><CMute>,</CMute></CLine>
+        <CLine>{'  '}<CKey>&quot;stock&quot;</CKey><CMute>:</CMute> <CNum>12</CNum><CMute>,</CMute></CLine>
+        <CLine>{'  '}<CKey>&quot;price&quot;</CKey><CMute>:</CMute> <CNum>389</CNum></CLine>
+        <CLine><CBrace>{'}'}</CBrace></CLine>
+        <span className="my-2.5 -mx-1 block h-px bg-white/[0.06]" />
+        <CLine>
+          <span className="text-white/40">→</span>{' '}
+          <span style={{ color: '#4ade80' }}>200 OK</span>{' '}
+          <CMute>·</CMute> <CMute>142ms</CMute>
+        </CLine>
       </div>
 
-      {/* Product rows */}
-      <div className="px-4 pb-2">
-        {PRODUCTS.map((p, i) => (
-          <div
-            key={p.sku}
-            className="grid py-[6px] items-center"
-            style={{
-              gridTemplateColumns: '1fr 44px 14px',
-              borderTop: i > 0 ? '1px solid rgba(255,255,255,0.04)' : 'none',
-            }}
-          >
-            <span
-              className="truncate"
-              style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.80)', letterSpacing: '-0.01em' }}
-            >
-              {p.name}
-            </span>
-            <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.72)' }}>{p.stock}</span>
-            <span style={{ fontSize: 8, color: 'rgba(100,210,100,0.58)' }}>●</span>
-          </div>
-        ))}
+      {/* bottom label */}
+      <div className="mt-2 flex items-center gap-1.5 whitespace-nowrap border-t border-white/[0.06] pt-2.5 text-[10.5px] tracking-[0.06em] text-white/40">
+        <span className="text-white/55">↓</span>
+        <span>{t.realtimeLabel}</span>
       </div>
-
-      {/* Footer — last sync */}
-      <div
-        className="px-4 py-2 flex items-center gap-1.5"
-        style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
-      >
-        <motion.span
-          className="font-mono"
-          style={{ fontSize: 11, color: 'rgba(255,255,255,0.30)' }}
-          animate={{ opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        >
-          ↻
-        </motion.span>
-        <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.36)' }}>{t.lastSync}</span>
-      </div>
-    </div>
+    </aside>
   )
 }
 
 /* ============================================================
-   Comparison row
+   RIGHT PANEL — e-commerce site (light / Shopify-style)
+   ============================================================ */
+function EcomPanel({ t }: { t: typeof CONTENT['fr'] }) {
+  return (
+    <article
+      aria-label={t.panelRightTitle}
+      className="h-full overflow-hidden rounded-[12px] border border-[#e1e3e5] bg-white flex flex-col"
+      style={{
+        color: '#303030',
+        fontFamily: 'var(--font-sans, system-ui, sans-serif)',
+        boxShadow:
+          '0 0 0 1px rgba(0,0,0,0.04), 0 40px 90px rgba(0,0,0,0.8), 0 16px 36px rgba(0,0,0,0.6)',
+        WebkitFontSmoothing: 'antialiased',
+      }}
+    >
+      <header className="flex items-center justify-between border-b border-[#e1e3e5] bg-[#f6f6f7] px-4 py-3.5">
+        <span className="whitespace-nowrap text-[13.5px] font-semibold tracking-tight text-[#1a1a1a]">
+          {t.panelRightTitle}
+        </span>
+      </header>
+
+      {/* column headers */}
+      <div
+        className="grid items-center gap-2.5 border-b border-[#ebebeb] bg-[#fafafa] px-4 py-2.5 text-[11px] font-medium tracking-[0.01em] text-[#616161]"
+        style={{ gridTemplateColumns: ECOM_GRID }}
+        aria-hidden
+      >
+        <span />
+        <span>{t.colProduct}</span>
+        <span className="text-right">{t.colStock}</span>
+        <span className="text-right">{t.colStatus}</span>
+      </div>
+
+      {/* rows */}
+      <div className="flex-1 overflow-hidden">
+        {ECOM_ROWS.map((r) => (
+          <div
+            key={r.name}
+            className="grid items-center gap-2.5 border-b border-[#ebebeb] px-4 py-2.5 text-[13.5px] last:border-b-0"
+            style={{ gridTemplateColumns: ECOM_GRID }}
+          >
+            {/* emoji thumbnail */}
+            <span
+              className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-[6px] border border-[#e6e6e8] text-[17px] leading-none flex-shrink-0"
+              style={{ background: 'linear-gradient(135deg,#f4f4f5 0%,#e8e8ea 100%)' }}
+            >
+              {r.emoji}
+            </span>
+            <span className="overflow-hidden text-ellipsis whitespace-nowrap font-medium tracking-tight text-[#1a1a1a]">
+              {r.name}
+            </span>
+            <span className="text-right text-[13px] font-medium text-[#303030] tabular-nums">
+              {r.stock}
+            </span>
+            <span className="flex justify-end">
+              <span className="inline-flex items-center gap-1 rounded-full bg-[#cdf4dd] py-0.5 pl-1.5 pr-2 text-[11px] font-medium leading-[1.4] text-[#0c5132] whitespace-nowrap">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#008060] flex-shrink-0" />
+                {t.statusActive}
+              </span>
+            </span>
+          </div>
+        ))}
+      </div>
+
+      {/* footer */}
+      <footer className="flex items-center gap-2 border-t border-[#ebebeb] bg-[#fafafa] px-4 py-2.5 text-[12px] text-[#616161]">
+        <span className="inline-flex text-[#008060]">
+          <svg
+            width="12" height="12" viewBox="0 0 12 12"
+            fill="none" stroke="currentColor" strokeWidth={1.6}
+            strokeLinecap="round" strokeLinejoin="round"
+            aria-hidden
+          >
+            <path d="M2 5.5a4 4 0 0 1 7-1.6" />
+            <path d="M9 2v2.5H6.5" />
+            <path d="M10 6.5a4 4 0 0 1-7 1.6" />
+            <path d="M3 10V7.5h2.5" />
+          </svg>
+        </span>
+        <span>{t.lastSync}</span>
+      </footer>
+    </article>
+  )
+}
+
+/* ============================================================
+   Comparison row — unchanged
    ============================================================ */
 function Row({
   label, meta, variant,
@@ -401,188 +559,113 @@ export function ErpFeatureSection() {
           border: '1px solid rgba(255,255,255,0.10)',
         }}
       >
-        {/* FIG label — short on mobile, full on desktop */}
+        {/* ── FIG label — short on mobile, full on desktop ── */}
         <div
           className="absolute font-mono uppercase"
           style={{
             top: 28, left: 20,
             fontSize: 10, letterSpacing: '0.16em',
             color: 'rgba(255,255,255,0.36)',
-            zIndex: 4,
+            zIndex: 10,
           }}
         >
           <span className="min-720:hidden">{t.figShort}</span>
           <span className="hidden min-720:inline whitespace-nowrap">{t.figMain}</span>
         </div>
 
-        {/* LIVE indicator — hidden on mobile */}
+        {/* ── LIVE indicator — hidden on mobile ── */}
         <div
           className="hidden min-720:flex absolute font-mono uppercase whitespace-nowrap items-center gap-2"
           style={{
             top: 28, right: 36,
             fontSize: 11, letterSpacing: '0.16em',
             color: 'rgba(255,255,255,0.36)',
-            zIndex: 4,
+            zIndex: 10,
           }}
         >
-          <motion.span
-            className="block rounded-full"
-            style={{
-              width: 5, height: 5,
-              background: 'rgba(255,255,255,0.55)',
-              boxShadow: '0 0 8px rgba(255,255,255,0.45)',
-            }}
-            animate={{ opacity: [0.4, 1, 0.4], scale: [0.85, 1, 0.85] }}
-            transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-          />
+          <GreenDot size={5} />
           <span>{t.live}</span>
         </div>
 
         {/* ── Figure area ── */}
         <div className="relative px-4 min-720:px-8 pt-16 min-720:pt-20 pb-6 min-720:pb-10">
 
-          {/* ══ DESKTOP: floating panels (≥720px) ══ */}
-          {/*
-              Layout:
-                LEFT  panel: absolute, left=0,    top=40px,  width=44%  (slightly lower, slightly receded)
-                RIGHT panel: absolute, right=0,   top=8px,   width=46%  (higher, prominent)
-                CENTER code: absolute, centered horizontally between panels
-                BEAM  SVG:  absolute inset-0, draws from x=44% to x=54%
-          */}
+          {/* soft glow behind panel stack */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2"
+            style={{
+              width: '100%', height: 700,
+              background:
+                'radial-gradient(ellipse 60% 55% at 50% 40%, rgba(255,255,255,0.032), rgba(255,255,255,0.010) 40%, transparent 70%)',
+              filter: 'blur(8px)',
+              zIndex: 0,
+            }}
+          />
+
+          {/* ══ DESKTOP: three overlapping absolute panels (≥720px) ══
+              Each panel: 41.67% of container width (≡ 500/1200).
+              Overlap zones:  LEFT–MIDDLE at 29.17%–41.67%
+                              MIDDLE–RIGHT at 58.33%–70.84%
+              Connectors SVG uses viewBox="0 0 1200 380" + preserveAspectRatio="none"
+              so x-coords map proportionally to actual container width.
+          ══ */}
           <div
             className="relative hidden min-720:block w-full mt-4"
-            style={{ height: 340 }}
+            style={{ height: 380, zIndex: 1 }}
           >
-            <DotGrid />
+            <Connectors />
 
-            {/* Beam SVG — drawn in viewBox coords that map to % of container */}
-            {/*
-                viewBox 1000×340:
-                  beam at y=170 (50%), from x=440 (44%) to x=560 (56%)
-                preserveAspectRatio="none" stretches proportionally so x% stays x%
-            */}
-            <svg
-              className="absolute inset-0 w-full h-full pointer-events-none"
-              viewBox="0 0 1000 340"
-              preserveAspectRatio="none"
-              aria-hidden
-              style={{ overflow: 'visible' }}
+            {/* LEFT — ERP table (z-1, reference position) */}
+            <motion.div
+              className="absolute z-[1]"
+              style={{ left: 0, top: 10, width: '41.67%', height: 340 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.7, ease: EASE_OUT, delay: 0.08 }}
             >
-              <defs>
-                <linearGradient
-                  id="erp-beam-h"
-                  gradientUnits="userSpaceOnUse"
-                  x1={440} y1={170} x2={560} y2={170}
-                >
-                  <stop offset="0%"   stopColor="rgba(255,255,255,0.04)" />
-                  <stop offset="40%"  stopColor="rgba(255,255,255,0.22)" />
-                  <stop offset="60%"  stopColor="rgba(255,255,255,0.22)" />
-                  <stop offset="100%" stopColor="rgba(255,255,255,0.04)" />
-                </linearGradient>
-              </defs>
+              <ErpPanel t={t} />
+            </motion.div>
 
-              {/* Static gradient line */}
-              <line
-                x1={440} y1={170} x2={560} y2={170}
-                stroke="url(#erp-beam-h)" strokeWidth={1}
-              />
-
-              {/* Dashed flow */}
-              <motion.line
-                x1={440} y1={170} x2={560} y2={170}
-                stroke="rgba(255,255,255,0.16)" strokeWidth={1}
-                strokeLinecap="round" strokeDasharray="4 5"
-                initial={{ strokeDashoffset: 0 }}
-                animate={{ strokeDashoffset: -90 }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: 'linear' }}
-              />
-
-              {/* Traveling comet */}
-              <motion.circle
-                cy={170} r={2.5}
-                fill="rgba(255,255,255,0.82)"
-                style={{ filter: 'drop-shadow(0 0 4px rgba(255,255,255,0.65))' }}
-                animate={{ cx: [448, 552] }}
-                transition={{
-                  duration: 1.8, repeat: Infinity,
-                  ease: 'easeInOut', repeatType: 'reverse',
-                }}
-              />
-            </svg>
-
-            {/* LEFT panel — slightly lower, slightly receded */}
-            <div
-              className="absolute z-10"
-              style={{ left: 0, top: 40, width: '44%', opacity: 0.88 }}
+            {/* MIDDLE — API code block (z-2, overlaps LEFT by ~12%) */}
+            <motion.div
+              className="absolute z-[2]"
+              style={{ left: '29.17%', top: 10, width: '41.67%', height: 340 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.7, ease: EASE_OUT, delay: 0.2 }}
             >
-              <LeftPanel t={t} />
-            </div>
+              <ApiPanel t={t} />
+            </motion.div>
 
-            {/* CENTER — API code floats between the panels */}
-            <div
-              className="absolute z-20 flex flex-col items-center gap-1"
-              style={{
-                left: '44%', right: '46%',
-                top: '50%', transform: 'translateY(-50%)',
-              }}
+            {/* RIGHT — Shopify panel (z-3, overlaps MIDDLE by ~12%) */}
+            <motion.div
+              className="absolute z-[3]"
+              style={{ left: '58.33%', top: 10, width: '41.67%', height: 340 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.7, ease: EASE_OUT, delay: 0.32 }}
             >
-              <motion.div
-                className="font-mono text-center"
-                style={{
-                  fontSize: 10.5, letterSpacing: '0.07em',
-                  lineHeight: 1.7,
-                  color: 'rgba(255,255,255,0.30)',
-                }}
-                animate={{ opacity: [0.6, 1, 0.6] }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <div style={{ color: 'rgba(255,255,255,0.42)' }}>POST /sync</div>
-                <div>queue=0</div>
-                <div style={{ color: 'rgba(255,255,255,0.20)' }}>99.9%</div>
-              </motion.div>
-            </div>
-
-            {/* RIGHT panel — reference position, most prominent */}
-            <div
-              className="absolute z-30"
-              style={{ right: 0, top: 8, width: '46%' }}
-            >
-              <RightPanel t={t} />
-            </div>
+              <EcomPanel t={t} />
+            </motion.div>
           </div>
 
           {/* ══ MOBILE: stacked panels (<720px) ══ */}
-          <div className="relative min-720:hidden w-full max-w-[340px] mx-auto mt-8 flex flex-col gap-3">
-            <DotGrid />
-
-            <div className="relative z-10">
-              <LeftPanel t={t} />
-            </div>
-
-            {/* Mobile connector */}
-            <div className="flex flex-col items-center gap-0.5 py-1">
-              <motion.div
-                className="font-mono text-center"
-                style={{
-                  fontSize: 10, letterSpacing: '0.07em',
-                  lineHeight: 1.75,
-                  color: 'rgba(255,255,255,0.28)',
-                }}
-                animate={{ opacity: [0.55, 1, 0.55] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <div style={{ color: 'rgba(255,255,255,0.38)' }}>POST /sync</div>
-                <div style={{ color: 'rgba(255,255,255,0.18)' }}>99.9%</div>
-              </motion.div>
-            </div>
-
-            <div className="relative z-10">
-              <RightPanel t={t} />
-            </div>
+          <div className="relative min-720:hidden flex flex-col gap-4 mt-8 max-w-[420px] mx-auto" style={{ zIndex: 1 }}>
+            {/* Keep h-[300px] on dark panels so they don't grow too tall */}
+            <div style={{ height: 300 }}><ErpPanel t={t} /></div>
+            <div style={{ height: 300 }}><ApiPanel t={t} /></div>
+            <EcomPanel t={t} />
           </div>
 
           {/* Caption — title + description */}
-          <div className="mt-8 min-720:mt-10 max-w-[640px] pr-0 min-720:pr-6">
+          <div
+            className="relative mt-8 min-720:mt-10 max-w-[640px] pr-0 min-720:pr-6"
+            style={{ zIndex: 2 }}
+          >
             <h2
               className="m-0 text-white font-[650] tracking-[-0.018em]"
               style={{
@@ -609,7 +692,7 @@ export function ErpFeatureSection() {
         {/* Divider */}
         <div className="h-px" style={{ background: 'rgba(255,255,255,0.10)' }} />
 
-        {/* ── Comparison table (FIG. 1.2) ── */}
+        {/* ── Comparison table (FIG. 1.2) — unchanged ── */}
         <div className="px-4 min-720:px-14 py-8 min-720:py-14">
           <div
             className="font-mono uppercase mb-4 min-720:mb-5"
