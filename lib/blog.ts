@@ -223,7 +223,7 @@ export const posts: Post[] = [
     title: { fr: 'Google Search Console : les 5 métriques à surveiller chaque semaine', en: 'Google Search Console: The 5 Metrics to Track Every Week' },
     description: { fr: 'Impressions, clics, position moyenne, couverture d\'index, Core Web Vitals. Les 5 métriques Search Console qui comptent vraiment pour votre SEO.', en: 'Impressions, clicks, average position, index coverage, Core Web Vitals. The 5 Search Console metrics that truly matter for your SEO.' },
     date: { fr: '2 juin 2025', en: 'June 2, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 6,
   },
   {
@@ -231,7 +231,7 @@ export const posts: Post[] = [
     title: { fr: 'Maillage interne : la stratégie SEO que 90 % des sites ignorent', en: 'Internal Linking: The SEO Strategy 90% of Sites Ignore' },
     description: { fr: 'Le maillage interne est l\'un des leviers SEO les plus sous-exploités. Un réseau de liens internes bien pensé renforce l\'autorité de vos pages.', en: 'Internal linking is one of the most underused SEO levers. A well-structured internal link network strengthens your pages\' authority.' },
     date: { fr: '5 juin 2025', en: 'June 5, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 6,
   },
   {
@@ -239,7 +239,7 @@ export const posts: Post[] = [
     title: { fr: 'Schema markup : comment aider Google à comprendre votre contenu', en: 'Schema Markup: How to Help Google Understand Your Content' },
     description: { fr: 'Le schema markup permet à Google de comprendre le sens de votre contenu et d\'afficher des rich snippets. Guide pratique pour l\'implémenter.', en: 'Schema markup helps Google understand your content\'s meaning and display rich snippets. A practical implementation guide.' },
     date: { fr: '9 juin 2025', en: 'June 9, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 6,
   },
   {
@@ -247,7 +247,7 @@ export const posts: Post[] = [
     title: { fr: 'Sitemap.xml : pourquoi c\'est indispensable et comment le générer', en: 'Sitemap.xml: Why It\'s Essential and How to Generate It' },
     description: { fr: 'Un sitemap.xml bien configuré aide Google à explorer votre site efficacement. Pourquoi c\'est indispensable et comment le générer correctement.', en: 'A well-configured sitemap.xml helps Google crawl your site efficiently. Why it\'s essential and how to generate it correctly.' },
     date: { fr: '12 juin 2025', en: 'June 12, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 5,
   },
   {
@@ -255,7 +255,7 @@ export const posts: Post[] = [
     title: { fr: 'Balises meta title et description : le guide pratique 2025', en: 'Meta Title and Description Tags: The Practical Guide 2025' },
     description: { fr: 'La balise title influence directement votre classement Google. La meta description influence votre taux de clic. Comment rédiger les deux correctement.', en: 'The title tag directly influences your Google ranking. The meta description influences your click-through rate. How to write both correctly.' },
     date: { fr: '16 juin 2025', en: 'June 16, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 6,
   },
   {
@@ -263,7 +263,7 @@ export const posts: Post[] = [
     title: { fr: 'Comment trouver des mots-clés peu concurrentiels dans votre niche', en: 'How to Find Low-Competition Keywords in Your Niche' },
     description: { fr: 'Cibler les bons mots-clés change tout. Comment identifier des requêtes à fort potentiel et faible concurrence — même sans outil payant.', en: 'Targeting the right keywords changes everything. How to identify high-potential, low-competition queries — even without a paid tool.' },
     date: { fr: '19 juin 2025', en: 'June 19, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 7,
   },
   {
@@ -271,7 +271,7 @@ export const posts: Post[] = [
     title: { fr: 'Pourquoi les articles longs surclassent les articles courts sur Google', en: 'Why Long Articles Outrank Short Articles on Google' },
     description: { fr: 'Les articles de 1 500 à 2 500 mots occupent la majorité des premières positions Google. Pourquoi la longueur est un signal fort — et ses limites.', en: 'Articles of 1,500 to 2,500 words occupy most top Google positions. Why length is a strong signal — and its real limits.' },
     date: { fr: '23 juin 2025', en: 'June 23, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 6,
   },
   {
@@ -279,7 +279,7 @@ export const posts: Post[] = [
     title: { fr: 'Google Business Profile : optimiser sa fiche pour le SEO local', en: 'Google Business Profile: How to Optimise Your Listing for Local SEO' },
     description: { fr: 'Google Business Profile est le levier SEO local le plus accessible. Comment l\'optimiser pour apparaître dans le pack local et convertir plus.', en: 'Google Business Profile is the most accessible local SEO lever. How to optimise it to appear in the local pack and convert more.' },
     date: { fr: '26 juin 2025', en: 'June 26, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 7,
   },
   {
@@ -287,7 +287,7 @@ export const posts: Post[] = [
     title: { fr: 'Comment un blog d\'entreprise génère du trafic qualifié pendant des années', en: 'How a Business Blog Generates Qualified Traffic for Years' },
     description: { fr: 'Un article bien référencé continue de générer des visites 3, 5, 10 ans après publication. Comment un blog d\'entreprise devient un actif SEO durable.', en: 'A well-ranked article keeps generating visits 3, 5, 10 years after publication. How a business blog becomes a lasting SEO asset.' },
     date: { fr: '30 juin 2025', en: 'June 30, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 7,
   },
   {
@@ -295,7 +295,7 @@ export const posts: Post[] = [
     title: { fr: 'Intentions de recherche : comprendre ce que veut vraiment l\'utilisateur', en: 'Search Intent: Understanding What Users Really Want' },
     description: { fr: 'L\'intention de recherche est le facteur SEO numéro 1 que la plupart des sites ignorent. Comment l\'identifier et l\'exploiter pour dominer Google.', en: 'Search intent is the number-one SEO factor most sites ignore. How to identify and exploit it to dominate Google.' },
     date: { fr: '3 juillet 2025', en: 'July 3, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 6,
   },
   {
@@ -303,7 +303,7 @@ export const posts: Post[] = [
     title: { fr: 'Netlinking : comment obtenir des backlinks sans spammer personne', en: 'Link Building: How to Get Backlinks Without Spamming Anyone' },
     description: { fr: 'Les backlinks restent l\'un des signaux SEO les plus puissants. Comment en obtenir naturellement, sans techniques black-hat ni spam de masse.', en: 'Backlinks remain one of the most powerful SEO signals. How to earn them naturally, without black-hat techniques or mass spam.' },
     date: { fr: '7 juillet 2025', en: 'July 7, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 7,
   },
   {
@@ -399,7 +399,7 @@ export const posts: Post[] = [
     title: { fr: 'Comment vendre plus de motos grâce au SEO local en Gironde', en: 'How to Sell More Motorcycles Through Local SEO in Gironde' },
     description: { fr: 'Un acheteur de moto cherche d\'abord en ligne avant de visiter un concessionnaire. Comment le SEO local transforme cette recherche en vente.', en: 'A motorcycle buyer searches online before visiting a dealer. How local SEO turns that search into a sale.' },
     date: { fr: '25 août 2025', en: 'August 25, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 7,
   },
   {
@@ -447,7 +447,7 @@ export const posts: Post[] = [
     title: { fr: 'SEO pour concessionnaire moto : les mots-clés qui convertissent', en: 'SEO for Motorcycle Dealers: The Keywords That Convert' },
     description: { fr: 'Les requêtes que vos clients tapent — moto Bordeaux, concessionnaire Honda Gironde — et comment vous positionner dessus efficacement.', en: 'The queries your clients type — motorbike Bordeaux, Honda dealer Gironde — and how to rank for them effectively.' },
     date: { fr: '16 septembre 2025', en: 'September 16, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 7,
   },
   {
@@ -463,7 +463,7 @@ export const posts: Post[] = [
     title: { fr: 'Moto neuve vs occasion : comment structurer les pages pour le SEO', en: 'New vs Used Motorcycle: How to Structure Pages for SEO' },
     description: { fr: 'Moto neuve et moto d\'occasion ne ciblent pas les mêmes requêtes ni les mêmes acheteurs. Comment structurer vos pages pour maximiser la visibilité des deux.', en: 'New and used bikes don\'t target the same queries or buyers. How to structure your pages to maximise visibility for both.' },
     date: { fr: '23 septembre 2025', en: 'September 23, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 6,
   },
   {
@@ -503,7 +503,7 @@ export const posts: Post[] = [
     title: { fr: 'SEO pour service VTC : se positionner sur les trajets clés', en: 'SEO for VTC Service: Ranking for Key Routes' },
     description: { fr: 'VTC Bordeaux aéroport, chauffeur gare Mérignac — les requêtes de trajet sont les plus rentables pour un VTC. Comment s\'y positionner.', en: 'VTC Bordeaux airport, driver Mérignac station — route queries are the most profitable for a VTC. How to rank for them.' },
     date: { fr: '10 octobre 2025', en: 'October 10, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 7,
   },
   {
@@ -527,7 +527,7 @@ export const posts: Post[] = [
     title: { fr: 'SEO local pour une esthéticienne : se positionner dans sa ville', en: 'Local SEO for a Beautician: How to Rank in Your City' },
     description: { fr: 'Esthéticienne Bordeaux, institut beauté proche de moi — comment capter des clientes locales via Google sans budget publicitaire.', en: 'Beautician Bordeaux, beauty salon near me — how to attract local clients via Google without an advertising budget.' },
     date: { fr: '21 octobre 2025', en: 'October 21, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 6,
   },
   {
@@ -535,7 +535,7 @@ export const posts: Post[] = [
     title: { fr: 'Comment afficher sa zone d\'intervention sans donner son adresse exacte', en: 'How to Display Your Service Area Without Giving Your Exact Address' },
     description: { fr: 'Beaucoup de professionnels itinérants ne veulent pas publier leur adresse personnelle. Comment indiquer votre zone de service sans compromettre votre vie privée.', en: 'Many mobile professionals don\'t want to publish their home address. How to indicate your service area without compromising privacy.' },
     date: { fr: '24 octobre 2025', en: 'October 24, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 5,
   },
   {
@@ -551,7 +551,7 @@ export const posts: Post[] = [
     title: { fr: 'Valenciennes esthéticienne : comment capter les clientes locales sur Google', en: 'Valenciennes Beautician: How to Attract Local Clients on Google' },
     description: { fr: 'Se positionner sur esthéticienne Valenciennes demande une stratégie SEO locale précise. Les leviers qui font la différence dans une ville de taille moyenne.', en: 'Ranking for "beautician Valenciennes" requires a precise local SEO strategy. The levers that make a difference in a mid-sized city.' },
     date: { fr: '3 novembre 2025', en: 'November 3, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 7,
   },
   {
@@ -607,7 +607,7 @@ export const posts: Post[] = [
     title: { fr: 'Google Ads vs SEO : où investir son budget digital en premier ?', en: 'Google Ads vs SEO: Where to Invest Your Digital Budget First?' },
     description: { fr: 'Google Ads donne des résultats immédiats. Le SEO construit un actif durable. Comment décider où investir selon votre situation et vos objectifs.', en: 'Google Ads gives immediate results. SEO builds a lasting asset. How to decide where to invest based on your situation and objectives.' },
     date: { fr: '27 novembre 2025', en: 'November 27, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 7,
   },
   {
@@ -623,7 +623,7 @@ export const posts: Post[] = [
     title: { fr: 'Pourquoi 80 % des sites locaux ne génèrent aucun client (et comment éviter ça)', en: 'Why 80% of Local Sites Generate Zero Clients (And How to Avoid That)' },
     description: { fr: 'La plupart des sites locaux existent mais ne travaillent pas. Les 5 erreurs qui empêchent un site de générer des clients — et comment les corriger.', en: 'Most local sites exist but don\'t work. The 5 mistakes preventing a site from generating clients — and how to fix them.' },
     date: { fr: '4 décembre 2025', en: 'December 4, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 7,
   },
   {
@@ -631,7 +631,7 @@ export const posts: Post[] = [
     title: { fr: 'IA et création de contenu : comment l\'utiliser sans perdre son authenticité', en: 'AI and Content Creation: How to Use It Without Losing Authenticity' },
     description: { fr: 'L\'IA peut accélérer la création de contenu. Mais utilisée sans discernement, elle produit du générique que Google et vos clients reconnaissent.', en: 'AI can accelerate content creation. But used without discernment, it produces generic content that Google and clients recognise.' },
     date: { fr: '8 décembre 2025', en: 'December 8, 2025' },
-    category: 'seo',
+    category: 'SEO & Contenu',
     readingTime: 7,
   },
   {
@@ -640,6 +640,20 @@ export const posts: Post[] = [
     description: { fr: 'Pas de template. Pas d\'agence intermédiaire. Torquemade conçoit des sites et des logiciels sur mesure pour les professionnels qui veulent performer en ligne.', en: 'No templates. No intermediary agency. Torquemade designs custom sites and software for professionals who want to perform online.' },
     date: { fr: '12 décembre 2025', en: 'December 12, 2025' },
     category: 'projets',
+    readingTime: 7,
+  },
+  {
+    slug: 'connecter-stock-magasin-site-internet',
+    title: {
+      fr: 'Comment connecter mon stock magasin à mon site internet ?',
+      en: 'How do I connect my store inventory to my website?',
+    },
+    description: {
+      fr: "Synchroniser le stock de votre commerce physique avec votre site e-commerce évite les surventes, fait gagner du temps et améliore l'expérience client. Voici comment ça marche.",
+      en: "Syncing your physical store inventory with your e-commerce site prevents overselling, saves time, and improves customer experience. Here's how it works.",
+    },
+    date: { fr: '15 avril 2026', en: 'April 15, 2026' },
+    category: 'GESTION DE STOCK',
     readingTime: 7,
   },
 ]
