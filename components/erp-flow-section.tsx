@@ -5,58 +5,93 @@ import { motion, type Variants } from 'framer-motion'
 import { useLang } from '@/components/app-provider'
 import { strings } from '@/lib/strings'
 
-/** Animated dashed connector — horizontal, data flows left → right */
+/* ─── Styles ──────────────────────────────────────────────── */
+
+const NODE = {
+  background: '#111111',
+  border: '1px solid rgba(255,255,255,0.12)',
+  borderRadius: 8,
+  padding: '16px 24px',
+  boxShadow: '0 0 0 1px rgba(255,255,255,0.04), 0 8px 32px rgba(0,0,0,0.4)',
+  color: '#ffffff',
+  fontWeight: 500,
+  textAlign: 'center' as const,
+  fontSize: '0.9375rem',
+  lineHeight: 1.25,
+  width: '100%',
+}
+
+/** Central node — slightly brighter border to pull focus */
+const NODE_SYNC = {
+  ...NODE,
+  border: '1px solid rgba(255,255,255,0.22)',
+}
+
+/* ─── SVG Connectors ─────────────────────────────────────── */
+
+/**
+ * Horizontal dashed connector with animated stroke-dashoffset
+ * and two pulsing endpoint dots.
+ */
 function ConnectorH() {
   return (
-    <div
+    <svg
+      aria-hidden="true"
+      height={8}
       style={{
         flex: '1 1 auto',
-        minWidth: 32,
-        position: 'relative',
-        height: 1,
+        minWidth: 40,
         alignSelf: 'center',
+        overflow: 'visible',
+        display: 'block',
       }}
     >
-      <motion.div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage:
-            'repeating-linear-gradient(90deg, hsl(var(--border-subtle)) 0, hsl(var(--border-subtle)) 5px, transparent 5px, transparent 10px)',
-          backgroundSize: '10px 1px',
-        }}
-        animate={{ backgroundPositionX: ['0px', '10px'] }}
-        transition={{ duration: 0.65, repeat: Infinity, ease: 'linear' }}
+      {/* Animated dashed line — CSS handles stroke-dashoffset */}
+      <line
+        x1="0%"
+        y1="4"
+        x2="100%"
+        y2="4"
+        stroke="rgba(255,255,255,0.15)"
+        strokeWidth="1"
+        strokeDasharray="4 6"
+        strokeDashoffset="0"
+        style={{ animation: 'erp-dash 3s linear infinite' }}
       />
-    </div>
+      {/* Endpoint dots — CSS pulse */}
+      <circle cx="0%" cy="4" r="3" fill="white" fillOpacity="0.6" className="erp-dot" />
+      <circle cx="100%" cy="4" r="3" fill="white" fillOpacity="0.6" className="erp-dot erp-dot-d1" />
+    </svg>
   )
 }
 
-/** Animated dashed connector — vertical, data flows top → bottom */
+/** Vertical dashed connector (mobile layout) */
 function ConnectorV() {
   return (
-    <div
-      style={{
-        width: 1,
-        height: 28,
-        position: 'relative',
-        alignSelf: 'center',
-      }}
+    <svg
+      aria-hidden="true"
+      width={8}
+      height={36}
+      style={{ alignSelf: 'center', overflow: 'visible', display: 'block' }}
     >
-      <motion.div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage:
-            'repeating-linear-gradient(180deg, hsl(var(--border-subtle)) 0, hsl(var(--border-subtle)) 5px, transparent 5px, transparent 10px)',
-          backgroundSize: '1px 10px',
-        }}
-        animate={{ backgroundPositionY: ['0px', '10px'] }}
-        transition={{ duration: 0.65, repeat: Infinity, ease: 'linear' }}
+      <line
+        x1="4"
+        y1="0%"
+        x2="4"
+        y2="100%"
+        stroke="rgba(255,255,255,0.15)"
+        strokeWidth="1"
+        strokeDasharray="4 6"
+        strokeDashoffset="0"
+        style={{ animation: 'erp-dash 3s linear infinite' }}
       />
-    </div>
+      <circle cx="4" cy="0%" r="3" fill="white" fillOpacity="0.6" className="erp-dot" />
+      <circle cx="4" cy="100%" r="3" fill="white" fillOpacity="0.6" className="erp-dot erp-dot-d1" />
+    </svg>
   )
 }
+
+/* ─── Framer Motion variants ─────────────────────────────── */
 
 const listVariants: Variants = {
   hidden: {},
@@ -67,6 +102,8 @@ const itemVariants: Variants = {
   hidden: { opacity: 0, y: 8 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.28, ease: 'easeOut' } },
 }
+
+/* ─── Section ────────────────────────────────────────────── */
 
 export function ErpFlowSection() {
   const lang = useLang()
@@ -93,6 +130,7 @@ export function ErpFlowSection() {
       </span>
 
       <div className="mx-auto max-w-5xl">
+        {/* Heading */}
         <h2
           className="fade-up text-title-2 font-semibold tracking-tight text-center mb-4"
           style={{ color: 'hsl(var(--text-primary))' }}
@@ -107,32 +145,32 @@ export function ErpFlowSection() {
         </p>
 
         {/* ── Flow diagram — desktop (horizontal) ── */}
-        <div className="hidden min-720:flex items-stretch gap-4 max-w-4xl mx-auto mb-12">
+        <div className="hidden min-720:flex items-center max-w-4xl mx-auto mb-12">
           {/* Node 0 — ERP */}
           <motion.div
-            className="flex-1 flex items-center"
+            style={{ flex: 1 }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.45, ease: 'easeOut', delay: 0 }}
           >
-            <div className="flow-box w-full">{t.home.erp.erpBox}</div>
+            <div style={NODE}>{t.home.erp.erpBox}</div>
           </motion.div>
 
           <ConnectorH />
 
-          {/* Node 1 — Synchronisation */}
+          {/* Node 1 — Synchronisation (highlighted) */}
           <motion.div
-            className="flex-1 flex flex-col items-center"
+            style={{ flex: 1 }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.45, ease: 'easeOut', delay: 0.2 }}
           >
-            <div className="flow-box w-full">{t.home.erp.syncBox}</div>
+            <div style={NODE_SYNC}>{t.home.erp.syncBox}</div>
             <div
               className="flex justify-center gap-2 mt-2 text-xs"
-              style={{ color: 'hsl(var(--text-tertiary))' }}
+              style={{ color: 'rgba(255,255,255,0.3)' }}
             >
               <span>{t.home.erp.syncItem1}</span>
               <span>·</span>
@@ -146,41 +184,41 @@ export function ErpFlowSection() {
 
           {/* Node 2 — Site e-commerce */}
           <motion.div
-            className="flex-1 flex items-center"
+            style={{ flex: 1 }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.45, ease: 'easeOut', delay: 0.4 }}
           >
-            <div className="flow-box w-full">{t.home.erp.siteBox}</div>
+            <div style={NODE}>{t.home.erp.siteBox}</div>
           </motion.div>
         </div>
 
         {/* ── Flow diagram — mobile (vertical) ── */}
-        <div className="flex flex-col min-720:hidden items-stretch max-w-xs mx-auto mb-12">
+        <div className="flex flex-col min-720:hidden items-center max-w-xs mx-auto mb-12">
           <motion.div
+            style={{ width: '100%' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.45, ease: 'easeOut', delay: 0 }}
           >
-            <div className="flow-box">{t.home.erp.erpBox}</div>
+            <div style={NODE}>{t.home.erp.erpBox}</div>
           </motion.div>
 
-          <div className="my-3 mx-auto">
-            <ConnectorV />
-          </div>
+          <ConnectorV />
 
           <motion.div
+            style={{ width: '100%' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.45, ease: 'easeOut', delay: 0.2 }}
           >
-            <div className="flow-box">{t.home.erp.syncBox}</div>
+            <div style={NODE_SYNC}>{t.home.erp.syncBox}</div>
             <div
               className="flex justify-center gap-2 mt-2 text-xs"
-              style={{ color: 'hsl(var(--text-tertiary))' }}
+              style={{ color: 'rgba(255,255,255,0.3)' }}
             >
               <span>{t.home.erp.syncItem1}</span>
               <span>·</span>
@@ -190,36 +228,32 @@ export function ErpFlowSection() {
             </div>
           </motion.div>
 
-          <div className="my-3 mx-auto">
-            <ConnectorV />
-          </div>
+          <ConnectorV />
 
           <motion.div
+            style={{ width: '100%' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.45, ease: 'easeOut', delay: 0.4 }}
           >
-            <div className="flow-box">{t.home.erp.siteBox}</div>
+            <div style={NODE}>{t.home.erp.siteBox}</div>
           </motion.div>
         </div>
 
-        {/* ── Comparison table with staggered items ── */}
+        {/* ── Comparison table ── */}
         <div
-          className="grid grid-cols-1 min-720:grid-cols-2 gap-px rounded-2xl overflow-hidden"
+          className="grid grid-cols-1 min-720:grid-cols-2 rounded-2xl overflow-hidden"
           style={{
-            background: 'hsl(var(--border-subtle))',
-            border: '1px solid hsl(var(--border-subtle))',
+            background: '#0d0d0d',
+            border: '1px solid rgba(255,255,255,0.08)',
           }}
         >
           {/* Sans connexion ERP */}
-          <div
-            className="p-6 min-720:p-8"
-            style={{ background: 'hsl(var(--bg-secondary))' }}
-          >
+          <div className="erp-compare-left p-6 min-720:p-8">
             <h3
               className="text-base font-semibold mb-5"
-              style={{ color: 'hsl(var(--text-secondary))' }}
+              style={{ color: 'rgba(255,255,255,0.45)' }}
             >
               {t.home.erp.comparisonWithoutHeader}
             </h3>
@@ -234,12 +268,13 @@ export function ErpFlowSection() {
                 <motion.li
                   key={i}
                   className="text-sm flex items-start gap-2"
-                  style={{ color: 'hsl(var(--text-secondary))' }}
+                  style={{ color: 'rgba(255,255,255,0.5)' }}
                   variants={itemVariants}
                 >
                   <span
                     aria-hidden="true"
-                    className="font-bold flex-shrink-0 text-red-500"
+                    className="font-bold flex-shrink-0"
+                    style={{ color: 'rgba(255,80,80,0.7)' }}
                   >
                     ✗
                   </span>
@@ -250,13 +285,10 @@ export function ErpFlowSection() {
           </div>
 
           {/* Avec connexion ERP */}
-          <div
-            className="p-6 min-720:p-8"
-            style={{ background: 'hsl(var(--bg-primary))' }}
-          >
+          <div className="p-6 min-720:p-8">
             <h3
               className="text-base font-semibold mb-5"
-              style={{ color: 'hsl(var(--text-primary))' }}
+              style={{ color: 'rgba(255,255,255,0.8)' }}
             >
               {t.home.erp.comparisonWithHeader}
             </h3>
@@ -271,12 +303,13 @@ export function ErpFlowSection() {
                 <motion.li
                   key={i}
                   className="text-sm flex items-start gap-2"
-                  style={{ color: 'hsl(var(--text-primary))' }}
+                  style={{ color: 'rgba(255,255,255,0.75)' }}
                   variants={itemVariants}
                 >
                   <span
                     aria-hidden="true"
-                    className="font-bold flex-shrink-0 text-emerald-600"
+                    className="font-bold flex-shrink-0"
+                    style={{ color: 'rgba(255,255,255,0.7)' }}
                   >
                     ✓
                   </span>

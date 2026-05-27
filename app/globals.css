@@ -539,6 +539,42 @@ html.dark .cta-card {
 }
 
 /* ============================================================
+   ERP FLOW — redesign keyframes (erp-flow-section.tsx)
+   ============================================================ */
+
+/* Dashed line: stroke-dashoffset flows left → right */
+@keyframes erp-dash {
+  to { stroke-dashoffset: -40; }
+}
+
+/* Dot: soft pulse scale + opacity */
+@keyframes erp-dot-pulse {
+  0%, 100% { transform: scale(1);   opacity: 0.5; }
+  50%       { transform: scale(1.4); opacity: 0.9; }
+}
+.erp-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: erp-dot-pulse 2s ease-in-out infinite;
+}
+.erp-dot-d1 { animation-delay: 1s; }
+
+/* Comparison table — responsive separator */
+.erp-compare-left {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+@media (min-width: 720px) {
+  .erp-compare-left {
+    border-bottom: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .erp-dot { animation: none; opacity: 0.5; }
+}
+
+/* ============================================================
    LIQUID GLASS — Rainbow text gradient
    (repris de components/rotating-text.tsx pour usage global)
    ============================================================ */
