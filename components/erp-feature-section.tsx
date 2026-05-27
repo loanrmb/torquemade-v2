@@ -2,10 +2,11 @@
 
 /**
  * ErpFeatureSection — Torquemade
- * Drop-in from designer, adapted:
- *   - named export, useLang() FR/EN, min-720: breakpoints
- *   - Mobile (<720px): vertical node stack with VertConnector
- *   - Desktop (≥720px): original horizontal absolute layout
+ * Figure area: Linear.app-style floating UI panels
+ *   - LEFT  — stock software mockup with product table
+ *   - CENTER — floating monospace API code + animated beam
+ *   - RIGHT  — e-commerce site with synced inventory
+ * Comparison table (FIG. 1.2) is unchanged.
  */
 
 import { motion } from 'framer-motion'
@@ -22,10 +23,14 @@ const CONTENT: Record<
     figMain: string
     figShort: string
     live: string
-    erpNode: string
-    syncNode: string
-    siteNode: string
-    syncSub: readonly [string, string, string]
+    panelLeft: string
+    panelRight: string
+    connected: string
+    lastSync: string
+    colProduct: string
+    colSku: string
+    colStock: string
+    colPrice: string
     title: string
     description: string
     figTable: string
@@ -40,11 +45,15 @@ const CONTENT: Record<
   fr: {
     figMain:  'FIG. 1.1 — TOPOLOGIE SYNC STOCK',
     figShort: 'FIG. 1.1',
-    live: 'LIVE · v2.4',
-    erpNode:  'ERP / Logiciel de gestion',
-    syncNode: 'Synchronisation',
-    siteNode: 'Site e‑commerce',
-    syncSub:  ['Stock', 'Prix', 'Commandes'],
+    live:     'LIVE · v2.4',
+    panelLeft:  'Logiciel de stock',
+    panelRight: 'Site e-commerce',
+    connected:  'Connecté',
+    lastSync:   'Dernière sync : 2s',
+    colProduct: 'Produit',
+    colSku:     'SKU',
+    colStock:   'Stock',
+    colPrice:   'Prix',
     title: 'Votre stock, votre site, votre logiciel — connectés.',
     description:
       'On branche votre ERP existant — ou on en construit un sur mesure — directement à votre boutique en ligne. Une seule source de vérité, mise à jour en quelques secondes, sans intervention manuelle.',
@@ -54,30 +63,34 @@ const CONTENT: Record<
     stateOff: 'État · 00',
     stateOn:  'État · 01',
     rowsBad: [
-      ['Stock mis à jour à la main, en CSV',         '~2h / jour'],
-      ['Ventes de produits déjà épuisés',             '~8 / mois'],
-      ['Prix désynchronisés entre canaux',             'manuel'],
-      ['Commandes ressaisies dans l’ERP',         'erreurs'],
-      ['Pas de source de vérité unique',               '2 bases'],
-      ['Réconciliation comptable manuelle',            'fin de mois'],
+      ['Stock mis à jour à la main, en CSV',     '~2h / jour'],
+      ['Ventes de produits déjà épuisés',         '~8 / mois'],
+      ['Prix désynchronisés entre canaux',         'manuel'],
+      ['Commandes ressaisies dans l’ERP',    'erreurs'],
+      ['Pas de source de vérité unique',           '2 bases'],
+      ['Réconciliation comptable manuelle',        'fin de mois'],
     ],
     rowsGood: [
-      ['Stock synchronisé en temps réel',                      '< 3 s'],
-      ['Mises hors‑ligne automatiques à zéro',            'auto'],
-      ['Prix poussés depuis l’ERP, un seul endroit',      'bi‑dir'],
-      ['Commandes web créées directement dans l’ERP',     'webhook'],
-      ['Une seule base — l’ERP fait foi',                 '1 base'],
-      ['Export comptable automatisé',                           'quotidien'],
+      ['Stock synchronisé en temps réel',                        '< 3 s'],
+      ['Mises hors‑ligne automatiques à zéro',              'auto'],
+      ['Prix poussés depuis l’ERP, un seul endroit',        'bi‑dir'],
+      ['Commandes web créées directement dans l’ERP',       'webhook'],
+      ['Une seule base — l’ERP fait foi',                   '1 base'],
+      ['Export comptable automatisé',                            'quotidien'],
     ],
   },
   en: {
     figMain:  'FIG. 1.1 — STOCK SYNC TOPOLOGY',
     figShort: 'FIG. 1.1',
-    live: 'LIVE · v2.4',
-    erpNode:  'ERP / Management tool',
-    syncNode: 'Synchronisation',
-    siteNode: 'E‑commerce site',
-    syncSub:  ['Stock', 'Prices', 'Orders'],
+    live:     'LIVE · v2.4',
+    panelLeft:  'Stock software',
+    panelRight: 'E-commerce site',
+    connected:  'Connected',
+    lastSync:   'Last sync: 2s',
+    colProduct: 'Product',
+    colSku:     'SKU',
+    colStock:   'Stock',
+    colPrice:   'Price',
     title: 'Your stock, your site, your software — connected.',
     description:
       'We connect your existing ERP — or build a custom one — directly to your online store. One single source of truth, updated in seconds, with no manual intervention.',
@@ -87,268 +100,239 @@ const CONTENT: Record<
     stateOff: 'State · 00',
     stateOn:  'State · 01',
     rowsBad: [
-      ['Stock updated manually, via CSV',               '~2h / day'],
-      ['Sales of already out-of-stock items',            '~8 / month'],
-      ['Prices out of sync between channels',            'manual'],
-      ['Orders re-keyed into the ERP',                   'errors'],
-      ['No single source of truth',                      '2 databases'],
-      ['Manual accounting reconciliation',               'end of month'],
+      ['Stock updated manually, via CSV',           '~2h / day'],
+      ['Sales of already out-of-stock items',        '~8 / month'],
+      ['Prices out of sync between channels',        'manual'],
+      ['Orders re-keyed into the ERP',               'errors'],
+      ['No single source of truth',                  '2 databases'],
+      ['Manual accounting reconciliation',           'end of month'],
     ],
     rowsGood: [
-      ['Stock synced in real time',                      '< 3 s'],
-      ['Automatic zero-stock takedowns',                 'auto'],
-      ['Prices pushed from ERP, one place',              'bi‑dir'],
-      ['Web orders created directly in ERP',             'webhook'],
-      ['One database — ERP is the authority',            '1 db'],
-      ['Automated accounting export',                    'daily'],
+      ['Stock synced in real time',                  '< 3 s'],
+      ['Automatic zero-stock takedowns',             'auto'],
+      ['Prices pushed from ERP, one place',          'bi‑dir'],
+      ['Web orders created directly in ERP',         'webhook'],
+      ['One database — ERP is the authority',        '1 db'],
+      ['Automated accounting export',                'daily'],
     ],
   },
 }
 
 /* ============================================================
-   Geometry — desktop horizontal layout only
+   Static product data — same in both languages
    ============================================================ */
-const GEO = {
-  vbW: 1000,
-  vbH: 360,
-  leftRight:   320,
-  centerLeft:  400,
-  centerRight: 600,
-  rightLeft:   680,
-  ySide:   180,
-  yCenter: 152,
-  leftPath:  'M 320 180 C 355 180, 365 152, 400 152',
-  rightPath: 'M 600 152 C 635 152, 645 180, 680 180',
-} as const
+const PRODUCTS = [
+  { name: 'Casque Shoei',      sku: 'SH-001', stock: 12, price: '389 €' },
+  { name: "Veste Rev'It",      sku: 'RV-204', stock: 8,  price: '299 €' },
+  { name: 'Gants Alpinestars', sku: 'AL-110', stock: 23, price: '129 €' },
+  { name: 'Botte TCX',         sku: 'TX-550', stock: 5,  price: '189 €' },
+] as const
 
 /* ============================================================
-   BezierConnector — 3-layer animated path (desktop + mobile)
+   Dot grid — shared background texture
    ============================================================ */
-function BezierConnector({
-  d, gradId, gradStart, gradEnd,
-}: {
-  d: string
-  gradId: string
-  gradStart: { x: number; y: number }
-  gradEnd:   { x: number; y: number }
-}) {
+function DotGrid() {
   return (
-    <>
-      <defs>
-        <linearGradient
-          id={gradId}
-          gradientUnits="userSpaceOnUse"
-          x1={gradStart.x} y1={gradStart.y}
-          x2={gradEnd.x}   y2={gradEnd.y}
-        >
-          <stop offset="0%"   stopColor="rgba(255,255,255,0.06)" />
-          <stop offset="30%"  stopColor="rgba(255,255,255,0.32)" />
-          <stop offset="70%"  stopColor="rgba(255,255,255,0.32)" />
-          <stop offset="100%" stopColor="rgba(255,255,255,0.06)" />
-        </linearGradient>
-      </defs>
-      <path d={d} fill="none" stroke={`url(#${gradId})`} strokeWidth={1.25} />
-      <motion.path
-        d={d} fill="none"
-        stroke="rgba(255,255,255,0.22)" strokeWidth={1}
-        strokeLinecap="round" strokeDasharray="3 5"
-        initial={{ strokeDashoffset: 0 }}
-        animate={{ strokeDashoffset: -160 }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
-      />
-      <motion.path
-        d={d} fill="none"
-        stroke="rgba(255,255,255,0.9)" strokeWidth={1.5}
-        strokeLinecap="round"
-        initial={{ pathLength: 0.12, pathOffset: 0 }}
-        animate={{ pathOffset: 1 }}
-        transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-        style={{ filter: 'drop-shadow(0 0 3px rgba(255,255,255,0.6))' }}
-      />
-    </>
-  )
-}
-
-/* ============================================================
-   Diamond marker — pulsing rotated square
-   ============================================================ */
-function Diamond({
-  left, top, bright = false,
-}: {
-  left: string
-  top:  string
-  bright?: boolean
-}) {
-  return (
-    <motion.span
+    <div
       aria-hidden
-      className="absolute pointer-events-none"
+      className="absolute inset-0 pointer-events-none"
       style={{
-        left, top,
-        width: 11, height: 11,
-        background: '#0e0e0e',
-        border: `1px solid rgba(255,255,255,${bright ? 0.75 : 0.45})`,
-        transform: 'translate(-50%, -50%) rotate(45deg)',
-        boxShadow: bright ? '0 0 0 3px rgba(255,255,255,0.04)' : undefined,
-        zIndex: 3,
+        backgroundImage:
+          'radial-gradient(circle at center, rgba(255,255,255,0.06) 0.5px, transparent 0.6px)',
+        backgroundSize: '24px 24px',
+        backgroundPosition: '50% 50%',
+        opacity: 0.5,
+        WebkitMaskImage:
+          'radial-gradient(ellipse 65% 75% at 50% 50%, #000 30%, transparent 75%)',
+        maskImage:
+          'radial-gradient(ellipse 65% 75% at 50% 50%, #000 30%, transparent 75%)',
       }}
-      animate={{ opacity: [0.55, 1, 0.55] }}
-      transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
-    >
-      <span
-        className="absolute"
-        style={{
-          inset: 2,
-          background: bright ? 'rgba(255,255,255,0.18)' : 'rgba(255,255,255,0.08)',
-          border: '0.5px solid rgba(255,255,255,0.1)',
-        }}
-      />
-    </motion.span>
+    />
   )
 }
 
 /* ============================================================
-   Node — desktop only (absolute positioning)
+   LEFT PANEL — stock software (ERP / logiciel de stock)
    ============================================================ */
-function Node({
-  children, variant = 'side', style,
-}: {
-  children: React.ReactNode
-  variant?: 'side' | 'center'
-  style?: React.CSSProperties
-}) {
-  if (variant === 'center') {
-    return (
+function LeftPanel({ t }: { t: typeof CONTENT['fr'] }) {
+  return (
+    <div
+      className="rounded-xl overflow-hidden w-full"
+      style={{
+        background: '#0d0d0d',
+        border: '1px solid rgba(255,255,255,0.09)',
+        boxShadow: '0 8px 32px rgba(0,0,0,0.55)',
+      }}
+    >
+      {/* Header */}
       <div
-        className="absolute text-center text-white font-medium rounded-[10px] whitespace-nowrap overflow-hidden text-ellipsis"
-        style={{
-          left: '40%', width: '20%',
-          top: 'calc(50% - 28px)', transform: 'translateY(-50%)',
-          padding: '20px 14px',
-          fontSize: 13.5, letterSpacing: '-0.005em', lineHeight: 1.3,
-          background: 'linear-gradient(180deg, #141414 0%, #0d0d0d 100%)',
-          border: '1px solid rgba(255,255,255,0.18)',
-          boxShadow: '0 0 0 1px rgba(255,255,255,0.03), 0 24px 60px rgba(0,0,0,0.55)',
-          ...style,
-        }}
+        className="px-4 py-[11px] flex items-center justify-between"
+        style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}
       >
-        {children}
+        <span
+          className="text-white font-semibold tracking-tight"
+          style={{ fontSize: 13 }}
+        >
+          {t.panelLeft}
+        </span>
+        <span
+          className="font-mono uppercase"
+          style={{ fontSize: 9, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.28)' }}
+        >
+          ERP
+        </span>
       </div>
-    )
-  }
-  return (
-    <div
-      className="absolute text-center text-white font-medium rounded-[10px] whitespace-nowrap overflow-hidden text-ellipsis transition-colors duration-200 hover:border-white/20"
-      style={{
-        top: '50%', width: '30%', transform: 'translateY(-50%)',
-        padding: '18px 16px',
-        fontSize: 13.5, letterSpacing: '-0.005em', lineHeight: 1.3,
-        background: '#0e0e0e',
-        border: '1px solid rgba(255,255,255,0.10)',
-        ...style,
-      }}
-    >
-      {children}
-    </div>
-  )
-}
 
-/* ============================================================
-   MobileNode — flow layout (not absolute), used in vertical stack
-   ============================================================ */
-function MobileNode({
-  children, center = false,
-}: {
-  children: React.ReactNode
-  center?: boolean
-}) {
-  return (
-    <div
-      className="w-full text-center text-white font-medium rounded-[10px]"
-      style={{
-        padding: '14px 16px',
-        fontSize: 14, letterSpacing: '-0.005em', lineHeight: 1.35,
-        background: center
-          ? 'linear-gradient(180deg, #141414 0%, #0d0d0d 100%)'
-          : '#0e0e0e',
-        border: center
-          ? '1px solid rgba(255,255,255,0.18)'
-          : '1px solid rgba(255,255,255,0.10)',
-        boxShadow: center
-          ? '0 0 0 1px rgba(255,255,255,0.03), 0 16px 40px rgba(0,0,0,0.55)'
-          : undefined,
-      }}
-    >
-      {children}
-    </div>
-  )
-}
-
-/* ============================================================
-   VertConnector — vertical bezier for mobile stack.
-   The wrapping div is `position: relative` so diamonds inside
-   can be absolutely positioned at the path endpoints.
-   Diamonds are rendered after the SVG (later in DOM = higher paint
-   order) so they sit above the stroke without needing z-index hacks.
-   ============================================================ */
-function VertConnector({ gradId }: { gradId: string }) {
-  const W = 80
-  const H = 56
-  const cx = W / 2  // 40
-  const d  = `M ${cx} 0 C ${cx - 10} ${H * 0.35}, ${cx + 10} ${H * 0.65}, ${cx} ${H}`
-
-  return (
-    <div
-      className="relative flex-shrink-0 self-center"
-      style={{ width: W, height: H }}
-    >
-      <svg
-        width={W}
-        height={H}
-        aria-hidden
-        style={{ overflow: 'visible', display: 'block' }}
+      {/* Column headers */}
+      <div
+        className="px-4 pt-3 pb-1.5 grid"
+        style={{ gridTemplateColumns: '1fr 56px 36px 48px' }}
       >
-        <defs>
-          <linearGradient
-            id={gradId}
-            gradientUnits="userSpaceOnUse"
-            x1={cx} y1={0} x2={cx} y2={H}
+        {[t.colProduct, t.colSku, t.colStock, t.colPrice].map((col) => (
+          <span
+            key={col}
+            className="font-mono uppercase"
+            style={{ fontSize: 9.5, letterSpacing: '0.10em', color: 'rgba(255,255,255,0.28)' }}
           >
-            <stop offset="0%"   stopColor="rgba(255,255,255,0.06)" />
-            <stop offset="40%"  stopColor="rgba(255,255,255,0.32)" />
-            <stop offset="60%"  stopColor="rgba(255,255,255,0.32)" />
-            <stop offset="100%" stopColor="rgba(255,255,255,0.06)" />
-          </linearGradient>
-        </defs>
+            {col}
+          </span>
+        ))}
+      </div>
 
-        {/* Gradient stroke */}
-        <path d={d} fill="none" stroke={`url(#${gradId})`} strokeWidth={1.25} />
+      {/* Product rows */}
+      <div className="px-4 pb-2">
+        {PRODUCTS.map((p, i) => (
+          <div
+            key={p.sku}
+            className="grid py-[6px]"
+            style={{
+              gridTemplateColumns: '1fr 56px 36px 48px',
+              borderTop: i > 0 ? '1px solid rgba(255,255,255,0.04)' : 'none',
+            }}
+          >
+            <span
+              className="truncate"
+              style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.78)', letterSpacing: '-0.01em' }}
+            >
+              {p.name}
+            </span>
+            <span
+              className="font-mono"
+              style={{ fontSize: 11, color: 'rgba(255,255,255,0.30)' }}
+            >
+              {p.sku}
+            </span>
+            <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.68)' }}>{p.stock}</span>
+            <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.48)' }}>{p.price}</span>
+          </div>
+        ))}
+      </div>
 
-        {/* Dashed flow — comet travels shorter path so duration is halved */}
-        <motion.path
-          d={d} fill="none"
-          stroke="rgba(255,255,255,0.22)" strokeWidth={1}
-          strokeLinecap="round" strokeDasharray="3 5"
-          initial={{ strokeDashoffset: 0 }}
-          animate={{ strokeDashoffset: -80 }}
-          transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+      {/* Footer — connected status */}
+      <div
+        className="px-4 py-2 flex items-center gap-1.5"
+        style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+      >
+        <motion.span
+          className="block rounded-full flex-shrink-0"
+          style={{ width: 5, height: 5, background: 'rgba(110,210,110,0.65)' }}
+          animate={{ opacity: [0.4, 0.9, 0.4] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
         />
+        <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)' }}>{t.connected}</span>
+      </div>
+    </div>
+  )
+}
 
-        {/* Comet */}
-        <motion.path
-          d={d} fill="none"
-          stroke="rgba(255,255,255,0.9)" strokeWidth={1.5}
-          strokeLinecap="round"
-          initial={{ pathLength: 0.18, pathOffset: 0 }}
-          animate={{ pathOffset: 1 }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-          style={{ filter: 'drop-shadow(0 0 3px rgba(255,255,255,0.6))' }}
-        />
-      </svg>
+/* ============================================================
+   RIGHT PANEL — e-commerce site (Shopify-style inventory)
+   ============================================================ */
+function RightPanel({ t }: { t: typeof CONTENT['fr'] }) {
+  return (
+    <div
+      className="rounded-xl overflow-hidden w-full"
+      style={{
+        background: '#111111',
+        border: '1px solid rgba(255,255,255,0.13)',
+        boxShadow:
+          '0 20px 56px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.03)',
+      }}
+    >
+      {/* Header */}
+      <div
+        className="px-4 py-[11px] flex items-center justify-between"
+        style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}
+      >
+        <span
+          className="text-white font-semibold tracking-tight"
+          style={{ fontSize: 13 }}
+        >
+          {t.panelRight}
+        </span>
+        <span
+          className="font-mono uppercase"
+          style={{ fontSize: 9, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.28)' }}
+        >
+          Shopify
+        </span>
+      </div>
 
-      {/* Diamonds — after SVG so they paint on top */}
-      <Diamond left="50%" top="0%"    />
-      <Diamond left="50%" top="100%"  />
+      {/* Column headers */}
+      <div
+        className="px-4 pt-3 pb-1.5 grid"
+        style={{ gridTemplateColumns: '1fr 44px 14px' }}
+      >
+        {[t.colProduct, t.colStock].map((col) => (
+          <span
+            key={col}
+            className="font-mono uppercase"
+            style={{ fontSize: 9.5, letterSpacing: '0.10em', color: 'rgba(255,255,255,0.28)' }}
+          >
+            {col}
+          </span>
+        ))}
+        <span />
+      </div>
+
+      {/* Product rows */}
+      <div className="px-4 pb-2">
+        {PRODUCTS.map((p, i) => (
+          <div
+            key={p.sku}
+            className="grid py-[6px] items-center"
+            style={{
+              gridTemplateColumns: '1fr 44px 14px',
+              borderTop: i > 0 ? '1px solid rgba(255,255,255,0.04)' : 'none',
+            }}
+          >
+            <span
+              className="truncate"
+              style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.80)', letterSpacing: '-0.01em' }}
+            >
+              {p.name}
+            </span>
+            <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.72)' }}>{p.stock}</span>
+            <span style={{ fontSize: 8, color: 'rgba(100,210,100,0.58)' }}>●</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Footer — last sync */}
+      <div
+        className="px-4 py-2 flex items-center gap-1.5"
+        style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+      >
+        <motion.span
+          className="font-mono"
+          style={{ fontSize: 11, color: 'rgba(255,255,255,0.30)' }}
+          animate={{ opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+        >
+          ↻
+        </motion.span>
+        <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.36)' }}>{t.lastSync}</span>
+      </div>
     </div>
   )
 }
@@ -360,7 +344,7 @@ function Row({
   label, meta, variant,
 }: {
   label: string
-  meta:  string
+  meta: string
   variant: 'bad' | 'good'
 }) {
   const isBad = variant === 'bad'
@@ -395,29 +379,6 @@ function Row({
 }
 
 /* ============================================================
-   Dot grid — reused in both desktop and mobile figure areas
-   ============================================================ */
-function DotGrid() {
-  return (
-    <div
-      aria-hidden
-      className="absolute inset-0 pointer-events-none"
-      style={{
-        backgroundImage:
-          'radial-gradient(circle at center, rgba(255,255,255,0.06) 0.5px, transparent 0.6px)',
-        backgroundSize: '24px 24px',
-        backgroundPosition: '50% 50%',
-        opacity: 0.5,
-        WebkitMaskImage:
-          'radial-gradient(ellipse 60% 70% at 50% 50%, #000 30%, transparent 75%)',
-        maskImage:
-          'radial-gradient(ellipse 60% 70% at 50% 50%, #000 30%, transparent 75%)',
-      }}
-    />
-  )
-}
-
-/* ============================================================
    Main section
    ============================================================ */
 export function ErpFeatureSection() {
@@ -440,7 +401,7 @@ export function ErpFeatureSection() {
           border: '1px solid rgba(255,255,255,0.10)',
         }}
       >
-        {/* FIG label — always shown, long form hidden on mobile */}
+        {/* FIG label — short on mobile, full on desktop */}
         <div
           className="absolute font-mono uppercase"
           style={{
@@ -454,7 +415,7 @@ export function ErpFeatureSection() {
           <span className="hidden min-720:inline whitespace-nowrap">{t.figMain}</span>
         </div>
 
-        {/* Live indicator — hidden on mobile (would collide with FIG label) */}
+        {/* LIVE indicator — hidden on mobile */}
         <div
           className="hidden min-720:flex absolute font-mono uppercase whitespace-nowrap items-center gap-2"
           style={{
@@ -478,101 +439,150 @@ export function ErpFeatureSection() {
         </div>
 
         {/* ── Figure area ── */}
-        <div className="relative px-4 min-720:px-10 pt-16 min-720:pt-20 pb-6 min-720:pb-12">
+        <div className="relative px-4 min-720:px-8 pt-16 min-720:pt-20 pb-6 min-720:pb-10">
 
-          {/* ══ DESKTOP horizontal layout (≥720px) ══ */}
+          {/* ══ DESKTOP: floating panels (≥720px) ══ */}
+          {/*
+              Layout:
+                LEFT  panel: absolute, left=0,    top=40px,  width=44%  (slightly lower, slightly receded)
+                RIGHT panel: absolute, right=0,   top=8px,   width=46%  (higher, prominent)
+                CENTER code: absolute, centered horizontally between panels
+                BEAM  SVG:  absolute inset-0, draws from x=44% to x=54%
+          */}
           <div
-            className="relative hidden min-720:block w-full mt-6"
-            style={{ height: 360 }}
+            className="relative hidden min-720:block w-full mt-4"
+            style={{ height: 340 }}
           >
             <DotGrid />
 
+            {/* Beam SVG — drawn in viewBox coords that map to % of container */}
+            {/*
+                viewBox 1000×340:
+                  beam at y=170 (50%), from x=440 (44%) to x=560 (56%)
+                preserveAspectRatio="none" stretches proportionally so x% stays x%
+            */}
             <svg
-              className="absolute inset-0 w-full h-full"
-              viewBox={`0 0 ${GEO.vbW} ${GEO.vbH}`}
+              className="absolute inset-0 w-full h-full pointer-events-none"
+              viewBox="0 0 1000 340"
               preserveAspectRatio="none"
               aria-hidden
-              style={{ overflow: 'visible', pointerEvents: 'none' }}
+              style={{ overflow: 'visible' }}
             >
-              <BezierConnector
-                d={GEO.leftPath}
-                gradId="erp-fade-l"
-                gradStart={{ x: GEO.leftRight,   y: GEO.ySide   }}
-                gradEnd  ={{ x: GEO.centerLeft,  y: GEO.yCenter }}
+              <defs>
+                <linearGradient
+                  id="erp-beam-h"
+                  gradientUnits="userSpaceOnUse"
+                  x1={440} y1={170} x2={560} y2={170}
+                >
+                  <stop offset="0%"   stopColor="rgba(255,255,255,0.04)" />
+                  <stop offset="40%"  stopColor="rgba(255,255,255,0.22)" />
+                  <stop offset="60%"  stopColor="rgba(255,255,255,0.22)" />
+                  <stop offset="100%" stopColor="rgba(255,255,255,0.04)" />
+                </linearGradient>
+              </defs>
+
+              {/* Static gradient line */}
+              <line
+                x1={440} y1={170} x2={560} y2={170}
+                stroke="url(#erp-beam-h)" strokeWidth={1}
               />
-              <BezierConnector
-                d={GEO.rightPath}
-                gradId="erp-fade-r"
-                gradStart={{ x: GEO.centerRight, y: GEO.yCenter }}
-                gradEnd  ={{ x: GEO.rightLeft,   y: GEO.ySide   }}
+
+              {/* Dashed flow */}
+              <motion.line
+                x1={440} y1={170} x2={560} y2={170}
+                stroke="rgba(255,255,255,0.16)" strokeWidth={1}
+                strokeLinecap="round" strokeDasharray="4 5"
+                initial={{ strokeDashoffset: 0 }}
+                animate={{ strokeDashoffset: -90 }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: 'linear' }}
+              />
+
+              {/* Traveling comet */}
+              <motion.circle
+                cy={170} r={2.5}
+                fill="rgba(255,255,255,0.82)"
+                style={{ filter: 'drop-shadow(0 0 4px rgba(255,255,255,0.65))' }}
+                animate={{ cx: [448, 552] }}
+                transition={{
+                  duration: 1.8, repeat: Infinity,
+                  ease: 'easeInOut', repeatType: 'reverse',
+                }}
               />
             </svg>
 
-            <Diamond left="32%" top="50%" />
-            <Diamond left="40%" top="calc(50% - 28px)" bright />
-            <Diamond left="60%" top="calc(50% - 28px)" bright />
-            <Diamond left="68%" top="50%" />
-
-            <Node variant="side" style={{ left: '2%' }}>{t.erpNode}</Node>
-            <Node variant="center">{t.syncNode}</Node>
-            <Node variant="side" style={{ left: '68%' }}>{t.siteNode}</Node>
-
+            {/* LEFT panel — slightly lower, slightly receded */}
             <div
-              className="absolute font-mono whitespace-nowrap flex items-center gap-2.5"
+              className="absolute z-10"
+              style={{ left: 0, top: 40, width: '44%', opacity: 0.88 }}
+            >
+              <LeftPanel t={t} />
+            </div>
+
+            {/* CENTER — API code floats between the panels */}
+            <div
+              className="absolute z-20 flex flex-col items-center gap-1"
               style={{
-                left: '50%', top: 'calc(50% + 20px)',
-                transform: 'translateX(-50%)',
-                fontSize: 11, letterSpacing: '0.14em',
-                color: 'rgba(255,255,255,0.36)',
+                left: '44%', right: '46%',
+                top: '50%', transform: 'translateY(-50%)',
               }}
             >
-              <span>{t.syncSub[0]}</span>
-              <span className="opacity-45">·</span>
-              <span>{t.syncSub[1]}</span>
-              <span className="opacity-45">·</span>
-              <span>{t.syncSub[2]}</span>
+              <motion.div
+                className="font-mono text-center"
+                style={{
+                  fontSize: 10.5, letterSpacing: '0.07em',
+                  lineHeight: 1.7,
+                  color: 'rgba(255,255,255,0.30)',
+                }}
+                animate={{ opacity: [0.6, 1, 0.6] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <div style={{ color: 'rgba(255,255,255,0.42)' }}>POST /sync</div>
+                <div>queue=0</div>
+                <div style={{ color: 'rgba(255,255,255,0.20)' }}>99.9%</div>
+              </motion.div>
+            </div>
+
+            {/* RIGHT panel — reference position, most prominent */}
+            <div
+              className="absolute z-30"
+              style={{ right: 0, top: 8, width: '46%' }}
+            >
+              <RightPanel t={t} />
             </div>
           </div>
 
-          {/* ══ MOBILE vertical layout (<720px) ══ */}
-          <div className="relative min-720:hidden w-full max-w-[300px] mx-auto mt-8">
+          {/* ══ MOBILE: stacked panels (<720px) ══ */}
+          <div className="relative min-720:hidden w-full max-w-[340px] mx-auto mt-8 flex flex-col gap-3">
             <DotGrid />
 
-            <div className="relative flex flex-col items-center gap-0">
-              {/* Node 0 */}
-              <MobileNode>{t.erpNode}</MobileNode>
+            <div className="relative z-10">
+              <LeftPanel t={t} />
+            </div>
 
-              {/* Connector ① */}
-              <VertConnector gradId="erp-vc1" />
-
-              {/* Node 1 — center */}
-              <MobileNode center>{t.syncNode}</MobileNode>
-
-              {/* Sub-labels */}
-              <div
-                className="font-mono flex items-center gap-2 mt-2 mb-0"
+            {/* Mobile connector */}
+            <div className="flex flex-col items-center gap-0.5 py-1">
+              <motion.div
+                className="font-mono text-center"
                 style={{
-                  fontSize: 10, letterSpacing: '0.14em',
-                  color: 'rgba(255,255,255,0.36)',
+                  fontSize: 10, letterSpacing: '0.07em',
+                  lineHeight: 1.75,
+                  color: 'rgba(255,255,255,0.28)',
                 }}
+                animate={{ opacity: [0.55, 1, 0.55] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <span>{t.syncSub[0]}</span>
-                <span className="opacity-45">·</span>
-                <span>{t.syncSub[1]}</span>
-                <span className="opacity-45">·</span>
-                <span>{t.syncSub[2]}</span>
-              </div>
+                <div style={{ color: 'rgba(255,255,255,0.38)' }}>POST /sync</div>
+                <div style={{ color: 'rgba(255,255,255,0.18)' }}>99.9%</div>
+              </motion.div>
+            </div>
 
-              {/* Connector ② */}
-              <VertConnector gradId="erp-vc2" />
-
-              {/* Node 2 */}
-              <MobileNode>{t.siteNode}</MobileNode>
+            <div className="relative z-10">
+              <RightPanel t={t} />
             </div>
           </div>
 
-          {/* Caption — title + description (shared) */}
-          <div className="mt-8 min-720:mt-6 max-w-[640px] pr-0 min-720:pr-6">
+          {/* Caption — title + description */}
+          <div className="mt-8 min-720:mt-10 max-w-[640px] pr-0 min-720:pr-6">
             <h2
               className="m-0 text-white font-[650] tracking-[-0.018em]"
               style={{
@@ -599,7 +609,7 @@ export function ErpFeatureSection() {
         {/* Divider */}
         <div className="h-px" style={{ background: 'rgba(255,255,255,0.10)' }} />
 
-        {/* ── Comparison table ── */}
+        {/* ── Comparison table (FIG. 1.2) ── */}
         <div className="px-4 min-720:px-14 py-8 min-720:py-14">
           <div
             className="font-mono uppercase mb-4 min-720:mb-5"
