@@ -740,4 +740,46 @@ export const posts: Post[] = [
     category: 'GESTION DE STOCK',
     readingTime: 7,
   },
+  {
+    slug: 'woocommerce-shopify-sur-mesure-connexion-erp',
+    title: {
+      fr: 'WooCommerce, Shopify ou sur mesure : quelle solution pour connecter mon ERP ?',
+      en: 'WooCommerce, Shopify, or custom: which solution to connect my ERP?',
+    },
+    description: {
+      fr: "Trois philosophies, trois budgets, trois niveaux de liberté. On compare WooCommerce, Shopify et le sur mesure sous l'angle de la connexion ERP.",
+      en: 'Three philosophies, three budgets, three levels of freedom. We compare WooCommerce, Shopify, and custom for ERP integration.',
+    },
+    date: { fr: '6 avril 2026', en: 'April 6, 2026' },
+    category: 'GESTION DE STOCK',
+    readingTime: 8,
+  },
+  {
+    slug: 'vendre-en-ligne-sans-survendre',
+    title: {
+      fr: "Vendre en ligne sans jamais survendre : le guide de la synchronisation de stock",
+      en: 'Sell online without ever overselling: a guide to inventory synchronization',
+    },
+    description: {
+      fr: "Vendre deux fois le même produit, c'est un avis négatif assuré et une commande à rembourser. Voici comment l'éviter, vraiment.",
+      en: "Selling the same product twice means a guaranteed bad review and a refund to process. Here's how to actually prevent it.",
+    },
+    date: { fr: '11 mai 2026', en: 'May 11, 2026' },
+    category: 'GESTION DE STOCK',
+    readingTime: 7,
+  },
+  {
+    slug: 'client-commande-en-ligne-stock-magasin',
+    title: {
+      fr: "Un client commande en ligne, le stock baisse en magasin : voilà comment ça devrait fonctionner",
+      en: "A customer orders online, store inventory drops: here's how it should actually work",
+    },
+    description: {
+      fr: "Suivez la cascade invisible qui se déclenche en 200 millisecondes entre le bouton \"Commander\" et l'étiquette d'expédition dans votre magasin.",
+      en: "Follow the invisible cascade that fires in 200 milliseconds between the \"Buy\" button and the shipping label in your store.",
+    },
+    date: { fr: '26 mai 2026', en: 'May 26, 2026' },
+    category: 'GESTION DE STOCK',
+    readingTime: 7,
+  },
 ]
