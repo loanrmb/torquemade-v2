@@ -698,4 +698,46 @@ export const posts: Post[] = [
     category: 'GESTION DE STOCK',
     readingTime: 7,
   },
+  {
+    slug: 'gestion-stock-excel-vs-logiciel-dedie',
+    title: {
+      fr: 'Gestion de stock sous Excel vs logiciel dédié : quand faire le saut ?',
+      en: 'Inventory management on Excel vs dedicated software: when to make the switch?',
+    },
+    description: {
+      fr: "Excel suffit-il vraiment pour gérer votre stock ? Voici les signaux qui montrent qu'il est temps de passer à un vrai logiciel.",
+      en: "Is Excel really enough to manage your inventory? Here are the signs it's time to switch to dedicated software.",
+    },
+    date: { fr: '17 avril 2026', en: 'April 17, 2026' },
+    category: 'GESTION DE STOCK',
+    readingTime: 7,
+  },
+  {
+    slug: '5-erreurs-sans-logiciel-gestion-stock',
+    title: {
+      fr: "Les 5 erreurs qui vous font perdre de l'argent sans logiciel de gestion de stock",
+      en: 'The 5 mistakes costing you money without inventory management software',
+    },
+    description: {
+      fr: "Surstockage, démarque, ruptures, ressaisie, erreurs de commande : voici les 5 fuites silencieuses d'un commerce qui gère son stock à la main.",
+      en: 'Overstocking, shrinkage, stockouts, re-entry, ordering errors: the 5 silent leaks of a business managing inventory by hand.',
+    },
+    date: { fr: '30 avril 2026', en: 'April 30, 2026' },
+    category: 'GESTION DE STOCK',
+    readingTime: 6,
+  },
+  {
+    slug: 'mise-a-jour-stock-automatique-mythe-realite',
+    title: {
+      fr: 'Mon stock se met à jour tout seul sur mon site : mythe ou réalité ?',
+      en: 'My inventory updates automatically on my website: myth or reality?',
+    },
+    description: {
+      fr: "Beaucoup en parlent, peu savent comment ça marche vraiment. On démêle le vrai du faux sur la mise à jour automatique du stock e-commerce.",
+      en: 'Many talk about it, few know how it really works. We separate fact from fiction on automatic e-commerce inventory updates.',
+    },
+    date: { fr: '13 mai 2026', en: 'May 13, 2026' },
+    category: 'GESTION DE STOCK',
+    readingTime: 7,
+  },
 ]
