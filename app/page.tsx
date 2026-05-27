@@ -8,7 +8,7 @@ import { useLang } from '@/components/app-provider'
 import { strings } from '@/lib/strings'
 import { featuredProjects } from '@/lib/projects'
 import { useScrollReveal } from '@/lib/use-scroll-reveal'
-import { ErpFlowSection } from '@/components/erp-flow-section'
+import { ErpFeatureSection } from '@/components/erp-feature-section'
 
 export default function HomePage() {
   const lang = useLang()
@@ -233,7 +233,7 @@ export default function HomePage() {
         </section>
 
         {/* ── HOME ERP ── */}
-        <ErpFlowSection />
+        <ErpFeatureSection />
 
         {/* ── TESTIMONIALS ── */}
         <section className="px-5 py-20 min-720:py-24">

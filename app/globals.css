@@ -561,12 +561,12 @@ html.dark .cta-card {
 
 /* Comparison table — responsive separator */
 .erp-compare-left {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
 @media (min-width: 720px) {
   .erp-compare-left {
     border-bottom: none;
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    border-right: 1px solid rgba(255, 255, 255, 0.10);
   }
 }
 
