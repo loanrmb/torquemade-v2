@@ -21,9 +21,9 @@
   --nav-bg:        255 255 255 / 0.75;
   --nav-border:    0 0% 0% / 0.06;
 
-  /* Dark sections (intentionally dark even in light mode — not pure black) */
-  --bg-dark:       0 0% 9%;
-  --bg-dark-card:  0 0% 6%;
+  /* Dark sections (intentionally dark in both modes — clearly grey in light mode) */
+  --bg-dark:       0 0% 16%;
+  --bg-dark-card:  0 0% 11%;
 
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
@@ -51,6 +51,16 @@ html.dark {
   /* Dark sections — near-black in dark mode */
   --bg-dark:       0 0% 5%;
   --bg-dark-card:  0 0% 4%;
+}
+
+/* ============================================================
+   UTILITY — dark section (adapts to theme via CSS vars)
+   ============================================================ */
+.bg-section-dark {
+  background: hsl(var(--bg-dark));
+}
+.bg-section-dark-card {
+  background: hsl(var(--bg-dark-card));
 }
 
 /* ============================================================
