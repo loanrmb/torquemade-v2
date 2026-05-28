@@ -256,8 +256,9 @@ function ErpPanel({
   return (
     <article
       aria-label={t.panelLeftTitle}
-      className="h-full overflow-hidden rounded-[14px] border border-white/[0.08] bg-[#0d0d0d] text-white flex flex-col"
+      className="h-full overflow-hidden rounded-[14px] border border-white/[0.08] text-white flex flex-col"
       style={{
+        background: 'hsl(var(--bg-dark-card))',
         boxShadow:
           '0 0 0 1px rgba(255,255,255,0.015), 0 18px 40px rgba(0,0,0,0.45), 0 4px 12px rgba(0,0,0,0.35)',
         WebkitFontSmoothing: 'antialiased',
@@ -396,7 +397,7 @@ function ApiPanel({
       aria-label="Requête API sync"
       className={`h-full flex flex-col rounded-[12px] border border-white/[0.08] ${mobile ? 'px-4' : 'px-5'} pb-3.5 pt-4 text-white/55`}
       style={{
-        background: 'rgba(13,13,13,0.94)',
+        background: 'hsl(var(--bg-dark-card) / 0.94)',
         backdropFilter: 'blur(6px)',
         WebkitBackdropFilter: 'blur(6px)',
         boxShadow:
@@ -581,14 +582,14 @@ export function ErpFeatureSection() {
       className="flex items-center justify-center px-4 py-10 md:px-6 md:py-16"
       style={{
         background:
-          'radial-gradient(1200px 600px at 50% -10%, rgba(255,255,255,0.025), transparent 60%), #080808',
+          'radial-gradient(1200px 600px at 50% -10%, rgba(255,255,255,0.025), transparent 60%), hsl(var(--bg-dark))',
         color: 'rgba(255,255,255,0.88)',
       }}
     >
       <div
         className="relative w-full max-w-[1280px] overflow-hidden rounded-2xl md:rounded-3xl"
         style={{
-          background: '#0a0a0a',
+          background: 'hsl(var(--bg-dark-card))',
           border: '1px solid rgba(255,255,255,0.10)',
         }}
       >
@@ -742,7 +743,7 @@ export function ErpFeatureSection() {
           <div
             className="grid grid-cols-1 min-720:grid-cols-2 rounded-xl min-720:rounded-2xl overflow-hidden"
             style={{
-              background: '#0d0d0d',
+              background: 'hsl(var(--bg-dark-card))',
               border: '1px solid rgba(255,255,255,0.10)',
             }}
           >

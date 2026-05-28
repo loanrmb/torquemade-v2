@@ -11,6 +11,7 @@ export function ContactForm() {
   const t = strings[lang].contact
   const [state, setState] = useState<FormState>('idle')
   const [selected, setSelected] = useState<Set<number>>(new Set())
+  const [budget, setBudget] = useState<number | null>(null)
 
   const toggleService = (i: number) => {
     setSelected((prev) => {
@@ -32,6 +33,7 @@ export function ContactForm() {
     const company = (form.elements.namedItem('company') as HTMLInputElement).value
     const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value
     const selectedServices = Array.from(selected).map((i) => t.services[i]).join(', ')
+    const selectedBudget = budget !== null ? t.budgets[budget] : ''
 
     try {
       const res = await fetch('/api/contact', {
@@ -43,6 +45,7 @@ export function ContactForm() {
           email,
           company,
           service: selectedServices,
+          budget: selectedBudget,
           message,
         }),
       })
@@ -50,6 +53,7 @@ export function ContactForm() {
         setState('success')
         form.reset()
         setSelected(new Set())
+        setBudget(null)
       } else {
         setState('error')
       }
@@ -115,6 +119,40 @@ export function ContactForm() {
                   <span className="mr-1.5 text-xs">✓</span>
                 )}
                 {service}
+              </button>
+            )
+          })}
+        </div>
+      </fieldset>
+
+      {/* Budget selector (optional, single-select) */}
+      <fieldset className="p-0 m-0 border-0">
+        <legend
+          className="text-caption font-medium mb-2 block"
+          style={{ color: 'hsl(var(--text-secondary))' }}
+        >
+          {t.budgetLabel}
+          <span className="ml-1.5 text-caption" style={{ color: 'hsl(var(--text-tertiary))' }}>
+            {t.budgetOptional}
+          </span>
+        </legend>
+        <div className="flex flex-wrap gap-2">
+          {t.budgets.map((label, i) => {
+            const isActive = budget === i
+            return (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setBudget(isActive ? null : i)}
+                className="rounded-full px-4 py-2 text-sm font-medium transition-all duration-150"
+                style={{
+                  background: isActive ? 'hsl(var(--bg-inverse))' : 'hsl(var(--bg-secondary))',
+                  color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',
+                  border: '1px solid hsl(var(--border-subtle))',
+                }}
+              >
+                {isActive && <span className="mr-1.5 text-xs">✓</span>}
+                {label}
               </button>
             )
           })}
