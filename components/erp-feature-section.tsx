@@ -30,9 +30,6 @@ type Rows = ReadonlyArray<readonly [string, string]>
 const CONTENT: Record<
   'fr' | 'en',
   {
-    figMain: string
-    figShort: string
-    live: string
     panelLeftTitle: string
     connected: string
     colProduct: string
@@ -47,7 +44,6 @@ const CONTENT: Record<
     lastSync: string
     title: string
     description: string
-    figTable: string
     badHeader: string
     goodHeader: string
     stateOff: string
@@ -57,10 +53,6 @@ const CONTENT: Record<
   }
 > = {
   fr: {
-    figMain:  'FIG. 1.1 — TOPOLOGIE SYNC STOCK',
-    figShort: 'FIG. 1.1',
-    live:     'LIVE · v2.4',
-
     panelLeftTitle: 'Logiciel de stock',
     connected:      'Connecté',
     colProduct: 'Produit',
@@ -80,7 +72,6 @@ const CONTENT: Record<
     description:
       'On branche votre ERP existant — ou on en construit un sur mesure — directement à votre boutique en ligne. Une seule source de vérité, mise à jour en quelques secondes, sans intervention manuelle.',
 
-    figTable:   'FIG. 1.2 — DIFFÉRENCIATEURS',
     badHeader:  'Sans connexion ERP',
     goodHeader: 'Avec connexion ERP',
     stateOff:   'État · 00',
@@ -103,10 +94,6 @@ const CONTENT: Record<
     ],
   },
   en: {
-    figMain:  'FIG. 1.1 — STOCK SYNC TOPOLOGY',
-    figShort: 'FIG. 1.1',
-    live:     'LIVE · v2.4',
-
     panelLeftTitle: 'Stock software',
     connected:      'Connected',
     colProduct: 'Product',
@@ -126,7 +113,6 @@ const CONTENT: Record<
     description:
       'We connect your existing ERP — or build a custom one — directly to your online store. One single source of truth, updated in seconds, with no manual intervention.',
 
-    figTable:   'FIG. 1.2 — DIFFERENTIATORS',
     badHeader:  'Without ERP connection',
     goodHeader: 'With ERP connection',
     stateOff:   'State · 00',
@@ -593,34 +579,6 @@ export function ErpFeatureSection() {
           border: '1px solid rgba(255,255,255,0.10)',
         }}
       >
-        {/* ── FIG label ── */}
-        <div
-          className="absolute font-mono uppercase"
-          style={{
-            top: 28, left: 20,
-            fontSize: 10, letterSpacing: '0.16em',
-            color: 'rgba(255,255,255,0.36)',
-            zIndex: 10,
-          }}
-        >
-          <span className="md:hidden">{t.figShort}</span>
-          <span className="hidden md:inline whitespace-nowrap">{t.figMain}</span>
-        </div>
-
-        {/* ── LIVE indicator — hidden on mobile ── */}
-        <div
-          className="hidden md:flex absolute font-mono uppercase whitespace-nowrap items-center gap-2"
-          style={{
-            top: 28, right: 36,
-            fontSize: 11, letterSpacing: '0.16em',
-            color: 'rgba(255,255,255,0.36)',
-            zIndex: 10,
-          }}
-        >
-          <GreenDot size={5} />
-          <span>{t.live}</span>
-        </div>
-
         {/* ── Figure area ── */}
         <div className="relative px-4 md:px-8 pt-16 md:pt-20 pb-6 md:pb-10">
 
@@ -728,18 +686,8 @@ export function ErpFeatureSection() {
         {/* Divider */}
         <div className="h-px" style={{ background: 'rgba(255,255,255,0.10)' }} />
 
-        {/* ── Comparison table (FIG. 1.2) — unchanged ── */}
+        {/* ── Comparison table ── */}
         <div className="px-4 min-720:px-14 py-8 min-720:py-14">
-          <div
-            className="font-mono uppercase mb-4 min-720:mb-5"
-            style={{
-              fontSize: 10, letterSpacing: '0.16em',
-              color: 'rgba(255,255,255,0.36)',
-            }}
-          >
-            {t.figTable}
-          </div>
-
           <div
             className="grid grid-cols-1 min-720:grid-cols-2 rounded-xl min-720:rounded-2xl overflow-hidden"
             style={{
