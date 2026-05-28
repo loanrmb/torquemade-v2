@@ -10,12 +10,8 @@
  *
  * FIG. 1.2 — comparison table (Sans / Avec connexion ERP)
  *
- * Adapted from HeroSyncTopology.jsx (designer export):
- *   - Named export, useLang() FR/EN, min-720: breakpoints
- *   - Panel widths use % (41.67 % each) so the overlap scales
- *     correctly from 720 px up; Connectors SVG uses the same
- *     proportions via preserveAspectRatio="none"
- *   - Mobile (<720px): panels stacked in a flex column
+ * Desktop (≥768px / md:): absolute overlap layout, 41.67% per panel
+ * Mobile  (<768px):        vertical flex stack, simplified panels
  */
 
 import { motion } from 'framer-motion'
@@ -37,25 +33,20 @@ const CONTENT: Record<
     figMain: string
     figShort: string
     live: string
-    /* left panel */
     panelLeftTitle: string
     connected: string
     colProduct: string
     colSku: string
     colStock: string
     colPrice: string
-    /* middle panel */
     apiLabel: string
     realtimeLabel: string
-    /* right panel */
     panelRightTitle: string
     colStatus: string
     statusActive: string
     lastSync: string
-    /* caption */
     title: string
     description: string
-    /* comparison table */
     figTable: string
     badHeader: string
     goodHeader: string
@@ -98,7 +89,7 @@ const CONTENT: Record<
       ['Stock mis à jour à la main, en CSV',  '~2h / jour'],
       ['Ventes de produits déjà épuisés',      '~8 / mois'],
       ['Prix désynchronisés entre canaux',      'manuel'],
-      ["Commandes ressaisies dans l’ERP",  'erreurs'],
+      ["Commandes ressaisies dans l'ERP",  'erreurs'],
       ['Pas de source de vérité unique',        '2 bases'],
       ['Réconciliation comptable manuelle',     'fin de mois'],
     ],
@@ -160,7 +151,7 @@ const CONTENT: Record<
 }
 
 /* ============================================================
-   Product data — same in both languages, moto-industry context
+   Product data — same in both languages
    ============================================================ */
 const ERP_ROWS = [
   { name: 'Casque Shoei',      sku: 'SH-001', stock: '12', price: '389 €' },
@@ -177,14 +168,13 @@ const ECOM_ROWS = [
 ] as const
 
 /*
- * Right-panel grid: 4 cols (emoji · name · stock · status)
- * Using minmax so the name column never goes below 60 px
- * — works from the 267 px panel width at 720 px screen upwards.
+ * Right-panel grid: emoji · name · stock · status
+ * minmax keeps the name column ≥60 px at any container width.
  */
 const ECOM_GRID = '36px minmax(60px,1fr) 48px 72px'
 
 /* ============================================================
-   GreenDot — shared pulsing indicator
+   GreenDot
    ============================================================ */
 function GreenDot({ size = 6 }: { size?: number }) {
   return (
@@ -202,10 +192,9 @@ function GreenDot({ size = 6 }: { size?: number }) {
 }
 
 /* ============================================================
-   Connectors — two dashed-flow SVG lines (desktop only)
-   viewBox="0 0 1200 380" + preserveAspectRatio="none" means
-   x-coordinates map proportionally to container width, so the
-   connectors stay in the correct overlap zones at any size.
+   Connectors — desktop only, dashed-flow SVG
+   preserveAspectRatio="none" + viewBox 1200×380 keeps the lines
+   in the correct overlap zones at any container width.
    ============================================================ */
 function Connectors() {
   return (
@@ -230,26 +219,18 @@ function DashedFlow({
     <g>
       <motion.line
         x1={x1} y1={y} x2={x2} y2={y}
-        stroke="rgba(255,255,255,0.22)"
-        strokeWidth={1}
-        strokeDasharray="4 5"
-        fill="none"
+        stroke="rgba(255,255,255,0.22)" strokeWidth={1}
+        strokeDasharray="4 5" fill="none"
         animate={{ strokeDashoffset: [0, -90] }}
         transition={{ duration: 2.4, repeat: Infinity, ease: 'linear', delay }}
       />
-      {/* arrow tip */}
       <polyline
         points={`${x2 - 6},${y - 4} ${x2},${y} ${x2 - 6},${y + 4}`}
-        stroke="rgba(255,255,255,0.50)"
-        strokeWidth={1}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
+        stroke="rgba(255,255,255,0.50)" strokeWidth={1}
+        strokeLinecap="round" strokeLinejoin="round" fill="none"
       />
-      {/* pulsing origin dot */}
       <motion.circle
-        cx={x1} cy={y}
-        fill="rgba(255,255,255,0.55)"
+        cx={x1} cy={y} fill="rgba(255,255,255,0.55)"
         animate={{ opacity: [0.55, 1, 0.55], r: [2.5, 3.5, 2.5] }}
         transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay }}
       />
@@ -259,8 +240,19 @@ function DashedFlow({
 
 /* ============================================================
    LEFT PANEL — ERP stock table (dark)
+   mobile prop: strips SKU + PRIX columns, reduces padding/font
    ============================================================ */
-function ErpPanel({ t }: { t: typeof CONTENT['fr'] }) {
+function ErpPanel({
+  t, mobile = false,
+}: {
+  t: typeof CONTENT['fr']
+  mobile?: boolean
+}) {
+  const px  = mobile ? 'px-4' : 'px-5'
+  const pyH = mobile ? 'py-3' : 'py-4'
+  const pyR = mobile ? 'py-[6px]' : 'py-3'
+  const fs  = mobile ? 'text-[12px]' : 'text-[13px]'
+
   return (
     <article
       aria-label={t.panelLeftTitle}
@@ -271,8 +263,10 @@ function ErpPanel({ t }: { t: typeof CONTENT['fr'] }) {
         WebkitFontSmoothing: 'antialiased',
       }}
     >
-      <header className="flex items-center justify-between border-b border-white/[0.08] px-5 py-4">
-        <span className="whitespace-nowrap text-[13.5px] font-semibold tracking-tight">
+      <header
+        className={`flex items-center justify-between border-b border-white/[0.08] ${px} ${pyH}`}
+      >
+        <span className={`whitespace-nowrap font-semibold tracking-tight ${mobile ? 'text-[13px]' : 'text-[13.5px]'}`}>
           {t.panelLeftTitle}
         </span>
         <span
@@ -287,17 +281,38 @@ function ErpPanel({ t }: { t: typeof CONTENT['fr'] }) {
         <table className="w-full border-collapse">
           <thead>
             <tr>
-              {[t.colProduct, t.colSku, t.colStock, t.colPrice].map((h, i) => (
+              {/* Produit — always visible */}
+              <th
+                className={`border-b border-white/[0.08] ${px} pb-2 pt-2.5 text-[10px] font-normal uppercase tracking-[0.12em] text-white/40 text-left`}
+                style={{ fontFamily: 'var(--font-mono, monospace)' }}
+              >
+                {t.colProduct}
+              </th>
+              {/* SKU — desktop only */}
+              {!mobile && (
                 <th
-                  key={h}
-                  className={`border-b border-white/[0.08] px-5 pb-2.5 pt-3 text-[10px] font-normal uppercase tracking-[0.12em] text-white/40 ${
-                    i === 3 ? 'text-right' : 'text-left'
-                  }`}
+                  className="border-b border-white/[0.08] px-5 pb-2.5 pt-3 text-[10px] font-normal uppercase tracking-[0.12em] text-white/40 text-left"
                   style={{ fontFamily: 'var(--font-mono, monospace)' }}
                 >
-                  {h}
+                  {t.colSku}
                 </th>
-              ))}
+              )}
+              {/* Stock — always visible */}
+              <th
+                className={`border-b border-white/[0.08] ${px} pb-2 pt-2.5 text-[10px] font-normal uppercase tracking-[0.12em] text-white/40 text-left`}
+                style={{ fontFamily: 'var(--font-mono, monospace)' }}
+              >
+                {t.colStock}
+              </th>
+              {/* Prix — desktop only */}
+              {!mobile && (
+                <th
+                  className="border-b border-white/[0.08] px-5 pb-2.5 pt-3 text-[10px] font-normal uppercase tracking-[0.12em] text-white/40 text-right"
+                  style={{ fontFamily: 'var(--font-mono, monospace)' }}
+                >
+                  {t.colPrice}
+                </th>
+              )}
             </tr>
           </thead>
           <tbody>
@@ -306,37 +321,47 @@ function ErpPanel({ t }: { t: typeof CONTENT['fr'] }) {
                 key={r.sku}
                 className={i < ERP_ROWS.length - 1 ? 'border-b border-white/[0.04]' : ''}
               >
+                {/* Name — always visible */}
                 <td
-                  className="max-w-0 overflow-hidden text-ellipsis whitespace-nowrap px-5 py-3 align-middle text-[13px] text-white/90"
-                  style={{ maxWidth: '1px' /* forces truncation in table */ }}
+                  className={`max-w-0 overflow-hidden text-ellipsis whitespace-nowrap ${px} ${pyR} align-middle ${fs} text-white/90`}
+                  style={{ maxWidth: '1px' }}
                 >
                   {r.name}
                 </td>
+                {/* SKU — desktop only */}
+                {!mobile && (
+                  <td
+                    className="whitespace-nowrap px-5 py-3 align-middle text-[11.5px] tracking-[0.02em] text-white/40"
+                    style={{ fontFamily: 'var(--font-mono, monospace)' }}
+                  >
+                    {r.sku}
+                  </td>
+                )}
+                {/* Stock — always visible */}
                 <td
-                  className="whitespace-nowrap px-5 py-3 align-middle text-[11.5px] tracking-[0.02em] text-white/40"
-                  style={{ fontFamily: 'var(--font-mono, monospace)' }}
-                >
-                  {r.sku}
-                </td>
-                <td
-                  className="whitespace-nowrap px-5 py-3 align-middle text-[13px] text-white tabular-nums"
+                  className={`whitespace-nowrap ${px} ${pyR} align-middle ${fs} text-white tabular-nums`}
                   style={{ fontFamily: 'var(--font-mono, monospace)' }}
                 >
                   {r.stock}
                 </td>
-                <td
-                  className="whitespace-nowrap px-5 py-3 align-middle text-right text-[13px] text-white/90 tabular-nums"
-                  style={{ fontFamily: 'var(--font-mono, monospace)' }}
-                >
-                  {r.price}
-                </td>
+                {/* Prix — desktop only */}
+                {!mobile && (
+                  <td
+                    className="whitespace-nowrap px-5 py-3 align-middle text-right text-[13px] text-white/90 tabular-nums"
+                    style={{ fontFamily: 'var(--font-mono, monospace)' }}
+                  >
+                    {r.price}
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>
         </table>
       </div>
 
-      <footer className="flex items-center gap-2 border-t border-white/[0.08] bg-white/[0.012] px-5 py-3 text-[12px] text-white/55">
+      <footer
+        className={`flex items-center gap-2 border-t border-white/[0.08] bg-white/[0.012] ${px} ${mobile ? 'py-2' : 'py-3'} text-[12px] text-white/55`}
+      >
         <GreenDot size={6} />
         {t.connected}
       </footer>
@@ -345,7 +370,7 @@ function ErpPanel({ t }: { t: typeof CONTENT['fr'] }) {
 }
 
 /* ============================================================
-   Syntax token helpers for the code block
+   Syntax token helpers
    ============================================================ */
 const CLine  = ({ children }: { children: React.ReactNode }) => <span className="block whitespace-pre">{children}</span>
 const Verb   = ({ children }: { children: React.ReactNode }) => <span className="font-medium text-white">{children}</span>
@@ -358,12 +383,18 @@ const CBrace = ({ children }: { children: React.ReactNode }) => <span className=
 
 /* ============================================================
    MIDDLE PANEL — API webhook code block (dark)
+   mobile prop: hides Authorization header, reduces padding/font
    ============================================================ */
-function ApiPanel({ t }: { t: typeof CONTENT['fr'] }) {
+function ApiPanel({
+  t, mobile = false,
+}: {
+  t: typeof CONTENT['fr']
+  mobile?: boolean
+}) {
   return (
     <aside
       aria-label="Requête API sync"
-      className="h-full flex flex-col rounded-[12px] border border-white/[0.08] px-5 pb-3.5 pt-4 text-white/55"
+      className={`h-full flex flex-col rounded-[12px] border border-white/[0.08] ${mobile ? 'px-4' : 'px-5'} pb-3.5 pt-4 text-white/55`}
       style={{
         background: 'rgba(13,13,13,0.94)',
         backdropFilter: 'blur(6px)',
@@ -371,7 +402,7 @@ function ApiPanel({ t }: { t: typeof CONTENT['fr'] }) {
         boxShadow:
           '0 0 0 1px rgba(255,255,255,0.02), 0 24px 50px rgba(0,0,0,0.55), 0 6px 18px rgba(0,0,0,0.4)',
         fontFamily: 'var(--font-mono, monospace)',
-        fontSize: 12.5,
+        fontSize: mobile ? 11.5 : 12.5,
         lineHeight: 1.75,
         WebkitFontSmoothing: 'antialiased',
       }}
@@ -385,7 +416,10 @@ function ApiPanel({ t }: { t: typeof CONTENT['fr'] }) {
       {/* code body */}
       <div className="flex-1 overflow-hidden">
         <CLine><Verb>POST</Verb> <CPath>/api/sync</CPath> <CMute>HTTP/1.1</CMute></CLine>
-        <CLine><CKey>Authorization:</CKey> <CMute>Bearer</CMute> <CStr>sk_live_***</CStr></CLine>
+        {/* Authorization — hidden on mobile (saves ~1 line of height) */}
+        {!mobile && (
+          <CLine><CKey>Authorization:</CKey> <CMute>Bearer</CMute> <CStr>sk_live_***</CStr></CLine>
+        )}
         <span className="block h-1.5" />
         <CLine><CBrace>{'{'}</CBrace></CLine>
         <CLine>{'  '}<CKey>&quot;sku&quot;</CKey><CMute>:</CMute> <CStr>&quot;SH-001&quot;</CStr><CMute>,</CMute></CLine>
@@ -448,10 +482,9 @@ function EcomPanel({ t }: { t: typeof CONTENT['fr'] }) {
         {ECOM_ROWS.map((r) => (
           <div
             key={r.name}
-            className="grid items-center gap-2.5 border-b border-[#ebebeb] px-4 py-2.5 text-[13.5px] last:border-b-0"
+            className="grid items-center gap-2.5 border-b border-[#ebebeb] px-4 py-2.5 text-[13px] last:border-b-0"
             style={{ gridTemplateColumns: ECOM_GRID }}
           >
-            {/* emoji thumbnail */}
             <span
               className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-[6px] border border-[#e6e6e8] text-[17px] leading-none flex-shrink-0"
               style={{ background: 'linear-gradient(135deg,#f4f4f5 0%,#e8e8ea 100%)' }}
@@ -461,7 +494,7 @@ function EcomPanel({ t }: { t: typeof CONTENT['fr'] }) {
             <span className="overflow-hidden text-ellipsis whitespace-nowrap font-medium tracking-tight text-[#1a1a1a]">
               {r.name}
             </span>
-            <span className="text-right text-[13px] font-medium text-[#303030] tabular-nums">
+            <span className="text-right font-medium text-[#303030] tabular-nums">
               {r.stock}
             </span>
             <span className="flex justify-end">
@@ -545,7 +578,7 @@ export function ErpFeatureSection() {
 
   return (
     <section
-      className="flex items-center justify-center px-4 py-10 min-720:px-6 min-720:py-16"
+      className="flex items-center justify-center px-4 py-10 md:px-6 md:py-16"
       style={{
         background:
           'radial-gradient(1200px 600px at 50% -10%, rgba(255,255,255,0.025), transparent 60%), #080808',
@@ -553,13 +586,13 @@ export function ErpFeatureSection() {
       }}
     >
       <div
-        className="relative w-full max-w-[1280px] overflow-hidden rounded-2xl min-720:rounded-3xl"
+        className="relative w-full max-w-[1280px] overflow-hidden rounded-2xl md:rounded-3xl"
         style={{
           background: '#0a0a0a',
           border: '1px solid rgba(255,255,255,0.10)',
         }}
       >
-        {/* ── FIG label — short on mobile, full on desktop ── */}
+        {/* ── FIG label ── */}
         <div
           className="absolute font-mono uppercase"
           style={{
@@ -569,13 +602,13 @@ export function ErpFeatureSection() {
             zIndex: 10,
           }}
         >
-          <span className="min-720:hidden">{t.figShort}</span>
-          <span className="hidden min-720:inline whitespace-nowrap">{t.figMain}</span>
+          <span className="md:hidden">{t.figShort}</span>
+          <span className="hidden md:inline whitespace-nowrap">{t.figMain}</span>
         </div>
 
         {/* ── LIVE indicator — hidden on mobile ── */}
         <div
-          className="hidden min-720:flex absolute font-mono uppercase whitespace-nowrap items-center gap-2"
+          className="hidden md:flex absolute font-mono uppercase whitespace-nowrap items-center gap-2"
           style={{
             top: 28, right: 36,
             fontSize: 11, letterSpacing: '0.16em',
@@ -588,9 +621,9 @@ export function ErpFeatureSection() {
         </div>
 
         {/* ── Figure area ── */}
-        <div className="relative px-4 min-720:px-8 pt-16 min-720:pt-20 pb-6 min-720:pb-10">
+        <div className="relative px-4 md:px-8 pt-16 md:pt-20 pb-6 md:pb-10">
 
-          {/* soft glow behind panel stack */}
+          {/* soft glow */}
           <div
             aria-hidden
             className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2"
@@ -603,20 +636,17 @@ export function ErpFeatureSection() {
             }}
           />
 
-          {/* ══ DESKTOP: three overlapping absolute panels (≥720px) ══
-              Each panel: 41.67% of container width (≡ 500/1200).
-              Overlap zones:  LEFT–MIDDLE at 29.17%–41.67%
-                              MIDDLE–RIGHT at 58.33%–70.84%
-              Connectors SVG uses viewBox="0 0 1200 380" + preserveAspectRatio="none"
-              so x-coords map proportionally to actual container width.
+          {/* ══ DESKTOP: three overlapping panels (≥768px) ══
+              41.67% wide each (≡ 500/1200).
+              Connectors SVG: viewBox 1200×380, preserveAspectRatio="none"
+              → x-coords map proportionally to container width.
           ══ */}
           <div
-            className="relative hidden min-720:block w-full mt-4"
+            className="relative hidden md:block w-full mt-4"
             style={{ height: 380, zIndex: 1 }}
           >
             <Connectors />
 
-            {/* LEFT — ERP table (z-1, reference position) */}
             <motion.div
               className="absolute z-[1]"
               style={{ left: 0, top: 10, width: '41.67%', height: 340 }}
@@ -628,7 +658,6 @@ export function ErpFeatureSection() {
               <ErpPanel t={t} />
             </motion.div>
 
-            {/* MIDDLE — API code block (z-2, overlaps LEFT by ~12%) */}
             <motion.div
               className="absolute z-[2]"
               style={{ left: '29.17%', top: 10, width: '41.67%', height: 340 }}
@@ -640,7 +669,6 @@ export function ErpFeatureSection() {
               <ApiPanel t={t} />
             </motion.div>
 
-            {/* RIGHT — Shopify panel (z-3, overlaps MIDDLE by ~12%) */}
             <motion.div
               className="absolute z-[3]"
               style={{ left: '58.33%', top: 10, width: '41.67%', height: 340 }}
@@ -653,17 +681,24 @@ export function ErpFeatureSection() {
             </motion.div>
           </div>
 
-          {/* ══ MOBILE: stacked panels (<720px) ══ */}
-          <div className="relative min-720:hidden flex flex-col gap-4 mt-8 max-w-[420px] mx-auto" style={{ zIndex: 1 }}>
-            {/* Keep h-[300px] on dark panels so they don't grow too tall */}
-            <div style={{ height: 300 }}><ErpPanel t={t} /></div>
-            <div style={{ height: 300 }}><ApiPanel t={t} /></div>
+          {/* ══ MOBILE: vertical stack (<768px / md:) ══
+              - 3 panels in order: ERP → API → Ecom
+              - 12px gap (gap-3)
+              - No offsets, no fixed heights
+              - SKU + PRIX hidden in ERP, Authorization hidden in API
+          ══ */}
+          <div
+            className="relative md:hidden flex flex-col gap-3 mt-8 w-full overflow-hidden"
+            style={{ zIndex: 1 }}
+          >
+            <ErpPanel t={t} mobile />
+            <ApiPanel t={t} mobile />
             <EcomPanel t={t} />
           </div>
 
-          {/* Caption — title + description */}
+          {/* Caption */}
           <div
-            className="relative mt-8 min-720:mt-10 max-w-[640px] pr-0 min-720:pr-6"
+            className="relative mt-8 md:mt-10 max-w-[640px] pr-0 md:pr-6"
             style={{ zIndex: 2 }}
           >
             <h2
@@ -711,14 +746,10 @@ export function ErpFeatureSection() {
               border: '1px solid rgba(255,255,255,0.10)',
             }}
           >
-            {/* BAD column */}
             <div className="erp-compare-left p-5 min-720:p-9">
               <div
                 className="flex items-center justify-between mb-5 min-720:mb-6"
-                style={{
-                  borderBottom: '1px solid rgba(255,255,255,0.06)',
-                  paddingBottom: 16,
-                }}
+                style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: 16 }}
               >
                 <div
                   className="font-semibold uppercase tracking-[0.04em]"
@@ -728,10 +759,7 @@ export function ErpFeatureSection() {
                 </div>
                 <div
                   className="font-mono uppercase"
-                  style={{
-                    fontSize: 10, letterSpacing: '0.14em',
-                    color: 'rgba(255,255,255,0.36)',
-                  }}
+                  style={{ fontSize: 10, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.36)' }}
                 >
                   {t.stateOff}
                 </div>
@@ -741,14 +769,10 @@ export function ErpFeatureSection() {
               ))}
             </div>
 
-            {/* GOOD column */}
             <div className="p-5 min-720:p-9">
               <div
                 className="flex items-center justify-between mb-5 min-720:mb-6"
-                style={{
-                  borderBottom: '1px solid rgba(255,255,255,0.06)',
-                  paddingBottom: 16,
-                }}
+                style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: 16 }}
               >
                 <div
                   className="font-semibold uppercase tracking-[0.04em] text-white"
@@ -758,10 +782,7 @@ export function ErpFeatureSection() {
                 </div>
                 <div
                   className="font-mono uppercase"
-                  style={{
-                    fontSize: 10, letterSpacing: '0.14em',
-                    color: 'rgba(255,255,255,0.36)',
-                  }}
+                  style={{ fontSize: 10, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.36)' }}
                 >
                   {t.stateOn}
                 </div>
