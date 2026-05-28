@@ -782,4 +782,46 @@ export const posts: Post[] = [
     category: 'GESTION DE STOCK',
     readingTime: 7,
   },
+  {
+    slug: 'connecter-sage100-shopify-sans-middleware',
+    title: {
+      fr: 'Comment connecter Sage 100 à Shopify sans middleware tiers',
+      en: 'How to Connect Sage 100 to Shopify Without Third-Party Middleware',
+    },
+    description: {
+      fr: "La plupart des intégrateurs vous vendent un abonnement mensuel à un outil intermédiaire. Voici comment connecter directement Sage 100 à Shopify via l'API Shopify et le Business Object Interface de Sage.",
+      en: "Most integrators sell you a monthly subscription to an intermediary tool. Here's how to connect Sage 100 directly to Shopify via the Shopify API and Sage's Business Object Interface.",
+    },
+    date: { fr: '12 mai 2026', en: 'May 12, 2026' },
+    category: 'Connexion ERP',
+    readingTime: 7,
+  },
+  {
+    slug: 'pourquoi-synchro-stock-shopify-erp-plante',
+    title: {
+      fr: "Pourquoi la synchronisation stock Shopify-ERP plante — et comment l'éviter",
+      en: 'Why Shopify-ERP Stock Sync Breaks — and How to Prevent It',
+    },
+    description: {
+      fr: "Décalages de stock, surventes, doublons de commande : les causes sont presque toujours les mêmes. Voici les 6 erreurs d'architecture qui font échouer une intégration ERP-Shopify.",
+      en: "Stock discrepancies, overselling, duplicate orders: the causes are almost always the same. Here are the 6 architecture mistakes that cause ERP-Shopify integrations to fail.",
+    },
+    date: { fr: '19 mai 2026', en: 'May 19, 2026' },
+    category: 'Connexion ERP',
+    readingTime: 6,
+  },
+  {
+    slug: 'site-ecommerce-magasin-physique-fonctions-indispensables',
+    title: {
+      fr: 'Site e-commerce pour un magasin physique : les 5 fonctions indispensables',
+      en: 'E-Commerce Site for a Physical Store: The 5 Essential Features',
+    },
+    description: {
+      fr: "Un site e-commerce pour un commerce physique n'a pas les mêmes priorités qu'un pure player. Voici les 5 fonctions qui font vraiment la différence quand vous avez un stock réel à gérer.",
+      en: "An e-commerce site for a brick-and-mortar store has different priorities than a pure online retailer. Here are the 5 features that make the real difference when you have real inventory to manage.",
+    },
+    date: { fr: '26 mai 2026', en: 'May 26, 2026' },
+    category: 'Web & E-commerce',
+    readingTime: 5,
+  },
 ]
