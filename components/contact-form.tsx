@@ -149,10 +149,13 @@ export function ContactForm() {
           </span>
         </legend>
 
-        {/* Currency row */}
-        <div className="flex flex-wrap gap-1.5 mb-3">
+        {/* Currency row — single line, horizontal scroll on mobile */}
+        <div
+          className="flex flex-nowrap overflow-x-auto gap-1.5 pb-1 mb-3 scrollbar-hide"
+          style={{ WebkitOverflowScrolling: 'touch' }}
+        >
           <span
-            className="self-center text-caption mr-1"
+            className="self-center text-caption mr-1 flex-shrink-0 whitespace-nowrap"
             style={{ color: 'hsl(var(--text-tertiary))' }}
           >
             {t.currencyLabel}
@@ -164,7 +167,7 @@ export function ContactForm() {
                 key={code}
                 type="button"
                 onClick={() => setCurrency(i)}
-                className="rounded-full px-3 py-1 text-xs font-medium transition-all duration-150"
+                className="flex-shrink-0 whitespace-nowrap rounded-full px-3 py-1 text-xs font-medium transition-all duration-150"
                 style={{
                   background: isActive ? 'hsl(var(--bg-inverse))' : 'hsl(var(--bg-secondary))',
                   color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',

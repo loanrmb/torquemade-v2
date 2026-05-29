@@ -622,3 +622,12 @@ html.dark .cta-card {
 @media (prefers-reduced-motion: reduce) {
   .rainbow-text { animation: none; }
 }
+
+/* ============================================================
+   SCROLLBAR HIDE — utilitaire pour scroll horizontal propre
+   ============================================================ */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
