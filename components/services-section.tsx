@@ -23,13 +23,13 @@
  *   jetski-site-v2.png · jetski-code-v2.png · crm-form.png · crm-dash.png
  */
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLang } from '@/components/app-provider';
 import { strings } from '@/lib/strings';
 
 const IMG = '/images';
-const ROTATE_MS = 5000;
+const ROTATE_MS = 7000;
 
 const EASE = [0, 0, 0.2, 1] as const;
 
@@ -130,7 +130,7 @@ const ROWS: Row[] = [
   { emoji: '🍷', name: 'Sancerre Blanc', sku: 'SB-2022', category: 'Vin', stock: 18, price: '45€' },
   { emoji: '🍷', name: 'Côte du Rhône', sku: 'CR-2021', category: 'Vin', stock: 42, price: '22€' },
   { emoji: '🥂', name: "Crémant d'Alsace", sku: 'CA-2023', category: 'Champagne', stock: 31, price: '28€' },
-  { emoji: '🍷', name: 'Saint-Émilion', sku: 'SE-2020', category: 'Vin', stock: 9, price: '95€' },
+  { emoji: '🍷', name: 'Saint-Émilion', sku: 'SE-2020', category: 'Vin', stock: 0, price: '95€' },
   { emoji: '🍷', name: 'Pouilly-Fumé', sku: 'PF-2022', category: 'Vin', stock: 27, price: '38€' },
   { emoji: '🥂', name: 'Champagne Rosé', sku: 'CR-NV-08', category: 'Champagne', stock: 15, price: '78€' },
   { emoji: '🍷', name: 'Chablis 1er Cru', sku: 'CB-2021', category: 'Vin', stock: 21, price: '52€' },
@@ -309,7 +309,7 @@ function FigureErp() {
                   <div key={r.sku} className={`${STOCK_COLS} py-[7px] text-[11px]`}>
                     <span className="whitespace-nowrap font-medium text-white">{r.name}</span>
                     <span className="whitespace-nowrap font-mono text-[11px] text-white/55">{r.sku}</span>
-                    <span className="whitespace-nowrap font-mono text-[11px] font-medium text-white/90">{r.stock}</span>
+                    <span className={`whitespace-nowrap font-mono text-[11px] font-medium ${r.stock === 0 ? 'text-red-400' : 'text-white/90'}`}>{r.stock}</span>
                   </div>
                 ))}
               </div>
@@ -332,9 +332,15 @@ function FigureErp() {
                       <span>{r.name}</span>
                     </span>
                     <span className="whitespace-nowrap font-mono text-[11px] font-medium text-neutral-700">{r.stock}</span>
-                    <span className="inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-green-100 px-2 py-0.5 text-[10px] font-medium text-green-700">
-                      Actif
-                    </span>
+                    {r.stock === 0 ? (
+                      <span className="inline-flex h-6 items-center justify-center whitespace-nowrap rounded-full bg-red-100 px-2.5 text-[10px] font-medium text-red-600">
+                        Rupture
+                      </span>
+                    ) : (
+                      <span className="inline-flex h-6 items-center justify-center whitespace-nowrap rounded-full bg-green-100 px-2.5 text-[10px] font-medium text-green-700">
+                        Actif
+                      </span>
+                    )}
                   </div>
                 ))}
               </div>
@@ -498,12 +504,10 @@ type TabData = { num: string; title: string; desc: string; tag: string };
 function TabButton({
   tab,
   isActive,
-  paused,
   onSelect,
 }: {
   tab: TabData;
   isActive: boolean;
-  paused: boolean;
   onSelect: () => void;
 }) {
   return (
@@ -512,7 +516,7 @@ function TabButton({
       role="tab"
       aria-selected={isActive}
       onClick={onSelect}
-      className="group relative overflow-hidden rounded-2xl border p-6 text-left transition-colors duration-200"
+      className="group relative rounded-2xl border p-6 text-left transition-colors duration-200"
       style={{
         background: isActive ? 'hsl(var(--bg-inverse))' : 'transparent',
         borderColor: isActive ? 'hsl(var(--bg-inverse))' : 'hsl(var(--border-subtle))',
@@ -536,23 +540,6 @@ function TabButton({
       >
         {tab.desc}
       </span>
-
-      {/* progress bar (active only) */}
-      {isActive ? (
-        <span
-          className="absolute inset-x-0 bottom-0 block h-0.5 overflow-hidden"
-          style={{ background: 'hsl(var(--bg-primary) / 0.15)' }}
-        >
-          <motion.span
-            key={`${tab.num}-${paused}`}
-            className="block h-full origin-left"
-            style={{ background: 'hsl(var(--bg-primary))' }}
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: paused ? 0 : 1 }}
-            transition={{ duration: paused ? 0 : ROTATE_MS / 1000, ease: 'linear' }}
-          />
-        </span>
-      ) : null}
     </button>
   );
 }
@@ -570,6 +557,7 @@ export default function ServicesSection() {
 
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  const touchStartX = useRef<number>(0);
 
   // auto-advance
   useEffect(() => {
@@ -618,17 +606,95 @@ export default function ServicesSection() {
         </div>
 
         {/* Tabs + stage */}
-        <div className="grid gap-8 md:grid-cols-3">
-          <div role="tablist" className="flex flex-col gap-2 md:col-span-1">
-            {tabs.map((tab, i) => (
-              <TabButton
-                key={tab.num}
-                tab={tab}
-                isActive={i === active}
-                paused={paused}
-                onSelect={() => setActive(i)}
+
+        {/* Mobile carousel — visible below md */}
+        <div
+          className="md:hidden"
+          onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
+          onTouchEnd={(e) => {
+            const dx = e.changedTouches[0].clientX - touchStartX.current;
+            if (Math.abs(dx) > 40) {
+              setActive((a) => dx < 0 ? (a + 1) % tabs.length : (a - 1 + tabs.length) % tabs.length);
+            }
+          }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              className="mb-5"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25, ease: EASE }}
+            >
+              <span
+                className="mb-2 block font-mono text-[11px] tracking-[0.14em]"
+                style={{ color: 'hsl(var(--text-tertiary))' }}
+              >
+                {tabs[active].num}
+              </span>
+              <span
+                className="mb-1 block text-[17px] font-semibold tracking-tight"
+                style={{ color: 'hsl(var(--text-primary))' }}
+              >
+                {tabs[active].title}
+              </span>
+              <span
+                className="block text-[13.5px] leading-snug"
+                style={{ color: 'hsl(var(--text-secondary))' }}
+              >
+                {tabs[active].desc}
+              </span>
+            </motion.div>
+          </AnimatePresence>
+          <Stage active={active} tag={tabs[active].tag} />
+          <div className="mt-5 flex justify-center gap-2">
+            {tabs.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                aria-label={`Aller à l'onglet ${i + 1}`}
+                onClick={() => setActive(i)}
+                className="rounded-full transition-all duration-300"
+                style={{
+                  width: i === active ? '1.5rem' : '0.375rem',
+                  height: '0.375rem',
+                  background: i === active
+                    ? 'hsl(var(--bg-inverse))'
+                    : 'hsl(var(--border-subtle))',
+                }}
               />
             ))}
+          </div>
+        </div>
+
+        {/* Desktop grid — visible from md */}
+        <div className="hidden gap-8 md:grid md:grid-cols-3">
+          <div className="relative md:col-span-1">
+            {/* Vertical progress bar — 2px left edge */}
+            <div
+              className="absolute left-0 top-0 hidden h-full w-0.5 overflow-hidden rounded-full md:block"
+              style={{ background: 'hsl(var(--bg-inverse) / 0.1)' }}
+            >
+              <motion.span
+                key={`vbar-${active}-${paused}`}
+                className="absolute inset-x-0 top-0 block w-full origin-top"
+                style={{ background: 'hsl(var(--bg-inverse))', height: '100%' }}
+                initial={{ scaleY: 0 }}
+                animate={{ scaleY: paused ? 0 : 1 }}
+                transition={{ duration: paused ? 0 : ROTATE_MS / 1000, ease: 'linear' }}
+              />
+            </div>
+            <div role="tablist" className="flex flex-col gap-2 pl-4">
+              {tabs.map((tab, i) => (
+                <TabButton
+                  key={tab.num}
+                  tab={tab}
+                  isActive={i === active}
+                  onSelect={() => setActive(i)}
+                />
+              ))}
+            </div>
           </div>
 
           <div className="md:col-span-2">
