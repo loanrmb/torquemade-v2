@@ -52,12 +52,14 @@ function WindowFrame({
     <div
       className={`flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-[0_12px_32px_rgba(0,0,0,0.35)] ${className}`}
     >
-      <div className="flex items-center gap-1.5 border-b border-white/10 bg-white/[0.04] px-3.5 py-2.5">
+      <div className={`flex items-center gap-1.5 border-b px-3.5 py-2.5 ${
+        file ? 'border-neutral-700 bg-[#1c1c1c]' : 'border-white/10 bg-white/[0.04]'
+      }`}>
         <span className="h-2 w-2 rounded-full bg-white/15" />
         <span className="h-2 w-2 rounded-full bg-white/15" />
         <span className="h-2 w-2 rounded-full bg-white/15" />
         {file ? (
-          <span className="ml-3 rounded-md border border-white/15 bg-white/[0.08] px-2 py-0.5 font-mono text-[10px] tracking-wide text-white/70">
+          <span className="ml-3 rounded-md border border-neutral-600 bg-neutral-700 px-2 py-0.5 font-mono text-[10px] tracking-wide text-neutral-200">
             {file}
           </span>
         ) : null}
@@ -134,8 +136,8 @@ const ROWS: Row[] = [
   { emoji: '🍷', name: 'Chablis 1er Cru', sku: 'CB-2021', category: 'Vin', stock: 21, price: '52€' },
 ];
 
-const STOCK_COLS = 'grid grid-cols-[1.5fr_0.8fr_0.45fr_0.6fr] items-center gap-1.5 px-3';
-const SITE_COLS = 'grid grid-cols-[1.35fr_0.9fr_0.4fr_0.8fr] items-center gap-1.5 px-3';
+const STOCK_COLS = 'grid grid-cols-[2fr_0.9fr_0.5fr_0.7fr] items-center gap-1.5 px-3';
+const SITE_COLS = 'grid grid-cols-[2fr_1fr_0.5fr_0.8fr] items-center gap-1.5 px-3';
 
 function ErpPanel({
   title,
@@ -248,29 +250,24 @@ function ErpConnector({ label }: { label: string }) {
 function FigureErp() {
   const t = strings[useLang()].servicesSection;
   const catLabel = (c: Category) => (c === 'Vin' ? t.erp.catWine : t.erp.catChampagne);
+  const rows = ROWS.slice(0, 6);
+
   return (
-    <div className="flex w-full flex-col items-stretch md:flex-row">
-      <ErpPanel
-        title={t.erp.stockTitle}
-        footer={
-          <>
-            <motion.span
-              className="inline-block h-1.5 w-1.5 rounded-full bg-white"
-              animate={{ opacity: [1, 0.4, 1] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            />
-            <span>{t.erp.stockFooter}</span>
-          </>
-        }
-      >
-        <div className="flex flex-1 flex-col">
-          <ColHead cols={STOCK_COLS}>
+    <div className="flex w-full flex-col items-stretch gap-2 overflow-x-auto md:flex-row md:gap-0">
+
+      {/* Stock panel — dark */}
+      <div className="flex min-w-[210px] flex-1 flex-col overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] shadow-[0_16px_40px_-12px_rgba(0,0,0,0.55)]">
+        <div className="border-b border-white/10 px-4 py-3 text-xs font-semibold tracking-tight text-white">
+          {t.erp.stockTitle}
+        </div>
+        <div className="flex flex-1 flex-col py-1">
+          <div className={`${STOCK_COLS} border-b border-white/10 py-2 font-mono text-[8.5px] uppercase tracking-[0.1em] text-white/40`}>
             <span>{t.erp.colProduct}</span>
             <span>{t.erp.colSku}</span>
             <span>{t.erp.colStock}</span>
             <span>{t.erp.colPrice}</span>
-          </ColHead>
-          {ROWS.map((r) => (
+          </div>
+          {rows.map((r) => (
             <div key={r.sku} className={`${STOCK_COLS} py-[7px] text-[11px]`}>
               <span className="flex items-center gap-1.5 truncate font-medium text-white">
                 <span aria-hidden>{r.emoji}</span>
@@ -282,36 +279,52 @@ function FigureErp() {
             </div>
           ))}
         </div>
-      </ErpPanel>
+        <div className="flex items-center gap-2 border-t border-white/10 px-4 py-2.5 text-[11px] text-white/55">
+          <motion.span
+            className="inline-block h-1.5 w-1.5 rounded-full bg-white"
+            animate={{ opacity: [1, 0.4, 1] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          />
+          <span>{t.erp.stockFooter}</span>
+        </div>
+      </div>
 
       <ErpConnector label={t.erp.connectorSync} />
       <ApiPanel />
       <ErpConnector label={t.erp.connectorPush} />
 
-      <ErpPanel elevated title={t.erp.siteTitle} footer={<span>{t.erp.siteFooter}</span>}>
-        <div className="flex flex-1 flex-col">
-          <ColHead cols={SITE_COLS}>
+      {/* Site panel — light */}
+      <div className="flex min-w-[210px] flex-1 flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-[0_16px_40px_-12px_rgba(0,0,0,0.15)]">
+        <div className="border-b border-neutral-200 px-4 py-3 text-xs font-semibold tracking-tight text-neutral-900">
+          {t.erp.siteTitle}
+        </div>
+        <div className="flex flex-1 flex-col py-1">
+          <div className={`${SITE_COLS} border-b border-neutral-100 py-2 font-mono text-[8.5px] uppercase tracking-[0.1em] text-neutral-400`}>
             <span>{t.erp.colProduct}</span>
             <span>{t.erp.colCategory}</span>
             <span>{t.erp.colStock}</span>
             <span>{t.erp.colStatus}</span>
-          </ColHead>
-          {ROWS.map((r) => (
+          </div>
+          {rows.map((r) => (
             <div key={r.sku} className={`${SITE_COLS} py-[7px] text-[11px]`}>
-              <span className="flex items-center gap-1.5 truncate font-medium text-white">
+              <span className="flex items-center gap-1.5 truncate font-medium text-neutral-900">
                 <span aria-hidden>{r.emoji}</span>
                 <span className="truncate">{r.name}</span>
               </span>
-              <span className="font-mono text-[8.5px] uppercase tracking-[0.04em] text-white/55">{catLabel(r.category)}</span>
-              <span className="font-mono text-[10.5px] font-medium text-white/90">{r.stock}</span>
-              <span className="inline-flex items-center gap-1.5 text-[10px] text-white/90">
-                <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-white" />
+              <span className="font-mono text-[8.5px] uppercase tracking-[0.04em] text-neutral-400">{catLabel(r.category)}</span>
+              <span className="font-mono text-[10.5px] font-medium text-neutral-700">{r.stock}</span>
+              <span className="inline-flex items-center gap-1.5 text-[10px] text-neutral-700">
+                <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-neutral-500" />
                 {t.erp.statusActive}
               </span>
             </div>
           ))}
         </div>
-      </ErpPanel>
+        <div className="flex items-center gap-2 border-t border-neutral-100 px-4 py-2.5 text-[11px] text-neutral-400">
+          <span>{t.erp.siteFooter}</span>
+        </div>
+      </div>
+
     </div>
   );
 }
