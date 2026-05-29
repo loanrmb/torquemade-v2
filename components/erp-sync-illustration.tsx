@@ -200,7 +200,7 @@ function Connector({ label }: { label: string }) {
 
 export default function ErpSyncIllustration() {
   return (
-    <section className="w-full bg-[#080808] px-4 py-10 text-white sm:px-6 md:py-14">
+    <div className="w-full text-white border-4 border-red-500">
       <div className="mx-auto w-full max-w-6xl">
         <div className="mb-6 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-white/40">
           <span>FIG. 1.3 · ERP ↔ E-commerce · Temps réel</span>
@@ -233,6 +233,6 @@ export default function ErpSyncIllustration() {
           </Panel>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
