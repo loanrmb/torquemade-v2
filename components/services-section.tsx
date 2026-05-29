@@ -27,7 +27,6 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLang } from '@/components/app-provider';
 import { strings } from '@/lib/strings';
-import ErpSyncIllustration from '@/components/erp-sync-illustration';
 
 const IMG = '/images';
 const ROTATE_MS = 5000;
@@ -137,20 +136,35 @@ const ROWS: Row[] = [
   { emoji: '🍷', name: 'Chablis 1er Cru', sku: 'CB-2021', category: 'Vin', stock: 21, price: '52€' },
 ];
 
-const STOCK_COLS = 'grid grid-cols-[2fr_0.9fr_0.5fr_0.7fr] items-center gap-1.5 px-3';
-const SITE_COLS = 'grid grid-cols-[2fr_1fr_0.5fr_0.8fr] items-center gap-1.5 px-3';
+const STOCK_COLS = 'grid grid-cols-[1.5fr_0.8fr_0.45fr_0.6fr] items-center gap-1.5 px-3';
+const SITE_COLS  = 'grid grid-cols-[1.35fr_0.9fr_0.4fr_0.8fr] items-center gap-1.5 px-3';
 
 function ErpPanel({
   title,
   elevated = false,
+  light = false,
   children,
   footer,
 }: {
   title: string;
   elevated?: boolean;
+  light?: boolean;
   children: React.ReactNode;
   footer: React.ReactNode;
 }) {
+  if (light) {
+    return (
+      <div className="flex w-full flex-1 flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-[0_16px_40px_-12px_rgba(0,0,0,0.12)]">
+        <div className="border-b border-neutral-100 px-4 py-3 text-xs font-semibold tracking-tight text-neutral-900">
+          {title}
+        </div>
+        <div className="flex flex-1 flex-col py-1">{children}</div>
+        <div className="flex items-center gap-2 border-t border-neutral-100 px-4 py-2.5 text-[11px] text-neutral-500">
+          {footer}
+        </div>
+      </div>
+    );
+  }
   return (
     <div
       className={`flex w-full flex-1 flex-col overflow-hidden rounded-xl border border-white/10 ${
@@ -168,9 +182,21 @@ function ErpPanel({
   );
 }
 
-function ColHead({ cols, children }: { cols: string; children: React.ReactNode }) {
+function ColHead({
+  cols,
+  light = false,
+  children,
+}: {
+  cols: string;
+  light?: boolean;
+  children: React.ReactNode;
+}) {
   return (
-    <div className={`${cols} border-b border-white/10 py-2 font-mono text-[8.5px] uppercase tracking-[0.1em] text-white/40`}>
+    <div
+      className={`${cols} border-b py-2 font-mono text-[8.5px] uppercase tracking-[0.1em] ${
+        light ? 'border-neutral-100 text-neutral-500' : 'border-white/10 text-white/40'
+      }`}
+    >
       {children}
     </div>
   );
@@ -249,7 +275,81 @@ function ErpConnector({ label }: { label: string }) {
 }
 
 function FigureErp() {
-  return <ErpSyncIllustration />;
+  return (
+    <div className="w-full text-white">
+      <div className="w-full">
+        <div className="mb-6 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-white/40">
+          <span>FIG. 1.3 · ERP ↔ E-commerce · Temps réel</span>
+          <span className="hidden sm:inline">cave-geneve.ch</span>
+        </div>
+
+        <div className="flex flex-col items-stretch gap-4 md:flex-row">
+          {/* Left panel — dark, no emojis */}
+          <ErpPanel
+            title="Logiciel de stock"
+            footer={
+              <>
+                <motion.span
+                  className="inline-block h-1.5 w-1.5 rounded-full bg-white"
+                  animate={{ opacity: [1, 0.4, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                />
+                <span>Connecté · Dernière sync 2s</span>
+              </>
+            }
+          >
+            <div className="flex flex-1 flex-col">
+              <ColHead cols={STOCK_COLS}>
+                <span>Produit</span>
+                <span>SKU</span>
+                <span>Stock</span>
+                <span>Prix</span>
+              </ColHead>
+              {ROWS.slice(0, 6).map((r) => (
+                <div key={r.sku} className={`${STOCK_COLS} py-[7px] text-[11px]`}>
+                  <span className="font-medium text-white">{r.name}</span>
+                  <span className="font-mono text-[9.5px] text-white/55">{r.sku}</span>
+                  <span className="font-mono text-[10.5px] font-medium text-white/90">{r.stock}</span>
+                  <span className="text-[10.5px] font-semibold text-white">{r.price}</span>
+                </div>
+              ))}
+            </div>
+          </ErpPanel>
+
+          <ErpConnector label="sync →" />
+          <ApiPanel />
+          <ErpConnector label="→ push" />
+
+          {/* Right panel — light/white, with emojis */}
+          <ErpPanel light title="Site e-commerce" footer={<span>↻ Dernière sync : il y a 2s</span>}>
+            <div className="flex flex-1 flex-col">
+              <ColHead cols={SITE_COLS} light>
+                <span>Produit</span>
+                <span>Catégorie</span>
+                <span>Stock</span>
+                <span>Statut</span>
+              </ColHead>
+              {ROWS.slice(0, 6).map((r) => (
+                <div key={r.sku} className={`${SITE_COLS} py-[7px] text-[11px]`}>
+                  <span className="flex items-center gap-1.5 font-medium text-neutral-900">
+                    <span aria-hidden>{r.emoji}</span>
+                    <span>{r.name}</span>
+                  </span>
+                  <span className="font-mono text-[8.5px] uppercase tracking-[0.04em] text-neutral-500">
+                    {r.category}
+                  </span>
+                  <span className="font-mono text-[10.5px] font-medium text-neutral-700">{r.stock}</span>
+                  <span className="inline-flex items-center gap-1 rounded-full bg-green-100 px-2 py-0.5 text-[10px] font-medium text-green-700">
+                    Actif
+                  </span>
+                </div>
+              ))}
+            </div>
+          </ErpPanel>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 /* ------------------------------------------------------------------ */
