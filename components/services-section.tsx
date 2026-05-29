@@ -469,27 +469,40 @@ function Stage({ active, tag }: { active: number; tag: string }) {
   const Figure = FIGURES[active];
   return (
     <div
-      className="relative w-full overflow-hidden rounded-3xl border"
+      className="relative w-full overflow-hidden rounded-2xl border md:rounded-3xl"
       style={{ background: '#080808', borderColor: 'rgba(255,255,255,0.1)' }}
     >
-      {/* contextual corner tag */}
-      <span className="pointer-events-none absolute right-5 top-5 z-10 font-mono text-[10px] uppercase tracking-[0.16em] text-white/40">
+      {/* corner tag — desktop only */}
+      <span className="pointer-events-none absolute right-5 top-5 z-10 hidden font-mono text-[10px] uppercase tracking-[0.16em] text-white/40 md:block">
         {tag}
       </span>
 
-      <div className="flex min-h-[32rem] items-center p-7 md:min-h-[44rem] md:p-8">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            className="w-full"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.4, ease: EASE }}
-          >
-            <Figure />
-          </motion.div>
-        </AnimatePresence>
+      {/*
+       * Mobile: py-4 only (no horizontal padding, no min-h, no items-center).
+       * overflow-x-hidden prevents any figure from causing horizontal scroll.
+       * Desktop: md:p-8 overrides py-4, min-h-[44rem] + items-center restored.
+       */}
+      <div className="overflow-x-hidden py-4 md:flex md:min-h-[44rem] md:items-center md:p-8">
+        {/*
+         * Scale wrapper: shrinks content to 85 % on mobile so wide figures
+         * (ERP panels, SEO cards) fit within ~390 px without horizontal scroll.
+         * Non-motion div avoids framer-motion overriding the CSS transform.
+         * md:scale-100 resets to 1 on desktop.
+         */}
+        <div className="w-full origin-top scale-[0.85] md:scale-100">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              className="w-full"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.4, ease: EASE }}
+            >
+              <Figure />
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   );
