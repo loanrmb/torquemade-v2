@@ -9,34 +9,33 @@
  * Next.js 15 (App Router) · Tailwind CSS v3 · framer-motion.
  *
  * - Strict monochrome: #080808 ground, white text, border-white/10 hairlines.
- * - Responsive: panels side by side from `md` up, stack on mobile.
- * - All UI copy wired through useLang() / lib/strings (servicesSection.erp).
+ *   (The storefront was a light card in the source; rendered dark here on a
+ *   slightly elevated surface to hold the monochrome palette.)
+ * - Responsive: panels sit side by side from `md` up, stack on mobile; the
+ *   connectors flip horizontal → vertical when stacked.
+ * - No fixed pixel layout sizes; Geist assumed wired globally (font-* only).
  */
 
 import { motion } from 'framer-motion';
-import { useLang } from '@/components/app-provider';
-import { strings } from '@/lib/strings';
 
 type Category = 'Vin' | 'Champagne';
 type Row = { emoji: string; name: string; sku: string; category: Category; stock: number; price: string };
 
 const ROWS: Row[] = [
-  { emoji: '🍷', name: 'Château Margaux',  sku: 'CM-2019',  category: 'Vin',       stock: 24, price: '89€' },
-  { emoji: '🥂', name: 'Champagne Brut',   sku: 'CH-NV-12', category: 'Champagne', stock: 12, price: '65€' },
-  { emoji: '🍷', name: 'Sancerre Blanc',   sku: 'SB-2022',  category: 'Vin',       stock: 18, price: '45€' },
-  { emoji: '🍷', name: 'Côte du Rhône',    sku: 'CR-2021',  category: 'Vin',       stock: 42, price: '22€' },
-  { emoji: '🥂', name: "Crémant d'Alsace", sku: 'CA-2023',  category: 'Champagne', stock: 31, price: '28€' },
-  { emoji: '🍷', name: 'Saint-Émilion',    sku: 'SE-2020',  category: 'Vin',       stock:  9, price: '95€' },
-  { emoji: '🍷', name: 'Pouilly-Fumé',     sku: 'PF-2022',  category: 'Vin',       stock: 27, price: '38€' },
-  { emoji: '🥂', name: 'Champagne Rosé',   sku: 'CR-NV-08', category: 'Champagne', stock: 15, price: '78€' },
-  { emoji: '🍷', name: 'Chablis 1er Cru',  sku: 'CB-2021',  category: 'Vin',       stock: 21, price: '52€' },
+  { emoji: '🍷', name: 'Château Margaux', sku: 'CM-2019', category: 'Vin', stock: 24, price: '89€' },
+  { emoji: '🥂', name: 'Champagne Brut', sku: 'CH-NV-12', category: 'Champagne', stock: 12, price: '65€' },
+  { emoji: '🍷', name: 'Sancerre Blanc', sku: 'SB-2022', category: 'Vin', stock: 18, price: '45€' },
+  { emoji: '🍷', name: 'Côte du Rhône', sku: 'CR-2021', category: 'Vin', stock: 42, price: '22€' },
+  { emoji: '🥂', name: "Crémant d'Alsace", sku: 'CA-2023', category: 'Champagne', stock: 31, price: '28€' },
+  { emoji: '🍷', name: 'Saint-Émilion', sku: 'SE-2020', category: 'Vin', stock: 9, price: '95€' },
+  { emoji: '🍷', name: 'Pouilly-Fumé', sku: 'PF-2022', category: 'Vin', stock: 27, price: '38€' },
+  { emoji: '🥂', name: 'Champagne Rosé', sku: 'CR-NV-08', category: 'Champagne', stock: 15, price: '78€' },
+  { emoji: '🍷', name: 'Chablis 1er Cru', sku: 'CB-2021', category: 'Vin', stock: 21, price: '52€' },
 ];
 
 const STOCK_COLS = 'grid grid-cols-[1.5fr_0.8fr_0.45fr_0.6fr] items-center gap-1.5 px-3';
-const SITE_COLS  = 'grid grid-cols-[1.35fr_0.9fr_0.4fr_0.8fr] items-center gap-1.5 px-3';
+const SITE_COLS = 'grid grid-cols-[1.35fr_0.9fr_0.4fr_0.8fr] items-center gap-1.5 px-3';
 
-/* ------------------------------------------------------------------ */
-/*  Primitives                                                        */
 /* ------------------------------------------------------------------ */
 
 function Panel({
@@ -75,19 +74,14 @@ function ColHead({ cols, children }: { cols: string; children: React.ReactNode }
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  Tables                                                            */
-/* ------------------------------------------------------------------ */
-
 function StockTable() {
-  const t = strings[useLang()].servicesSection.erp;
   return (
     <div className="flex flex-1 flex-col">
       <ColHead cols={STOCK_COLS}>
-        <span>{t.colProduct}</span>
-        <span>{t.colSku}</span>
-        <span>{t.colStock}</span>
-        <span>{t.colPrice}</span>
+        <span>Produit</span>
+        <span>SKU</span>
+        <span>Stock</span>
+        <span>Prix</span>
       </ColHead>
       {ROWS.map((r) => (
         <div key={r.sku} className={`${STOCK_COLS} py-[7px] text-[11px]`}>
@@ -105,15 +99,13 @@ function StockTable() {
 }
 
 function SiteTable() {
-  const t = strings[useLang()].servicesSection.erp;
-  const catLabel = (c: Category) => (c === 'Vin' ? t.catWine : t.catChampagne);
   return (
     <div className="flex flex-1 flex-col">
       <ColHead cols={SITE_COLS}>
-        <span>{t.colProduct}</span>
-        <span>{t.colCategory}</span>
-        <span>{t.colStock}</span>
-        <span>{t.colStatus}</span>
+        <span>Produit</span>
+        <span>Catégorie</span>
+        <span>Stock</span>
+        <span>Statut</span>
       </ColHead>
       {ROWS.map((r) => (
         <div key={r.sku} className={`${SITE_COLS} py-[7px] text-[11px]`}>
@@ -121,13 +113,11 @@ function SiteTable() {
             <span aria-hidden>{r.emoji}</span>
             <span className="truncate">{r.name}</span>
           </span>
-          <span className="font-mono text-[8.5px] uppercase tracking-[0.04em] text-white/55">
-            {catLabel(r.category)}
-          </span>
+          <span className="font-mono text-[8.5px] uppercase tracking-[0.04em] text-white/55">{r.category}</span>
           <span className="font-mono text-[10.5px] font-medium text-white/90">{r.stock}</span>
           <span className="inline-flex items-center gap-1.5 text-[10px] text-white/90">
             <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-white" />
-            {t.statusActive}
+            Actif
           </span>
         </div>
       ))}
@@ -135,16 +125,11 @@ function SiteTable() {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  API panel                                                         */
-/* ------------------------------------------------------------------ */
-
 function ApiPanel() {
-  const t = strings[useLang()].servicesSection.erp;
   return (
     <div className="flex w-full flex-1 flex-col overflow-hidden rounded-xl border border-white/15 bg-black/50 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.6)]">
       <div className="flex items-center justify-between border-b border-white/10 px-3 py-2.5">
-        <span className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-white/40">{t.apiLabel}</span>
+        <span className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-white/40">API · Webhook</span>
         <motion.span
           className="h-1.5 w-1.5 rounded-full bg-white"
           animate={{ opacity: [0.3, 1, 0.3] }}
@@ -167,7 +152,7 @@ function ApiPanel() {
   ],
   <span className="text-white/55">"currency"</span>: <span className="text-white">"CHF"</span>
 {'}'}
-<span className="mt-2.5 block border-t border-dashed border-white/15 pt-2 font-medium text-white">→ 200 OK <span className="font-normal text-white/55">{t.apiResult}</span></span></pre>
+<span className="mt-2.5 block border-t border-dashed border-white/15 pt-2 font-medium text-white">→ 200 OK <span className="font-normal text-white/55">· 9 produits · 98ms</span></span></pre>
       <div className="flex items-center gap-0.5 px-3 pb-3 pt-2.5 font-mono text-[10px] text-white/40">
         <span>$</span>
         <motion.span
@@ -179,10 +164,6 @@ function ApiPanel() {
     </div>
   );
 }
-
-/* ------------------------------------------------------------------ */
-/*  Connector                                                         */
-/* ------------------------------------------------------------------ */
 
 function Connector({ label }: { label: string }) {
   return (
@@ -216,22 +197,19 @@ function Connector({ label }: { label: string }) {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Section                                                           */
-/* ------------------------------------------------------------------ */
 
 export default function ErpSyncIllustration() {
-  const t = strings[useLang()].servicesSection.erp;
   return (
-    <div className="w-full text-white">
-      <div className="w-full">
+    <section className="w-full bg-[#080808] px-4 py-10 text-white sm:px-6 md:py-14">
+      <div className="mx-auto w-full max-w-6xl">
         <div className="mb-6 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-white/40">
-          <span>{t.caption}</span>
+          <span>FIG. 1.3 · ERP ↔ E-commerce · Temps réel</span>
           <span className="hidden sm:inline">cave-geneve.ch</span>
         </div>
 
         <div className="flex flex-col items-stretch md:flex-row">
           <Panel
-            title={t.stockTitle}
+            title="Logiciel de stock"
             footer={
               <>
                 <motion.span
@@ -239,22 +217,22 @@ export default function ErpSyncIllustration() {
                   animate={{ opacity: [1, 0.4, 1] }}
                   transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
                 />
-                <span>{t.stockFooter}</span>
+                <span>Connecté · Dernière sync 2s</span>
               </>
             }
           >
             <StockTable />
           </Panel>
 
-          <Connector label={t.connectorSync} />
+          <Connector label="sync →" />
           <ApiPanel />
-          <Connector label={t.connectorPush} />
+          <Connector label="→ push" />
 
-          <Panel elevated title={t.siteTitle} footer={<span>{t.siteFooter}</span>}>
+          <Panel elevated title="Site e-commerce" footer={<span>↻ Dernière sync : il y a 2s</span>}>
             <SiteTable />
           </Panel>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
