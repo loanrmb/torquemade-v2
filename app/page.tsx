@@ -9,6 +9,7 @@ import { strings } from '@/lib/strings'
 import { featuredProjects } from '@/lib/projects'
 import { useScrollReveal } from '@/lib/use-scroll-reveal'
 import { ErpFeatureSection } from '@/components/erp-feature-section'
+import ServicesSection from '@/components/services-section'
 
 export default function HomePage() {
   const lang = useLang()
@@ -85,69 +86,7 @@ export default function HomePage() {
         </div>
 
         {/* ── SERVICES ── */}
-        <section className="px-5 py-20 min-720:py-24">
-          <div className="mx-auto max-w-5xl">
-            <p className="fade-up section-label">{t.services.eyebrow}</p>
-            <h2
-              className="fade-up fade-up-d1 text-title-1 font-semibold tracking-tight mb-12"
-              style={{ color: 'hsl(var(--text-primary))' }}
-            >
-              {t.services.title}
-            </h2>
-            <div className="grid grid-cols-1 gap-px min-720:grid-cols-2"
-              style={{ border: '1px solid hsl(var(--border-subtle))', borderRadius: '16px', overflow: 'hidden' }}
-            >
-              {t.services.items.map((item, i) => {
-                const cardStyle = {
-                  background: 'hsl(var(--bg-primary))',
-                  borderRight: i % 2 === 0 ? '1px solid hsl(var(--border-subtle))' : 'none',
-                  borderBottom: i < 2 ? '1px solid hsl(var(--border-subtle))' : 'none',
-                }
-                const inner = (
-                  <>
-                    <span
-                      className="text-caption font-semibold tracking-widest uppercase"
-                      style={{ color: 'hsl(var(--text-tertiary))' }}
-                    >
-                      {item.num}
-                    </span>
-                    <h3
-                      className="text-headline font-semibold"
-                      style={{ color: 'hsl(var(--text-primary))' }}
-                    >
-                      {item.title}
-                    </h3>
-                    <p
-                      className="text-body"
-                      style={{ color: 'hsl(var(--text-secondary))' }}
-                    >
-                      {item.desc}
-                    </p>
-                  </>
-                )
-                const href = 'href' in item ? item.href : undefined
-                return href ? (
-                  <Link
-                    key={item.num}
-                    href={href}
-                    className={`fade-up fade-up-d${i + 1} p-8 flex flex-col gap-3 transition-opacity duration-150 hover:opacity-80`}
-                    style={cardStyle}
-                  >
-                    {inner}
-                  </Link>
-                ) : (
-                  <div
-                    key={item.num}
-                    className={`fade-up fade-up-d${i + 1} p-8 flex flex-col gap-3`}
-                    style={cardStyle}
-                  >
-                    {inner}
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        </section>
+        <ServicesSection />
 
         {/* ── PARTNER ── */}
         <section className="px-5 pb-20 min-720:pb-24">
