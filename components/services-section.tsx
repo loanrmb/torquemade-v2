@@ -27,6 +27,7 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLang } from '@/components/app-provider';
 import { strings } from '@/lib/strings';
+import ErpSyncIllustration from '@/components/erp-sync-illustration';
 
 const IMG = '/images';
 const ROTATE_MS = 5000;
@@ -248,85 +249,7 @@ function ErpConnector({ label }: { label: string }) {
 }
 
 function FigureErp() {
-  const t = strings[useLang()].servicesSection;
-  const catLabel = (c: Category) => (c === 'Vin' ? t.erp.catWine : t.erp.catChampagne);
-  const rows = ROWS.slice(0, 6);
-
-  return (
-    <div className="flex w-full flex-col items-stretch gap-2 overflow-x-auto md:flex-row md:gap-0">
-
-      {/* Stock panel — dark */}
-      <div className="flex min-w-[210px] flex-1 flex-col overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] shadow-[0_16px_40px_-12px_rgba(0,0,0,0.55)]">
-        <div className="border-b border-white/10 px-4 py-3 text-xs font-semibold tracking-tight text-white">
-          {t.erp.stockTitle}
-        </div>
-        <div className="flex flex-1 flex-col py-1">
-          <div className={`${STOCK_COLS} border-b border-white/10 py-2 font-mono text-[8.5px] uppercase tracking-[0.1em] text-white/40`}>
-            <span>{t.erp.colProduct}</span>
-            <span>{t.erp.colSku}</span>
-            <span>{t.erp.colStock}</span>
-            <span>{t.erp.colPrice}</span>
-          </div>
-          {rows.map((r) => (
-            <div key={r.sku} className={`${STOCK_COLS} py-[7px] text-[11px]`}>
-              <span className="flex items-center gap-1.5 truncate font-medium text-white">
-                <span aria-hidden>{r.emoji}</span>
-                <span className="truncate">{r.name}</span>
-              </span>
-              <span className="font-mono text-[9.5px] text-white/55">{r.sku}</span>
-              <span className="font-mono text-[10.5px] font-medium text-white/90">{r.stock}</span>
-              <span className="text-[10.5px] font-semibold text-white">{r.price}</span>
-            </div>
-          ))}
-        </div>
-        <div className="flex items-center gap-2 border-t border-white/10 px-4 py-2.5 text-[11px] text-white/55">
-          <motion.span
-            className="inline-block h-1.5 w-1.5 rounded-full bg-white"
-            animate={{ opacity: [1, 0.4, 1] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          />
-          <span>{t.erp.stockFooter}</span>
-        </div>
-      </div>
-
-      <ErpConnector label={t.erp.connectorSync} />
-      <ApiPanel />
-      <ErpConnector label={t.erp.connectorPush} />
-
-      {/* Site panel — light */}
-      <div className="flex min-w-[210px] flex-1 flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-[0_16px_40px_-12px_rgba(0,0,0,0.15)]">
-        <div className="border-b border-neutral-200 px-4 py-3 text-xs font-semibold tracking-tight text-neutral-900">
-          {t.erp.siteTitle}
-        </div>
-        <div className="flex flex-1 flex-col py-1">
-          <div className={`${SITE_COLS} border-b border-neutral-100 py-2 font-mono text-[8.5px] uppercase tracking-[0.1em] text-neutral-400`}>
-            <span>{t.erp.colProduct}</span>
-            <span>{t.erp.colCategory}</span>
-            <span>{t.erp.colStock}</span>
-            <span>{t.erp.colStatus}</span>
-          </div>
-          {rows.map((r) => (
-            <div key={r.sku} className={`${SITE_COLS} py-[7px] text-[11px]`}>
-              <span className="flex items-center gap-1.5 truncate font-medium text-neutral-900">
-                <span aria-hidden>{r.emoji}</span>
-                <span className="truncate">{r.name}</span>
-              </span>
-              <span className="font-mono text-[8.5px] uppercase tracking-[0.04em] text-neutral-400">{catLabel(r.category)}</span>
-              <span className="font-mono text-[10.5px] font-medium text-neutral-700">{r.stock}</span>
-              <span className="inline-flex items-center gap-1.5 text-[10px] text-neutral-700">
-                <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-neutral-500" />
-                {t.erp.statusActive}
-              </span>
-            </div>
-          ))}
-        </div>
-        <div className="flex items-center gap-2 border-t border-neutral-100 px-4 py-2.5 text-[11px] text-neutral-400">
-          <span>{t.erp.siteFooter}</span>
-        </div>
-      </div>
-
-    </div>
-  );
+  return <ErpSyncIllustration />;
 }
 
 /* ------------------------------------------------------------------ */

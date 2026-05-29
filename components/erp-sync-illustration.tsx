@@ -222,8 +222,8 @@ function Connector({ label }: { label: string }) {
 export default function ErpSyncIllustration() {
   const t = strings[useLang()].servicesSection.erp;
   return (
-    <section className="w-full bg-[#080808] px-4 py-10 text-white sm:px-6 md:py-14">
-      <div className="mx-auto w-full max-w-6xl">
+    <div className="w-full text-white">
+      <div className="w-full">
         <div className="mb-6 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-white/40">
           <span>{t.caption}</span>
           <span className="hidden sm:inline">cave-geneve.ch</span>
@@ -255,6 +255,6 @@ export default function ErpSyncIllustration() {
           </Panel>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
