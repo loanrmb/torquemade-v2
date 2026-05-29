@@ -57,7 +57,9 @@ function WindowFrame({
         <span className="h-2 w-2 rounded-full bg-white/15" />
         <span className="h-2 w-2 rounded-full bg-white/15" />
         {file ? (
-          <span className="ml-2 font-mono text-[10.5px] tracking-wide text-white/55">{file}</span>
+          <span className="ml-3 rounded-md border border-white/15 bg-white/[0.08] px-2 py-0.5 font-mono text-[10px] tracking-wide text-white/70">
+            {file}
+          </span>
         ) : null}
       </div>
       <div className={`relative min-h-0 flex-1 overflow-hidden bg-black/40 ${bodyClassName}`}>
@@ -67,7 +69,7 @@ function WindowFrame({
   );
 }
 
-const SHOT = 'block w-full grayscale';
+const SHOT = 'block w-full';
 
 /* ------------------------------------------------------------------ */
 /*  Figure 01 — Code → Production                                     */
