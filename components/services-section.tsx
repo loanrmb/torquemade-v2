@@ -136,8 +136,8 @@ const ROWS: Row[] = [
   { emoji: '🍷', name: 'Chablis 1er Cru', sku: 'CB-2021', category: 'Vin', stock: 21, price: '52€' },
 ];
 
-const STOCK_COLS = 'grid grid-cols-[1.5fr_0.8fr_0.45fr_0.6fr] items-center gap-1.5 px-3';
-const SITE_COLS  = 'grid grid-cols-[1.35fr_0.9fr_0.4fr_0.8fr] items-center gap-1.5 px-3';
+const STOCK_COLS = 'grid grid-cols-[1.5fr_0.8fr_0.5fr] items-center gap-1.5 px-3';
+const SITE_COLS  = 'grid grid-cols-[1.5fr_0.5fr_0.8fr] items-center gap-1.5 px-3';
 
 function ErpPanel({
   title,
@@ -193,7 +193,7 @@ function ColHead({
 }) {
   return (
     <div
-      className={`${cols} border-b py-2 font-mono text-[8.5px] uppercase tracking-[0.1em] ${
+      className={`${cols} border-b py-2 font-mono text-[10px] uppercase tracking-[0.08em] ${
         light ? 'border-neutral-100 text-neutral-500' : 'border-white/10 text-white/40'
       }`}
     >
@@ -205,7 +205,7 @@ function ColHead({
 function ApiPanel() {
   const t = strings[useLang()].servicesSection;
   return (
-    <div className="flex w-full flex-1 flex-col overflow-hidden rounded-xl border border-white/15 bg-black/50 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.6)]">
+    <div className="flex w-[15rem] shrink-0 flex-col overflow-hidden rounded-xl border border-white/15 bg-black/50 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.6)]">
       <div className="flex items-center justify-between border-b border-white/10 px-3 py-2.5">
         <span className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-white/40">{t.erp.apiLabel}</span>
         <motion.span
@@ -303,14 +303,12 @@ function FigureErp() {
                 <span>Produit</span>
                 <span>SKU</span>
                 <span>Stock</span>
-                <span>Prix</span>
               </ColHead>
               {ROWS.slice(0, 6).map((r) => (
                 <div key={r.sku} className={`${STOCK_COLS} py-[7px] text-[11px]`}>
-                  <span className="font-medium text-white">{r.name}</span>
-                  <span className="font-mono text-[9.5px] text-white/55">{r.sku}</span>
-                  <span className="font-mono text-[10.5px] font-medium text-white/90">{r.stock}</span>
-                  <span className="text-[10.5px] font-semibold text-white">{r.price}</span>
+                  <span className="whitespace-nowrap font-medium text-white">{r.name}</span>
+                  <span className="whitespace-nowrap font-mono text-[11px] text-white/55">{r.sku}</span>
+                  <span className="whitespace-nowrap font-mono text-[11px] font-medium text-white/90">{r.stock}</span>
                 </div>
               ))}
             </div>
@@ -325,21 +323,17 @@ function FigureErp() {
             <div className="flex flex-1 flex-col">
               <ColHead cols={SITE_COLS} light>
                 <span>Produit</span>
-                <span>Catégorie</span>
                 <span>Stock</span>
                 <span>Statut</span>
               </ColHead>
               {ROWS.slice(0, 6).map((r) => (
                 <div key={r.sku} className={`${SITE_COLS} py-[7px] text-[11px]`}>
-                  <span className="flex items-center gap-1.5 font-medium text-neutral-900">
+                  <span className="flex items-center gap-1.5 whitespace-nowrap font-medium text-neutral-900">
                     <span aria-hidden>{r.emoji}</span>
                     <span>{r.name}</span>
                   </span>
-                  <span className="font-mono text-[8.5px] uppercase tracking-[0.04em] text-neutral-500">
-                    {r.category}
-                  </span>
-                  <span className="font-mono text-[10.5px] font-medium text-neutral-700">{r.stock}</span>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-green-100 px-2 py-0.5 text-[10px] font-medium text-green-700">
+                  <span className="whitespace-nowrap font-mono text-[11px] font-medium text-neutral-700">{r.stock}</span>
+                  <span className="inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-green-100 px-2 py-0.5 text-[10px] font-medium text-green-700">
                     Actif
                   </span>
                 </div>
