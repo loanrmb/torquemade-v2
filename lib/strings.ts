@@ -107,6 +107,7 @@ export const strings = {
         apiResult: '· 9 produits · 98ms',
         catWine: 'Vin',
         catChampagne: 'Champagne',
+        caption: 'FIG. 1.3 · ERP ↔ E-commerce · Temps réel',
       },
       seo: {
         pageSettings: 'Réglages de page',
@@ -492,6 +493,7 @@ export const strings = {
         apiResult: '· 9 products · 98ms',
         catWine: 'Wine',
         catChampagne: 'Champagne',
+        caption: 'FIG. 1.3 · ERP ↔ E-commerce · Real-time',
       },
       seo: {
         pageSettings: 'Page Settings',
