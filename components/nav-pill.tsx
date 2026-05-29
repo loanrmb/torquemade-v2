@@ -41,8 +41,9 @@ export function NavPill() {
   return (
     <>
       <header className="fixed left-1/2 top-4 z-50 -translate-x-1/2 w-[calc(100%-2rem)] max-w-2xl">
+        <div className="flex items-center gap-3">
         <nav
-          className="flex items-center gap-1 rounded-full border px-2 py-2 min-720:px-3"
+          className="flex-1 flex items-center gap-1 rounded-full border px-2 py-2 min-720:px-3"
           style={{
             background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.78)',
             backdropFilter: 'blur(16px)',
@@ -181,12 +182,6 @@ export function NavPill() {
               {theme === 'light' ? <MoonIcon /> : <SunIcon />}
             </button>
 
-            <div className="hidden min-720:block ml-1 flex-shrink-0">
-              <Link href="/contact" className="btn-primary !py-1.5 !px-3 !text-sm whitespace-nowrap">
-                {lang === 'fr' ? 'Démarrer →' : 'Start →'}
-              </Link>
-            </div>
-
             <button
               onClick={() => setMenuOpen(true)}
               className="min-720:hidden flex items-center justify-center w-7 h-7 rounded-full ml-0.5 transition-colors duration-150 hover:bg-bg-secondary"
@@ -199,6 +194,14 @@ export function NavPill() {
             </button>
           </div>
         </nav>
+
+          <Link
+            href="/contact"
+            className="btn-primary hidden min-720:flex items-center flex-shrink-0 !py-1.5 !px-3 !text-sm whitespace-nowrap"
+          >
+            {lang === 'fr' ? 'Démarrer →' : 'Start →'}
+          </Link>
+        </div>
       </header>
 
       {menuOpen && (
