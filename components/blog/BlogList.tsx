@@ -23,7 +23,19 @@ export function BlogList() {
   const t = LABELS[lang]
   const ALL = t.all
 
-  const categories = [ALL, ...Array.from(new Set(posts.map((p) => p.category)))]
+  const CATEGORY_ORDER = [
+    'SEO & Contenu',
+    'ERP & Gestion de stock',
+    'crm',
+    'Web & Développement',
+    'projets',
+  ]
+  const allCategories = Array.from(new Set(posts.map((p) => p.category)))
+  const categories = [
+    ALL,
+    ...CATEGORY_ORDER.filter((c) => allCategories.includes(c)),
+    ...allCategories.filter((c) => !CATEGORY_ORDER.includes(c)),
+  ]
   const [activeKey, setActiveKey] = useState<string>('all')
   const listRef = useRef<HTMLDivElement>(null)
 
@@ -63,10 +75,11 @@ export function BlogList() {
                   <button
                     key={key}
                     onClick={() => handleFilter(key)}
-                    className="flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-all duration-150 whitespace-nowrap"
+                    className="flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest transition-all duration-150 whitespace-nowrap"
                     style={{
                       background: isActive ? 'hsl(var(--bg-inverse))' : 'transparent',
-                      color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-tertiary))',
+                      color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-primary))',
+                      opacity: isActive ? 1 : 0.6,
                     }}
                   >
                     {cat}
