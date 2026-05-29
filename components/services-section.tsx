@@ -217,20 +217,23 @@ function ApiPanel() {
       <pre className="flex-1 overflow-hidden whitespace-pre px-3 pt-3.5 font-mono text-[9px] leading-[1.7] text-white/55">
 <span className="font-medium text-white">POST</span> /api/sync <span className="text-white/55">HTTP/1.1</span>
 <span className="text-white/55">Host:</span> cave-geneve.ch
-<span className="text-white/55">Authorization:</span>
-<span className="text-white/80">  Bearer sk_live_***</span>
+<span className="text-white/55">Authorization:</span> Bearer sk_live_***
 <span className="text-white/55">Content-Type:</span> application/json
+<span className="text-white/55">X-Webhook-Version:</span> <span className="text-white/80">2.1</span>
 
 {'{'}
   <span className="text-white/55">"event"</span>: <span className="text-white">"stock.updated"</span>,
+  <span className="text-white/55">"timestamp"</span>: <span className="text-white/70">"2024-01-15T14:32:11Z"</span>,
+  <span className="text-white/55">"store_id"</span>: <span className="text-white">"cave-geneve"</span>,
   <span className="text-white/55">"items"</span>: [
-    {'{'}<span className="text-white/55">"sku"</span>:<span className="text-white">"CM-2019"</span>,<span className="text-white/55">"stock"</span>:<span className="text-white">24</span>{'}'},
-    {'{'}<span className="text-white/55">"sku"</span>:<span className="text-white">"CH-NV-12"</span>,<span className="text-white/55">"stock"</span>:<span className="text-white">12</span>{'}'},
-    {'{'}<span className="text-white/55">"sku"</span>:<span className="text-white">"SB-2022"</span>,<span className="text-white/55">"stock"</span>:<span className="text-white">18</span>{'}'}
+    {'{'}<span className="text-white/55">"sku"</span>:<span className="text-white">"CM-2019"</span>,<span className="text-white/55">"stock"</span>:<span className="text-white">24</span>,<span className="text-white/55">"price"</span>:<span className="text-white">89</span>{'}'},
+    {'{'}<span className="text-white/55">"sku"</span>:<span className="text-white">"CH-NV-12"</span>,<span className="text-white/55">"stock"</span>:<span className="text-white">12</span>,<span className="text-white/55">"price"</span>:<span className="text-white">65</span>{'}'},
+    {'{'}<span className="text-white/55">"sku"</span>:<span className="text-white">"SB-2022"</span>,<span className="text-white/55">"stock"</span>:<span className="text-white">18</span>,<span className="text-white/55">"price"</span>:<span className="text-white">45</span>{'}'}
   ],
   <span className="text-white/55">"currency"</span>: <span className="text-white">"CHF"</span>
 {'}'}
-<span className="mt-2.5 block border-t border-dashed border-white/15 pt-2 font-medium text-white">→ 200 OK <span className="font-normal text-white/55">{t.erp.apiResult}</span></span></pre>
+<span className="mt-2.5 block border-t border-dashed border-white/15 pt-2 font-medium text-white">→ 200 OK · 9 produits · 98ms</span>
+<span className="text-white/55">↓ mise à jour en temps réel</span></pre>
       <div className="flex items-center gap-0.5 px-3 pb-3 pt-2.5 font-mono text-[10px] text-white/40">
         <span>$</span>
         <motion.span
@@ -283,63 +286,82 @@ function FigureErp() {
           <span className="hidden sm:inline">cave-geneve.ch</span>
         </div>
 
-        <div className="flex flex-col items-stretch gap-4 md:flex-row">
-          {/* Left panel — dark, no emojis */}
-          <ErpPanel
-            title="Logiciel de stock"
-            footer={
-              <>
-                <motion.span
-                  className="inline-block h-1.5 w-1.5 rounded-full bg-white"
-                  animate={{ opacity: [1, 0.4, 1] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                />
-                <span>Connecté · Dernière sync 2s</span>
-              </>
-            }
-          >
-            <div className="flex flex-1 flex-col">
-              <ColHead cols={STOCK_COLS}>
-                <span>Produit</span>
-                <span>SKU</span>
-                <span>Stock</span>
-              </ColHead>
-              {ROWS.slice(0, 6).map((r) => (
-                <div key={r.sku} className={`${STOCK_COLS} py-[7px] text-[11px]`}>
-                  <span className="whitespace-nowrap font-medium text-white">{r.name}</span>
-                  <span className="whitespace-nowrap font-mono text-[11px] text-white/55">{r.sku}</span>
-                  <span className="whitespace-nowrap font-mono text-[11px] font-medium text-white/90">{r.stock}</span>
-                </div>
-              ))}
-            </div>
-          </ErpPanel>
+        <div className="flex flex-col">
+          {/* Panels row */}
+          <div className="flex flex-col items-stretch gap-4 md:flex-row">
+            {/* Left panel — dark, no emojis */}
+            <ErpPanel
+              title="Logiciel de stock"
+              footer={
+                <>
+                  <motion.span
+                    className="inline-block h-1.5 w-1.5 rounded-full bg-white"
+                    animate={{ opacity: [1, 0.4, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                  />
+                  <span>Connecté · Dernière sync 2s</span>
+                </>
+              }
+            >
+              <div className="flex flex-1 flex-col">
+                <ColHead cols={STOCK_COLS}>
+                  <span>Produit</span>
+                  <span>SKU</span>
+                  <span>Stock</span>
+                </ColHead>
+                {ROWS.slice(0, 6).map((r) => (
+                  <div key={r.sku} className={`${STOCK_COLS} py-[7px] text-[11px]`}>
+                    <span className="whitespace-nowrap font-medium text-white">{r.name}</span>
+                    <span className="whitespace-nowrap font-mono text-[11px] text-white/55">{r.sku}</span>
+                    <span className="whitespace-nowrap font-mono text-[11px] font-medium text-white/90">{r.stock}</span>
+                  </div>
+                ))}
+              </div>
+            </ErpPanel>
 
-          <ErpConnector label="sync →" />
-          <ApiPanel />
-          <ErpConnector label="→ push" />
+            <ApiPanel />
 
-          {/* Right panel — light/white, with emojis */}
-          <ErpPanel light title="Site e-commerce" footer={<span>↻ Dernière sync : il y a 2s</span>}>
-            <div className="flex flex-1 flex-col">
-              <ColHead cols={SITE_COLS} light>
-                <span>Produit</span>
-                <span>Stock</span>
-                <span>Statut</span>
-              </ColHead>
-              {ROWS.slice(0, 6).map((r) => (
-                <div key={r.sku} className={`${SITE_COLS} py-[7px] text-[11px]`}>
-                  <span className="flex items-center gap-1.5 whitespace-nowrap font-medium text-neutral-900">
-                    <span aria-hidden>{r.emoji}</span>
-                    <span>{r.name}</span>
-                  </span>
-                  <span className="whitespace-nowrap font-mono text-[11px] font-medium text-neutral-700">{r.stock}</span>
-                  <span className="inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-green-100 px-2 py-0.5 text-[10px] font-medium text-green-700">
-                    Actif
-                  </span>
-                </div>
-              ))}
-            </div>
-          </ErpPanel>
+            {/* Right panel — light/white, with emojis */}
+            <ErpPanel light title="Site e-commerce" footer={<span>↻ Dernière sync : il y a 2s</span>}>
+              <div className="flex flex-1 flex-col">
+                <ColHead cols={SITE_COLS} light>
+                  <span>Produit</span>
+                  <span>Stock</span>
+                  <span>Statut</span>
+                </ColHead>
+                {ROWS.slice(0, 6).map((r) => (
+                  <div key={r.sku} className={`${SITE_COLS} py-[7px] text-[11px]`}>
+                    <span className="flex items-center gap-1.5 whitespace-nowrap font-medium text-neutral-900">
+                      <span aria-hidden>{r.emoji}</span>
+                      <span>{r.name}</span>
+                    </span>
+                    <span className="whitespace-nowrap font-mono text-[11px] font-medium text-neutral-700">{r.stock}</span>
+                    <span className="inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-green-100 px-2 py-0.5 text-[10px] font-medium text-green-700">
+                      Actif
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </ErpPanel>
+          </div>
+
+          {/* Arrow bar — desktop only, spans full width below the 3 panels */}
+          <div aria-hidden className="relative mt-3 hidden h-8 md:block">
+            {/* labels */}
+            <span className="absolute left-0 top-0 font-mono text-[8px] uppercase tracking-[0.12em] text-white/35">Sync</span>
+            <span className="absolute right-0 top-0 font-mono text-[8px] uppercase tracking-[0.12em] text-white/35">Push</span>
+            {/* dashed line */}
+            <div className="absolute inset-x-0 top-5 h-px border-t border-dashed border-white/20" />
+            {/* arrowhead */}
+            <span className="absolute right-[-4px] top-[13px] -translate-y-1/2 text-[11px] leading-none text-white/50">→</span>
+            {/* animated dot */}
+            <motion.span
+              className="absolute top-5 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.85)]"
+              initial={{ left: '0%', opacity: 0 }}
+              animate={{ left: '100%', opacity: [0, 1, 1, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+            />
+          </div>
         </div>
       </div>
     </div>
