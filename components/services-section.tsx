@@ -214,26 +214,27 @@ function ApiPanel() {
           transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
         />
       </div>
-      <pre className="flex-1 overflow-hidden whitespace-pre px-3 pt-3.5 font-mono text-[9px] leading-[1.7] text-white/55">
-<span className="font-medium text-white">POST</span> /api/sync <span className="text-white/55">HTTP/1.1</span>
-<span className="text-white/55">Host:</span> cave-geneve.ch
-<span className="text-white/55">Authorization:</span> Bearer sk_live_***
-<span className="text-white/55">Content-Type:</span> application/json
-<span className="text-white/55">X-Webhook-Version:</span> <span className="text-white/80">2.1</span>
-
-{'{'}
-  <span className="text-white/55">"event"</span>: <span className="text-white">"stock.updated"</span>,
-  <span className="text-white/55">"timestamp"</span>: <span className="text-white/70">"2024-01-15T14:32:11Z"</span>,
-  <span className="text-white/55">"store_id"</span>: <span className="text-white">"cave-geneve"</span>,
-  <span className="text-white/55">"items"</span>: [
-    {'{'}<span className="text-white/55">"sku"</span>:<span className="text-white">"CM-2019"</span>,<span className="text-white/55">"stock"</span>:<span className="text-white">24</span>,<span className="text-white/55">"price"</span>:<span className="text-white">89</span>{'}'},
-    {'{'}<span className="text-white/55">"sku"</span>:<span className="text-white">"CH-NV-12"</span>,<span className="text-white/55">"stock"</span>:<span className="text-white">12</span>,<span className="text-white/55">"price"</span>:<span className="text-white">65</span>{'}'},
-    {'{'}<span className="text-white/55">"sku"</span>:<span className="text-white">"SB-2022"</span>,<span className="text-white/55">"stock"</span>:<span className="text-white">18</span>,<span className="text-white/55">"price"</span>:<span className="text-white">45</span>{'}'}
-  ],
-  <span className="text-white/55">"currency"</span>: <span className="text-white">"CHF"</span>
-{'}'}
-<span className="mt-2.5 block border-t border-dashed border-white/15 pt-2 font-medium text-white">→ 200 OK · 9 produits · 98ms</span>
-<span className="text-white/55">↓ mise à jour en temps réel</span></pre>
+      <div className="flex-1 overflow-hidden px-3 pt-3.5 pb-1 font-mono text-[9px] leading-[1.65] text-white/55">
+        <span className="block whitespace-pre"><span className="font-medium text-white">POST</span>{' /api/sync HTTP/1.1'}</span>
+        <span className="block whitespace-pre"><span>Host:</span>{' cave-geneve.ch'}</span>
+        <span className="block whitespace-pre"><span>Authorization:</span>{' Bearer sk_live_***'}</span>
+        <span className="block whitespace-pre"><span>Content-Type:</span>{' application/json'}</span>
+        <span className="block whitespace-pre"><span>X-Webhook-Version:</span>{' '}<span className="text-white/80">2.1</span></span>
+        <span className="block">&nbsp;</span>
+        <span className="block">{'{'}</span>
+        <span className="block whitespace-pre">{'  '}<span>"event"</span>{': '}<span className="text-white">"stock.updated"</span>,</span>
+        <span className="block whitespace-pre">{'  '}<span>"timestamp"</span>{': '}<span className="text-white/70">"2024-01-15T14:32:11Z"</span>,</span>
+        <span className="block whitespace-pre">{'  '}<span>"store_id"</span>{': '}<span className="text-white">"cave-geneve"</span>,</span>
+        <span className="block whitespace-pre">{'  '}<span>"items"</span>{': ['}</span>
+        <span className="block whitespace-pre">{'    {'}<span>"sku"</span>:<span className="text-white">"CM-2019"</span>,<span>"stock"</span>:<span className="text-white">24</span>,<span>"price"</span>:<span className="text-white">89</span>{'}'},{}</span>
+        <span className="block whitespace-pre">{'    {'}<span>"sku"</span>:<span className="text-white">"CH-NV-12"</span>,<span>"stock"</span>:<span className="text-white">12</span>,<span>"price"</span>:<span className="text-white">65</span>{'}'},{}</span>
+        <span className="block whitespace-pre">{'    {'}<span>"sku"</span>:<span className="text-white">"SB-2022"</span>,<span>"stock"</span>:<span className="text-white">18</span>,<span>"price"</span>:<span className="text-white">45</span>{'}'}</span>
+        <span className="block whitespace-pre">{'  ],'}</span>
+        <span className="block whitespace-pre">{'  '}<span>"currency"</span>{': '}<span className="text-white">"CHF"</span></span>
+        <span className="block">{'}'}</span>
+        <span className="mt-2 block border-t border-dashed border-white/15 pt-2 font-medium text-white">→ 200 OK · 9 produits · 98ms</span>
+        <span className="block text-white/55">↓ mise à jour en temps réel</span>
+      </div>
       <div className="flex items-center gap-0.5 px-3 pb-3 pt-2.5 font-mono text-[10px] text-white/40">
         <span>$</span>
         <motion.span
@@ -281,11 +282,6 @@ function FigureErp() {
   return (
     <div className="w-full text-white">
       <div className="w-full">
-        <div className="mb-6 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-white/40">
-          <span>FIG. 1.3 · ERP ↔ E-commerce · Temps réel</span>
-          <span className="hidden sm:inline">cave-geneve.ch</span>
-        </div>
-
         <div className="flex flex-col">
           {/* Panels row */}
           <div className="flex flex-col items-stretch gap-4 md:flex-row">
@@ -598,12 +594,14 @@ export default function ServicesSection() {
         {/* Heading */}
         <div className="mb-16 flex flex-col justify-between gap-10 md:flex-row md:items-end">
           <div>
-            <p
-              className="mb-5 font-mono text-[11px] uppercase tracking-[0.16em]"
-              style={{ color: 'hsl(var(--text-tertiary))' }}
-            >
-              {t.eyebrow}
-            </p>
+            {t.eyebrow && (
+              <p
+                className="mb-5 font-mono text-[11px] uppercase tracking-[0.16em]"
+                style={{ color: 'hsl(var(--text-tertiary))' }}
+              >
+                {t.eyebrow}
+              </p>
+            )}
             <h2
               className="max-w-3xl text-pretty text-[clamp(2.25rem,5vw,3.25rem)] font-[650] leading-[1.05] tracking-tight"
               style={{ color: 'hsl(var(--text-primary))' }}

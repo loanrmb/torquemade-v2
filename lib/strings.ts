@@ -63,7 +63,7 @@ export const strings = {
       ],
     },
     servicesSection: {
-      eyebrow: '02 — Services',
+      eyebrow: '',
       title: "De l'idée au système. Construit pour vous.",
       intro:
         'Quatre disciplines. Un seul interlocuteur, du brief au lancement — sites web, logiciels métier, synchronisation stock, visibilité IA.',
@@ -71,7 +71,7 @@ export const strings = {
         {
           title: 'Sites web',
           desc: 'Next.js sur mesure, mobile-first, SEO-ready. Livraison 15 jours ouvrés.',
-          tag: 'jetski-arcachon.fr',
+          tag: '',
         },
         {
           title: 'CRM & Logiciel sur mesure',
@@ -81,12 +81,12 @@ export const strings = {
         {
           title: 'Connexion ERP · Stock',
           desc: 'Synchronisation temps réel entre votre ERP et votre site e-commerce.',
-          tag: 'cave-geneve.ch',
+          tag: '',
         },
         {
           title: 'SEO & Optimisation IA',
           desc: 'Contenu qui ranke sur Google ET cité par ChatGPT, Claude, Perplexity.',
-          tag: 'cave-geneve.ch',
+          tag: '',
         },
       ],
       erp: {
@@ -107,7 +107,7 @@ export const strings = {
         apiResult: '· 9 produits · 98ms',
         catWine: 'Vin',
         catChampagne: 'Champagne',
-        caption: 'FIG. 1.3 · ERP ↔ E-commerce · Temps réel',
+        caption: '',
       },
       seo: {
         pageSettings: 'Réglages de page',
@@ -449,7 +449,7 @@ export const strings = {
       ],
     },
     servicesSection: {
-      eyebrow: '02 — Services',
+      eyebrow: '',
       title: 'From idea to system. Built for you.',
       intro:
         'Four disciplines. One point of contact, from brief to launch — websites, business software, inventory sync, AI visibility.',
@@ -457,7 +457,7 @@ export const strings = {
         {
           title: 'Websites',
           desc: 'Custom Next.js, mobile-first, SEO-ready. Delivered in 15 business days.',
-          tag: 'jetski-arcachon.fr',
+          tag: '',
         },
         {
           title: 'Custom CRM & Software',
@@ -467,12 +467,12 @@ export const strings = {
         {
           title: 'ERP · Inventory sync',
           desc: 'Real-time synchronization between your ERP and your e-commerce site.',
-          tag: 'cave-geneve.ch',
+          tag: '',
         },
         {
           title: 'SEO & AI Optimization',
           desc: 'Content that ranks on Google AND gets cited by ChatGPT, Claude, Perplexity.',
-          tag: 'cave-geneve.ch',
+          tag: '',
         },
       ],
       erp: {
@@ -493,7 +493,7 @@ export const strings = {
         apiResult: '· 9 products · 98ms',
         catWine: 'Wine',
         catChampagne: 'Champagne',
-        caption: 'FIG. 1.3 · ERP ↔ E-commerce · Real-time',
+        caption: '',
       },
       seo: {
         pageSettings: 'Page Settings',

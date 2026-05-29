@@ -243,11 +243,6 @@ export default function ErpSyncIllustration() {
   return (
     <div className="w-full text-white">
       <div className="w-full">
-        <div className="mb-6 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-white/40">
-          <span>FIG. 1.3 · ERP ↔ E-commerce · Temps réel</span>
-          <span className="hidden sm:inline">cave-geneve.ch</span>
-        </div>
-
         <div className="flex flex-col items-stretch gap-4 md:flex-row">
           <Panel
             title="Logiciel de stock"
