@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useRef } from 'react'
 import Link from 'next/link'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useLang } from '@/components/app-provider'
 import { posts } from '@/lib/blog'
 
@@ -36,11 +37,19 @@ export function BlogList() {
     ...CATEGORY_ORDER.filter((c) => allCategories.includes(c)),
     ...allCategories.filter((c) => !CATEGORY_ORDER.includes(c)),
   ]
-  const [activeKey, setActiveKey] = useState<string>('all')
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const activeKey = searchParams.get('cat') ?? 'all'
   const listRef = useRef<HTMLDivElement>(null)
 
   function handleFilter(key: string) {
-    setActiveKey(key)
+    const params = new URLSearchParams(searchParams.toString())
+    if (key === 'all') {
+      params.delete('cat')
+    } else {
+      params.set('cat', key)
+    }
+    router.push(`/blog?${params.toString()}`, { scroll: false })
     listRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { NavPill } from '@/components/nav-pill'
 import { Footer } from '@/components/footer'
 import { BlogHero } from '@/components/blog/BlogHero'
@@ -15,7 +16,9 @@ export default function BlogPage() {
       <NavPill />
       <main className="min-h-screen bg-bg-primary">
         <BlogHero />
-        <BlogList />
+        <Suspense fallback={null}>
+          <BlogList />
+        </Suspense>
       </main>
       <Footer />
     </>
