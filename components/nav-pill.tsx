@@ -43,7 +43,7 @@ export function NavPill() {
       <header className="fixed left-1/2 top-4 z-50 -translate-x-1/2 w-[calc(100%-2rem)] max-w-2xl">
         <div className="flex items-center gap-3">
         <nav
-          className="flex-1 flex items-center gap-1 rounded-full border px-2 py-2 min-720:px-3"
+          className="flex items-center gap-x-3 min-720:gap-x-1 rounded-full border px-2 py-2 min-720:flex-1 min-720:justify-between min-720:px-3"
           style={{
             background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.78)',
             backdropFilter: 'blur(16px)',
@@ -155,8 +155,6 @@ export function NavPill() {
             </Link>
           </div>
 
-          <div className="flex-1 min-720:hidden" />
-
           <div
             className="hidden min-720:block w-px h-5 mx-1 flex-shrink-0"
             style={{ background: 'hsl(var(--border-subtle))' }}
@@ -204,27 +202,43 @@ export function NavPill() {
         </div>
       </header>
 
-      {menuOpen && (
+      <div
+        id="mobile-menu"
+        className="fixed inset-0 z-[60] min-720:hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden={!menuOpen}
+        style={{ pointerEvents: menuOpen ? 'auto' : 'none' }}
+      >
         <div
-          id="mobile-menu"
-          className="fixed inset-0 z-[60] min-720:hidden"
-          role="dialog"
-          aria-modal="true"
-        >
-          <div
-            className="absolute inset-0"
-            style={{ background: 'rgba(0, 0, 0, 0.4)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}
-            onClick={() => setMenuOpen(false)}
-          />
+          className="absolute inset-0"
+          style={{
+            background: 'rgba(0, 0, 0, 0.4)',
+            backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)',
+            opacity: menuOpen ? 1 : 0,
+            transition: 'opacity 220ms ease',
+            pointerEvents: menuOpen ? 'auto' : 'none',
+          }}
+          onClick={() => setMenuOpen(false)}
+        />
 
-          <div
-            className="absolute left-1/2 top-4 -translate-x-1/2 w-[calc(100%-2rem)] max-w-md rounded-3xl border p-4 max-h-[calc(100vh-2rem)] overflow-y-auto"
-            style={{
-              background: 'hsl(var(--bg-primary))',
-              borderColor: 'hsl(var(--border-subtle))',
-              boxShadow: '0 12px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06)',
-            }}
-          >
+        <div
+          className="absolute left-1/2 top-4 w-[calc(100%-2rem)] max-w-md rounded-3xl border p-4 max-h-[calc(100vh-2rem)] overflow-y-auto"
+          style={{
+            background: 'hsl(var(--bg-primary))',
+            borderColor: 'hsl(var(--border-subtle))',
+            boxShadow: '0 12px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06)',
+            opacity: menuOpen ? 1 : 0,
+            transform: menuOpen
+              ? 'translateX(-50%) translateY(0) scale(1)'
+              : 'translateX(-50%) translateY(-8px) scale(0.98)',
+            transition: menuOpen
+              ? 'opacity 220ms ease, transform 220ms ease'
+              : 'opacity 180ms ease, transform 180ms ease',
+            pointerEvents: menuOpen ? 'auto' : 'none',
+          }}
+        >
             <div className="flex items-center justify-between mb-2">
               <Link
                 href="/"
@@ -263,20 +277,34 @@ export function NavPill() {
               >
                 {t.services}
               </div>
-              {t.servicesItems.map((s) => (
-                <Link
-                  key={s.href}
-                  href={s.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="rounded-lg ml-3 px-3 py-2 text-sm transition-colors duration-150"
-                  style={{
-                    color: pathname === s.href ? 'hsl(var(--text-primary))' : 'hsl(var(--text-primary))',
-                    background: pathname === s.href ? 'hsl(var(--bg-secondary))' : 'transparent',
-                  }}
-                >
-                  {s.label}
-                </Link>
-              ))}
+              <div
+                className="ml-3 flex flex-col gap-0.5"
+                style={{
+                  borderLeft: '2px solid hsl(var(--text-primary) / 0.08)',
+                  paddingLeft: '12px',
+                }}
+              >
+                {t.servicesItems.map((s) => {
+                  const active = pathname === s.href
+                  return (
+                    <Link
+                      key={s.href}
+                      href={s.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="rounded-lg px-3 py-2 text-sm transition-colors duration-150"
+                      style={{
+                        color: active ? 'hsl(var(--text-primary))' : 'hsl(var(--text-secondary))',
+                        background: active ? 'hsl(var(--bg-secondary))' : 'transparent',
+                      }}
+                    >
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span>{s.label}</span>
+                        <span style={{ opacity: active ? 1 : 0.4, fontSize: '0.75rem' }}>→</span>
+                      </div>
+                    </Link>
+                  )
+                })}
+              </div>
 
               <div className="my-3 h-px" style={{ background: 'hsl(var(--border-subtle))' }} />
 
@@ -309,7 +337,6 @@ export function NavPill() {
             </nav>
           </div>
         </div>
-      )}
     </>
   )
 }
