@@ -28,7 +28,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useLang } from '@/components/app-provider';
 import { strings } from '@/lib/strings';
 
-const IMG = '/services';
+const IMG = '/images';
 const ROTATE_MS = 5000;
 
 const EASE = [0, 0, 0.2, 1] as const;
