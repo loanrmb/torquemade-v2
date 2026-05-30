@@ -80,7 +80,7 @@ const SHOT = 'block w-full';
 function FigureSites() {
   const t = strings[useLang()].servicesSection;
   return (
-    <div className="relative w-full">
+    <div className="relative w-full px-2 md:px-0">
       <WindowFrame className="w-full" bodyClassName="aspect-[16/10]">
         <img
           src={`${IMG}/jetski-site-v2.png`}
@@ -88,10 +88,10 @@ function FigureSites() {
           className={`${SHOT} h-full object-cover object-top`}
         />
       </WindowFrame>
-
+      {/* code overlay — desktop only, too small to read on mobile */}
       <WindowFrame
         file="index.html"
-        className="absolute left-4 top-8 w-2/5 max-w-[15rem] md:left-10 md:top-12"
+        className="absolute left-4 top-8 hidden w-2/5 max-w-[15rem] md:block md:left-10 md:top-12"
       >
         <img src={`${IMG}/jetski-code-v2.png`} alt={t.alts.code} className={`${SHOT} h-auto`} />
       </WindowFrame>
@@ -106,14 +106,26 @@ function FigureSites() {
 function FigureCrm() {
   const t = strings[useLang()].servicesSection;
   return (
-    <div className="grid w-full gap-4 md:grid-cols-2 md:items-center">
-      <WindowFrame>
-        <img src={`${IMG}/crm-form.png`} alt={t.alts.crmForm} className={`${SHOT} h-auto`} />
-      </WindowFrame>
-      <WindowFrame>
-        <img src={`${IMG}/crm-dash.png`} alt={t.alts.crmDash} className={`${SHOT} h-auto`} />
-      </WindowFrame>
-    </div>
+    <>
+      {/* Mobile — overlapping fan: form (left/top) under dashboard (right/down) */}
+      <div className="relative h-[420px] w-full overflow-hidden md:hidden">
+        <WindowFrame className="absolute left-0 top-0 z-[1] w-[85%]">
+          <img src={`${IMG}/crm-form.png`} alt={t.alts.crmForm} className={`${SHOT} h-auto`} />
+        </WindowFrame>
+        <WindowFrame className="absolute right-0 top-10 z-[2] w-[85%]">
+          <img src={`${IMG}/crm-dash.png`} alt={t.alts.crmDash} className={`${SHOT} h-auto`} />
+        </WindowFrame>
+      </div>
+      {/* Desktop — side by side */}
+      <div className="hidden w-full gap-4 md:grid md:grid-cols-2 md:items-center">
+        <WindowFrame>
+          <img src={`${IMG}/crm-form.png`} alt={t.alts.crmForm} className={`${SHOT} h-auto`} />
+        </WindowFrame>
+        <WindowFrame>
+          <img src={`${IMG}/crm-dash.png`} alt={t.alts.crmDash} className={`${SHOT} h-auto`} />
+        </WindowFrame>
+      </div>
+    </>
   );
 }
 
@@ -138,6 +150,9 @@ const ROWS: Row[] = [
 
 const STOCK_COLS = 'grid grid-cols-[1.5fr_0.8fr_0.5fr] items-center gap-1.5 px-3';
 const SITE_COLS  = 'grid grid-cols-[1.5fr_0.5fr_0.8fr] items-center gap-1.5 px-3';
+
+// 3 representative rows for the mobile cascade (CM-2019, CH-NV-12, SE-2020)
+const ERP_MOBILE_ROWS: Row[] = [ROWS[0], ROWS[1], ROWS[5]];
 
 function ErpPanel({
   title,
@@ -280,12 +295,73 @@ function ErpConnector({ label }: { label: string }) {
 
 function FigureErp() {
   return (
-    <div className="w-full text-white">
-      <div className="w-full">
+    <>
+      {/* Mobile — diagonal cascade: left / centre / right, 3 rows each */}
+      <div className="relative h-[300px] w-full overflow-hidden text-white md:hidden">
+        {/* Left dark panel */}
+        <div className="absolute left-0 top-0 z-[1] w-4/5">
+          <ErpPanel
+            title="Logiciel de stock"
+            footer={
+              <>
+                <motion.span
+                  className="inline-block h-1.5 w-1.5 rounded-full bg-white"
+                  animate={{ opacity: [1, 0.4, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                />
+                <span>Connecté</span>
+              </>
+            }
+          >
+            <div className="flex flex-1 flex-col">
+              <ColHead cols={STOCK_COLS}>
+                <span>Produit</span><span>SKU</span><span>Stock</span>
+              </ColHead>
+              {ERP_MOBILE_ROWS.map((r) => (
+                <div key={r.sku} className={`${STOCK_COLS} py-[7px] text-[11px]`}>
+                  <span className="whitespace-nowrap font-medium text-white">{r.name}</span>
+                  <span className="whitespace-nowrap font-mono text-[11px] text-white/55">{r.sku}</span>
+                  <span className={`whitespace-nowrap font-mono text-[11px] font-medium ${r.stock === 0 ? 'text-red-400' : 'text-white/90'}`}>{r.stock}</span>
+                </div>
+              ))}
+            </div>
+          </ErpPanel>
+        </div>
+        {/* API panel — centred, 30 px down */}
+        <div className="absolute left-[10%] top-[30px] z-[2] w-4/5">
+          <ApiPanel />
+        </div>
+        {/* Right white panel — 60 px down */}
+        <div className="absolute right-0 top-[60px] z-[3] w-4/5">
+          <ErpPanel light title="Site e-commerce" footer={<span>↻ Sync</span>}>
+            <div className="flex flex-1 flex-col">
+              <ColHead cols={SITE_COLS} light>
+                <span>Produit</span><span>Stock</span><span>Statut</span>
+              </ColHead>
+              {ERP_MOBILE_ROWS.map((r) => (
+                <div key={r.sku} className={`${SITE_COLS} py-[7px] text-[11px]`}>
+                  <span className="flex items-center gap-1.5 whitespace-nowrap font-medium text-neutral-900">
+                    <span aria-hidden>{r.emoji}</span>
+                    <span>{r.name}</span>
+                  </span>
+                  <span className="whitespace-nowrap font-mono text-[11px] font-medium text-neutral-700">{r.stock}</span>
+                  {r.stock === 0 ? (
+                    <span className="inline-flex h-6 items-center justify-center whitespace-nowrap rounded-full bg-red-100 px-2.5 text-[10px] font-medium text-red-600">Rupture</span>
+                  ) : (
+                    <span className="inline-flex h-6 items-center justify-center whitespace-nowrap rounded-full bg-green-100 px-2.5 text-[10px] font-medium text-green-700">Actif</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </ErpPanel>
+        </div>
+      </div>
+
+      {/* Desktop — 3-column horizontal layout */}
+      <div className="hidden w-full text-white md:block">
         <div className="flex flex-col">
-          {/* Panels row */}
-          <div className="flex flex-col items-stretch gap-4 md:flex-row">
-            {/* Left panel — dark, no emojis */}
+          <div className="flex items-stretch gap-4">
+            {/* Left panel */}
             <ErpPanel
               title="Logiciel de stock"
               footer={
@@ -317,7 +393,7 @@ function FigureErp() {
 
             <ApiPanel />
 
-            {/* Right panel — light/white, with emojis */}
+            {/* Right panel */}
             <ErpPanel light title="Site e-commerce" footer={<span>↻ Dernière sync : il y a 2s</span>}>
               <div className="flex flex-1 flex-col">
                 <ColHead cols={SITE_COLS} light>
@@ -347,16 +423,12 @@ function FigureErp() {
             </ErpPanel>
           </div>
 
-          {/* Arrow bar — desktop only, spans full width below the 3 panels */}
-          <div aria-hidden className="relative mt-3 hidden h-8 md:block">
-            {/* labels */}
+          {/* Arrow bar */}
+          <div aria-hidden className="relative mt-3 h-8">
             <span className="absolute left-0 top-0 font-mono text-[8px] uppercase tracking-[0.12em] text-white/35">Sync</span>
             <span className="absolute right-0 top-0 font-mono text-[8px] uppercase tracking-[0.12em] text-white/35">Push</span>
-            {/* dashed line */}
             <div className="absolute inset-x-0 top-5 h-px border-t border-dashed border-white/20" />
-            {/* arrowhead */}
             <span className="absolute right-[-4px] top-[13px] -translate-y-1/2 text-[11px] leading-none text-white/50">→</span>
-            {/* animated dot */}
             <motion.span
               className="absolute top-5 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.85)]"
               initial={{ left: '0%', opacity: 0 }}
@@ -366,7 +438,7 @@ function FigureErp() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -386,76 +458,101 @@ const REDIRECTS = [
 function FigureSeo() {
   const t = strings[useLang()].servicesSection;
   return (
-    <div className="relative flex w-full flex-col gap-4 md:block md:h-[40rem]">
-      {/* Page Settings */}
-      <div className={`${CARD} w-full p-5 md:absolute md:left-8 md:top-6 md:w-[19rem] md:-rotate-2`}>
-        <h3 className="mb-3.5 text-sm font-semibold text-white">{t.seo.pageSettings}</h3>
-        <p className="mb-1.5 text-[11px] text-white/55">{t.seo.labelTitle}</p>
-        <div className="mb-3 truncate rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-[11.5px] text-white">
-          {t.seo.titleValue}
-        </div>
-        <p className="mb-1.5 text-[11px] text-white/55">{t.seo.labelDesc}</p>
-        <div className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-[11.5px] leading-relaxed text-white/90">
-          {t.seo.descValue}
-        </div>
-      </div>
-
-      {/* Redirects */}
-      <div className={`${CARD} w-full p-[1.1rem] md:absolute md:left-24 md:top-60 md:w-[24rem] md:rotate-1`}>
-        <h3 className="mb-3.5 text-sm font-semibold text-white">{t.seo.redirectsTitle}</h3>
-        <div className="grid grid-cols-[1fr_1rem_1fr] gap-2.5 border-b border-white/10 px-1 pb-2 font-mono text-[10px] uppercase tracking-[0.12em] text-white/40">
-          <span>{t.seo.oldUrl}</span>
-          <span />
-          <span>{t.seo.newUrl}</span>
-        </div>
-        {REDIRECTS.map(([from, to]) => (
-          <div
-            key={from}
-            className="grid grid-cols-[1fr_1rem_1fr] items-center gap-2.5 border-b border-white/10 px-1 py-[7px] font-mono text-[11.5px] text-white/90 last:border-b-0"
-          >
-            <span>{from}</span>
-            <span className="text-center text-white/40">→</span>
-            <span>{to}</span>
+    <>
+      {/* Mobile — Page Settings + AI visibility only, stacked */}
+      <div className="flex w-full flex-col gap-4 px-2 md:hidden">
+        {/* Page Settings */}
+        <div className={`${CARD} w-full p-4`}>
+          <h3 className="mb-3 text-sm font-semibold text-white">{t.seo.pageSettings}</h3>
+          <p className="mb-1.5 text-xs text-white/55">{t.seo.labelTitle}</p>
+          <div className="mb-3 truncate rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-xs text-white">
+            {t.seo.titleValue}
           </div>
-        ))}
-      </div>
-
-      {/* AI visibility */}
-      <div className={`${CARD} w-full border-white/20 p-[1.1rem] md:absolute md:right-8 md:top-16 md:w-[21rem] md:rotate-2`}>
-        <h3 className="mb-3.5 text-sm font-semibold text-white">{t.seo.aiTitle}</h3>
-        {t.seo.aiRows.map((r) => (
-          <div
-            key={r.name}
-            className="flex items-center gap-2.5 border-b border-white/10 py-2.5 last:border-b-0"
-          >
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.05] font-mono text-[10px] text-white">
-              {r.name[0]}
-            </span>
-            <span className="w-16 shrink-0 text-[11.5px] font-medium text-white">{r.name}</span>
-            <span className="flex-1 truncate text-[11px] italic text-white/55">{r.quote}</span>
-            <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-white/15 text-[9px] text-white">
-              ✓
-            </span>
+          <p className="mb-1.5 text-xs text-white/55">{t.seo.labelDesc}</p>
+          <div className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-xs leading-relaxed text-white/90">
+            {t.seo.descValue}
           </div>
-        ))}
+        </div>
+        {/* Cited by AI */}
+        <div className={`${CARD} w-full border-white/20 p-4`}>
+          <h3 className="mb-3 text-sm font-semibold text-white">{t.seo.aiTitle}</h3>
+          {t.seo.aiRows.map((r) => (
+            <div key={r.name} className="flex items-center gap-2 border-b border-white/10 py-2 last:border-b-0">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.05] font-mono text-[10px] text-white">
+                {r.name[0]}
+              </span>
+              <span className="w-14 shrink-0 text-xs font-medium text-white">{r.name}</span>
+              <span className="flex-1 truncate text-xs italic text-white/55">{r.quote}</span>
+              <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-white/15 text-[9px] text-white">✓</span>
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* Google Analytics */}
-      <div className={`${CARD} w-full px-4 py-3.5 md:absolute md:bottom-10 md:right-16 md:w-[18rem] md:-rotate-1`}>
-        <div className="mb-2 flex items-center gap-2">
-          <span className="flex h-5 w-5 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] font-mono text-[9px] font-semibold text-white">
-            G
-          </span>
-          <span className="text-xs font-medium text-white">Google Analytics</span>
+      {/* Desktop — all 4 cards, absolute scattered layout */}
+      <div className="relative hidden w-full md:block md:h-[40rem]">
+        {/* Page Settings */}
+        <div className={`${CARD} absolute left-8 top-6 w-[19rem] -rotate-2 p-5`}>
+          <h3 className="mb-3.5 text-sm font-semibold text-white">{t.seo.pageSettings}</h3>
+          <p className="mb-1.5 text-[11px] text-white/55">{t.seo.labelTitle}</p>
+          <div className="mb-3 truncate rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-[11.5px] text-white">
+            {t.seo.titleValue}
+          </div>
+          <p className="mb-1.5 text-[11px] text-white/55">{t.seo.labelDesc}</p>
+          <div className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-[11.5px] leading-relaxed text-white/90">
+            {t.seo.descValue}
+          </div>
         </div>
-        <div className="flex items-baseline gap-2 font-mono text-[10.5px] text-white/55">
-          <span className="text-base font-semibold tracking-tight text-white">1 247</span>
-          <span>{t.seo.sessions}</span>
-          <span className="font-medium text-white">+34%</span>
+        {/* Redirects */}
+        <div className={`${CARD} absolute left-24 top-60 w-[24rem] rotate-1 p-[1.1rem]`}>
+          <h3 className="mb-3.5 text-sm font-semibold text-white">{t.seo.redirectsTitle}</h3>
+          <div className="grid grid-cols-[1fr_1rem_1fr] gap-2.5 border-b border-white/10 px-1 pb-2 font-mono text-[10px] uppercase tracking-[0.12em] text-white/40">
+            <span>{t.seo.oldUrl}</span>
+            <span />
+            <span>{t.seo.newUrl}</span>
+          </div>
+          {REDIRECTS.map(([from, to]) => (
+            <div
+              key={from}
+              className="grid grid-cols-[1fr_1rem_1fr] items-center gap-2.5 border-b border-white/10 px-1 py-[7px] font-mono text-[11.5px] text-white/90 last:border-b-0"
+            >
+              <span>{from}</span>
+              <span className="text-center text-white/40">→</span>
+              <span>{to}</span>
+            </div>
+          ))}
         </div>
-        <div className="mt-1.5 font-mono text-[10px] text-white/40">G-XXXXXXXXXX</div>
+        {/* AI visibility */}
+        <div className={`${CARD} absolute right-8 top-16 w-[21rem] rotate-2 border-white/20 p-[1.1rem]`}>
+          <h3 className="mb-3.5 text-sm font-semibold text-white">{t.seo.aiTitle}</h3>
+          {t.seo.aiRows.map((r) => (
+            <div key={r.name} className="flex items-center gap-2.5 border-b border-white/10 py-2.5 last:border-b-0">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.05] font-mono text-[10px] text-white">
+                {r.name[0]}
+              </span>
+              <span className="w-16 shrink-0 text-[11.5px] font-medium text-white">{r.name}</span>
+              <span className="flex-1 truncate text-[11px] italic text-white/55">{r.quote}</span>
+              <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-white/15 text-[9px] text-white">✓</span>
+            </div>
+          ))}
+        </div>
+        {/* Google Analytics */}
+        <div className={`${CARD} absolute bottom-10 right-16 w-[18rem] -rotate-1 px-4 py-3.5`}>
+          <div className="mb-2 flex items-center gap-2">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] font-mono text-[9px] font-semibold text-white">
+              G
+            </span>
+            <span className="text-xs font-medium text-white">Google Analytics</span>
+          </div>
+          <div className="flex items-baseline gap-2 font-mono text-[10.5px] text-white/55">
+            <span className="text-base font-semibold tracking-tight text-white">1 247</span>
+            <span>{t.seo.sessions}</span>
+            <span className="font-medium text-white">+34%</span>
+          </div>
+          <div className="mt-1.5 font-mono text-[10px] text-white/40">G-XXXXXXXXXX</div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
