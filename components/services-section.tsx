@@ -80,22 +80,29 @@ const SHOT = 'block w-full';
 function FigureSites() {
   const t = strings[useLang()].servicesSection;
   return (
-    <div className="relative w-full px-2 md:px-0">
-      <WindowFrame className="w-full" bodyClassName="aspect-[16/10]">
-        <img
-          src={`${IMG}/jetski-site-v2.png`}
-          alt={t.alts.site}
-          className={`${SHOT} h-full object-cover object-top`}
-        />
-      </WindowFrame>
-      {/* code overlay — desktop only, too small to read on mobile */}
-      <WindowFrame
-        file="index.html"
-        className="absolute left-4 top-8 hidden w-2/5 max-w-[15rem] md:block md:left-10 md:top-12"
-      >
-        <img src={`${IMG}/jetski-code-v2.png`} alt={t.alts.code} className={`${SHOT} h-auto`} />
-      </WindowFrame>
-    </div>
+    <>
+      <img
+        src="/images/preview-site-jetski-arcachon.png"
+        alt="Aperçu du site jetski-arcachon.fr"
+        className="w-full rounded-2xl md:hidden"
+      />
+      <div className="relative hidden w-full px-2 md:block md:px-0">
+        <WindowFrame className="w-full" bodyClassName="aspect-[16/10]">
+          <img
+            src={`${IMG}/jetski-site-v2.png`}
+            alt={t.alts.site}
+            className={`${SHOT} h-full object-cover object-top`}
+          />
+        </WindowFrame>
+        {/* code overlay — desktop only, too small to read on mobile */}
+        <WindowFrame
+          file="index.html"
+          className="absolute left-4 top-8 hidden w-2/5 max-w-[15rem] md:block md:left-10 md:top-12"
+        >
+          <img src={`${IMG}/jetski-code-v2.png`} alt={t.alts.code} className={`${SHOT} h-auto`} />
+        </WindowFrame>
+      </div>
+    </>
   );
 }
 
@@ -107,15 +114,11 @@ function FigureCrm() {
   const t = strings[useLang()].servicesSection;
   return (
     <>
-      {/* Mobile — overlapping fan: form (left/top) under dashboard (right/down) */}
-      <div className="relative h-[420px] w-full overflow-hidden md:hidden">
-        <WindowFrame className="absolute left-0 top-0 z-[1] w-[85%]">
-          <img src={`${IMG}/crm-form.png`} alt={t.alts.crmForm} className={`${SHOT} h-auto`} />
-        </WindowFrame>
-        <WindowFrame className="absolute right-0 top-10 z-[2] w-[85%]">
-          <img src={`${IMG}/crm-dash.png`} alt={t.alts.crmDash} className={`${SHOT} h-auto`} />
-        </WindowFrame>
-      </div>
+      <img
+        src="/images/preview-crm-logiciel.png"
+        alt="Aperçu CRM logiciel de gestion"
+        className="w-full rounded-2xl md:hidden"
+      />
       {/* Desktop — side by side */}
       <div className="hidden w-full gap-4 md:grid md:grid-cols-2 md:items-center">
         <WindowFrame>
@@ -296,66 +299,11 @@ function ErpConnector({ label }: { label: string }) {
 function FigureErp() {
   return (
     <>
-      {/* Mobile — diagonal cascade: left / centre / right, 3 rows each */}
-      <div className="relative h-[300px] w-full overflow-hidden text-white md:hidden">
-        {/* Left dark panel */}
-        <div className="absolute left-0 top-0 z-[1] w-4/5">
-          <ErpPanel
-            title="Logiciel de stock"
-            footer={
-              <>
-                <motion.span
-                  className="inline-block h-1.5 w-1.5 rounded-full bg-white"
-                  animate={{ opacity: [1, 0.4, 1] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                />
-                <span>Connecté</span>
-              </>
-            }
-          >
-            <div className="flex flex-1 flex-col">
-              <ColHead cols={STOCK_COLS}>
-                <span>Produit</span><span>SKU</span><span>Stock</span>
-              </ColHead>
-              {ERP_MOBILE_ROWS.map((r) => (
-                <div key={r.sku} className={`${STOCK_COLS} py-[7px] text-[11px]`}>
-                  <span className="whitespace-nowrap font-medium text-white">{r.name}</span>
-                  <span className="whitespace-nowrap font-mono text-[11px] text-white/55">{r.sku}</span>
-                  <span className={`whitespace-nowrap font-mono text-[11px] font-medium ${r.stock === 0 ? 'text-red-400' : 'text-white/90'}`}>{r.stock}</span>
-                </div>
-              ))}
-            </div>
-          </ErpPanel>
-        </div>
-        {/* API panel — centred, 30 px down */}
-        <div className="absolute left-[10%] top-[30px] z-[2] w-4/5">
-          <ApiPanel />
-        </div>
-        {/* Right white panel — 60 px down */}
-        <div className="absolute right-0 top-[60px] z-[3] w-4/5">
-          <ErpPanel light title="Site e-commerce" footer={<span>↻ Sync</span>}>
-            <div className="flex flex-1 flex-col">
-              <ColHead cols={SITE_COLS} light>
-                <span>Produit</span><span>Stock</span><span>Statut</span>
-              </ColHead>
-              {ERP_MOBILE_ROWS.map((r) => (
-                <div key={r.sku} className={`${SITE_COLS} py-[7px] text-[11px]`}>
-                  <span className="flex items-center gap-1.5 whitespace-nowrap font-medium text-neutral-900">
-                    <span aria-hidden>{r.emoji}</span>
-                    <span>{r.name}</span>
-                  </span>
-                  <span className="whitespace-nowrap font-mono text-[11px] font-medium text-neutral-700">{r.stock}</span>
-                  {r.stock === 0 ? (
-                    <span className="inline-flex h-6 items-center justify-center whitespace-nowrap rounded-full bg-red-100 px-2.5 text-[10px] font-medium text-red-600">Rupture</span>
-                  ) : (
-                    <span className="inline-flex h-6 items-center justify-center whitespace-nowrap rounded-full bg-green-100 px-2.5 text-[10px] font-medium text-green-700">Actif</span>
-                  )}
-                </div>
-              ))}
-            </div>
-          </ErpPanel>
-        </div>
-      </div>
+      <img
+        src="/images/preview-erp-site-ecommerce.png"
+        alt="Aperçu synchronisation ERP et site e-commerce"
+        className="w-full rounded-2xl md:hidden"
+      />
 
       {/* Desktop — 3-column horizontal layout */}
       <div className="hidden w-full text-white md:block">
@@ -459,35 +407,11 @@ function FigureSeo() {
   const t = strings[useLang()].servicesSection;
   return (
     <>
-      {/* Mobile — Page Settings + AI visibility only, stacked */}
-      <div className="flex w-full flex-col gap-4 px-2 md:hidden">
-        {/* Page Settings */}
-        <div className={`${CARD} w-full p-4`}>
-          <h3 className="mb-3 text-sm font-semibold text-white">{t.seo.pageSettings}</h3>
-          <p className="mb-1.5 text-xs text-white/55">{t.seo.labelTitle}</p>
-          <div className="mb-3 truncate rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-xs text-white">
-            {t.seo.titleValue}
-          </div>
-          <p className="mb-1.5 text-xs text-white/55">{t.seo.labelDesc}</p>
-          <div className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-xs leading-relaxed text-white/90">
-            {t.seo.descValue}
-          </div>
-        </div>
-        {/* Cited by AI */}
-        <div className={`${CARD} w-full border-white/20 p-4`}>
-          <h3 className="mb-3 text-sm font-semibold text-white">{t.seo.aiTitle}</h3>
-          {t.seo.aiRows.map((r) => (
-            <div key={r.name} className="flex items-center gap-2 border-b border-white/10 py-2 last:border-b-0">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.05] font-mono text-[10px] text-white">
-                {r.name[0]}
-              </span>
-              <span className="w-14 shrink-0 text-xs font-medium text-white">{r.name}</span>
-              <span className="flex-1 truncate text-xs italic text-white/55">{r.quote}</span>
-              <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-white/15 text-[9px] text-white">✓</span>
-            </div>
-          ))}
-        </div>
-      </div>
+      <img
+        src="/images/preview-seo-ia.png"
+        alt="Aperçu SEO et visibilité IA"
+        className="w-full rounded-2xl md:hidden"
+      />
 
       {/* Desktop — all 4 cards, absolute scattered layout */}
       <div className="relative hidden w-full md:block md:h-[40rem]">
