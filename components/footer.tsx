@@ -49,14 +49,23 @@ export function Footer() {
         </div>
 
         <div
-          className="mt-16 pt-8 flex flex-col gap-2 min-720:flex-row min-720:justify-between text-xs"
+          className="mt-16 pt-8 flex flex-col gap-2 min-720:flex-row min-720:items-center min-720:justify-between text-xs"
           style={{
             borderTop: '1px solid hsl(0 0% 100% / 0.06)',
             color: 'hsl(0 0% 35%)',
           }}
         >
           <p>{t.copy}</p>
-          <p>Bordeaux, France</p>
+          <div className="flex items-center gap-5">
+            <Link
+              href="/mentions-legales"
+              className="transition-colors duration-150 hover:text-white"
+              style={{ color: 'hsl(0 0% 35%)' }}
+            >
+              {lang === 'fr' ? 'Mentions légales' : 'Legal Notice'}
+            </Link>
+            <p>Bordeaux, France</p>
+          </div>
         </div>
       </div>
     </footer>
