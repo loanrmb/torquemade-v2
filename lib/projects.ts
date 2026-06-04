@@ -155,8 +155,8 @@ export const projects: Project[] = [
       en: 'Capturing Cyclone brand traffic before competitors.',
     },
     description: {
-      fr: 'Cyclonebordeaux.com est un microsite dédié à la marque Cyclone — 100 % conçu pour apparaître sur les recherches Google propres à la marque, présenter chaque modèle, et transformer les visites en contacts qualifiés.',
-      en: 'Cyclonebordeaux.com is a dedicated brand microsite for Cyclone — 100% designed to rank on brand-specific Google searches, present each model, and convert visits into qualified leads.',
+      fr: 'Cyclonebordeaux.fr est un microsite dédié à la marque Cyclone — 100 % conçu pour apparaître sur les recherches Google propres à la marque, présenter chaque modèle, et transformer les visites en contacts qualifiés.',
+      en: 'Cyclonebordeaux.fr is a dedicated brand microsite for Cyclone — 100% designed to rank on brand-specific Google searches, present each model, and convert visits into qualified leads.',
     },
     outcomes: [
       { fr: 'Positions SEO sur les requêtes "Cyclone moto Bordeaux" et variantes', en: 'SEO rankings on "Cyclone moto Bordeaux" queries and variants' },
@@ -167,7 +167,7 @@ export const projects: Project[] = [
     imageHero: '/images/cyclone-bordeaux.png',
     imageChallenge: '/images/cyclone-bordeaux-challenge.png',
     imageApproach: '/images/cyclone-bordeaux-approach.png',
-    url: 'https://cyclonebordeaux.com',
+    url: 'https://cyclonebordeaux.fr',
     featured: false,
     caseStudy: true,
     challengeTitle: {
@@ -209,8 +209,8 @@ export const projects: Project[] = [
       en: 'A dedicated SEO position for Voge in Bordeaux.',
     },
     description: {
-      fr: 'Vogebordeaux.com est le microsite officieux de la marque Voge pour le marché bordelais. Identité de marque, catalogue complet, formulaire par modèle — et un blog pour tenir les positions dans le temps.',
-      en: 'Vogebordeaux.com is the brand-aligned microsite for Voge on the Bordeaux market. Brand identity, full catalogue, per-model contact forms — and a blog to hold rankings over time.',
+      fr: 'Vogebordeaux.fr est le microsite officieux de la marque Voge pour le marché bordelais. Identité de marque, catalogue complet, formulaire par modèle — et un blog pour tenir les positions dans le temps.',
+      en: 'Vogebordeaux.fr is the brand-aligned microsite for Voge on the Bordeaux market. Brand identity, full catalogue, per-model contact forms — and a blog to hold rankings over time.',
     },
     outcomes: [
       { fr: 'Positions SEO sur les requêtes "Voge moto Bordeaux" et Gironde', en: 'SEO rankings on "Voge moto Bordeaux" and Gironde queries' },
@@ -221,7 +221,7 @@ export const projects: Project[] = [
     imageHero: '/images/voge-bordeaux.png',
     imageChallenge: '/images/voge-bordeaux-challenge.png',
     imageApproach: '/images/voge-bordeaux-approach.png',
-    url: 'https://vogebordeaux.com',
+    url: 'https://vogebordeaux.fr',
     featured: false,
     caseStudy: true,
     challengeTitle: {
@@ -263,8 +263,8 @@ export const projects: Project[] = [
       en: 'The Orcal brand finally findable in Bordeaux.',
     },
     description: {
-      fr: 'Orcalbordeaux.com est le microsite dédié à la marque Orcal sur le marché girondins. Conçu pour capter les recherches de marque, présenter l\'univers Orcal et transformer les visites en prises de contact.',
-      en: 'Orcalbordeaux.com is the dedicated microsite for the Orcal brand in the Gironde market. Designed to capture brand searches, present the Orcal universe and convert visits into contact inquiries.',
+      fr: 'Orcalbordeaux.fr est le microsite dédié à la marque Orcal sur le marché girondins. Conçu pour capter les recherches de marque, présenter l\'univers Orcal et transformer les visites en prises de contact.',
+      en: 'Orcalbordeaux.fr is the dedicated microsite for the Orcal brand in the Gironde market. Designed to capture brand searches, present the Orcal universe and convert visits into contact inquiries.',
     },
     outcomes: [
       { fr: 'Positions SEO sur les requêtes "Orcal Bordeaux" et variantes régionales', en: 'SEO rankings on "Orcal Bordeaux" and regional variant queries' },
@@ -275,7 +275,7 @@ export const projects: Project[] = [
     imageHero: '/images/orcal-bordeaux.png',
     imageChallenge: '/images/orcal-bordeaux-challenge.png',
     imageApproach: '/images/orcal-bordeaux-approach.png',
-    url: 'https://orcalbordeaux.com',
+    url: 'https://orcalbordeaux.fr',
     featured: false,
     caseStudy: true,
     challengeTitle: {
