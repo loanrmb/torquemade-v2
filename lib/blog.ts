@@ -764,4 +764,18 @@ export const posts: Post[] = [
     category: 'ERP & Gestion de stock',
     readingTime: 8,
   },
+  {
+    slug: 'logiciel-caisse-ecommerce-tout-en-un',
+    title: {
+      fr: 'La connexion caisse / e-commerce : et si le problème venait du logiciel lui-même ?',
+      en: 'POS / E-Commerce Integration: What If the Problem Is the Software Itself?',
+    },
+    description: {
+      fr: "Plateformes unifiées caisse + e-commerce : comment elles éliminent le problème de synchronisation à la source, et les vraies contraintes d'une migration (coûts, écosystème, certification NF525).",
+      en: "Unified POS + e-commerce platforms: how they eliminate the synchronisation problem at the source, and the real constraints of a migration (costs, ecosystem lock-in, NF525 certification).",
+    },
+    date: { fr: '19 juin 2026', en: 'June 19, 2026' },
+    category: 'ERP & Gestion de stock',
+    readingTime: 7,
+  },
 ]
