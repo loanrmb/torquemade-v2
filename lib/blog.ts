@@ -736,4 +736,18 @@ export const posts: Post[] = [
     category: 'ERP & Gestion de stock',
     readingTime: 5,
   },
+  {
+    slug: 'connecter-caisse-site-ecommerce-guide',
+    title: {
+      fr: 'Connecter sa caisse à son site e-commerce : ce que tout commerçant doit savoir avant de se lancer',
+      en: 'Connecting Your POS to Your E-Commerce Site: What Every Retailer Should Know Before Starting',
+    },
+    description: {
+      fr: "Les grandes familles de solutions pour relier un logiciel de caisse à un site marchand, leurs conditions, leurs risques contractuels et techniques — un guide honnête pour franchisés et indépendants.",
+      en: "The main families of solutions for linking a POS system to an online store, their conditions, their contractual and technical risks — an honest guide for franchisees and independent retailers.",
+    },
+    date: { fr: '5 juin 2026', en: 'June 5, 2026' },
+    category: 'ERP & Gestion de stock',
+    readingTime: 7,
+  },
 ]
