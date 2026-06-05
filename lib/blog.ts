@@ -750,4 +750,18 @@ export const posts: Post[] = [
     category: 'ERP & Gestion de stock',
     readingTime: 7,
   },
+  {
+    slug: '3-methodes-synchroniser-caisse-boutique-en-ligne',
+    title: {
+      fr: '3 méthodes pour synchroniser sa caisse et sa boutique en ligne — et les risques que personne ne mentionne',
+      en: '3 Methods to Sync Your POS with Your Online Store — and the Risks No One Mentions',
+    },
+    description: {
+      fr: "Export de fichiers, API éditeur, accès direct aux données : trois familles de solutions, leurs avantages, leurs limites et les risques contractuels et techniques associés.",
+      en: "Scheduled file export, vendor API, direct database access: three families of solutions, their advantages, their limits, and the contractual and technical risks involved.",
+    },
+    date: { fr: '12 juin 2026', en: 'June 12, 2026' },
+    category: 'ERP & Gestion de stock',
+    readingTime: 8,
+  },
 ]

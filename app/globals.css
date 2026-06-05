@@ -440,6 +440,33 @@ html.dark .cta-card {
   padding: 0.1em 0.4em;
 }
 
+.blog-article-table-wrapper {
+  overflow-x: auto;
+  margin: 1.75rem 0;
+}
+
+.blog-article-table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  color: hsl(var(--text-secondary));
+}
+
+.blog-article-table-wrapper th,
+.blog-article-table-wrapper td {
+  border: 1px solid hsl(var(--border-subtle));
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.55;
+}
+
+.blog-article-table-wrapper th {
+  font-weight: 600;
+  color: hsl(var(--text-primary));
+  background: hsl(var(--bg-secondary));
+}
+
 .blog-related {
   margin-top: 1rem;
   padding: 1.5rem;
