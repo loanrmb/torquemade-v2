@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useLang } from '@/components/app-provider'
@@ -11,12 +11,18 @@ const LABELS = {
   fr: {
     all: 'Tous',
     read: "Lire l'article",
-    empty: 'Aucun article dans cette catégorie.',
+    empty: 'Aucun article ne correspond à votre recherche.',
+    searchPlaceholder: 'Rechercher…',
+    searchAria: 'Rechercher',
+    clearAria: 'Effacer',
   },
   en: {
     all: 'All',
     read: 'Read article',
-    empty: 'No articles in this category.',
+    empty: 'No articles match your search.',
+    searchPlaceholder: 'Search…',
+    searchAria: 'Search',
+    clearAria: 'Clear',
   },
 }
 
@@ -70,6 +76,10 @@ export function BlogList() {
   const activeKey = searchParams.get('cat') ?? 'all'
   const listRef = useRef<HTMLDivElement>(null)
 
+  const [search, setSearch] = useState('')
+  const [searchOpen, setSearchOpen] = useState(false)
+  const searchInputRef = useRef<HTMLInputElement>(null)
+
   function handleFilter(key: string) {
     const params = new URLSearchParams(searchParams.toString())
     if (key === 'all') {
@@ -82,18 +92,33 @@ export function BlogList() {
   }
 
   const featuredPosts = posts.filter((p) => p.featured)
+  const isSearching = search.trim().length > 0
 
-  const filtered =
-    activeKey === 'all'
-      ? posts.filter((p) => !p.featured)
-      : posts.filter((p) => p.category === activeKey)
+  const filtered = posts
+    .filter((p) => {
+      if (activeKey === 'all') {
+        // Include featured posts only when searching, otherwise they're shown
+        // in the FeaturedPosts section above and would be duplicated below.
+        return isSearching || !p.featured
+      }
+      return p.category === activeKey
+    })
+    .filter((p) => {
+      if (!isSearching) return true
+      const q = search.toLowerCase()
+      return (
+        p.title[lang].toLowerCase().includes(q) ||
+        p.description[lang].toLowerCase().includes(q) ||
+        p.category.toLowerCase().includes(q)
+      )
+    })
 
   return (
     <section className="px-6 pb-24 md:px-12 lg:px-24">
       <div className="mx-auto max-w-4xl">
 
-        {/* ── À LA UNE — visible uniquement sur "Tous" ── */}
-        {activeKey === 'all' && <FeaturedPosts posts={featuredPosts} />}
+        {/* ── À LA UNE — visible uniquement sur "Tous", hors recherche ── */}
+        {activeKey === 'all' && !isSearching && <FeaturedPosts posts={featuredPosts} />}
 
         {/* ── FILTRES — pill sticky liquid glass ── */}
         <div className="sticky top-20 z-40 mb-16">
@@ -131,6 +156,91 @@ export function BlogList() {
                   </button>
                 )
               })}
+
+              {/* Séparateur vertical */}
+              <div
+                className="h-4 w-px mx-1 shrink-0"
+                style={{ background: 'hsl(var(--border-subtle))' }}
+              />
+
+              {/* Zone recherche */}
+              <div className="flex items-center relative">
+
+                {/* Bouton loupe */}
+                <button
+                  onClick={() => {
+                    setSearchOpen((prev) => {
+                      if (prev) setSearch('')
+                      setTimeout(() => {
+                        if (!prev) searchInputRef.current?.focus()
+                      }, 50)
+                      return !prev
+                    })
+                  }}
+                  aria-label={t.searchAria}
+                  className="p-1.5 rounded-full transition-colors"
+                  style={{ color: 'hsl(var(--text-secondary))' }}
+                >
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  </svg>
+                </button>
+
+                {/* Input animé — s'ouvre vers la droite */}
+                <div
+                  style={{
+                    width: searchOpen ? '160px' : '0px',
+                    opacity: searchOpen ? 1 : 0,
+                    overflow: 'hidden',
+                    transition: 'width 250ms ease, opacity 200ms ease',
+                    display: 'flex',
+                    alignItems: 'center',
+                  }}
+                >
+                  <input
+                    ref={searchInputRef}
+                    type="text"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder={t.searchPlaceholder}
+                    className="w-full text-sm outline-none bg-transparent px-2"
+                    style={{ color: 'hsl(var(--text-primary))' }}
+                  />
+                </div>
+
+                {/* Bouton clear */}
+                {search && (
+                  <button
+                    onClick={() => setSearch('')}
+                    className="p-1 rounded-full shrink-0 transition-colors"
+                    style={{ color: 'hsl(var(--text-secondary))' }}
+                    aria-label={t.clearAria}
+                  >
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                    >
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -138,7 +248,10 @@ export function BlogList() {
         {/* ── LISTE D'ARTICLES ── */}
         <div ref={listRef} style={{ borderTop: '1px solid hsl(var(--border-subtle))' }}>
           {filtered.length === 0 && (
-            <p className="py-20 text-center font-mono text-sm opacity-40">
+            <p
+              className="text-center py-16 text-sm"
+              style={{ color: 'hsl(var(--text-secondary))' }}
+            >
               {t.empty}
             </p>
           )}
