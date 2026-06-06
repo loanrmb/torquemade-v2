@@ -98,7 +98,7 @@ export default function HomePage() {
           </div>
 
           {/* COLONNE DROITE — aperçu dashboard stock avec fondu thème */}
-          <div className="relative flex-1 flex items-center justify-end self-stretch overflow-hidden w-full min-h-[400px]">
+          <div className="relative flex-1 flex items-center justify-end overflow-hidden h-full min-h-[420px] md:min-h-[520px]">
             <HeroDashboardImage />
           </div>
 
