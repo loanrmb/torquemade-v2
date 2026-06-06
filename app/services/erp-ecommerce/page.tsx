@@ -1,11 +1,11 @@
 'use client'
 
+import Link from 'next/link'
 import { NavPill } from '@/components/nav-pill'
 import { Footer } from '@/components/footer'
 import { useLang } from '@/components/app-provider'
 import { strings } from '@/lib/strings'
 import { useScrollReveal } from '@/lib/use-scroll-reveal'
-import { GlobeCTA } from '@/components/globe-cta'
 
 export default function ErpEcommercePage() {
   const lang = useLang()
@@ -200,8 +200,26 @@ export default function ErpEcommercePage() {
           </div>
         </section>
 
-        {/* GLOBE CTA */}
-        <GlobeCTA />
+        {/* CTA */}
+        <section className="px-5 pb-20 min-720:pb-24">
+          <div className="mx-auto max-w-5xl">
+            <div className="cta-card p-10 min-720:p-16 text-center fade-up">
+              <h2 className="text-title-2 font-semibold tracking-tight mb-4" style={{ color: '#ffffff' }}>
+                {t.ctaTitle}
+              </h2>
+              <p className="text-body-lg mb-8 max-w-lg mx-auto" style={{ color: 'rgba(255,255,255,0.72)' }}>
+                {t.ctaSub}
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-opacity duration-150 hover:opacity-80"
+                style={{ background: '#ffffff', color: '#0a0a0a' }}
+              >
+                {t.ctaButton}
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
 
       <Footer />
