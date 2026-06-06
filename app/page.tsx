@@ -40,11 +40,11 @@ export default function HomePage() {
 
       <main className="relative z-10 overflow-clip rounded-b-32 bg-bg-primary">
 
-        {/* ── HERO — layout 2 colonnes ── */}
-        <section className="flex flex-col md:flex-row items-center gap-8 md:gap-12 px-5 pt-28 pb-16 min-720:pt-36 min-720:pb-20 min-1280:pt-44 min-1280:pb-24 max-w-7xl mx-auto overflow-hidden">
+        {/* ── HERO — deux colonnes étanches ── */}
+        <section className="relative flex flex-col md:flex-row items-center min-h-[85vh] pt-24 pb-16 overflow-hidden">
 
           {/* COLONNE GAUCHE — contenu texte */}
-          <div className="flex-1 min-w-0 relative z-10 flex flex-col items-start text-left">
+          <div className="relative z-10 flex-1 flex flex-col justify-center px-6 md:px-0 md:max-w-[50%]">
 
             <h1
               className="fade-up text-3xl min-480:text-4xl min-720:text-5xl min-1280:text-6xl font-semibold tracking-tight leading-tight"
@@ -97,8 +97,8 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* COLONNE DROITE — aperçu dashboard stock avec fondu thème */}
-          <div className="relative flex-1 flex items-center justify-end overflow-hidden h-full min-h-[420px] md:min-h-[520px]">
+          {/* COLONNE DROITE — aperçu dashboard stock */}
+          <div className="relative flex-1 self-stretch flex items-center overflow-hidden md:max-w-[55%]">
             <HeroDashboardImage />
           </div>
 

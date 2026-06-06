@@ -3,92 +3,83 @@
  * ------------------
  * Aperçu dashboard stock affiché dans la colonne droite du hero homepage.
  *
- * Switch sombre/clair en CSS pur via la classe `dark` posée sur <html> par
- * AppProvider. Aucune logique React, aucun useState/useEffect/MutationObserver
- * → bascule instantanée lors du toggle thème, pas de délai de re-render.
+ * - L'image remplit la colonne via position: absolute inset-0 + object-cover
+ *   object-left → aucun débordement possible vers la gauche
+ * - Switch sombre/clair en CSS pur (dark:hidden / hidden dark:block),
+ *   bascule instantanée au toggle de thème
+ * - Fondus gauche/haut/bas, chacun en deux layers superposés (light + dark)
  *
- * Les deux images sont rendues simultanément ; Tailwind n'en affiche qu'une
- * via dark:hidden / hidden dark:block. Les trois fondus (gauche, haut, bas)
- * suivent le même pattern avec deux couches superposées par fondu.
- *
- * Couleurs de fondu hardcodées d'après globals.css :
+ * Couleurs lues dans globals.css :
  *   light → #ffffff   (--bg-primary: 0 0% 100%)
  *   dark  → #0f0f0f   (--bg-primary: 0 0% 6%)
  */
 
+const BG_LIGHT = '#ffffff'
+const BG_DARK = '#0f0f0f'
+
 export function HeroDashboardImage() {
   return (
-    <div className="relative w-full max-w-[640px]">
+    <div className="relative w-full h-full min-h-[460px]">
 
-      {/* Image CLAIR — visible par défaut, cachée en dark */}
+      {/* ── IMAGES ── */}
+      {/* Mode CLAIR */}
       <img
         src="/images/preview-dashboard-stock-clair.png"
         alt="Aperçu logiciel de gestion de stock"
-        className="w-full rounded-xl block dark:hidden"
-        style={{ border: '1px solid rgba(0,0,0,0.08)' }}
-        width={1176}
-        height={720}
-        loading="eager"
-        decoding="async"
+        className="block dark:hidden absolute inset-0 w-full h-full object-cover object-left rounded-l-xl"
+        style={{ border: '1px solid rgba(0,0,0,0.07)' }}
       />
-
-      {/* Image SOMBRE — cachée par défaut, visible en dark */}
+      {/* Mode SOMBRE */}
       <img
         src="/images/preview-dashboard-stock-sombre.png"
         alt="Aperçu logiciel de gestion de stock"
-        className="w-full rounded-xl hidden dark:block"
-        style={{ border: '1px solid rgba(255,255,255,0.07)' }}
-        width={1176}
-        height={720}
-        loading="eager"
-        decoding="async"
+        className="hidden dark:block absolute inset-0 w-full h-full object-cover object-left rounded-l-xl"
+        style={{ border: '1px solid rgba(255,255,255,0.06)' }}
       />
 
-      {/* FONDU GAUCHE — masque la transition vers la colonne texte */}
+      {/* ── FONDUS ── */}
+      {/* Fondu gauche — bord de jonction texte/image */}
       <div
         aria-hidden
-        className="absolute inset-y-0 left-0 z-10 pointer-events-none"
-        style={{ width: '35%' }}
+        className="absolute inset-y-0 left-0 z-10 w-[40%] pointer-events-none"
       >
         <div
           className="absolute inset-0 dark:hidden"
-          style={{ background: 'linear-gradient(to right, #ffffff 0%, transparent 100%)' }}
+          style={{ background: `linear-gradient(to right, ${BG_LIGHT}, transparent)` }}
         />
         <div
           className="absolute inset-0 hidden dark:block"
-          style={{ background: 'linear-gradient(to right, #0f0f0f 0%, transparent 100%)' }}
+          style={{ background: `linear-gradient(to right, ${BG_DARK}, transparent)` }}
         />
       </div>
 
-      {/* FONDU HAUT */}
+      {/* Fondu haut */}
       <div
         aria-hidden
-        className="absolute inset-x-0 top-0 z-10 pointer-events-none"
-        style={{ height: '25%' }}
+        className="absolute inset-x-0 top-0 z-10 h-[28%] pointer-events-none"
       >
         <div
           className="absolute inset-0 dark:hidden"
-          style={{ background: 'linear-gradient(to bottom, #ffffff 0%, transparent 100%)' }}
+          style={{ background: `linear-gradient(to bottom, ${BG_LIGHT}, transparent)` }}
         />
         <div
           className="absolute inset-0 hidden dark:block"
-          style={{ background: 'linear-gradient(to bottom, #0f0f0f 0%, transparent 100%)' }}
+          style={{ background: `linear-gradient(to bottom, ${BG_DARK}, transparent)` }}
         />
       </div>
 
-      {/* FONDU BAS */}
+      {/* Fondu bas */}
       <div
         aria-hidden
-        className="absolute inset-x-0 bottom-0 z-10 pointer-events-none"
-        style={{ height: '25%' }}
+        className="absolute inset-x-0 bottom-0 z-10 h-[28%] pointer-events-none"
       >
         <div
           className="absolute inset-0 dark:hidden"
-          style={{ background: 'linear-gradient(to top, #ffffff 0%, transparent 100%)' }}
+          style={{ background: `linear-gradient(to top, ${BG_LIGHT}, transparent)` }}
         />
         <div
           className="absolute inset-0 hidden dark:block"
-          style={{ background: 'linear-gradient(to top, #0f0f0f 0%, transparent 100%)' }}
+          style={{ background: `linear-gradient(to top, ${BG_DARK}, transparent)` }}
         />
       </div>
 
