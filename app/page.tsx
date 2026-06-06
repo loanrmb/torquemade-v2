@@ -11,7 +11,6 @@ import { featuredProjects } from '@/lib/projects'
 import { useScrollReveal } from '@/lib/use-scroll-reveal'
 import { ErpFeatureSection } from '@/components/erp-feature-section'
 import ServicesSection from '@/components/services-section'
-import { HeroDashboardImage } from '@/components/HeroDashboardImage'
 
 const workContainerVariants: Variants = {
   hidden: {},
@@ -40,11 +39,9 @@ export default function HomePage() {
 
       <main className="relative z-10 overflow-clip rounded-b-32 bg-bg-primary">
 
-        {/* ── HERO — deux colonnes étanches ── */}
-        <section className="relative flex flex-col md:flex-row items-center min-h-[85vh] pt-24 pb-16 overflow-hidden">
-
-          {/* COLONNE GAUCHE — contenu texte */}
-          <div className="relative z-10 flex-1 flex flex-col justify-center px-6 md:px-0 md:max-w-[50%]">
+        {/* ── HERO ── */}
+        <section className="relative grid place-items-center px-5 pt-28 pb-16 min-720:pt-36 min-720:pb-20 min-1280:pt-44 min-1280:pb-24 overflow-hidden">
+          <div className="relative z-10 flex flex-col items-center text-center max-w-5xl">
 
             <h1
               className="fade-up text-3xl min-480:text-4xl min-720:text-5xl min-1280:text-6xl font-semibold tracking-tight leading-tight"
@@ -79,7 +76,7 @@ export default function HomePage() {
               style={{ borderTop: '1px solid hsl(var(--border-subtle))' }}
             >
               {t.stats.map((stat) => (
-                <div key={stat.label} className="flex flex-col gap-1 items-start">
+                <div key={stat.label} className="flex flex-col gap-1 items-center">
                   <span
                     className="text-2xl font-bold tracking-tight"
                     style={{ color: 'hsl(var(--text-primary))' }}
@@ -87,7 +84,7 @@ export default function HomePage() {
                     {stat.value}
                   </span>
                   <span
-                    className="text-caption"
+                    className="text-caption text-center"
                     style={{ color: 'hsl(var(--text-tertiary))' }}
                   >
                     {stat.label}
@@ -97,11 +94,72 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* COLONNE DROITE — aperçu dashboard stock */}
-          <div className="relative flex-1 self-stretch flex items-center overflow-hidden md:max-w-[55%]">
-            <HeroDashboardImage />
-          </div>
+          {/* Dashboard image — positioned absolute in right half */}
+          <div
+            className="absolute top-0 bottom-0 right-0 pointer-events-none"
+            style={{ width: '52%', zIndex: 0 }}
+            aria-hidden="true"
+          >
+            {/* Mode clair */}
+            <img
+              src="/images/preview-dashboard-stock-clair.png"
+              alt=""
+              aria-hidden="true"
+              className="block dark:hidden w-full h-full object-cover object-left"
+            />
+            {/* Mode sombre */}
+            <img
+              src="/images/preview-dashboard-stock-sombre.png"
+              alt=""
+              aria-hidden="true"
+              className="hidden dark:block w-full h-full object-cover object-left"
+            />
 
+            {/* Fondu gauche */}
+            <div
+              className="absolute inset-y-0 left-0 w-[50%] pointer-events-none"
+              style={{ zIndex: 1 }}
+            >
+              <div
+                className="absolute inset-0 dark:hidden"
+                style={{ background: 'linear-gradient(to right, #ffffff 0%, transparent 100%)' }}
+              />
+              <div
+                className="absolute inset-0 hidden dark:block"
+                style={{ background: 'linear-gradient(to right, #0f0f0f 0%, transparent 100%)' }}
+              />
+            </div>
+
+            {/* Fondu haut */}
+            <div
+              className="absolute inset-x-0 top-0 h-[30%] pointer-events-none"
+              style={{ zIndex: 1 }}
+            >
+              <div
+                className="absolute inset-0 dark:hidden"
+                style={{ background: 'linear-gradient(to bottom, #ffffff 0%, transparent 100%)' }}
+              />
+              <div
+                className="absolute inset-0 hidden dark:block"
+                style={{ background: 'linear-gradient(to bottom, #0f0f0f 0%, transparent 100%)' }}
+              />
+            </div>
+
+            {/* Fondu bas */}
+            <div
+              className="absolute inset-x-0 bottom-0 h-[30%] pointer-events-none"
+              style={{ zIndex: 1 }}
+            >
+              <div
+                className="absolute inset-0 dark:hidden"
+                style={{ background: 'linear-gradient(to top, #ffffff 0%, transparent 100%)' }}
+              />
+              <div
+                className="absolute inset-0 hidden dark:block"
+                style={{ background: 'linear-gradient(to top, #0f0f0f 0%, transparent 100%)' }}
+              />
+            </div>
+          </div>
         </section>
 
         {/* ── TECH MARQUEE ── */}
