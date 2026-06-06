@@ -650,6 +650,13 @@ html.dark .cta-card {
   .rainbow-text { animation: none; }
 }
 
+/* Gradient shift used inline on the "systèmes" accent in the ContainerScroll
+   title (homepage). Distinct from rainbow-shift: 4s vs 3s, "center" vs "50%". */
+@keyframes gradient-shift {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
 /* ============================================================
    SCROLLBAR HIDE — utilitaire pour scroll horizontal propre
    ============================================================ */

@@ -86,33 +86,65 @@ export default function HomePage() {
         {/* ── CONTAINER SCROLL — dashboard 3D ── */}
         <ContainerScroll
           titleComponent={
-            <div className="space-y-2">
-              <p
-                className="text-lg md:text-xl"
+            <motion.div
+              className="space-y-3 text-center"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.15 } },
+              }}
+            >
+              <motion.p
+                className="text-base md:text-lg tracking-wide uppercase"
                 style={{ color: 'hsl(var(--text-secondary))' }}
+                variants={{
+                  hidden: { opacity: 0, y: 16 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+                }}
               >
                 {t.hero.tagline}
-              </p>
-              <p
-                className="text-2xl md:text-4xl font-bold"
-                style={{ color: 'hsl(var(--text-primary))' }}
+              </motion.p>
+
+              <motion.p
+                className="text-3xl md:text-5xl font-bold leading-tight"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+                }}
               >
-                {t.hero.tagline2}
-              </p>
-            </div>
+                <span style={{ color: 'hsl(var(--text-primary))' }}>
+                  {t.hero.tagline2Lead}
+                </span>
+                <span
+                  className="bg-clip-text text-transparent"
+                  style={{
+                    backgroundImage:
+                      'linear-gradient(90deg, #f97316, #eab308, #22c55e, #3b82f6, #a855f7, #ec4899)',
+                    backgroundSize: '200% auto',
+                    animation: 'gradient-shift 4s linear infinite',
+                  }}
+                >
+                  {t.hero.tagline2Accent}
+                </span>
+              </motion.p>
+            </motion.div>
           }
         >
           {/* Image dashboard — theme-aware, zéro JS */}
           <img
             src="/images/preview-dashboard-stock-clair.png"
             alt="Aperçu logiciel de gestion de stock"
-            className="block dark:hidden w-full h-full object-cover object-top"
+            className="block dark:hidden w-full h-full object-contain"
+            style={{ background: '#ffffff' }}
             draggable={false}
           />
           <img
             src="/images/preview-dashboard-stock-sombre.png"
             alt="Aperçu logiciel de gestion de stock"
-            className="hidden dark:block w-full h-full object-cover object-top"
+            className="hidden dark:block w-full h-full object-contain"
+            style={{ background: '#0f0f0f' }}
             draggable={false}
           />
         </ContainerScroll>
