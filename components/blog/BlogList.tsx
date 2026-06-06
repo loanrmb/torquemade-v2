@@ -132,9 +132,9 @@ export function BlogList() {
         {/* ── À LA UNE — visible uniquement sur "Tous", hors recherche ── */}
         {activeKey === 'all' && !isSearching && <FeaturedPosts posts={featuredPosts} />}
 
-        {/* ── FILTRES — pill sticky liquid glass + loupe ancrée hors du pill ── */}
-        <div className="sticky top-20 z-40 mb-16 relative">
-          <div className="overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0 md:flex md:justify-center scrollbar-hide">
+        {/* ── FILTRES — pill sticky liquid glass + loupe sur la même ligne ── */}
+        <div className="sticky top-20 z-40 mb-16 flex items-center gap-3">
+          <div className="flex-1 min-w-0 overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0 md:flex md:justify-center scrollbar-hide">
             <div
               className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 flex-shrink-0"
               style={{
@@ -171,20 +171,17 @@ export function BlogList() {
             </div>
           </div>
 
-          {/* ── ZONE RECHERCHE — hors du pill, ancrée à droite au-dessus ── */}
+          {/* ── ZONE RECHERCHE — sibling du pill, même ligne horizontale ── */}
           <div
-            className="absolute right-0 flex items-center gap-1"
-            style={{ top: '-2rem' }}
+            className="flex items-center shrink-0 gap-1"
+            style={{ flexDirection: 'row-reverse' }}
           >
-            {/* Bouton clear — visible si recherche active (order -2, le plus à gauche) */}
+            {/* Bouton clear — apparaît visuellement à gauche de l'input grâce à row-reverse */}
             {search && (
               <button
                 onClick={() => setSearch('')}
                 className="p-1 rounded-full shrink-0 transition-colors"
-                style={{
-                  color: 'hsl(var(--text-secondary))',
-                  order: -2,
-                }}
+                style={{ color: 'hsl(var(--text-secondary))' }}
                 aria-label={t.clearAria}
               >
                 <svg
@@ -202,7 +199,7 @@ export function BlogList() {
               </button>
             )}
 
-            {/* Input animé — s'étend vers la gauche (order -1, au milieu) */}
+            {/* Input animé — s'étend visuellement vers la gauche depuis la loupe */}
             <div
               style={{
                 width: searchOpen ? '220px' : '0px',
@@ -211,7 +208,6 @@ export function BlogList() {
                 transition: 'width 280ms ease, opacity 200ms ease',
                 display: 'flex',
                 alignItems: 'center',
-                order: -1,
               }}
             >
               <input
@@ -225,7 +221,7 @@ export function BlogList() {
               />
             </div>
 
-            {/* Bouton loupe (order par défaut 0, à droite) */}
+            {/* Bouton loupe — visuellement à droite via row-reverse */}
             <button
               onClick={() => {
                 setSearchOpen((prev) => {
@@ -278,18 +274,18 @@ export function BlogList() {
                   ? `/blog/${post.slug}?from=${encodeURIComponent(activeKey)}`
                   : `/blog/${post.slug}`
               }
-              className="group flex gap-4 sm:gap-8 py-8 sm:py-10 px-4 -mx-4 transition-colors duration-150 rounded-sm"
+              className="group flex gap-12 md:gap-16 py-8 sm:py-10 px-4 -mx-4 transition-colors duration-150 rounded-sm"
               style={{ borderBottom: '1px solid hsl(var(--border-subtle))' }}
             >
               {/* Gauche : numéro + date + catégorie */}
               <div className="w-24 sm:w-32 flex-shrink-0">
                 <p
-                  className="font-mono text-2xl sm:text-3xl font-bold mb-2 opacity-15"
+                  className="font-mono text-4xl md:text-5xl font-bold mb-2 opacity-15"
                   style={{ color: 'hsl(var(--text-primary))' }}
                 >
                   {String(i + 1).padStart(2, '0')}
                 </p>
-                <p className="font-mono text-[10px] uppercase tracking-widest opacity-40 mb-2">
+                <p className="font-mono text-xs uppercase tracking-widest opacity-40 mb-2">
                   {post.date[lang]}
                 </p>
                 <span
@@ -306,12 +302,12 @@ export function BlogList() {
               {/* Droite : titre + description + lien */}
               <div className="flex-1 min-w-0">
                 <h2
-                  className="text-lg sm:text-xl font-bold leading-snug mb-3 transition-opacity duration-150 group-hover:opacity-60"
+                  className="text-xl md:text-2xl font-bold leading-snug mb-3 transition-opacity duration-150 group-hover:opacity-60"
                   style={{ color: 'hsl(var(--text-primary))' }}
                 >
                   {post.title[lang]}
                 </h2>
-                <p className="text-sm leading-relaxed mb-5 max-w-xl opacity-50">
+                <p className="text-base leading-relaxed mb-5 max-w-xl opacity-50">
                   {post.description[lang]}
                 </p>
                 <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest opacity-40 transition-all duration-150 group-hover:opacity-100">
