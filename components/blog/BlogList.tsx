@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useLang } from '@/components/app-provider'
@@ -80,6 +80,18 @@ export function BlogList() {
   const [searchOpen, setSearchOpen] = useState(false)
   const searchInputRef = useRef<HTMLInputElement>(null)
 
+  // Auto-collapse the search field as soon as the visitor scrolls,
+  // to avoid the input overlapping the sticky navbar.
+  useEffect(() => {
+    if (!searchOpen) return
+    const handleScroll = () => {
+      setSearchOpen(false)
+      setSearch('')
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [searchOpen])
+
   function handleFilter(key: string) {
     const params = new URLSearchParams(searchParams.toString())
     if (key === 'all') {
@@ -114,15 +126,15 @@ export function BlogList() {
     })
 
   return (
-    <section className="px-6 pb-24 md:px-12 lg:px-24">
-      <div className="mx-auto max-w-4xl">
+    <section className="px-4 pb-24 md:px-8 lg:px-12 xl:px-16">
+      <div className="mx-auto max-w-7xl">
 
         {/* ── À LA UNE — visible uniquement sur "Tous", hors recherche ── */}
         {activeKey === 'all' && !isSearching && <FeaturedPosts posts={featuredPosts} />}
 
         {/* ── FILTRES — pill sticky liquid glass + loupe ancrée hors du pill ── */}
         <div className="sticky top-20 z-40 mb-16 relative">
-          <div className="overflow-x-auto -mx-6 px-6 md:mx-0 md:px-0 md:flex md:justify-center scrollbar-hide">
+          <div className="overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0 md:flex md:justify-center scrollbar-hide">
             <div
               className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 flex-shrink-0"
               style={{
