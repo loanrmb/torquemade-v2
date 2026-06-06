@@ -136,15 +136,13 @@ export default function HomePage() {
           <img
             src="/images/preview-dashboard-stock-clair.png"
             alt="Aperçu logiciel de gestion de stock"
-            className="block dark:hidden w-full h-full object-contain"
-            style={{ background: '#ffffff' }}
+            className="block dark:hidden w-full h-full object-cover object-top"
             draggable={false}
           />
           <img
             src="/images/preview-dashboard-stock-sombre.png"
             alt="Aperçu logiciel de gestion de stock"
-            className="hidden dark:block w-full h-full object-contain"
-            style={{ background: '#0f0f0f' }}
+            className="hidden dark:block w-full h-full object-cover object-top"
             draggable={false}
           />
         </ContainerScroll>
