@@ -32,6 +32,11 @@ export function BlogList() {
     'Web & Développement',
     'projets',
   ]
+
+  // Display labels for filter pills (category value → label shown to user)
+  const CATEGORY_LABEL: Record<string, string> = {
+    'ERP & Gestion de stock': 'Connexion Stock > Site',
+  }
   const allCategories = Array.from(new Set(posts.map((p) => p.category)))
   const categories = [
     ALL,
@@ -99,7 +104,7 @@ export function BlogList() {
                       opacity: isActive ? 1 : 0.6,
                     }}
                   >
-                    {cat}
+                    {CATEGORY_LABEL[cat] ?? cat}
                     <span style={{ opacity: 0.5 }}>{count}</span>
                   </button>
                 )
@@ -118,7 +123,11 @@ export function BlogList() {
           {filtered.map((post, i) => (
             <Link
               key={post.slug}
-              href={`/blog/${post.slug}`}
+              href={
+                activeKey !== 'all'
+                  ? `/blog/${post.slug}?from=${encodeURIComponent(activeKey)}`
+                  : `/blog/${post.slug}`
+              }
               className="group flex gap-4 sm:gap-8 py-8 sm:py-10 px-4 -mx-4 transition-colors duration-150 rounded-sm"
               style={{ borderBottom: '1px solid hsl(var(--border-subtle))' }}
             >

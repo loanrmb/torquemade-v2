@@ -4,12 +4,15 @@ import Link from 'next/link'
 import { useLang } from '@/components/app-provider'
 import type { Post } from '@/lib/blog'
 
-export function PostCard({ post }: { post: Post }) {
+export function PostCard({ post, activeFilter }: { post: Post; activeFilter?: string }) {
   const lang = useLang()
+  const href = activeFilter
+    ? `/blog/${post.slug}?from=${encodeURIComponent(activeFilter)}`
+    : `/blog/${post.slug}`
 
   return (
     <Link
-      href={`/blog/${post.slug}`}
+      href={href}
       className="group block bg-white p-8 transition-colors duration-200 hover:bg-black hover:text-white"
     >
       <div className="mb-8 flex items-center justify-between">
