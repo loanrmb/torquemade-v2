@@ -191,6 +191,12 @@ export const strings = {
       sub: 'Remplissez le formulaire, on revient vers vous dans les 24h. Pas de pitch, pas de pression.',
       button: 'Démarrer une conversation',
     },
+    globeCta: {
+      eyebrow: 'Présence mondiale',
+      title: 'Parlons de votre projet.',
+      subtitle: 'Nous travaillons partout dans le monde — du brief au lancement, en remote ou sur site.',
+      cta: 'Démarrer une conversation',
+    },
     work: {
       eyebrow: 'Projets',
       headline: 'Projets à la une.',
@@ -580,6 +586,12 @@ export const strings = {
       title: 'Let\'s build something.',
       sub: 'Fill in the form, I\'ll get back to you within 24h. No pitch, no pressure.',
       button: 'Start a conversation',
+    },
+    globeCta: {
+      eyebrow: 'Working worldwide',
+      title: "Let's talk about your project.",
+      subtitle: 'We work worldwide — from brief to launch, remote or on-site.',
+      cta: 'Start a conversation',
     },
     work: {
       eyebrow: 'Work',
