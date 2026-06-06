@@ -20,6 +20,32 @@ const LABELS = {
   },
 }
 
+// Display labels for filter pills (raw category key → bilingual label).
+// Keys MUST match the exact category string used in lib/blog.ts — matching
+// logic still relies on the raw key, only the displayed text is translated.
+const CATEGORY_LABELS: Record<string, { fr: string; en: string }> = {
+  'ERP & Gestion de stock': {
+    fr: 'Connexion Stock > Site',
+    en: 'Stock > Site Connection',
+  },
+  'SEO & Contenu': {
+    fr: 'SEO & Contenu',
+    en: 'SEO & Content',
+  },
+  'Web & Développement': {
+    fr: 'Web & Développement',
+    en: 'Web & Development',
+  },
+  crm: {
+    fr: 'crm',
+    en: 'crm',
+  },
+  projets: {
+    fr: 'projets',
+    en: 'projects',
+  },
+}
+
 export function BlogList() {
   const lang = useLang()
   const t = LABELS[lang]
@@ -33,10 +59,6 @@ export function BlogList() {
     'projets',
   ]
 
-  // Display labels for filter pills (category value → label shown to user)
-  const CATEGORY_LABEL: Record<string, string> = {
-    'ERP & Gestion de stock': 'Connexion Stock > Site',
-  }
   const allCategories = Array.from(new Set(posts.map((p) => p.category)))
   const categories = [
     ALL,
@@ -104,7 +126,7 @@ export function BlogList() {
                       opacity: isActive ? 1 : 0.6,
                     }}
                   >
-                    {CATEGORY_LABEL[cat] ?? cat}
+                    {CATEGORY_LABELS[cat]?.[lang] ?? cat}
                     <span style={{ opacity: 0.5 }}>{count}</span>
                   </button>
                 )
