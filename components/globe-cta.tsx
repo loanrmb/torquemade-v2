@@ -1,201 +1,230 @@
 'use client'
 
-/**
- * GlobeCTA — section finale "Parlons de votre projet" avec un globe
- * interactif (cobe). Le globe s'auto-roule, peut être saisi à la souris,
- * et bascule entre palette claire/sombre selon le thème actif.
- *
- * Strings : lib/strings.ts → t.globeCta
- * Thème  : useApp() (context React, source de vérité du projet)
- */
-
-import { useEffect, useRef, useState } from 'react'
-import createGlobe from 'cobe'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import createGlobe, { type COBEOptions } from 'cobe'
+import { useLang } from '@/components/app-provider'
 import Link from 'next/link'
-import { useApp } from '@/components/app-provider'
-import { strings } from '@/lib/strings'
 
-function GlobeCanvas({ dark }: { dark: boolean }) {
+// Config dark (fond sombre, continents visibles via mapBrightness élevée)
+// `onRender` n'est pas déclaré dans COBEOptions de cobe@2 → cast bypass.
+const GLOBE_CONFIG_DARK = {
+  width: 800,
+  height: 800,
+  onRender: () => {},
+  devicePixelRatio: 2,
+  phi: 0.6,
+  theta: 0.25,
+  dark: 1,
+  diffuse: 1.2,
+  mapSamples: 20000,
+  mapBrightness: 6,
+  baseColor: [0.18, 0.18, 0.18],
+  markerColor: [1, 1, 1],
+  glowColor: [0.3, 0.3, 0.3],
+  markers: [
+    { location: [44.8378, -0.5792], size: 0.08 },
+    { location: [46.2044, 6.1432], size: 0.09 },
+    { location: [46.5197, 6.6323], size: 0.07 },
+    { location: [48.8566, 2.3522], size: 0.08 },
+    { location: [50.8503, 4.3517], size: 0.07 },
+    { location: [49.6116, 6.1319], size: 0.06 },
+    { location: [51.5074, -0.1278], size: 0.07 },
+    { location: [40.7128, -74.006], size: 0.07 },
+    { location: [1.3521, 103.8198], size: 0.05 },
+    { location: [-33.8688, 151.2093], size: 0.05 },
+  ],
+} as COBEOptions
+
+// Config clair (fond blanc, continents sombres)
+const GLOBE_CONFIG_LIGHT = {
+  ...GLOBE_CONFIG_DARK,
+  dark: 0,
+  diffuse: 0.4,
+  mapBrightness: 1.2,
+  baseColor: [1, 1, 1],
+  markerColor: [0.08, 0.08, 0.08],
+  glowColor: [0.9, 0.9, 0.9],
+} as COBEOptions
+
+function Globe({
+  className,
+  dark,
+}: {
+  className?: string
+  dark: boolean
+}) {
+  let phi = 0
+  let width = 0
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const globeRef = useRef<ReturnType<typeof createGlobe> | null>(null)
-  const phiRef = useRef(0)
   const pointerInteracting = useRef<number | null>(null)
-  const pointerMovement = useRef(0)
+  const pointerInteractionMovement = useRef(0)
   const [r, setR] = useState(0)
 
-  useEffect(() => {
-    let currentGlobe: ReturnType<typeof createGlobe> | null = null
+  const config = dark ? GLOBE_CONFIG_DARK : GLOBE_CONFIG_LIGHT
 
-    const init = () => {
-      if (!canvasRef.current) return
-
-      const canvas = canvasRef.current
-      // Read the real rendered size — offsetWidth can be 0 on first
-      // mount before the browser has laid out the canvas.
-      const rect = canvas.getBoundingClientRect()
-      const size = Math.max(rect.width, rect.height, 300)
-
-      canvas.width = size * 2
-      canvas.height = size * 2
-
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      currentGlobe = createGlobe(canvas, {
-        width: size * 2,
-        height: size * 2,
-        devicePixelRatio: 2,
-        phi: 0.6,
-        theta: 0.25,
-        dark: dark ? 1 : 0,
-        diffuse: 0.4,
-        mapSamples: 20000,
-        mapBrightness: dark ? 1.4 : 1.8,
-        baseColor: dark ? [0.12, 0.12, 0.12] : [0.95, 0.95, 0.95],
-        markerColor: dark ? [1, 1, 1] : [0.08, 0.08, 0.08],
-        glowColor: dark ? [0.08, 0.08, 0.08] : [0.88, 0.88, 0.88],
-        markers: [
-          { location: [44.8378, -0.5792], size: 0.08 },   // Bordeaux
-          { location: [46.2044, 6.1432], size: 0.09 },    // Genève
-          { location: [46.5197, 6.6323], size: 0.07 },    // Lausanne
-          { location: [48.8566, 2.3522], size: 0.08 },    // Paris
-          { location: [50.8503, 4.3517], size: 0.07 },    // Bruxelles
-          { location: [49.6116, 6.1319], size: 0.06 },    // Luxembourg
-          { location: [51.5074, -0.1278], size: 0.07 },   // Londres
-          { location: [40.7128, -74.006], size: 0.07 },   // New York
-          { location: [1.3521, 103.8198], size: 0.05 },   // Singapour
-          { location: [-33.8688, 151.2093], size: 0.05 }, // Sydney
-        ],
-        onRender: (state: Record<string, number>) => {
-          if (!pointerInteracting.current) phiRef.current += 0.003
-          state.phi = phiRef.current + r
-          state.width = size * 2
-          state.height = size * 2
-        },
-      } as any)
-
-      globeRef.current = currentGlobe
-
-      // Fade in once the WebGL context is up
-      requestAnimationFrame(() => {
-        if (canvas) canvas.style.opacity = '1'
-      })
+  const updatePointerInteraction = (value: number | null) => {
+    pointerInteracting.current = value
+    if (canvasRef.current) {
+      canvasRef.current.style.cursor = value !== null ? 'grabbing' : 'grab'
     }
+  }
 
-    // Wait one tick so the DOM is laid out before reading dimensions
-    let timer = setTimeout(init, 100)
+  const updateMovement = (clientX: number) => {
+    if (pointerInteracting.current !== null) {
+      const delta = clientX - pointerInteracting.current
+      pointerInteractionMovement.current = delta
+      setR(delta / 200)
+    }
+  }
 
-    // Re-init cleanly if the parent layout changes (responsive resize)
-    const observer = new ResizeObserver(() => {
-      if (currentGlobe) {
-        currentGlobe.destroy()
-        currentGlobe = null
-      }
-      clearTimeout(timer)
-      timer = setTimeout(init, 50)
+  const onRender = useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (state: Record<string, any>) => {
+      if (!pointerInteracting.current) phi += 0.003
+      state.phi = phi + r
+      state.width = width * 2
+      state.height = width * 2
+    },
+    [r],
+  )
+
+  const onResize = () => {
+    if (canvasRef.current) {
+      width = canvasRef.current.offsetWidth
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', onResize)
+    onResize()
+
+    const globe = createGlobe(canvasRef.current!, {
+      ...config,
+      width: width * 2,
+      height: width * 2,
+      onRender,
+    } as COBEOptions)
+
+    setTimeout(() => {
+      if (canvasRef.current) canvasRef.current.style.opacity = '1'
     })
 
-    if (canvasRef.current?.parentElement) {
-      observer.observe(canvasRef.current.parentElement)
-    }
-
     return () => {
-      clearTimeout(timer)
-      observer.disconnect()
-      if (currentGlobe) currentGlobe.destroy()
+      window.removeEventListener('resize', onResize)
+      globe.destroy()
     }
-  }, [dark, r])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dark])
 
   return (
-    <div className="relative w-full aspect-square max-w-[480px] mx-auto">
+    <div
+      className={`absolute inset-0 mx-auto aspect-square w-full max-w-[600px] ${className ?? ''}`}
+    >
       <canvas
         ref={canvasRef}
-        onPointerDown={(e) => {
-          pointerInteracting.current = e.clientX - pointerMovement.current
-          if (canvasRef.current) canvasRef.current.style.cursor = 'grabbing'
-        }}
-        onPointerUp={() => {
-          pointerInteracting.current = null
-          if (canvasRef.current) canvasRef.current.style.cursor = 'grab'
-        }}
-        onPointerOut={() => {
-          pointerInteracting.current = null
-        }}
-        onMouseMove={(e) => {
-          if (pointerInteracting.current !== null) {
-            const delta = e.clientX - pointerInteracting.current
-            pointerMovement.current = delta
-            setR(delta / 200)
-          }
-        }}
-        onTouchMove={(e) => {
-          if (e.touches[0] && pointerInteracting.current !== null) {
-            const delta = e.touches[0].clientX - pointerInteracting.current
-            pointerMovement.current = delta
-            setR(delta / 200)
-          }
-        }}
-        className="w-full h-full opacity-0 transition-opacity duration-700 cursor-grab"
+        className="size-full opacity-0 transition-opacity duration-500"
         style={{ contain: 'layout paint size' }}
+        onPointerDown={(e) =>
+          updatePointerInteraction(
+            e.clientX - pointerInteractionMovement.current,
+          )
+        }
+        onPointerUp={() => updatePointerInteraction(null)}
+        onPointerOut={() => updatePointerInteraction(null)}
+        onMouseMove={(e) => updateMovement(e.clientX)}
+        onTouchMove={(e) =>
+          e.touches[0] && updateMovement(e.touches[0].clientX)
+        }
       />
     </div>
   )
 }
 
+const STRINGS = {
+  fr: {
+    eyebrow: 'Présence mondiale',
+    title: 'Parlons de votre projet.',
+    subtitle:
+      'Nous travaillons partout dans le monde — du brief au lancement, en remote ou sur site.',
+    cta: 'Démarrer une conversation',
+  },
+  en: {
+    eyebrow: 'Working worldwide',
+    title: "Let's talk about your project.",
+    subtitle: 'We work worldwide — from brief to launch, remote or on-site.',
+    cta: 'Start a conversation',
+  },
+}
+
 export function GlobeCTA() {
-  const { lang, theme } = useApp()
-  const t = strings[lang].globeCta
-  const dark = theme === 'dark'
+  const lang = useLang()
+  const t = STRINGS[lang]
+  const [dark, setDark] = useState(false)
+
+  useEffect(() => {
+    const update = () =>
+      setDark(document.documentElement.classList.contains('dark'))
+    update()
+    const observer = new MutationObserver(update)
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    })
+    return () => observer.disconnect()
+  }, [])
 
   return (
-    <section className="px-5 pb-20 min-720:pb-24">
-      <div className="mx-auto max-w-5xl">
-        <div
-          className="relative w-full overflow-hidden rounded-3xl border px-8 py-16 md:px-16 md:py-20"
-          style={{
-            background: 'hsl(var(--bg-secondary))',
-            borderColor: 'hsl(var(--border-subtle))',
-          }}
-        >
-          <div className="flex flex-col-reverse items-center gap-10 md:flex-row md:gap-16">
+    <section
+      className="relative w-full mx-auto overflow-hidden rounded-3xl border my-16 md:my-24 px-8 py-16 md:px-16 md:py-20"
+      style={{
+        background: dark
+          ? 'hsl(var(--bg-secondary, 0 0% 8%))'
+          : 'hsl(var(--bg-secondary, 0 0% 96%))',
+        borderColor: 'hsl(var(--border-subtle))',
+      }}
+    >
+      <div className="flex flex-col-reverse items-center justify-between gap-10 md:flex-row">
 
-            {/* Texte + CTA */}
-            <div className="z-10 flex-1 text-left">
-              <p
-                className="text-xs font-semibold uppercase tracking-widest mb-4"
-                style={{ color: 'hsl(var(--text-secondary))' }}
-              >
-                {t.eyebrow}
-              </p>
-              <h2
-                className="text-3xl md:text-5xl font-bold leading-tight mb-4"
-                style={{ color: 'hsl(var(--text-primary))' }}
-              >
-                {t.title}
-              </h2>
-              <p
-                className="text-base md:text-lg mb-8 max-w-md"
-                style={{ color: 'hsl(var(--text-secondary))' }}
-              >
-                {t.subtitle}
-              </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-opacity duration-150 hover:opacity-80"
-                style={{
-                  background: 'hsl(var(--text-primary))',
-                  color: 'hsl(var(--bg-primary))',
-                }}
-              >
-                {t.cta} &rarr;
-              </Link>
-            </div>
-
-            {/* Globe */}
-            <div className="flex-1 flex items-center justify-center w-full">
-              <GlobeCanvas dark={dark} />
-            </div>
-
-          </div>
+        {/* Texte */}
+        <div className="z-10 flex-1 max-w-xl text-left">
+          <p
+            className="text-xs font-semibold uppercase tracking-widest mb-4"
+            style={{ color: 'hsl(var(--text-secondary))' }}
+          >
+            {t.eyebrow}
+          </p>
+          <h2
+            className="text-3xl md:text-5xl font-bold leading-tight mb-4"
+            style={{ color: 'hsl(var(--text-primary))' }}
+          >
+            {t.title}
+          </h2>
+          <p
+            className="text-base md:text-lg mb-8"
+            style={{ color: 'hsl(var(--text-secondary))' }}
+          >
+            {t.subtitle}
+          </p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-opacity hover:opacity-80"
+            style={{
+              background: 'hsl(var(--text-primary))',
+              color: 'hsl(var(--bg-primary))',
+            }}
+          >
+            {t.cta} &#8594;
+          </Link>
         </div>
+
+        {/* Globe — overflow contrôlé par la section */}
+        <div className="relative h-[260px] w-full max-w-xl md:h-[340px]">
+          <Globe
+            dark={dark}
+            className="absolute -bottom-16 -right-24 scale-125 md:scale-150"
+          />
+        </div>
+
       </div>
     </section>
   )
