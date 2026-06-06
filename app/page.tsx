@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { motion, type Variants } from 'framer-motion'
 import { NavPill } from '@/components/nav-pill'
 import { Footer } from '@/components/footer'
 import { TechMarquee } from '@/components/marquee'
@@ -10,6 +11,22 @@ import { featuredProjects } from '@/lib/projects'
 import { useScrollReveal } from '@/lib/use-scroll-reveal'
 import { ErpFeatureSection } from '@/components/erp-feature-section'
 import ServicesSection from '@/components/services-section'
+
+const workContainerVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+  },
+}
+
+const workCardVariants: Variants = {
+  hidden: { opacity: 0, y: 44 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
+  },
+}
 
 export default function HomePage() {
   const lang = useLang()
@@ -115,12 +132,16 @@ export default function HomePage() {
             <div className="flex flex-col min-720:flex-row min-720:items-end min-720:justify-between mb-10 gap-4">
               <div>
                 <p className="fade-up section-label">{t.workPreview.eyebrow}</p>
-                <h2
-                  className="fade-up fade-up-d1 text-title-2 font-semibold tracking-tight"
+                <motion.h2
+                  className="text-title-2 font-semibold tracking-tight"
                   style={{ color: 'hsl(var(--text-primary))' }}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, ease: 'easeOut' }}
                 >
                   {t.workPreview.title}
-                </h2>
+                </motion.h2>
               </div>
               <Link
                 href="/work"
@@ -131,11 +152,18 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 gap-4 min-720:grid-cols-2">
-              {featuredProjects.slice(0, 4).map((project, i) => (
-                <div
+            <motion.div
+              className="grid grid-cols-1 gap-4 min-720:grid-cols-2"
+              variants={workContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-80px' }}
+            >
+              {featuredProjects.slice(0, 4).map((project) => (
+                <motion.div
                   key={project.id}
-                  className={`fade-up fade-up-d${Math.min(i + 1, 5)} card overflow-hidden`}
+                  variants={workCardVariants}
+                  className="card overflow-hidden"
                 >
                   <div className="work-card-img">
                     <img
@@ -165,9 +193,9 @@ export default function HomePage() {
                       {project.location}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 

@@ -14,13 +14,32 @@
  * Mobile  (<768px):        vertical flex stack, simplified panels
  */
 
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import { useLang } from '@/components/app-provider'
 
 /* ============================================================
    Shared ease
    ============================================================ */
 const EASE_OUT: [number, number, number, number] = [0, 0, 0.2, 1]
+
+/* ============================================================
+   Scroll-reveal variants — title block + comparison table rows
+   ============================================================ */
+const revealContainer: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+  },
+}
+
+const revealItem: Variants = {
+  hidden: { opacity: 0, y: 44 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
+  },
+}
 
 /* ============================================================
    Bilingual content
@@ -527,7 +546,8 @@ function Row({
 }) {
   const isBad = variant === 'bad'
   return (
-    <div
+    <motion.div
+      variants={revealItem}
       className="flex items-start gap-3 min-720:gap-3.5 py-2.5 text-[13px] min-720:text-[14px] leading-[1.45] border-t first:border-t-0"
       style={{
         borderColor: 'rgba(255,255,255,0.06)',
@@ -552,7 +572,7 @@ function Row({
       >
         {meta}
       </span>
-    </div>
+    </motion.div>
   )
 }
 
@@ -660,26 +680,34 @@ export function ErpFeatureSection() {
             className="relative mt-8 md:mt-10 max-w-[640px] pr-0 md:pr-6"
             style={{ zIndex: 2 }}
           >
-            <h2
+            <motion.h2
               className="m-0 text-white font-[650] tracking-[-0.018em]"
               style={{
                 fontSize: 'clamp(22px, 5vw, 28px)',
                 lineHeight: 1.15,
                 textWrap: 'balance' as React.CSSProperties['textWrap'],
               }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55, ease: 'easeOut' }}
             >
               {t.title}
-            </h2>
-            <p
+            </motion.h2>
+            <motion.p
               className="m-0 mt-3 max-w-[560px]"
               style={{
                 fontSize: 'clamp(14px, 3.5vw, 15.5px)',
                 lineHeight: 1.55,
                 color: 'rgba(255,255,255,0.56)',
               }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15, duration: 0.6, ease: 'easeOut' }}
             >
               {t.description}
-            </p>
+            </motion.p>
           </div>
         </div>
 
@@ -695,7 +723,13 @@ export function ErpFeatureSection() {
               border: '1px solid rgba(255,255,255,0.10)',
             }}
           >
-            <div className="erp-compare-left p-5 min-720:p-9">
+            <motion.div
+              className="erp-compare-left p-5 min-720:p-9"
+              variants={revealContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+            >
               <div
                 className="flex items-center justify-between mb-5 min-720:mb-6"
                 style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: 16 }}
@@ -716,9 +750,15 @@ export function ErpFeatureSection() {
               {t.rowsBad.map(([label, meta]) => (
                 <Row key={label} label={label} meta={meta} variant="bad" />
               ))}
-            </div>
+            </motion.div>
 
-            <div className="p-5 min-720:p-9">
+            <motion.div
+              className="p-5 min-720:p-9"
+              variants={revealContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+            >
               <div
                 className="flex items-center justify-between mb-5 min-720:mb-6"
                 style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: 16 }}
@@ -739,7 +779,7 @@ export function ErpFeatureSection() {
               {t.rowsGood.map(([label, meta]) => (
                 <Row key={label} label={label} meta={meta} variant="good" />
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

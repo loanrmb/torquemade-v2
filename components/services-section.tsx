@@ -600,30 +600,48 @@ export default function ServicesSection() {
     >
       <div className="mx-auto w-full max-w-7xl px-6 py-24 md:px-8 md:py-32">
         {/* Heading */}
-        <div className="mb-16 flex flex-col justify-between gap-10 md:flex-row md:items-end">
+        <motion.div
+          className="mb-16 flex flex-col justify-between gap-10 md:flex-row md:items-end"
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+        >
           <div>
             {t.eyebrow && (
-              <p
+              <motion.p
                 className="mb-5 font-mono text-[11px] uppercase tracking-[0.16em]"
                 style={{ color: 'hsl(var(--text-tertiary))' }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0, duration: 0.6, ease: 'easeOut' }}
               >
                 {t.eyebrow}
-              </p>
+              </motion.p>
             )}
-            <h2
+            <motion.h2
               className="max-w-3xl text-pretty text-[clamp(2.25rem,5vw,3.25rem)] font-[650] leading-[1.05] tracking-tight"
               style={{ color: 'hsl(var(--text-primary))' }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15, duration: 0.6, ease: 'easeOut' }}
             >
               {t.title}
-            </h2>
+            </motion.h2>
           </div>
-          <p
+          <motion.p
             className="max-w-sm text-[15px] leading-relaxed"
             style={{ color: 'hsl(var(--text-secondary))' }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.28, duration: 0.6, ease: 'easeOut' }}
           >
             {t.intro}
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Tabs + stage */}
 
