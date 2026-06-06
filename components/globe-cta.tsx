@@ -9,90 +9,100 @@
  * Thème  : useApp() (context React, source de vérité du projet)
  */
 
-import { useCallback, useEffect, useRef, useState } from 'react'
-import createGlobe, { type COBEOptions } from 'cobe'
+import { useEffect, useRef, useState } from 'react'
+import createGlobe from 'cobe'
 import Link from 'next/link'
 import { useApp } from '@/components/app-provider'
 import { strings } from '@/lib/strings'
 
-const MARKERS: COBEOptions['markers'] = [
-  { location: [44.8378, -0.5792], size: 0.08 },   // Bordeaux
-  { location: [46.2044, 6.1432], size: 0.09 },    // Genève
-  { location: [46.5197, 6.6323], size: 0.07 },    // Lausanne
-  { location: [46.948, 7.4474], size: 0.06 },     // Berne
-  { location: [48.8566, 2.3522], size: 0.08 },    // Paris
-  { location: [50.8503, 4.3517], size: 0.07 },    // Bruxelles
-  { location: [49.6116, 6.1319], size: 0.06 },    // Luxembourg
-  { location: [51.5074, -0.1278], size: 0.07 },   // Londres
-  { location: [40.7128, -74.006], size: 0.07 },   // New York
-  { location: [1.3521, 103.8198], size: 0.05 },   // Singapour
-  { location: [-33.8688, 151.2093], size: 0.05 }, // Sydney
-]
-
 function GlobeCanvas({ dark }: { dark: boolean }) {
-  let phi = 0
-  let width = 0
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const globeRef = useRef<ReturnType<typeof createGlobe> | null>(null)
+  const phiRef = useRef(0)
   const pointerInteracting = useRef<number | null>(null)
   const pointerMovement = useRef(0)
   const [r, setR] = useState(0)
 
-  const onRender = useCallback(
-    (state: Record<string, number>) => {
-      if (!pointerInteracting.current) phi += 0.003
-      state.phi = phi + r
-      state.width = width * 2
-      state.height = width * 2
-    },
-    [r],
-  )
-
-  const onResize = () => {
-    if (canvasRef.current) width = canvasRef.current.offsetWidth
-  }
-
   useEffect(() => {
-    window.addEventListener('resize', onResize)
-    onResize()
+    let currentGlobe: ReturnType<typeof createGlobe> | null = null
 
-    const config: COBEOptions = {
-      width: 800,
-      height: 800,
-      devicePixelRatio: 2,
-      phi: 0.6,
-      theta: 0.25,
-      dark: dark ? 1 : 0,
-      diffuse: 0.4,
-      mapSamples: 20000,
-      mapBrightness: dark ? 1.4 : 1.8,
-      baseColor: dark ? [0.12, 0.12, 0.12] : [0.95, 0.95, 0.95],
-      markerColor: dark ? [1, 1, 1] : [0.05, 0.05, 0.05],
-      glowColor: dark ? [0.08, 0.08, 0.08] : [0.9, 0.9, 0.9],
-      markers: MARKERS,
+    const init = () => {
+      if (!canvasRef.current) return
+
+      const canvas = canvasRef.current
+      // Read the real rendered size — offsetWidth can be 0 on first
+      // mount before the browser has laid out the canvas.
+      const rect = canvas.getBoundingClientRect()
+      const size = Math.max(rect.width, rect.height, 300)
+
+      canvas.width = size * 2
+      canvas.height = size * 2
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      currentGlobe = createGlobe(canvas, {
+        width: size * 2,
+        height: size * 2,
+        devicePixelRatio: 2,
+        phi: 0.6,
+        theta: 0.25,
+        dark: dark ? 1 : 0,
+        diffuse: 0.4,
+        mapSamples: 20000,
+        mapBrightness: dark ? 1.4 : 1.8,
+        baseColor: dark ? [0.12, 0.12, 0.12] : [0.95, 0.95, 0.95],
+        markerColor: dark ? [1, 1, 1] : [0.08, 0.08, 0.08],
+        glowColor: dark ? [0.08, 0.08, 0.08] : [0.88, 0.88, 0.88],
+        markers: [
+          { location: [44.8378, -0.5792], size: 0.08 },   // Bordeaux
+          { location: [46.2044, 6.1432], size: 0.09 },    // Genève
+          { location: [46.5197, 6.6323], size: 0.07 },    // Lausanne
+          { location: [48.8566, 2.3522], size: 0.08 },    // Paris
+          { location: [50.8503, 4.3517], size: 0.07 },    // Bruxelles
+          { location: [49.6116, 6.1319], size: 0.06 },    // Luxembourg
+          { location: [51.5074, -0.1278], size: 0.07 },   // Londres
+          { location: [40.7128, -74.006], size: 0.07 },   // New York
+          { location: [1.3521, 103.8198], size: 0.05 },   // Singapour
+          { location: [-33.8688, 151.2093], size: 0.05 }, // Sydney
+        ],
+        onRender: (state: Record<string, number>) => {
+          if (!pointerInteracting.current) phiRef.current += 0.003
+          state.phi = phiRef.current + r
+          state.width = size * 2
+          state.height = size * 2
+        },
+      } as any)
+
+      globeRef.current = currentGlobe
+
+      // Fade in once the WebGL context is up
+      requestAnimationFrame(() => {
+        if (canvas) canvas.style.opacity = '1'
+      })
     }
 
-    // onRender is a runtime-supported option that isn't declared in
-    // cobe@2 typings → cast bypasses the excess-property check.
-    const globe = createGlobe(canvasRef.current!, {
-      ...config,
-      width: width * 2,
-      height: width * 2,
-      onRender,
-    } as COBEOptions)
+    // Wait one tick so the DOM is laid out before reading dimensions
+    let timer = setTimeout(init, 100)
 
-    const t = setTimeout(() => {
-      if (canvasRef.current) canvasRef.current.style.opacity = '1'
-    }, 100)
+    // Re-init cleanly if the parent layout changes (responsive resize)
+    const observer = new ResizeObserver(() => {
+      if (currentGlobe) {
+        currentGlobe.destroy()
+        currentGlobe = null
+      }
+      clearTimeout(timer)
+      timer = setTimeout(init, 50)
+    })
+
+    if (canvasRef.current?.parentElement) {
+      observer.observe(canvasRef.current.parentElement)
+    }
 
     return () => {
-      clearTimeout(t)
-      window.removeEventListener('resize', onResize)
-      globe.destroy()
+      clearTimeout(timer)
+      observer.disconnect()
+      if (currentGlobe) currentGlobe.destroy()
     }
-    // onRender depends on r — recreating the globe on every drag would
-    // be wasteful, so we intentionally omit it here.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dark])
+  }, [dark, r])
 
   return (
     <div className="relative w-full aspect-square max-w-[480px] mx-auto">
