@@ -120,8 +120,8 @@ export function BlogList() {
         {/* ── À LA UNE — visible uniquement sur "Tous", hors recherche ── */}
         {activeKey === 'all' && !isSearching && <FeaturedPosts posts={featuredPosts} />}
 
-        {/* ── FILTRES — pill sticky liquid glass ── */}
-        <div className="sticky top-20 z-40 mb-16">
+        {/* ── FILTRES — pill sticky liquid glass + loupe ancrée hors du pill ── */}
+        <div className="sticky top-20 z-40 mb-16 relative">
           <div className="overflow-x-auto -mx-6 px-6 md:mx-0 md:px-0 md:flex md:justify-center scrollbar-hide">
             <div
               className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 flex-shrink-0"
@@ -156,92 +156,95 @@ export function BlogList() {
                   </button>
                 )
               })}
-
-              {/* Séparateur vertical */}
-              <div
-                className="h-4 w-px mx-1 shrink-0"
-                style={{ background: 'hsl(var(--border-subtle))' }}
-              />
-
-              {/* Zone recherche */}
-              <div className="flex items-center relative">
-
-                {/* Bouton loupe */}
-                <button
-                  onClick={() => {
-                    setSearchOpen((prev) => {
-                      if (prev) setSearch('')
-                      setTimeout(() => {
-                        if (!prev) searchInputRef.current?.focus()
-                      }, 50)
-                      return !prev
-                    })
-                  }}
-                  aria-label={t.searchAria}
-                  className="p-1.5 rounded-full transition-colors"
-                  style={{ color: 'hsl(var(--text-secondary))' }}
-                >
-                  <svg
-                    width="15"
-                    height="15"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <circle cx="11" cy="11" r="8" />
-                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                  </svg>
-                </button>
-
-                {/* Input animé — s'ouvre vers la droite */}
-                <div
-                  style={{
-                    width: searchOpen ? '160px' : '0px',
-                    opacity: searchOpen ? 1 : 0,
-                    overflow: 'hidden',
-                    transition: 'width 250ms ease, opacity 200ms ease',
-                    display: 'flex',
-                    alignItems: 'center',
-                  }}
-                >
-                  <input
-                    ref={searchInputRef}
-                    type="text"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    placeholder={t.searchPlaceholder}
-                    className="w-full text-sm outline-none bg-transparent px-2"
-                    style={{ color: 'hsl(var(--text-primary))' }}
-                  />
-                </div>
-
-                {/* Bouton clear */}
-                {search && (
-                  <button
-                    onClick={() => setSearch('')}
-                    className="p-1 rounded-full shrink-0 transition-colors"
-                    style={{ color: 'hsl(var(--text-secondary))' }}
-                    aria-label={t.clearAria}
-                  >
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                    >
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
-                  </button>
-                )}
-              </div>
             </div>
+          </div>
+
+          {/* ── ZONE RECHERCHE — hors du pill, ancrée à droite au-dessus ── */}
+          <div
+            className="absolute right-0 flex items-center gap-1"
+            style={{ top: '-2rem' }}
+          >
+            {/* Bouton clear — visible si recherche active (order -2, le plus à gauche) */}
+            {search && (
+              <button
+                onClick={() => setSearch('')}
+                className="p-1 rounded-full shrink-0 transition-colors"
+                style={{
+                  color: 'hsl(var(--text-secondary))',
+                  order: -2,
+                }}
+                aria-label={t.clearAria}
+              >
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            )}
+
+            {/* Input animé — s'étend vers la gauche (order -1, au milieu) */}
+            <div
+              style={{
+                width: searchOpen ? '220px' : '0px',
+                opacity: searchOpen ? 1 : 0,
+                overflow: 'hidden',
+                transition: 'width 280ms ease, opacity 200ms ease',
+                display: 'flex',
+                alignItems: 'center',
+                order: -1,
+              }}
+            >
+              <input
+                ref={searchInputRef}
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder={t.searchPlaceholder}
+                className="w-full text-sm outline-none bg-transparent px-2 text-right"
+                style={{ color: 'hsl(var(--text-primary))' }}
+              />
+            </div>
+
+            {/* Bouton loupe (order par défaut 0, à droite) */}
+            <button
+              onClick={() => {
+                setSearchOpen((prev) => {
+                  if (prev) setSearch('')
+                  setTimeout(() => {
+                    if (!prev) searchInputRef.current?.focus()
+                  }, 50)
+                  return !prev
+                })
+              }}
+              aria-label={t.searchAria}
+              className="p-2 rounded-full transition-colors"
+              style={{
+                color: 'hsl(var(--text-secondary))',
+                background: searchOpen ? 'hsl(var(--border-subtle))' : 'transparent',
+              }}
+            >
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </button>
           </div>
         </div>
 
