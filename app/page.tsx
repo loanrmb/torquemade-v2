@@ -58,28 +58,6 @@ export default function HomePage() {
             >
               {t.hero.headline2}
             </p>
-
-            <div
-              className="fade-up fade-up-d3 mt-14 grid grid-cols-3 gap-8 pt-10 w-full"
-              style={{ borderTop: '1px solid hsl(var(--border-subtle))' }}
-            >
-              {t.stats.map((stat) => (
-                <div key={stat.label} className="flex flex-col gap-1 items-center">
-                  <span
-                    className="text-2xl font-bold tracking-tight"
-                    style={{ color: 'hsl(var(--text-primary))' }}
-                  >
-                    {stat.value}
-                  </span>
-                  <span
-                    className="text-caption text-center"
-                    style={{ color: 'hsl(var(--text-tertiary))' }}
-                  >
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 
@@ -136,13 +114,13 @@ export default function HomePage() {
           <img
             src="/images/preview-dashboard-stock-clair.png"
             alt="Aperçu logiciel de gestion de stock"
-            className="block dark:hidden w-full h-full object-cover object-top"
+            className="w-full h-auto block dark:hidden"
             draggable={false}
           />
           <img
             src="/images/preview-dashboard-stock-sombre.png"
             alt="Aperçu logiciel de gestion de stock"
-            className="hidden dark:block w-full h-full object-cover object-top"
+            className="w-full h-auto hidden dark:block"
             draggable={false}
           />
         </ContainerScroll>
