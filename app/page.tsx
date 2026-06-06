@@ -39,9 +39,11 @@ export default function HomePage() {
 
       <main className="relative z-10 overflow-clip rounded-b-32 bg-bg-primary">
 
-        {/* ── HERO ── */}
-        <section className="grid place-items-center px-5 pt-28 pb-16 min-720:pt-36 min-720:pb-20 min-1280:pt-44 min-1280:pb-24">
-          <div className="flex flex-col items-center text-center max-w-5xl">
+        {/* ── HERO — layout 2 colonnes ── */}
+        <section className="flex flex-col md:flex-row items-center gap-12 md:gap-8 px-5 pt-28 pb-16 min-720:pt-36 min-720:pb-20 min-1280:pt-44 min-1280:pb-24 max-w-7xl mx-auto">
+
+          {/* COLONNE GAUCHE — contenu texte */}
+          <div className="flex-1 min-w-0 flex flex-col items-start text-left">
 
             <h1
               className="fade-up text-3xl min-480:text-4xl min-720:text-5xl min-1280:text-6xl font-semibold tracking-tight leading-tight"
@@ -76,7 +78,7 @@ export default function HomePage() {
               style={{ borderTop: '1px solid hsl(var(--border-subtle))' }}
             >
               {t.stats.map((stat) => (
-                <div key={stat.label} className="flex flex-col gap-1 items-center">
+                <div key={stat.label} className="flex flex-col gap-1 items-start">
                   <span
                     className="text-2xl font-bold tracking-tight"
                     style={{ color: 'hsl(var(--text-primary))' }}
@@ -84,7 +86,7 @@ export default function HomePage() {
                     {stat.value}
                   </span>
                   <span
-                    className="text-caption text-center"
+                    className="text-caption"
                     style={{ color: 'hsl(var(--text-tertiary))' }}
                   >
                     {stat.label}
@@ -93,6 +95,42 @@ export default function HomePage() {
               ))}
             </div>
           </div>
+
+          {/* COLONNE DROITE — aperçu dashboard stock */}
+          <div className="relative flex-1 flex justify-end items-center w-full">
+            <div
+              className="relative w-full max-w-[580px]"
+              style={{
+                transform: 'perspective(1200px) rotateY(-4deg) rotateX(2deg)',
+                transformOrigin: 'center center',
+              }}
+            >
+              <img
+                src="/images/preview-dashboard-stock.png"
+                alt="Interface logiciel de gestion de stock"
+                className="w-full max-w-full rounded-xl"
+                style={{
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  boxShadow: '0 32px 80px rgba(0,0,0,0.5)',
+                }}
+                width={1200}
+                height={750}
+                loading="eager"
+                decoding="async"
+              />
+              {/* Halo subtil derrière l'image */}
+              <div
+                aria-hidden
+                className="absolute inset-0 rounded-xl -z-10"
+                style={{
+                  background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.04) 0%, transparent 70%)',
+                  transform: 'scale(1.05)',
+                  filter: 'blur(24px)',
+                }}
+              />
+            </div>
+          </div>
+
         </section>
 
         {/* ── TECH MARQUEE ── */}
