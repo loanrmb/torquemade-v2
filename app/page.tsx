@@ -4,13 +4,13 @@ import Link from 'next/link'
 import { motion, type Variants } from 'framer-motion'
 import { NavPill } from '@/components/nav-pill'
 import { Footer } from '@/components/footer'
-import { TechMarquee } from '@/components/marquee'
 import { useLang } from '@/components/app-provider'
 import { strings } from '@/lib/strings'
 import { featuredProjects } from '@/lib/projects'
 import { useScrollReveal } from '@/lib/use-scroll-reveal'
 import { ErpFeatureSection } from '@/components/erp-feature-section'
 import ServicesSection from '@/components/services-section'
+import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 
 const workContainerVariants: Variants = {
   hidden: {},
@@ -40,8 +40,8 @@ export default function HomePage() {
       <main className="relative z-10 overflow-clip rounded-b-32 bg-bg-primary">
 
         {/* ── HERO ── */}
-        <section className="relative grid place-items-center px-5 pt-28 pb-16 min-720:pt-36 min-720:pb-20 min-1280:pt-44 min-1280:pb-24 overflow-hidden">
-          <div className="relative z-10 flex flex-col items-center text-center max-w-5xl">
+        <section className="grid place-items-center px-5 pt-28 pb-16 min-720:pt-36 min-720:pb-20 min-1280:pt-44 min-1280:pb-24">
+          <div className="flex flex-col items-center text-center max-w-5xl">
 
             <h1
               className="fade-up text-3xl min-480:text-4xl min-720:text-5xl min-1280:text-6xl font-semibold tracking-tight leading-tight"
@@ -52,20 +52,8 @@ export default function HomePage() {
               <span className="min-720:whitespace-nowrap">{t.hero.headline1b}</span>
             </h1>
 
-            <div className="fade-up fade-up-d1 mt-6 text-lg min-480:text-xl min-720:text-2xl min-1280:text-3xl leading-snug">
-              <span
-                className="block"
-                style={{ color: 'hsl(var(--text-secondary))' }}
-              >
-                {t.hero.tagline}
-              </span>
-              <span className="block font-bold rainbow-text">
-                {t.hero.tagline2}
-              </span>
-            </div>
-
             <p
-              className="fade-up fade-up-d1 mt-3 text-base"
+              className="fade-up fade-up-d1 mt-6 text-base"
               style={{ color: 'hsl(var(--text-tertiary))' }}
             >
               {t.hero.headline2}
@@ -93,81 +81,41 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-
-          {/* Dashboard image — positioned absolute in right half */}
-          <div
-            className="absolute top-0 bottom-0 right-0 pointer-events-none"
-            style={{ width: '52%', zIndex: 0 }}
-            aria-hidden="true"
-          >
-            {/* Mode clair */}
-            <img
-              src="/images/preview-dashboard-stock-clair.png"
-              alt=""
-              aria-hidden="true"
-              className="block dark:hidden w-full h-full object-cover object-left"
-            />
-            {/* Mode sombre */}
-            <img
-              src="/images/preview-dashboard-stock-sombre.png"
-              alt=""
-              aria-hidden="true"
-              className="hidden dark:block w-full h-full object-cover object-left"
-            />
-
-            {/* Fondu gauche */}
-            <div
-              className="absolute inset-y-0 left-0 w-[50%] pointer-events-none"
-              style={{ zIndex: 1 }}
-            >
-              <div
-                className="absolute inset-0 dark:hidden"
-                style={{ background: 'linear-gradient(to right, #ffffff 0%, transparent 100%)' }}
-              />
-              <div
-                className="absolute inset-0 hidden dark:block"
-                style={{ background: 'linear-gradient(to right, #0f0f0f 0%, transparent 100%)' }}
-              />
-            </div>
-
-            {/* Fondu haut */}
-            <div
-              className="absolute inset-x-0 top-0 h-[30%] pointer-events-none"
-              style={{ zIndex: 1 }}
-            >
-              <div
-                className="absolute inset-0 dark:hidden"
-                style={{ background: 'linear-gradient(to bottom, #ffffff 0%, transparent 100%)' }}
-              />
-              <div
-                className="absolute inset-0 hidden dark:block"
-                style={{ background: 'linear-gradient(to bottom, #0f0f0f 0%, transparent 100%)' }}
-              />
-            </div>
-
-            {/* Fondu bas */}
-            <div
-              className="absolute inset-x-0 bottom-0 h-[30%] pointer-events-none"
-              style={{ zIndex: 1 }}
-            >
-              <div
-                className="absolute inset-0 dark:hidden"
-                style={{ background: 'linear-gradient(to top, #ffffff 0%, transparent 100%)' }}
-              />
-              <div
-                className="absolute inset-0 hidden dark:block"
-                style={{ background: 'linear-gradient(to top, #0f0f0f 0%, transparent 100%)' }}
-              />
-            </div>
-          </div>
         </section>
 
-        {/* ── TECH MARQUEE ── */}
-        <div
-          style={{ borderTop: '1px solid hsl(var(--border-subtle))', borderBottom: '1px solid hsl(var(--border-subtle))' }}
+        {/* ── CONTAINER SCROLL — dashboard 3D ── */}
+        <ContainerScroll
+          titleComponent={
+            <div className="space-y-2">
+              <p
+                className="text-lg md:text-xl"
+                style={{ color: 'hsl(var(--text-secondary))' }}
+              >
+                {t.hero.tagline}
+              </p>
+              <p
+                className="text-2xl md:text-4xl font-bold"
+                style={{ color: 'hsl(var(--text-primary))' }}
+              >
+                {t.hero.tagline2}
+              </p>
+            </div>
+          }
         >
-          <TechMarquee />
-        </div>
+          {/* Image dashboard — theme-aware, zéro JS */}
+          <img
+            src="/images/preview-dashboard-stock-clair.png"
+            alt="Aperçu logiciel de gestion de stock"
+            className="block dark:hidden w-full h-full object-cover object-top"
+            draggable={false}
+          />
+          <img
+            src="/images/preview-dashboard-stock-sombre.png"
+            alt="Aperçu logiciel de gestion de stock"
+            className="hidden dark:block w-full h-full object-cover object-top"
+            draggable={false}
+          />
+        </ContainerScroll>
 
         {/* ── SERVICES ── */}
         <ServicesSection />
