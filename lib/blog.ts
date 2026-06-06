@@ -5,11 +5,13 @@ export type Post = {
   date: { fr: string; en: string }
   category: string
   readingTime: number
+  featured?: boolean
 }
 
 export const posts: Post[] = [
   {
     slug: 'shopify-vs-nextjs-2025',
+    featured: true,
     title: {
       fr: 'Shopify vs Next.js : lequel choisir pour votre commerce en 2025 ?',
       en: 'Shopify vs Next.js: Which to Choose for Your Online Store in 2025?',
@@ -316,6 +318,7 @@ export const posts: Post[] = [
   },
   {
     slug: 'crm-sur-mesure-vs-generique',
+    featured: true,
     title: { fr: 'CRM sur mesure vs logiciel générique : ce que ça change en pratique', en: 'Custom CRM vs Generic Software: What It Changes in Practice' },
     description: { fr: 'Salesforce, HubSpot, Pipedrive couvrent 80 % des besoins. Le sur mesure couvre les 20 % qui font la différence pour votre métier.', en: 'Salesforce, HubSpot, Pipedrive cover 80% of needs. Custom covers the 20% that makes the difference for your trade.' },
     date: { fr: '14 juillet 2025', en: 'July 14, 2025' },
@@ -556,6 +559,7 @@ export const posts: Post[] = [
   },
   {
     slug: 'connecter-stock-magasin-site-internet',
+    featured: true,
     title: {
       fr: 'Comment connecter mon stock magasin à mon site internet ?',
       en: 'How do I connect my store inventory to my website?',

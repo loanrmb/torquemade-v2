@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useLang } from '@/components/app-provider'
 import { posts } from '@/lib/blog'
+import { FeaturedPosts } from '@/components/blog/FeaturedPosts'
 
 const LABELS = {
   fr: {
@@ -53,12 +54,19 @@ export function BlogList() {
     listRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
+  const featuredPosts = posts.filter((p) => p.featured)
+
   const filtered =
-    activeKey === 'all' ? posts : posts.filter((p) => p.category === activeKey)
+    activeKey === 'all'
+      ? posts.filter((p) => !p.featured)
+      : posts.filter((p) => p.category === activeKey)
 
   return (
     <section className="px-6 pb-24 md:px-12 lg:px-24">
       <div className="mx-auto max-w-4xl">
+
+        {/* ── À LA UNE — visible uniquement sur "Tous" ── */}
+        {activeKey === 'all' && <FeaturedPosts posts={featuredPosts} />}
 
         {/* ── FILTRES — pill sticky liquid glass ── */}
         <div className="sticky top-20 z-40 mb-16">
