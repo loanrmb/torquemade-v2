@@ -156,7 +156,7 @@ export function BlogList() {
                   <button
                     key={key}
                     onClick={() => handleFilter(key)}
-                    className="flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest transition-all duration-150 whitespace-nowrap"
+                    className="flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 whitespace-nowrap"
                     style={{
                       background: isActive ? 'hsl(var(--bg-inverse))' : 'transparent',
                       color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-primary))',

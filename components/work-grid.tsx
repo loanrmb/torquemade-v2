@@ -51,7 +51,7 @@ export function WorkGrid() {
             <button
               key={f.key}
               onClick={() => handleFilter(f.key)}
-              className="rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-150 whitespace-nowrap"
+              className="rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-150 whitespace-nowrap"
               style={{
                 background: activeFilter === f.key ? 'hsl(var(--bg-inverse))' : 'transparent',
                 color: activeFilter === f.key ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-tertiary))',

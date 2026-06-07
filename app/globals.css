@@ -25,8 +25,10 @@
   --bg-dark:       0 0% 16%;
   --bg-dark-card:  0 0% 11%;
 
-  --ease-out: cubic-bezier(0, 0, 0.2, 1);
-  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  /* Strong ease curves (Emil Kowalski / animations.dev) */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 /* ============================================================
@@ -142,9 +144,12 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
   line-height: 1;
   white-space: nowrap;
-  transition: opacity 150ms var(--ease-out), background 150ms var(--ease-out);
+  transition: opacity 150ms var(--ease-out), background 150ms var(--ease-out), transform 100ms var(--ease-out);
 }
-.btn-primary:hover { opacity: 0.82; }
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover { opacity: 0.82; }
+}
+.btn-primary:active { transform: scale(0.97); }
 
 .btn-secondary {
   display: inline-flex;
@@ -160,9 +165,12 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
   line-height: 1;
   white-space: nowrap;
-  transition: background 150ms var(--ease-out);
+  transition: background 150ms var(--ease-out), transform 100ms var(--ease-out);
 }
-.btn-secondary:hover { background: hsl(var(--bg-secondary)); }
+@media (hover: hover) and (pointer: fine) {
+  .btn-secondary:hover { background: hsl(var(--bg-secondary)); }
+}
+.btn-secondary:active { transform: scale(0.97); }
 
 .btn-outline {
   display: inline-flex;
@@ -178,12 +186,15 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
   line-height: 1;
   white-space: nowrap;
-  transition: border-color 150ms var(--ease-out), background 150ms var(--ease-out);
+  transition: border-color 150ms var(--ease-out), background 150ms var(--ease-out), transform 100ms var(--ease-out);
 }
-.btn-outline:hover {
-  border-color: hsl(var(--border-hover));
-  background: hsl(var(--bg-secondary));
+@media (hover: hover) and (pointer: fine) {
+  .btn-outline:hover {
+    border-color: hsl(var(--border-hover));
+    background: hsl(var(--bg-secondary));
+  }
 }
+.btn-outline:active { transform: scale(0.97); }
 
 /* ============================================================
    PERSPECTIVE GRID
@@ -225,7 +236,9 @@ html.dark .perspective-grid {
   width: max-content;
   animation: marquee-scroll 40s linear infinite;
 }
-.marquee-track:hover { animation-play-state: paused; }
+@media (hover: hover) and (pointer: fine) {
+  .marquee-track:hover { animation-play-state: paused; }
+}
 
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
@@ -241,9 +254,11 @@ html.dark .perspective-grid {
   border-radius: 16px;
   transition: border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
 }
-.card:hover {
-  border-color: hsl(var(--border-hover));
-  box-shadow: 0 2px 4px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.08);
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    border-color: hsl(var(--border-hover));
+    box-shadow: 0 2px 4px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.08);
+  }
 }
 
 .work-card-img {
@@ -256,9 +271,11 @@ html.dark .perspective-grid {
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: top;
-  transition: transform 600ms var(--ease-out);
+  transition: transform 350ms var(--ease-out);
 }
-.work-card-img:hover img { transform: scale(1.03); }
+@media (hover: hover) and (pointer: fine) {
+  .work-card-img:hover img { transform: scale(1.03); }
+}
 
 /* ============================================================
    WORK LISTING
@@ -296,9 +313,12 @@ html.dark .perspective-grid {
   font-family: inherit;
   font-size: 0.9375rem;
   color: hsl(var(--text-secondary));
-  transition: background 150ms var(--ease-out), color 150ms var(--ease-out);
+  transition: background 150ms var(--ease-out), color 150ms var(--ease-out), transform 100ms var(--ease-out);
 }
-.sidebar-link:hover { background: hsl(var(--bg-secondary)); color: hsl(var(--text-primary)); }
+@media (hover: hover) and (pointer: fine) {
+  .sidebar-link:hover { background: hsl(var(--bg-secondary)); color: hsl(var(--text-primary)); }
+}
+.sidebar-link:active { transform: scale(0.98); }
 .sidebar-link.active {
   background: hsl(var(--bg-inverse));
   color: hsl(var(--bg-primary));
@@ -311,9 +331,12 @@ html.dark .perspective-grid {
   overflow: hidden;
   transition: box-shadow 300ms var(--ease-out), border-color 300ms var(--ease-out);
 }
-.project-card:hover {
-  box-shadow: 0 4px 8px rgba(0,0,0,.05), 0 16px 40px rgba(0,0,0,.10);
-  border-color: hsl(var(--border-hover));
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,.05), 0 16px 40px rgba(0,0,0,.10);
+    border-color: hsl(var(--border-hover));
+  }
+  .project-card:hover .project-card-img img { transform: scale(1.02); }
 }
 .project-card-img {
   aspect-ratio: 16 / 9;
@@ -325,9 +348,8 @@ html.dark .perspective-grid {
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: top;
-  transition: transform 600ms var(--ease-out);
+  transition: transform 350ms var(--ease-out);
 }
-.project-card:hover .project-card-img img { transform: scale(1.02); }
 
 /* ============================================================
    TESTIMONIALS
@@ -502,8 +524,10 @@ html.dark .cta-card {
   transition: text-decoration-color 150ms;
 }
 
-.blog-related a:hover {
-  text-decoration-color: hsl(var(--text-primary));
+@media (hover: hover) and (pointer: fine) {
+  .blog-related a:hover {
+    text-decoration-color: hsl(var(--text-primary));
+  }
 }
 /* ============================================================
    CONTAINERS RESPONSIVES — s'adaptent à l'écran
@@ -620,67 +644,32 @@ html.dark .cta-card {
 }
 
 /* ============================================================
-   ERP FEATURE SECTION — Animated connectors + pulse badge
+   ERP FEATURE SECTION — SVG connector + pulse badge
    Hardware-accelerated: transform + opacity only (skill §6.A)
-   erp-flow-connector / erp-flow-line / erp-flow-dot
-   pulse-dot  →  green badge dot soft pulse
+   erp-svg-connector — wraps inline SVG animated flowing dots
+   pulse-dot  →  green badge dot soft glow pulse
    ============================================================ */
-
-/* translateX only — no left/top animation (skill §6.A compliance) */
-@keyframes flowDot {
-  0%   { transform: translateX(-100%); opacity: 0; }
-  15%  { opacity: 1; }
-  85%  { opacity: 1; }
-  100% { transform: translateX(500%); opacity: 0; }
-}
 
 @keyframes softPulse {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.4; transform: scale(0.8); }
+  50%       { opacity: 0.45; transform: scale(0.82); }
 }
 
-.erp-flow-connector {
-  position: relative;
+/* SVG connector — flex row with inline SVG + arrow */
+.erp-svg-connector {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 2px;
+  opacity: 0.9;
 }
 
-.erp-flow-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2) 30%,
-    rgba(255, 255, 255, 0.2) 70%,
-    transparent
-  );
-  position: relative;
-  overflow: hidden;
-}
-
-/* Dot — top: calc centers vertically without transform conflict */
-.erp-flow-dot {
-  position: absolute;
-  top: calc(50% - 2.5px);
-  left: 0;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  animation: flowDot 1.8s ease-in-out infinite;
-}
-.erp-flow-dot:nth-child(2) { animation-delay: 0.6s; }
-.erp-flow-dot:nth-child(3) { animation-delay: 1.2s; }
-
-/* Pulse — used on green badge dots */
+/* Pulse — used on green badge dots (GreenDot + active badges) */
 .pulse-dot {
-  animation: softPulse 2s ease-in-out infinite;
+  animation: softPulse 2.4s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .erp-flow-dot { animation: none; opacity: 0.5; }
+  .erp-svg-connector svg * { animation: none !important; }
   .pulse-dot    { animation: none; }
 }
 
@@ -720,6 +709,78 @@ html.dark .cta-card {
 @keyframes gradient-shift {
   0%   { background-position: 0% center; }
   100% { background-position: 200% center; }
+}
+
+/* ============================================================
+   CONNECTOR DOTS — Hardware-accelerated (transform only §6.A)
+   Used in services-section.tsx + erp-sync-illustration.tsx
+   Replaces Framer Motion left/top animated spans.
+   connectorH : fixed w-16 (64px) horizontal track
+   connectorV : fixed h-8  (32px) vertical track
+   connectorBarH : variable-width bar (uses large translateX + opacity fade)
+   ============================================================ */
+@keyframes connectorH {
+  0%   { transform: translateX(-4px); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateX(68px); opacity: 0; }
+}
+@keyframes connectorV {
+  0%   { transform: translateY(-4px); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateY(36px); opacity: 0; }
+}
+@keyframes connectorBarH {
+  0%   { transform: translateX(0); opacity: 0; }
+  10%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateX(800px); opacity: 0; }
+}
+
+.conn-dot-h {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 6px; height: 6px;
+  margin-top: -3px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 8px rgba(255,255,255,0.85);
+  animation: connectorH 2.4s linear infinite;
+  pointer-events: none;
+}
+.conn-dot-v {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 6px; height: 6px;
+  margin-left: -3px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 8px rgba(255,255,255,0.85);
+  animation: connectorV 2.4s linear infinite;
+  pointer-events: none;
+}
+.conn-dot-bar {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 6px; height: 6px;
+  margin-top: -3px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 8px rgba(255,255,255,0.85);
+  animation: connectorBarH 3s linear infinite;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .conn-dot-h, .conn-dot-v, .conn-dot-bar {
+    animation: none;
+    opacity: 0.4;
+    transform: translateX(32px);
+  }
 }
 
 /* ============================================================

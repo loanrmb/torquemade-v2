@@ -211,24 +211,14 @@ function Connector({ label }: { label: string }) {
       className="flex w-full shrink-0 flex-col items-center justify-center gap-1.5 py-3 md:w-auto md:px-3 md:py-0"
     >
       <span className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-white/55">{label}</span>
-      {/* horizontal — desktop */}
-      <div className="relative hidden h-px w-16 bg-white/15 md:block">
-        <motion.span
-          className="absolute top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.85)]"
-          initial={{ left: '0%', opacity: 0 }}
-          animate={{ left: '100%', opacity: [0, 1, 1, 0] }}
-          transition={{ duration: 2.4, repeat: Infinity, ease: 'linear' }}
-        />
+      {/* horizontal — desktop : CSS animation (transform only, §6.A) */}
+      <div className="relative hidden h-px w-16 bg-white/15 md:block overflow-hidden">
+        <span className="conn-dot-h" aria-hidden />
         <span className="absolute -right-2 top-1/2 -translate-y-1/2 text-[11px] leading-none text-white/70">→</span>
       </div>
-      {/* vertical — mobile */}
-      <div className="relative h-8 w-px bg-white/15 md:hidden">
-        <motion.span
-          className="absolute left-1/2 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.85)]"
-          initial={{ top: '0%', opacity: 0 }}
-          animate={{ top: '100%', opacity: [0, 1, 1, 0] }}
-          transition={{ duration: 2.4, repeat: Infinity, ease: 'linear' }}
-        />
+      {/* vertical — mobile : CSS animation (transform only, §6.A) */}
+      <div className="relative h-8 w-px bg-white/15 md:hidden overflow-hidden">
+        <span className="conn-dot-v" aria-hidden />
         <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 text-[11px] leading-none text-white/70">↓</span>
       </div>
     </div>
