@@ -25,12 +25,13 @@
  * Vercel best-practice: all sub-components defined at module level.
  */
 
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   motion,
   AnimatePresence,
   useInView,
   useMotionValue,
+  useSpring,
   useTransform,
   animate,
 } from 'framer-motion'
@@ -88,6 +89,37 @@ const INIT_FEED: FeedItem[] = [
   { id: 'f0', label: 'Clifton 9 · 45 · Bleu', type: 'Réception', delta: +24, time: 'il y a 1h' },
   { id: 'f1', label: 'Kayano 31 · 43 · Noir', type: 'Réception', delta: +18, time: 'il y a 2h' },
 ]
+
+/* ─── Cursor target positions (relative to outer wrapper) ──────── */
+// Sidebar is w-44 (176px); x=80 ≈ centre of sidebar nav items.
+// y positions target each nav item row within the 36rem (576px) card.
+const CURSOR_TARGETS = [
+  { x: 80, y: 180 }, // Dashboard
+  { x: 80, y: 220 }, // Produits
+  { x: 80, y: 310 }, // Mouvements
+] as const
+
+/* ─── Cursor SVG (standard arrow pointer, white fill, dark outline) */
+function CursorSvg() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="none"
+      aria-hidden
+      style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.6))' }}
+    >
+      <path
+        d="M 3,2 L 3,14 L 6.5,10.5 L 9,16.5 L 11,15.5 L 8.5,9.5 L 13.5,9.5 Z"
+        fill="white"
+        stroke="#111"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
 
 /* ─── Donut chart ──────────────────────────────────────────────── */
 const DONUT_DATA = [
@@ -813,21 +845,89 @@ export function CrmDashboardPreview() {
     setReduced(window.matchMedia('(prefers-reduced-motion: reduce)').matches)
   }, [])
 
-  /* ── Nav auto-cycle ────────────────────────────────────────── */
+  /* ── Viewport detection ────────────────────────────────────── */
   const containerRef = useRef<HTMLDivElement>(null)
   const isVisible    = useInView(containerRef, { once: false, amount: 0.3 })
 
+  /* Stable refs to avoid stale closures in setTimeout chains */
+  const isVisRef  = useRef(false)
+  const reducedRef = useRef(false)
+  useEffect(() => { isVisRef.current  = isVisible }, [isVisible])
+  useEffect(() => { reducedRef.current = reduced   }, [reduced])
+
+  /* ── Nav state ─────────────────────────────────────────────── */
   const [navIdx, setNavIdx] = useState(0)
+  const navIdxRef = useRef(0)
   const view = NAV_CYCLE[navIdx]
 
+  /* ── Cursor spring values (Emil §6.A: transform only) ──────── */
+  const cursorX = useSpring(CURSOR_TARGETS[0].x, { stiffness: 120, damping: 18 })
+  const cursorY = useSpring(CURSOR_TARGETS[0].y, { stiffness: 120, damping: 18 })
+
+  /* ── Click ripple state ────────────────────────────────────── */
+  const [clicking, setClicking]   = useState(false)
+  const clickTarget = useRef<{ x: number; y: number }>(CURSOR_TARGETS[0])
+
+  /* ── Coordinated nav + cursor loop ────────────────────────── */
+  /*
+   * Timeline per 4 500 ms cycle:
+   *   t =    0ms — cursor spring set toward next nav item
+   *   t = 2 200ms — click ripple fires
+   *   t = 2 700ms — nav state advances, ripple cleared
+   *   t = 4 500ms — next cycle begins
+   *
+   * Pauses when off-screen (isVisRef) or reduced-motion (reducedRef).
+   * Uses a `cancelled` flag so cleanup is safe with concurrent timers.
+   */
   useEffect(() => {
-    if (!isVisible || reduced) return
-    const id = setInterval(
-      () => setNavIdx(prev => (prev + 1) % NAV_CYCLE.length),
-      4500
-    )
-    return () => clearInterval(id)
-  }, [isVisible, reduced])
+    let cancelled = false
+    const tids: number[] = []
+
+    function runCycle() {
+      if (cancelled) return
+
+      /* Pause when off-screen or reduced-motion — recheck in 500ms */
+      if (!isVisRef.current || reducedRef.current) {
+        tids.push(window.setTimeout(runCycle, 500))
+        return
+      }
+
+      const nextIdx = (navIdxRef.current + 1) % NAV_CYCLE.length
+      const target  = CURSOR_TARGETS[nextIdx]
+
+      /* Move cursor toward next nav item (spring handles easing) */
+      clickTarget.current = target
+      cursorX.set(target.x)
+      cursorY.set(target.y)
+
+      /* t=2 200ms: click ripple */
+      tids.push(window.setTimeout(() => {
+        if (!cancelled) setClicking(true)
+      }, 2200))
+
+      /* t=2 700ms: advance nav + clear ripple */
+      tids.push(window.setTimeout(() => {
+        if (!cancelled) {
+          setClicking(false)
+          navIdxRef.current = nextIdx
+          setNavIdx(nextIdx)
+        }
+      }, 2700))
+
+      /* t=4 500ms: schedule next cycle */
+      tids.push(window.setTimeout(runCycle, 4500))
+    }
+
+    /* Initial delay so the cursor is visible before it starts moving */
+    tids.push(window.setTimeout(runCycle, 1000))
+
+    return () => {
+      cancelled = true
+      tids.forEach(clearTimeout)
+    }
+  // cursorX / cursorY are stable MotionValue refs — safe in empty-ish deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cursorX, cursorY])
 
   /* ── Live feed ─────────────────────────────────────────────── */
   const [feed, setFeed] = useState<FeedItem[]>(INIT_FEED)
@@ -850,7 +950,7 @@ export function CrmDashboardPreview() {
   return (
     <div
       ref={containerRef}
-      className="w-full flex rounded-2xl overflow-hidden border"
+      className="w-full flex rounded-2xl overflow-hidden border relative"
       style={{
         height:      '36rem',
         background:  'rgba(255,255,255,0.02)',
@@ -858,8 +958,54 @@ export function CrmDashboardPreview() {
         boxShadow:   '0 24px 60px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.30)',
       }}
     >
+      {/* ── Autonomous cursor (Emil §6.A: position via transform) ─ */}
+      {!reduced && (
+        <>
+          {/* Cursor pointer */}
+          <motion.div
+            aria-hidden
+            className="absolute pointer-events-none"
+            style={{
+              x:      cursorX,
+              y:      cursorY,
+              zIndex: 50,
+            }}
+          >
+            <CursorSvg />
+          </motion.div>
+
+          {/* Click ripple rings — rendered at target position */}
+          {clicking && (
+            <>
+              <div
+                className="cursor-click-ring"
+                style={{
+                  left:      clickTarget.current.x,
+                  top:       clickTarget.current.y,
+                  marginLeft: -12,
+                  marginTop:  -12,
+                }}
+              />
+              <div
+                className="cursor-click-ring cursor-click-ring-delay"
+                style={{
+                  left:      clickTarget.current.x,
+                  top:       clickTarget.current.y,
+                  marginLeft: -12,
+                  marginTop:  -12,
+                }}
+              />
+            </>
+          )}
+        </>
+      )}
+
       {/* Sidebar */}
-      <Sidebar view={view} onNav={(v) => setNavIdx(NAV_CYCLE.indexOf(v))} />
+      <Sidebar view={view} onNav={(v) => {
+        const idx = NAV_CYCLE.indexOf(v)
+        navIdxRef.current = idx
+        setNavIdx(idx)
+      }} />
 
       {/* Main content */}
       <div className="flex-1 min-w-0 overflow-hidden flex flex-col" style={{ background: 'rgba(0,0,0,0.18)' }}>

@@ -756,6 +756,31 @@ html.dark .cta-card {
 }
 
 /* ============================================================
+   CURSOR CLICK RIPPLE — CrmDashboardPreview autonomous cursor
+   ============================================================ */
+@keyframes cursorClick {
+  0%   { transform: scale(0.3); opacity: 0.8; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+.cursor-click-ring {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  animation: cursorClick 400ms ease-out forwards;
+  pointer-events: none;
+  z-index: 50;
+}
+.cursor-click-ring-delay {
+  animation-delay: 80ms;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+@media (prefers-reduced-motion: reduce) {
+  .cursor-click-ring { animation: none; opacity: 0; }
+}
+
+/* ============================================================
    CONNECTOR DOTS — Hardware-accelerated (transform only §6.A)
    Used in services-section.tsx + erp-sync-illustration.tsx
    Replaces Framer Motion left/top animated spans.

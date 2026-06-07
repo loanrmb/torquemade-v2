@@ -11,6 +11,7 @@ import { useScrollReveal } from '@/lib/use-scroll-reveal'
 import { ErpFeatureSection } from '@/components/erp-feature-section'
 import ServicesSection from '@/components/services-section'
 import { ContainerScroll } from '@/components/ui/container-scroll-animation'
+import { CrmDashboardPreview } from '@/components/crm-dashboard-preview'
 
 const workContainerVariants: Variants = {
   hidden: {},
@@ -110,19 +111,23 @@ export default function HomePage() {
             </motion.div>
           }
         >
-          {/* Image dashboard — theme-aware, zéro JS */}
+          {/* Mobile — static theme-aware images */}
           <img
             src="/images/preview-dashboard-stock-clair.png"
             alt="Aperçu logiciel de gestion de stock"
-            className="w-full h-auto block dark:hidden"
+            className="w-full h-auto block dark:hidden md:hidden"
             draggable={false}
           />
           <img
             src="/images/preview-dashboard-stock-sombre.png"
             alt="Aperçu logiciel de gestion de stock"
-            className="w-full h-auto hidden dark:block"
+            className="w-full h-auto hidden dark:block md:hidden"
             draggable={false}
           />
+          {/* Desktop — animated CRM dashboard */}
+          <div className="hidden md:block w-full">
+            <CrmDashboardPreview />
+          </div>
         </ContainerScroll>
 
         {/* ── SERVICES ── */}
