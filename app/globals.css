@@ -620,6 +620,59 @@ html.dark .cta-card {
 }
 
 /* ============================================================
+   ERP FEATURE SECTION — Animated connectors + pulse badge
+   erp-conn / erp-conn-dot  →  flowing dots on connector lines
+   pulse-dot                →  green badge dot soft pulse
+   ============================================================ */
+
+/* Dot travels from left edge to right edge of its connector */
+@keyframes flowDot {
+  0%   { left: -4px;              opacity: 0; }
+  10%  {                          opacity: 1; }
+  90%  {                          opacity: 1; }
+  100% { left: calc(100% + 4px); opacity: 0; }
+}
+
+@keyframes softPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.85); }
+}
+
+/* Connector line — horizontal, with faded gradient ends */
+.erp-conn {
+  position: relative;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15) 20%,
+    rgba(255, 255, 255, 0.15) 80%,
+    transparent
+  );
+}
+
+/* Flowing dot — position: absolute inside .erp-conn */
+.erp-conn-dot {
+  position: absolute;
+  top: calc(50% - 3px); /* vertical centre without transform conflict */
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+  animation: flowDot 2s ease-in-out infinite;
+}
+
+/* Pulse — used on green badge dots */
+.pulse-dot {
+  animation: softPulse 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .erp-conn-dot { animation: none; opacity: 0.55; left: 50%; }
+  .pulse-dot    { animation: none; }
+}
+
+/* ============================================================
    LIQUID GLASS — Rainbow text gradient
    (repris de components/rotating-text.tsx pour usage global)
    ============================================================ */
