@@ -111,21 +111,15 @@ export default function HomePage() {
             </motion.div>
           }
         >
-          {/* Mobile — static theme-aware images */}
+          {/* Mobile — static image */}
           <img
             src="/images/preview-dashboard-stock-clair.png"
             alt="Aperçu logiciel de gestion de stock"
-            className="w-full h-auto block dark:hidden md:hidden"
+            className="w-full h-auto md:hidden"
             draggable={false}
           />
-          <img
-            src="/images/preview-dashboard-stock-sombre.png"
-            alt="Aperçu logiciel de gestion de stock"
-            className="w-full h-auto hidden dark:block md:hidden"
-            draggable={false}
-          />
-          {/* Desktop — animated CRM dashboard */}
-          <div className="hidden md:block w-full">
+          {/* Desktop — animated CRM dashboard, fills Card (md:h-[40rem]) */}
+          <div className="hidden md:flex w-full h-full">
             <CrmDashboardPreview />
           </div>
         </ContainerScroll>

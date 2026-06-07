@@ -58,15 +58,25 @@ const PRODUCTS = [
   { name: 'Kayano 31 Asics', sku: 'AS-KAY-31', cat: 'Chaussures', stock: 38, price: '209€', low: false },
   { name: 'Gel-Cumulus 26',  sku: 'AS-GEL-26', cat: 'Chaussures', stock: 5,  price: '159€', low: true  },
   { name: 'GT-2000 13',      sku: 'AS-GT-13',  cat: 'Chaussures', stock: 23, price: '149€', low: false },
+  { name: 'Superblast 2',    sku: 'AS-SUP-2',  cat: 'Chaussures', stock: 18, price: '229€', low: false },
+  { name: 'Novablast 4',     sku: 'AS-NOV-4',  cat: 'Chaussures', stock: 31, price: '169€', low: false },
+  { name: 'Clifton LS',      sku: 'HK-CLS-1',  cat: 'Chaussures', stock: 7,  price: '199€', low: true  },
+  { name: 'Bondi 8',         sku: 'HK-BON-8',  cat: 'Chaussures', stock: 14, price: '219€', low: false },
+  { name: 'Speedgoat 5',     sku: 'HK-SPG-5',  cat: 'Chaussures', stock: 9,  price: '189€', low: true  },
 ] as const
 
 /* ─── Movement log ─────────────────────────────────────────────── */
 const MOVE_LOG = [
-  { type: 'Réception', label: 'Clifton 9 · 45 · Bleu',   delta: +24, time: 'il y a 1h' },
-  { type: 'Réception', label: 'Kayano 31 · 43 · Noir',   delta: +18, time: 'il y a 2h' },
-  { type: 'Vente',     label: 'Nimbus 26 · 38 · Blanc',  delta:  -1, time: 'il y a 3h' },
-  { type: 'Vente',     label: 'GT-2000 · 42 · Gris',     delta:  -1, time: 'il y a 4h' },
-  { type: 'Réception', label: 'Gel-Cumulus · 41 · Bleu', delta: +12, time: 'il y a 5h' },
+  { type: 'Réception', label: 'Clifton 9 · 45 · Bleu',      delta: +24, time: 'il y a 1h'  },
+  { type: 'Réception', label: 'Kayano 31 · 43 · Noir',      delta: +18, time: 'il y a 2h'  },
+  { type: 'Vente',     label: 'Nimbus 26 · 38 · Blanc',     delta:  -1, time: 'il y a 3h'  },
+  { type: 'Vente',     label: 'GT-2000 · 42 · Gris',        delta:  -1, time: 'il y a 4h'  },
+  { type: 'Réception', label: 'Gel-Cumulus · 41 · Bleu',    delta: +12, time: 'il y a 5h'  },
+  { type: 'Vente',     label: 'Bondi 8 · 43 · Blanc',       delta:  -1, time: 'il y a 6h'  },
+  { type: 'Réception', label: 'Superblast 2 · 44 · Noir',   delta:  +8, time: 'il y a 7h'  },
+  { type: 'Vente',     label: 'Clifton LS · 40 · Gris',     delta:  -2, time: 'il y a 8h'  },
+  { type: 'Réception', label: 'Speedgoat 5 · 42 · Vert',    delta:  +6, time: 'il y a 9h'  },
+  { type: 'Vente',     label: 'Novablast 4 · 41 · Bleu',    delta:  -1, time: 'il y a 10h' },
 ] as const
 
 /* ─── Live feed ────────────────────────────────────────────────── */
@@ -89,15 +99,6 @@ const INIT_FEED: FeedItem[] = [
   { id: 'f0', label: 'Clifton 9 · 45 · Bleu', type: 'Réception', delta: +24, time: 'il y a 1h' },
   { id: 'f1', label: 'Kayano 31 · 43 · Noir', type: 'Réception', delta: +18, time: 'il y a 2h' },
 ]
-
-/* ─── Cursor target positions (relative to outer wrapper) ──────── */
-// Sidebar is w-44 (176px); x=80 ≈ centre of sidebar nav items.
-// y positions target each nav item row within the 36rem (576px) card.
-const CURSOR_TARGETS = [
-  { x: 80, y: 180 }, // Dashboard
-  { x: 80, y: 220 }, // Produits
-  { x: 80, y: 310 }, // Mouvements
-] as const
 
 /* ─── Cursor SVG (standard arrow pointer, white fill, dark outline) */
 function CursorSvg() {
@@ -741,12 +742,15 @@ function MouvementsView() {
 }
 
 /* ─── Sidebar ─────────────────────────────────────────────────── */
+type NavRefMap = Partial<Record<NavView, { readonly current: HTMLDivElement | null }>>
+
 interface SidebarProps {
-  view:   NavView
-  onNav:  (v: NavView) => void
+  view:         NavView
+  onNav:        (v: NavView) => void
+  navItemRefs?: NavRefMap
 }
 
-function Sidebar({ view, onNav }: SidebarProps) {
+function Sidebar({ view, onNav, navItemRefs }: SidebarProps) {
   return (
     <aside
       className="w-44 flex-shrink-0 flex flex-col border-r overflow-hidden"
@@ -794,6 +798,7 @@ function Sidebar({ view, onNav }: SidebarProps) {
           return (
             <div
               key={item}
+              ref={isNavCycle ? (navItemRefs?.[item as NavView] ?? null) : null}
               className="relative"
               onClick={() => isNavCycle ? onNav(item as NavView) : undefined}
               style={{ cursor: isNavCycle ? 'pointer' : 'default' }}
@@ -860,13 +865,20 @@ export function CrmDashboardPreview() {
   const navIdxRef = useRef(0)
   const view = NAV_CYCLE[navIdx]
 
+  /* ── Nav item refs (for live cursor position via getBoundingClientRect) */
+  const dashboardItemRef  = useRef<HTMLDivElement>(null)
+  const produitsItemRef   = useRef<HTMLDivElement>(null)
+  const mouvementsItemRef = useRef<HTMLDivElement>(null)
+  // Stable array indexed by NAV_CYCLE order — safe to read inside setTimeout
+  const NAV_ITEM_REFS = [dashboardItemRef, produitsItemRef, mouvementsItemRef] as const
+
   /* ── Cursor spring values (Emil §6.A: transform only) ──────── */
-  const cursorX = useSpring(CURSOR_TARGETS[0].x, { stiffness: 120, damping: 18 })
-  const cursorY = useSpring(CURSOR_TARGETS[0].y, { stiffness: 120, damping: 18 })
+  const cursorX = useSpring(0, { stiffness: 120, damping: 18 })
+  const cursorY = useSpring(0, { stiffness: 120, damping: 18 })
 
   /* ── Click ripple state ────────────────────────────────────── */
   const [clicking, setClicking]   = useState(false)
-  const clickTarget = useRef<{ x: number; y: number }>(CURSOR_TARGETS[0])
+  const clickTarget = useRef<{ x: number; y: number }>({ x: 0, y: 0 })
 
   /* ── Coordinated nav + cursor loop ────────────────────────── */
   /*
@@ -893,29 +905,35 @@ export function CrmDashboardPreview() {
       }
 
       const nextIdx = (navIdxRef.current + 1) % NAV_CYCLE.length
-      const target  = CURSOR_TARGETS[nextIdx]
+      const navRef  = NAV_ITEM_REFS[nextIdx]
 
-      /* Move cursor toward next nav item (spring handles easing) */
-      clickTarget.current = target
-      cursorX.set(target.x)
-      cursorY.set(target.y)
+      /* Move cursor toward next nav item — live measurement via getBoundingClientRect */
+      if (navRef.current && containerRef.current) {
+        const navRect  = navRef.current.getBoundingClientRect()
+        const contRect = containerRef.current.getBoundingClientRect()
+        const relX = navRect.left - contRect.left + navRect.width  / 2
+        const relY = navRect.top  - contRect.top  + navRect.height / 2
+        clickTarget.current = { x: relX, y: relY }
+        cursorX.set(relX)
+        cursorY.set(relY)
+      }
 
-      /* t=2 200ms: click ripple */
+      /* t=1 200ms: click ripple */
       tids.push(window.setTimeout(() => {
         if (!cancelled) setClicking(true)
-      }, 2200))
+      }, 1200))
 
-      /* t=2 700ms: advance nav + clear ripple */
+      /* t=1 400ms: advance nav + clear ripple */
       tids.push(window.setTimeout(() => {
         if (!cancelled) {
           setClicking(false)
           navIdxRef.current = nextIdx
           setNavIdx(nextIdx)
         }
-      }, 2700))
+      }, 1400))
 
-      /* t=4 500ms: schedule next cycle */
-      tids.push(window.setTimeout(runCycle, 4500))
+      /* t=3 500ms: schedule next cycle */
+      tids.push(window.setTimeout(runCycle, 3500))
     }
 
     /* Initial delay so the cursor is visible before it starts moving */
@@ -950,13 +968,7 @@ export function CrmDashboardPreview() {
   return (
     <div
       ref={containerRef}
-      className="w-full flex rounded-2xl overflow-hidden border relative"
-      style={{
-        height:      '36rem',
-        background:  'rgba(255,255,255,0.02)',
-        borderColor: 'rgba(255,255,255,0.10)',
-        boxShadow:   '0 24px 60px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.30)',
-      }}
+      className="w-full h-full flex overflow-hidden relative"
     >
       {/* ── Autonomous cursor (Emil §6.A: position via transform) ─ */}
       {!reduced && (
@@ -1001,11 +1013,19 @@ export function CrmDashboardPreview() {
       )}
 
       {/* Sidebar */}
-      <Sidebar view={view} onNav={(v) => {
-        const idx = NAV_CYCLE.indexOf(v)
-        navIdxRef.current = idx
-        setNavIdx(idx)
-      }} />
+      <Sidebar
+        view={view}
+        onNav={(v) => {
+          const idx = NAV_CYCLE.indexOf(v)
+          navIdxRef.current = idx
+          setNavIdx(idx)
+        }}
+        navItemRefs={{
+          Dashboard:  dashboardItemRef,
+          Produits:   produitsItemRef,
+          Mouvements: mouvementsItemRef,
+        }}
+      />
 
       {/* Main content */}
       <div className="flex-1 min-w-0 overflow-hidden flex flex-col" style={{ background: 'rgba(0,0,0,0.18)' }}>
