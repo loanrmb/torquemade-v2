@@ -27,6 +27,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLang } from '@/components/app-provider';
 import { strings } from '@/lib/strings';
+import { CrmDashboardPreview } from '@/components/crm-dashboard-preview';
 
 const IMG = '/images';
 const ROTATE_MS = 7000;
@@ -111,22 +112,17 @@ function FigureSites() {
 /* ------------------------------------------------------------------ */
 
 function FigureCrm() {
-  const t = strings[useLang()].servicesSection;
   return (
     <>
+      {/* Mobile — static PNG */}
       <img
         src="/images/preview-crm-logiciel.png"
         alt="Aperçu CRM logiciel de gestion"
         className="w-full rounded-2xl md:hidden"
       />
-      {/* Desktop — side by side */}
-      <div className="hidden w-full gap-4 md:grid md:grid-cols-2 md:items-center">
-        <WindowFrame>
-          <img src={`${IMG}/crm-form.png`} alt={t.alts.crmForm} className={`${SHOT} h-auto`} />
-        </WindowFrame>
-        <WindowFrame>
-          <img src={`${IMG}/crm-dash.png`} alt={t.alts.crmDash} className={`${SHOT} h-auto`} />
-        </WindowFrame>
+      {/* Desktop — animated dashboard */}
+      <div className="hidden w-full md:block">
+        <CrmDashboardPreview />
       </div>
     </>
   );
