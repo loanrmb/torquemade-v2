@@ -63,6 +63,12 @@ const PRODUCTS = [
   { name: 'Clifton LS',      sku: 'HK-CLS-1',  cat: 'Chaussures', stock: 7,  price: '199€', low: true  },
   { name: 'Bondi 8',         sku: 'HK-BON-8',  cat: 'Chaussures', stock: 14, price: '219€', low: false },
   { name: 'Speedgoat 5',     sku: 'HK-SPG-5',  cat: 'Chaussures', stock: 9,  price: '189€', low: true  },
+  { name: 'Mach 6',          sku: 'HK-MCH-6',  cat: 'Chaussures', stock: 26, price: '179€', low: false },
+  { name: 'Rincon 3',        sku: 'HK-RIN-3',  cat: 'Chaussures', stock: 3,  price: '149€', low: true  },
+  { name: 'Gel-Nimbus 26',   sku: 'AS-GNI-26', cat: 'Chaussures', stock: 19, price: '219€', low: false },
+  { name: 'Gel-Kayano 31',   sku: 'AS-GKA-31', cat: 'Chaussures', stock: 11, price: '229€', low: false },
+  { name: 'DS Trainer 28',   sku: 'AS-DST-28', cat: 'Chaussures', stock: 6,  price: '139€', low: true  },
+  { name: 'Fuji Lite 4',     sku: 'AS-FJL-4',  cat: 'Trail',      stock: 22, price: '169€', low: false },
 ] as const
 
 /* ─── Movement log ─────────────────────────────────────────────── */
@@ -77,6 +83,12 @@ const MOVE_LOG = [
   { type: 'Vente',     label: 'Clifton LS · 40 · Gris',     delta:  -2, time: 'il y a 8h'  },
   { type: 'Réception', label: 'Speedgoat 5 · 42 · Vert',    delta:  +6, time: 'il y a 9h'  },
   { type: 'Vente',     label: 'Novablast 4 · 41 · Bleu',    delta:  -1, time: 'il y a 10h' },
+  { type: 'Réception', label: 'Mach 6 · 43 · Orange',       delta: +15, time: 'il y a 11h' },
+  { type: 'Vente',     label: 'Rincon 3 · 44 · Noir',       delta:  -1, time: 'il y a 12h' },
+  { type: 'Réception', label: 'Gel-Nimbus · 42 · Blanc',    delta: +20, time: 'il y a 13h' },
+  { type: 'Vente',     label: 'DS Trainer · 41 · Bleu',     delta:  -2, time: 'il y a 14h' },
+  { type: 'Réception', label: 'Fuji Lite · 43 · Vert',      delta: +10, time: 'il y a 15h' },
+  { type: 'Vente',     label: 'Gel-Kayano · 40 · Rouge',    delta:  -1, time: 'il y a 16h' },
 ] as const
 
 /* ─── Live feed ────────────────────────────────────────────────── */
@@ -622,16 +634,17 @@ function DashboardView({ feed, reduced }: DashboardViewProps) {
 function ProduitsView() {
   return (
     <div className="flex flex-col h-full overflow-hidden">
-      <span className="text-[11px] font-semibold text-white tracking-tight mb-2.5 flex-shrink-0">
+      <span className="text-[11px] font-semibold text-white tracking-tight mb-2 flex-shrink-0">
         Produits
       </span>
 
-      {/* Table header */}
+      {/* Table header — sticky background so it reads cleanly above rows */}
       <div
-        className="grid gap-2 px-2 py-1.5 mb-0.5 rounded-lg border-b"
+        className="grid gap-2 px-2 py-1.5 border-b flex-shrink-0 sticky top-0 z-10"
         style={{
           gridTemplateColumns: '1fr 90px 70px 52px 50px',
           borderColor: 'rgba(255,255,255,0.07)',
+          background: 'rgba(20,20,20,1)',
         }}
       >
         {['Produit', 'SKU', 'Catégorie', 'Stock', 'Prix'].map(h => (
@@ -641,8 +654,9 @@ function ProduitsView() {
         ))}
       </div>
 
+      {/* Rows — flex-1 fills remaining height; overflow-hidden clips rows that exceed */}
       <motion.div
-        className="flex flex-col"
+        className="flex flex-col flex-1 min-h-0 overflow-hidden"
         variants={rowContainer}
         initial="hidden"
         animate="visible"
@@ -651,7 +665,7 @@ function ProduitsView() {
           <motion.div
             key={p.sku}
             variants={rowItem}
-            className="grid gap-2 px-2 py-2 border-b items-center"
+            className="grid gap-2 px-2 py-2.5 border-b items-center flex-shrink-0"
             style={{
               gridTemplateColumns: '1fr 90px 70px 52px 50px',
               borderColor: 'rgba(255,255,255,0.05)',
@@ -678,16 +692,17 @@ function ProduitsView() {
 function MouvementsView() {
   return (
     <div className="flex flex-col h-full overflow-hidden">
-      <span className="text-[11px] font-semibold text-white tracking-tight mb-2.5 flex-shrink-0">
+      <span className="text-[11px] font-semibold text-white tracking-tight mb-2 flex-shrink-0">
         Mouvements
       </span>
 
-      {/* Table header */}
+      {/* Table header — sticky background */}
       <div
-        className="grid gap-2 px-2 py-1.5 mb-0.5 border-b"
+        className="grid gap-2 px-2 py-1.5 border-b flex-shrink-0 sticky top-0 z-10"
         style={{
           gridTemplateColumns: '70px 1fr 44px 70px',
           borderColor: 'rgba(255,255,255,0.07)',
+          background: 'rgba(20,20,20,1)',
         }}
       >
         {['Type', 'Produit', 'Qté', 'Date'].map(h => (
@@ -697,8 +712,9 @@ function MouvementsView() {
         ))}
       </div>
 
+      {/* Rows — flex-1 fills remaining height; overflow-hidden clips rows that exceed */}
       <motion.div
-        className="flex flex-col"
+        className="flex flex-col flex-1 min-h-0 overflow-hidden"
         variants={rowContainer}
         initial="hidden"
         animate="visible"
@@ -709,7 +725,7 @@ function MouvementsView() {
             <motion.div
               key={i}
               variants={rowItem}
-              className="grid gap-2 px-2 py-2 border-b items-center"
+              className="grid gap-2 px-2 py-2.5 border-b items-center flex-shrink-0"
               style={{
                 gridTemplateColumns: '70px 1fr 44px 70px',
                 borderColor: 'rgba(255,255,255,0.05)',
