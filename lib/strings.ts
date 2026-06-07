@@ -161,6 +161,10 @@ export const strings = {
         ctaButton: 'En savoir plus',
       },
     },
+    erpFeature: {
+      eyebrow: 'Synchronisation en temps réel',
+      syncLabel: 'Dernière sync : il y a {n}s',
+    },
     workPreview: {
       eyebrow: 'Projets à la une',
       title: 'Des sites qui performent, pas juste de beaux designs.',
@@ -550,6 +554,10 @@ export const strings = {
         ],
         ctaButton: 'Learn more',
       },
+    },
+    erpFeature: {
+      eyebrow: 'Real-time synchronization',
+      syncLabel: 'Last sync: {n}s ago',
     },
     workPreview: {
       eyebrow: 'Featured work',

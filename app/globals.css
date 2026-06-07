@@ -621,46 +621,58 @@ html.dark .cta-card {
 
 /* ============================================================
    ERP FEATURE SECTION — Animated connectors + pulse badge
-   erp-conn / erp-conn-dot  →  flowing dots on connector lines
-   pulse-dot                →  green badge dot soft pulse
+   Hardware-accelerated: transform + opacity only (skill §6.A)
+   erp-flow-connector / erp-flow-line / erp-flow-dot
+   pulse-dot  →  green badge dot soft pulse
    ============================================================ */
 
-/* Dot travels from left edge to right edge of its connector */
+/* translateX only — no left/top animation (skill §6.A compliance) */
 @keyframes flowDot {
-  0%   { left: -4px;              opacity: 0; }
-  10%  {                          opacity: 1; }
-  90%  {                          opacity: 1; }
-  100% { left: calc(100% + 4px); opacity: 0; }
+  0%   { transform: translateX(-100%); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateX(500%); opacity: 0; }
 }
 
 @keyframes softPulse {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.5; transform: scale(0.85); }
+  50%       { opacity: 0.4; transform: scale(0.8); }
 }
 
-/* Connector line — horizontal, with faded gradient ends */
-.erp-conn {
+.erp-flow-connector {
   position: relative;
-  height: 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.erp-flow-line {
+  flex: 1;
+  height: 1px;
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.15) 20%,
-    rgba(255, 255, 255, 0.15) 80%,
+    rgba(255, 255, 255, 0.2) 30%,
+    rgba(255, 255, 255, 0.2) 70%,
     transparent
   );
+  position: relative;
+  overflow: hidden;
 }
 
-/* Flowing dot — position: absolute inside .erp-conn */
-.erp-conn-dot {
+/* Dot — top: calc centers vertically without transform conflict */
+.erp-flow-dot {
   position: absolute;
-  top: calc(50% - 3px); /* vertical centre without transform conflict */
-  width: 6px;
-  height: 6px;
+  top: calc(50% - 2.5px);
+  left: 0;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
-  background: white;
-  animation: flowDot 2s ease-in-out infinite;
+  background: rgba(255, 255, 255, 0.9);
+  animation: flowDot 1.8s ease-in-out infinite;
 }
+.erp-flow-dot:nth-child(2) { animation-delay: 0.6s; }
+.erp-flow-dot:nth-child(3) { animation-delay: 1.2s; }
 
 /* Pulse — used on green badge dots */
 .pulse-dot {
@@ -668,7 +680,7 @@ html.dark .cta-card {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .erp-conn-dot { animation: none; opacity: 0.55; left: 50%; }
+  .erp-flow-dot { animation: none; opacity: 0.5; }
   .pulse-dot    { animation: none; }
 }
 

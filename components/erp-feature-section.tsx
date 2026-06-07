@@ -2,53 +2,41 @@
 
 /**
  * ErpFeatureSection — Torquemade
- * (rev. 2026-06) Elevated design: depth, animated connectors, motion entrance
+ * Elevated design: depth hierarchy, animated connectors, framer motion entrance
  *
- * FIG. 1.1 — three overlapping panels (Linear.app / Vercel style):
- *   LEFT   — ERP stock table (slightly recessed, scale 0.97)
- *   MIDDLE — API webhook code block (glassmorphism monochrome)
- *   RIGHT  — Shopify-style e-commerce panel (foreground, deep shadow)
+ * Panel hierarchy (front → back):
+ *   RIGHT  — e-commerce site  (z-3, deep shadow, visual foreground)
+ *   MIDDLE — API/webhook      (z-2, glassmorphism monochrome)
+ *   LEFT   — ERP stock table  (z-1, scale 0.97, recessed)
  *
- * FIG. 1.2 — comparison table (Sans / Avec connexion ERP)
+ * Strings: eyebrow + syncLabel → lib/strings.ts  |  product/UI labels → CONTENT
+ * Animations: transform + opacity only (skill §6.A hardware acceleration)
  */
 
 import { useEffect, useState } from 'react'
 import { motion, type Variants } from 'framer-motion'
 import { useLang } from '@/components/app-provider'
+import { strings } from '@/lib/strings'
 
-/* ============================================================
-   Shared ease
-   ============================================================ */
+/* ─── Shared ease ─────────────────────────────────────────── */
 const EASE_OUT: [number, number, number, number] = [0, 0, 0.2, 1]
 
-/* ============================================================
-   Scroll-reveal variants — comparison table rows
-   ============================================================ */
+/* ─── Comparison table stagger variants ──────────────────── */
 const revealContainer: Variants = {
   hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
-  },
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 }
-
 const revealItem: Variants = {
   hidden: { opacity: 0, y: 44 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
-  },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } },
 }
 
-/* ============================================================
-   Bilingual content (self-contained — not in lib/strings.ts)
-   ============================================================ */
+/* ─── Bilingual content (UI labels + product data) ───────── */
 type Rows = ReadonlyArray<readonly [string, string]>
 
 const CONTENT: Record<
   'fr' | 'en',
   {
-    eyebrow: string
     panelLeftTitle: string
     connected: string
     colProduct: string
@@ -60,8 +48,6 @@ const CONTENT: Record<
     panelRightTitle: string
     colStatus: string
     statusActive: string
-    /** [prefix, suffix] — n injected between them for live counter */
-    lastSyncFmt: [string, string]
     title: string
     description: string
     badHeader: string
@@ -73,26 +59,19 @@ const CONTENT: Record<
   }
 > = {
   fr: {
-    eyebrow:       'Synchronisation en temps réel',
     panelLeftTitle: 'Logiciel de stock',
     connected:      'Connecté',
     colProduct: 'Produit',
     colSku:     'SKU',
     colStock:   'Stock',
     colPrice:   'Prix',
-
     apiLabel:      'API · Webhook sync',
     realtimeLabel: 'mise à jour en temps réel',
-
     panelRightTitle: 'Site e-commerce',
     colStatus:    'Statut',
     statusActive: 'Actif',
-    lastSyncFmt:  ['Dernière sync : il y a ', 's'],
-
-    title: 'Votre stock, votre site, votre logiciel — connectés.',
-    description:
-      'On branche votre ERP existant — ou on en construit un sur mesure — directement à votre boutique en ligne. Une seule source de vérité, mise à jour en quelques secondes, sans intervention manuelle.',
-
+    title:       'Votre stock, votre site, votre logiciel — connectés.',
+    description: 'On branche votre ERP existant — ou on en construit un sur mesure — directement à votre boutique en ligne. Une seule source de vérité, mise à jour en quelques secondes, sans intervention manuelle.',
     badHeader:  'Sans connexion ERP',
     goodHeader: 'Avec connexion ERP',
     stateOff:   'État · 00',
@@ -107,34 +86,27 @@ const CONTENT: Record<
     ],
     rowsGood: [
       ['Stock synchronisé en temps réel',                  '< 3 s'],
-      ['Mises hors‑ligne automatiques à zéro',             'auto'],
-      ["Prix poussés depuis l'ERP, un seul endroit",       'bi‑dir'],
+      ['Mises hors ligne automatiques à zéro',             'auto'],
+      ["Prix poussés depuis l'ERP, un seul endroit",       'bi-dir'],
       ["Commandes web créées directement dans l'ERP",      'webhook'],
       ["Une seule base — l'ERP fait foi",                  '1 base'],
       ['Export comptable automatisé',                       'quotidien'],
     ],
   },
   en: {
-    eyebrow:       'Real-time synchronization',
     panelLeftTitle: 'Stock software',
     connected:      'Connected',
     colProduct: 'Product',
     colSku:     'SKU',
     colStock:   'Stock',
     colPrice:   'Price',
-
     apiLabel:      'API · Webhook sync',
     realtimeLabel: 'real-time update',
-
     panelRightTitle: 'E-commerce site',
     colStatus:    'Status',
     statusActive: 'Active',
-    lastSyncFmt:  ['Last sync: ', 's ago'],
-
-    title: 'Your stock, your site, your software — connected.',
-    description:
-      'We connect your existing ERP — or build a custom one — directly to your online store. One single source of truth, updated in seconds, with no manual intervention.',
-
+    title:       'Your stock, your site, your software — connected.',
+    description: 'We connect your existing ERP — or build a custom one — directly to your online store. One single source of truth, updated in seconds, with no manual intervention.',
     badHeader:  'Without ERP connection',
     goodHeader: 'With ERP connection',
     stateOff:   'State · 00',
@@ -150,7 +122,7 @@ const CONTENT: Record<
     rowsGood: [
       ['Stock synced in real time',             '< 3 s'],
       ['Automatic zero-stock takedowns',        'auto'],
-      ['Prices pushed from ERP, one place',     'bi‑dir'],
+      ['Prices pushed from ERP, one place',     'bi-dir'],
       ['Web orders created directly in ERP',    'webhook'],
       ['One database — ERP is the authority',   '1 db'],
       ['Automated accounting export',           'daily'],
@@ -158,9 +130,7 @@ const CONTENT: Record<
   },
 }
 
-/* ============================================================
-   Product data — language-agnostic
-   ============================================================ */
+/* ─── Product data (language-agnostic) ────────────────────── */
 const ERP_ROWS = [
   { name: 'Casque Shoei',      sku: 'SH-001', stock: '12', price: '389 €' },
   { name: "Veste Rev'It",      sku: 'RV-204', stock: '8',  price: '299 €' },
@@ -177,75 +147,60 @@ const ECOM_ROWS = [
 
 const ECOM_GRID = '36px minmax(60px,1fr) 48px 72px'
 
-/* ============================================================
-   Live sync counter — 0 → 8, then loops
-   ============================================================ */
+/* ─── Live sync counter: 0 → 9 loop, 1s tick ─────────────── */
 function useSyncCounter(): number {
   const [n, setN] = useState(0)
   useEffect(() => {
-    const id = setInterval(() => setN(prev => (prev >= 8 ? 0 : prev + 1)), 1000)
+    const id = setInterval(() => setN(prev => (prev >= 9 ? 0 : prev + 1)), 1000)
     return () => clearInterval(id)
   }, [])
   return n
 }
 
-/* ============================================================
-   GreenDot — CSS pulse (no framer-motion — lighter bundle)
-   ============================================================ */
+/* ─── GreenDot: CSS pulse, no framer-motion overhead ─────── */
 function GreenDot({ size = 6 }: { size?: number }) {
   return (
     <span
       className="pulse-dot block rounded-full flex-shrink-0"
-      style={{
-        width: size,
-        height: size,
-        background: '#4ade80',
-        boxShadow: '0 0 7px rgba(74,222,128,0.55)',
-      }}
+      style={{ width: size, height: size, background: '#4ade80', boxShadow: '0 0 7px rgba(74,222,128,0.55)' }}
     />
   )
 }
 
-/* ============================================================
-   Connectors — flowing dot lines in the panel overlap zones
-   Positioned absolutely within the 3-panel container.
-   Overlap zones:  left→middle  29.17%–41.67%  (centre ~35%)
-                   middle→right 58.33%–70.83%  (centre ~64%)
-   ============================================================ */
+/* ─── Connectors: animated dot lines in overlap zones ─────── */
+/* Panel positions: left 0–41.67%, middle 29.17–70.83%, right 58.33–100%
+   Overlap zone 1: 29.17–41.67% (connector at ~30%, width ~11%)
+   Overlap zone 2: 58.33–70.83% (connector at ~59%, width ~11%)
+   CSS handles dot stagger via :nth-child(2)/(:nth-child(3) ─────── */
 function Connectors() {
   return (
     <div className="pointer-events-none absolute inset-0 z-[5]" aria-hidden>
-      {/* Left → Middle */}
-      <div style={{ position: 'absolute', left: '30%', width: '11%', top: '88%' }}>
-        <div className="erp-conn">
-          <div className="erp-conn-dot" />
-          <div className="erp-conn-dot" style={{ animationDelay: '0.66s' }} />
-          <div className="erp-conn-dot" style={{ animationDelay: '1.33s' }} />
+      <div className="absolute left-[30%] w-[11%] top-[88%]">
+        <div className="erp-flow-connector">
+          <div className="erp-flow-line">
+            <div className="erp-flow-dot" />
+            <div className="erp-flow-dot" />
+            <div className="erp-flow-dot" />
+          </div>
+          <span className="text-white/40 text-[11px]">→</span>
         </div>
       </div>
-      {/* Middle → Right */}
-      <div style={{ position: 'absolute', left: '59%', width: '11%', top: '88%' }}>
-        <div className="erp-conn">
-          <div className="erp-conn-dot" />
-          <div className="erp-conn-dot" style={{ animationDelay: '0.66s' }} />
-          <div className="erp-conn-dot" style={{ animationDelay: '1.33s' }} />
+      <div className="absolute left-[59%] w-[11%] top-[88%]">
+        <div className="erp-flow-connector">
+          <div className="erp-flow-line">
+            <div className="erp-flow-dot" />
+            <div className="erp-flow-dot" />
+            <div className="erp-flow-dot" />
+          </div>
+          <span className="text-white/40 text-[11px]">→</span>
         </div>
       </div>
     </div>
   )
 }
 
-/* ============================================================
-   LEFT PANEL — ERP stock table (dark, slightly recessed)
-   Rendered at scale(0.97) by the caller — wrapper div trick
-   avoids framer-motion overriding the CSS transform.
-   ============================================================ */
-function ErpPanel({
-  t, mobile = false,
-}: {
-  t: typeof CONTENT['fr']
-  mobile?: boolean
-}) {
+/* ─── LEFT PANEL — ERP stock table (dark, recessed z-1) ──── */
+function ErpPanel({ t, mobile = false }: { t: typeof CONTENT['fr']; mobile?: boolean }) {
   const px  = mobile ? 'px-4' : 'px-5'
   const pyH = mobile ? 'py-3' : 'py-4'
   const pyR = mobile ? 'py-[6px]' : 'py-3'
@@ -257,21 +212,15 @@ function ErpPanel({
       className="h-full overflow-hidden rounded-[14px] border border-white/[0.07] text-white flex flex-col"
       style={{
         background: 'hsl(var(--bg-dark-card))',
-        boxShadow:
-          '0 4px 16px rgba(0,0,0,0.28), 0 1px 4px rgba(0,0,0,0.18)',
+        boxShadow: '0 4px 16px rgba(0,0,0,0.28), 0 1px 4px rgba(0,0,0,0.18)',
         WebkitFontSmoothing: 'antialiased',
       }}
     >
-      <header
-        className={`flex items-center justify-between border-b border-white/[0.08] ${px} ${pyH}`}
-      >
+      <header className={`flex items-center justify-between border-b border-white/[0.08] ${px} ${pyH}`}>
         <span className={`whitespace-nowrap font-semibold tracking-tight ${mobile ? 'text-[13px]' : 'text-[13.5px]'}`}>
           {t.panelLeftTitle}
         </span>
-        <span
-          className="text-[10px] font-medium uppercase tracking-[0.14em] text-white/40"
-          style={{ fontFamily: 'var(--font-mono, monospace)' }}
-        >
+        <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-white/40" style={{ fontFamily: 'var(--font-mono, monospace)' }}>
           ERP
         </span>
       </header>
@@ -280,31 +229,19 @@ function ErpPanel({
         <table className="w-full border-collapse">
           <thead>
             <tr>
-              <th
-                className={`border-b border-white/[0.08] ${px} pb-2 pt-2.5 text-[10px] font-normal uppercase tracking-[0.12em] text-white/40 text-left`}
-                style={{ fontFamily: 'var(--font-mono, monospace)' }}
-              >
+              <th className={`border-b border-white/[0.08] ${px} pb-2 pt-2.5 text-[10px] font-normal uppercase tracking-[0.12em] text-white/40 text-left`} style={{ fontFamily: 'var(--font-mono, monospace)' }}>
                 {t.colProduct}
               </th>
               {!mobile && (
-                <th
-                  className="border-b border-white/[0.08] px-5 pb-2.5 pt-3 text-[10px] font-normal uppercase tracking-[0.12em] text-white/40 text-left"
-                  style={{ fontFamily: 'var(--font-mono, monospace)' }}
-                >
+                <th className="border-b border-white/[0.08] px-5 pb-2.5 pt-3 text-[10px] font-normal uppercase tracking-[0.12em] text-white/40 text-left" style={{ fontFamily: 'var(--font-mono, monospace)' }}>
                   {t.colSku}
                 </th>
               )}
-              <th
-                className={`border-b border-white/[0.08] ${px} pb-2 pt-2.5 text-[10px] font-normal uppercase tracking-[0.12em] text-white/40 text-left`}
-                style={{ fontFamily: 'var(--font-mono, monospace)' }}
-              >
+              <th className={`border-b border-white/[0.08] ${px} pb-2 pt-2.5 text-[10px] font-normal uppercase tracking-[0.12em] text-white/40 text-left`} style={{ fontFamily: 'var(--font-mono, monospace)' }}>
                 {t.colStock}
               </th>
               {!mobile && (
-                <th
-                  className="border-b border-white/[0.08] px-5 pb-2.5 pt-3 text-[10px] font-normal uppercase tracking-[0.12em] text-white/40 text-right"
-                  style={{ fontFamily: 'var(--font-mono, monospace)' }}
-                >
+                <th className="border-b border-white/[0.08] px-5 pb-2.5 pt-3 text-[10px] font-normal uppercase tracking-[0.12em] text-white/40 text-right" style={{ fontFamily: 'var(--font-mono, monospace)' }}>
                   {t.colPrice}
                 </th>
               )}
@@ -312,35 +249,20 @@ function ErpPanel({
           </thead>
           <tbody>
             {ERP_ROWS.map((r, i) => (
-              <tr
-                key={r.sku}
-                className={i < ERP_ROWS.length - 1 ? 'border-b border-white/[0.04]' : ''}
-              >
-                <td
-                  className={`max-w-0 overflow-hidden text-ellipsis whitespace-nowrap ${px} ${pyR} align-middle ${fs} text-white/90`}
-                  style={{ maxWidth: '1px' }}
-                >
+              <tr key={r.sku} className={i < ERP_ROWS.length - 1 ? 'border-b border-white/[0.04]' : ''}>
+                <td className={`max-w-0 overflow-hidden text-ellipsis whitespace-nowrap ${px} ${pyR} align-middle ${fs} text-white/90`} style={{ maxWidth: '1px' }}>
                   {r.name}
                 </td>
                 {!mobile && (
-                  <td
-                    className="whitespace-nowrap px-5 py-3 align-middle text-[11.5px] tracking-[0.02em] text-white/40"
-                    style={{ fontFamily: 'var(--font-mono, monospace)' }}
-                  >
+                  <td className="whitespace-nowrap px-5 py-3 align-middle text-[11.5px] tracking-[0.02em] text-white/40" style={{ fontFamily: 'var(--font-mono, monospace)' }}>
                     {r.sku}
                   </td>
                 )}
-                <td
-                  className={`whitespace-nowrap ${px} ${pyR} align-middle ${fs} text-white tabular-nums`}
-                  style={{ fontFamily: 'var(--font-mono, monospace)' }}
-                >
+                <td className={`whitespace-nowrap ${px} ${pyR} align-middle ${fs} text-white tabular-nums`} style={{ fontFamily: 'var(--font-mono, monospace)' }}>
                   {r.stock}
                 </td>
                 {!mobile && (
-                  <td
-                    className="whitespace-nowrap px-5 py-3 align-middle text-right text-[13px] text-white/90 tabular-nums"
-                    style={{ fontFamily: 'var(--font-mono, monospace)' }}
-                  >
+                  <td className="whitespace-nowrap px-5 py-3 align-middle text-right text-[13px] text-white/90 tabular-nums" style={{ fontFamily: 'var(--font-mono, monospace)' }}>
                     {r.price}
                   </td>
                 )}
@@ -350,9 +272,7 @@ function ErpPanel({
         </table>
       </div>
 
-      <footer
-        className={`flex items-center gap-2 border-t border-white/[0.08] bg-white/[0.012] ${px} ${mobile ? 'py-2' : 'py-3'} text-[12px] text-white/55`}
-      >
+      <footer className={`flex items-center gap-2 border-t border-white/[0.08] bg-white/[0.012] ${px} ${mobile ? 'py-2' : 'py-3'} text-[12px] text-white/55`}>
         <GreenDot size={6} />
         {t.connected}
       </footer>
@@ -360,9 +280,7 @@ function ErpPanel({
   )
 }
 
-/* ============================================================
-   Syntax token helpers
-   ============================================================ */
+/* ─── Syntax token helpers ────────────────────────────────── */
 const CLine  = ({ children }: { children: React.ReactNode }) => <span className="block whitespace-pre">{children}</span>
 const Verb   = ({ children }: { children: React.ReactNode }) => <span className="font-medium text-white">{children}</span>
 const CPath  = ({ children }: { children: React.ReactNode }) => <span className="text-white/90">{children}</span>
@@ -372,38 +290,28 @@ const CNum   = ({ children }: { children: React.ReactNode }) => <span className=
 const CMute  = ({ children }: { children: React.ReactNode }) => <span className="text-white/40">{children}</span>
 const CBrace = ({ children }: { children: React.ReactNode }) => <span className="text-white/40">{children}</span>
 
-/* ============================================================
-   MIDDLE PANEL — API webhook code block (glassmorphism monochrome)
-   ============================================================ */
-function ApiPanel({
-  t, mobile = false,
-}: {
-  t: typeof CONTENT['fr']
-  mobile?: boolean
-}) {
+/* ─── MIDDLE PANEL — API code block (glassmorphism) ─────── */
+function ApiPanel({ t, mobile = false }: { t: typeof CONTENT['fr']; mobile?: boolean }) {
   return (
     <aside
       aria-label="Requête API sync"
-      className={`h-full flex flex-col rounded-[12px] border border-white/[0.10] ${mobile ? 'px-4' : 'px-5'} pb-3.5 pt-4 text-white/55`}
+      className={`h-full flex flex-col rounded-[12px] border border-white/[0.08] ${mobile ? 'px-4' : 'px-5'} pb-3.5 pt-4 text-white/55`}
       style={{
         background: 'rgba(255,255,255,0.03)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
-        boxShadow:
-          '0 0 0 1px rgba(255,255,255,0.06), 0 12px 32px rgba(0,0,0,0.40), 0 4px 12px rgba(0,0,0,0.25)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        boxShadow: '0 0 0 1px rgba(255,255,255,0.05), 0 12px 32px rgba(0,0,0,0.40)',
         fontFamily: 'var(--font-mono, monospace)',
         fontSize: mobile ? 11.5 : 12.5,
         lineHeight: 1.75,
         WebkitFontSmoothing: 'antialiased',
       }}
     >
-      {/* top label */}
       <div className="mb-2 flex items-center gap-2 whitespace-nowrap border-b border-white/[0.06] pb-2.5 text-[10.5px] uppercase tracking-[0.14em] text-white/40">
         <GreenDot size={6} />
         <span>{t.apiLabel}</span>
       </div>
 
-      {/* code body */}
       <div className="flex-1 overflow-hidden">
         <CLine><Verb>POST</Verb> <CPath>/api/sync</CPath> <CMute>HTTP/1.1</CMute></CLine>
         {!mobile && (
@@ -423,7 +331,6 @@ function ApiPanel({
         </CLine>
       </div>
 
-      {/* bottom label */}
       <div className="mt-2 flex items-center gap-1.5 whitespace-nowrap border-t border-white/[0.06] pt-2.5 text-[10.5px] tracking-[0.06em] text-white/40">
         <span className="text-white/55">↓</span>
         <span>{t.realtimeLabel}</span>
@@ -432,13 +339,12 @@ function ApiPanel({
   )
 }
 
-/* ============================================================
-   RIGHT PANEL — e-commerce site (light, visual foreground)
-   Deep shadow + live sync counter
-   ============================================================ */
+/* ─── RIGHT PANEL — e-commerce site (foreground, deep shadow) */
 function EcomPanel({ t }: { t: typeof CONTENT['fr'] }) {
-  const n = useSyncCounter()
-  const syncText = `${t.lastSyncFmt[0]}${n}${t.lastSyncFmt[1]}`
+  const lang = useLang()
+  const n    = useSyncCounter()
+  /* syncLabel from lib/strings.ts — {n} placeholder replaced at render */
+  const syncText = strings[lang].erpFeature.syncLabel.replace('{n}', String(n))
 
   return (
     <article
@@ -447,8 +353,7 @@ function EcomPanel({ t }: { t: typeof CONTENT['fr'] }) {
       style={{
         color: '#303030',
         fontFamily: 'var(--font-sans, system-ui, sans-serif)',
-        boxShadow:
-          '0 24px 60px rgba(0,0,0,0.60), 0 0 0 1px rgba(255,255,255,0.10)',
+        boxShadow: '0 24px 60px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.08)',
         WebkitFontSmoothing: 'antialiased',
       }}
     >
@@ -458,7 +363,6 @@ function EcomPanel({ t }: { t: typeof CONTENT['fr'] }) {
         </span>
       </header>
 
-      {/* column headers */}
       <div
         className="grid items-center gap-2.5 border-b border-[#ebebeb] bg-[#fafafa] px-4 py-2.5 text-[11px] font-medium tracking-[0.01em] text-[#616161]"
         style={{ gridTemplateColumns: ECOM_GRID }}
@@ -470,7 +374,6 @@ function EcomPanel({ t }: { t: typeof CONTENT['fr'] }) {
         <span className="text-right">{t.colStatus}</span>
       </div>
 
-      {/* rows */}
       <div className="flex-1 overflow-hidden">
         {ECOM_ROWS.map((r) => (
           <div
@@ -487,9 +390,7 @@ function EcomPanel({ t }: { t: typeof CONTENT['fr'] }) {
             <span className="overflow-hidden text-ellipsis whitespace-nowrap font-medium tracking-tight text-[#1a1a1a]">
               {r.name}
             </span>
-            <span className="text-right font-medium text-[#303030] tabular-nums">
-              {r.stock}
-            </span>
+            <span className="text-right font-medium text-[#303030] tabular-nums">{r.stock}</span>
             <span className="flex justify-end">
               <span className="inline-flex items-center gap-1 rounded-full bg-[#cdf4dd] py-0.5 pl-1.5 pr-2 text-[11px] font-medium leading-[1.4] text-[#0c5132] whitespace-nowrap">
                 {/* pulse-dot from globals.css */}
@@ -501,15 +402,9 @@ function EcomPanel({ t }: { t: typeof CONTENT['fr'] }) {
         ))}
       </div>
 
-      {/* footer — live sync counter */}
       <footer className="flex items-center gap-2 border-t border-[#ebebeb] bg-[#fafafa] px-4 py-2.5 text-[12px] text-[#616161]">
         <span className="inline-flex text-[#008060]">
-          <svg
-            width="12" height="12" viewBox="0 0 12 12"
-            fill="none" stroke="currentColor" strokeWidth={1.6}
-            strokeLinecap="round" strokeLinejoin="round"
-            aria-hidden
-          >
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <path d="M2 5.5a4 4 0 0 1 7-1.6" />
             <path d="M9 2v2.5H6.5" />
             <path d="M10 6.5a4 4 0 0 1-7 1.6" />
@@ -522,16 +417,8 @@ function EcomPanel({ t }: { t: typeof CONTENT['fr'] }) {
   )
 }
 
-/* ============================================================
-   Comparison row
-   ============================================================ */
-function Row({
-  label, meta, variant,
-}: {
-  label: string
-  meta: string
-  variant: 'bad' | 'good'
-}) {
+/* ─── Comparison row ─────────────────────────────────────── */
+function Row({ label, meta, variant }: { label: string; meta: string; variant: 'bad' | 'good' }) {
   const isBad = variant === 'bad'
   return (
     <motion.div
@@ -564,125 +451,104 @@ function Row({
   )
 }
 
-/* ============================================================
-   Main section
-   ============================================================ */
+/* ─── Main section ───────────────────────────────────────── */
 export function ErpFeatureSection() {
   const lang = useLang()
-  const t = CONTENT[lang]
+  const t    = CONTENT[lang]
 
   return (
     <section
       className="flex items-center justify-center px-4 py-10 md:px-6 md:py-16"
       style={{
-        background:
-          'radial-gradient(1200px 600px at 50% -10%, rgba(255,255,255,0.025), transparent 60%), hsl(var(--bg-dark))',
+        background: 'radial-gradient(1200px 600px at 50% -10%, rgba(255,255,255,0.025), transparent 60%), hsl(var(--bg-dark))',
         color: 'rgba(255,255,255,0.88)',
       }}
     >
       <div
         className="relative w-full max-w-[1280px] overflow-hidden rounded-2xl md:rounded-3xl"
-        style={{
-          background: 'hsl(var(--bg-dark-card))',
-          border: '1px solid rgba(255,255,255,0.10)',
-        }}
+        style={{ background: 'hsl(var(--bg-dark-card))', border: '1px solid rgba(255,255,255,0.10)' }}
       >
         {/* ── Figure area ── */}
         <div className="relative px-4 md:px-8 pt-16 md:pt-20 pb-6 md:pb-10">
 
-          {/* soft radial glow */}
+          {/* Radial glow — atmosphere only */}
           <div
             aria-hidden
             className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2"
             style={{
               width: '100%', height: 700,
-              background:
-                'radial-gradient(ellipse 60% 55% at 50% 40%, rgba(255,255,255,0.032), rgba(255,255,255,0.010) 40%, transparent 70%)',
+              background: 'radial-gradient(ellipse 60% 55% at 50% 40%, rgba(255,255,255,0.032), rgba(255,255,255,0.010) 40%, transparent 70%)',
               filter: 'blur(8px)',
               zIndex: 0,
             }}
           />
 
-          {/* ══ DESKTOP: three overlapping panels (≥768px) ══
-              41.67% wide each (≡ 500/1200).
-              Stagger: 0s → 0.15s → 0.3s.
-              Left panel rendered inside a wrapper div scaled to 0.97
-              to simulate depth without framer-motion transform conflict.
-          ══ */}
-          <div
-            className="relative hidden md:block w-full mt-4"
-            style={{ minHeight: 380, zIndex: 1 }}
-          >
+          {/* ═══ DESKTOP: three overlapping panels (≥768px) ═══
+              41.67% wide each (500/1200).
+              Connectors in overlap zones + staggered motion entrance.
+          ═══ */}
+          <div className="relative hidden md:block w-full mt-4" style={{ minHeight: 380, zIndex: 1 }}>
             <Connectors />
 
-            {/* LEFT — ERP stock table (recessed) */}
+            {/* LEFT — ERP stock table (recessed, non-motion wrapper for scale) */}
             <motion.div
               className="absolute z-[1]"
               style={{ left: 0, top: 24, width: '41.67%', height: 340 }}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.6, ease: EASE_OUT, delay: 0 }}
+              transition={{ duration: 0.55, ease: EASE_OUT }}
             >
-              {/* non-motion wrapper for scale so framer-motion doesn't override */}
+              {/* Non-motion div for scale — prevents framer-motion overriding CSS transform */}
               <div style={{ transform: 'scale(0.97)', transformOrigin: 'bottom center', height: '100%' }}>
                 <ErpPanel t={t} />
               </div>
             </motion.div>
 
-            {/* MIDDLE — API panel (glassmorphism) */}
+            {/* MIDDLE — API panel (glassmorphism monochrome) */}
             <motion.div
               className="absolute z-[2]"
               style={{ left: '29.17%', top: 14, width: '41.67%', height: 340 }}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.6, ease: EASE_OUT, delay: 0.15 }}
+              transition={{ duration: 0.55, delay: 0.12, ease: EASE_OUT }}
             >
               <ApiPanel t={t} />
             </motion.div>
 
-            {/* RIGHT — Ecom panel (foreground) */}
+            {/* RIGHT — Ecom panel (visual foreground, deep shadow) */}
             <motion.div
               className="absolute z-[3]"
               style={{ left: '58.33%', top: 4, width: '41.67%', height: 340 }}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.6, ease: EASE_OUT, delay: 0.3 }}
+              transition={{ duration: 0.55, delay: 0.24, ease: EASE_OUT }}
             >
               <EcomPanel t={t} />
             </motion.div>
           </div>
 
-          {/* ══ MOBILE: vertical stack (<768px) ══ */}
-          <div
-            className="relative md:hidden flex flex-col gap-3 mt-8 w-full overflow-hidden"
-            style={{ zIndex: 1 }}
-          >
+          {/* ═══ MOBILE: vertical stack (<768px) ═══ */}
+          <div className="relative md:hidden flex flex-col gap-3 mt-8 w-full overflow-hidden" style={{ zIndex: 1 }}>
             <ErpPanel t={t} mobile />
             <ApiPanel t={t} mobile />
             <EcomPanel t={t} />
           </div>
 
-          {/* ── Caption — eyebrow + title + description ── */}
-          <div
-            className="relative mt-8 md:mt-10 max-w-[640px] pr-0 md:pr-6"
-            style={{ zIndex: 2 }}
-          >
-            {/* eyebrow */}
+          {/* ── Caption: eyebrow (strings.ts) + title + description ── */}
+          <div className="relative mt-8 md:mt-10 max-w-[640px] pr-0 md:pr-6" style={{ zIndex: 2 }}>
             <motion.p
-              className="m-0 mb-3 font-mono uppercase tracking-widest"
-              style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.50)' }}
+              className="m-0 mb-3 font-mono text-xs uppercase tracking-[0.15em] opacity-50 text-white"
               initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 0.5, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, ease: 'easeOut' }}
             >
-              {t.eyebrow}
+              {strings[lang].erpFeature.eyebrow}
             </motion.p>
 
-            {/* title */}
             <motion.h2
               className="m-0 text-white font-[650] tracking-[-0.018em]"
               style={{
@@ -698,14 +564,9 @@ export function ErpFeatureSection() {
               {t.title}
             </motion.h2>
 
-            {/* description */}
             <motion.p
               className="m-0 mt-3 max-w-[560px]"
-              style={{
-                fontSize: 'clamp(14px, 3.5vw, 15.5px)',
-                lineHeight: 1.55,
-                color: 'rgba(255,255,255,0.56)',
-              }}
+              style={{ fontSize: 'clamp(14px, 3.5vw, 15.5px)', lineHeight: 1.55, color: 'rgba(255,255,255,0.56)' }}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -723,12 +584,8 @@ export function ErpFeatureSection() {
         <div className="px-4 min-720:px-14 py-8 min-720:py-14">
           <div
             className="grid grid-cols-1 min-720:grid-cols-2 rounded-xl min-720:rounded-2xl overflow-hidden"
-            style={{
-              background: 'hsl(var(--bg-dark-card))',
-              border: '1px solid rgba(255,255,255,0.10)',
-            }}
+            style={{ background: 'hsl(var(--bg-dark-card))', border: '1px solid rgba(255,255,255,0.10)' }}
           >
-            {/* BAD column */}
             <motion.div
               className="erp-compare-left p-5 min-720:p-9"
               variants={revealContainer}
@@ -736,20 +593,11 @@ export function ErpFeatureSection() {
               whileInView="visible"
               viewport={{ once: true, margin: '-60px' }}
             >
-              <div
-                className="flex items-center justify-between mb-5 min-720:mb-6"
-                style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: 16 }}
-              >
-                <div
-                  className="font-semibold uppercase tracking-[0.04em]"
-                  style={{ fontSize: 12, color: 'rgba(255,255,255,0.36)' }}
-                >
+              <div className="flex items-center justify-between mb-5 min-720:mb-6" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: 16 }}>
+                <div className="font-semibold uppercase tracking-[0.04em]" style={{ fontSize: 12, color: 'rgba(255,255,255,0.36)' }}>
                   {t.badHeader}
                 </div>
-                <div
-                  className="font-mono uppercase"
-                  style={{ fontSize: 10, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.36)' }}
-                >
+                <div className="font-mono uppercase" style={{ fontSize: 10, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.36)' }}>
                   {t.stateOff}
                 </div>
               </div>
@@ -758,7 +606,6 @@ export function ErpFeatureSection() {
               ))}
             </motion.div>
 
-            {/* GOOD column */}
             <motion.div
               className="p-5 min-720:p-9"
               variants={revealContainer}
@@ -766,20 +613,11 @@ export function ErpFeatureSection() {
               whileInView="visible"
               viewport={{ once: true, margin: '-60px' }}
             >
-              <div
-                className="flex items-center justify-between mb-5 min-720:mb-6"
-                style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: 16 }}
-              >
-                <div
-                  className="font-semibold uppercase tracking-[0.04em] text-white"
-                  style={{ fontSize: 12 }}
-                >
+              <div className="flex items-center justify-between mb-5 min-720:mb-6" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: 16 }}>
+                <div className="font-semibold uppercase tracking-[0.04em] text-white" style={{ fontSize: 12 }}>
                   {t.goodHeader}
                 </div>
-                <div
-                  className="font-mono uppercase"
-                  style={{ fontSize: 10, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.36)' }}
-                >
+                <div className="font-mono uppercase" style={{ fontSize: 10, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.36)' }}>
                   {t.stateOn}
                 </div>
               </div>
