@@ -43,7 +43,7 @@ export function NavPill() {
       <header className="fixed left-1/2 top-4 z-50 -translate-x-1/2 w-[calc(100%-2rem)] max-w-2xl">
         <div className="flex items-center gap-3">
         <nav
-          className="flex items-center gap-x-3 min-720:gap-x-1 rounded-full border px-2 py-2 min-720:flex-1 min-720:justify-between min-720:px-3"
+          className="flex items-center gap-x-3 min-720:gap-x-2 rounded-full border px-3 py-2.5 min-720:flex-1 min-720:justify-between min-720:px-4"
           style={{
             background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.78)',
             backdropFilter: 'blur(16px)',
@@ -62,10 +62,10 @@ export function NavPill() {
             </span>
           </Link>
 
-          <div className="hidden min-720:flex items-center gap-0.5 flex-1">
+          <div className="hidden min-720:flex items-center gap-1 flex-1">
             <Link
               href="/work"
-              className="rounded-full px-3 py-1.5 text-sm font-medium transition-colors duration-150 whitespace-nowrap"
+              className="rounded-full px-4 py-2 text-base font-medium transition-colors duration-150 whitespace-nowrap"
               style={{
                 color: pathname === '/work' ? 'hsl(var(--text-primary))' : 'hsl(var(--text-tertiary))',
                 background: pathname === '/work' ? 'hsl(var(--bg-secondary))' : 'transparent',
@@ -81,7 +81,7 @@ export function NavPill() {
             >
               <button
                 type="button"
-                className="flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-medium transition-colors duration-150 whitespace-nowrap"
+                className="flex items-center gap-1 rounded-full px-4 py-2 text-base font-medium transition-colors duration-150 whitespace-nowrap"
                 style={{
                   color: servicesActive || servicesOpen ? 'hsl(var(--text-primary))' : 'hsl(var(--text-tertiary))',
                   background: servicesActive ? 'hsl(var(--bg-secondary))' : 'transparent',
@@ -125,7 +125,7 @@ export function NavPill() {
 
             <Link
               href="/about"
-              className="rounded-full px-3 py-1.5 text-sm font-medium transition-colors duration-150 whitespace-nowrap"
+              className="rounded-full px-4 py-2 text-base font-medium transition-colors duration-150 whitespace-nowrap"
               style={{
                 color: pathname === '/about' ? 'hsl(var(--text-primary))' : 'hsl(var(--text-tertiary))',
                 background: pathname === '/about' ? 'hsl(var(--bg-secondary))' : 'transparent',
@@ -135,7 +135,7 @@ export function NavPill() {
             </Link>
             <Link
               href="/blog"
-              className="rounded-full px-3 py-1.5 text-sm font-medium transition-colors duration-150 whitespace-nowrap"
+              className="rounded-full px-4 py-2 text-base font-medium transition-colors duration-150 whitespace-nowrap"
               style={{
                 color: pathname === '/blog' ? 'hsl(var(--text-primary))' : 'hsl(var(--text-tertiary))',
                 background: pathname === '/blog' ? 'hsl(var(--bg-secondary))' : 'transparent',
@@ -145,7 +145,7 @@ export function NavPill() {
             </Link>
             <Link
               href="/contact"
-              className="rounded-full px-3 py-1.5 text-sm font-medium transition-colors duration-150 whitespace-nowrap"
+              className="rounded-full px-4 py-2 text-base font-medium transition-colors duration-150 whitespace-nowrap"
               style={{
                 color: pathname === '/contact' ? 'hsl(var(--text-primary))' : 'hsl(var(--text-tertiary))',
                 background: pathname === '/contact' ? 'hsl(var(--bg-secondary))' : 'transparent',

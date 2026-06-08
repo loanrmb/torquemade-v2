@@ -46,7 +46,7 @@ export default function HomePage() {
           <div className="flex flex-col items-start text-left max-w-5xl mx-auto">
 
             <h1
-              className="fade-up text-3xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold tracking-tight leading-[1.15]"
+              className="fade-up text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.15]"
               style={{ color: 'hsl(var(--text-primary))' }}
             >
               {t.hero.tagline}
