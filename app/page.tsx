@@ -41,11 +41,11 @@ export default function HomePage() {
       <main className="relative z-10 overflow-clip rounded-b-32 bg-bg-primary">
 
         {/* ── HERO ── */}
-        <section className="px-5 pt-28 pb-4 min-720:pt-36 min-1280:pt-44">
+        <section className="px-4 pt-16 pb-4 min-720:px-5 min-720:pt-36 min-1280:pt-44">
           <div className="flex flex-col items-start text-left max-w-5xl mx-auto">
 
             <h1
-              className="fade-up text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold tracking-tight leading-[1.15]"
+              className="fade-up text-3xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold tracking-tight leading-[1.15]"
               style={{ color: 'hsl(var(--text-primary))' }}
             >
               {t.hero.tagline}
@@ -57,7 +57,7 @@ export default function HomePage() {
             </h1>
 
             <p
-              className="fade-up fade-up-d1 mt-6 text-lg md:text-xl lg:text-2xl font-medium"
+              className="fade-up fade-up-d1 mt-3 text-base md:mt-6 md:text-xl lg:text-2xl font-medium"
               style={{ color: 'hsl(var(--text-secondary))' }}
             >
               {t.hero.heroSubheadline}
@@ -70,7 +70,7 @@ export default function HomePage() {
               {t.hero.headline2}
             </p>
 
-            <div className="fade-up fade-up-d3 mt-8 flex flex-wrap items-center justify-start gap-3">
+            <div className="fade-up fade-up-d3 mt-6 md:mt-8 flex flex-wrap items-center justify-start gap-3">
               <Link
                 href="/contact"
                 className="btn-liquid-glass rounded-full px-6 py-3 text-sm font-semibold"
