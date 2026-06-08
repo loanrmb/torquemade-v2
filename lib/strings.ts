@@ -29,6 +29,8 @@ export const strings = {
       tagline2Accent: 'des systèmes.',
       cta1: 'Voir les projets',
       cta2: 'Nous contacter',
+      heroCta1: 'Parlons de votre projet',
+      heroCta2: 'Voir nos projets',
     },
     stats: [
       { value: '1M+', label: 'Impressions Google' },
@@ -423,6 +425,8 @@ export const strings = {
       tagline2Accent: 'systems.',
       cta1: 'See our work',
       cta2: 'Get in touch',
+      heroCta1: "Let's talk",
+      heroCta2: 'See our work',
     },
     stats: [
       { value: '1M+', label: 'Google impressions' },

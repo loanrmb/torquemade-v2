@@ -711,6 +711,79 @@ html.dark .cta-card {
   100% { background-position: 200% center; }
 }
 
+/* Liquid glass text — reusable className for hero accent.
+   Same color stops + timing as the inline tagline2Accent. */
+.text-liquid-glass {
+  background: linear-gradient(
+    90deg,
+    #f97316, #eab308, #22c55e, #3b82f6, #a855f7, #ec4899, #f97316
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shift 4s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-liquid-glass { animation: none; }
+}
+
+/* Primary hero CTA — animated rainbow background, white text. */
+.btn-liquid-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    90deg,
+    #f97316, #eab308, #22c55e, #3b82f6, #a855f7, #ec4899, #f97316
+  );
+  background-size: 200% 100%;
+  color: #ffffff;
+  border: none;
+  animation: gradient-shift 4s linear infinite;
+  transition: transform 100ms var(--ease-out), filter 150ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-liquid-glass:hover { filter: brightness(1.05); }
+}
+.btn-liquid-glass:active { transform: scale(0.97); }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-liquid-glass { animation: none; }
+}
+
+/* Outline button with rainbow gradient border on hover.
+   Uses padding-box / border-box compositing for the gradient border. */
+.btn-outline-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid hsl(var(--border-subtle));
+  color: hsl(var(--text-primary));
+  transition: border-color 200ms var(--ease-out), background 200ms var(--ease-out), transform 100ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-outline-glass:hover {
+    border-color: transparent;
+    background:
+      linear-gradient(hsl(var(--bg-primary)), hsl(var(--bg-primary))) padding-box,
+      linear-gradient(
+        90deg,
+        #f97316, #eab308, #22c55e, #3b82f6, #a855f7, #ec4899, #f97316
+      ) border-box;
+    background-size: auto, 200% 100%;
+    animation: gradient-shift 4s linear infinite;
+  }
+}
+.btn-outline-glass:active { transform: scale(0.97); }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-outline-glass:hover { animation: none; }
+}
+
 /* ============================================================
    ERP SYNC ANIMATION — Row flash + number bump
    Used in erp-feature-section.tsx autonomous stock sync loop

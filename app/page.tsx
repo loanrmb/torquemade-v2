@@ -45,72 +45,50 @@ export default function HomePage() {
           <div className="flex flex-col items-center text-center max-w-5xl">
 
             <h1
-              className="fade-up text-3xl min-480:text-4xl min-720:text-5xl min-1280:text-6xl font-semibold tracking-tight leading-tight"
+              className="fade-up text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1]"
               style={{ color: 'hsl(var(--text-primary))' }}
             >
-              {t.hero.headline1a}
+              {t.hero.tagline}
               <br />
-              <span className="min-720:whitespace-nowrap">{t.hero.headline1b}</span>
+              <span>
+                {t.hero.tagline2Lead}
+                <span className="text-liquid-glass">{t.hero.tagline2Accent}</span>
+              </span>
             </h1>
 
             <p
-              className="fade-up fade-up-d1 mt-6 text-base"
+              className="fade-up fade-up-d1 mt-6 text-lg md:text-xl lg:text-2xl font-medium"
+              style={{ color: 'hsl(var(--text-secondary))' }}
+            >
+              {t.hero.headline1a} {t.hero.headline1b}
+            </p>
+
+            <p
+              className="fade-up fade-up-d2 mt-2 text-sm md:text-base"
               style={{ color: 'hsl(var(--text-tertiary))' }}
             >
               {t.hero.headline2}
             </p>
+
+            <div className="fade-up fade-up-d3 mt-8 flex flex-wrap items-center justify-center gap-3">
+              <Link
+                href="/contact"
+                className="btn-liquid-glass rounded-full px-6 py-3 text-sm font-semibold"
+              >
+                {t.hero.heroCta1}
+              </Link>
+              <Link
+                href="/work"
+                className="btn-outline-glass rounded-full px-6 py-3 text-sm font-semibold"
+              >
+                {t.hero.heroCta2}
+              </Link>
+            </div>
           </div>
         </section>
 
         {/* ── CONTAINER SCROLL — dashboard 3D ── */}
-        <ContainerScroll
-          titleComponent={
-            <motion.div
-              className="space-y-3 text-center"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={{
-                hidden: {},
-                visible: { transition: { staggerChildren: 0.15 } },
-              }}
-            >
-              <motion.p
-                className="text-base md:text-lg tracking-wide uppercase"
-                style={{ color: 'hsl(var(--text-secondary))' }}
-                variants={{
-                  hidden: { opacity: 0, y: 16 },
-                  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-                }}
-              >
-                {t.hero.tagline}
-              </motion.p>
-
-              <motion.p
-                className="text-3xl md:text-5xl font-bold leading-tight"
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-                }}
-              >
-                <span style={{ color: 'hsl(var(--text-primary))' }}>
-                  {t.hero.tagline2Lead}
-                </span>
-                <span
-                  className="bg-clip-text text-transparent"
-                  style={{
-                    backgroundImage:
-                      'linear-gradient(90deg, #f97316, #eab308, #22c55e, #3b82f6, #a855f7, #ec4899)',
-                    backgroundSize: '200% auto',
-                    animation: 'gradient-shift 4s linear infinite',
-                  }}
-                >
-                  {t.hero.tagline2Accent}
-                </span>
-              </motion.p>
-            </motion.div>
-          }
-        >
+        <ContainerScroll titleComponent={<div aria-hidden="true" />}>
           {/* Mobile — static image */}
           <img
             src="/images/preview-dashboard-stock-clair.png"
