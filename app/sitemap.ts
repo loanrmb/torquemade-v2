@@ -62,7 +62,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'voge-bordeaux',
     'orcal-bordeaux',
     'bordeaux-ride',
-    'bdxride-crm',
     'spicy-beauty',
   ]
 

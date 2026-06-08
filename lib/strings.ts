@@ -21,7 +21,7 @@ export const strings = {
       eyebrow: 'Studio',
       heroSubheadline: 'Web Dev — CRM sur mesure & Connexion Stock Magasin ↔ site e-commerce.',
       headline2: 'Du design à la base de données.',
-      sub: 'Nous construisons des sites qui performent — et les systèmes derrière.',
+      sub: 'Nous construisons des sites qui performent, et les systèmes derrière.',
       tagline: 'On ne construit pas de sites vitrines.',
       tagline2: 'On construit des systèmes.',
       tagline2Lead: 'On construit ',
@@ -49,13 +49,13 @@ export const strings = {
         {
           num: '02',
           title: 'CRM & Logiciel sur mesure',
-          desc: 'Systèmes de réservation, CRM sur mesure pour votre entreprise, dashboards — construits autour de votre workflow exact.',
+          desc: 'Systèmes de réservation, CRM sur mesure pour votre entreprise, dashboards, construits autour de votre workflow exact.',
           href: '/services/crm',
         },
         {
           num: '03',
           title: 'Connexion stock ERP - Site e-commerce',
-          desc: 'ERP existant ou logiciel sur mesure — votre stock synchronisé en temps réel avec votre Shopify.',
+          desc: 'ERP existant ou logiciel sur mesure, votre stock synchronisé en temps réel avec votre Shopify.',
           href: '/services/erp-ecommerce',
         },
         {
@@ -68,8 +68,6 @@ export const strings = {
     servicesSection: {
       eyebrow: '',
       title: "De l'idée au système. Construit pour vous.",
-      intro:
-        'Quatre disciplines. Un seul interlocuteur, du brief au lancement — sites web, logiciels métier, synchronisation stock, visibilité IA.',
       tabs: [
         {
           title: 'Sites web',
@@ -78,17 +76,12 @@ export const strings = {
         },
         {
           title: 'CRM & Logiciel sur mesure',
-          desc: 'Réservations, dashboards, workflows métier — bâtis autour de votre process exact.',
+          desc: 'Réservations, dashboards, workflows métier, bâtis autour de votre process exact.',
           tag: 'CRM sur mesure',
         },
         {
           title: 'Connexion ERP · Stock',
           desc: 'Synchronisation temps réel entre votre ERP et votre site e-commerce.',
-          tag: '',
-        },
-        {
-          title: 'SEO & Optimisation IA',
-          desc: 'Contenu qui ranke sur Google ET cité par ChatGPT, Claude, Perplexity.',
           tag: '',
         },
       ],
@@ -133,16 +126,16 @@ export const strings = {
       alts: {
         site: 'jetski-arcachon.fr — production',
         code: 'index.html — source',
-        crmForm: 'Bordeaux Ride — réservation transfert',
+        crmForm: 'CRM sur mesure — réservation',
         crmDash: 'Mes Rendez-vous — dashboard',
       },
     },
     home: {
       partnerTitle: 'Un seul interlocuteur pour tout votre écosystème digital',
-      partnerBody: 'Site e-commerce, logiciel métier, stock connecté — nous construisons l\'ensemble et assurons que tout fonctionne ensemble.',
+      partnerBody: 'Site e-commerce, logiciel métier, stock connecté, nous construisons l\'ensemble et assurons que tout fonctionne ensemble.',
       erp: {
         title: 'Votre stock, votre site, votre logiciel — connectés.',
-        subtitle: 'ERP existant ou sur mesure — nous le construisons selon vos besoins et le connectons à votre site e-commerce. Stock synchronisé en temps réel, commandes remontées automatiquement, zéro double saisie.',
+        subtitle: 'ERP existant ou sur mesure, nous le construisons selon vos besoins et le connectons à votre site e-commerce. Stock synchronisé en temps réel, commandes remontées automatiquement, zéro double saisie.',
         erpBox: 'ERP / Logiciel de gestion',
         syncBox: 'Synchronisation',
         siteBox: 'Site e-commerce',
@@ -199,7 +192,7 @@ export const strings = {
     work: {
       eyebrow: 'Projets',
       headline: 'Projets à la une.',
-      sub: 'De vrais projets , avec des métriques réelles — tirées de Google Search Console et GA4.',
+      sub: 'De vrais projets, avec des métriques réelles, tirées de Google Search Console et GA4.',
       filterAll: 'Tous',
       filterWeb: 'Sites web',
       filterLogiciel: 'CRM & Systèmes',
@@ -217,7 +210,7 @@ export const strings = {
       whyEyebrow: 'Différenciateurs',
       whyTitle: 'Ce qui nous différencie.',
       differentiators: [
-        { title: 'Livraison en 15 jours', text: 'Du début du projet à la livraison du  site live — 15 jours ouvrés. Pas de blabla, pas d\'attente inutile.' },
+        { title: 'Livraison en 15 jours', text: 'Du début du projet à la livraison du site live, 15 jours ouvrés. Pas de blabla, pas d\'attente inutile.' },
         { title: 'Métriques réelles uniquement', text: 'Chaque décision est basée sur Search Console et GA4. Pas d\'estimations, pas de spin.' },
         { title: 'Pas de template', text: 'Chaque site est construit de zéro autour de votre business. Aucun thème prémâché.' },
         { title: 'Support post-lancement', text: 'Disponible après le lancement. Analyses mensuelles, mises à jour, évolutions.' },
@@ -237,12 +230,12 @@ export const strings = {
     webDev: {
       eyebrow: 'Services',
       hero: 'Le bon site pour le bon projet',
-      intro: 'Tous les sites ne se ressemblent pas. Selon votre activité, vos objectifs et votre façon de vendre, nous choisissons la technologie la plus adaptée — et nous vous expliquons pourquoi.',
+      intro: 'Tous les sites ne se ressemblent pas. Selon votre activité, vos objectifs et votre façon de vendre, nous choisissons la technologie la plus adaptée, et nous vous expliquons pourquoi.',
       nextjsTitle: 'Site Next.js sur mesure',
-      nextjsBody: 'Pour les entreprises de services, studios, agences et marques qui ont besoin d\'un site entièrement personnalisé. Aucune contrainte de plateforme, aucun template — tout est construit de zéro autour de votre identité et de vos objectifs. Performance maximale, flexibilité totale, intégrations sur mesure (CRM, API, outils métier).',
-      nextjsFor: 'Idéal pour tout type de projet : entreprise de BTP, cabinet, restaurant, artisan, agence, studio, SaaS, marque — que vous ayez besoin d\'un site vitrine, d\'un site qui génère des leads, ou d\'un outil plus complexe avec des intégrations sur mesure.',
+      nextjsBody: 'Pour les entreprises de services, studios, agences et marques qui ont besoin d\'un site entièrement personnalisé. Aucune contrainte de plateforme, aucun template, tout est construit de zéro autour de votre identité et de vos objectifs. Performance maximale, flexibilité totale, intégrations sur mesure (CRM, API, outils métier).',
+      nextjsFor: 'Idéal pour tout type de projet : entreprise de BTP, cabinet, restaurant, artisan, agence, studio, SaaS, marque, que vous ayez besoin d\'un site vitrine, d\'un site qui génère des leads, ou d\'un outil plus complexe avec des intégrations sur mesure.',
       shopifyTitle: 'Site Shopify e-commerce',
-      shopifyBody: 'Pour les commerces qui vendent en ligne. Shopify est la plateforme e-commerce la plus aboutie du marché : gestion produits intuitive, checkout optimisé, paiements intégrés, fiabilité éprouvée. Nous construisons votre boutique de A à Z — design sur mesure, migration catalogue, configuration complète.',
+      shopifyBody: 'Pour les commerces qui vendent en ligne. Shopify est la plateforme e-commerce la plus aboutie du marché : gestion produits intuitive, checkout optimisé, paiements intégrés, fiabilité éprouvée. Nous construisons votre boutique de A à Z, design sur mesure, migration catalogue, configuration complète.',
       shopifyFor: 'Idéal pour : boutiques en ligne, magasins avec vente physique et digitale, marques produits, revendeurs.',
       differenceTitle: 'Quelle différence concrètement ?',
       differenceHeaderAspect: 'Aspect',
@@ -253,7 +246,7 @@ export const strings = {
         { aspect: 'Gestion produits', nextjs: 'Manuelle ou via CMS/API', shopify: 'Interface dédiée, native et intuitive' },
         { aspect: 'Checkout & paiements', nextjs: 'Intégration sur mesure', shopify: 'Intégré, optimisé, prêt à l\'emploi' },
         { aspect: 'Flexibilité design', nextjs: 'Totale — aucune contrainte', shopify: 'Élevée dans le cadre Shopify' },
-        { aspect: 'Connexion à vos outils', nextjs: 'Illimitée — votre site peut communiquer avec n\'importe quel logiciel : CRM, ERP, outil de facturation, base de données...', shopify: 'Via les apps Shopify ou des connecteurs développés sur mesure' },
+        { aspect: 'Connexion à vos outils', nextjs: 'Illimitée, votre site peut communiquer avec n\'importe quel logiciel : CRM, ERP, outil de facturation, base de données...', shopify: 'Via les apps Shopify ou des connecteurs développés sur mesure' },
       ],
       deliveryTitle: 'Dans tous les cas, on livre',
       delivery: [
@@ -276,27 +269,27 @@ export const strings = {
       targets: [
         {
           title: 'Entreprises de location',
-          desc: 'Véhicules, matériel, équipements — gérez vos disponibilités, réservations et clients en un seul endroit.',
+          desc: 'Véhicules, matériel, équipements, gérez vos disponibilités, réservations et clients en un seul endroit.',
         },
         {
           title: 'Chauffeurs privés & VTC',
-          desc: 'Courses, clients récurrents, facturation — un outil pensé pour votre activité mobile.',
+          desc: 'Courses, clients récurrents, facturation, un outil pensé pour votre activité mobile.',
         },
         {
           title: 'Salles de sport & studios',
-          desc: 'Abonnements, présences, cours collectifs — pilotez votre activité sans jongler entre dix outils.',
+          desc: 'Abonnements, présences, cours collectifs, pilotez votre activité sans jongler entre dix outils.',
         },
         {
           title: 'Prestataires de services',
-          desc: 'Agences, artisans, consultants — suivez vos prospects, devis, projets et relances depuis une seule interface.',
+          desc: 'Agences, artisans, consultants, suivez vos prospects, devis, projets et relances depuis une seule interface.',
         },
         {
           title: 'Professions médicales & paramédicales',
-          desc: 'Rendez-vous, patients, historique — une solution confidentielle et adaptée à votre pratique.',
+          desc: 'Rendez-vous, patients, historique, une solution confidentielle et adaptée à votre pratique.',
         },
         {
           title: 'Tout métier avec des clients récurrents',
-          desc: 'Si vous avez des clients, un historique à suivre et des actions à automatiser — un CRM sur mesure vous fait gagner du temps chaque jour.',
+          desc: 'Si vous avez des clients, un historique à suivre et des actions à automatiser, un CRM sur mesure vous fait gagner du temps chaque jour.',
         },
       ],
       deliveryTitle: 'Ce qu\'on livre',
@@ -321,13 +314,13 @@ export const strings = {
     erp: {
       eyebrow: 'Services',
       hero: 'Votre stock et votre site, enfin synchronisés',
-      intro: 'Votre ERP contient votre stock réel. Votre site affiche autre chose. Nous résolvons ce problème définitivement — en connectant vos systèmes ou en construisant l\'outil qu\'il vous faut.',
+      intro: 'Votre ERP contient votre stock réel. Votre site affiche autre chose. Nous résolvons ce problème définitivement, en connectant vos systèmes ou en construisant l\'outil qu\'il vous faut.',
       shopifyTitle: 'Pourquoi Shopify ?',
       shopifyBody: 'Nous utilisons Shopify pour tous nos projets e-commerce. C\'est la plateforme la plus aboutie du marché : interface intuitive, écosystème d\'applications riche, checkout optimisé, fiabilité éprouvée. Vos équipes la prennent en main en quelques heures.',
       option1Badge: 'Option A',
       option1Title: 'Option A — Vous avez déjà un ERP',
       option1Subtitle: 'On connecte votre logiciel actuel à Shopify',
-      option1Body: 'Votre SAGE, Cegid ou autre ERP reste en place. Nous construisons le connecteur qui synchronise votre stock avec Shopify en temps réel. Chaque vente en ligne déduit automatiquement dans votre ERP. Chaque modification de stock côté ERP se reflète immédiatement sur votre site. Vous ne changez rien à vos habitudes — votre équipe continue à travailler dans l\'outil qu\'elle connaît.',
+      option1Body: 'Votre SAGE, Cegid ou autre ERP reste en place. Nous construisons le connecteur qui synchronise votre stock avec Shopify en temps réel. Chaque vente en ligne déduit automatiquement dans votre ERP. Chaque modification de stock côté ERP se reflète immédiatement sur votre site. Vous ne changez rien à vos habitudes, votre équipe continue à travailler dans l\'outil qu\'elle connaît.',
       option1Delivery: [
         'Audit de votre ERP et de son API',
         'Développement du connecteur sur mesure',
@@ -372,7 +365,7 @@ export const strings = {
       budgets: ['< 5 000', '5 000 – 10 000', '10 000 – 20 000', '20 000 +'],
       message: 'Message (optionnel)',
       submit: 'Envoyer →',
-      success: '✓ Message envoyé — nous revenons vers vous dans les 24h.',
+      success: '✓ Message envoyé, nous revenons vers vous dans les 24h.',
       error: 'Une erreur s\'est produite. Envoyez-nous un email : loanrmb@gmail.com',
     },
     footer: {
@@ -385,7 +378,7 @@ export const strings = {
     blog: {
       eyebrow: 'Blog',
       headline: 'Ressources pour les\nprofessionnels du web\net du CRM.',
-      sub: 'Stratégies, analyses et retours d\'expérience — sans jargon inutile.',
+      sub: 'Stratégies, analyses et retours d\'expérience, sans jargon inutile.',
       backLabel: '← Blog',
       readingTime: 'min de lecture',
       featuredTitle: 'À la une',
@@ -393,6 +386,46 @@ export const strings = {
       ctaEyebrow: 'Un projet ?',
       ctaTitle: 'Parlons de votre site web ou de votre CRM.',
       ctaButton: 'Prendre contact →',
+    },
+    seoSection: {
+      title: 'SEO & Optimisation IA',
+      subtitle: 'Visible sur Google. Cité par les IA.',
+      card1: {
+        title: 'Contenu qui se positionne',
+        desc: 'Articles, pages service et fiches produit optimisés pour capturer du trafic qualifié sur le long terme.',
+      },
+      card2: {
+        title: 'Métadonnées et structure',
+        desc: 'Title tags, meta descriptions, balises H, structure d\'URL propre, chaque signal technique au bon niveau.',
+      },
+      card3: {
+        title: 'Cité par les IA',
+        desc: 'Structure sémantique et contenu d\'autorité qui remontent dans les réponses ChatGPT, Perplexity et Claude.',
+      },
+      item1: {
+        title: 'Balises & métadonnées',
+        desc: 'Title tags, meta descriptions et balises H, chaque page envoyée à Google avec les bons signaux.',
+      },
+      item2: {
+        title: 'Mots-clés',
+        desc: 'Recherche et stratégie de mots-clés ciblés selon votre secteur, vos services et votre zone géographique.',
+      },
+      item3: {
+        title: 'Structure d\'URL & redirections',
+        desc: 'URLs propres, redirections 301, architecture de site lisible par Google et compréhensible par vos clients.',
+      },
+      item4: {
+        title: 'Core Web Vitals & performance',
+        desc: 'LCP, FID, CLS, chaque page livrée avec un score Lighthouse vert. La vitesse est un facteur de classement.',
+      },
+      item5: {
+        title: 'Articles de blog',
+        desc: 'Contenus locaux et génériques qui captent les recherches longue traîne, et restent visibles des mois après publication.',
+      },
+      item6: {
+        title: 'Cité par les IA',
+        desc: 'Structure sémantique et contenu d\'autorité conçus pour apparaître dans les réponses ChatGPT, Perplexity, Claude et Gemini.',
+      },
     },
   },
 
@@ -416,7 +449,7 @@ export const strings = {
       eyebrow: 'Studio',
       heroSubheadline: 'Web Dev — Custom CRM & In-store Stock ↔ e-commerce sync.',
       headline2: 'From design to database.',
-      sub: 'We build sites that perform — and the systems behind them.',
+      sub: 'We build sites that perform, and the systems behind them.',
       tagline: 'We don\'t build showcase sites.',
       tagline2: 'We build systems.',
       tagline2Lead: 'We build ',
@@ -444,13 +477,13 @@ export const strings = {
         {
           num: '02',
           title: 'Custom CRM & Software',
-          desc: 'Booking systems, tailored CRMs, dashboards — built around your exact workflow.',
+          desc: 'Booking systems, tailored CRMs, dashboards, built around your exact workflow.',
           href: '/services/crm',
         },
         {
           num: '03',
           title: 'ERP - E-commerce connection',
-          desc: 'Existing ERP or custom software — your inventory synced in real time with your Shopify.',
+          desc: 'Existing ERP or custom software, your inventory synced in real time with your Shopify.',
           href: '/services/erp-ecommerce',
         },
         {
@@ -463,8 +496,6 @@ export const strings = {
     servicesSection: {
       eyebrow: '',
       title: 'From idea to system. Built for you.',
-      intro:
-        'Four disciplines. One point of contact, from brief to launch — websites, business software, inventory sync, AI visibility.',
       tabs: [
         {
           title: 'Websites',
@@ -473,17 +504,12 @@ export const strings = {
         },
         {
           title: 'Custom CRM & Software',
-          desc: 'Bookings, dashboards, business workflows — built around your exact process.',
+          desc: 'Bookings, dashboards, business workflows, built around your exact process.',
           tag: 'Custom CRM',
         },
         {
           title: 'ERP · Inventory sync',
           desc: 'Real-time synchronization between your ERP and your e-commerce site.',
-          tag: '',
-        },
-        {
-          title: 'SEO & AI Optimization',
-          desc: 'Content that ranks on Google AND gets cited by ChatGPT, Claude, Perplexity.',
           tag: '',
         },
       ],
@@ -528,16 +554,16 @@ export const strings = {
       alts: {
         site: 'jetski-arcachon.fr — production',
         code: 'index.html — source',
-        crmForm: 'Bordeaux Ride — transfer booking',
+        crmForm: 'Custom CRM — booking',
         crmDash: 'My Appointments — dashboard',
       },
     },
     home: {
       partnerTitle: 'One partner for your entire digital ecosystem',
-      partnerBody: 'E-commerce site, business software, connected inventory — we build the whole stack and make sure everything works together.',
+      partnerBody: 'E-commerce site, business software, connected inventory, we build the whole stack and make sure everything works together.',
       erp: {
         title: 'Your inventory, your site, your software — connected.',
-        subtitle: 'Existing ERP or custom-built — we build it around your business needs and connect it to your e-commerce site. Real-time stock sync, automatic order flow, zero double entry.',
+        subtitle: 'Existing ERP or custom-built, we build it around your business needs and connect it to your e-commerce site. Real-time stock sync, automatic order flow, zero double entry.',
         erpBox: 'ERP / Management Software',
         syncBox: 'Synchronization',
         siteBox: 'E-commerce site',
@@ -594,7 +620,7 @@ export const strings = {
     work: {
       eyebrow: 'Work',
       headline: 'Featured work.',
-      sub: 'Real projects, real metrics — pulled directly from Google Search Console and GA4.',
+      sub: 'Real projects, real metrics, pulled directly from Google Search Console and GA4.',
       filterAll: 'All',
       filterWeb: 'Websites',
       filterLogiciel: 'CRM & Systems',
@@ -612,7 +638,7 @@ export const strings = {
       whyEyebrow: 'Differentiators',
       whyTitle: 'What sets us apart.',
       differentiators: [
-        { title: '15-day delivery', text: 'From project start to live site — 15 business days. No fluff, no waiting.' },
+        { title: '15-day delivery', text: 'From project start to live site, 15 business days. No fluff, no waiting.' },
         { title: 'Real metrics only', text: 'Every decision is based on Search Console and GA4. No estimates, no spin.' },
         { title: 'No templates', text: 'Every site is built from scratch around your business. No pre-made themes.' },
         { title: 'Post-launch support', text: 'Available after launch. Monthly analytics, updates, and improvements.' },
@@ -632,12 +658,12 @@ export const strings = {
     webDev: {
       eyebrow: 'Services',
       hero: 'The right site for the right project',
-      intro: 'Not all websites are the same. Depending on your business, your goals and how you sell, we choose the right technology — and explain why.',
+      intro: 'Not all websites are the same. Depending on your business, your goals and how you sell, we choose the right technology, and explain why.',
       nextjsTitle: 'Custom Next.js website',
-      nextjsBody: 'For service businesses, studios, agencies and brands that need a fully custom site. No platform constraints, no templates — everything built from scratch around your identity and goals. Maximum performance, total flexibility, custom integrations (CRM, API, business tools).',
-      nextjsFor: 'Ideal for any type of project: construction company, practice, restaurant, craftsman, agency, studio, SaaS, brand — whether you need a showcase site, a lead generation site, or a more complex tool with custom integrations.',
+      nextjsBody: 'For service businesses, studios, agencies and brands that need a fully custom site. No platform constraints, no templates, everything built from scratch around your identity and goals. Maximum performance, total flexibility, custom integrations (CRM, API, business tools).',
+      nextjsFor: 'Ideal for any type of project: construction company, practice, restaurant, craftsman, agency, studio, SaaS, brand, whether you need a showcase site, a lead generation site, or a more complex tool with custom integrations.',
       shopifyTitle: 'Shopify e-commerce website',
-      shopifyBody: 'For businesses that sell online. Shopify is the most complete e-commerce platform available: intuitive product management, optimized checkout, integrated payments, proven reliability. We build your store from A to Z — custom design, catalogue migration, full configuration.',
+      shopifyBody: 'For businesses that sell online. Shopify is the most complete e-commerce platform available: intuitive product management, optimized checkout, integrated payments, proven reliability. We build your store from A to Z, custom design, catalogue migration, full configuration.',
       shopifyFor: 'Ideal for: online stores, retailers with physical and digital sales, product brands, resellers.',
       differenceTitle: 'What\'s the actual difference?',
       differenceHeaderAspect: 'Aspect',
@@ -648,7 +674,7 @@ export const strings = {
         { aspect: 'Product management', nextjs: 'Manual or via CMS/API', shopify: 'Dedicated, native, intuitive interface' },
         { aspect: 'Checkout & payments', nextjs: 'Custom integration', shopify: 'Built-in, optimized, ready to use' },
         { aspect: 'Design flexibility', nextjs: 'Total — no constraints', shopify: 'High within the Shopify framework' },
-        { aspect: 'Connection to your tools', nextjs: 'Unlimited — your site can communicate with any software: CRM, ERP, invoicing tool, database...', shopify: 'Via Shopify apps or custom-built connectors' },
+        { aspect: 'Connection to your tools', nextjs: 'Unlimited, your site can communicate with any software: CRM, ERP, invoicing tool, database...', shopify: 'Via Shopify apps or custom-built connectors' },
       ],
       deliveryTitle: 'In every case, we deliver',
       delivery: [
@@ -671,27 +697,27 @@ export const strings = {
       targets: [
         {
           title: 'Rental businesses',
-          desc: 'Vehicles, equipment, gear — manage your availability, bookings and clients in one place.',
+          desc: 'Vehicles, equipment, gear, manage your availability, bookings and clients in one place.',
         },
         {
           title: 'Private drivers & ride services',
-          desc: 'Rides, recurring clients, invoicing — a tool built for your mobile business.',
+          desc: 'Rides, recurring clients, invoicing, a tool built for your mobile business.',
         },
         {
           title: 'Gyms & fitness studios',
-          desc: 'Memberships, attendance, group classes — run your business without juggling ten different tools.',
+          desc: 'Memberships, attendance, group classes, run your business without juggling ten different tools.',
         },
         {
           title: 'Service providers',
-          desc: 'Agencies, tradespeople, consultants — track your leads, quotes, projects and follow-ups from one interface.',
+          desc: 'Agencies, tradespeople, consultants, track your leads, quotes, projects and follow-ups from one interface.',
         },
         {
           title: 'Medical & paramedical practices',
-          desc: 'Appointments, patients, history — a confidential solution adapted to your practice.',
+          desc: 'Appointments, patients, history, a confidential solution adapted to your practice.',
         },
         {
           title: 'Any business with recurring clients',
-          desc: 'If you have clients, history to track and actions to automate — a custom CRM saves you time every day.',
+          desc: 'If you have clients, history to track and actions to automate, a custom CRM saves you time every day.',
         },
       ],
       deliveryTitle: 'What we deliver',
@@ -716,13 +742,13 @@ export const strings = {
     erp: {
       eyebrow: 'Services',
       hero: 'Your inventory and your store, finally in sync',
-      intro: 'Your ERP holds your real inventory. Your website shows something else. We fix this permanently — by connecting your systems or building the tool you need.',
+      intro: 'Your ERP holds your real inventory. Your website shows something else. We fix this permanently, by connecting your systems or building the tool you need.',
       shopifyTitle: 'Why Shopify?',
       shopifyBody: 'We use Shopify for all our e-commerce projects. It\'s the most complete platform on the market: intuitive interface, rich app ecosystem, optimized checkout, proven reliability. Your team gets up to speed in hours.',
       option1Badge: 'Option A',
       option1Title: 'Option A — You already have an ERP',
       option1Subtitle: 'We connect your existing software to Shopify',
-      option1Body: 'Your SAGE, Cegid or other ERP stays in place. We build the connector that syncs your inventory with Shopify in real time. Every online sale automatically deducts in your ERP. Every stock change on the ERP side instantly reflects on your site. Nothing changes for your team — they keep working in the tool they know.',
+      option1Body: 'Your SAGE, Cegid or other ERP stays in place. We build the connector that syncs your inventory with Shopify in real time. Every online sale automatically deducts in your ERP. Every stock change on the ERP side instantly reflects on your site. Nothing changes for your team, they keep working in the tool they know.',
       option1Delivery: [
         'Audit of your ERP and its API',
         'Custom connector development',
@@ -767,7 +793,7 @@ export const strings = {
       budgets: ['< 5,000', '5,000 – 10,000', '10,000 – 20,000', '20,000 +'],
       message: 'Message (optional)',
       submit: 'Send →',
-      success: '✓ Message sent — I\'ll get back to you within 24h.',
+      success: '✓ Message sent, I\'ll get back to you within 24h.',
       error: 'Something went wrong. Email me directly: loanrmb@gmail.com',
     },
     footer: {
@@ -780,7 +806,7 @@ export const strings = {
     blog: {
       eyebrow: 'Blog',
       headline: 'Resources for web\nand CRM professionals.',
-      sub: 'Strategy, analysis and real-world experience — no unnecessary jargon.',
+      sub: 'Strategy, analysis and real-world experience, no unnecessary jargon.',
       backLabel: '← Blog',
       readingTime: 'min read',
       featuredTitle: 'Featured',
@@ -788,6 +814,46 @@ export const strings = {
       ctaEyebrow: 'A project in mind?',
       ctaTitle: 'Let\'s talk about your website or CRM.',
       ctaButton: 'Get in touch →',
+    },
+    seoSection: {
+      title: 'SEO & AI Optimisation',
+      subtitle: 'Ranked on Google. Cited by AI.',
+      card1: {
+        title: 'Content that ranks',
+        desc: 'Articles, service pages and product sheets optimised to capture qualified traffic over time.',
+      },
+      card2: {
+        title: 'Metadata and structure',
+        desc: 'Title tags, meta descriptions, H tags, clean URL structure, every technical signal dialled in.',
+      },
+      card3: {
+        title: 'Cited by AI',
+        desc: 'Semantic structure and authority content that surface your site in ChatGPT, Perplexity and Claude answers.',
+      },
+      item1: {
+        title: 'Tags & metadata',
+        desc: 'Title tags, meta descriptions and H tags, every page sending the right signals to Google.',
+      },
+      item2: {
+        title: 'Keywords',
+        desc: 'Keyword research and strategy tailored to your sector, services and geographic area.',
+      },
+      item3: {
+        title: 'URL structure & redirects',
+        desc: 'Clean URLs, 301 redirects, site architecture readable by Google and understandable by your customers.',
+      },
+      item4: {
+        title: 'Core Web Vitals & performance',
+        desc: 'LCP, FID, CLS, every page delivered with a green Lighthouse score. Speed is a ranking factor.',
+      },
+      item5: {
+        title: 'Blog articles',
+        desc: 'Local and general content capturing long-tail searches, staying visible for months after publication.',
+      },
+      item6: {
+        title: 'Cited by AI',
+        desc: 'Semantic structure and authority content designed to surface in ChatGPT, Perplexity, Claude and Gemini answers.',
+      },
     },
   },
 } as const

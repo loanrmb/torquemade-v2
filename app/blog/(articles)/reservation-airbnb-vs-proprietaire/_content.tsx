@@ -67,11 +67,6 @@ export function ReservationAirbnbVsPropriétaireContent() {
               How to integrate a commission-free booking system
             </Link>
           </li>
-          <li>
-            <Link href="/blog/bordeaux-ride-reservation-zero-commission">
-              How Bordeaux Ride created a zero-commission booking system
-            </Link>
-          </li>
         </ul>
       </nav>
 
@@ -161,11 +156,6 @@ export function ReservationAirbnbVsPropriétaireContent() {
           <li>
             <Link href="/blog/systeme-reservation-sans-commission">
               Comment intégrer un système de réservation sans commission
-            </Link>
-          </li>
-          <li>
-            <Link href="/blog/bordeaux-ride-reservation-zero-commission">
-              Comment Bordeaux Ride a créé un système de réservation zéro commission
             </Link>
           </li>
         </ul>

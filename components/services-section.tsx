@@ -31,12 +31,11 @@ import { strings } from '@/lib/strings';
 const IMG = '/images';
 const ROTATE_MS = 7000;
 
-/* Mobile preview images for the vertical stack (services 01-04). */
+/* Mobile preview images for the vertical stack (services 01-03). */
 const MOBILE_PREVIEWS = [
   '/images/preview-site-jetski-arcachon.png',
   '/preview-crm-logiciel.png',
   '/images/preview-erp-site-ecommerce.png',
-  '/images/preview-seo-ia.png',
 ];
 
 const EASE = [0, 0, 0.2, 1] as const;
@@ -416,100 +415,10 @@ function FigureErp() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Figure 04 — SEO / AI visibility                                   */
-/* ------------------------------------------------------------------ */
-
-const CARD = 'rounded-2xl border border-white/10 bg-white/[0.03] shadow-[0_24px_48px_-16px_rgba(0,0,0,0.6)]';
-
-const REDIRECTS = [
-  ['/vins', '/boutique'],
-  ['/catalogue', '/vins-rouges'],
-  ['/promo', '/offres'],
-  ['/contact', '/nous-trouver'],
-];
-
-function FigureSeo() {
-  const t = strings[useLang()].servicesSection;
-  return (
-    <>
-      <img
-        src="/images/preview-seo-ia.png"
-        alt="Aperçu SEO et visibilité IA"
-        className="w-full rounded-2xl md:hidden"
-      />
-
-      {/* Desktop — all 4 cards, absolute scattered layout */}
-      <div className="relative hidden w-full md:block md:h-[40rem]">
-        {/* Page Settings */}
-        <div className={`${CARD} absolute left-8 top-6 w-[19rem] -rotate-2 p-5`}>
-          <h3 className="mb-3.5 text-sm font-semibold text-white">{t.seo.pageSettings}</h3>
-          <p className="mb-1.5 text-[11px] text-white/55">{t.seo.labelTitle}</p>
-          <div className="mb-3 truncate rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-[11.5px] text-white">
-            {t.seo.titleValue}
-          </div>
-          <p className="mb-1.5 text-[11px] text-white/55">{t.seo.labelDesc}</p>
-          <div className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-[11.5px] leading-relaxed text-white/90">
-            {t.seo.descValue}
-          </div>
-        </div>
-        {/* Redirects */}
-        <div className={`${CARD} absolute left-24 top-60 w-[24rem] rotate-1 p-[1.1rem]`}>
-          <h3 className="mb-3.5 text-sm font-semibold text-white">{t.seo.redirectsTitle}</h3>
-          <div className="grid grid-cols-[1fr_1rem_1fr] gap-2.5 border-b border-white/10 px-1 pb-2 font-mono text-[10px] uppercase tracking-[0.12em] text-white/40">
-            <span>{t.seo.oldUrl}</span>
-            <span />
-            <span>{t.seo.newUrl}</span>
-          </div>
-          {REDIRECTS.map(([from, to]) => (
-            <div
-              key={from}
-              className="grid grid-cols-[1fr_1rem_1fr] items-center gap-2.5 border-b border-white/10 px-1 py-[7px] font-mono text-[11.5px] text-white/90 last:border-b-0"
-            >
-              <span>{from}</span>
-              <span className="text-center text-white/40">→</span>
-              <span>{to}</span>
-            </div>
-          ))}
-        </div>
-        {/* AI visibility */}
-        <div className={`${CARD} absolute right-8 top-16 w-[21rem] rotate-2 border-white/20 p-[1.1rem]`}>
-          <h3 className="mb-3.5 text-sm font-semibold text-white">{t.seo.aiTitle}</h3>
-          {t.seo.aiRows.map((r) => (
-            <div key={r.name} className="flex items-center gap-2.5 border-b border-white/10 py-2.5 last:border-b-0">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.05] font-mono text-[10px] text-white">
-                {r.name[0]}
-              </span>
-              <span className="w-16 shrink-0 text-[11.5px] font-medium text-white">{r.name}</span>
-              <span className="flex-1 truncate text-[11px] italic text-white/55">{r.quote}</span>
-              <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-white/15 text-[9px] text-white">✓</span>
-            </div>
-          ))}
-        </div>
-        {/* Google Analytics */}
-        <div className={`${CARD} absolute bottom-10 right-16 w-[18rem] -rotate-1 px-4 py-3.5`}>
-          <div className="mb-2 flex items-center gap-2">
-            <span className="flex h-5 w-5 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] font-mono text-[9px] font-semibold text-white">
-              G
-            </span>
-            <span className="text-xs font-medium text-white">Google Analytics</span>
-          </div>
-          <div className="flex items-baseline gap-2 font-mono text-[10.5px] text-white/55">
-            <span className="text-base font-semibold tracking-tight text-white">1 247</span>
-            <span>{t.seo.sessions}</span>
-            <span className="font-medium text-white">+34%</span>
-          </div>
-          <div className="mt-1.5 font-mono text-[10px] text-white/40">G-XXXXXXXXXX</div>
-        </div>
-      </div>
-    </>
-  );
-}
-
-/* ------------------------------------------------------------------ */
 /*  Stage                                                             */
 /* ------------------------------------------------------------------ */
 
-const FIGURES = [FigureSites, FigureCrm, FigureErp, FigureSeo];
+const FIGURES = [FigureSites, FigureCrm, FigureErp];
 
 function Stage({ active, tag }: { active: number; tag: string }) {
   const Figure = FIGURES[active];
@@ -561,7 +470,7 @@ function TabButton({
       role="tab"
       aria-selected={isActive}
       onClick={onSelect}
-      className="group relative rounded-2xl border p-6 text-left transition-colors duration-200"
+      className="group relative flex-1 rounded-2xl border p-6 text-left transition-colors duration-200"
       style={{
         background: isActive ? 'hsl(var(--bg-inverse))' : 'transparent',
         borderColor: isActive ? 'hsl(var(--bg-inverse))' : 'hsl(var(--border-subtle))',
@@ -655,16 +564,6 @@ export default function ServicesSection() {
               {t.title}
             </motion.h2>
           </div>
-          <motion.p
-            className="max-w-sm text-[15px] leading-relaxed"
-            style={{ color: 'hsl(var(--text-secondary))' }}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.28, duration: 0.6, ease: 'easeOut' }}
-          >
-            {t.intro}
-          </motion.p>
         </motion.div>
 
         {/* Tabs + stage */}
@@ -725,7 +624,7 @@ export default function ServicesSection() {
                 transition={{ duration: paused ? 0 : ROTATE_MS / 1000, ease: 'linear' }}
               />
             </div>
-            <div role="tablist" className="flex flex-col gap-2 pl-4">
+            <div role="tablist" className="flex h-full flex-col gap-3 pl-4">
               {tabs.map((tab, i) => (
                 <TabButton
                   key={tab.num}

@@ -168,7 +168,7 @@ export const projects: Project[] = [
     imageChallenge: '/images/cyclone-bordeaux-challenge.png',
     imageApproach: '/images/cyclone-bordeaux-approach.png',
     url: 'https://cyclonebordeaux.fr',
-    featured: false,
+    featured: true,
     caseStudy: true,
     challengeTitle: {
       fr: 'Un trafic de marque qui s\'évaporait',
@@ -355,61 +355,6 @@ export const projects: Project[] = [
     results: {
       fr: 'Le site Bordeaux Ride est devenu le premier outil commercial du groupe. L\'estimateur de tarifs capte les demandes en ligne, le formulaire qualifie les courses à l\'avance, et le blog génère un trafic organique continu sur les requêtes chauffeur et VTC bordelaises. Les leads entrants sont qualifiés et prêts à confirmer.',
       en: 'The Bordeaux Ride site became the group\'s primary commercial tool. The fare estimator captures online requests, the form qualifies rides in advance, and the blog generates ongoing organic traffic on Bordeaux chauffeur and VTC queries. Incoming leads are qualified and ready to confirm.',
-    },
-  },
-
-  // ─── BORDEAUX RIDE CRM (.app) ────────────────────────────────────────────
-  {
-    id: 'bdxride-crm',
-    slug: 'bdxride-crm',
-    tags: ['logiciel'],
-    client: 'Bordeaux Ride CRM',
-    location: 'Bordeaux, France',
-    type: { fr: 'Plateforme opérationnelle', en: 'Operational platform' },
-    headline: {
-      fr: 'Le CRM complet d\'un groupe de chauffeurs privés.',
-      en: 'The full CRM for a private chauffeur group.',
-    },
-    description: {
-      fr: 'Une plateforme de gestion opérationnelle sur mesure pour Bordeaux Ride : prise de RDV en temps réel, suivi de course en direct, historique client, chat interne pour devis, statistiques et panneau admin — tout depuis un seul tableau de bord.',
-      en: 'A custom operational management platform for Bordeaux Ride: real-time booking, live ride tracking, client history, internal chat for quotes, statistics and admin panel — all from one dashboard.',
-    },
-    outcomes: [
-      { fr: 'Prise de RDV instantanée — disponibilités en temps réel', en: 'Instant booking — real-time availability' },
-      { fr: 'Suivi de course en direct pour le client et l\'équipe', en: 'Live ride tracking for client and team' },
-      { fr: 'Historique complet des courses par client', en: 'Complete ride history per client' },
-      { fr: 'Chat interne pour les demandes de devis', en: 'Internal chat for quote requests' },
-      { fr: 'Stats, revenus et analytics — panneau admin complet', en: 'Stats, revenue and analytics — complete admin panel' },
-    ],
-    imageHero: '/images/bordeauxride-crm.png',
-    imageChallenge: '/images/bordeauxride-crm-challenge.png',
-    imageApproach: '/images/bordeauxride-crm-approach.png',
-    url: 'https://bordeauxride.app',
-    featured: true,
-    caseStudy: true,
-    challengeTitle: {
-      fr: 'Une gestion opérationnelle dispersée et manuelle',
-      en: 'A scattered and manual operational management',
-    },
-    challenge: {
-      fr: 'Bordeaux Ride gérait ses courses à travers un mix de WhatsApp, d\'emails et de notes papier. Aucune visibilité globale sur les revenus, les chauffeurs ou l\'historique client. Les devis étaient traités à la main, les disponibilités étaient floues, et l\'équipe manquait d\'outils pour suivre l\'activité en temps réel. Avec la croissance du groupe, le système montrait ses limites.',
-      en: 'Bordeaux Ride managed its rides through a mix of WhatsApp, emails and paper notes. No global visibility on revenue, drivers or client history. Quotes were handled manually, availability was unclear, and the team lacked tools to track activity in real time. With the group\'s growth, the system was showing its limits.',
-    },
-    approachTitle: {
-      fr: 'Une plateforme taillée pour les opérations du groupe',
-      en: 'A platform built for the group\'s operations',
-    },
-    approach: {
-      fr: 'Développement d\'une plateforme .app sur mesure, organisée en modules distincts et cohérents : un module de réservation avec calendrier de disponibilités en temps réel, un suivi de course en direct, un CRM client avec historique complet, un chat interne pour les demandes de devis, un module de statistiques et revenus, et un panneau admin. Interface sombre et dense en information, pensée pour être utilisée au quotidien par l\'équipe opérationnelle.',
-      en: 'Development of a custom .app platform, organized into distinct and coherent modules: a booking module with real-time availability calendar, live ride tracking, client CRM with complete history, internal chat for quote requests, stats and revenue module, and admin panel. Dark, information-dense interface designed for daily use by the operational team.',
-    },
-    resultsTitle: {
-      fr: 'Zéro WhatsApp. Tout dans un seul dashboard.',
-      en: 'Zero WhatsApp. Everything in one dashboard.',
-    },
-    results: {
-      fr: 'La plateforme a centralisé l\'ensemble des opérations de Bordeaux Ride. Les prises de RDV sont instantanées, les courses suivies en direct, les devis traités via le chat interne. L\'équipe dispose enfin d\'une visibilité globale sur les revenus, les chauffeurs et l\'activité — sans jongler entre plusieurs outils.',
-      en: 'The platform centralized all of Bordeaux Ride\'s operations. Bookings are instant, rides tracked live, quotes handled via internal chat. The team finally has full visibility on revenue, drivers and activity — without juggling multiple tools.',
     },
   },
 

@@ -6,9 +6,9 @@
    DESIGN TOKENS — Light (default)
    ============================================================ */
 :root {
-  --bg-primary:    40 12% 90%;
-  --bg-secondary:  40 10% 86%;
-  --bg-tertiary:   40 8% 83%;
+  --bg-primary:    40 12% 85%;
+  --bg-secondary:  40 10% 81%;
+  --bg-tertiary:   40 8% 78%;
   --bg-inverse:    0 0% 8%;
 
   --text-primary:   0 0% 8%;
@@ -681,6 +681,13 @@ html.dark .cta-card {
 @keyframes gradient-shift {
   0%   { background-position: 0% center; }
   100% { background-position: 300% center; }
+}
+
+/* Liquid shift — slow background-position pan for gradient text accents. */
+@keyframes liquidShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Primary CTA — animated rainbow background, white text.

@@ -10,6 +10,7 @@ import { featuredProjects } from '@/lib/projects'
 import { useScrollReveal } from '@/lib/use-scroll-reveal'
 import { ErpFeatureSection } from '@/components/erp-feature-section'
 import ServicesSection from '@/components/services-section'
+import { SeoFeaturesSection } from '@/components/seo-features-section'
 import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 import { CrmDashboardPreview } from '@/components/crm-dashboard-preview'
 
@@ -104,9 +105,12 @@ export default function HomePage() {
         {/* ── SERVICES ── */}
         <ServicesSection />
 
+        {/* ── SEO FEATURES ── */}
+        <SeoFeaturesSection />
+
         {/* ── PARTNER ── */}
-        <section className="px-5 pb-20 min-720:pb-24">
-          <div className="mx-auto max-w-3xl text-center">
+        <section className="px-5 pt-20 pb-20 md:pt-32 min-720:pb-24">
+          <div className="mx-auto max-w-3xl">
             <h2
               className="fade-up text-title-2 font-semibold tracking-tight mb-5"
               style={{ color: 'hsl(var(--text-primary))' }}
@@ -114,11 +118,17 @@ export default function HomePage() {
               {t.home.partnerTitle}
             </h2>
             <p
-              className="fade-up fade-up-d1 text-body-lg"
+              className="fade-up fade-up-d1 text-body-lg mb-8"
               style={{ color: 'hsl(var(--text-secondary))' }}
             >
               {t.home.partnerBody}
             </p>
+            <Link
+              href="/contact"
+              className="fade-up fade-up-d2 btn-liquid-glass inline-flex rounded-full px-6 py-3 text-sm font-semibold"
+            >
+              {t.hero.heroCta1}
+            </Link>
           </div>
         </section>
 

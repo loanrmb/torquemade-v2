@@ -56,11 +56,6 @@ export function ZeroCommissionQuitterAirbnbContent() {
             </Link>
           </li>
           <li>
-            <Link href="/blog/bordeaux-ride-reservation-zero-commission">
-              How Bordeaux Ride created a zero-commission booking system
-            </Link>
-          </li>
-          <li>
             <Link href="/blog/reservations-activite-nautique">
               How to manage bookings for a nautical activity
             </Link>
@@ -143,11 +138,6 @@ export function ZeroCommissionQuitterAirbnbContent() {
           <li>
             <Link href="/blog/reservation-airbnb-vs-proprietaire">
               Système de réservation Airbnb vs solution propriétaire
-            </Link>
-          </li>
-          <li>
-            <Link href="/blog/bordeaux-ride-reservation-zero-commission">
-              Comment Bordeaux Ride a créé un système de réservation zéro commission
             </Link>
           </li>
           <li>
