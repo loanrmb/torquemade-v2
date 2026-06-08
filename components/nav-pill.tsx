@@ -43,7 +43,7 @@ export function NavPill() {
       <header className="fixed left-1/2 top-4 z-50 -translate-x-1/2 w-[calc(100%-2rem)] max-w-2xl">
         <div className="flex items-center gap-3">
         <nav
-          className="flex items-center gap-x-3 min-720:gap-x-2 rounded-full border px-3 py-2.5 min-720:flex-1 min-720:justify-between min-720:px-4"
+          className="flex flex-1 items-center justify-between gap-x-3 min-720:gap-x-2 rounded-full border px-3 py-2.5 min-720:px-4"
           style={{
             background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.78)',
             backdropFilter: 'blur(16px)',
@@ -55,7 +55,7 @@ export function NavPill() {
           <Link href="/" className="flex items-center gap-1.5 pr-1 min-720:pr-2 mr-0.5 min-720:mr-1 flex-shrink-0">
             <LogoMark />
             <span
-              className="hidden min-[560px]:block font-semibold text-sm tracking-tight whitespace-nowrap"
+              className="block font-semibold text-sm tracking-tight whitespace-nowrap"
               style={{ color: 'hsl(var(--text-primary))' }}
             >
               Torquemade
