@@ -41,7 +41,7 @@ export default function HomePage() {
       <main className="relative z-10 overflow-clip rounded-b-32 bg-bg-primary">
 
         {/* ── HERO ── */}
-        <section className="px-5 pt-28 pb-8 min-720:pt-36 min-1280:pt-44">
+        <section className="px-5 pt-28 pb-4 min-720:pt-36 min-1280:pt-44">
           <div className="flex flex-col items-start text-left max-w-5xl mx-auto">
 
             <h1
@@ -60,7 +60,7 @@ export default function HomePage() {
               className="fade-up fade-up-d1 mt-6 text-lg md:text-xl lg:text-2xl font-medium"
               style={{ color: 'hsl(var(--text-secondary))' }}
             >
-              {t.hero.headline1a} {t.hero.headline1b}
+              {t.hero.heroSubheadline}
             </p>
 
             <p

@@ -6,9 +6,9 @@
    DESIGN TOKENS — Light (default)
    ============================================================ */
 :root {
-  --bg-primary:    0 0% 100%;
-  --bg-secondary:  0 0% 96%;
-  --bg-tertiary:   0 0% 93%;
+  --bg-primary:    40 16% 96%;
+  --bg-secondary:  40 12% 92%;
+  --bg-tertiary:   40 10% 89%;
   --bg-inverse:    0 0% 8%;
 
   --text-primary:   0 0% 8%;
@@ -708,34 +708,46 @@ html.dark .cta-card {
   .btn-liquid-glass { animation: none; }
 }
 
-/* Outline button with rainbow gradient border on hover.
-   Uses padding-box / border-box compositing for the gradient border. */
+/* Outline button — rainbow gradient border fades in on hover via ::before.
+   isolation: isolate keeps the negative z-index pseudo-element scoped to the
+   button. Explicit background prevents the gradient bleeding through. */
 .btn-outline-glass {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
-  border: 1px solid hsl(var(--border-subtle));
+  position: relative;
+  isolation: isolate;
+  background: hsl(var(--bg-primary));
+  border: 1.5px solid hsl(var(--border-subtle));
   color: hsl(var(--text-primary));
-  transition: border-color 200ms var(--ease-out), background 200ms var(--ease-out), transform 100ms var(--ease-out);
+  transition: border-color 0.35s ease, color 0.35s ease, transform 100ms var(--ease-out);
 }
+
+.btn-outline-glass::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    #f97316, #eab308, #22c55e, #3b82f6, #a855f7, #ec4899, #f97316
+  );
+  background-size: 300% 100%;
+  animation: gradient-shift 8s linear infinite;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: -1;
+}
+
 @media (hover: hover) and (pointer: fine) {
-  .btn-outline-glass:hover {
-    border-color: transparent;
-    background:
-      linear-gradient(hsl(var(--bg-primary)), hsl(var(--bg-primary))) padding-box,
-      linear-gradient(
-        90deg,
-        #f97316, #eab308, #22c55e, #3b82f6, #a855f7, #ec4899, #f97316
-      ) border-box;
-    background-size: auto, 300% 100%;
-    animation: gradient-shift 8s linear infinite;
-  }
+  .btn-outline-glass:hover { border-color: transparent; }
+  .btn-outline-glass:hover::before { opacity: 1; }
 }
+
 .btn-outline-glass:active { transform: scale(0.97); }
 
 @media (prefers-reduced-motion: reduce) {
-  .btn-outline-glass:hover { animation: none; }
+  .btn-outline-glass::before { animation: none; }
 }
 
 /* ============================================================
