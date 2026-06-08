@@ -42,7 +42,7 @@ export default function HomePage() {
       <main className="relative z-10 overflow-clip rounded-b-32 bg-bg-primary">
 
         {/* ── HERO ── */}
-        <section className="px-4 pt-16 pb-4 min-720:px-5 min-720:pt-36 min-1280:pt-44">
+        <section className="px-4 pt-28 pb-4 min-720:px-5 min-720:pt-36 min-1280:pt-44">
           <div className="flex flex-col items-start text-left max-w-5xl mx-auto">
 
             <h1

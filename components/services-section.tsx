@@ -594,11 +594,11 @@ export default function ServicesSection() {
               >
                 {tab.desc}
               </p>
-              <div className="w-full overflow-hidden rounded-xl">
+              <div className="w-[90vw] mx-auto overflow-hidden rounded-xl">
                 <img
                   src={MOBILE_PREVIEWS[i]}
                   alt={tab.title}
-                  className="h-auto w-full"
+                  className="w-full h-auto object-contain"
                   loading="lazy"
                   decoding="async"
                 />
