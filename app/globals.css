@@ -6,9 +6,9 @@
    DESIGN TOKENS — Light (default)
    ============================================================ */
 :root {
-  --bg-primary:    40 16% 96%;
-  --bg-secondary:  40 12% 92%;
-  --bg-tertiary:   40 10% 89%;
+  --bg-primary:    40 12% 90%;
+  --bg-secondary:  40 10% 86%;
+  --bg-tertiary:   40 8% 83%;
   --bg-inverse:    0 0% 8%;
 
   --text-primary:   0 0% 8%;

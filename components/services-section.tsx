@@ -23,13 +23,21 @@
  *   jetski-site-v2.png · jetski-code-v2.png · crm-form.png · crm-dash.png
  */
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLang } from '@/components/app-provider';
 import { strings } from '@/lib/strings';
 
 const IMG = '/images';
 const ROTATE_MS = 7000;
+
+/* Mobile preview images for the vertical stack (services 01-04). */
+const MOBILE_PREVIEWS = [
+  '/images/preview-site-jetski-arcachon.png',
+  '/images/preview-crm-logiciel.png',
+  '/images/preview-erp-site-ecommerce.png',
+  '/images/preview-seo-ia.png',
+];
 
 const EASE = [0, 0, 0.2, 1] as const;
 
@@ -562,9 +570,8 @@ export default function ServicesSection() {
 
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
-  const touchStartX = useRef<number>(0);
 
-  // auto-advance
+  // auto-advance (desktop tab rail; mobile uses a vertical stack instead)
   useEffect(() => {
     if (paused) return;
     const id = setTimeout(() => setActive((a) => (a + 1) % tabs.length), ROTATE_MS);
@@ -630,65 +637,43 @@ export default function ServicesSection() {
 
         {/* Tabs + stage */}
 
-        {/* Mobile carousel — visible below md */}
-        <div
-          className="md:hidden"
-          onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
-          onTouchEnd={(e) => {
-            const dx = e.changedTouches[0].clientX - touchStartX.current;
-            if (Math.abs(dx) > 40) {
-              setActive((a) => dx < 0 ? (a + 1) % tabs.length : (a - 1 + tabs.length) % tabs.length);
-            }
-          }}
-        >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active}
-              className="mb-5"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25, ease: EASE }}
+        {/* Mobile stack — visible below md (vertical scroll, no carousel) */}
+        <div className="md:hidden flex flex-col">
+          {tabs.map((tab, i) => (
+            <div
+              key={tab.num}
+              className="py-10 border-b last:border-b-0"
+              style={{ borderColor: 'hsl(var(--border-subtle))' }}
             >
-              <span
-                className="mb-2 block font-mono text-[11px] tracking-[0.14em]"
+              <p
+                className="mb-2 font-mono text-[11px] tracking-[0.14em] uppercase"
                 style={{ color: 'hsl(var(--text-tertiary))' }}
               >
-                {tabs[active].num}
-              </span>
-              <span
-                className="mb-1 block text-[17px] font-semibold tracking-tight"
+                {tab.num}
+              </p>
+              <h3
+                className="mb-3 text-2xl font-bold tracking-tight"
                 style={{ color: 'hsl(var(--text-primary))' }}
               >
-                {tabs[active].title}
-              </span>
-              <span
-                className="block text-[13.5px] leading-snug"
+                {tab.title}
+              </h3>
+              <p
+                className="mb-6 text-sm leading-relaxed"
                 style={{ color: 'hsl(var(--text-secondary))' }}
               >
-                {tabs[active].desc}
-              </span>
-            </motion.div>
-          </AnimatePresence>
-          <Stage active={active} tag={tabs[active].tag} />
-          <div className="mt-5 flex justify-center gap-2">
-            {tabs.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                aria-label={`Aller à l'onglet ${i + 1}`}
-                onClick={() => setActive(i)}
-                className="rounded-full transition-all duration-300"
-                style={{
-                  width: i === active ? '1.5rem' : '0.375rem',
-                  height: '0.375rem',
-                  background: i === active
-                    ? 'hsl(var(--bg-inverse))'
-                    : 'hsl(var(--border-subtle))',
-                }}
-              />
-            ))}
-          </div>
+                {tab.desc}
+              </p>
+              <div className="w-full overflow-hidden rounded-xl">
+                <img
+                  src={MOBILE_PREVIEWS[i]}
+                  alt={tab.title}
+                  className="h-auto w-full"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Desktop grid — visible from md */}
