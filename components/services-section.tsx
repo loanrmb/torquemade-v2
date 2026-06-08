@@ -129,17 +129,17 @@ function FigureCrm() {
       {/* Desktop — live HTML dashboard rendered in an iframe (scaled to fit) */}
       <div
         className="hidden md:block w-full rounded-xl overflow-hidden"
-        style={{ height: '420px', position: 'relative' }}
+        style={{ height: '480px', position: 'relative' }}
       >
         <iframe
           src="/crm-dashboard-preview.html"
           title="CRM Dashboard Preview"
           scrolling="no"
           style={{
-            width: '900px',
-            height: '650px',
+            width: '1400px',
+            height: '800px',
             border: 'none',
-            transform: 'scale(0.80)',
+            transform: 'scale(0.55)',
             transformOrigin: 'top left',
             pointerEvents: 'none',
           }}
