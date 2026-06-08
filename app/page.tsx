@@ -91,7 +91,7 @@ export default function HomePage() {
         <ContainerScroll titleComponent={<div aria-hidden="true" />}>
           <div className="block md:hidden w-full px-4">
             <img
-              src="/images/preview-crm-logiciel.png"
+              src="/images/preview-dashboard-stock-sombre.png"
               alt="Dashboard logiciel de gestion de stock"
               className="w-full rounded-2xl shadow-lg"
             />
