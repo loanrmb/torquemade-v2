@@ -19,7 +19,7 @@ export const strings = {
     },
     hero: {
       eyebrow: 'Studio',
-      heroSubheadline: 'Connexion Stock Magasin ↔ site e-commerce.',
+      heroSubheadline: 'Web Dev — CRM sur mesure & Connexion Stock Magasin ↔ site e-commerce.',
       headline2: 'Du design à la base de données.',
       sub: 'Nous construisons des sites qui performent — et les systèmes derrière.',
       tagline: 'On ne construit pas de sites vitrines.',
@@ -414,7 +414,7 @@ export const strings = {
     },
     hero: {
       eyebrow: 'Studio',
-      heroSubheadline: 'In-store stock ↔ e-commerce site sync.',
+      heroSubheadline: 'Web Dev — Custom CRM & In-store Stock ↔ e-commerce sync.',
       headline2: 'From design to database.',
       sub: 'We build sites that perform — and the systems behind them.',
       tagline: 'We don\'t build showcase sites.',

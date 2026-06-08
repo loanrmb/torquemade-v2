@@ -87,17 +87,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── CONTAINER SCROLL — dashboard 3D ── */}
+        {/* ── CONTAINER SCROLL — dashboard 3D (animated on all breakpoints) ── */}
         <ContainerScroll titleComponent={<div aria-hidden="true" />}>
-          {/* Mobile — static image */}
-          <img
-            src="/images/preview-dashboard-stock-clair.png"
-            alt="Aperçu logiciel de gestion de stock"
-            className="w-full h-auto md:hidden"
-            draggable={false}
-          />
-          {/* Desktop — animated CRM dashboard, fills Card (md:h-[40rem]) */}
-          <div className="hidden md:flex w-full h-full">
+          <div className="flex w-full h-[26rem] md:h-full">
             <CrmDashboardPreview />
           </div>
         </ContainerScroll>
