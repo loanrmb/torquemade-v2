@@ -119,7 +119,6 @@ function FigureSites() {
 /* ------------------------------------------------------------------ */
 
 function FigureCrm() {
-  const t = strings[useLang()].servicesSection;
   return (
     <>
       <img
@@ -127,14 +126,24 @@ function FigureCrm() {
         alt="Aperçu CRM logiciel de gestion"
         className="w-full rounded-2xl md:hidden"
       />
-      {/* Desktop — side by side */}
-      <div className="hidden w-full gap-4 md:grid md:grid-cols-2 md:items-center">
-        <WindowFrame>
-          <img src={`${IMG}/crm-form.png`} alt={t.alts.crmForm} className={`${SHOT} h-auto`} />
-        </WindowFrame>
-        <WindowFrame>
-          <img src={`${IMG}/crm-dash.png`} alt={t.alts.crmDash} className={`${SHOT} h-auto`} />
-        </WindowFrame>
+      {/* Desktop — live HTML dashboard rendered in an iframe (scaled to fit) */}
+      <div
+        className="hidden md:block w-full rounded-xl overflow-hidden"
+        style={{ height: '420px', position: 'relative' }}
+      >
+        <iframe
+          src="/crm-dashboard-preview.html"
+          title="CRM Dashboard Preview"
+          scrolling="no"
+          style={{
+            width: '900px',
+            height: '650px',
+            border: 'none',
+            transform: 'scale(0.80)',
+            transformOrigin: 'top left',
+            pointerEvents: 'none',
+          }}
+        />
       </div>
     </>
   );
