@@ -126,20 +126,22 @@ function FigureCrm() {
         alt="Aperçu CRM logiciel de gestion"
         className="w-full rounded-2xl md:hidden"
       />
-      {/* Desktop — live HTML dashboard rendered in an iframe (scaled to fit) */}
+      {/* Desktop — live HTML dashboard rendered in an iframe (scaled to fit).
+          HTML is laid out at native 1920×1080; scale(0.40) → ~768×432 visual,
+          which matches the Stage useful width (~766px) on a 1440px viewport. */}
       <div
         className="hidden md:block w-full rounded-xl overflow-hidden"
-        style={{ height: '480px', position: 'relative' }}
+        style={{ height: '432px', position: 'relative' }}
       >
         <iframe
           src="/crm-dashboard-preview.html"
           title="CRM Dashboard Preview"
           scrolling="no"
           style={{
-            width: '1400px',
-            height: '800px',
+            width: '1920px',
+            height: '1080px',
             border: 'none',
-            transform: 'scale(0.55)',
+            transform: 'scale(0.40)',
             transformOrigin: 'top left',
             pointerEvents: 'none',
           }}
