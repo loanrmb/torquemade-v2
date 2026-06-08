@@ -87,9 +87,16 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── CONTAINER SCROLL — dashboard 3D (animated on all breakpoints) ── */}
+        {/* ── CONTAINER SCROLL — animated dashboard (desktop) + static PNG (mobile) ── */}
         <ContainerScroll titleComponent={<div aria-hidden="true" />}>
-          <div className="flex w-full h-[26rem] md:h-full">
+          <div className="block md:hidden w-full px-4">
+            <img
+              src="/images/preview-crm-logiciel.png"
+              alt="Dashboard logiciel de gestion de stock"
+              className="w-full rounded-2xl shadow-lg"
+            />
+          </div>
+          <div className="hidden md:flex w-full h-full">
             <CrmDashboardPreview />
           </div>
         </ContainerScroll>
