@@ -34,7 +34,7 @@ const ROTATE_MS = 7000;
 /* Mobile preview images for the vertical stack (services 01-04). */
 const MOBILE_PREVIEWS = [
   '/images/preview-site-jetski-arcachon.png',
-  '/images/preview-crm-logiciel.png',
+  '/preview-crm-logiciel.png',
   '/images/preview-erp-site-ecommerce.png',
   '/images/preview-seo-ia.png',
 ];
@@ -143,7 +143,7 @@ function FigureCrm() {
   return (
     <>
       <img
-        src="/images/preview-crm-logiciel.png"
+        src="/preview-crm-logiciel.png"
         alt="Aperçu CRM logiciel de gestion"
         className="w-full rounded-2xl md:hidden"
       />
