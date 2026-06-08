@@ -186,7 +186,7 @@ export function NavPill() {
 
           <Link
             href="/contact"
-            className="btn-primary hidden min-720:flex items-center flex-shrink-0 !py-1.5 !px-3 !text-sm whitespace-nowrap"
+            className="btn-liquid-glass hidden min-720:flex items-center flex-shrink-0 rounded-full py-1.5 px-3 text-sm font-semibold text-white whitespace-nowrap"
           >
             {lang === 'fr' ? 'Démarrer →' : 'Start →'}
           </Link>
@@ -321,7 +321,7 @@ export function NavPill() {
               <Link
                 href="/contact"
                 onClick={() => setMenuOpen(false)}
-                className="btn-primary mt-4 text-center"
+                className="btn-liquid-glass mt-4 rounded-full py-3 px-6 text-sm font-semibold text-white text-center"
               >
                 {lang === 'fr' ? 'Démarrer →' : 'Start →'}
               </Link>

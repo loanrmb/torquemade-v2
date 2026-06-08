@@ -41,18 +41,18 @@ export default function HomePage() {
       <main className="relative z-10 overflow-clip rounded-b-32 bg-bg-primary">
 
         {/* ── HERO ── */}
-        <section className="grid place-items-center px-5 pt-28 pb-16 min-720:pt-36 min-720:pb-20 min-1280:pt-44 min-1280:pb-24">
-          <div className="flex flex-col items-center text-center max-w-5xl">
+        <section className="px-5 pt-28 pb-8 min-720:pt-36 min-1280:pt-44">
+          <div className="flex flex-col items-start text-left max-w-5xl mx-auto">
 
             <h1
-              className="fade-up text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1]"
+              className="fade-up text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold tracking-tight leading-[1.15]"
               style={{ color: 'hsl(var(--text-primary))' }}
             >
               {t.hero.tagline}
               <br />
               <span>
                 {t.hero.tagline2Lead}
-                <span className="text-liquid-glass">{t.hero.tagline2Accent}</span>
+                {t.hero.tagline2Accent}
               </span>
             </h1>
 
@@ -70,7 +70,7 @@ export default function HomePage() {
               {t.hero.headline2}
             </p>
 
-            <div className="fade-up fade-up-d3 mt-8 flex flex-wrap items-center justify-center gap-3">
+            <div className="fade-up fade-up-d3 mt-8 flex flex-wrap items-center justify-start gap-3">
               <Link
                 href="/contact"
                 className="btn-liquid-glass rounded-full px-6 py-3 text-sm font-semibold"

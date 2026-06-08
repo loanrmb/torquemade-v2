@@ -674,63 +674,17 @@ html.dark .cta-card {
 }
 
 /* ============================================================
-   LIQUID GLASS — Rainbow text gradient
-   (repris de components/rotating-text.tsx pour usage global)
+   LIQUID GLASS — Rainbow gradient utilities (buttons only)
    ============================================================ */
-@keyframes rainbow-shift {
-  0%   { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
-}
 
-.rainbow-text {
-  background: linear-gradient(
-    90deg,
-    #ff6b6b 0%,
-    #ffd93d 20%,
-    #6bcb77 40%,
-    #4d96ff 60%,
-    #c77dff 80%,
-    #ff6b6b 100%
-  );
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  animation: rainbow-shift 3s linear infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .rainbow-text { animation: none; }
-}
-
-/* Gradient shift used inline on the "systèmes" accent in the ContainerScroll
-   title (homepage). Distinct from rainbow-shift: 4s vs 3s, "center" vs "50%". */
+/* Gradient sweep keyframe — used by liquid-glass buttons. */
 @keyframes gradient-shift {
   0%   { background-position: 0% center; }
-  100% { background-position: 200% center; }
+  100% { background-position: 300% center; }
 }
 
-/* Liquid glass text — reusable className for hero accent.
-   Same color stops + timing as the inline tagline2Accent. */
-.text-liquid-glass {
-  background: linear-gradient(
-    90deg,
-    #f97316, #eab308, #22c55e, #3b82f6, #a855f7, #ec4899, #f97316
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  animation: gradient-shift 4s linear infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .text-liquid-glass { animation: none; }
-}
-
-/* Primary hero CTA — animated rainbow background, white text. */
+/* Primary CTA — animated rainbow background, white text.
+   8s sweep, 300% background-size for a slow, elegant pan. */
 .btn-liquid-glass {
   display: inline-flex;
   align-items: center;
@@ -739,10 +693,10 @@ html.dark .cta-card {
     90deg,
     #f97316, #eab308, #22c55e, #3b82f6, #a855f7, #ec4899, #f97316
   );
-  background-size: 200% 100%;
+  background-size: 300% 100%;
   color: #ffffff;
   border: none;
-  animation: gradient-shift 4s linear infinite;
+  animation: gradient-shift 8s linear infinite;
   transition: transform 100ms var(--ease-out), filter 150ms var(--ease-out);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -774,8 +728,8 @@ html.dark .cta-card {
         90deg,
         #f97316, #eab308, #22c55e, #3b82f6, #a855f7, #ec4899, #f97316
       ) border-box;
-    background-size: auto, 200% 100%;
-    animation: gradient-shift 4s linear infinite;
+    background-size: auto, 300% 100%;
+    animation: gradient-shift 8s linear infinite;
   }
 }
 .btn-outline-glass:active { transform: scale(0.97); }
