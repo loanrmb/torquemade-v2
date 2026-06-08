@@ -23,7 +23,7 @@
  *   jetski-site-v2.png · jetski-code-v2.png · crm-form.png · crm-dash.png
  */
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLang } from '@/components/app-provider';
 import { strings } from '@/lib/strings';
@@ -119,6 +119,27 @@ function FigureSites() {
 /* ------------------------------------------------------------------ */
 
 function FigureCrm() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(0.4);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const update = () => {
+      const containerWidth = el.getBoundingClientRect().width;
+      setScale(containerWidth / 1920);
+    };
+
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  const iframeHeight = 1080;
+  const containerHeight = Math.round(iframeHeight * scale);
+
   return (
     <>
       <img
@@ -126,12 +147,12 @@ function FigureCrm() {
         alt="Aperçu CRM logiciel de gestion"
         className="w-full rounded-2xl md:hidden"
       />
-      {/* Desktop — live HTML dashboard rendered in an iframe (scaled to fit).
-          HTML is laid out at native 1920×1080; scale(0.40) → ~768×432 visual,
-          which matches the Stage useful width (~766px) on a 1440px viewport. */}
+      {/* Desktop — live HTML dashboard rendered in an iframe (1920×1080 native);
+          scale is recomputed on resize so the iframe always fills its container. */}
       <div
+        ref={containerRef}
         className="hidden md:block w-full rounded-xl overflow-hidden"
-        style={{ height: '432px', position: 'relative' }}
+        style={{ height: `${containerHeight}px`, position: 'relative' }}
       >
         <iframe
           src="/crm-dashboard-preview.html"
@@ -139,9 +160,9 @@ function FigureCrm() {
           scrolling="no"
           style={{
             width: '1920px',
-            height: '1080px',
+            height: `${iframeHeight}px`,
             border: 'none',
-            transform: 'scale(0.40)',
+            transform: `scale(${scale})`,
             transformOrigin: 'top left',
             pointerEvents: 'none',
           }}
