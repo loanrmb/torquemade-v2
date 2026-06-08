@@ -594,14 +594,16 @@ export default function ServicesSection() {
               >
                 {tab.desc}
               </p>
-              <div className="relative left-1/2 -translate-x-1/2 w-[90vw] overflow-hidden rounded-xl">
-                <img
-                  src={MOBILE_PREVIEWS[i]}
-                  alt={tab.title}
-                  className="w-full h-auto object-contain"
-                  loading="lazy"
-                  decoding="async"
-                />
+              <div className="relative left-1/2 -translate-x-1/2 w-screen">
+                <div className="mx-auto w-[90vw] overflow-hidden rounded-xl">
+                  <img
+                    src={MOBILE_PREVIEWS[i]}
+                    alt={tab.title}
+                    className="w-full h-auto object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
               </div>
             </div>
           ))}
