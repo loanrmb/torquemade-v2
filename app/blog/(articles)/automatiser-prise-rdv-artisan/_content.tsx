@@ -8,7 +8,7 @@ export function AutomatiserPriseRdvArtisanContent() {
 
   if (lang === 'en') return (
     <article className="blog-article">
-      <h1 className="blog-article-title">How to Automate Online Appointment Booking for a Tradesperson</h1>
+      <h1 className="blog-article-title">Why custom booking systems beat Calendly (for service businesses)</h1>
 
       <p>
         A tradesperson spends an average of 30–60 minutes per day answering calls to

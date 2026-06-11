@@ -8,7 +8,7 @@ export function BalisesMetaTitleDescriptionContent() {
 
   if (lang === 'en') return (
     <article className="blog-article">
-      <h1 className="blog-article-title">Meta Title and Description Tags: The Practical Guide 2025</h1>
+      <h1 className="blog-article-title">How to write meta descriptions that actually get clicked</h1>
 
       <p>
         These are the first two elements a user sees in Google before even reaching

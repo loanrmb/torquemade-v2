@@ -8,7 +8,7 @@ export function SeoLocalEstheticienneContent() {
 
   if (lang === 'en') return (
     <article className="blog-article">
-      <h1 className="blog-article-title">Local SEO for a Beautician: How to Rank in Your City</h1>
+      <h1 className="blog-article-title">Local SEO for beauty salons: the complete playbook (2026)</h1>
 
       <p>
         Most clients searching for a beautician type a local query on Google — and look

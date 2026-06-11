@@ -3,7 +3,7 @@ import { AutomatiserPriseRdvArtisanContent } from './_content'
 
 export const metadata: Metadata = {
   title: "Comment automatiser la prise de rendez-vous en ligne pour un artisan",
-  description: "Finies les heures perdues au téléphone à caler des RDV. Voici comment un artisan peut automatiser sa prise de rendez-vous en ligne sans logiciel complexe.",
+  description: "Appointment booking without Calendly: custom system for artisans & service pros",
 }
 
 export default function Page() {
