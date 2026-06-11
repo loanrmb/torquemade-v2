@@ -810,4 +810,46 @@ export const posts: Post[] = [
     category: 'crm',
     readingTime: 3,
   },
+  {
+    slug: 'running-store-inventory-shopify-sync',
+    title: {
+      fr: 'Synchronisation stock en temps réel : du magasin à Shopify',
+      en: 'Real-Time Stock Sync: Running Store Inventory to Shopify',
+    },
+    description: {
+      fr: "Les magasins de running avec ventes en magasin + en ligne survendront s'ils ne synchronisent pas. Voici comment l'éviter.",
+      en: "Running stores with both in-store + online sales lose sales to overselling. Here's how real-time inventory sync fixes that.",
+    },
+    date: { fr: '19 avril 2026', en: 'April 19, 2026' },
+    category: 'ERP & Gestion de stock',
+    readingTime: 3,
+  },
+  {
+    slug: 'stock-updates-spreadsheets-vs-sync',
+    title: {
+      fr: 'Les mises à jour de stock ne devraient jamais être manuelles',
+      en: 'Stock Updates Should Be Instant, Not Spreadsheets',
+    },
+    description: {
+      fr: 'Les mises à jour manuelles coûtent 1 875 € par an en temps. La synchronisation automatique se paie en moins de 2 ans.',
+      en: 'Manual inventory updates are slow and error-prone. Automated real-time sync costs less than you think.',
+    },
+    date: { fr: '12 avril 2026', en: 'April 12, 2026' },
+    category: 'ERP & Gestion de stock',
+    readingTime: 3,
+  },
+  {
+    slug: 'inventory-software-custom-fit',
+    title: {
+      fr: 'Le logiciel de stock générique ne rentre pas dans votre workflow',
+      en: "Off-the-Shelf Inventory Software Doesn't Fit Your Workflow",
+    },
+    description: {
+      fr: "Les logiciels génériques couvrent 80 % de vos besoins. Les 20 % restants coûtent 500 €/mois en plugins. Pourquoi pas du sur mesure ?",
+      en: "Generic inventory software solves 80% of problems. Your business isn't generic. Here's why custom makes sense.",
+    },
+    date: { fr: '5 avril 2026', en: 'April 5, 2026' },
+    category: 'ERP & Gestion de stock',
+    readingTime: 3,
+  },
 ]
