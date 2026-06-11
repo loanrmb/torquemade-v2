@@ -782,4 +782,32 @@ export const posts: Post[] = [
     category: 'ERP & Gestion de stock',
     readingTime: 7,
   },
+  {
+    slug: 'why-generic-crm-fail-specialty-retail',
+    title: {
+      fr: 'Pourquoi les CRM génériques échouent avec les détaillants spécialisés',
+      en: 'Why Generic CRMs Fail Specialty Retailers (Custom Works Better)',
+    },
+    description: {
+      fr: 'Les CRM génériques ne sont pas conçus pour les commerces spécialisés. Voici pourquoi un CRM sur mesure se paie en quelques mois.',
+      en: "Generic CRMs aren't built for specialty shops. Here's why custom CRM software pays for itself within months.",
+    },
+    date: { fr: '3 mai 2026', en: 'May 3, 2026' },
+    category: 'crm',
+    readingTime: 3,
+  },
+  {
+    slug: 'custom-booking-system-vs-planity-booksy',
+    title: {
+      fr: 'Arrêtez de payer une commission sur chaque réservation',
+      en: 'Stop Paying Commission-Based Booking Systems: Build Your Own',
+    },
+    description: {
+      fr: 'Les plateformes de réservation prennent 1–3 % par réservation. Un système sur mesure intégré à votre site garde 100 % et coûte moins cher.',
+      en: 'Booking platforms take 1–3% per reservation. A custom booking system integrates with your site, keeps 100% of revenue, and costs less.',
+    },
+    date: { fr: '26 avril 2026', en: 'April 26, 2026' },
+    category: 'crm',
+    readingTime: 3,
+  },
 ]
