@@ -383,7 +383,7 @@ export const projects: Project[] = [
     imageHero: '/images/sbbt.png',
     imageChallenge: '/images/sbbt.png',
     imageApproach: '/images/sbbt-challenge.png',
-    url: 'https://spicybeautybyt.fr',
+    url: 'https://spicybeautybyt.com',
     featured: false,
     caseStudy: true,
     challengeTitle: {
