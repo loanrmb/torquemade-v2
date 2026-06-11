@@ -3,7 +3,7 @@ import { CrmSurMesureVsGeneriqueContent } from './_content'
 
 export const metadata: Metadata = {
   title: "CRM sur mesure vs logiciel générique : ce que ça change en pratique",
-  description: "Salesforce, HubSpot, Pipedrive couvrent 80 % des besoins. Le sur mesure couvre les 20 % qui font la différence pour votre métier. Voici comment choisir.",
+  description: "Custom CRM vs Salesforce: which actually pays for itself (cost breakdown)",
 }
 
 export default function Page() {

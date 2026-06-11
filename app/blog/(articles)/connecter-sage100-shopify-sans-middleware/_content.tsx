@@ -8,9 +8,7 @@ export function ConnecterSage100ShopifySansMiddlewareContent() {
 
   if (lang === 'en') return (
     <article className="blog-article">
-      <h1 className="blog-article-title">
-        How to Connect Sage 100 to Shopify Without Third-Party Middleware
-      </h1>
+      <h1 className="blog-article-title">Connect Sage 100 to Shopify: real-time stock sync explained</h1>
 
       <p>
         Most integrators have a ready answer when you ask how to connect your Sage 100
@@ -154,9 +152,7 @@ export function ConnecterSage100ShopifySansMiddlewareContent() {
 
   return (
     <article className="blog-article">
-      <h1 className="blog-article-title">
-        Comment connecter Sage 100 à Shopify sans middleware tiers
-      </h1>
+      <h1 className="blog-article-title">Connecter Sage 100 à Shopify : synchronisation stock en temps réel expliquée</h1>
 
       <p>
         La plupart des intégrateurs ont une réponse toute prête quand vous demandez comment

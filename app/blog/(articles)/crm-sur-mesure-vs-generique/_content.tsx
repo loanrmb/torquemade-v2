@@ -8,7 +8,7 @@ export function CrmSurMesureVsGeneriqueContent() {
 
   if (lang === 'en') return (
     <article className="blog-article">
-      <h1 className="blog-article-title">Custom CRM vs Generic Software: What It Changes in Practice</h1>
+      <h1 className="blog-article-title">Custom CRM vs off-the-shelf: which ROI wins?</h1>
 
       <p>
         The question isn't which is "better" — it's which fits your situation. A
@@ -81,7 +81,7 @@ export function CrmSurMesureVsGeneriqueContent() {
 
   return (
     <article className="blog-article">
-      <h1 className="blog-article-title">CRM sur mesure vs logiciel générique : ce que ça change en pratique</h1>
+      <h1 className="blog-article-title">CRM sur mesure vs générique : quel ROI gagne?</h1>
 
       <p>
         La question n'est pas de savoir lequel est "meilleur" — c'est de savoir lequel
