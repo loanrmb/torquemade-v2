@@ -34,7 +34,7 @@ const ROTATE_MS = 7000;
 /* Mobile preview images for the vertical stack (services 01-03). */
 const MOBILE_PREVIEWS = [
   '/images/preview-site-jetski-arcachon.png',
-  '/preview-crm-logiciel.png',
+  '/images/preview-crm-logiciel.png',
   '/images/preview-erp-site-ecommerce.png',
 ];
 
@@ -142,7 +142,7 @@ function FigureCrm() {
   return (
     <>
       <img
-        src="/preview-crm-logiciel.png"
+        src="/images/preview-crm-logiciel.png"
         alt="Aperçu CRM logiciel de gestion"
         className="w-full rounded-2xl md:hidden"
       />
@@ -287,10 +287,10 @@ function ApiPanel() {
         <span className="block whitespace-pre">{'    {'}<span>"sku"</span>:<span className="text-white">"CH-NV-12"</span>,<span>"stock"</span>:<span className="text-white">12</span>,<span>"price"</span>:<span className="text-white">65</span>{'}'},{}</span>
         <span className="block whitespace-pre">{'    {'}<span>"sku"</span>:<span className="text-white">"SB-2022"</span>,<span>"stock"</span>:<span className="text-white">18</span>,<span>"price"</span>:<span className="text-white">45</span>{'}'}</span>
         <span className="block whitespace-pre">{'  ],'}</span>
-        <span className="block whitespace-pre">{'  '}<span>"currency"</span>{': '}<span className="text-white">"CHF"</span></span>
+        <span className="block whitespace-pre">{'  '}<span>"currency"</span>{': '}<span className="text-white">{`"${t.erp.apiCurrency}"`}</span></span>
         <span className="block">{'}'}</span>
-        <span className="mt-2 block border-t border-dashed border-white/15 pt-2 font-medium text-white">→ 200 OK · 9 produits · 98ms</span>
-        <span className="block text-white/55">↓ mise à jour en temps réel</span>
+        <span className="mt-2 block border-t border-dashed border-white/15 pt-2 font-medium text-white">→ 200 OK {t.erp.apiResult}</span>
+        <span className="block text-white/55">{t.erp.apiUpdate}</span>
       </div>
       <div className="flex items-center gap-0.5 px-3 pb-3 pt-2.5 font-mono text-[10px] text-white/40">
         <span>$</span>
@@ -326,6 +326,8 @@ function ErpConnector({ label }: { label: string }) {
 }
 
 function FigureErp() {
+  const lang = useLang()
+  const t = strings[lang].servicesSection
   return (
     <>
       <img
@@ -340,7 +342,7 @@ function FigureErp() {
           <div className="flex items-stretch gap-4">
             {/* Left panel */}
             <ErpPanel
-              title="Logiciel de stock"
+              title={t.erp.stockTitle}
               footer={
                 <>
                   <motion.span
@@ -348,15 +350,15 @@ function FigureErp() {
                     animate={{ opacity: [1, 0.4, 1] }}
                     transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
                   />
-                  <span>Connecté · Dernière sync 2s</span>
+                  <span>{t.erp.stockFooter}</span>
                 </>
               }
             >
               <div className="flex flex-1 flex-col">
                 <ColHead cols={STOCK_COLS}>
-                  <span>Produit</span>
-                  <span>SKU</span>
-                  <span>Stock</span>
+                  <span>{t.erp.colProduct}</span>
+                  <span>{t.erp.colSku}</span>
+                  <span>{t.erp.colStock}</span>
                 </ColHead>
                 {ROWS.slice(0, 6).map((r) => (
                   <div key={r.sku} className={`${STOCK_COLS} py-[7px] text-[11px]`}>
@@ -371,12 +373,12 @@ function FigureErp() {
             <ApiPanel />
 
             {/* Right panel */}
-            <ErpPanel light title="Site e-commerce" footer={<span>↻ Dernière sync : il y a 2s</span>}>
+            <ErpPanel light title={t.erp.siteTitle} footer={<span>{t.erp.siteFooter}</span>}>
               <div className="flex flex-1 flex-col">
                 <ColHead cols={SITE_COLS} light>
-                  <span>Produit</span>
-                  <span>Stock</span>
-                  <span>Statut</span>
+                  <span>{t.erp.colProduct}</span>
+                  <span>{t.erp.colStock}</span>
+                  <span>{t.erp.colStatus}</span>
                 </ColHead>
                 {ROWS.slice(0, 6).map((r) => (
                   <div key={r.sku} className={`${SITE_COLS} py-[7px] text-[11px]`}>
@@ -387,11 +389,11 @@ function FigureErp() {
                     <span className="whitespace-nowrap font-mono text-[11px] font-medium text-neutral-700">{r.stock}</span>
                     {r.stock === 0 ? (
                       <span className="inline-flex h-6 items-center justify-center whitespace-nowrap rounded-full bg-red-100 px-2.5 text-[10px] font-medium text-red-600">
-                        Rupture
+                        {t.erp.statusRupture}
                       </span>
                     ) : (
                       <span className="inline-flex h-6 items-center justify-center whitespace-nowrap rounded-full bg-green-100 px-2.5 text-[10px] font-medium text-green-700">
-                        Actif
+                        {t.erp.statusActive}
                       </span>
                     )}
                   </div>

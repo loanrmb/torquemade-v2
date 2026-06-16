@@ -104,6 +104,9 @@ export const strings = {
         catWine: 'Vin',
         catChampagne: 'Champagne',
         caption: '',
+        statusRupture: 'Rupture',
+        apiUpdate: '↓ mise à jour en temps réel',
+        apiCurrency: 'EUR',
       },
       seo: {
         pageSettings: 'Réglages de page',
@@ -364,6 +367,8 @@ export const strings = {
       currencies: ['CHF', 'EUR', 'USD', 'GBP', 'CAD', 'PLN'],
       budgets: ['< 5 000', '5 000 – 10 000', '10 000 – 20 000', '20 000 +'],
       message: 'Message (optionnel)',
+      multipleChoice: 'choix multiple',
+      sending: 'Envoi...',
       submit: 'Envoyer →',
       success: '✓ Message envoyé, nous revenons vers vous dans les 24h.',
       error: 'Une erreur s\'est produite. Envoyez-nous un email : loanrmb@gmail.com',
@@ -374,6 +379,7 @@ export const strings = {
       navHref: ['/work', '/about', '/blog', '/contact'],
       copy: '© 2025 Torquemade.',
       email: 'loanrmb@gmail.com',
+      legal: 'Mentions légales',
     },
     blog: {
       eyebrow: 'Blog',
@@ -532,6 +538,9 @@ export const strings = {
         catWine: 'Wine',
         catChampagne: 'Champagne',
         caption: '',
+        statusRupture: 'Out of stock',
+        apiUpdate: '↓ real-time update',
+        apiCurrency: 'USD',
       },
       seo: {
         pageSettings: 'Page Settings',
@@ -792,6 +801,8 @@ export const strings = {
       currencies: ['CHF', 'EUR', 'USD', 'GBP', 'CAD', 'PLN'],
       budgets: ['< 5,000', '5,000 – 10,000', '10,000 – 20,000', '20,000 +'],
       message: 'Message (optional)',
+      multipleChoice: 'multiple choice',
+      sending: 'Sending...',
       submit: 'Send →',
       success: '✓ Message sent, I\'ll get back to you within 24h.',
       error: 'Something went wrong. Email me directly: loanrmb@gmail.com',
@@ -802,6 +813,7 @@ export const strings = {
       navHref: ['/work', '/about', '/blog', '/contact'],
       copy: '© 2025 Torquemade.',
       email: 'loanrmb@gmail.com',
+      legal: 'Legal Notice',
     },
     blog: {
       eyebrow: 'Blog',
