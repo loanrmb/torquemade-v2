@@ -3,8 +3,11 @@
 import { useEffect, useRef } from 'react'
 
 /**
- * Attaches IntersectionObserver to add .is-visible to all .fade-up elements
- * inside the document. Call once at the page level.
+ * Attaches IntersectionObserver to reveal .fade-up elements on scroll. The
+ * inline script in app/layout.tsx already reveals above-the-fold elements
+ * before hydration (for fast LCP), so we only observe the ones still hidden —
+ * i.e. below-the-fold elements and pages reached via client-side navigation.
+ * Call once at the page level.
  */
 export function useScrollReveal() {
   const initialized = useRef(false)
@@ -13,7 +16,7 @@ export function useScrollReveal() {
     if (initialized.current) return
     initialized.current = true
 
-    const els = document.querySelectorAll<HTMLElement>('.fade-up')
+    const els = document.querySelectorAll<HTMLElement>('.fade-up:not(.is-visible)')
     if (!('IntersectionObserver' in window) || !els.length) {
       els.forEach((el) => el.classList.add('is-visible'))
       return

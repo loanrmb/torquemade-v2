@@ -96,6 +96,14 @@ export default function RootLayout({
         <AppProvider>
           {children}
         </AppProvider>
+        {/* Reveal script: runs before React hydration so above-the-fold
+            `.fade-up` content paints immediately (fast LCP). Below-the-fold +
+            client-side navigations are handled by useScrollReveal. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('js-reveal');var vh=window.innerHeight||document.documentElement.clientHeight;var els=document.querySelectorAll('.fade-up');for(var i=0;i<els.length;i++){if(els[i].getBoundingClientRect().top<vh)els[i].classList.add('is-visible');}}catch(e){}})();`,
+          }}
+        />
         <Analytics />
       </body>
     </html>
