@@ -111,12 +111,16 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1rem;
 }
 
-.fade-up {
+/* Progressive enhancement: visible by default (no-JS / pre-hydration → content
+   paints immediately, keeping LCP fast). The hidden/animated state only applies
+   once the inline reveal script in layout.tsx adds `.js-reveal` to <html>. */
+.fade-up { opacity: 1; transform: none; }
+.js-reveal .fade-up {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
 }
-.fade-up.is-visible { opacity: 1; transform: translateY(0); }
+.js-reveal .fade-up.is-visible { opacity: 1; transform: translateY(0); }
 .fade-up-d1 { transition-delay: 0.08s; }
 .fade-up-d2 { transition-delay: 0.16s; }
 .fade-up-d3 { transition-delay: 0.24s; }
@@ -124,7 +128,7 @@ h1, h2, h3, h4, h5, h6 {
 .fade-up-d5 { transition-delay: 0.40s; }
 
 @media (prefers-reduced-motion: reduce) {
-  .fade-up { opacity: 1; transform: none; transition: none; }
+  .js-reveal .fade-up { opacity: 1; transform: none; transition: none; }
 }
 
 /* ============================================================
