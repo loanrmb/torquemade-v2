@@ -1,59 +1,56 @@
 import { MetadataRoute } from 'next'
 import { posts } from '@/lib/blog'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.torquemade.com'
+const baseUrl = 'https://www.torquemade.com'
 
-  const staticPages: MetadataRoute.Sitemap = [
+// Post dates in lib/blog.ts are localized display strings (e.g. "June 2026"),
+// not ISO dates. Parse the English form where possible; fall back to build
+// time when the string can't be parsed (e.g. French-only month names).
+function postLastModified(enDate: string): Date {
+  const parsed = new Date(enDate)
+  return Number.isNaN(parsed.getTime()) ? new Date() : parsed
+}
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const homepage: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1.0,
     },
-    {
-      url: `${baseUrl}/work`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
+  ]
+
+  const servicePages: MetadataRoute.Sitemap = [
+    'web-dev',
+    'crm',
+    'erp-ecommerce',
+  ].map((slug) => ({
+    url: `${baseUrl}/services/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.9,
+  }))
+
+  const blogIndex: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/blog`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services/web-dev`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services/crm`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services/erp-ecommerce`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'daily',
       priority: 0.8,
     },
   ]
+
+  const otherStaticPages: MetadataRoute.Sitemap = [
+    'work',
+    'about',
+    'contact',
+  ].map((slug) => ({
+    url: `${baseUrl}/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  }))
 
   const projectSlugs = [
     'sprint-motors',
@@ -74,10 +71,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
+    lastModified: postLastModified(post.date.en),
+    changeFrequency: 'weekly',
     priority: 0.7,
   }))
 
-  return [...staticPages, ...projectPages, ...blogPages]
+  return [
+    ...homepage,
+    ...servicePages,
+    ...blogIndex,
+    ...otherStaticPages,
+    ...projectPages,
+    ...blogPages,
+  ]
 }
