@@ -3,6 +3,7 @@ import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { AppProvider } from '@/components/app-provider'
 import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -97,6 +98,7 @@ export default function RootLayout({
           {children}
         </AppProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
