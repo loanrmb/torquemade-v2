@@ -433,6 +433,20 @@ export const strings = {
         desc: 'Structure sémantique et contenu d\'autorité conçus pour apparaître dans les réponses ChatGPT, Perplexity, Claude et Gemini.',
       },
     },
+    meta: {
+      webDev: {
+        title: 'Sites web Next.js & Shopify sur mesure | Torquemade',
+        description: 'Sites Next.js et Shopify construits de zéro : mobile-first, optimisés SEO, intégrations CRM et API sur mesure. Livraison en 15 jours ouvrés.',
+      },
+      crm: {
+        title: 'CRM sur mesure adapté à votre métier | Torquemade',
+        description: 'CRM et outils de gestion sur mesure, taillés pour vos processus : réservations, tableaux de bord temps réel, automatisations et suivi client.',
+      },
+      erp: {
+        title: 'Synchronisation stock ERP ↔ site e-commerce | Torquemade',
+        description: 'Connexion en temps réel entre votre ERP (SAGE, Cegid…) et Shopify. Fin de la ressaisie : chaque vente déduit automatiquement votre stock réel.',
+      },
+    },
   },
 
   en: {
@@ -865,6 +879,20 @@ export const strings = {
       item6: {
         title: 'Cited by AI',
         desc: 'Semantic structure and authority content designed to surface in ChatGPT, Perplexity, Claude and Gemini answers.',
+      },
+    },
+    meta: {
+      webDev: {
+        title: 'Custom Next.js & Shopify Websites | Torquemade',
+        description: 'Next.js and Shopify sites built from scratch: mobile-first, SEO-optimized, with custom CRM and API integrations. Delivered in 15 business days.',
+      },
+      crm: {
+        title: 'Custom CRM Built for Your Trade | Torquemade',
+        description: 'Bespoke CRM and management tools tailored to your processes: bookings, real-time dashboards, automations and client tracking.',
+      },
+      erp: {
+        title: 'ERP ↔ E-commerce Inventory Sync | Torquemade',
+        description: 'Real-time connection between your ERP (SAGE, Cegid…) and Shopify. No more re-keying: every online sale deducts from your real stock automatically.',
       },
     },
   },
