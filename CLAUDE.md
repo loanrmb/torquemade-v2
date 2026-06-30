@@ -105,7 +105,7 @@ torquemade-v2/
 │   └── mentions-legales/
 ├── lib/
 │   ├── strings.ts (TOUTES les chaînes FR/EN)
-│   ├── blog.ts (posts array + getAllPosts())
+│   ├── blog.ts (exports posts: Post[] array with all article metadata)
 │   ├── projects.ts (portfolio data)
 │   ├── revalidate.ts (ISR clustering)
 │   └── ...
