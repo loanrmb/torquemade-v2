@@ -20,6 +20,14 @@ export const TOPIC_CLUSTERS = {
     categories: ['SEO & Contenu'],
     staticPaths: [],
   },
+  'web-dev': {
+    categories: ['Web & Développement'],
+    staticPaths: ['/services/web-dev'],
+  },
+  projets: {
+    categories: ['projets'],
+    staticPaths: ['/work'],
+  },
 } as const
 
 export type ClusterId = keyof typeof TOPIC_CLUSTERS
