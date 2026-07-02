@@ -1,8 +1,17 @@
 import { Metadata } from 'next'
 import { strings } from '@/lib/strings'
+import { SchemaRenderer } from '@/components/schema-renderer'
+import { serviceSchema } from '@/lib/schema'
 
 const meta = strings.fr.meta.webDev
 const url = 'https://torquemade.com/services/web-dev'
+
+const schema = serviceSchema({
+  name: 'Sites web Next.js & Shopify',
+  serviceType: 'Web development',
+  slug: 'web-dev',
+  description: meta.description,
+})
 
 export const metadata: Metadata = {
   title: meta.title,
@@ -24,5 +33,10 @@ export const metadata: Metadata = {
 }
 
 export default function WebDevLayout({ children }: { children: React.ReactNode }) {
-  return children
+  return (
+    <>
+      <SchemaRenderer schema={schema} />
+      {children}
+    </>
+  )
 }
