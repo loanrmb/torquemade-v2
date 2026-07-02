@@ -4,14 +4,6 @@ import { projects } from '@/lib/projects'
 
 const baseUrl = 'https://www.torquemade.com'
 
-// Post dates in lib/blog.ts are localized display strings (e.g. "June 2026"),
-// not ISO dates. Parse the English form where possible; fall back to build
-// time when the string can't be parsed (e.g. French-only month names).
-function postLastModified(enDate: string): Date {
-  const parsed = new Date(enDate)
-  return Number.isNaN(parsed.getTime()) ? new Date() : parsed
-}
-
 export default function sitemap(): MetadataRoute.Sitemap {
   const homepage: MetadataRoute.Sitemap = [
     {
@@ -42,6 +34,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
+  const otherStaticPages: MetadataRoute.Sitemap = [
+    'work',
+    'about',
+    'contact',
+  ].map((slug) => ({
+    url: `${baseUrl}/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  }))
+
   const projectPages: MetadataRoute.Sitemap = projects.map((project) => ({
     url: `${baseUrl}/work/${project.slug}`,
     lastModified: new Date(),
@@ -53,8 +56,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.publishedAt),
     changeFrequency: 'monthly',
-    lastModified: postLastModified(post.date.en),
-    changeFrequency: 'weekly',
     priority: 0.7,
   }))
 

@@ -943,6 +943,7 @@ export const posts: Post[] = [
       en: 'Bordeaux Ride, a premium private driver service in Gironde, built its own booking infrastructure to escape platform commissions. Here\'s how it changed their business model.',
     },
     date: { fr: 'Juin 2026', en: 'June 2026' },
+    publishedAt: '2026-06-01',
     category: 'projets',
     readingTime: 3,
   },
