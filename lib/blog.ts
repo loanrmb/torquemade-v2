@@ -932,4 +932,18 @@ export const posts: Post[] = [
     category: 'ERP & Gestion de stock',
     readingTime: 3,
   },
+  {
+    slug: 'bordeaux-ride-reservation-zero-commission',
+    title: {
+      fr: 'Comment Bordeaux Ride a construit son système de réservation zéro commission',
+      en: 'How Bordeaux Ride Built Its Zero-Commission Booking System',
+    },
+    description: {
+      fr: 'Bordeaux Ride, service de chauffeur privé premium en Gironde, a construit sa propre infrastructure de réservation pour échapper aux commissions des plateformes. Le retour d\'expérience.',
+      en: 'Bordeaux Ride, a premium private driver service in Gironde, built its own booking infrastructure to escape platform commissions. Here\'s how it changed their business model.',
+    },
+    date: { fr: 'Juin 2026', en: 'June 2026' },
+    category: 'projets',
+    readingTime: 3,
+  },
 ]

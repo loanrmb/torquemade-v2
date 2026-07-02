@@ -62,7 +62,7 @@ export function Footer() {
               className="transition-colors duration-150 hover:text-white"
               style={{ color: 'hsl(0 0% 35%)' }}
             >
-              {lang === 'fr' ? 'Mentions légales' : 'Legal Notice'}
+              {t.legal}
             </Link>
             <p>Bordeaux, France</p>
           </div>
