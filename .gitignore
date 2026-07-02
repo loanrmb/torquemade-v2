@@ -30,3 +30,6 @@ node_modules
 .DS_Store
 next-env.d.ts
 tsconfig.tsbuildinfo
+
+# Generated crawl analysis output
+scripts/crawl-analysis-report.md
