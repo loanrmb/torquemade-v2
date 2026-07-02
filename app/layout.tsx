@@ -7,6 +7,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://torquemade.com'),
   title: 'Torquemade — Web Dev & CRM sur mesure',
   description:
     'Studio de développement web et CRM sur mesure. Sites Shopify et Next.js, logiciels de réservation, SEO et optimisation IA.',
