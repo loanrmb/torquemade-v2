@@ -4,10 +4,10 @@
  * CrmDashboardPreview
  * ───────────────────────────────────────────────────────────────
  * Self-contained animated stock-management CRM dashboard mock.
- * Desktop only — mobile keeps the static PNG in services-section.tsx.
+ * Desktop only — mobile keeps the static PNG in page.tsx.
  *
  * Animations:
- *  - Sidebar auto-navigates Dashboard → Produits → Mouvements (4 500 ms)
+ *  - Sidebar auto-navigates Dashboard → Products → Movements (3 500 ms)
  *    using Framer Motion layoutId="crm-activeNav" (spring pill slide)
  *  - KPI count-up: useMotionValue + animate() on first inView
  *  - SVG line chart: pathLength draw-in on inView (1 800 ms linear)
@@ -19,7 +19,8 @@
  * Styling: hardcoded white-on-dark colours consistent with the dark stage
  * that hosts this component (md:bg-[#080808] in ServicesSection).
  * Hardcoded chart colours are intentional (data differentiation).
- * All UI text is inline — this is a UI mock, not an i18n page.
+ * UI text is co-located as bilingual { fr, en } constants — exception to
+ * lib/strings.ts justified by ~50 micro-labels in a self-contained UI mock.
  *
  * Emil §6.A compliance: only transform + opacity animated.
  * Vercel best-practice: all sub-components defined at module level.
@@ -35,41 +36,75 @@ import {
   useTransform,
   animate,
 } from 'framer-motion'
+import { useLang } from '@/components/app-provider'
 
 /* ─── Emil strong ease ─────────────────────────────────────────── */
 const EASE_OUT: [number, number, number, number] = [0.23, 1, 0.32, 1]
 
 /* ─── Nav ──────────────────────────────────────────────────────── */
-type NavView = 'Dashboard' | 'Produits' | 'Mouvements'
-const NAV_CYCLE: NavView[] = ['Dashboard', 'Produits', 'Mouvements']
+type NavView = 'Dashboard' | 'Products' | 'Movements'
+const NAV_CYCLE: NavView[] = ['Dashboard', 'Products', 'Movements']
 
 const ALL_NAV = [
-  'Dashboard', 'Scanner', 'Produits', 'Inventaire', 'Réception',
-  'Ajust. stock', 'Mouvements', 'Clients', 'Fournisseurs',
-  'Commandes', 'Lots', 'Rapports', 'Marques', 'Catégories',
-  'Alertes', 'Paramètres',
+  'Dashboard', 'Scanner', 'Products', 'Inventory', 'Receiving',
+  'Stock adj.', 'Movements', 'Clients', 'Suppliers',
+  'Orders', 'Batches', 'Reports', 'Brands', 'Categories',
+  'Alerts', 'Settings',
 ] as const
-type NavLabel = typeof ALL_NAV[number]
+type NavKey = typeof ALL_NAV[number]
+
+const NAV_DISPLAY: Record<NavKey, { fr: string; en: string }> = {
+  Dashboard:    { fr: 'Dashboard',    en: 'Dashboard'   },
+  Scanner:      { fr: 'Scanner',      en: 'Scanner'     },
+  Products:     { fr: 'Produits',     en: 'Products'    },
+  Inventory:    { fr: 'Inventaire',   en: 'Inventory'   },
+  Receiving:    { fr: 'Réception',    en: 'Receiving'   },
+  'Stock adj.': { fr: 'Ajust. stock', en: 'Stock adj.'  },
+  Movements:    { fr: 'Mouvements',   en: 'Movements'   },
+  Clients:      { fr: 'Clients',      en: 'Clients'     },
+  Suppliers:    { fr: 'Fournisseurs', en: 'Suppliers'   },
+  Orders:       { fr: 'Commandes',    en: 'Orders'      },
+  Batches:      { fr: 'Lots',         en: 'Batches'     },
+  Reports:      { fr: 'Rapports',     en: 'Reports'     },
+  Brands:       { fr: 'Marques',      en: 'Brands'      },
+  Categories:   { fr: 'Catégories',   en: 'Categories'  },
+  Alerts:       { fr: 'Alertes',      en: 'Alerts'      },
+  Settings:     { fr: 'Paramètres',   en: 'Settings'    },
+}
 
 /* ─── Product table ────────────────────────────────────────────── */
 const PRODUCTS = [
-  { name: 'Clifton 9 Hoka',  sku: 'HK-CLI-9',  cat: 'Chaussures', stock: 47, price: '189€', low: false },
-  { name: 'Nimbus 26 Asics', sku: 'AS-NIM-26', cat: 'Chaussures', stock: 12, price: '179€', low: false },
-  { name: 'Kayano 31 Asics', sku: 'AS-KAY-31', cat: 'Chaussures', stock: 38, price: '209€', low: false },
-  { name: 'Gel-Cumulus 26',  sku: 'AS-GEL-26', cat: 'Chaussures', stock: 5,  price: '159€', low: true  },
-  { name: 'GT-2000 13',      sku: 'AS-GT-13',  cat: 'Chaussures', stock: 23, price: '149€', low: false },
-  { name: 'Superblast 2',    sku: 'AS-SUP-2',  cat: 'Chaussures', stock: 18, price: '229€', low: false },
-  { name: 'Novablast 4',     sku: 'AS-NOV-4',  cat: 'Chaussures', stock: 31, price: '169€', low: false },
-  { name: 'Clifton LS',      sku: 'HK-CLS-1',  cat: 'Chaussures', stock: 7,  price: '199€', low: true  },
-  { name: 'Bondi 8',         sku: 'HK-BON-8',  cat: 'Chaussures', stock: 14, price: '219€', low: false },
-  { name: 'Speedgoat 5',     sku: 'HK-SPG-5',  cat: 'Chaussures', stock: 9,  price: '189€', low: true  },
-  { name: 'Mach 6',          sku: 'HK-MCH-6',  cat: 'Chaussures', stock: 26, price: '179€', low: false },
-  { name: 'Rincon 3',        sku: 'HK-RIN-3',  cat: 'Chaussures', stock: 3,  price: '149€', low: true  },
-  { name: 'Gel-Nimbus 26',   sku: 'AS-GNI-26', cat: 'Chaussures', stock: 19, price: '219€', low: false },
-  { name: 'Gel-Kayano 31',   sku: 'AS-GKA-31', cat: 'Chaussures', stock: 11, price: '229€', low: false },
-  { name: 'DS Trainer 28',   sku: 'AS-DST-28', cat: 'Chaussures', stock: 6,  price: '139€', low: true  },
-  { name: 'Fuji Lite 4',     sku: 'AS-FJL-4',  cat: 'Trail',      stock: 22, price: '169€', low: false },
+  { name: 'Clifton 9 Hoka',  sku: 'HK-CLI-9',  cat: { fr: 'Chaussures', en: 'Shoes' }, stock: 47, price: '189€', low: false },
+  { name: 'Nimbus 26 Asics', sku: 'AS-NIM-26', cat: { fr: 'Chaussures', en: 'Shoes' }, stock: 12, price: '179€', low: false },
+  { name: 'Kayano 31 Asics', sku: 'AS-KAY-31', cat: { fr: 'Chaussures', en: 'Shoes' }, stock: 38, price: '209€', low: false },
+  { name: 'Gel-Cumulus 26',  sku: 'AS-GEL-26', cat: { fr: 'Chaussures', en: 'Shoes' }, stock: 5,  price: '159€', low: true  },
+  { name: 'GT-2000 13',      sku: 'AS-GT-13',  cat: { fr: 'Chaussures', en: 'Shoes' }, stock: 23, price: '149€', low: false },
+  { name: 'Superblast 2',    sku: 'AS-SUP-2',  cat: { fr: 'Chaussures', en: 'Shoes' }, stock: 18, price: '229€', low: false },
+  { name: 'Novablast 4',     sku: 'AS-NOV-4',  cat: { fr: 'Chaussures', en: 'Shoes' }, stock: 31, price: '169€', low: false },
+  { name: 'Clifton LS',      sku: 'HK-CLS-1',  cat: { fr: 'Chaussures', en: 'Shoes' }, stock: 7,  price: '199€', low: true  },
+  { name: 'Bondi 8',         sku: 'HK-BON-8',  cat: { fr: 'Chaussures', en: 'Shoes' }, stock: 14, price: '219€', low: false },
+  { name: 'Speedgoat 5',     sku: 'HK-SPG-5',  cat: { fr: 'Chaussures', en: 'Shoes' }, stock: 9,  price: '189€', low: true  },
+  { name: 'Mach 6',          sku: 'HK-MCH-6',  cat: { fr: 'Chaussures', en: 'Shoes' }, stock: 26, price: '179€', low: false },
+  { name: 'Rincon 3',        sku: 'HK-RIN-3',  cat: { fr: 'Chaussures', en: 'Shoes' }, stock: 3,  price: '149€', low: true  },
+  { name: 'Gel-Nimbus 26',   sku: 'AS-GNI-26', cat: { fr: 'Chaussures', en: 'Shoes' }, stock: 19, price: '219€', low: false },
+  { name: 'Gel-Kayano 31',   sku: 'AS-GKA-31', cat: { fr: 'Chaussures', en: 'Shoes' }, stock: 11, price: '229€', low: false },
+  { name: 'DS Trainer 28',   sku: 'AS-DST-28', cat: { fr: 'Chaussures', en: 'Shoes' }, stock: 6,  price: '139€', low: true  },
+  { name: 'Fuji Lite 4',     sku: 'AS-FJL-4',  cat: { fr: 'Trail',      en: 'Trail' }, stock: 22, price: '169€', low: false },
 ] as const
+
+/* ─── Movement type display labels ────────────────────────────── */
+const MOVE_TYPE_LABEL: Record<string, { fr: string; en: string }> = {
+  'Réception': { fr: 'Réception', en: 'Receiving' },
+  'Vente':     { fr: 'Vente',     en: 'Sale'      },
+}
+
+/* ─── Time string translation ──────────────────────────────────── */
+function translateTime(time: string, lang: 'fr' | 'en'): string {
+  if (lang === 'fr') return time
+  if (time === "à l'instant") return 'just now'
+  const m = time.match(/^il y a (\d+h)$/)
+  return m ? `${m[1]} ago` : time
+}
 
 /* ─── Movement log ─────────────────────────────────────────────── */
 const MOVE_LOG = [
@@ -93,11 +128,11 @@ const MOVE_LOG = [
 
 /* ─── Live feed ────────────────────────────────────────────────── */
 interface FeedItem {
-  id: string
+  id:    string
   label: string
-  type: string
+  type:  string
   delta: number
-  time: string
+  time:  string
 }
 
 const FEED_POOL: Omit<FeedItem, 'id'>[] = [
@@ -134,13 +169,13 @@ function CursorSvg() {
   )
 }
 
-/* ─── Donut chart ──────────────────────────────────────────────── */
+/* ─── Donut chart data ─────────────────────────────────────────── */
 const DONUT_DATA = [
-  { label: 'Chaussures',   pct: 0.71, color: '#22c55e' },
-  { label: 'Accessoires',  pct: 0.18, color: '#3b82f6' },
-  { label: 'Vêtements H.', pct: 0.06, color: '#a855f7' },
-  { label: 'Équipements',  pct: 0.03, color: '#f59e0b' },
-  { label: 'Nutrition',    pct: 0.02, color: '#6b7280' },
+  { key: 'shoes',   label: { fr: 'Chaussures',  en: 'Shoes'          }, pct: 0.71, color: '#22c55e' },
+  { key: 'access',  label: { fr: 'Accessoires', en: 'Accessories'    }, pct: 0.18, color: '#3b82f6' },
+  { key: 'apparel', label: { fr: 'Vêtements H.', en: "Men's apparel" }, pct: 0.06, color: '#a855f7' },
+  { key: 'equip',   label: { fr: 'Équipements', en: 'Equipment'      }, pct: 0.03, color: '#f59e0b' },
+  { key: 'nutr',    label: { fr: 'Nutrition',   en: 'Nutrition'      }, pct: 0.02, color: '#6b7280' },
 ] as const
 
 const DONUT_R   = 34
@@ -155,11 +190,10 @@ const DONUT_SEGS = DONUT_DATA.map((d, i) => {
     .slice(0, i)
     .reduce((sum, prev) => sum + prev.pct * DONUT_C, 0)
   return {
-    label:      d.label,
+    key:        d.key,
     pct:        d.pct,
     color:      d.color,
     segLen,
-    // dashOffset: position offset (from 12 o'clock) + gap padding
     dashOffset: -(DONUT_C / 4) - cumOffset - (DONUT_GAP / 2),
     delay:      [0, 0.2, 0.35, 0.45, 0.52][i] ?? 0,
   }
@@ -209,49 +243,128 @@ const R_AREA = buildPath(R_PTS, true)
 const V_AREA = buildPath(V_PTS, true)
 
 /* ─── X-axis labels ───────────────────────────────────────────── */
-const X_LABELS = ['8 mai', '13 mai', '18 mai', '23 mai', '28 mai', '2 juin'] as const
+const X_LABELS = [
+  { fr: '8 mai',  en: 'May 8'  },
+  { fr: '13 mai', en: 'May 13' },
+  { fr: '18 mai', en: 'May 18' },
+  { fr: '23 mai', en: 'May 23' },
+  { fr: '28 mai', en: 'May 28' },
+  { fr: '2 juin', en: 'Jun 2'  },
+] as const
 
-/* ─── Stagger variants (Produits / Mouvements rows) ──────────── */
+/* ─── Stagger variants (Products / Movements rows) ────────────── */
 const rowContainer = {
-  hidden:   {},
-  visible:  { transition: { staggerChildren: 0.04 } },
+  hidden:  {},
+  visible: { transition: { staggerChildren: 0.04 } },
 }
 const rowItem = {
-  hidden:   { opacity: 0, y: 8 },
-  visible:  { opacity: 1, y: 0, transition: { duration: 0.22, ease: 'easeOut' as const } },
+  hidden:  { opacity: 0, y: 8 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.22, ease: 'easeOut' as const } },
 }
+
+/* ─── Co-located bilingual labels ─────────────────────────────── */
+// Exception to lib/strings.ts — UI mock with ~50 micro-labels, co-location justified
+const LABELS = {
+  fr: {
+    chartTitle:    'Activité du stock — 30 derniers jours',
+    receiving:     'Réceptions',
+    sales:         'Ventes',
+    donutTitle:    'Répartition par catégorie',
+    alertsTitle:   'Alertes stock bas',
+    viewAll:       'Voir tout →',
+    lowStock:      'Stock bas',
+    recentMoves:   'Derniers mouvements',
+    dashTitle:     'Tableau de bord',
+    dateLabel:     '2 juin 2026 · 14:31',
+    productsTitle: 'Produits',
+    prodHeaders:   ['Produit', 'SKU', 'Catégorie', 'Stock', 'Prix'],
+    movesTitle:    'Mouvements',
+    moveHeaders:   ['Type', 'Produit', 'Qté', 'Date'],
+    search:        'Rechercher...',
+    connected:     'Connecté · Sync actif',
+  },
+  en: {
+    chartTitle:    'Stock activity — last 30 days',
+    receiving:     'Receiving',
+    sales:         'Sales',
+    donutTitle:    'Category breakdown',
+    alertsTitle:   'Low stock alerts',
+    viewAll:       'View all →',
+    lowStock:      'Low stock',
+    recentMoves:   'Recent movements',
+    dashTitle:     'Dashboard',
+    dateLabel:     'Jun 2, 2026 · 14:31',
+    productsTitle: 'Products',
+    prodHeaders:   ['Product', 'SKU', 'Category', 'Stock', 'Price'],
+    movesTitle:    'Movements',
+    moveHeaders:   ['Type', 'Product', 'Qty', 'Date'],
+    search:        'Search...',
+    connected:     'Connected · Sync active',
+  },
+}
+
+/* ─── KPI data ─────────────────────────────────────────────────── */
+const KPI_DATA = [
+  { label: { fr: 'Produits',           en: 'Products'          }, value: 3247        as number | string, trend: { fr: '+84 ce mois',      en: '+84 this month'   }, type: 'up'   as const },
+  { label: { fr: 'Stock bas',          en: 'Low stock'         }, value: 12          as number | string, trend: { fr: 'dont 3 en rupture', en: 'incl. 3 stockout' }, type: 'warn' as const },
+  { label: { fr: 'Valeur du stock',    en: 'Stock value'       }, value: '487 320 €' as number | string, trend: { fr: '+8,3 % ce mois',   en: '+8.3% this month'  }, type: 'up'   as const },
+  { label: { fr: "Mouvements auj'hui", en: "Today's movements" }, value: 84          as number | string, trend: { fr: '+31 vs hier',       en: '+31 vs yesterday'  }, type: 'up'   as const },
+]
 
 /* ═══════════════════════════════════════════════════════════════
    SUB-COMPONENTS (all at module level — Vercel rerender rule)
 ═══════════════════════════════════════════════════════════════ */
 
 /* ─── Count-up number ─────────────────────────────────────────── */
-function CountUp({ target, reduced }: { target: number; reduced: boolean }) {
-  const spanRef = useRef<HTMLSpanElement>(null)
-  const inView  = useInView(spanRef, { once: true })
-  const val     = useMotionValue(0)
-  const display = useTransform(val, v => Math.round(v).toLocaleString('fr-FR'))
+// useTransform stale-closure fix: useTransform's internal subscription only
+// re-evaluates when the input MotionValue changes, not when `lang` changes.
+// After animation completes, val is static, so display would never reformat.
+// Solution: drive display via animate() onUpdate + useState, with a langRef
+// kept synchronously current so both effects always use the active locale.
+function CountUp({ target, reduced, lang }: { target: number; reduced: boolean; lang: 'fr' | 'en' }) {
+  const spanRef   = useRef<HTMLSpanElement>(null)
+  const inView    = useInView(spanRef, { once: true })
+  const langRef   = useRef(lang)
+  langRef.current = lang                // sync before any effect runs
+
+  const valRef    = useRef(0)           // tracks animated value for lang-change reformat
+  const [text, setText] = useState('0')
+
+  const fmt = (v: number) =>
+    Math.round(v).toLocaleString(langRef.current === 'fr' ? 'fr-FR' : 'en-US')
 
   useEffect(() => {
     if (!inView) return
-    if (reduced) { val.set(target); return }
-    const ctrl = animate(val, target, { duration: 1.2, ease: EASE_OUT })
+    if (reduced) { valRef.current = target; setText(fmt(target)); return }
+    const ctrl = animate(0, target, {
+      duration: 1.2,
+      ease: EASE_OUT,
+      onUpdate: (v) => { valRef.current = v; setText(fmt(v)) },
+    })
     return () => ctrl.stop()
-  }, [inView, target, reduced, val])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView, target, reduced])
 
-  return <motion.span ref={spanRef}>{display}</motion.span>
+  // Reformat the static final value whenever lang switches
+  useEffect(() => {
+    setText(fmt(valRef.current))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lang])
+
+  return <span ref={spanRef}>{text}</span>
 }
 
 /* ─── KPI card ────────────────────────────────────────────────── */
 interface KpiProps {
-  label:     string
-  value:     number | string
-  trend:     string
-  type:      'up' | 'warn' | 'neutral'
-  reduced:   boolean
+  label:   string
+  value:   number | string
+  trend:   string
+  type:    'up' | 'warn' | 'neutral'
+  reduced: boolean
+  lang:    'fr' | 'en'
 }
 
-function KpiCard({ label, value, trend, type, reduced }: KpiProps) {
+function KpiCard({ label, value, trend, type, reduced, lang }: KpiProps) {
   const dot =
     type === 'up'   ? <span className="text-[#22c55e]">↑</span>
     : type === 'warn' ? <span style={{ color: '#f59e0b' }}>●</span>
@@ -267,7 +380,7 @@ function KpiCard({ label, value, trend, type, reduced }: KpiProps) {
       </span>
       <span className="text-[18px] font-semibold leading-none text-white tabular-nums tracking-tight">
         {typeof value === 'number'
-          ? <CountUp target={value} reduced={reduced} />
+          ? <CountUp target={value} reduced={reduced} lang={lang} />
           : value}
       </span>
       <span className="flex items-center gap-1 text-[10px]" style={{ color: 'rgba(255,255,255,0.40)' }}>
@@ -279,25 +392,26 @@ function KpiCard({ label, value, trend, type, reduced }: KpiProps) {
 }
 
 /* ─── Line chart ──────────────────────────────────────────────── */
-function LineChart({ reduced }: { reduced: boolean }) {
+function LineChart({ reduced, lang }: { reduced: boolean; lang: 'fr' | 'en' }) {
   const ref    = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true })
   const dur    = reduced ? 0 : 1.8
+  const t      = LABELS[lang]
 
   return (
     <div ref={ref} className="flex flex-col gap-1.5">
       <div className="flex items-center justify-between">
         <span className="text-[10px] font-medium tracking-tight" style={{ color: 'rgba(255,255,255,0.55)' }}>
-          Activité du stock — 30 derniers jours
+          {t.chartTitle}
         </span>
         <div className="flex items-center gap-3 text-[9px]" style={{ color: 'rgba(255,255,255,0.38)' }}>
           <span className="flex items-center gap-1">
             <span className="inline-block w-2 h-[2px] rounded-full bg-[#22c55e]" />
-            Réceptions
+            {t.receiving}
           </span>
           <span className="flex items-center gap-1">
             <span className="inline-block w-2 h-[2px] rounded-full bg-[#3b82f6]" />
-            Ventes
+            {t.sales}
           </span>
         </div>
       </div>
@@ -383,8 +497,8 @@ function LineChart({ reduced }: { reduced: boolean }) {
       {/* X-axis labels */}
       <div className="flex justify-between pl-6 pr-1" aria-hidden>
         {X_LABELS.map(l => (
-          <span key={l} className="text-[8px] tabular-nums" style={{ color: 'rgba(255,255,255,0.22)' }}>
-            {l}
+          <span key={l.en} className="text-[8px] tabular-nums" style={{ color: 'rgba(255,255,255,0.22)' }}>
+            {l[lang]}
           </span>
         ))}
       </div>
@@ -429,14 +543,14 @@ function DonutSeg({ segLen, dashOffset, color, delay, inView, reduced }: DonutSe
 }
 
 /* ─── Donut chart ─────────────────────────────────────────────── */
-function DonutChart({ reduced }: { reduced: boolean }) {
+function DonutChart({ reduced, lang }: { reduced: boolean; lang: 'fr' | 'en' }) {
   const ref    = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true })
 
   return (
     <div ref={ref} className="flex flex-col gap-1.5">
       <span className="text-[10px] font-medium tracking-tight" style={{ color: 'rgba(255,255,255,0.55)' }}>
-        Répartition par catégorie
+        {LABELS[lang].donutTitle}
       </span>
 
       <div className="flex items-center gap-3">
@@ -453,7 +567,7 @@ function DonutChart({ reduced }: { reduced: boolean }) {
           {/* Segments */}
           {DONUT_SEGS.map(seg => (
             <DonutSeg
-              key={seg.label}
+              key={seg.key}
               segLen={seg.segLen}
               dashOffset={seg.dashOffset}
               color={seg.color}
@@ -467,13 +581,13 @@ function DonutChart({ reduced }: { reduced: boolean }) {
         {/* Legend */}
         <div className="flex flex-col gap-1">
           {DONUT_DATA.map(d => (
-            <div key={d.label} className="flex items-center gap-1.5">
+            <div key={d.key} className="flex items-center gap-1.5">
               <span
                 className="h-1.5 w-1.5 rounded-full flex-shrink-0"
                 style={{ background: d.color }}
               />
               <span className="text-[9px] leading-none" style={{ color: 'rgba(255,255,255,0.55)' }}>
-                {d.label}
+                {d.label[lang]}
               </span>
               <span className="text-[9px] font-mono leading-none ml-auto pl-1" style={{ color: 'rgba(255,255,255,0.35)' }}>
                 {Math.round(d.pct * 100)}%
@@ -486,8 +600,9 @@ function DonutChart({ reduced }: { reduced: boolean }) {
   )
 }
 
-/* ─── Alertes card (static) ───────────────────────────────────── */
-function AlertesCard() {
+/* ─── Alerts card (static) ────────────────────────────────────── */
+function AlertesCard({ lang }: { lang: 'fr' | 'en' }) {
+  const t = LABELS[lang]
   const alerts = [
     { name: 'Clifton 9 · Hoka · 42 · Noir',  qty: 3 },
     { name: 'Nimbus 26 · Asics · 38 · Blanc', qty: 2 },
@@ -497,10 +612,10 @@ function AlertesCard() {
     <div className="flex flex-col gap-1.5">
       <div className="flex items-center justify-between">
         <span className="text-[10px] font-medium tracking-tight" style={{ color: 'rgba(255,255,255,0.55)' }}>
-          Alertes stock bas
+          {t.alertsTitle}
         </span>
         <button className="text-[9px]" style={{ color: 'rgba(255,255,255,0.35)' }}>
-          Voir tout →
+          {t.viewAll}
         </button>
       </div>
       {alerts.map(a => (
@@ -517,7 +632,7 @@ function AlertesCard() {
               className="rounded-full px-1.5 py-0.5 text-[9px] font-medium"
               style={{ background: 'rgba(245,158,11,0.15)', color: '#f59e0b' }}
             >
-              Stock bas
+              {t.lowStock}
             </span>
             <span className="font-mono text-[10px] font-semibold" style={{ color: '#f59e0b' }}>
               {a.qty}
@@ -530,11 +645,11 @@ function AlertesCard() {
 }
 
 /* ─── Movement feed (live) ────────────────────────────────────── */
-function MovementFeed({ items }: { items: FeedItem[] }) {
+function MovementFeed({ items, lang }: { items: FeedItem[]; lang: 'fr' | 'en' }) {
   return (
     <div className="flex flex-col gap-1.5">
       <span className="text-[10px] font-medium tracking-tight" style={{ color: 'rgba(255,255,255,0.55)' }}>
-        Derniers mouvements
+        {LABELS[lang].recentMoves}
       </span>
       <div className="flex flex-col">
         <AnimatePresence initial={false}>
@@ -562,7 +677,9 @@ function MovementFeed({ items }: { items: FeedItem[] }) {
                 </span>
                 <span className="flex-1 min-w-0 text-[10px] truncate" style={{ color: 'rgba(255,255,255,0.65)' }}>
                   {item.label}
-                  <span className="ml-1" style={{ color: 'rgba(255,255,255,0.30)' }}>· {item.type}</span>
+                  <span className="ml-1" style={{ color: 'rgba(255,255,255,0.30)' }}>
+                    · {MOVE_TYPE_LABEL[item.type]?.[lang] ?? item.type}
+                  </span>
                 </span>
                 <span
                   className="font-mono text-[10px] font-semibold flex-shrink-0"
@@ -571,7 +688,7 @@ function MovementFeed({ items }: { items: FeedItem[] }) {
                   {isPos ? '+' : ''}{item.delta}
                 </span>
                 <span className="text-[9px] flex-shrink-0 hidden sm:block" style={{ color: 'rgba(255,255,255,0.25)' }}>
-                  {item.time}
+                  {translateTime(item.time, lang)}
                 </span>
               </motion.div>
             )
@@ -586,56 +703,60 @@ function MovementFeed({ items }: { items: FeedItem[] }) {
 interface DashboardViewProps {
   feed:    FeedItem[]
   reduced: boolean
+  lang:    'fr' | 'en'
 }
 
-const KPI_DATA = [
-  { label: 'Produits',             value: 3247  as number | string, trend: '+84 ce mois',      type: 'up'      as const },
-  { label: 'Stock bas',            value: 12    as number | string, trend: 'dont 3 en rupture', type: 'warn'    as const },
-  { label: 'Valeur du stock',      value: '487 320 €' as number | string, trend: '+8,3 % ce mois', type: 'up' as const },
-  { label: "Mouvements auj'hui",   value: 84    as number | string, trend: '+31 vs hier',       type: 'up'      as const },
-]
-
-function DashboardView({ feed, reduced }: DashboardViewProps) {
+function DashboardView({ feed, reduced, lang }: DashboardViewProps) {
+  const t = LABELS[lang]
   return (
     <div className="flex flex-col gap-3 h-full overflow-hidden">
       {/* Header */}
       <div className="flex items-center justify-between flex-shrink-0">
-        <span className="text-[11px] font-semibold text-white tracking-tight">Tableau de bord</span>
+        <span className="text-[11px] font-semibold text-white tracking-tight">{t.dashTitle}</span>
         <span className="font-mono text-[9px]" style={{ color: 'rgba(255,255,255,0.28)' }}>
-          2 juin 2026 · 14:31
+          {t.dateLabel}
         </span>
       </div>
 
       {/* KPI grid */}
       <div className="grid grid-cols-4 gap-1.5 flex-shrink-0">
         {KPI_DATA.map(k => (
-          <KpiCard key={k.label} {...k} reduced={reduced} />
+          <KpiCard
+            key={k.label.en}
+            label={k.label[lang]}
+            value={k.value}
+            trend={k.trend[lang]}
+            type={k.type}
+            reduced={reduced}
+            lang={lang}
+          />
         ))}
       </div>
 
       {/* Charts row */}
       <div className="grid grid-cols-[1fr_auto] gap-3 flex-shrink-0">
-        <LineChart reduced={reduced} />
+        <LineChart reduced={reduced} lang={lang} />
         <div className="w-[9.5rem]">
-          <DonutChart reduced={reduced} />
+          <DonutChart reduced={reduced} lang={lang} />
         </div>
       </div>
 
       {/* Bottom row: alerts + feed */}
       <div className="grid grid-cols-2 gap-3 flex-1 min-h-0 overflow-hidden">
-        <AlertesCard />
-        <MovementFeed items={feed} />
+        <AlertesCard lang={lang} />
+        <MovementFeed items={feed} lang={lang} />
       </div>
     </div>
   )
 }
 
-/* ─── Produits view ───────────────────────────────────────────── */
-function ProduitsView() {
+/* ─── Products view ───────────────────────────────────────────── */
+function ProduitsView({ lang }: { lang: 'fr' | 'en' }) {
+  const t = LABELS[lang]
   return (
     <div className="flex flex-col h-full overflow-hidden">
       <span className="text-[11px] font-semibold text-white tracking-tight mb-2 flex-shrink-0">
-        Produits
+        {t.productsTitle}
       </span>
 
       {/* Table header — sticky background so it reads cleanly above rows */}
@@ -647,7 +768,7 @@ function ProduitsView() {
           background: 'rgba(20,20,20,1)',
         }}
       >
-        {['Produit', 'SKU', 'Catégorie', 'Stock', 'Prix'].map(h => (
+        {t.prodHeaders.map(h => (
           <span key={h} className="font-mono text-[8.5px] uppercase tracking-[0.1em]" style={{ color: 'rgba(255,255,255,0.30)' }}>
             {h}
           </span>
@@ -673,7 +794,7 @@ function ProduitsView() {
           >
             <span className="text-[11px] font-medium text-white truncate">{p.name}</span>
             <span className="font-mono text-[9.5px]" style={{ color: 'rgba(255,255,255,0.38)' }}>{p.sku}</span>
-            <span className="text-[10px]" style={{ color: 'rgba(255,255,255,0.55)' }}>{p.cat}</span>
+            <span className="text-[10px]" style={{ color: 'rgba(255,255,255,0.55)' }}>{p.cat[lang]}</span>
             <span
               className="font-mono text-[11px] font-medium tabular-nums"
               style={{ color: p.low ? '#f59e0b' : 'rgba(255,255,255,0.85)' }}
@@ -688,12 +809,13 @@ function ProduitsView() {
   )
 }
 
-/* ─── Mouvements view ─────────────────────────────────────────── */
-function MouvementsView() {
+/* ─── Movements view ──────────────────────────────────────────── */
+function MouvementsView({ lang }: { lang: 'fr' | 'en' }) {
+  const t = LABELS[lang]
   return (
     <div className="flex flex-col h-full overflow-hidden">
       <span className="text-[11px] font-semibold text-white tracking-tight mb-2 flex-shrink-0">
-        Mouvements
+        {t.movesTitle}
       </span>
 
       {/* Table header — sticky background */}
@@ -705,7 +827,7 @@ function MouvementsView() {
           background: 'rgba(20,20,20,1)',
         }}
       >
-        {['Type', 'Produit', 'Qté', 'Date'].map(h => (
+        {t.moveHeaders.map(h => (
           <span key={h} className="font-mono text-[8.5px] uppercase tracking-[0.1em]" style={{ color: 'rgba(255,255,255,0.30)' }}>
             {h}
           </span>
@@ -735,7 +857,7 @@ function MouvementsView() {
                 className="inline-flex items-center gap-1 text-[9.5px] font-medium"
                 style={{ color: isPos ? '#22c55e' : '#ef4444' }}
               >
-                {isPos ? '↑' : '↓'} {m.type}
+                {isPos ? '↑' : '↓'} {MOVE_TYPE_LABEL[m.type]?.[lang] ?? m.type}
               </span>
               <span className="text-[10px] truncate" style={{ color: 'rgba(255,255,255,0.65)' }}>
                 {m.label}
@@ -747,7 +869,7 @@ function MouvementsView() {
                 {isPos ? '+' : ''}{m.delta}
               </span>
               <span className="text-[9px]" style={{ color: 'rgba(255,255,255,0.30)' }}>
-                {m.time}
+                {translateTime(m.time, lang)}
               </span>
             </motion.div>
           )
@@ -764,15 +886,16 @@ interface SidebarProps {
   view:         NavView
   onNav:        (v: NavView) => void
   navItemRefs?: NavRefMap
+  lang:         'fr' | 'en'
 }
 
-function Sidebar({ view, onNav, navItemRefs }: SidebarProps) {
+function Sidebar({ view, onNav, navItemRefs, lang }: SidebarProps) {
   return (
     <aside
       className="w-44 flex-shrink-0 flex flex-col border-r overflow-hidden"
       style={{
-        background:   'rgba(255,255,255,0.015)',
-        borderColor:  'rgba(255,255,255,0.07)',
+        background:  'rgba(255,255,255,0.015)',
+        borderColor: 'rgba(255,255,255,0.07)',
       }}
     >
       {/* Logo */}
@@ -796,7 +919,9 @@ function Sidebar({ view, onNav, navItemRefs }: SidebarProps) {
             <circle cx="7" cy="7" r="5" />
             <path d="M14 14l-3-3" />
           </svg>
-          <span className="text-[10px] flex-1" style={{ color: 'rgba(255,255,255,0.28)' }}>Rechercher...</span>
+          <span className="text-[10px] flex-1" style={{ color: 'rgba(255,255,255,0.28)' }}>
+            {LABELS[lang].search}
+          </span>
           <span
             className="font-mono text-[8px] rounded px-1 py-0.5 border flex-shrink-0"
             style={{ color: 'rgba(255,255,255,0.25)', borderColor: 'rgba(255,255,255,0.12)' }}
@@ -809,7 +934,7 @@ function Sidebar({ view, onNav, navItemRefs }: SidebarProps) {
       {/* Nav items */}
       <nav className="flex-1 overflow-hidden px-2 py-2">
         {ALL_NAV.map(item => {
-          const isActive = item === view
+          const isActive   = item === view
           const isNavCycle = NAV_CYCLE.includes(item as NavView)
           return (
             <div
@@ -831,14 +956,12 @@ function Sidebar({ view, onNav, navItemRefs }: SidebarProps) {
               <div
                 className="relative flex items-center justify-between px-2.5 py-[5.5px] rounded-md text-[11px]"
                 style={{
-                  color: isActive
-                    ? 'rgba(255,255,255,0.92)'
-                    : 'rgba(255,255,255,0.40)',
+                  color:      isActive ? 'rgba(255,255,255,0.92)' : 'rgba(255,255,255,0.40)',
                   fontWeight: isActive ? 500 : 400,
                 }}
               >
-                {item}
-                {item === 'Alertes' && (
+                {NAV_DISPLAY[item][lang]}
+                {item === 'Alerts' && (
                   <span
                     className="pulse-dot text-[8px] font-medium rounded-full px-1.5 py-0.5 font-mono"
                     style={{ background: 'rgba(245,158,11,0.18)', color: '#f59e0b' }}
@@ -860,6 +983,8 @@ function Sidebar({ view, onNav, navItemRefs }: SidebarProps) {
 ═══════════════════════════════════════════════════════════════ */
 
 export function CrmDashboardPreview() {
+  const lang = useLang()
+
   /* ── Reduced motion ────────────────────────────────────────── */
   const [reduced, setReduced] = useState(false)
   useEffect(() => {
@@ -871,9 +996,9 @@ export function CrmDashboardPreview() {
   const isVisible    = useInView(containerRef, { once: false, amount: 0.3 })
 
   /* Stable refs to avoid stale closures in setTimeout chains */
-  const isVisRef  = useRef(false)
+  const isVisRef   = useRef(false)
   const reducedRef = useRef(false)
-  useEffect(() => { isVisRef.current  = isVisible }, [isVisible])
+  useEffect(() => { isVisRef.current   = isVisible }, [isVisible])
   useEffect(() => { reducedRef.current = reduced   }, [reduced])
 
   /* ── Nav state ─────────────────────────────────────────────── */
@@ -898,11 +1023,11 @@ export function CrmDashboardPreview() {
 
   /* ── Coordinated nav + cursor loop ────────────────────────── */
   /*
-   * Timeline per 4 500 ms cycle:
+   * Timeline per 3 500 ms cycle:
    *   t =    0ms — cursor spring set toward next nav item
-   *   t = 2 200ms — click ripple fires
-   *   t = 2 700ms — nav state advances, ripple cleared
-   *   t = 4 500ms — next cycle begins
+   *   t = 1 200ms — click ripple fires
+   *   t = 1 400ms — nav state advances, ripple cleared
+   *   t = 3 500ms — next cycle begins
    *
    * Pauses when off-screen (isVisRef) or reduced-motion (reducedRef).
    * Uses a `cancelled` flag so cleanup is safe with concurrent timers.
@@ -1008,8 +1133,8 @@ export function CrmDashboardPreview() {
               <div
                 className="cursor-click-ring"
                 style={{
-                  left:      clickTarget.current.x,
-                  top:       clickTarget.current.y,
+                  left:       clickTarget.current.x,
+                  top:        clickTarget.current.y,
                   marginLeft: -12,
                   marginTop:  -12,
                 }}
@@ -1017,8 +1142,8 @@ export function CrmDashboardPreview() {
               <div
                 className="cursor-click-ring cursor-click-ring-delay"
                 style={{
-                  left:      clickTarget.current.x,
-                  top:       clickTarget.current.y,
+                  left:       clickTarget.current.x,
+                  top:        clickTarget.current.y,
                   marginLeft: -12,
                   marginTop:  -12,
                 }}
@@ -1037,10 +1162,11 @@ export function CrmDashboardPreview() {
           setNavIdx(idx)
         }}
         navItemRefs={{
-          Dashboard:  dashboardItemRef,
-          Produits:   produitsItemRef,
-          Mouvements: mouvementsItemRef,
+          Dashboard: dashboardItemRef,
+          Products:  produitsItemRef,
+          Movements: mouvementsItemRef,
         }}
+        lang={lang}
       />
 
       {/* Main content */}
@@ -1056,9 +1182,9 @@ export function CrmDashboardPreview() {
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
             >
-              {view === 'Dashboard'  && <DashboardView feed={feed} reduced={reduced} />}
-              {view === 'Produits'   && <ProduitsView />}
-              {view === 'Mouvements' && <MouvementsView />}
+              {view === 'Dashboard' && <DashboardView feed={feed} reduced={reduced} lang={lang} />}
+              {view === 'Products'  && <ProduitsView lang={lang} />}
+              {view === 'Movements' && <MouvementsView lang={lang} />}
             </motion.div>
           </AnimatePresence>
         </div>
@@ -1074,7 +1200,7 @@ export function CrmDashboardPreview() {
               style={{ background: '#22c55e', boxShadow: '0 0 6px 1px rgba(34,197,94,0.4)' }}
             />
             <span className="text-[9px]" style={{ color: 'rgba(255,255,255,0.32)' }}>
-              Connecté · Sync actif
+              {LABELS[lang].connected}
             </span>
           </div>
           <span className="font-mono text-[9px]" style={{ color: 'rgba(255,255,255,0.22)' }}>

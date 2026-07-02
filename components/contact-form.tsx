@@ -109,7 +109,7 @@ export function ContactForm() {
         >
           {t.serviceLabel}
           <span className="ml-1.5 text-caption" style={{ color: 'hsl(var(--text-tertiary))' }}>
-            ({lang === 'fr' ? 'choix multiple' : 'multiple choice'})
+            ({t.multipleChoice})
           </span>
         </legend>
         <div className="flex flex-wrap gap-2">
@@ -239,7 +239,7 @@ export function ContactForm() {
         className="btn-primary self-start mt-2 disabled:opacity-50"
       >
         {state === 'loading'
-          ? lang === 'fr' ? 'Envoi...' : 'Sending...'
+          ? t.sending
           : t.submit}
       </button>
     </form>

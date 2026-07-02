@@ -104,6 +104,9 @@ export const strings = {
         catWine: 'Vin',
         catChampagne: 'Champagne',
         caption: '',
+        statusRupture: 'Rupture',
+        apiUpdate: '↓ mise à jour en temps réel',
+        apiCurrency: 'EUR',
       },
       seo: {
         pageSettings: 'Réglages de page',
@@ -364,6 +367,8 @@ export const strings = {
       currencies: ['CHF', 'EUR', 'USD', 'GBP', 'CAD', 'PLN'],
       budgets: ['< 5 000', '5 000 – 10 000', '10 000 – 20 000', '20 000 +'],
       message: 'Message (optionnel)',
+      multipleChoice: 'choix multiple',
+      sending: 'Envoi...',
       submit: 'Envoyer →',
       success: '✓ Message envoyé, nous revenons vers vous dans les 24h.',
       error: 'Une erreur s\'est produite. Envoyez-nous un email : loanrmb@gmail.com',
@@ -374,6 +379,7 @@ export const strings = {
       navHref: ['/work', '/about', '/blog', '/contact'],
       copy: '© 2025 Torquemade.',
       email: 'loanrmb@gmail.com',
+      legal: 'Mentions légales',
     },
     blog: {
       eyebrow: 'Blog',
@@ -425,6 +431,20 @@ export const strings = {
       item6: {
         title: 'Cité par les IA',
         desc: 'Structure sémantique et contenu d\'autorité conçus pour apparaître dans les réponses ChatGPT, Perplexity, Claude et Gemini.',
+      },
+    },
+    meta: {
+      webDev: {
+        title: 'Sites web Next.js & Shopify sur mesure | Torquemade',
+        description: 'Sites Next.js et Shopify construits de zéro : mobile-first, optimisés SEO, intégrations CRM et API sur mesure. Livraison en 15 jours ouvrés.',
+      },
+      crm: {
+        title: 'CRM sur mesure adapté à votre métier | Torquemade',
+        description: 'CRM et outils de gestion sur mesure, taillés pour vos processus : réservations, tableaux de bord temps réel, automatisations et suivi client.',
+      },
+      erp: {
+        title: 'Synchronisation stock ERP ↔ site e-commerce | Torquemade',
+        description: 'Connexion en temps réel entre votre ERP (SAGE, Cegid…) et Shopify. Fin de la ressaisie : chaque vente déduit automatiquement votre stock réel.',
       },
     },
   },
@@ -532,6 +552,9 @@ export const strings = {
         catWine: 'Wine',
         catChampagne: 'Champagne',
         caption: '',
+        statusRupture: 'Out of stock',
+        apiUpdate: '↓ real-time update',
+        apiCurrency: 'USD',
       },
       seo: {
         pageSettings: 'Page Settings',
@@ -792,6 +815,8 @@ export const strings = {
       currencies: ['CHF', 'EUR', 'USD', 'GBP', 'CAD', 'PLN'],
       budgets: ['< 5,000', '5,000 – 10,000', '10,000 – 20,000', '20,000 +'],
       message: 'Message (optional)',
+      multipleChoice: 'multiple choice',
+      sending: 'Sending...',
       submit: 'Send →',
       success: '✓ Message sent, I\'ll get back to you within 24h.',
       error: 'Something went wrong. Email me directly: loanrmb@gmail.com',
@@ -802,6 +827,7 @@ export const strings = {
       navHref: ['/work', '/about', '/blog', '/contact'],
       copy: '© 2025 Torquemade.',
       email: 'loanrmb@gmail.com',
+      legal: 'Legal Notice',
     },
     blog: {
       eyebrow: 'Blog',
@@ -853,6 +879,20 @@ export const strings = {
       item6: {
         title: 'Cited by AI',
         desc: 'Semantic structure and authority content designed to surface in ChatGPT, Perplexity, Claude and Gemini answers.',
+      },
+    },
+    meta: {
+      webDev: {
+        title: 'Custom Next.js & Shopify Websites | Torquemade',
+        description: 'Next.js and Shopify sites built from scratch: mobile-first, SEO-optimized, with custom CRM and API integrations. Delivered in 15 business days.',
+      },
+      crm: {
+        title: 'Custom CRM Built for Your Trade | Torquemade',
+        description: 'Bespoke CRM and management tools tailored to your processes: bookings, real-time dashboards, automations and client tracking.',
+      },
+      erp: {
+        title: 'ERP ↔ E-commerce Inventory Sync | Torquemade',
+        description: 'Real-time connection between your ERP (SAGE, Cegid…) and Shopify. No more re-keying: every online sale deducts from your real stock automatically.',
       },
     },
   },
