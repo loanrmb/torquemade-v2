@@ -3,6 +3,9 @@ import { ConnecterSage100ShopifySansMiddlewareContent } from './_content'
 
 export const metadata: Metadata = {
   title: 'Comment connecter Sage 100 à Shopify sans middleware tiers',
+  openGraph: {
+    images: [{ url: '/api/og?title=Comment+connecter+Sage+100+%C3%A0+Shopify+sans+middleware+tiers&category=ERP+%26+Gestion+de+stock', width: 1200, height: 630 }],
+  },
   description: "Sage 100 + Shopify integration: real-time inventory sync (no API fees)",
 }
 
