@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { posts } from '@/lib/blog'
+import { projects } from '@/lib/projects'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.torquemade.com'
@@ -55,18 +56,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  const projectSlugs = [
-    'sprint-motors',
-    'motopassion-65',
-    'cyclone-bordeaux',
-    'voge-bordeaux',
-    'orcal-bordeaux',
-    'bordeaux-ride',
-    'spicy-beauty',
-  ]
-
-  const projectPages: MetadataRoute.Sitemap = projectSlugs.map((slug) => ({
-    url: `${baseUrl}/work/${slug}`,
+  const projectPages: MetadataRoute.Sitemap = projects.map((project) => ({
+    url: `${baseUrl}/work/${project.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly',
     priority: 0.7,
@@ -74,7 +65,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(),
+    lastModified: new Date(post.publishedAt),
     changeFrequency: 'monthly',
     priority: 0.7,
   }))
