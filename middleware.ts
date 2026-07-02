@@ -32,13 +32,53 @@ const TRACKING_PARAMS = new Set([
   'ref',
 ])
 
+/**
+ * Crawler detection — ordered patterns matched against the User-Agent.
+ * ÉTAPE 1 — Googlebot. ÉTAPE 2 — AhrefsBot, SemrushBot.
+ * Patterns are case-insensitive and anchored on the bot token; order only
+ * matters when a UA could match several (first match wins).
+ */
+const CRAWLER_PATTERNS: ReadonlyArray<{ name: string; test: RegExp }> = [
+  { name: 'Googlebot', test: /Googlebot/i },
+  { name: 'AhrefsBot', test: /AhrefsBot/i },
+  { name: 'SemrushBot', test: /SemrushBot/i },
+]
+
+function detectCrawler(userAgent: string | null): string | null {
+  if (!userAgent) return null
+  for (const { name, test } of CRAWLER_PATTERNS) {
+    if (test.test(userAgent)) return name
+  }
+  return null
+}
+
 export function middleware(request: NextRequest) {
   const { nextUrl } = request
   const original = nextUrl.searchParams
 
+  // Crawler detection runs on every request. We forward the result as request
+  // headers (readable by Server Components via next/headers `headers()`), and
+  // mirror it onto the response so the signal is observable at the edge / via
+  // curl. Detection is a header-only side effect: it never blocks or rewrites.
+  const crawlerName = detectCrawler(request.headers.get('user-agent'))
+  const requestHeaders = new Headers(request.headers)
+  if (crawlerName) {
+    requestHeaders.set('x-is-crawler', 'true')
+    requestHeaders.set('x-crawler-name', crawlerName)
+  }
+
+  const passThrough = () => {
+    const response = NextResponse.next({ request: { headers: requestHeaders } })
+    if (crawlerName) {
+      response.headers.set('x-is-crawler', 'true')
+      response.headers.set('x-crawler-name', crawlerName)
+    }
+    return response
+  }
+
   // Nothing to canonicalize — fast path.
   if (original.toString() === '') {
-    return NextResponse.next()
+    return passThrough()
   }
 
   // Build the canonical param set: keep whitelisted keys only, sorted, with
@@ -57,7 +97,7 @@ export function middleware(request: NextRequest) {
 
   // No change → let the request through untouched.
   if (canonical.toString() === original.toString()) {
-    return NextResponse.next()
+    return passThrough()
   }
 
   const url = nextUrl.clone()
