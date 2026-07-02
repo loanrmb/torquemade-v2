@@ -1,8 +1,17 @@
 import { Metadata } from 'next'
 import { strings } from '@/lib/strings'
+import { SchemaRenderer } from '@/components/schema-renderer'
+import { serviceSchema } from '@/lib/schema'
 
 const meta = strings.fr.meta.erp
 const url = 'https://torquemade.com/services/erp-ecommerce'
+
+const schema = serviceSchema({
+  name: 'Synchronisation ERP ↔ E-commerce',
+  serviceType: 'ERP to e-commerce inventory synchronization',
+  slug: 'erp-ecommerce',
+  description: meta.description,
+})
 
 export const metadata: Metadata = {
   title: meta.title,
@@ -24,5 +33,10 @@ export const metadata: Metadata = {
 }
 
 export default function ErpLayout({ children }: { children: React.ReactNode }) {
-  return children
+  return (
+    <>
+      <SchemaRenderer schema={schema} />
+      {children}
+    </>
+  )
 }

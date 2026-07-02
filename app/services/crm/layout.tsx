@@ -1,8 +1,17 @@
 import { Metadata } from 'next'
 import { strings } from '@/lib/strings'
+import { SchemaRenderer } from '@/components/schema-renderer'
+import { serviceSchema } from '@/lib/schema'
 
 const meta = strings.fr.meta.crm
 const url = 'https://torquemade.com/services/crm'
+
+const schema = serviceSchema({
+  name: 'CRM sur mesure',
+  serviceType: 'Custom CRM software',
+  slug: 'crm',
+  description: meta.description,
+})
 
 export const metadata: Metadata = {
   title: meta.title,
@@ -24,5 +33,10 @@ export const metadata: Metadata = {
 }
 
 export default function CrmLayout({ children }: { children: React.ReactNode }) {
-  return children
+  return (
+    <>
+      <SchemaRenderer schema={schema} />
+      {children}
+    </>
+  )
 }
