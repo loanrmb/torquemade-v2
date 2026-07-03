@@ -16,7 +16,7 @@ function ArticleFR() {
         <h1 className="blog-article-title">Comment passer de 0 à 800 000 impressions Google sans publicité</h1>
         <p className="blog-intro">
           En janvier 2024, le site de Sprint Motors n&apos;existait pas. Dix-huit mois plus
-          tard, il totalise 791 000 impressions organiques sur Google Search — sans un
+          tard, il totalise 791 000 impressions organiques sur Google Search, sans un
           seul euro investi en publicité. Ce n&apos;est pas un coup de chance. C&apos;est le
           résultat d&apos;une architecture SEO pensée dès le départ, d&apos;un contenu structuré
           pour répondre à des intentions précises, et d&apos;une exécution technique rigoureuse.
@@ -43,7 +43,7 @@ function ArticleFR() {
         <h2>1. Ce que représentent vraiment 800 000 impressions</h2>
         <p>
           Une impression Google, c&apos;est chaque fois que votre site apparaît dans
-          les résultats de recherche — que l&apos;utilisateur clique ou non. C&apos;est
+          les résultats de recherche, que l&apos;utilisateur clique ou non. C&apos;est
           la mesure de votre <strong>visibilité brute</strong> sur le moteur de recherche.
         </p>
         <p>
@@ -52,7 +52,7 @@ function ArticleFR() {
           activement une moto, un concessionnaire, ou une information liée au secteur
           en Gironde et au-delà. Le taux de clic moyen en SEO tourne autour de 2 à 5 %
           selon les positions. Même à 2 %, c&apos;est plus de 15 000 visites organiques
-          qualifiées — des personnes avec une intention réelle.
+          qualifiées, des personnes avec une intention réelle.
         </p>
         <p>
           La différence fondamentale avec la publicité : ces impressions continuent
@@ -66,7 +66,7 @@ function ArticleFR() {
         <h2>2. Le point de départ : zéro, et une stratégie claire</h2>
         <p>
           Sprint Motors est un concessionnaire multimarque basé à Bordeaux.
-          Avant notre intervention, ils n&apos;avaient pas de site web — ou plutôt,
+          Avant notre intervention, ils n&apos;avaient pas de site web : ou plutôt,
           ils avaient une page quasi vide, sans contenu, sans structure,
           invisible sur Google. Zéro backlinks significatifs. Zéro contenu indexé.
         </p>
@@ -74,7 +74,7 @@ function ArticleFR() {
           Ce point de départ invalide l&apos;argument qu&apos;on entend souvent :
           <em>"on ne peut rien faire sans un site qui a déjà de l&apos;autorité."</em>
           Ce n&apos;est pas vrai. Ce qui compte au démarrage, c&apos;est la clarté
-          de la stratégie — pas l&apos;historique du domaine.
+          de la stratégie, pas l&apos;historique du domaine.
         </p>
         <p>La stratégie initiale reposait sur trois décisions :</p>
         <ul>
@@ -109,7 +109,7 @@ function ArticleFR() {
         <h3>Les URLs : simples, descriptives, stables</h3>
         <p>
           Une URL comme <code>/motos/cyclone/nt500</code> dit tout à Google.
-          Nous n&apos;avons pas changé une seule URL après le lancement — chaque
+          Nous n&apos;avons pas changé une seule URL après le lancement, chaque
           modification est une redirection à gérer et un signal de volatilité
           que Google enregistre.
         </p>
@@ -132,7 +132,7 @@ function ArticleFR() {
         <h3>Prioriser les requêtes transactionnelles locales</h3>
         <p>
           &ldquo;Cyclone NT500 Bordeaux&rdquo;, &ldquo;concessionnaire Voge Gironde&rdquo;,
-          &ldquo;moto électrique Orcal prix&rdquo; — ces requêtes ont des volumes modestes
+          &ldquo;moto électrique Orcal prix&rdquo;, ces requêtes ont des volumes modestes
           mais une intention d&apos;achat explicite. Quelqu&apos;un qui tape le nom d&apos;un
           modèle précis avec une ville est à deux pas de l&apos;acte d&apos;achat.
         </p>
@@ -165,7 +165,7 @@ function ArticleFR() {
         <p>
           Avant d&apos;écrire une page, la première question est : que veut vraiment
           l&apos;utilisateur qui tape cette requête ? La forme du contenu doit correspondre
-          à cette intention — pas à ce qu&apos;on a envie de dire.
+          à cette intention, pas à ce qu&apos;on a envie de dire.
         </p>
 
         <h3>La profondeur thématique</h3>
@@ -179,7 +179,7 @@ function ArticleFR() {
         <h3>Les balises Title et H1 : précis, pas créatifs</h3>
         <p>
           Pour le SEO, une balise Title doit être descriptive avant d&apos;être poétique.
-          &ldquo;Cyclone NT500 — Fiche technique, prix et disponibilité chez Sprint Motors Bordeaux&rdquo;
+          &ldquo;Cyclone NT500 : Fiche technique, prix et disponibilité chez Sprint Motors Bordeaux&rdquo;
           est meilleur que &ldquo;La NT500, une moto qui change tout.&rdquo;
         </p>
       </section>
@@ -245,7 +245,7 @@ function ArticleFR() {
         <h3>Les signaux à surveiller en phase de démarrage</h3>
         <p>
           Dans les 3 premiers mois, l&apos;indicateur le plus important n&apos;est pas
-          le trafic — c&apos;est l&apos;indexation. Combien de pages sont indexées dans
+          le trafic, c&apos;est l&apos;indexation. Combien de pages sont indexées dans
           Search Console ? Est-ce que le nombre augmente semaine après semaine ?
         </p>
 
@@ -253,7 +253,7 @@ function ArticleFR() {
         <p>
           À partir de 3 à 6 mois : les impressions par requête, la position moyenne,
           et l&apos;évolution du CTR. Une page en position 8 qui gagne deux places
-          peut doubler son trafic — c&apos;est là que se concentre l&apos;effort
+          peut doubler son trafic, c&apos;est là que se concentre l&apos;effort
           d&apos;optimisation.
         </p>
       </section>
@@ -263,7 +263,7 @@ function ArticleFR() {
         <p>
           791 000 impressions organiques, c&apos;est la preuve qu&apos;une stratégie SEO cohérente,
           appliquée sur la durée, produit des résultats mesurables pour n&apos;importe
-          quelle activité locale — sans dépendre d&apos;un budget publicitaire qui s&apos;évapore
+          quelle activité locale, sans dépendre d&apos;un budget publicitaire qui s&apos;évapore
           dès qu&apos;on arrête de payer.
         </p>
         <p>
@@ -317,7 +317,7 @@ function ArticleEN() {
         <h1 className="blog-article-title">How to Go from 0 to 800,000 Google Impressions Without Advertising</h1>
         <p className="blog-intro">
           In January 2024, Sprint Motors&apos; website didn&apos;t exist. Eighteen months later,
-          it has accumulated 791,000 organic impressions on Google Search — without a single
+          it has accumulated 791,000 organic impressions on Google Search, without a single
           euro spent on advertising. This isn&apos;t luck. It&apos;s the result of an SEO architecture
           designed from day one, content structured to answer precise search intent, and rigorous
           technical execution. Here, without filter, is the method we applied.
@@ -342,7 +342,7 @@ function ArticleEN() {
       <section id="impressions-cest-quoi">
         <h2>1. What 800,000 Impressions Really Represent</h2>
         <p>
-          A Google impression is every time your site appears in search results — whether
+          A Google impression is every time your site appears in search results, whether
           the user clicks or not. It&apos;s the measure of your <strong>raw visibility</strong>
           on the search engine.
         </p>
@@ -350,7 +350,7 @@ function ArticleEN() {
           791,000 impressions means Sprint Motors&apos; name appeared nearly 800,000 times
           in front of people actively searching for a motorbike, a dealer, or industry information
           in Gironde and beyond. The average SEO click-through rate is around 2–5% depending
-          on position. Even at 2%, that&apos;s more than 15,000 qualified organic visits —
+          on position. Even at 2%, that&apos;s more than 15,000 qualified organic visits:
           people with real intent, not a reconstructed ad audience.
         </p>
         <p>
@@ -364,14 +364,14 @@ function ArticleEN() {
         <h2>2. The Starting Point: Zero, and a Clear Strategy</h2>
         <p>
           Sprint Motors is a multi-brand motorcycle dealer based in Bordeaux. Before our
-          involvement, they had no website — or rather, they had a nearly empty page,
+          involvement, they had no website, or rather, they had a nearly empty page,
           no content, no structure, invisible on Google. Zero significant backlinks.
           Zero indexed content.
         </p>
         <p>
           This starting point invalidates an argument we often hear:
           <em>&ldquo;you can&apos;t do anything without a site that already has authority.&rdquo;</em>
-          That&apos;s not true. What matters at the start is the clarity of the strategy —
+          That&apos;s not true. What matters at the start is the clarity of the strategy,
           not the domain&apos;s history.
         </p>
         <p>The initial strategy rested on three decisions:</p>
@@ -406,7 +406,7 @@ function ArticleEN() {
         <h3>URLs: simple, descriptive, stable</h3>
         <p>
           A URL like <code>/bikes/cyclone/nt500</code> tells Google everything. We didn&apos;t
-          change a single URL after launch — every modification means a redirect to manage
+          change a single URL after launch, every modification means a redirect to manage
           and a volatility signal Google records.
         </p>
 
@@ -428,7 +428,7 @@ function ArticleEN() {
         <h3>Prioritising local transactional queries</h3>
         <p>
           &ldquo;Cyclone NT500 Bordeaux,&rdquo; &ldquo;Voge dealer Gironde,&rdquo;
-          &ldquo;Orcal electric motorcycle price&rdquo; — modest volumes but explicit
+          &ldquo;Orcal electric motorcycle price&rdquo;, modest volumes but explicit
           purchase intent. Someone typing a specific model name with a city is two steps
           from buying. That traffic is worth ten times generic traffic.
         </p>
@@ -458,7 +458,7 @@ function ArticleEN() {
         <h3>Matching search intent</h3>
         <p>
           Before writing a page, the first question is: what does the person typing this
-          query actually want? The content format must match that intent — not what we
+          query actually want? The content format must match that intent, not what we
           want to say.
         </p>
 
@@ -472,7 +472,7 @@ function ArticleEN() {
         <h3>Title and H1 tags: precise, not creative</h3>
         <p>
           For SEO, a Title tag must be descriptive before it&apos;s poetic.
-          &ldquo;Cyclone NT500 — Specs, price and availability at Sprint Motors Bordeaux&rdquo;
+          &ldquo;Cyclone NT500: Specs, price and availability at Sprint Motors Bordeaux&rdquo;
           outperforms &ldquo;The NT500, a motorbike that changes everything.&rdquo;
         </p>
       </section>
@@ -505,7 +505,7 @@ function ArticleEN() {
 
         <h3>Next.js as a structural advantage</h3>
         <p>
-          Server rendering and static generation produce HTML directly indexable by Googlebot —
+          Server rendering and static generation produce HTML directly indexable by Googlebot,
           unlike a classic React SPA where content is injected by JavaScript after load.
           Images are automatically optimised, code is split per page, and fonts are preloaded.
           Result: an LCP under 1.5 seconds on mobile from day one.
@@ -536,7 +536,7 @@ function ArticleEN() {
 
         <h3>Signals to watch in the launch phase</h3>
         <p>
-          In the first 3 months, the most important indicator isn&apos;t traffic — it&apos;s
+          In the first 3 months, the most important indicator isn&apos;t traffic, it&apos;s
           indexation. How many pages are indexed in Search Console? Is the number growing
           week by week? If important pages aren&apos;t indexed, understand why before
           producing new ones.
@@ -545,7 +545,7 @@ function ArticleEN() {
         <h3>Signals to watch in the growth phase</h3>
         <p>
           From 3 to 6 months: impressions per query, average position, and CTR evolution.
-          A page at position 8 that gains two places can double its traffic — that&apos;s
+          A page at position 8 that gains two places can double its traffic, that&apos;s
           where optimisation effort concentrates: improving pages already in the top 10
           rather than creating new ones.
         </p>
@@ -555,13 +555,13 @@ function ArticleEN() {
         <h2>What This Means for Your Business</h2>
         <p>
           791,000 organic impressions is proof that a coherent SEO strategy, applied over
-          time, produces measurable results for any local business — without depending on
+          time, produces measurable results for any local business, without depending on
           an advertising budget that evaporates the moment you stop paying.
         </p>
         <p>
           The method has nothing secret: architecture designed for Google, content aligned
           with search intent, flawless technical execution, and consistency. What we do
-          for Sprint Motors, we can do for your business — whether it&apos;s a local shop,
+          for Sprint Motors, we can do for your business, whether it&apos;s a local shop,
           a service provider, or an e-commerce.
         </p>
       </section>
