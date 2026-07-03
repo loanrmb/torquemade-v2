@@ -380,6 +380,7 @@ export const strings = {
       copy: '© 2025 Torquemade.',
       email: 'loanrmb@gmail.com',
       legal: 'Mentions légales',
+      tanklogic: 'TankLogic — poissons & coraux',
     },
     blog: {
       eyebrow: 'Blog',
@@ -950,6 +951,7 @@ export const strings = {
       copy: '© 2025 Torquemade.',
       email: 'loanrmb@gmail.com',
       legal: 'Legal Notice',
+      tanklogic: 'TankLogic — fish & coral',
     },
     blog: {
       eyebrow: 'Blog',

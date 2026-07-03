@@ -58,6 +58,13 @@ export function Footer() {
           <p>{t.copy}</p>
           <div className="flex items-center gap-5">
             <Link
+              href="/tanklogic"
+              className="transition-colors duration-150 hover:text-white"
+              style={{ color: 'hsl(0 0% 35%)' }}
+            >
+              {t.tanklogic}
+            </Link>
+            <Link
               href="/mentions-legales"
               className="transition-colors duration-150 hover:text-white"
               style={{ color: 'hsl(0 0% 35%)' }}
