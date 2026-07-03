@@ -80,7 +80,7 @@ import styles from './page.module.css' // no CSS modules
 ```
 
 ### Composants Existants
-- **`useLang()`** — Hook global pour FR/EN toggle
+- **`useLang()`** — Hook global FR/EN. Retourne **directement la string** de langue : `const lang = useLang()` (❌ PAS `const { lang } = useLang()`). Pour le toggle, utiliser `useApp()` qui retourne `{ lang, toggleLang }`.
 - **`NavPill`** — Navigation principale (`@/components/nav-pill`)
 - **`Footer`** — Pied de page avec liens légaux bilingues
 - **CSS variables** — Définies dans `globals.css`, utilisables partout
@@ -151,7 +151,7 @@ export default function Page() {
 'use client'
 
 export function MonarticleContent() {
-  const { lang } = useLang()
+  const lang = useLang() // ✅ string directe, PAS de destructure
   
   return (
     <article className="blog-article">
@@ -278,7 +278,7 @@ import { useLang } from '@/components/app-provider'
 import strings from '@/lib/strings'
 
 export function Hero() {
-  const { lang } = useLang()
+  const lang = useLang() // ✅ string directe, PAS de destructure
   
   return (
     <div>
