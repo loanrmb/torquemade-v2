@@ -1,5 +1,6 @@
 'use client'
 
+import { Suspense } from 'react'
 import { NavPill } from '@/components/nav-pill'
 import { Footer } from '@/components/footer'
 import { ContactForm } from '@/components/contact-form'
@@ -46,7 +47,9 @@ export default function ContactPage() {
         {/* ── FORM ── */}
         <section className="px-5 py-16 min-720:py-20">
           <div className="mx-auto max-w-xl fade-up">
-            <ContactForm />
+            <Suspense fallback={null}>
+              <ContactForm />
+            </Suspense>
           </div>
         </section>
 

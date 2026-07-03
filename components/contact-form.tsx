@@ -1,10 +1,19 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { useLang } from './app-provider'
 import { strings } from '@/lib/strings'
 
 type FormState = 'idle' | 'loading' | 'success' | 'error'
+
+// Maps a ?service= query value to the index of the matching service chip.
+// Lets landing pages (e.g. /tanklogic) deep-link into the form with a tag
+// pre-selected, mirroring the "Connexion stock" option wiring.
+const SERVICE_PARAM_INDEX: Record<string, number> = {
+  tanklogic: 4,
+  stock: 3,
+}
 
 const CURRENCY_SYMBOLS: Record<string, string> = {
   CHF: 'CHF',
@@ -18,10 +27,25 @@ const CURRENCY_SYMBOLS: Record<string, string> = {
 export function ContactForm() {
   const lang = useLang()
   const t = strings[lang].contact
+  const searchParams = useSearchParams()
   const [state, setState] = useState<FormState>('idle')
   const [selected, setSelected] = useState<Set<number>>(new Set())
   const [budget, setBudget] = useState<number | null>(null)
   const [currency, setCurrency] = useState<number>(0) // default CHF
+
+  // Pre-select a service chip when a ?service= tag is present in the URL.
+  useEffect(() => {
+    const param = searchParams.get('service')
+    if (!param) return
+    const idx = SERVICE_PARAM_INDEX[param.toLowerCase()]
+    if (idx === undefined) return
+    setSelected((prev) => {
+      if (prev.has(idx)) return prev
+      const next = new Set(prev)
+      next.add(idx)
+      return next
+    })
+  }, [searchParams])
 
   const toggleService = (i: number) => {
     setSelected((prev) => {
