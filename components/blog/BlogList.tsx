@@ -81,6 +81,20 @@ export function BlogList() {
   // 'oldest' = ascending by publishedAt; default (no param) = newest first.
   const sortOrder = searchParams.get('sort') === 'oldest' ? 'oldest' : 'newest'
   const listRef = useRef<HTMLDivElement>(null)
+  const filterBarRef = useRef<HTMLDivElement>(null)
+
+  // Scroll the filter/sort bar to its sticky resting spot (top-20 = 80px)
+  // rather than the list top, which would slide the first articles behind
+  // the sticky bar. Fixed offset → consistent across viewport heights.
+  const STICKY_OFFSET = 80
+  function scrollToFilterBar() {
+    const bar = filterBarRef.current
+    if (!bar) return
+    // Absolute document position of the bar minus its sticky top → lands the
+    // bar at its resting spot with the list right below it.
+    const top = bar.getBoundingClientRect().top + window.scrollY - STICKY_OFFSET
+    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' })
+  }
 
   const [search, setSearch] = useState('')
   const [searchOpen, setSearchOpen] = useState(false)
@@ -106,7 +120,7 @@ export function BlogList() {
       params.set('cat', key)
     }
     router.push(`/blog?${params.toString()}`, { scroll: false })
-    listRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    scrollToFilterBar()
   }
 
   function handleSort(order: 'newest' | 'oldest') {
@@ -118,7 +132,7 @@ export function BlogList() {
       params.set('sort', 'oldest')
     }
     router.push(`/blog?${params.toString()}`, { scroll: false })
-    listRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    scrollToFilterBar()
   }
 
   const featuredPosts = posts.filter((p) => p.featured)
@@ -155,7 +169,7 @@ export function BlogList() {
         {activeKey === 'all' && !isSearching && <FeaturedPosts posts={featuredPosts} />}
 
         {/* ── FILTRES — pill sticky liquid glass + loupe sur la même ligne ── */}
-        <div className="sticky top-20 z-40 mb-16 flex items-center gap-3">
+        <div ref={filterBarRef} className="sticky top-20 z-40 mb-16 flex items-center gap-3">
           <div className="flex-1 min-w-0 overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0 md:flex md:justify-center scrollbar-hide">
             <div
               className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 flex-shrink-0"
