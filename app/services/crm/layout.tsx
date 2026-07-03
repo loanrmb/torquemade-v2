@@ -4,7 +4,7 @@ import { SchemaRenderer } from '@/components/schema-renderer'
 import { serviceSchema } from '@/lib/schema'
 
 const meta = strings.fr.meta.crm
-const url = 'https://torquemade.com/services/crm'
+const url = 'https://www.torquemade.com/services/crm'
 
 const schema = serviceSchema({
   name: 'CRM sur mesure',

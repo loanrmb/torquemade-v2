@@ -4,7 +4,7 @@ import { SchemaRenderer } from '@/components/schema-renderer'
 import { serviceSchema } from '@/lib/schema'
 
 const meta = strings.fr.meta.webDev
-const url = 'https://torquemade.com/services/web-dev'
+const url = 'https://www.torquemade.com/services/web-dev'
 
 const schema = serviceSchema({
   name: 'Sites web Next.js & Shopify',
