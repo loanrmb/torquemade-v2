@@ -13,7 +13,7 @@ export function SeoLocalVenteMotoBordeauxContent() {
       <p>
         In the Bordeaux region, several thousand motorcycle-related searches are performed
         on Google every month. "New bike Bordeaux," "Yamaha dealer Gironde," "used
-        motorcycle 33" — these are active buyers, ready to travel. The question is:
+        motorcycle 33", these are active buyers, ready to travel. The question is:
         is it your site that appears first, or a competitor's?
       </p>
 
@@ -25,10 +25,10 @@ export function SeoLocalVenteMotoBordeauxContent() {
       </p>
 
       <ul>
-        <li>"[Brand] dealer Bordeaux" — the buyer has already chosen their brand</li>
-        <li>"[Model] motorbike test ride Bordeaux" — they want to try it before buying</li>
-        <li>"Used motorcycle [budget] Gironde" — they have a budget and search locally</li>
-        <li>"Motorcycle service Bordeaux" — existing client, potential loyalty</li>
+        <li>"[Brand] dealer Bordeaux", the buyer has already chosen their brand</li>
+        <li>"[Model] motorbike test ride Bordeaux", they want to try it before buying</li>
+        <li>"Used motorcycle [budget] Gironde", they have a budget and search locally</li>
+        <li>"Motorcycle service Bordeaux", existing client, potential loyalty</li>
       </ul>
 
       <h2>How to rank for these queries</h2>
@@ -46,7 +46,7 @@ export function SeoLocalVenteMotoBordeauxContent() {
       <p>
         Google values geographically relevant content. An article on "the best motorcycle
         routes in Gironde" or "what to do around Bordeaux on a motorbike" attracts local
-        riders — your core target — and reinforces your site's local anchoring.
+        riders (your core target) and reinforces your site's local anchoring.
       </p>
 
       <hr />
@@ -90,7 +90,7 @@ export function SeoLocalVenteMotoBordeauxContent() {
       <p>
         Dans la région bordelaise, plusieurs milliers de recherches liées à l'achat
         de moto sont effectuées chaque mois sur Google. "Moto neuve Bordeaux",
-        "concessionnaire Yamaha Gironde", "moto occasion 33" — ce sont des acheteurs
+        "concessionnaire Yamaha Gironde", "moto occasion 33", ce sont des acheteurs
         actifs, prêts à se déplacer. La question est : est-ce votre site qui apparaît
         en premier, ou celui d'un concurrent ?
       </p>
@@ -104,15 +104,15 @@ export function SeoLocalVenteMotoBordeauxContent() {
       </p>
 
       <ul>
-        <li>"Concessionnaire [marque] Bordeaux" — l'acheteur a déjà choisi sa marque</li>
-        <li>"Moto [modèle] essai Bordeaux" — il veut l'essayer avant d'acheter</li>
-        <li>"Moto occasion [budget] Gironde" — il a un budget et cherche localement</li>
-        <li>"SAV moto Bordeaux" — client existant, fidélisation potentielle</li>
+        <li>"Concessionnaire [marque] Bordeaux", l'acheteur a déjà choisi sa marque</li>
+        <li>"Moto [modèle] essai Bordeaux", il veut l'essayer avant d'acheter</li>
+        <li>"Moto occasion [budget] Gironde", il a un budget et cherche localement</li>
+        <li>"SAV moto Bordeaux", client existant, fidélisation potentielle</li>
       </ul>
 
       <p>
-        Ces requêtes ont souvent un volume modeste — quelques dizaines ou centaines
-        de recherches par mois — mais un taux de conversion très élevé. La personne
+        Ces requêtes ont souvent un volume modeste, quelques dizaines ou centaines
+        de recherches par mois, mais un taux de conversion très élevé. La personne
         qui tape "moto Honda Bordeaux essai" est à deux clics d'appeler votre concession.
       </p>
 
@@ -137,7 +137,7 @@ export function SeoLocalVenteMotoBordeauxContent() {
       <p>
         Google valorise le contenu géographiquement pertinent. Un article sur "les
         meilleures routes de balade moto en Gironde" ou "que faire autour de Bordeaux
-        en moto" attire des motards locaux — votre cœur de cible — et renforce
+        en moto" attire des motards locaux (votre cœur de cible) et renforce
         l'ancrage local de votre site.
       </p>
 

@@ -11,8 +11,8 @@ export function TempsPerduRessaisieStockManuelContent() {
       <h1 className="blog-article-title">How much time are you losing on manual inventory entry?</h1>
 
       <p>
-        Nobody sits down to calculate it. Yet the hours spent manually updating stock —
-        in the POS, on the website, in a spreadsheet — add up fast. This article does
+        Nobody sits down to calculate it. Yet the hours spent manually updating stock
+        (in the POS, on the website, in a spreadsheet) add up fast. This article does
         that calculation for you, and lays out what it actually costs.
       </p>
 
@@ -21,7 +21,7 @@ export function TempsPerduRessaisieStockManuelContent() {
       <p>
         Let&apos;s start with the basics. How long does it take to update one product&apos;s
         stock level? Opening the right interface, finding the item, entering the new
-        quantity, saving — call it 90 seconds per reference. Not much on its own.
+        quantity, saving, call it 90 seconds per reference. Not much on its own.
       </p>
 
       <p>
@@ -54,7 +54,7 @@ export function TempsPerduRessaisieStockManuelContent() {
         At a gross hourly cost of €18 (minimum wage plus employer contributions),
         that&apos;s roughly <strong>€23,400 per year</strong> in labour cost for a task
         that generates zero direct value. No sale, no customer relationship, no
-        merchandising decision — just data transfer between two systems that should
+        merchandising decision: just data transfer between two systems that should
         communicate automatically.
       </p>
 
@@ -72,7 +72,7 @@ export function TempsPerduRessaisieStockManuelContent() {
 
       <p>
         <strong>Entry errors.</strong> A digit transposed, a decimal misplaced, a
-        product confused with a similar reference — the stock displayed no longer
+        product confused with a similar reference, the stock displayed no longer
         reflects reality. These errors trigger either unsatisfied customers (item shown
         as available, not in stock) or blocked sales (item shown as out of stock,
         still available).
@@ -123,7 +123,7 @@ export function TempsPerduRessaisieStockManuelContent() {
 
       <p>
         If any of these describe your situation, the manual approach is no longer just
-        inefficient — it is actively costing you sales and reputation.
+        inefficient, it is actively costing you sales and reputation.
       </p>
 
       <hr />
@@ -131,7 +131,7 @@ export function TempsPerduRessaisieStockManuelContent() {
       <p>
         <em>
           Want to calculate what manual stock entry is costing you specifically?{' '}
-          <Link href="/contact">Contact us</Link> — we analyse your setup and give you
+          <Link href="/contact">Contact us</Link>: we analyse your setup and give you
           a concrete ROI estimate for automation.
         </em>
       </p>
@@ -144,8 +144,8 @@ export function TempsPerduRessaisieStockManuelContent() {
 
       <p>
         Personne ne s&apos;asseoit pour le calculer. Pourtant, les heures passées à
-        mettre à jour le stock manuellement — dans le logiciel de caisse, sur le site,
-        dans un tableau Excel — s&apos;accumulent vite. Cet article fait ce calcul à
+        mettre à jour le stock manuellement, dans le logiciel de caisse, sur le site,
+        dans un tableau Excel, s&apos;accumulent vite. Cet article fait ce calcul à
         votre place et pose clairement ce que ça coûte.
       </p>
 
@@ -154,7 +154,7 @@ export function TempsPerduRessaisieStockManuelContent() {
       <p>
         Partons de la base. Combien de temps faut-il pour mettre à jour le niveau de
         stock d&apos;un produit ? Ouvrir la bonne interface, retrouver le produit,
-        saisir la nouvelle quantité, enregistrer — comptez 90 secondes par référence.
+        saisir la nouvelle quantité, enregistrer, comptez 90 secondes par référence.
         Pas grand chose, pris isolément.
       </p>
 
@@ -190,7 +190,7 @@ export function TempsPerduRessaisieStockManuelContent() {
         Au coût horaire brut de 18 € (SMIC chargé employeur), ça représente environ
         <strong> 23 400 € par an</strong> de masse salariale pour une tâche qui ne
         génère aucune valeur directe. Pas de vente, pas de relation client, pas de
-        décision merchandising — juste un transfert de données entre deux systèmes
+        décision merchandising: juste un transfert de données entre deux systèmes
         qui devraient communiquer automatiquement.
       </p>
 
@@ -209,7 +209,7 @@ export function TempsPerduRessaisieStockManuelContent() {
 
       <p>
         <strong>Les erreurs de saisie.</strong> Un chiffre transposé, une décimale
-        déplacée, un produit confondu avec une référence similaire — le stock affiché
+        déplacée, un produit confondu avec une référence similaire, le stock affiché
         ne reflète plus la réalité. Ces erreurs provoquent soit des clients non servis
         (produit affiché disponible, absent en boutique), soit des ventes bloquées
         (produit affiché épuisé alors qu&apos;il reste des unités).
@@ -263,7 +263,7 @@ export function TempsPerduRessaisieStockManuelContent() {
 
       <p>
         Si l&apos;un de ces points vous correspond, la ressaisie manuelle n&apos;est
-        plus seulement inefficace — elle vous coûte activement des ventes et
+        plus seulement inefficace, elle vous coûte activement des ventes et
         de la réputation.
       </p>
 
@@ -272,7 +272,7 @@ export function TempsPerduRessaisieStockManuelContent() {
       <p>
         <em>
           Vous voulez calculer ce que la ressaisie manuelle vous coûte précisément ?{' '}
-          <Link href="/contact">Contactez-nous</Link> — nous analysons votre
+          <Link href="/contact">Contactez-nous</Link>: nous analysons votre
           configuration et vous donnons une estimation ROI concrète pour l&apos;automatisation.
         </em>
       </p>
