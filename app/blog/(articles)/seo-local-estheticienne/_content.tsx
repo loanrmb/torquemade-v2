@@ -11,7 +11,7 @@ export function SeoLocalEstheticienneContent() {
       <h1 className="blog-article-title">Local SEO for beauty salons: the complete playbook (2026)</h1>
 
       <p>
-        Most clients searching for a beautician type a local query on Google — and look
+        Most clients searching for a beautician type a local query on Google, and look
         at the first three results. If you're not there, you lose clients who are
         geographically close and ready to book. Here's how to get there without advertising.
       </p>
@@ -20,15 +20,15 @@ export function SeoLocalEstheticienneContent() {
 
       <p>
         For a beautician, Google Business Profile is the most impactful local SEO lever.
-        A well-filled listing positions you in the "local pack" — the three listings appearing
+        A well-filled listing positions you in the "local pack", the three listings appearing
         under the Google map for local queries.
       </p>
 
       <ul>
         <li>Fill in all information: name, address (or area if mobile), phone, hours</li>
         <li>Choose a precise primary category: "Beautician" or "Beauty salon"</li>
-        <li>Add services in GBP — Google displays them directly in results</li>
-        <li>Publish photos regularly — before/after, workspace, products</li>
+        <li>Add services in GBP: Google displays them directly in results</li>
+        <li>Publish photos regularly: before/after, workspace, products</li>
         <li>Respond to all reviews, positive and negative</li>
       </ul>
 
@@ -37,7 +37,7 @@ export function SeoLocalEstheticienneContent() {
       <p>
         Each service can have its own page optimised for a local query: "Waxing [your city],"
         "Facial [your city]," "Gel manicure [your city]." These pages must mention your city
-        naturally in the title, subheadings, and text — without artificial over-optimisation.
+        naturally in the title, subheadings, and text, without artificial over-optimisation.
       </p>
 
       <h2>Client reviews: the fuel of local SEO</h2>
@@ -88,7 +88,7 @@ export function SeoLocalEstheticienneContent() {
 
       <p>
         La majorité des clientes qui cherchent une esthéticienne tapent une requête
-        locale sur Google — et regardent les trois premiers résultats. Si vous n'y
+        locale sur Google, et regardent les trois premiers résultats. Si vous n'y
         êtes pas, vous perdez des clientes qui sont géographiquement proches de vous
         et prêtes à prendre RDV. Voici comment y arriver sans publicité.
       </p>
@@ -98,15 +98,15 @@ export function SeoLocalEstheticienneContent() {
       <p>
         Pour une esthéticienne, le Google Business Profile (anciennement Google My Business)
         est le levier SEO local le plus impactant. Une fiche bien remplie vous positionne
-        dans le "pack local" — les trois fiches qui apparaissent sous la carte Google
+        dans le "pack local", les trois fiches qui apparaissent sous la carte Google
         pour les requêtes locales.
       </p>
 
       <ul>
         <li>Remplissez toutes les informations : nom, adresse (ou zone si itinérante), téléphone, horaires</li>
         <li>Choisissez une catégorie principale précise : "Esthéticienne" ou "Institut de beauté"</li>
-        <li>Ajoutez les services dans GBP — Google les affiche directement dans les résultats</li>
-        <li>Publiez des photos régulièrement — avant/après, espace de travail, produits</li>
+        <li>Ajoutez les services dans GBP: Google les affiche directement dans les résultats</li>
+        <li>Publiez des photos régulièrement, avant/après, espace de travail, produits</li>
         <li>Répondez à tous les avis, positifs comme négatifs</li>
       </ul>
 
@@ -118,7 +118,7 @@ export function SeoLocalEstheticienneContent() {
       </p>
 
       <ul>
-        <li>"Épilation [votre ville]" — souvent la prestation la plus recherchée</li>
+        <li>"Épilation [votre ville]", souvent la prestation la plus recherchée</li>
         <li>"Soin du visage [votre ville]"</li>
         <li>"Manucure gel [votre ville]"</li>
         <li>"Extension de cils [votre département]"</li>
@@ -126,7 +126,7 @@ export function SeoLocalEstheticienneContent() {
 
       <p>
         Ces pages doivent mentionner votre ville naturellement dans le titre,
-        les sous-titres et le texte — sans sur-optimisation artificielle.
+        les sous-titres et le texte, sans sur-optimisation artificielle.
       </p>
 
       <h2>Les avis clients : le carburant du SEO local</h2>

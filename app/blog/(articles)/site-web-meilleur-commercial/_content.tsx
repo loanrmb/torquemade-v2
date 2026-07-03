@@ -13,7 +13,7 @@ export function SiteWebMeilleurCommercialContent() {
       <p>
         A good salesperson is expensive, works defined hours, and takes holidays. Your
         website works every night, every weekend, every public holiday. It answers questions,
-        presents your services, collects leads, and qualifies prospects — simultaneously,
+        presents your services, collects leads, and qualifies prospects, simultaneously,
         for dozens of visitors at once, without ever getting tired. But only if it's
         designed for that.
       </p>
@@ -21,10 +21,10 @@ export function SiteWebMeilleurCommercialContent() {
       <h2>What a commercial site must do that most don't</h2>
 
       <ul>
-        <li><strong>Answer objections before they're raised.</strong> A good salesperson anticipates prospect questions. Your site must do the same: pricing, timelines, work process, guarantees — all common objections answered clearly on service pages.</li>
-        <li><strong>Guide visitors toward a precise action.</strong> Each page must have a unique objective and visible call to action. A site without CTAs is a brochure — not a salesperson.</li>
-        <li><strong>Establish credibility before first contact.</strong> Completed projects, client testimonials, client logos, certifications, key figures — everything that lets the visitor decide they can trust you before even speaking with you.</li>
-        <li><strong>Qualify incoming prospects.</strong> A well-designed contact form asks the right questions (budget, timeline, project type) so you arrive at the first meeting with clear context — not starting from scratch.</li>
+        <li><strong>Answer objections before they're raised.</strong> A good salesperson anticipates prospect questions. Your site must do the same: pricing, timelines, work process, guarantees, all common objections answered clearly on service pages.</li>
+        <li><strong>Guide visitors toward a precise action.</strong> Each page must have a unique objective and visible call to action. A site without CTAs is a brochure, not a salesperson.</li>
+        <li><strong>Establish credibility before first contact.</strong> Completed projects, client testimonials, client logos, certifications, key figures: everything that lets the visitor decide they can trust you before even speaking with you.</li>
+        <li><strong>Qualify incoming prospects.</strong> A well-designed contact form asks the right questions (budget, timeline, project type) so you arrive at the first meeting with clear context, not starting from scratch.</li>
       </ul>
 
       <h2>The 10-second visitor test</h2>
@@ -77,7 +77,7 @@ export function SiteWebMeilleurCommercialContent() {
         Un bon commercial coûte cher, travaille des horaires définis, et part en
         vacances. Votre site web, lui, travaille chaque nuit, chaque weekend, chaque
         jour férié. Il répond aux questions, présente vos services, récolte des leads
-        et qualifie des prospects — en parallèle, pour des dizaines de visiteurs
+        et qualifie des prospects, en parallèle, pour des dizaines de visiteurs
         simultanément, sans jamais se fatiguer. Mais seulement s'il est conçu pour ça.
       </p>
 
@@ -87,26 +87,26 @@ export function SiteWebMeilleurCommercialContent() {
         <li>
           <strong>Répondre aux objections avant qu'elles soient posées.</strong>
           Un bon commercial anticipe les questions du prospect. Votre site doit
-          faire pareil : prix, délais, processus de travail, garanties —
+          faire pareil : prix, délais, processus de travail, garanties,
           toutes les objections courantes répondues clairement sur les pages
           de service.
         </li>
         <li>
           <strong>Guider le visiteur vers une action précise.</strong>
           Chaque page doit avoir un objectif unique et un appel à l'action visible.
-          Un site sans CTA est une brochure — pas un commercial.
+          Un site sans CTA est une brochure, pas un commercial.
         </li>
         <li>
           <strong>Établir la crédibilité avant le premier contact.</strong>
           Projets réalisés, témoignages clients, logos de clients, certifications,
-          chiffres clés — tout ce qui permet au visiteur de décider qu'il peut
+          chiffres clés : tout ce qui permet au visiteur de décider qu'il peut
           vous faire confiance avant même de vous parler.
         </li>
         <li>
           <strong>Qualifier les prospects entrants.</strong>
           Un formulaire de contact bien conçu pose les bonnes questions (budget,
           délai, type de projet) pour que vous arriviez à la première réunion
-          avec un contexte clair — pas à partir de zéro.
+          avec un contexte clair, pas à partir de zéro.
         </li>
       </ul>
 

@@ -15,14 +15,14 @@ export function MotoPassion65SeoTarbesContent() {
         department. Like many local dealerships, they faced a classic challenge:
         being visible on Google in a precise geographic area, against competitors
         investing in paid advertising. The strategy implemented relies entirely on
-        organic SEO — with no advertising budget.
+        organic SEO, with no advertising budget.
       </p>
 
       <h2>The context: local dealership, specific market</h2>
 
       <p>
         Tarbes and the Hautes-Pyrénées represent a particular motorcycle market. The
-        region attracts riders for its exceptional mountain roads — the Pyrenees offer
+        region attracts riders for its exceptional mountain roads, the Pyrenees offer
         some of France's finest motorcycle circuits. For a dealership in this context,
         local SEO extends beyond purchase queries to also target passing riders seeking
         a dealer for maintenance or breakdown assistance.
@@ -32,8 +32,8 @@ export function MotoPassion65SeoTarbesContent() {
 
       <ul>
         <li><strong>Dedicated brand pages</strong> for each distributed brand, optimised for "[brand] dealer Tarbes" and "[brand] motorcycle 65" queries.</li>
-        <li><strong>Google Business Profile optimisation</strong> — categories, photos, hours, and structured client review collection.</li>
-        <li><strong>Local editorial content</strong> — articles on Hautes-Pyrénées motorcycle routes, regional moto events, mountain bike maintenance tips. This content anchors the site in the local ecosystem.</li>
+        <li><strong>Google Business Profile optimisation</strong>: categories, photos, hours, and structured client review collection.</li>
+        <li><strong>Local editorial content</strong>: articles on Hautes-Pyrénées motorcycle routes, regional moto events, mountain bike maintenance tips. This content anchors the site in the local ecosystem.</li>
       </ul>
 
       <h2>The results</h2>
@@ -41,7 +41,7 @@ export function MotoPassion65SeoTarbesContent() {
       <p>
         Without paid advertising, the SEO strategy enabled Moto Passion 65 to significantly
         improve its position on key local queries in the department. Google impressions
-        increased progressively, and organic traffic followed — with a higher conversion
+        increased progressively, and organic traffic followed, with a higher conversion
         rate than paid traffic, since it captures precise local search intent.
       </p>
 
@@ -87,14 +87,14 @@ export function MotoPassion65SeoTarbesContent() {
         Hautes-Pyrénées. Comme beaucoup de concessions locales, ils faisaient face à
         un défi classique : être visible sur Google dans une zone géographique précise,
         face à des concurrents qui investissent dans la publicité payante. La stratégie
-        mise en place repose entièrement sur le SEO organique — sans budget publicitaire.
+        mise en place repose entièrement sur le SEO organique, sans budget publicitaire.
       </p>
 
       <h2>Le contexte : concession locale, marché spécifique</h2>
 
       <p>
         Tarbes et les Hautes-Pyrénées représentent un marché motocycle particulier.
-        La région attire des motards pour ses routes de montagne exceptionnelles —
+        La région attire des motards pour ses routes de montagne exceptionnelles :
         les Pyrénées offrent certains des plus beaux circuits moto de France. Cette
         spécificité géographique est à la fois une opportunité SEO et un angle
         éditorial naturel.
@@ -102,7 +102,7 @@ export function MotoPassion65SeoTarbesContent() {
 
       <p>
         Pour une concession dans ce contexte, le SEO local ne se limite pas aux
-        requêtes d'achat de moto — il peut aussi cibler les motards de passage qui
+        requêtes d'achat de moto, il peut aussi cibler les motards de passage qui
         cherchent un concessionnaire pour un entretien ou un dépannage.
       </p>
 
@@ -115,11 +115,11 @@ export function MotoPassion65SeoTarbesContent() {
           "[marque] moto 65".
         </li>
         <li>
-          <strong>Optimisation du Google Business Profile</strong> — catégories,
+          <strong>Optimisation du Google Business Profile</strong>: catégories,
           photos, horaires, et collecte d'avis clients structurée.
         </li>
         <li>
-          <strong>Contenu éditorial local</strong> — articles sur les routes moto
+          <strong>Contenu éditorial local</strong>: articles sur les routes moto
           des Hautes-Pyrénées, les événements moto de la région, les conseils
           d'entretien pour moto de montagne. Ce contenu ancre le site dans
           l'écosystème local.
@@ -132,7 +132,7 @@ export function MotoPassion65SeoTarbesContent() {
         Sans publicité payante, la stratégie SEO a permis à Moto Passion 65 d'améliorer
         significativement sa position sur les requêtes locales clés du département.
         Les impressions Google ont augmenté progressivement, et le trafic organique
-        a suivi — avec un taux de conversion plus élevé que le trafic payant,
+        a suivi, avec un taux de conversion plus élevé que le trafic payant,
         puisqu'il capte des intentions de recherche précises et locales.
       </p>
 
