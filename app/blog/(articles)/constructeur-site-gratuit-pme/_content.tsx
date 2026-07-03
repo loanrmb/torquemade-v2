@@ -11,10 +11,10 @@ export function ConstructeurSiteGratuitPmeContent() {
       <h1 className="blog-article-title">Small Business: Why Not to Use a Free Website Builder</h1>
 
       <p>
-        Wix, Squarespace, Webflow — these tools let you create a site in hours without
+        Wix, Squarespace, Webflow: these tools let you create a site in hours without
         coding. That's their promise. And it's kept: you can have a functional site online
         quickly. But "functional" and "performant" aren't synonyms. Here's what these
-        builders don't do — and why it's costly long-term.
+        builders don't do, and why it's costly long-term.
       </p>
 
       <h2>The performance and SEO problem</h2>
@@ -22,15 +22,15 @@ export function ConstructeurSiteGratuitPmeContent() {
       <p>
         Website builders generate HTML/CSS/JS code loaded with unnecessary features for
         your use case. Result: heavy, slow-loading pages with poor Core Web Vitals scores.
-        Google penalises slow pages — on competitive queries, a Wix site will systematically
+        Google penalises slow pages: on competitive queries, a Wix site will systematically
         rank behind a well-optimised Next.js or WordPress site. Integrated SEO tools are
-        rudimentary: you can fill in a title and description — that's all.
+        rudimentary: you can fill in a title and description, that's all.
       </p>
 
       <h2>The personalisation and conversion problem</h2>
 
       <p>
-        Templates are designed to look good in screenshots — not to convert. User journeys
+        Templates are designed to look good in screenshots, not to convert. User journeys
         are standardised. Trust elements (testimonials, projects, guarantees) are hard to
         integrate convincingly without breaking the template. Each modification means
         negotiating with the builder's constraints.
@@ -48,7 +48,7 @@ export function ConstructeurSiteGratuitPmeContent() {
 
       <p>
         A freelancer testing an activity, an association needing minimal online presence,
-        a creator wanting a simple portfolio — in these cases, a builder is relevant.
+        a creator wanting a simple portfolio, in these cases, a builder is relevant.
         For an SME wanting organic traffic, qualified leads, and a differentiating
         professional presence: it's a false economy.
       </p>
@@ -91,10 +91,10 @@ export function ConstructeurSiteGratuitPmeContent() {
       <h1 className="blog-article-title">Petite entreprise : pourquoi ne pas utiliser un constructeur de site gratuit</h1>
 
       <p>
-        Wix, Squarespace, Webflow — ces outils permettent de créer un site en quelques
+        Wix, Squarespace, Webflow : ces outils permettent de créer un site en quelques
         heures sans coder. C'est leur promesse. Et elle est tenue : vous pouvez avoir
         un site fonctionnel en ligne rapidement. Mais "fonctionnel" et "performant"
-        ne sont pas synonymes. Voici ce que ces constructeurs ne font pas — et pourquoi
+        ne sont pas synonymes. Voici ce que ces constructeurs ne font pas: et pourquoi
         ça coûte cher sur le long terme.
       </p>
 
@@ -104,13 +104,13 @@ export function ConstructeurSiteGratuitPmeContent() {
         Les constructeurs de sites génèrent du code HTML/CSS/JS chargé de nombreuses
         fonctionnalités inutiles pour votre cas d'usage. Résultat : des pages lourdes,
         lentes à charger, avec des scores Core Web Vitals médiocres. Google pénalise
-        les pages lentes — sur les requêtes compétitives, un site Wix sera systématiquement
+        les pages lentes, sur les requêtes compétitives, un site Wix sera systématiquement
         classé derrière un site Next.js ou même un WordPress bien optimisé.
       </p>
 
       <p>
         Les outils SEO intégrés aux constructeurs sont rudimentaires. Ils permettent
-        de renseigner un title et une description — c'est tout. Pas de contrôle fin
+        de renseigner un title et une description: c'est tout. Pas de contrôle fin
         sur les données structurées, le rendering, l'indexation dynamique ou les
         performances de chargement.
       </p>
@@ -118,7 +118,7 @@ export function ConstructeurSiteGratuitPmeContent() {
       <h2>Le problème de la personnalisation et de la conversion</h2>
 
       <p>
-        Les templates sont conçus pour paraître beaux sur une capture d'écran —
+        Les templates sont conçus pour paraître beaux sur une capture d'écran,
         pas pour convertir. Les parcours utilisateurs sont standardisés. Les éléments
         de confiance (témoignages, projets, garanties) sont difficiles à intégrer
         de façon vraiment convaincante sans casser le template. Et chaque modification
@@ -138,7 +138,7 @@ export function ConstructeurSiteGratuitPmeContent() {
 
       <p>
         Un freelance qui teste une activité, une association qui a besoin d'une
-        présence en ligne minimale, un créateur qui veut un portfolio simple —
+        présence en ligne minimale, un créateur qui veut un portfolio simple :
         dans ces cas, un constructeur est pertinent. Pour une PME qui veut du
         trafic organique, des leads qualifiés et une présence professionnelle
         différenciante : c'est une fausse économie.

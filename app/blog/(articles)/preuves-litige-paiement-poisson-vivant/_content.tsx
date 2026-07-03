@@ -14,7 +14,7 @@ export function PreuvesLitigePaiementContent() {
         When a customer disputes a payment on a live animal, whoever reviews it decides based
         on documentation, not sympathy. Your job is to hand them a file that answers, without
         gaps, three questions: what exactly was sold, in what condition it left, and that it
-        reached the buyer. This is a records problem — and the shops that win are the ones that
+        reached the buyer. This is a records problem, and the shops that win are the ones that
         capture those records automatically, not the ones with the best story.
       </p>
 
@@ -30,10 +30,10 @@ export function PreuvesLitigePaiementContent() {
       <h2>The core file: four linked artifacts</h2>
 
       <ul>
-        <li><strong>Specimen identity.</strong> A unique record tying the order to one individual animal — its ID, listing photo, and status history. This proves precisely what the customer bought, not a generic species.</li>
+        <li><strong>Specimen identity.</strong> A unique record tying the order to one individual animal: its ID, listing photo, and status history. This proves precisely what the customer bought, not a generic species.</li>
         <li><strong>Condition at dispatch.</strong> A timestamped photo of that specimen and its packaging, captured at the moment it was prepared to send.</li>
         <li><strong>Proof of delivery.</strong> A record that the parcel reached the recipient, bound to the order so it can't be mistaken for a different shipment.</li>
-        <li><strong>A coherent timeline.</strong> The sequence of timestamps — listed, sold, packed, delivered — so a reviewer can follow the chain without finding a hole.</li>
+        <li><strong>A coherent timeline.</strong> The sequence of timestamps (listed, sold, packed, delivered), so a reviewer can follow the chain without finding a hole.</li>
       </ul>
 
       <h2>Linkage is what makes evidence hold</h2>
@@ -50,7 +50,7 @@ export function PreuvesLitigePaiementContent() {
 
       <p>
         The most common reason shops lose is timing. They try to assemble evidence <em>after</em>
-        the dispute notification — days later, from memory and a cluttered inbox. By then the
+        the dispute notification, days later, from memory and a cluttered inbox. By then the
         packing photo was never taken and the delivery record is buried. The reliable approach is
         to make evidence a byproduct of routine operations: the photo is captured when the order
         is packed, the delivery is logged on receipt, everything filed against the order as it
@@ -60,7 +60,7 @@ export function PreuvesLitigePaiementContent() {
       <h2>Package it into one document</h2>
 
       <p>
-        Reviewers want a single, readable document — not a pile of attachments and links. A system
+        Reviewers want a single, readable document, not a pile of attachments and links. A system
         that compiles the specimen record, condition photo, delivery proof, and timeline into one
         PDF turns hours of searching into a one-click export, and a clean submission is easier to
         rule in your favor. The retention rule is simple: keep every artifact, linked to its
@@ -114,7 +114,7 @@ export function PreuvesLitigePaiementContent() {
         Quand un client conteste un paiement sur un animal vivant, celui qui l'examine tranche
         sur pièces, pas sur la sympathie. Votre travail est de lui remettre un dossier qui répond,
         sans trou, à trois questions : ce qui a été vendu exactement, dans quel état c'est parti,
-        et que c'est bien arrivé chez l'acheteur. C'est un problème d'enregistrements — et les
+        et que c'est bien arrivé chez l'acheteur. C'est un problème d'enregistrements, et les
         boutiques qui gagnent sont celles qui capturent ces enregistrements automatiquement, pas
         celles qui ont le meilleur récit.
       </p>
@@ -132,10 +132,10 @@ export function PreuvesLitigePaiementContent() {
       <h2>Le dossier de base : quatre artefacts liés</h2>
 
       <ul>
-        <li><strong>Identité du spécimen.</strong> Une fiche unique reliant la commande à un animal individuel — son identifiant, sa photo d'annonce, son historique de statut. Ça prouve précisément ce que le client a acheté, pas une espèce générique.</li>
+        <li><strong>Identité du spécimen.</strong> Une fiche unique reliant la commande à un animal individuel, son identifiant, sa photo d'annonce, son historique de statut. Ça prouve précisément ce que le client a acheté, pas une espèce générique.</li>
         <li><strong>État au départ.</strong> Une photo horodatée de ce spécimen et de son conditionnement, capturée au moment de la préparation à l'envoi.</li>
         <li><strong>Preuve de livraison.</strong> Un enregistrement que le colis a atteint le destinataire, lié à la commande pour ne pas être confondu avec un autre envoi.</li>
-        <li><strong>Une chronologie cohérente.</strong> La séquence d'horodatages — mis en ligne, vendu, emballé, livré — pour qu'un examinateur suive la chaîne sans trouver de trou.</li>
+        <li><strong>Une chronologie cohérente.</strong> La séquence d'horodatages (mis en ligne, vendu, emballé, livré), pour qu'un examinateur suive la chaîne sans trouver de trou.</li>
       </ul>
 
       <h2>Le lien, c'est ce qui fait tenir la preuve</h2>
@@ -153,7 +153,7 @@ export function PreuvesLitigePaiementContent() {
 
       <p>
         La raison la plus fréquente de perdre, c'est le timing. On tente d'assembler des preuves
-        <em> après</em> la notification de litige — des jours plus tard, de mémoire et depuis une
+        <em> après</em> la notification de litige, des jours plus tard, de mémoire et depuis une
         boîte mail encombrée. À ce moment-là, la photo d'emballage n'a jamais été prise et la
         preuve de livraison est enfouie. L'approche fiable est de faire de la preuve un
         sous-produit des opérations de routine : la photo est capturée à l'emballage, la livraison
@@ -164,7 +164,7 @@ export function PreuvesLitigePaiementContent() {
       <h2>Mettez-le en un seul document</h2>
 
       <p>
-        Les examinateurs veulent un document unique et lisible — pas un tas de pièces jointes et de
+        Les examinateurs veulent un document unique et lisible, pas un tas de pièces jointes et de
         liens. Un système qui compile la fiche du spécimen, la photo d'état, la preuve de livraison
         et la chronologie dans un seul PDF transforme des heures de recherche en un export en un
         clic, et une soumission propre est plus facile à trancher en votre faveur. La règle de

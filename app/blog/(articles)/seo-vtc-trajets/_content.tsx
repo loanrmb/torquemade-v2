@@ -12,7 +12,7 @@ export function SeoVtcTrajetsContent() {
 
       <p>
         Specific route queries are the most profitable for a private driver. Unlike generic
-        searches ("VTC Bordeaux"), they indicate a precise, immediate need — the user knows
+        searches ("VTC Bordeaux"), they indicate a precise, immediate need, the user knows
         where they're going and is looking for someone to take them. Conversion rate on these
         queries is well above average.
       </p>
@@ -20,11 +20,11 @@ export function SeoVtcTrajetsContent() {
       <h2>Priority route queries to target</h2>
 
       <ul>
-        <li><strong>"VTC Bordeaux airport"</strong> — the top query. High volume, very clear intent, recurring route. Ideal for a dedicated page with fixed rate, journey time, and practical information.</li>
-        <li><strong>"Private driver Bordeaux Saint-Jean station"</strong> — same logic. Station transfers are among the most requested trips.</li>
-        <li><strong>"VTC Bordeaux Arcachon"</strong> — specific route, lower volume but highly qualified. Often tourists or professionals.</li>
-        <li><strong>"Mérignac airport shuttle"</strong> — local variant. Mérignac residents also look for airport transfers.</li>
-        <li><strong>"Wedding transport Gironde"</strong> — events. Lower volume but high average ticket.</li>
+        <li><strong>"VTC Bordeaux airport"</strong>: the top query. High volume, very clear intent, recurring route. Ideal for a dedicated page with fixed rate, journey time, and practical information.</li>
+        <li><strong>"Private driver Bordeaux Saint-Jean station"</strong>: same logic. Station transfers are among the most requested trips.</li>
+        <li><strong>"VTC Bordeaux Arcachon"</strong>: specific route, lower volume but highly qualified. Often tourists or professionals.</li>
+        <li><strong>"Mérignac airport shuttle"</strong>: local variant. Mérignac residents also look for airport transfers.</li>
+        <li><strong>"Wedding transport Gironde"</strong>: events. Lower volume but high average ticket.</li>
       </ul>
 
       <h2>How to create optimised pages for each route</h2>
@@ -85,7 +85,7 @@ export function SeoVtcTrajetsContent() {
       <p>
         Les requêtes de trajet spécifique sont les plus rentables pour un chauffeur
         privé. Contrairement aux recherches génériques ("VTC Bordeaux"), elles indiquent
-        un besoin précis et immédiat — l'utilisateur sait où il va et cherche quelqu'un
+        un besoin précis et immédiat, l'utilisateur sait où il va et cherche quelqu'un
         pour l'emmener. Le taux de conversion sur ces requêtes est bien supérieur à
         la moyenne.
       </p>
@@ -94,24 +94,24 @@ export function SeoVtcTrajetsContent() {
 
       <ul>
         <li>
-          <strong>"VTC Bordeaux aéroport"</strong> — la requête reine. Volume important,
+          <strong>"VTC Bordeaux aéroport"</strong>: la requête reine. Volume important,
           intention très claire, trajet récurrent. Idéal pour une page dédiée avec
           tarif fixe, temps de trajet et informations pratiques.
         </li>
         <li>
-          <strong>"Chauffeur privé Bordeaux gare Saint-Jean"</strong> — même logique.
+          <strong>"Chauffeur privé Bordeaux gare Saint-Jean"</strong>: même logique.
           Le transfert gare est l'un des trajets les plus demandés.
         </li>
         <li>
-          <strong>"VTC Bordeaux Arcachon"</strong> — trajet spécifique, volume plus
+          <strong>"VTC Bordeaux Arcachon"</strong>: trajet spécifique, volume plus
           faible mais très qualifié. Souvent des touristes ou des professionnels.
         </li>
         <li>
-          <strong>"Navette Mérignac aéroport"</strong> — variante locale. Les habitants
+          <strong>"Navette Mérignac aéroport"</strong>: variante locale. Les habitants
           de Mérignac cherchent aussi un transfert aéroport.
         </li>
         <li>
-          <strong>"Transport mariage Gironde"</strong> — événementiel. Faible volume
+          <strong>"Transport mariage Gironde"</strong>: événementiel. Faible volume
           mais ticket moyen élevé.
         </li>
       </ul>

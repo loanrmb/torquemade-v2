@@ -12,7 +12,7 @@ export function ProuverPoissonArriveVivantContent() {
 
       <p>
         A chargeback on a live animal is won or lost on one thing: the quality of your
-        evidence file. Not your good faith, not your reputation — the documented, timestamped
+        evidence file. Not your good faith, not your reputation, the documented, timestamped
         chain that shows a specific specimen left your hands in good condition and reached the
         buyer. This is a data problem, and it's solvable if you capture the right records at
         the right moments instead of scrambling to reconstruct them after the dispute lands.
@@ -25,16 +25,16 @@ export function ProuverPoissonArriveVivantContent() {
         They're looking for specific, verifiable artifacts tied to <em>this</em> order. If
         your only response is a written assurance, you have an assertion, not evidence. The
         shops that win consistently are the ones that turned each shipment into a small,
-        automatic dossier — captured as part of the workflow, not as an afterthought.
+        automatic dossier, captured as part of the workflow, not as an afterthought.
       </p>
 
       <h2>The four records that make the case</h2>
 
       <ul>
-        <li><strong>The specimen record.</strong> A unique ID tying the order to one individual animal, with its listing photo and status history. This proves what was sold — the exact specimen, not "a fish."</li>
+        <li><strong>The specimen record.</strong> A unique ID tying the order to one individual animal, with its listing photo and status history. This proves what was sold, the exact specimen, not "a fish."</li>
         <li><strong>The packing photo.</strong> A timestamped image of that specimen and its packaging at dispatch. This is your condition-at-send proof, and the timestamp anchors it to the order.</li>
         <li><strong>Delivery proof.</strong> A record that the parcel reached the buyer, ideally tied back to the order via a scannable code so it can't be confused with another shipment.</li>
-        <li><strong>The event trail.</strong> The timestamps of listing, sale, pack, and delivery in sequence — a coherent timeline a reviewer can follow.</li>
+        <li><strong>The event trail.</strong> The timestamps of listing, sale, pack, and delivery in sequence, a coherent timeline a reviewer can follow.</li>
       </ul>
 
       <h2>Why timing and linkage matter more than volume</h2>
@@ -53,7 +53,7 @@ export function ProuverPoissonArriveVivantContent() {
         The reason most shops lose is timing: they try to assemble evidence <em>after</em> a
         chargeback notification, days or weeks later, from memory and a messy inbox. By then the
         packing photo is gone and the delivery record is buried. The fix is to make evidence
-        capture a byproduct of normal operations — the photo is taken when the order is packed,
+        capture a byproduct of normal operations: the photo is taken when the order is packed,
         the delivery scan is logged on receipt, and everything is filed against the order the
         moment it happens. When a dispute arrives, the file already exists.
       </p>
@@ -63,7 +63,7 @@ export function ProuverPoissonArriveVivantContent() {
       <p>
         The last step is packaging. A reviewer wants one coherent document, not a link dump.
         A system that assembles the specimen record, packing photo, delivery proof, and
-        timeline into a single PDF turns hours of digging into a one-click export — and makes
+        timeline into a single PDF turns hours of digging into a one-click export, and makes
         your submission easy to read, which itself improves your odds.
       </p>
 
@@ -112,7 +112,7 @@ export function ProuverPoissonArriveVivantContent() {
 
       <p>
         Une rétrofacturation sur un animal vivant se gagne ou se perd sur une seule chose : la
-        qualité de votre dossier de preuve. Pas votre bonne foi, pas votre réputation — la chaîne
+        qualité de votre dossier de preuve. Pas votre bonne foi, pas votre réputation: la chaîne
         documentée et horodatée qui montre qu'un spécimen précis a quitté vos mains en bon état
         et a atteint l'acheteur. C'est un problème de données, et il se résout si vous capturez
         les bons enregistrements aux bons moments, au lieu de les reconstituer en panique une fois
@@ -126,16 +126,16 @@ export function ProuverPoissonArriveVivantContent() {
         générales. Il cherche des artefacts précis et vérifiables liés à <em>cette</em> commande.
         Si votre seule réponse est une assurance écrite, vous avez une affirmation, pas une
         preuve. Les boutiques qui gagnent régulièrement sont celles qui ont transformé chaque
-        expédition en un petit dossier automatique — capturé au fil du workflow, pas après coup.
+        expédition en un petit dossier automatique, capturé au fil du workflow, pas après coup.
       </p>
 
       <h2>Les quatre enregistrements qui font le dossier</h2>
 
       <ul>
-        <li><strong>La fiche du spécimen.</strong> Un identifiant unique qui relie la commande à un animal individuel, avec sa photo d'annonce et son historique de statut. Ça prouve ce qui a été vendu — le spécimen exact, pas « un poisson ».</li>
+        <li><strong>La fiche du spécimen.</strong> Un identifiant unique qui relie la commande à un animal individuel, avec sa photo d'annonce et son historique de statut. Ça prouve ce qui a été vendu, le spécimen exact, pas « un poisson ».</li>
         <li><strong>La photo d'emballage.</strong> Une image horodatée de ce spécimen et de son conditionnement au départ. C'est votre preuve d'état à l'envoi, et l'horodatage l'ancre à la commande.</li>
         <li><strong>La preuve de livraison.</strong> Un enregistrement que le colis a atteint l'acheteur, idéalement relié à la commande par un code scannable pour ne pas être confondu avec un autre envoi.</li>
-        <li><strong>La piste d'événements.</strong> Les horodatages de mise en ligne, vente, emballage et livraison en séquence — une chronologie cohérente qu'un examinateur peut suivre.</li>
+        <li><strong>La piste d'événements.</strong> Les horodatages de mise en ligne, vente, emballage et livraison en séquence, une chronologie cohérente qu'un examinateur peut suivre.</li>
       </ul>
 
       <h2>Pourquoi le moment et le lien comptent plus que le volume</h2>
@@ -156,7 +156,7 @@ export function ProuverPoissonArriveVivantContent() {
         d'assembler des preuves <em>après</em> la notification de rétrofacturation, des jours ou
         des semaines plus tard, de mémoire et depuis une boîte mail en désordre. À ce moment-là, la
         photo d'emballage a disparu et la preuve de livraison est enfouie. La solution est de faire
-        de la capture de preuve un sous-produit des opérations normales — la photo est prise à
+        de la capture de preuve un sous-produit des opérations normales, la photo est prise à
         l'emballage, le scan de livraison est journalisé à réception, et tout est classé sous la
         commande à l'instant où ça se produit. Quand un litige arrive, le dossier existe déjà.
       </p>
@@ -167,7 +167,7 @@ export function ProuverPoissonArriveVivantContent() {
         La dernière étape est la mise en forme. Un examinateur veut un document cohérent, pas un
         amas de liens. Un système qui assemble la fiche du spécimen, la photo d'emballage, la
         preuve de livraison et la chronologie dans un seul PDF transforme des heures de recherche
-        en un export en un clic — et rend votre soumission facile à lire, ce qui améliore vos
+        en un export en un clic, et rend votre soumission facile à lire, ce qui améliore vos
         chances en soi.
       </p>
 
