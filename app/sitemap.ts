@@ -25,6 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'work',
     'about',
     'contact',
+    'tanklogic',
   ].map((slug) => ({
     url: `${baseUrl}/${slug}`,
     lastModified: new Date(),

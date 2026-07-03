@@ -14,7 +14,8 @@ import { NextRequest, NextResponse } from 'next/server'
  */
 
 // ÉTAPE 1 — only these params survive canonicalization
-const WHITELIST = new Set(['page', 'sort', 'filter'])
+// 'service' pre-selects a chip on the contact form (e.g. TankLogic CTAs → /contact?service=tanklogic)
+const WHITELIST = new Set(['page', 'sort', 'filter', 'service'])
 
 // ÉTAPE 2 — tracking params we explicitly strip (documented for audits)
 const TRACKING_PARAMS = new Set([

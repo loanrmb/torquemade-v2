@@ -947,4 +947,109 @@ export const posts: Post[] = [
     category: 'projets',
     readingTime: 3,
   },
+  {
+    slug: 'synchroniser-stock-aquariophilie-site-ecommerce',
+    title: {
+      fr: 'Comment synchroniser le stock de ma boutique aquariophilie avec mon site e-commerce ?',
+      en: 'How Do You Sync Live Fish and Coral Inventory With Your Online Store?',
+    },
+    description: {
+      fr: "Poissons et coraux sont des SKU uniques, pas des quantités fongibles. Pourquoi la synchronisation de stock d'une boutique aquariophilie exige une architecture par spécimen — et comment la mettre en place.",
+      en: 'Fish and coral are unique SKUs, not fungible quantities. Why syncing a live-inventory shop requires a per-specimen architecture — and how to build it.',
+    },
+    date: { fr: '2 juillet 2026', en: 'July 2, 2026' },
+    publishedAt: '2026-07-02',
+    category: 'ERP & Gestion de stock',
+    readingTime: 6,
+  },
+  {
+    slug: 'logiciel-gestion-stock-animalerie-aquatique-en-ligne',
+    title: {
+      fr: 'Quel logiciel de gestion de stock choisir pour une animalerie aquatique en ligne ?',
+      en: "What's the Best Inventory Software for an Online Fish or Coral Shop?",
+    },
+    description: {
+      fr: "Les logiciels de stock généralistes gèrent des quantités. Une animalerie aquatique en ligne vend des spécimens uniques. Les critères qui comptent vraiment avant de choisir.",
+      en: 'Generic inventory tools track quantities. An online fish or coral shop sells unique specimens. The criteria that actually matter before you choose.',
+    },
+    date: { fr: '4 juillet 2026', en: 'July 4, 2026' },
+    publishedAt: '2026-07-04',
+    category: 'ERP & Gestion de stock',
+    readingTime: 6,
+  },
+  {
+    slug: 'relier-erp-caisse-shopify-aquariophilie',
+    title: {
+      fr: "Comment relier mon ERP ou ma caisse à Shopify pour l'aquariophilie ?",
+      en: 'How Do You Connect Your POS or ERP to Shopify for a Fish/Coral Business?',
+    },
+    description: {
+      fr: "Relier une caisse ou un ERP à Shopify quand on vend des spécimens uniques ne se fait pas comme pour un stock classique. Les approches d'intégration et leurs pièges pour l'aquariophilie.",
+      en: 'Connecting a POS or ERP to Shopify when you sell unique specimens is nothing like a standard stock sync. The integration patterns — and where they break for livestock.',
+    },
+    date: { fr: '7 juillet 2026', en: 'July 7, 2026' },
+    publishedAt: '2026-07-07',
+    category: 'ERP & Gestion de stock',
+    readingTime: 6,
+  },
+  {
+    slug: 'prouver-poisson-arrive-vivant-retrofacturation',
+    title: {
+      fr: "Comment prouver qu'un poisson est arrivé vivant pour contester une rétrofacturation ?",
+      en: 'How Do You Prove a Fish Arrived Alive to Fight a Chargeback?',
+    },
+    description: {
+      fr: "Gagner une contestation de rétrofacturation sur un animal vivant se joue sur la preuve. Le dossier numérique — fiche spécimen, photo d'emballage, preuve de livraison — à constituer automatiquement.",
+      en: 'A chargeback on a live animal is won on evidence. The digital file — specimen record, packing photo, delivery proof — you should build automatically.',
+    },
+    date: { fr: '9 juillet 2026', en: 'July 9, 2026' },
+    publishedAt: '2026-07-09',
+    category: 'ERP & Gestion de stock',
+    readingTime: 6,
+  },
+  {
+    slug: 'erp-specialise-boutique-poissons-coraux',
+    title: {
+      fr: 'Existe-t-il un ERP spécialisé pour les boutiques de poissons et coraux ?',
+      en: 'Is There ERP Software Built Specifically for Fish and Coral Shops?',
+    },
+    description: {
+      fr: "Les grands ERP généralistes ne modélisent ni les spécimens uniques ni la mortalité. Pourquoi les boutiques de poissons et coraux ont besoin d'un système dédié, et ce qu'il doit faire.",
+      en: "Mainstream ERPs model neither unique specimens nor mortality. Why fish and coral shops need a purpose-built system — and what it must do differently.",
+    },
+    date: { fr: '11 juillet 2026', en: 'July 11, 2026' },
+    publishedAt: '2026-07-11',
+    category: 'ERP & Gestion de stock',
+    readingTime: 5,
+  },
+  {
+    slug: 'automatiser-suivi-mortalite-stock-en-ligne',
+    title: {
+      fr: 'Comment automatiser le suivi de mortalité pour mon stock en ligne ?',
+      en: 'How Do You Automate Mortality Tracking for Your Online Fish Inventory?',
+    },
+    description: {
+      fr: "La mortalité doit retirer une unité précise de la vente en temps réel, pas via un tableur du dimanche soir. Comment câbler le suivi de mortalité dans votre synchro de stock en ligne.",
+      en: 'Mortality has to remove one specific unit from sale in real time, not through a Sunday-night spreadsheet. How to wire mortality tracking into your online stock sync.',
+    },
+    date: { fr: '14 juillet 2026', en: 'July 14, 2026' },
+    publishedAt: '2026-07-14',
+    category: 'ERP & Gestion de stock',
+    readingTime: 6,
+  },
+  {
+    slug: 'preuves-litige-paiement-poisson-vivant',
+    title: {
+      fr: 'Quelles preuves conserver pour gagner un litige de paiement sur un poisson vivant ?',
+      en: 'What Evidence Do You Need to Win a Payment Dispute Over a Live Animal?',
+    },
+    description: {
+      fr: "Un litige de paiement sur un animal vivant se gagne avec un dossier structuré : fiche du spécimen, photo horodatée, preuve de livraison liée à la commande. Quoi conserver, et comment l'automatiser.",
+      en: 'A payment dispute over a live animal is won with a structured file: specimen record, timestamped photo, delivery proof linked to the order. What to keep, and how to automate it.',
+    },
+    date: { fr: '16 juillet 2026', en: 'July 16, 2026' },
+    publishedAt: '2026-07-16',
+    category: 'ERP & Gestion de stock',
+    readingTime: 6,
+  },
 ]
