@@ -960,10 +960,78 @@ export const strings = {
         title: 'ERP ↔ E-commerce Inventory Sync | Torquemade',
         description: 'Real-time connection between your ERP (SAGE, Cegid…) and Shopify. No more re-keying: every online sale deducts from your real stock automatically.',
       },
+      aquariumEn: {
+        title: 'Coral & Livestock Inventory Sync for Aquarium Shops | Torquemade',
+        description: 'Selling WYSIWYG coral across Canada? Stop overselling one-of-a-kind frags. We sync your POS, Shopify store and live drops in real time, so a sold frag leaves the site instantly.',
+      },
       aquariumQc: {
         title: 'Aquarium Inventory ↔ E-commerce Sync (Quebec) | Torquemade',
         description: 'For coral and fish stores in Quebec: sync your POS and online store in real time. No more selling the same coral twice. Every one-of-a-kind frag leaves your site the second it sells in-store.',
       },
+    },
+    // English-primary market page (anglophone Canada). Rendered unconditionally
+    // in English regardless of the FR/EN toggle so Googlebot indexes it as EN.
+    aquariumEn: {
+      eyebrow: 'Aquarium trade · Canada',
+      hero: 'You drop 80 WYSIWYG frags on Friday. By Saturday, half your stock counts are wrong.',
+      intro:
+        'Coral shops in Toronto, Vancouver and Calgary don’t sell catalog SKUs — they sell one-of-a-kind livestock, across a counter, a Shopify store and a Friday-night live drop, all at once. We build the real-time sync layer that keeps those channels honest, so a frag that sells in one place disappears everywhere else before the next order lands.',
+
+      problemTitle: 'Every frag is a serial number, not a stock level',
+      problemBody: [
+        'Retail inventory software assumes depth: one SKU, a quantity, a reorder point. Sell one of twelve mugs and eleven remain. Livestock breaks that model at the root. A WYSIWYG coral is photographed individually, priced on its own, and exists in quantity one. When it’s gone, there is no reorder — it was a living colony, not a catalog line.',
+        'Now layer on how Canadian reef shops actually sell. New corals go up in weekly WYSIWYG batches — the Friday drop — where dozens of unique pieces hit the site at once and demand spikes for minutes, not days. The same tank is shoppable in-store, online, and often live on Instagram or Facebook at the same time. Whoever pays first should win; everyone else needs the item gone from their screen immediately.',
+        'And it’s alive. Fish sit in quarantine before they’re sellable. Shipping runs on transit-time and weather windows — heat packs from Toronto to a prairie winter, cold packs in an Okanagan summer. DOA policies mean credits and reships, not clean refunds. None of that fits a simple in-stock / out-of-stock flag.',
+      ],
+      problemPointsTitle: 'Why off-the-shelf inventory can’t hold this',
+      problemPoints: [
+        'Every coral is a unique quantity-1 item — photographed, individually priced, never restocked.',
+        'Weekly WYSIWYG drops spike demand on dozens of unique SKUs in minutes.',
+        'The same livestock is sold in-store, on Shopify and on live streams simultaneously.',
+        'Livestock rules: quarantine holds, DOA credits, weather-based shipping windows.',
+      ],
+
+      genericTitle: 'Why Shopify — and the sync apps bolted onto it — fall short',
+      genericBody: [
+        'This isn’t a knock on Shopify; it’s the right storefront for most reef shops. The gap is what happens between the storefront and the counter. Your POS keeps one count. Shopify keeps another. The popular sync apps were built for apparel and dry goods: high quantities, predictable restocks, batch updates every few minutes.',
+        'On a t-shirt, a five-minute sync lag is invisible. On a single $400 acropora colony during a Friday drop, five minutes is the whole problem — long enough for the piece to be rung up at the counter and checked out online at the same time. Neither system knew about the other in time.',
+        'The outcome is the tax every busy shop pays: overselling. You cancel the online order, issue the refund, and message a customer who drove across the GTA for exactly that frag. Then you re-key counts by hand after close, reconciling two systems that were never designed to agree.',
+      ],
+
+      solveTitle: 'What Torquemade builds',
+      solveSubtitle: 'One source of truth, deduction measured in seconds.',
+      solveBody:
+        'We build the missing layer between your POS, your Shopify store and your live-sale channels — engineered for unique livestock and drop-day traffic, not steady catalog demand.',
+      solveDelivery: [
+        'One source of truth: a single stock, not two counts drifting apart after every sale.',
+        'Real-time deduction: a sale on any channel pulls the item from the others within seconds.',
+        'Quantity-1 native: a sold frag flips to “sold” and hides itself — no manual archiving.',
+        'Reservation lock: an online cart holds the piece for the length of checkout.',
+        'Drop tooling: batch-upload a Friday drop of dozens of WYSIWYG items in one pass.',
+        'Livestock-aware: quarantine holds, DOA credits and transit windows handled, not faked.',
+      ],
+
+      techTitle: 'How the POS → Shopify → live-sale sync works',
+      techBody:
+        'We connect the systems you already run with a lightweight middleware layer. No rebuild, no migration — your POS and storefront stay exactly where they are.',
+      techSteps: [
+        'A sale fires on any channel — counter (Shopify POS, Lightspeed, Square) or online checkout.',
+        'A webhook hits our sync layer the moment the sale is confirmed.',
+        'Real stock is deducted and the unique item is flipped to “sold”.',
+        'The product page hides itself before another shopper — or the live-sale queue — can order it.',
+        'Livestock edge cases — DOA credit, reship, quarantine release — route to the right place, no re-keying.',
+      ],
+      techNote:
+        'Running an older POS or a custom back office? Connecting legacy systems to the web is exactly what we do. See our ',
+
+      linkErpLabel: 'ERP ↔ e-commerce sync service',
+      linkCrmLabel: 'Custom CRM',
+      linkCaseLabel: 'Case study: dealership CRM',
+      relatedTitle: 'Related reading',
+
+      ctaTitle: 'See your stock stay in sync',
+      ctaSub: 'Tell us about your shop, your POS and your sales channels. We’ll show you exactly what the sync would look like on your next drop — no commitment.',
+      ctaButton: 'Book a demo',
     },
     aquariumQc: {
       eyebrow: 'Aquarium trade · Quebec',
