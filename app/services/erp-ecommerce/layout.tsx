@@ -4,7 +4,7 @@ import { SchemaRenderer } from '@/components/schema-renderer'
 import { serviceSchema } from '@/lib/schema'
 
 const meta = strings.fr.meta.erp
-const url = 'https://torquemade.com/services/erp-ecommerce'
+const url = 'https://www.torquemade.com/services/erp-ecommerce'
 
 const schema = serviceSchema({
   name: 'Synchronisation ERP ↔ E-commerce',
