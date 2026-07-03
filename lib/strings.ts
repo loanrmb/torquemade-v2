@@ -446,6 +446,72 @@ export const strings = {
         title: 'Synchronisation stock ERP ↔ site e-commerce | Torquemade',
         description: 'Connexion en temps réel entre votre ERP (SAGE, Cegid…) et Shopify. Fin de la ressaisie : chaque vente déduit automatiquement votre stock réel.',
       },
+      aquariumQc: {
+        title: 'Synchro stock aquariophilie ↔ e-commerce (Québec) | Torquemade',
+        description: 'Pour les boutiques de coraux et poissons au Québec : synchronisez caisse et boutique en ligne en temps réel. Fini le corail vendu deux fois. Chaque frag unique se retire du site à la seconde où il part en magasin.',
+      },
+    },
+    aquariumQc: {
+      eyebrow: 'Aquariophilie · Québec',
+      hero: 'Votre corail s’est vendu deux fois : une fois en boutique, une fois en ligne.',
+      intro:
+        'Pour les boutiques de coraux et de poissons au Québec, chaque frag est une pièce unique. Nous connectons votre caisse et votre site en temps réel pour qu’un article vendu au comptoir disparaisse du site avant que le prochain client ne le commande.',
+
+      problemTitle: 'Un corail n’est pas un t-shirt en taille M',
+      problemBody: [
+        'La plupart des logiciels de stock partent d’une hypothèse simple : un SKU, une quantité, un réassort. Un t-shirt en M, vous en avez douze, vous en vendez un, il en reste onze. L’aquariophilie ne fonctionne pas comme ça.',
+        'Vos coraux sont vendus en WYSIWYG — « what you see is what you get ». Chaque frag est photographié individuellement, porte un prix unique et existe en quantité 1. Une fois parti, il n’y a pas de réassort : c’est une colonie vivante, pas un article de catalogue.',
+        'Ajoutez à cela le vivant : poissons sous quarantaine, politiques DOA (dead on arrival), fenêtres d’expédition qui dépendent de la météo, packs chauffants l’hiver québécois. Et surtout, vous vendez partout à la fois — au comptoir à Laval ou Montréal, sur votre boutique en ligne, et souvent en direct sur les groupes Facebook et les ventes live.',
+      ],
+      problemPointsTitle: 'Ce qui rend votre stock ingérable en standard',
+      problemPoints: [
+        'Chaque corail = une pièce unique en quantité 1, photographiée, à prix propre.',
+        'Aucun réassort possible : une fois vendu, l’article doit disparaître, pas se « remettre en stock ».',
+        'Vente multi-canal simultanée : comptoir, site, groupes Facebook, ventes live.',
+        'Vivant : quarantaine, DOA, avoirs, fenêtres d’expédition météo-dépendantes.',
+      ],
+
+      genericTitle: 'Pourquoi Shopify ou Lightspeed seul ne suffit pas',
+      genericBody: [
+        'Le problème n’est pas Shopify. Le problème n’est pas Lightspeed — dont le siège est d’ailleurs à Montréal et qui équipe une grande partie du commerce de détail québécois. Le problème, c’est qu’aucun des deux n’est la source de vérité de l’autre.',
+        'Votre caisse tient un compteur. Votre site en tient un autre. Les applications de synchro grand public sont pensées pour des SKU classiques avec des quantités élevées et un réassort régulier — pas pour du vivant unique en quantité 1. Elles synchronisent par lots, toutes les quelques minutes. Sur un t-shirt, ce délai n’a aucune importance. Sur un corail unique, ces quelques minutes suffisent à ce qu’il soit encaissé au comptoir et commandé en ligne en même temps.',
+        'Résultat : le survente. Vous annulez, vous remboursez, vous vous excusez auprès d’un client qui attendait précisément cette colonie. Et vous ressaisissez le stock à la main, le soir, sur deux systèmes qui ne se parlent pas.',
+      ],
+
+      solveTitle: 'Ce que Torquemade met en place',
+      solveSubtitle: 'Une seule source de vérité, une déduction à la seconde.',
+      solveBody:
+        'Nous construisons la couche de synchronisation qui manque entre votre caisse et votre boutique en ligne — taillée pour le vivant unique, pas pour du prêt-à-porter.',
+      solveDelivery: [
+        'Source de vérité unique : un stock, pas deux compteurs qui divergent.',
+        'Déduction en temps réel : une vente comptoir retire l’article du site en quelques secondes.',
+        'Quantité 1 gérée nativement : le frag vendu passe automatiquement en « vendu » et se masque.',
+        'Verrou de réservation : un panier en ligne bloque la pièce le temps du paiement.',
+        'Gestion du vivant : statuts quarantaine, DOA, avoirs et fenêtres d’expédition.',
+        'Multi-canal réel : comptoir, site et ventes directes réconciliés au même endroit.',
+      ],
+
+      techTitle: 'Comment fonctionne la synchro caisse → boutique en ligne',
+      techBody:
+        'Concrètement, nous relions vos systèmes existants avec une couche middleware légère. Pas de refonte : votre caisse et votre site restent les vôtres.',
+      techSteps: [
+        'Une vente se produit — au comptoir (Lightspeed, Square, système legacy) ou en ligne (Shopify).',
+        'Un webhook déclenche instantanément notre couche de synchronisation.',
+        'Le stock réel est déduit et l’article unique passe en « vendu ».',
+        'La fiche produit se masque du site avant qu’un autre client ne la commande.',
+        'Les cas particuliers — DOA, retour, avoir — remontent au bon endroit, sans ressaisie.',
+      ],
+      techNote:
+        'Vous êtes sur un ERP ou un logiciel de caisse plus ancien ? C’est exactement notre spécialité : connecter le legacy au web. Voir notre service ',
+
+      linkErpLabel: 'Synchronisation ERP ↔ e-commerce',
+      linkCrmLabel: 'CRM sur mesure',
+      linkCaseLabel: 'Étude de cas : concession moto',
+      relatedTitle: 'À lire aussi',
+
+      ctaTitle: 'Voyons votre stock en action',
+      ctaSub: 'Décrivez-nous votre boutique et vos canaux de vente. On vous montre à quoi ressemblerait la synchro, sans engagement.',
+      ctaButton: 'Réserver une démo',
     },
   },
 
@@ -898,6 +964,10 @@ export const strings = {
         title: 'Coral & Livestock Inventory Sync for Aquarium Shops | Torquemade',
         description: 'Selling WYSIWYG coral across Canada? Stop overselling one-of-a-kind frags. We sync your POS, Shopify store and live drops in real time, so a sold frag leaves the site instantly.',
       },
+      aquariumQc: {
+        title: 'Aquarium Inventory ↔ E-commerce Sync (Quebec) | Torquemade',
+        description: 'For coral and fish stores in Quebec: sync your POS and online store in real time. No more selling the same coral twice. Every one-of-a-kind frag leaves your site the second it sells in-store.',
+      },
     },
     // English-primary market page (anglophone Canada). Rendered unconditionally
     // in English regardless of the FR/EN toggle so Googlebot indexes it as EN.
@@ -961,6 +1031,68 @@ export const strings = {
 
       ctaTitle: 'See your stock stay in sync',
       ctaSub: 'Tell us about your shop, your POS and your sales channels. We’ll show you exactly what the sync would look like on your next drop — no commitment.',
+      ctaButton: 'Book a demo',
+    },
+    aquariumQc: {
+      eyebrow: 'Aquarium trade · Quebec',
+      hero: 'Your coral sold twice: once at the counter, once online.',
+      intro:
+        'For coral and fish stores in Quebec, every frag is a one-of-a-kind item. We connect your POS and your website in real time, so an item sold at the counter disappears from the site before the next customer can order it.',
+
+      problemTitle: 'A coral isn’t a t-shirt in size M',
+      problemBody: [
+        'Most inventory software starts from a simple assumption: one SKU, one quantity, restock as needed. A medium t-shirt — you have twelve, you sell one, eleven remain. The aquarium trade doesn’t work like that.',
+        'Your corals sell WYSIWYG — what you see is what you get. Each frag is photographed individually, carries its own price, and exists in quantity 1. Once it’s gone, there’s no restock: it’s a living colony, not a catalog item.',
+        'Then add livestock: fish in quarantine, DOA (dead on arrival) policies, shipping windows that depend on the weather, heat packs through a Quebec winter. And above all, you sell everywhere at once — at the counter in Laval or Montreal, on your online store, and often live in Facebook groups and live sales.',
+      ],
+      problemPointsTitle: 'What makes your stock unmanageable off the shelf',
+      problemPoints: [
+        'Each coral = a unique item in quantity 1, photographed, individually priced.',
+        'No restock possible: once sold, it must disappear, not go “back in stock”.',
+        'Simultaneous multi-channel sales: counter, website, Facebook groups, live sales.',
+        'Livestock: quarantine, DOA, store credit, weather-dependent shipping windows.',
+      ],
+
+      genericTitle: 'Why Shopify or Lightspeed alone isn’t enough',
+      genericBody: [
+        'The problem isn’t Shopify. It isn’t Lightspeed either — headquartered in Montreal and running a large share of Quebec retail. The problem is that neither one is the source of truth for the other.',
+        'Your POS keeps a count. Your site keeps another. Consumer sync apps are built for classic SKUs with high quantities and regular restocking — not for unique livestock in quantity 1. They sync in batches, every few minutes. On a t-shirt, that delay doesn’t matter. On a one-of-a-kind coral, those few minutes are enough for it to be rung up at the counter and ordered online at the same time.',
+        'The result: overselling. You cancel, you refund, you apologize to a customer who wanted precisely that colony. And you re-key the stock by hand, at night, across two systems that don’t talk to each other.',
+      ],
+
+      solveTitle: 'What Torquemade puts in place',
+      solveSubtitle: 'A single source of truth, deduction to the second.',
+      solveBody:
+        'We build the missing sync layer between your POS and your online store — designed for unique livestock, not ready-to-wear.',
+      solveDelivery: [
+        'Single source of truth: one stock, not two counters that drift apart.',
+        'Real-time deduction: a counter sale removes the item from the site within seconds.',
+        'Quantity 1 handled natively: a sold frag flips to “sold” and hides itself automatically.',
+        'Reservation lock: an online cart holds the item for the duration of checkout.',
+        'Livestock handling: quarantine status, DOA, store credit and shipping windows.',
+        'True multi-channel: counter, site and direct sales reconciled in one place.',
+      ],
+
+      techTitle: 'How the POS → online store sync works',
+      techBody:
+        'Concretely, we connect your existing systems with a lightweight middleware layer. No rebuild: your POS and your site stay yours.',
+      techSteps: [
+        'A sale happens — at the counter (Lightspeed, Square, legacy system) or online (Shopify).',
+        'A webhook instantly triggers our sync layer.',
+        'Real stock is deducted and the unique item flips to “sold”.',
+        'The product page hides itself from the site before another customer can order it.',
+        'Edge cases — DOA, return, store credit — land in the right place, with no re-keying.',
+      ],
+      techNote:
+        'On an older ERP or POS? That’s exactly our specialty: connecting legacy to the web. See our ',
+
+      linkErpLabel: 'ERP ↔ e-commerce sync',
+      linkCrmLabel: 'Custom CRM',
+      linkCaseLabel: 'Case study: motorcycle dealership',
+      relatedTitle: 'Related reading',
+
+      ctaTitle: 'Let’s see your stock in action',
+      ctaSub: 'Tell us about your store and your sales channels. We’ll show you what the sync would look like, no commitment.',
       ctaButton: 'Book a demo',
     },
   },
