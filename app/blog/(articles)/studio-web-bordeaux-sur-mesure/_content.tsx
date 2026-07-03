@@ -12,7 +12,7 @@ export function StudioWebBordeauxSurMesureContent() {
 
       <p>
         Torquemade is an independent web studio based in Bordeaux. We design custom websites
-        and business software — CRM, booking systems, admin dashboards — for professionals
+        and business software (CRM, booking systems, admin dashboards) for professionals
         who need tools that match exactly their activity. No templates. No subcontracting.
         One point of contact, from brief to delivery.
       </p>
@@ -21,20 +21,20 @@ export function StudioWebBordeauxSurMesureContent() {
 
       <p>
         Custom doesn't necessarily mean more expensive or slower. It means every technical
-        and editorial decision is made based on your specific activity — not a pre-built
+        and editorial decision is made based on your specific activity, not a pre-built
         template we try to fit into your context. Your site is built on the stack that
         matches your performance and maintenance needs. Your content is written around the
         queries your future clients type. Your admin interface is built around your business
-        processes — not the other way around.
+        processes, not the other way around.
       </p>
 
       <h2>Projects we work on</h2>
 
       <ul>
-        <li><strong>Professional websites</strong> — showcase, e-commerce, portfolio, multi-brand sites. Next.js or Shopify stack depending on needs.</li>
-        <li><strong>Custom booking systems</strong> — for nautical activities, VTC drivers, mobile beauticians, tradespeople. Zero commission, integrated into your existing or new site.</li>
-        <li><strong>CRM and dashboards</strong> — admin interfaces adapted to your trade, synchronised with your existing tools.</li>
-        <li><strong>SEO and optimisation</strong> — audit, content strategy, technical optimisation, monthly monitoring.</li>
+        <li><strong>Professional websites</strong>: showcase, e-commerce, portfolio, multi-brand sites. Next.js or Shopify stack depending on needs.</li>
+        <li><strong>Custom booking systems</strong>: for nautical activities, VTC drivers, mobile beauticians, tradespeople. Zero commission, integrated into your existing or new site.</li>
+        <li><strong>CRM and dashboards</strong>: admin interfaces adapted to your trade, synchronised with your existing tools.</li>
+        <li><strong>SEO and optimisation</strong>: audit, content strategy, technical optimisation, monthly monitoring.</li>
       </ul>
 
       <h2>Our approach</h2>
@@ -43,7 +43,7 @@ export function StudioWebBordeauxSurMesureContent() {
         Every project starts with an understanding phase: what problem must your site or tool
         solve? Who are your clients and how do they search? What are your success indicators?
         These questions define project priorities before the first line of code. We work with
-        professionals who know what they want — and who seek a technical partner capable of
+        professionals who know what they want, and who seek a technical partner capable of
         building it properly, on time, with post-delivery support.
       </p>
 
@@ -52,7 +52,7 @@ export function StudioWebBordeauxSurMesureContent() {
       <p>
         <em>
           Have a web project or a need for a custom tool?{' '}
-          <Link href="/contact">Contact us</Link> — we'll discuss your situation and
+          <Link href="/contact">Contact us</Link>: we'll discuss your situation and
           tell you clearly if and how we can help.
         </em>
       </p>
@@ -87,8 +87,8 @@ export function StudioWebBordeauxSurMesureContent() {
 
       <p>
         Torquemade est un studio web indépendant basé à Bordeaux. Nous concevons
-        des sites web sur mesure et des logiciels métier — CRM, systèmes de réservation,
-        tableaux de bord admin — pour des professionnels qui ont besoin d'outils
+        des sites web sur mesure et des logiciels métier, CRM, systèmes de réservation,
+        tableaux de bord admin, pour des professionnels qui ont besoin d'outils
         qui correspondent exactement à leur activité. Pas de template. Pas de sous-traitance.
         Un interlocuteur unique, du brief à la livraison.
       </p>
@@ -98,35 +98,35 @@ export function StudioWebBordeauxSurMesureContent() {
       <p>
         Le sur mesure ne signifie pas nécessairement plus cher ou plus long. Il signifie
         que chaque décision technique et éditoriale est prise en fonction de votre activité
-        spécifique — pas d'un template préconçu qu'on essaie de faire rentrer dans votre
+        spécifique, pas d'un template préconçu qu'on essaie de faire rentrer dans votre
         contexte.
       </p>
 
       <p>
         Concrètement : votre site est construit sur la stack qui correspond à vos besoins
         de performance et de maintenance. Votre contenu est rédigé autour des requêtes
-        que tapent vos futurs clients — pas autour des termes que vous utilisez en interne.
-        Votre interface admin est construite autour de vos processus métier — pas l'inverse.
+        que tapent vos futurs clients, pas autour des termes que vous utilisez en interne.
+        Votre interface admin est construite autour de vos processus métier, pas l'inverse.
       </p>
 
       <h2>Les projets sur lesquels nous intervenons</h2>
 
       <ul>
         <li>
-          <strong>Sites web professionnels</strong> — vitrine, e-commerce, portfolio,
+          <strong>Sites web professionnels</strong>: vitrine, e-commerce, portfolio,
           site multi-marques. Stack Next.js ou Shopify selon les besoins.
         </li>
         <li>
-          <strong>Systèmes de réservation sur mesure</strong> — pour les activités
+          <strong>Systèmes de réservation sur mesure</strong>: pour les activités
           nautiques, les VTC, les esthéticiennes à domicile, les artisans.
           Zéro commission, intégration dans votre site existant ou nouveau.
         </li>
         <li>
-          <strong>CRM et tableaux de bord</strong> — interfaces d'administration
+          <strong>CRM et tableaux de bord</strong>: interfaces d'administration
           adaptées à votre métier, synchronisées avec vos outils existants.
         </li>
         <li>
-          <strong>SEO et optimisation</strong> — audit, stratégie de contenu,
+          <strong>SEO et optimisation</strong>: audit, stratégie de contenu,
           optimisation technique, suivi mensuel.
         </li>
       </ul>
@@ -141,7 +141,7 @@ export function StudioWebBordeauxSurMesureContent() {
       </p>
 
       <p>
-        Nous travaillons avec des professionnels qui savent ce qu'ils veulent —
+        Nous travaillons avec des professionnels qui savent ce qu'ils veulent,
         et qui cherchent un partenaire technique capable de le construire proprement,
         dans les délais et avec un suivi après livraison.
       </p>
@@ -151,7 +151,7 @@ export function StudioWebBordeauxSurMesureContent() {
       <p>
         <em>
           Vous avez un projet web ou un besoin d'outil sur mesure ?{' '}
-          <Link href="/contact">Contactez-nous</Link> — on échange sur votre
+          <Link href="/contact">Contactez-nous</Link>: on échange sur votre
           situation et on vous dit clairement si et comment on peut vous aider.
         </em>
       </p>

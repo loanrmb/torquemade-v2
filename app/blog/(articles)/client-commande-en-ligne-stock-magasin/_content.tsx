@@ -15,7 +15,7 @@ export function ClientCommandeEnLigneStockMagasinContent() {
         She has chosen a jacket, entered her address, and paid by card. In her mind,
         that is the end of the transaction. In reality, it is the beginning of a
         cascade that should reach your store&apos;s stock system, your preparation
-        queue, and your logistics flow — within the next few hundred milliseconds.
+        queue, and your logistics flow, within the next few hundred milliseconds.
       </p>
 
       <h2>The invisible cascade</h2>
@@ -27,7 +27,7 @@ export function ClientCommandeEnLigneStockMagasinContent() {
 
       <p>
         The e-commerce platform registers the order, validates the payment, and fires
-        a webhook — a notification sent automatically to your ERP or stock management
+        a webhook, a notification sent automatically to your ERP or stock management
         system. The message contains the product reference, the quantity, the order ID,
         and the delivery address.
       </p>
@@ -35,13 +35,13 @@ export function ClientCommandeEnLigneStockMagasinContent() {
       <p>
         The ERP receives the webhook, finds the matching product in its catalogue,
         and decrements the stock by 1. It simultaneously updates the website&apos;s
-        available stock — preventing any other customer from ordering the same unit.
+        available stock, preventing any other customer from ordering the same unit.
         And it pushes a preparation task to your store&apos;s order management queue:
         item to locate, pack, and label.
       </p>
 
       <p>
-        The store receives the notification — on a screen, a tablet, or an automatically
+        The store receives the notification, on a screen, a tablet, or an automatically
         printed label. The team knows what to prepare before the courier arrives. Marie
         receives an order confirmation with a tracking number, generated from the same
         system.
@@ -59,7 +59,7 @@ export function ClientCommandeEnLigneStockMagasinContent() {
         In the mid-2010s, this kind of integration was the territory of enterprise
         retail. A dedicated IT team, a six-figure budget, custom middleware connecting
         proprietary systems, months of development and testing. It was not out of reach
-        for large chains — it was simply not on the radar for independent retailers
+        for large chains. It was simply not on the radar for independent retailers
         or growing businesses.
       </p>
 
@@ -77,14 +77,14 @@ export function ClientCommandeEnLigneStockMagasinContent() {
       <p>
         The shift happened gradually, then suddenly. Cloud infrastructure made ERP
         systems accessible via the internet without complex network configuration.
-        Standardised APIs — REST, JSON, OAuth — became the norm rather than the
+        Standardised APIs (REST, JSON, OAuth) became the norm rather than the
         exception. Webhooks became a standard feature of both e-commerce platforms
         and stock management tools.
       </p>
 
       <p>
         SaaS platforms reduced the cost of individual components dramatically: a
-        capable e-commerce platform, a solid POS, an API-accessible ERP — none of
+        capable e-commerce platform, a solid POS, an API-accessible ERP, none of
         these requires the investment they did a decade ago. And the developer
         ecosystem for building integrations between them matured: documented
         connectors, tested libraries, established patterns.
@@ -102,7 +102,7 @@ export function ClientCommandeEnLigneStockMagasinContent() {
         The most immediate change is the elimination of surprises. Your team knows
         what needs to be prepared before orders accumulate. Stock levels are accurate
         across all channels at all times. You do not discover a stockout when a customer
-        complains — you see it coming and reorder proactively.
+        complains, you see it coming and reorder proactively.
       </p>
 
       <p>
@@ -128,15 +128,15 @@ export function ClientCommandeEnLigneStockMagasinContent() {
       <p>
         The barrier to this kind of integration is less technical than it used to be.
         The tools exist, the patterns are established, the connectors are documented.
-        The real investment is not code — it is a decision about how you think about
+        The real investment is not code: it is a decision about how you think about
         stock.
       </p>
 
       <p>
         As long as stock is managed as three separate files, two spreadsheets, and
         a POS system that does not talk to the website, the integration cannot work.
-        The prerequisite is accepting that stock is a single dataset — one source of
-        truth — that all systems read from and write to. Once that decision is made,
+        The prerequisite is accepting that stock is a single dataset, one source of
+        truth, that all systems read from and write to. Once that decision is made,
         the technical implementation follows from it naturally.
       </p>
 
@@ -158,7 +158,7 @@ export function ClientCommandeEnLigneStockMagasinContent() {
       <p>
         <em>
           This architecture is what we build for retail businesses.{' '}
-          <Link href="/contact">Contact us</Link> — we assess your current tools
+          <Link href="/contact">Contact us</Link>: we assess your current tools
           and design the integration that fits your catalogue, your team, and your
           channels.
         </em>
@@ -174,7 +174,7 @@ export function ClientCommandeEnLigneStockMagasinContent() {
         Mardi, 14h32. Marie clique sur "Commander" sur votre site. Elle a choisi une
         veste, entré son adresse, payé par carte. Pour elle, la transaction est terminée.
         En réalité, elle déclenche une cascade qui devrait atteindre votre système de
-        stock magasin, votre file de préparation, et votre logistique — dans les
+        stock magasin, votre file de préparation, et votre logistique, dans les
         quelques centaines de millisecondes qui suivent.
       </p>
 
@@ -187,7 +187,7 @@ export function ClientCommandeEnLigneStockMagasinContent() {
 
       <p>
         La plateforme e-commerce enregistre la commande, valide le paiement, et envoie
-        un webhook — une notification automatique vers votre ERP ou logiciel de gestion
+        un webhook, une notification automatique vers votre ERP ou logiciel de gestion
         de stock. Le message contient la référence produit, la quantité, l&apos;identifiant
         de commande, et l&apos;adresse de livraison.
       </p>
@@ -195,13 +195,13 @@ export function ClientCommandeEnLigneStockMagasinContent() {
       <p>
         L&apos;ERP reçoit le webhook, retrouve le produit correspondant dans son
         catalogue, et décrémente le stock d&apos;une unité. Il met simultanément à
-        jour le stock disponible sur le site — empêchant tout autre client de commander
+        jour le stock disponible sur le site, empêchant tout autre client de commander
         la même unité. Et il pousse une tâche de préparation vers la file de gestion
         des commandes de votre magasin : article à localiser, emballer, étiqueter.
       </p>
 
       <p>
-        Le magasin reçoit la notification — sur un écran, une tablette, ou une étiquette
+        Le magasin reçoit la notification, sur un écran, une tablette, ou une étiquette
         imprimée automatiquement. L&apos;équipe sait quoi préparer avant
         l&apos;arrivée du transporteur. Marie reçoit une confirmation de commande
         avec un numéro de suivi, généré par le même système.
@@ -221,7 +221,7 @@ export function ClientCommandeEnLigneStockMagasinContent() {
         du retail enterprise. Une équipe IT dédiée, un budget à six chiffres, du
         middleware sur mesure connectant des systèmes propriétaires, des mois de
         développement et de tests. Ce n&apos;était pas hors de portée pour les
-        grandes enseignes — c&apos;était simplement hors du radar des commerces
+        grandes enseignes, c&apos;était simplement hors du radar des commerces
         indépendants ou des entreprises en croissance.
       </p>
 
@@ -240,7 +240,7 @@ export function ClientCommandeEnLigneStockMagasinContent() {
       <p>
         Le basculement s&apos;est produit progressivement, puis brusquement.
         L&apos;infrastructure cloud a rendu les ERP accessibles par internet sans
-        configuration réseau complexe. Les API standardisées — REST, JSON, OAuth —
+        configuration réseau complexe. Les API standardisées (REST, JSON, OAuth)
         sont devenues la norme plutôt que l&apos;exception. Les webhooks sont devenus
         une fonctionnalité standard des plateformes e-commerce et des logiciels de
         gestion de stock.
@@ -249,7 +249,7 @@ export function ClientCommandeEnLigneStockMagasinContent() {
       <p>
         Les plateformes SaaS ont considérablement réduit le coût de chaque composant :
         une plateforme e-commerce capable, un logiciel de caisse solide, un ERP
-        accessible par API — aucun de ces éléments ne nécessite l&apos;investissement
+        accessible par API, aucun de ces éléments ne nécessite l&apos;investissement
         qu&apos;il demandait il y a dix ans. Et l&apos;écosystème développeur pour
         construire les intégrations entre eux a mûri : connecteurs documentés,
         bibliothèques testées, patterns établis.
@@ -267,7 +267,7 @@ export function ClientCommandeEnLigneStockMagasinContent() {
         Le changement le plus immédiat est la disparition des surprises. Votre équipe
         sait quoi préparer avant que les commandes s&apos;accumulent. Les niveaux de
         stock sont exacts sur tous les canaux à tout moment. Vous ne découvrez pas
-        une rupture quand un client se plaint — vous la voyez venir et vous
+        une rupture quand un client se plaint, vous la voyez venir et vous
         réapprovisionnez en amont.
       </p>
 
@@ -295,7 +295,7 @@ export function ClientCommandeEnLigneStockMagasinContent() {
       <p>
         La barrière à ce type d&apos;intégration est moins technique qu&apos;elle
         ne l&apos;était. Les outils existent, les patterns sont établis, les connecteurs
-        sont documentés. Le vrai investissement n&apos;est pas le code — c&apos;est
+        sont documentés. Le vrai investissement n&apos;est pas le code: c&apos;est
         une décision sur la façon dont vous pensez votre stock.
       </p>
 
@@ -303,7 +303,7 @@ export function ClientCommandeEnLigneStockMagasinContent() {
         Tant que le stock est géré comme trois fichiers séparés, deux tableurs, et
         un logiciel de caisse qui ne parle pas au site, l&apos;intégration ne peut
         pas fonctionner. Le prérequis est d&apos;accepter que le stock est une donnée
-        unique — une seule source de vérité — que tous les systèmes lisent et dans
+        unique (une seule source de vérité) que tous les systèmes lisent et dans
         laquelle ils écrivent. Une fois cette décision prise, l&apos;implémentation
         technique en découle naturellement.
       </p>
@@ -327,7 +327,7 @@ export function ClientCommandeEnLigneStockMagasinContent() {
       <p>
         <em>
           Cette architecture, nous la construisons pour des commerces comme le vôtre.{' '}
-          <Link href="/contact">Contactez-nous</Link> — nous évaluons vos outils
+          <Link href="/contact">Contactez-nous</Link>: nous évaluons vos outils
           actuels et concevons l&apos;intégration adaptée à votre catalogue, votre
           équipe et vos canaux.
         </em>

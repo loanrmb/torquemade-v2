@@ -11,7 +11,7 @@ export function WoocommerceShopifySurMesureConnexionErpContent() {
       <h1 className="blog-article-title">WooCommerce, Shopify, or custom: which solution to connect my ERP?</h1>
 
       <p>
-        The choice of e-commerce platform is often made for the wrong reasons — because
+        The choice of e-commerce platform is often made for the wrong reasons, because
         a competitor uses it, because it looks good in a demo, because setup seems fast.
         The question that actually matters is simpler and more technical: can this platform
         reliably communicate with my inventory system? The answer shapes everything that
@@ -31,7 +31,7 @@ export function WoocommerceShopifySurMesureConnexionErpContent() {
 
       <p>
         WooCommerce is a plugin built on WordPress. It powers a large share of small and
-        medium e-commerce sites — not because it is the best option on every dimension,
+        medium e-commerce sites, not because it is the best option on every dimension,
         but because WordPress is already ubiquitous and WooCommerce inherits that
         ecosystem.
       </p>
@@ -46,7 +46,7 @@ export function WoocommerceShopifySurMesureConnexionErpContent() {
 
       <p>
         <strong>Strengths.</strong> High flexibility: you can modify almost anything
-        without being locked into a vendor. Initial cost is relatively low — the core
+        without being locked into a vendor. Initial cost is relatively low, the core
         is free. Large community, extensive documentation, and a wide range of
         third-party integrations.
       </p>
@@ -54,7 +54,7 @@ export function WoocommerceShopifySurMesureConnexionErpContent() {
       <p>
         <strong>Limits.</strong> Maintenance burden is real: WordPress, WooCommerce,
         and each plugin must be updated separately, and incompatibilities between
-        versions are frequent. Performance requires careful attention — a slow WordPress
+        versions are frequent. Performance requires careful attention, a slow WordPress
         install is a conversion killer. Costs compound as you add plugins. And ERP
         integrations via plugins are only as reliable as the plugin&apos;s maintenance
         cycle.
@@ -83,7 +83,7 @@ export function WoocommerceShopifySurMesureConnexionErpContent() {
       </p>
 
       <p>
-        <strong>Strengths.</strong> Fast time to market — a functional store can be
+        <strong>Strengths.</strong> Fast time to market: a functional store can be
         operational in days. Infrastructure reliability is high and managed by Shopify.
         The app marketplace covers most standard integration needs. Updates and security
         patches are handled automatically.
@@ -91,7 +91,7 @@ export function WoocommerceShopifySurMesureConnexionErpContent() {
 
       <p>
         <strong>Limits.</strong> Monthly costs rise as you add apps. Transaction fees
-        apply unless you use Shopify Payments. Customisation has limits — you work
+        apply unless you use Shopify Payments. Customisation has limits, you work
         within what Shopify allows, not what you design from scratch. Some ERP
         integrations only exist via paid third-party apps, adding a dependency on
         external vendors.
@@ -111,29 +111,29 @@ export function WoocommerceShopifySurMesureConnexionErpContent() {
       <h2>Custom (Next.js, headless)</h2>
 
       <p>
-        A custom-built site — typically using a modern framework like Next.js, connected
-        directly to your ERP&apos;s API — is the third path. It is also the most
+        A custom-built site: typically using a modern framework like Next.js, connected
+        directly to your ERP&apos;s API, is the third path. It is also the most
         frequently misunderstood.
       </p>
 
       <p>
         <strong>How it connects to an ERP.</strong> Directly, via the ERP&apos;s native
         API, without any intermediary layer. The developer writes the integration
-        specifically for your stack — no plugin compatibility matrix, no version
+        specifically for your stack, no plugin compatibility matrix, no version
         mismatch risk, no dependency on third-party app maintenance cycles.
       </p>
 
       <p>
         <strong>Strengths.</strong> No compromises on functionality or architecture.
         Performance can be optimised at every layer. The connection to your ERP is as
-        tight as you want — real-time, bidirectional, handling every edge case in your
+        tight as you want, real-time, bidirectional, handling every edge case in your
         specific workflow. No recurring app fees, no platform lock-in, full ownership
         of your codebase.
       </p>
 
       <p>
         <strong>Limits.</strong> Higher upfront investment. Requires a developer who
-        knows what they are doing — both on the web side and on the ERP integration
+        knows what they are doing, both on the web side and on the ERP integration
         side. Ongoing maintenance is your responsibility, not a platform&apos;s.
       </p>
 
@@ -168,7 +168,7 @@ export function WoocommerceShopifySurMesureConnexionErpContent() {
 
       <p>
         The quality of your ERP connection does not fundamentally depend on which
-        platform you choose. It depends on the architecture behind the integration —
+        platform you choose. It depends on the architecture behind the integration:
         whether it is real-time or batch, whether it handles conflicts, whether it
         has a fallback when a system goes down. A well-built WooCommerce integration
         outperforms a poorly built Shopify one every time.
@@ -195,7 +195,7 @@ export function WoocommerceShopifySurMesureConnexionErpContent() {
         <em>
           You are choosing a platform and want to make sure your ERP integration will
           work as expected?{' '}
-          <Link href="/contact">Contact us</Link> — we audit your ERP, your catalogue
+          <Link href="/contact">Contact us</Link>: we audit your ERP, your catalogue
           complexity, and your team&apos;s resources, and recommend the right architecture.
         </em>
       </p>
@@ -207,7 +207,7 @@ export function WoocommerceShopifySurMesureConnexionErpContent() {
       <h1 className="blog-article-title">WooCommerce, Shopify ou sur mesure : quelle solution pour connecter mon ERP ?</h1>
 
       <p>
-        Le choix de la plateforme e-commerce se fait souvent pour de mauvaises raisons —
+        Le choix de la plateforme e-commerce se fait souvent pour de mauvaises raisons :
         parce qu&apos;un concurrent l&apos;utilise, parce que la démo était convaincante,
         parce que la mise en place semble rapide. La vraie question est plus simple et
         plus technique : cette plateforme peut-elle communiquer de façon fiable avec mon
@@ -226,7 +226,7 @@ export function WoocommerceShopifySurMesureConnexionErpContent() {
 
       <p>
         WooCommerce est un plugin construit sur WordPress. Il propulse une large part
-        des sites e-commerce de taille petite et moyenne — non pas parce que c&apos;est
+        des sites e-commerce de taille petite et moyenne, non pas parce que c&apos;est
         la meilleure option sur tous les critères, mais parce que WordPress est déjà
         omniprésent et que WooCommerce en hérite l&apos;écosystème.
       </p>
@@ -243,7 +243,7 @@ export function WoocommerceShopifySurMesureConnexionErpContent() {
       <p>
         <strong>Forces.</strong> Flexibilité élevée : on peut modifier presque tout
         sans être enfermé dans un cadre éditeur. Le coût initial est relativement
-        faible — le cœur est gratuit. Grande communauté, documentation étendue, large
+        faible, le cœur est gratuit. Grande communauté, documentation étendue, large
         choix d&apos;intégrations tierces.
       </p>
 
@@ -251,7 +251,7 @@ export function WoocommerceShopifySurMesureConnexionErpContent() {
         <strong>Limites.</strong> La charge de maintenance est réelle : WordPress,
         WooCommerce et chaque plugin doivent être mis à jour séparément, et les
         incompatibilités entre versions sont fréquentes. Les performances nécessitent
-        une attention particulière — une installation WordPress mal optimisée tue les
+        une attention particulière, une installation WordPress mal optimisée tue les
         conversions. Les coûts s&apos;accumulent avec les plugins payants. Et les
         intégrations ERP via plugins ne sont fiables que si le plugin est activement
         maintenu.
@@ -280,7 +280,7 @@ export function WoocommerceShopifySurMesureConnexionErpContent() {
       </p>
 
       <p>
-        <strong>Forces.</strong> Délai de mise sur le marché rapide — une boutique
+        <strong>Forces.</strong> Délai de mise sur le marché rapide, une boutique
         fonctionnelle peut être opérationnelle en quelques jours. La fiabilité de
         l&apos;infrastructure est élevée et gérée par Shopify. Le marketplace couvre
         la plupart des besoins d&apos;intégration standard. Les mises à jour et
@@ -290,7 +290,7 @@ export function WoocommerceShopifySurMesureConnexionErpContent() {
       <p>
         <strong>Limites.</strong> Les coûts mensuels augmentent avec les applications.
         Des frais de transaction s&apos;appliquent sauf si on utilise Shopify Payments.
-        La personnalisation a des limites — on travaille dans ce que Shopify permet,
+        La personnalisation a des limites, on travaille dans ce que Shopify permet,
         pas dans ce qu&apos;on conçoit de zéro. Certaines intégrations ERP
         n&apos;existent que via des apps tierces payantes.
       </p>
@@ -309,15 +309,15 @@ export function WoocommerceShopifySurMesureConnexionErpContent() {
       <h2>Sur mesure (Next.js, headless)</h2>
 
       <p>
-        Un site développé sur mesure — typiquement avec un framework moderne comme
-        Next.js, connecté directement à l&apos;API de votre ERP — est la troisième
+        Un site développé sur mesure: typiquement avec un framework moderne comme
+        Next.js, connecté directement à l&apos;API de votre ERP, est la troisième
         voie. C&apos;est aussi la plus souvent mal comprise.
       </p>
 
       <p>
         <strong>Comment il se connecte à un ERP.</strong> Directement, via l&apos;API
         native de l&apos;ERP, sans couche intermédiaire. Le développeur écrit
-        l&apos;intégration spécifiquement pour votre stack — pas de matrice de
+        l&apos;intégration spécifiquement pour votre stack, pas de matrice de
         compatibilité plugin, pas de risque d&apos;incompatibilité de version, pas
         de dépendance sur le cycle de maintenance d&apos;une app tierce.
       </p>
@@ -325,7 +325,7 @@ export function WoocommerceShopifySurMesureConnexionErpContent() {
       <p>
         <strong>Forces.</strong> Aucun compromis sur les fonctionnalités ou
         l&apos;architecture. Les performances peuvent être optimisées à chaque couche.
-        La connexion à votre ERP est aussi précise que vous le souhaitez — temps réel,
+        La connexion à votre ERP est aussi précise que vous le souhaitez, temps réel,
         bidirectionnelle, gérant chaque cas particulier de votre workflow spécifique.
         Pas de frais d&apos;apps récurrents, pas de lock-in plateforme, propriété
         totale du code.
@@ -333,7 +333,7 @@ export function WoocommerceShopifySurMesureConnexionErpContent() {
 
       <p>
         <strong>Limites.</strong> Investissement initial plus élevé. Nécessite un
-        développeur qui sait ce qu&apos;il fait — à la fois sur la partie web et sur
+        développeur qui sait ce qu&apos;il fait, à la fois sur la partie web et sur
         l&apos;intégration ERP. La maintenance est votre responsabilité, pas celle
         d&apos;une plateforme.
       </p>
@@ -372,7 +372,7 @@ export function WoocommerceShopifySurMesureConnexionErpContent() {
       <p>
         La qualité de votre connexion ERP ne dépend pas fondamentalement de la
         plateforme choisie. Elle dépend de l&apos;architecture derrière
-        l&apos;intégration — temps réel ou batch, gestion des conflits, fallback en
+        l&apos;intégration, temps réel ou batch, gestion des conflits, fallback en
         cas de panne. Une intégration WooCommerce bien conçue surpasse une intégration
         Shopify mal conçue à chaque fois.
       </p>
@@ -398,7 +398,7 @@ export function WoocommerceShopifySurMesureConnexionErpContent() {
         <em>
           Vous choisissez une plateforme et voulez vous assurer que votre intégration
           ERP fonctionnera comme prévu ?{' '}
-          <Link href="/contact">Contactez-nous</Link> — nous auditons votre ERP, la
+          <Link href="/contact">Contactez-nous</Link>: nous auditons votre ERP, la
           complexité de votre catalogue et les ressources de votre équipe, et vous
           recommandons la bonne architecture.
         </em>

@@ -13,7 +13,7 @@ export function GestionStockExcelVsLogicielDedieContent() {
       <p>
         Most retailers start with Excel. It&apos;s free, familiar, and flexible enough
         to get through the early months. The problem is that nobody tells you when it
-        stops being enough — and by the time you realise it, the damage is usually
+        stops being enough, and by the time you realise it, the damage is usually
         already done.
       </p>
 
@@ -22,7 +22,7 @@ export function GestionStockExcelVsLogicielDedieContent() {
       <p>
         Excel has a genuine advantage: almost everyone knows how to use it. No training,
         no subscription, no onboarding. You open a file, create columns for product
-        reference, quantity, location, unit cost — and you have something functional
+        reference, quantity, location, unit cost, and you have something functional
         in under an hour.
       </p>
 
@@ -58,7 +58,7 @@ export function GestionStockExcelVsLogicielDedieContent() {
 
       <p>
         <strong>No reliable multi-user access.</strong> Two people editing the same
-        file at the same time — even via shared drives — creates conflicts. One
+        file at the same time (even via shared drives) creates conflicts. One
         person&apos;s update overwrites another&apos;s. The file everyone considers
         current may not be. This is not a configuration problem; it is a fundamental
         limitation of the format.
@@ -74,7 +74,7 @@ export function GestionStockExcelVsLogicielDedieContent() {
 
       <p>
         <strong>File fragility.</strong> Corrupted files, accidental overwrites,
-        lost data due to a missed save — these are not hypothetical risks. They happen
+        lost data due to a missed save, these are not hypothetical risks. They happen
         regularly, and when they do, the damage is hard to reverse.
       </p>
 
@@ -138,8 +138,8 @@ export function GestionStockExcelVsLogicielDedieContent() {
       </p>
 
       <p>
-        For the choice between specific tools — Hiboutik, Tactill, EBP, Cegid,
-        Odoo — see our dedicated comparison:{' '}
+        For the choice between specific tools, Hiboutik, Tactill, EBP, Cegid,
+        Odoo: see our dedicated comparison:{' '}
         <Link href="/blog/quel-logiciel-gestion-stock-commerce-2026">
           which inventory management software for your store
         </Link>
@@ -152,7 +152,7 @@ export function GestionStockExcelVsLogicielDedieContent() {
         <em>
           You are managing stock in Excel and wondering whether it&apos;s time to
           switch?{' '}
-          <Link href="/contact">Contact us</Link> — we assess your current setup and
+          <Link href="/contact">Contact us</Link>: we assess your current setup and
           recommend the right migration path.
         </em>
       </p>
@@ -166,7 +166,7 @@ export function GestionStockExcelVsLogicielDedieContent() {
       <p>
         La plupart des commerces démarrent avec Excel. C&apos;est gratuit, connu de
         tous, et assez flexible pour tenir les premiers mois. Le problème, c&apos;est
-        que personne ne vous dit quand ça ne suffit plus — et quand vous vous en rendez
+        que personne ne vous dit quand ça ne suffit plus, et quand vous vous en rendez
         compte, les dégâts sont souvent déjà là.
       </p>
 
@@ -176,7 +176,7 @@ export function GestionStockExcelVsLogicielDedieContent() {
         Excel a un avantage réel : presque tout le monde sait s&apos;en servir. Pas
         de formation, pas d&apos;abonnement, pas d&apos;onboarding. On ouvre un
         fichier, on crée des colonnes pour la référence produit, la quantité, le
-        lieu, le coût unitaire — et on a quelque chose de fonctionnel en moins
+        lieu, le coût unitaire, et on a quelque chose de fonctionnel en moins
         d&apos;une heure.
       </p>
 
@@ -193,7 +193,7 @@ export function GestionStockExcelVsLogicielDedieContent() {
       <p>
         Les petits catalogues de moins de 100 références se gèrent parfaitement dans
         un tableur. Idem pour le prototypage : tester une nouvelle catégorie de produits,
-        monter un modèle de tarification, faire un calcul ponctuel — Excel est le bon
+        monter un modèle de tarification, faire un calcul ponctuel, Excel est le bon
         outil. Il est aussi idéal pour produire des rapports à partir de données
         exportées ailleurs, ou pour toute analyse ad hoc.
       </p>
@@ -214,7 +214,7 @@ export function GestionStockExcelVsLogicielDedieContent() {
 
       <p>
         <strong>Pas de multi-utilisateur fiable.</strong> Deux personnes qui éditent
-        le même fichier en même temps — même via un drive partagé — créent des conflits.
+        le même fichier en même temps (même via un drive partagé) créent des conflits.
         La mise à jour de l&apos;une écrase celle de l&apos;autre. Le fichier que tout
         le monde considère comme à jour ne l&apos;est peut-être pas. Ce n&apos;est
         pas un problème de configuration : c&apos;est une limite fondamentale du format.
@@ -230,7 +230,7 @@ export function GestionStockExcelVsLogicielDedieContent() {
 
       <p>
         <strong>La fragilité du fichier.</strong> Fichiers corrompus, écrasements
-        accidentels, données perdues faute de sauvegarde — ce ne sont pas des risques
+        accidentels, données perdues faute de sauvegarde, ce ne sont pas des risques
         hypothétiques. Ça arrive régulièrement, et quand ça arrive, les dégâts sont
         difficiles à réparer.
       </p>
@@ -297,8 +297,8 @@ export function GestionStockExcelVsLogicielDedieContent() {
       </p>
 
       <p>
-        Pour le choix entre les solutions concrètes — Hiboutik, Tactill, EBP, Cegid,
-        Odoo — voir notre comparatif dédié :{' '}
+        Pour le choix entre les solutions concrètes, Hiboutik, Tactill, EBP, Cegid,
+        Odoo: voir notre comparatif dédié :{' '}
         <Link href="/blog/quel-logiciel-gestion-stock-commerce-2026">
           quel logiciel de gestion de stock pour votre commerce
         </Link>
@@ -311,7 +311,7 @@ export function GestionStockExcelVsLogicielDedieContent() {
         <em>
           Vous gérez votre stock sous Excel et vous vous demandez si c&apos;est le
           moment de changer ?{' '}
-          <Link href="/contact">Contactez-nous</Link> — nous analysons votre
+          <Link href="/contact">Contactez-nous</Link>: nous analysons votre
           configuration actuelle et vous recommandons le bon chemin de migration.
         </em>
       </p>

@@ -19,7 +19,7 @@ function ArticleFR() {
           le même enjeu. Quand un habitant du coin tape &ldquo;coiffeur bordeaux&rdquo; ou &ldquo;mécanicien
           près de chez moi&rdquo;, son téléphone décide en quelques millisecondes qui mérite
           d&apos;apparaître. Ce guide détaille, étape par étape, les leviers du SEO local
-          qui font la différence en 2025 — sans budget publicitaire, sans mystère.
+          qui font la différence en 2025, sans budget publicitaire, sans mystère.
         </p>
       </header>
 
@@ -119,7 +119,7 @@ function ArticleFR() {
         <h2>3. Cohérence NAP : nom, adresse, téléphone partout</h2>
         <p>
           NAP est l&apos;acronyme anglais de <em>Name, Address, Phone</em>.
-          Google consolide les informations vous concernant depuis des dizaines de sources —
+          Google consolide les informations vous concernant depuis des dizaines de sources :
           annuaires, presse locale, réseaux sociaux, sites partenaires. Si votre adresse
           est écrite différemment ici et là, l&apos;algorithme doute de votre existence physique.
         </p>
@@ -146,7 +146,7 @@ function ArticleFR() {
         <p>
           Les avis Google sont à la fois un facteur de classement et un levier de conversion.
           Un établissement avec 80 avis à 4,6 étoiles va systématiquement apparaître avant
-          un concurrent avec 12 avis à 4,8 — la quantité compte autant que la note moyenne.
+          un concurrent avec 12 avis à 4,8, la quantité compte autant que la note moyenne.
         </p>
 
         <h3>Comment obtenir plus d&apos;avis légitimement</h3>
@@ -163,7 +163,7 @@ function ArticleFR() {
 
         <h3>Répondre à tous les avis</h3>
         <p>
-          Répondre aux avis — positifs comme négatifs — est un signal d&apos;activité pris en compte
+          Répondre aux avis (positifs comme négatifs) est un signal d&apos;activité pris en compte
           par Google. Pour les avis négatifs, une réponse calme, professionnelle et factuelle
           rassure les futurs clients bien plus qu&apos;un silence. Évitez les formules génériques.
           Personnalisez chaque réponse.
@@ -213,7 +213,7 @@ function ArticleFR() {
         <h3>Créer des pages locales dédiées</h3>
         <p>
           Si vous opérez dans plusieurs villes ou quartiers, créez une page spécifique par zone
-          — avec du contenu unique pour chacune. Google pénalise le contenu dupliqué,
+, avec du contenu unique pour chacune. Google pénalise le contenu dupliqué,
           même pour des variations géographiques.
         </p>
 
@@ -303,7 +303,7 @@ function ArticleFR() {
         <h3>Google Search Console</h3>
         <ul>
           <li>Les impressions et clics sur vos requêtes locales cibles</li>
-          <li>Le CTR par requête — un CTR faible indique une balise title à améliorer</li>
+          <li>Le CTR par requête : un CTR faible indique une balise title à améliorer</li>
           <li>La position moyenne sur vos mots-clés géo-ciblés</li>
           <li>Les pages qui reçoivent le plus de trafic organique local</li>
         </ul>
@@ -332,7 +332,7 @@ function ArticleFR() {
           C&apos;est exactement l&apos;approche que nous appliquons sur les projets que nous accompagnons.
           Sprint Motors est passé de 0 à 791 000 impressions Google en moins de 18 mois
           sans investir un euro en publicité. Le SEO local prend du temps, mais il génère
-          du trafic qualifié durablement — là où une campagne publicitaire s&apos;arrête au premier
+          du trafic qualifié durablement, là où une campagne publicitaire s&apos;arrête au premier
           euro non dépensé.
         </p>
       </section>
@@ -379,10 +379,10 @@ function ArticleEN() {
       <header className="blog-header">
         <h1 className="blog-article-title">Local SEO in 2025: The Complete Guide for Local Businesses</h1>
         <p className="blog-intro">
-          A restaurant, a garage, a hair salon, or a physiotherapy practice — all share the same
+          A restaurant, a garage, a hair salon, or a physiotherapy practice, all share the same
           challenge. When a local resident types &ldquo;hairdresser bordeaux&rdquo; or &ldquo;mechanic
           near me,&rdquo; their phone decides in milliseconds who deserves to appear. This guide
-          walks through, step by step, the local SEO levers that make the difference in 2025 —
+          walks through, step by step, the local SEO levers that make the difference in 2025,
           with no advertising budget, no mystery.
         </p>
       </header>
@@ -477,7 +477,7 @@ function ArticleEN() {
         <h2>3. NAP Consistency: Name, Address, Phone Everywhere</h2>
         <p>
           NAP stands for Name, Address, Phone. Google consolidates information about you from
-          dozens of sources — directories, local press, social media, partner sites. If your
+          dozens of sources, directories, local press, social media, partner sites. If your
           address is written differently here and there, the algorithm doubts your physical existence.
         </p>
 
@@ -505,7 +505,7 @@ function ArticleEN() {
         <p>
           Google reviews are both a ranking factor and a conversion lever. An establishment
           with 80 reviews at 4.6 stars will systematically appear before a competitor with
-          12 reviews at 4.8 — quantity matters as much as average rating.
+          12 reviews at 4.8: quantity matters as much as average rating.
         </p>
 
         <h3>How to get more reviews legitimately</h3>
@@ -522,7 +522,7 @@ function ArticleEN() {
 
         <h3>Responding to all reviews</h3>
         <p>
-          Responding to reviews — positive and negative — is an activity signal factored in by Google.
+          Responding to reviews (positive and negative) is an activity signal factored in by Google.
           For negative reviews, a calm, professional, factual response reassures future clients
           far more than silence. Avoid generic phrases. Personalise every response.
         </p>
@@ -570,7 +570,7 @@ function ArticleEN() {
 
         <h3>Creating dedicated local pages</h3>
         <p>
-          If you operate in multiple cities or neighbourhoods, create a specific page per area —
+          If you operate in multiple cities or neighbourhoods, create a specific page per area,
           with unique content for each. Google penalises duplicate content, even for geographic variations.
         </p>
 
@@ -658,7 +658,7 @@ function ArticleEN() {
         <h3>Google Search Console</h3>
         <ul>
           <li>Impressions and clicks on your target local queries</li>
-          <li>CTR per query — a low CTR indicates a title or description to improve</li>
+          <li>CTR per query: a low CTR indicates a title or description to improve</li>
           <li>Average position on your geo-targeted keywords</li>
           <li>Pages receiving the most local organic traffic</li>
         </ul>
@@ -686,7 +686,7 @@ function ArticleEN() {
         <p>
           That&apos;s exactly the approach we apply on the projects we support. Sprint Motors went
           from 0 to 791,000 Google impressions in under 18 months without spending a single euro
-          on advertising. Local SEO takes time, but it generates qualified traffic durably —
+          on advertising. Local SEO takes time, but it generates qualified traffic durably,
           unlike an ad campaign that stops the moment the budget does.
         </p>
       </section>
