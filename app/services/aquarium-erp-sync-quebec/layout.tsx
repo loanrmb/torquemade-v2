@@ -5,6 +5,9 @@ import { serviceSchema } from '@/lib/schema'
 
 const meta = strings.fr.meta.aquariumQc
 const url = 'https://www.torquemade.com/services/aquarium-erp-sync-quebec'
+// English-market counterpart (page #2). Paired via hreflang so search engines
+// treat the two as language variants, not competing pages.
+const enUrl = 'https://www.torquemade.com/services/aquarium-erp-sync-en'
 
 const schema = serviceSchema({
   name: 'Synchronisation stock aquariophilie ↔ e-commerce (Québec)',
@@ -16,7 +19,14 @@ const schema = serviceSchema({
 export const metadata: Metadata = {
   title: meta.title,
   description: meta.description,
-  alternates: { canonical: url },
+  alternates: {
+    canonical: url,
+    languages: {
+      'fr-CA': url,
+      'en-CA': enUrl,
+      'x-default': enUrl,
+    },
+  },
   openGraph: {
     title: meta.title,
     description: meta.description,
