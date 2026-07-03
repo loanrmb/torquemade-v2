@@ -15,6 +15,8 @@ const LABELS = {
     searchPlaceholder: 'Rechercher…',
     searchAria: 'Rechercher',
     clearAria: 'Effacer',
+    newest: 'Plus récent',
+    oldest: 'Plus ancien',
   },
   en: {
     all: 'All',
@@ -23,6 +25,8 @@ const LABELS = {
     searchPlaceholder: 'Search…',
     searchAria: 'Search',
     clearAria: 'Clear',
+    newest: 'Newest',
+    oldest: 'Oldest',
   },
 }
 
@@ -74,6 +78,8 @@ export function BlogList() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const activeKey = searchParams.get('cat') ?? 'all'
+  // 'oldest' = ascending by publishedAt; default (no param) = newest first.
+  const sortOrder = searchParams.get('sort') === 'oldest' ? 'oldest' : 'newest'
   const listRef = useRef<HTMLDivElement>(null)
 
   const [search, setSearch] = useState('')
@@ -103,6 +109,18 @@ export function BlogList() {
     listRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
+  function handleSort(order: 'newest' | 'oldest') {
+    const params = new URLSearchParams(searchParams.toString())
+    if (order === 'newest') {
+      // Newest is the default — keep the URL clean (matches middleware canon).
+      params.delete('sort')
+    } else {
+      params.set('sort', 'oldest')
+    }
+    router.push(`/blog?${params.toString()}`, { scroll: false })
+    listRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   const featuredPosts = posts.filter((p) => p.featured)
   const isSearching = search.trim().length > 0
 
@@ -123,6 +141,10 @@ export function BlogList() {
         p.description[lang].toLowerCase().includes(q) ||
         p.category.toLowerCase().includes(q)
       )
+    })
+    .sort((a, b) => {
+      const diff = a.publishedAt.localeCompare(b.publishedAt)
+      return sortOrder === 'oldest' ? diff : -diff
     })
 
   return (
@@ -169,6 +191,37 @@ export function BlogList() {
                 )
               })}
             </div>
+          </div>
+
+          {/* ── TRI — bascule récent / ancien, même style liquid glass ── */}
+          <div
+            className="inline-flex items-center gap-1 rounded-full px-1.5 py-1 shrink-0"
+            style={{
+              background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.72)',
+              backdropFilter: 'blur(20px) saturate(150%)',
+              WebkitBackdropFilter: 'blur(20px) saturate(150%)',
+              border: '1px solid rgba(var(--nav-bg-raw, 255 255 255), 0.25)',
+              boxShadow: '0 2px 16px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.5) inset',
+            }}
+          >
+            {(['newest', 'oldest'] as const).map((order) => {
+              const isActive = sortOrder === order
+              return (
+                <button
+                  key={order}
+                  onClick={() => handleSort(order)}
+                  aria-pressed={isActive}
+                  className="rounded-full px-3 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 whitespace-nowrap"
+                  style={{
+                    background: isActive ? 'hsl(var(--bg-inverse))' : 'transparent',
+                    color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-primary))',
+                    opacity: isActive ? 1 : 0.6,
+                  }}
+                >
+                  {t[order]}
+                </button>
+              )
+            })}
           </div>
 
           {/* ── ZONE RECHERCHE — sibling du pill, même ligne horizontale ── */}
