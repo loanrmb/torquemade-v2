@@ -11,7 +11,7 @@ export function QuelLogicielGestionStockCommerce2026Content() {
       <h1 className="blog-article-title">Which inventory management software for a physical store in 2026?</h1>
 
       <p>
-        Cegid, Hiboutik, EBP, Tactill, Odoo — the options are plentiful, the marketing
+        Cegid, Hiboutik, EBP, Tactill, Odoo, the options are plentiful, the marketing
         promises similar. Choosing the wrong tool means either paying for features you
         will never use or hitting a wall six months later when your needs outgrow the
         software. Here is how to think through the decision, and what each solution
@@ -34,7 +34,7 @@ export function QuelLogicielGestionStockCommerce2026Content() {
       <p>
         <strong>Single or multi-location.</strong> If you have more than one point of
         sale, you need centralised stock visibility. Not all tools handle this natively
-        — some require add-ons or a more expensive tier.
+, some require add-ons or a more expensive tier.
       </p>
 
       <p>
@@ -68,7 +68,7 @@ export function QuelLogicielGestionStockCommerce2026Content() {
 
       <p>
         <strong>Tactill.</strong> Cloud-based, starting from around €50/month. Strong
-        on design and ergonomics — the tablet-first interface is genuinely pleasant to
+        on design and ergonomics, the tablet-first interface is genuinely pleasant to
         use. Good fit for retail and food service. Stock management is solid without
         being exhaustive. E-commerce integrations available via connectors, though
         not all platforms are natively covered.
@@ -94,7 +94,7 @@ export function QuelLogicielGestionStockCommerce2026Content() {
       <p>
         <strong>Odoo.</strong> Open-source and modular: you activate only the modules
         you need (inventory, POS, e-commerce, accounting). Pricing is per user per
-        month, with a free tier for one app. The main advantage is flexibility — Odoo
+        month, with a free tier for one app. The main advantage is flexibility, Odoo
         can be configured to match almost any workflow. The main constraint: it requires
         technical setup and ongoing maintenance. Not recommended if you have no internal
         IT resources or no technical partner.
@@ -110,7 +110,7 @@ export function QuelLogicielGestionStockCommerce2026Content() {
       <p>
         Common restrictions: capped number of products, limited number of users,
         no data export in usable formats, no priority support, missing integrations.
-        More critically: free tiers are rarely stable — pricing changes, feature caps
+        More critically: free tiers are rarely stable, pricing changes, feature caps
         tighten, or the product is discontinued. A tool you depend on for daily
         operations should have a viable commercial model behind it.
       </p>
@@ -139,7 +139,7 @@ export function QuelLogicielGestionStockCommerce2026Content() {
       <p>
         For Shopify, Hiboutik and Tactill have documented connectors. Odoo has a
         native Shopify integration. EBP and Cegid typically require custom development
-        or a middleware layer for e-commerce sync — which is not a problem as long
+        or a middleware layer for e-commerce sync, which is not a problem as long
         as it is budgeted from the start.
       </p>
 
@@ -168,7 +168,7 @@ export function QuelLogicielGestionStockCommerce2026Content() {
       <p>
         <em>
           Not sure which tool fits your situation?{' '}
-          <Link href="/contact">Contact us</Link> — we audit your current setup and
+          <Link href="/contact">Contact us</Link>: we audit your current setup and
           recommend the solution best suited to your volume, budget, and integration needs.
         </em>
       </p>
@@ -180,7 +180,7 @@ export function QuelLogicielGestionStockCommerce2026Content() {
       <h1 className="blog-article-title">Quel logiciel de gestion de stock pour un commerce physique en 2026 ?</h1>
 
       <p>
-        Cegid, Hiboutik, EBP, Tactill, Odoo — les options sont nombreuses, les promesses
+        Cegid, Hiboutik, EBP, Tactill, Odoo, les options sont nombreuses, les promesses
         marketing similaires. Choisir le mauvais outil, c&apos;est soit payer des
         fonctionnalités qu&apos;on n&apos;utilisera jamais, soit se retrouver face à
         un mur six mois plus tard quand les besoins dépassent le logiciel. Voici
@@ -205,7 +205,7 @@ export function QuelLogicielGestionStockCommerce2026Content() {
       <p>
         <strong>Une ou plusieurs boutiques.</strong> Si vous avez plusieurs points de
         vente, il vous faut une visibilité centralisée du stock. Ce n&apos;est pas géré
-        nativement par tous les outils — certains nécessitent des modules
+        nativement par tous les outils, certains nécessitent des modules
         complémentaires ou un abonnement supérieur.
       </p>
 
@@ -242,7 +242,7 @@ export function QuelLogicielGestionStockCommerce2026Content() {
 
       <p>
         <strong>Tactill.</strong> Solution cloud, à partir de 50 €/mois environ. Point
-        fort sur le design et l&apos;ergonomie — l&apos;interface pensée pour tablette
+        fort sur le design et l&apos;ergonomie, l&apos;interface pensée pour tablette
         est réellement agréable à utiliser. Bonne adéquation avec le commerce de détail
         et la restauration. La gestion de stock est solide sans être exhaustive.
         Intégrations e-commerce disponibles via connecteurs, mais toutes les plateformes
@@ -272,7 +272,7 @@ export function QuelLogicielGestionStockCommerce2026Content() {
         <strong>Odoo.</strong> Open source et modulaire : on active uniquement les
         modules nécessaires (stock, caisse, e-commerce, comptabilité). Tarif par
         utilisateur par mois, avec un niveau gratuit pour une seule application.
-        L&apos;avantage principal est la flexibilité — Odoo peut être configuré pour
+        L&apos;avantage principal est la flexibilité, Odoo peut être configuré pour
         correspondre à presque n&apos;importe quel flux de travail. La contrainte
         principale : il nécessite une mise en place technique et une maintenance suivie.
         Déconseillé sans ressources IT internes ou partenaire technique.
@@ -289,7 +289,7 @@ export function QuelLogicielGestionStockCommerce2026Content() {
         Restrictions fréquentes : nombre de produits plafonné, nombre d&apos;utilisateurs
         limité, export de données dans des formats inutilisables, pas de support
         prioritaire, intégrations manquantes. Plus critiquement : les niveaux gratuits
-        ne sont jamais stables dans le temps — les tarifs changent, les plafonds
+        ne sont jamais stables dans le temps: les tarifs changent, les plafonds
         se resserrent, ou le produit est abandonné. Un outil dont vous dépendez pour
         vos opérations quotidiennes doit s&apos;appuyer sur un modèle commercial viable.
       </p>
@@ -321,7 +321,7 @@ export function QuelLogicielGestionStockCommerce2026Content() {
         Pour Shopify, Hiboutik et Tactill ont des connecteurs documentés. Odoo dispose
         d&apos;une intégration Shopify native. EBP et Cegid nécessitent généralement
         du développement spécifique ou une couche middleware pour la synchronisation
-        e-commerce — ce qui n&apos;est pas un problème, à condition de le budgéter
+        e-commerce, ce qui n&apos;est pas un problème, à condition de le budgéter
         dès le départ.
       </p>
 
@@ -351,7 +351,7 @@ export function QuelLogicielGestionStockCommerce2026Content() {
       <p>
         <em>
           Vous ne savez pas quel outil correspond à votre situation ?{' '}
-          <Link href="/contact">Contactez-nous</Link> — nous auditons votre
+          <Link href="/contact">Contactez-nous</Link>: nous auditons votre
           configuration et recommandons la solution la mieux adaptée à votre
           volume, votre budget et vos besoins d&apos;intégration.
         </em>

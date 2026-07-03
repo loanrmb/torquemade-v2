@@ -14,17 +14,17 @@ export function MicrositeMarqueMotoCont() {
         A dealer distributing multiple brands faces a classic SEO problem: their main
         site can't rank effectively for each brand's specific queries. When someone
         searches "Cyclone motorbike Bordeaux" or "Voge 500R available Gironde," they
-        want a precise answer — not a generalist dealership homepage.
+        want a precise answer, not a generalist dealership homepage.
       </p>
 
       <h2>Why microsites better capture brand queries</h2>
 
       <p>
         Google values thematic relevance. A site entirely dedicated to one motorcycle brand
-        sends a strong signal — all structure, content, and internal links revolve around
+        sends a strong signal, all structure, content, and internal links revolve around
         that brand. It can therefore rank for brand queries that the dealership's main site
-        couldn't target as precisely. This is particularly useful for lesser-known brands —
-        brands like Cyclone, Voge, or Orcal — gaining market share but underrepresented
+        couldn't target as precisely. This is particularly useful for lesser-known brands:
+        brands like Cyclone, Voge, or Orcal, gaining market share but underrepresented
         online. A well-executed microsite can capture a qualified audience where competition
         is still low.
       </p>
@@ -32,16 +32,16 @@ export function MicrositeMarqueMotoCont() {
       <h2>What a brand microsite must contain</h2>
 
       <ul>
-        <li><strong>The complete range of available models</strong> — with photos, technical specs, and indicative prices.</li>
-        <li><strong>Brand information</strong> — its history, values, positioning. This editorial content reinforces the microsite's SEO authority.</li>
+        <li><strong>The complete range of available models</strong>: with photos, technical specs, and indicative prices.</li>
+        <li><strong>Brand information</strong>: its history, values, positioning. This editorial content reinforces the microsite's SEO authority.</li>
         <li><strong>A contact or test ride request form</strong> directly linked to the dealership.</li>
-        <li><strong>Links back to the main dealership site</strong> — to create coherence and cross-traffic.</li>
+        <li><strong>Links back to the main dealership site</strong>: to create coherence and cross-traffic.</li>
       </ul>
 
       <h2>When a microsite is worth the investment</h2>
 
       <p>
-        A microsite is justified when you distribute a brand with its own search potential —
+        A microsite is justified when you distribute a brand with its own search potential:
         when people type the brand name followed by a location on Google. If the brand is
         well-known enough to generate these local searches, a microsite positions you exactly
         where those buyers are.
@@ -88,7 +88,7 @@ export function MicrositeMarqueMotoCont() {
         Un concessionnaire qui distribue plusieurs marques fait face à un problème SEO
         classique : son site principal ne peut pas se positionner efficacement sur les
         requêtes spécifiques à chaque marque. Quand un internaute cherche "Cyclone moto
-        Bordeaux" ou "Voge 500R disponible Gironde", il cherche une réponse précise —
+        Bordeaux" ou "Voge 500R disponible Gironde", il cherche une réponse précise,
         pas la page d'accueil d'une concession généraliste.
       </p>
 
@@ -103,7 +103,7 @@ export function MicrositeMarqueMotoCont() {
       </p>
 
       <p>
-        C'est particulièrement utile pour les marques moins connues du grand public —
+        C'est particulièrement utile pour les marques moins connues du grand public :
         des marques comme Cyclone, Voge ou Orcal, qui gagnent des parts de marché
         mais restent sous-représentées en ligne. Un microsite bien travaillé peut
         capter une audience qualifiée là où la concurrence est encore faible.
@@ -113,12 +113,12 @@ export function MicrositeMarqueMotoCont() {
 
       <ul>
         <li>
-          <strong>La gamme complète des modèles disponibles</strong> — avec photos,
+          <strong>La gamme complète des modèles disponibles</strong>: avec photos,
           caractéristiques techniques et prix indicatifs. C'est la première chose
           que cherche l'acheteur potentiel.
         </li>
         <li>
-          <strong>Les informations sur la marque</strong> — son histoire, ses valeurs,
+          <strong>Les informations sur la marque</strong>: son histoire, ses valeurs,
           son positionnement. Ce contenu éditorial renforce l'autorité SEO du microsite.
         </li>
         <li>
@@ -126,7 +126,7 @@ export function MicrositeMarqueMotoCont() {
           relié à la concession.
         </li>
         <li>
-          <strong>Des liens vers le site principal de la concession</strong> — pour
+          <strong>Des liens vers le site principal de la concession</strong>: pour
           créer de la cohérence et du trafic croisé.
         </li>
       </ul>
@@ -135,7 +135,7 @@ export function MicrositeMarqueMotoCont() {
 
       <p>
         Un microsite se justifie quand vous distribuez une marque avec un potentiel
-        de recherche propre — c'est-à-dire quand des gens tapent le nom de la marque
+        de recherche propre: c'est-à-dire quand des gens tapent le nom de la marque
         suivi d'une localisation sur Google. Si la marque est suffisamment connue pour
         générer ces recherches locales, un microsite vous positionne exactement là où
         se trouvent ces acheteurs.
