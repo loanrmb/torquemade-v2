@@ -21,28 +21,28 @@ export function BalisesMetaTitleDescriptionContent() {
 
       <ul>
         <li><strong>Length: 50 to 60 characters maximum.</strong> Beyond that, Google truncates with "…" and the cut words lose impact.</li>
-        <li><strong>Main keyword at the start of the title.</strong> Google gives more weight to words placed at the beginning. "SEO Bordeaux — Torquemade Agency" outperforms "Torquemade Agency — SEO in Bordeaux."</li>
-        <li><strong>One unique title per page.</strong> No two pages on the same site should share the same title — it's a duplication signal Google penalises.</li>
+        <li><strong>Main keyword at the start of the title.</strong> Google gives more weight to words placed at the beginning. "SEO Bordeaux | Torquemade Agency" outperforms "Torquemade Agency | SEO in Bordeaux."</li>
+        <li><strong>One unique title per page.</strong> No two pages on the same site should share the same title: it's a duplication signal Google penalises.</li>
       </ul>
 
       <h2>The meta description: essential rules</h2>
 
       <p>
-        The meta description isn't a direct ranking factor — but it strongly influences
+        The meta description isn't a direct ranking factor, but it strongly influences
         click-through rate. A well-written description can double visitors to a page
         without changing its position.
       </p>
 
       <ul>
         <li><strong>Length: 140 to 160 characters.</strong> Beyond, Google truncates. Below, you lose space to persuade.</li>
-        <li><strong>Reformulate the page's promise.</strong> Not a content summary — a clear promise of what the visitor will get by clicking.</li>
-        <li><strong>Include the target keyword.</strong> Google bolds it in results when it matches the user's query — it catches the eye.</li>
+        <li><strong>Reformulate the page's promise.</strong> Not a content summary: a clear promise of what the visitor will get by clicking.</li>
+        <li><strong>Include the target keyword.</strong> Google bolds it in results when it matches the user's query, it catches the eye.</li>
       </ul>
 
       <h2>What Google does when you don't set them</h2>
 
       <p>
-        If you don't define a title, Google generates one automatically — often from
+        If you don't define a title, Google generates one automatically, often from
         your site name or an H1. The result is rarely optimal. For meta descriptions,
         Google extracts a passage it deems relevant, which can produce inconsistent
         or uninviting results. Always define title and description manually, page by
@@ -98,19 +98,19 @@ export function BalisesMetaTitleDescriptionContent() {
 
       <p>
         La balise title est le titre bleu cliquable dans les résultats Google. C'est
-        l'un des signaux SEO les plus directs — Google lui donne beaucoup de poids pour
+        l'un des signaux SEO les plus directs, Google lui donne beaucoup de poids pour
         déterminer le sujet d'une page.
       </p>
 
       <ul>
         <li>
           <strong>Longueur : 50 à 60 caractères maximum.</strong> Au-delà, Google tronque
-          le titre avec "…" — et les mots coupés perdent leur impact.
+          le titre avec "…", et les mots coupés perdent leur impact.
         </li>
         <li>
           <strong>Mot-clé principal en début de titre.</strong> Google donne plus de
-          poids aux mots placés en début de balise. "SEO Bordeaux — Agence Torquemade"
-          est plus efficace que "Agence Torquemade — SEO à Bordeaux".
+          poids aux mots placés en début de balise. "SEO Bordeaux, Agence Torquemade"
+          est plus efficace que "Agence Torquemade, SEO à Bordeaux".
         </li>
         <li>
           <strong>Un titre unique par page.</strong> Jamais deux pages du même site ne
@@ -121,7 +121,7 @@ export function BalisesMetaTitleDescriptionContent() {
       <h2>La meta description : règles essentielles</h2>
 
       <p>
-        La meta description n'est pas un facteur de classement direct — mais elle
+        La meta description n'est pas un facteur de classement direct: mais elle
         influence fortement le taux de clic. Une description bien rédigée peut doubler
         le nombre de visiteurs sur une page sans changer sa position.
       </p>
@@ -132,19 +132,19 @@ export function BalisesMetaTitleDescriptionContent() {
           En dessous, vous perdez de la place pour convaincre.
         </li>
         <li>
-          <strong>Reformulez la promesse de la page.</strong> Pas de résumé du contenu —
+          <strong>Reformulez la promesse de la page.</strong> Pas de résumé du contenu :
           une promesse claire sur ce que le visiteur va obtenir en cliquant.
         </li>
         <li>
           <strong>Incluez le mot-clé cible.</strong> Google le met en gras dans les
-          résultats quand il correspond à la requête de l'utilisateur — ça attire l'œil.
+          résultats quand il correspond à la requête de l'utilisateur, ça attire l'œil.
         </li>
       </ul>
 
       <h2>Ce que Google fait quand vous ne les renseignez pas</h2>
 
       <p>
-        Si vous ne définissez pas de title, Google en génère un automatiquement —
+        Si vous ne définissez pas de title, Google en génère un automatiquement,
         souvent à partir du nom de votre site ou d'un titre H1. Le résultat est
         rarement optimal. Pour la meta description, Google extrait un passage de la
         page qu'il juge pertinent pour la requête, ce qui peut donner des résultats

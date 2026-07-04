@@ -21,7 +21,7 @@ export function SiteEcommerceMagasinPhysiqueFonctionsContent() {
         run into the limits.
       </p>
 
-      <h2>What Pure Players Don&apos;t Have to Manage — and You Do</h2>
+      <h2>What Pure Players Don&apos;t Have to Manage, and You Do</h2>
 
       <p>
         A pure-play online retailer has a single inventory: the one in their warehouse,
@@ -49,7 +49,7 @@ export function SiteEcommerceMagasinPhysiqueFonctionsContent() {
       <p>
         Real-time stock means every in-store sale immediately decrements the quantity
         shown on the website. The mechanism requires a live connection between the
-        point-of-sale system and the e-commerce site — a webhook or an API call triggered
+        point-of-sale system and the e-commerce site, a webhook or an API call triggered
         by each transaction. For products with low quantities or high turnover, this
         connection is not optional.
       </p>
@@ -57,7 +57,7 @@ export function SiteEcommerceMagasinPhysiqueFonctionsContent() {
       <h2>Feature 2: Click &amp; Collect with Availability Confirmation</h2>
 
       <p>
-        Click and collect — order online, pick up in store — is a strong selling point
+        Click and collect (order online, pick up in store) is a strong selling point
         for physical store merchants. But it only works if the availability check happens
         at the moment the order is placed, not from a cache updated the previous night.
       </p>
@@ -72,7 +72,7 @@ export function SiteEcommerceMagasinPhysiqueFonctionsContent() {
       <h2>Feature 3: Product Pages Linked to the ERP</h2>
 
       <p>
-        Price, variants, and availability must come from the ERP — not from a manual
+        Price, variants, and availability must come from the ERP, not from a manual
         entry in the back-office of the e-commerce site. When a promotion is applied
         in-store, it must appear online automatically. When a new variant is added to
         the ERP, it must become available online without a separate update.
@@ -106,7 +106,7 @@ export function SiteEcommerceMagasinPhysiqueFonctionsContent() {
       <p>
         An order placed online must arrive in the point-of-sale system without manual
         re-entry. A sale processed at the till must decrement the online inventory
-        without manual re-entry. This is bidirectionality — and it is what eliminates
+        without manual re-entry. This is bidirectionality, and it is what eliminates
         the manual work entirely.
       </p>
 
@@ -122,7 +122,7 @@ export function SiteEcommerceMagasinPhysiqueFonctionsContent() {
         Shopify manages its own inventory. It does not know about your point-of-sale
         system, your stock levels in Cegid, Hiboutik, EBP, or Tactill. Connecting
         Shopify to your existing POS software requires either a custom development
-        or a dedicated integration — not a generic app from the App Store that covers
+        or a dedicated integration, not a generic app from the App Store that covers
         the most common cases but may not support your exact software.
       </p>
 
@@ -138,7 +138,7 @@ export function SiteEcommerceMagasinPhysiqueFonctionsContent() {
       <p>
         <em>
           You have a physical store and want to launch or improve your e-commerce site?{' '}
-          <Link href="/contact">Contact us</Link> — we build the connection between your
+          <Link href="/contact">Contact us</Link>: we build the connection between your
           POS software and your online store so the two channels work as one.
         </em>
       </p>
@@ -160,7 +160,7 @@ export function SiteEcommerceMagasinPhysiqueFonctionsContent() {
         prévu pour eux, vous vous heurterez rapidement aux limites.
       </p>
 
-      <h2>Ce que les pure players n&apos;ont pas à gérer — et vous si</h2>
+      <h2>Ce que les pure players n&apos;ont pas à gérer: et vous si</h2>
 
       <p>
         Un pure player en ligne n&apos;a qu&apos;un seul stock : celui de son entrepôt,
@@ -188,7 +188,7 @@ export function SiteEcommerceMagasinPhysiqueFonctionsContent() {
       <p>
         Le stock en temps réel signifie que chaque vente en boutique décrémente
         immédiatement la quantité affichée sur le site. Le mécanisme nécessite une
-        connexion live entre le logiciel de caisse et le site e-commerce — un webhook
+        connexion live entre le logiciel de caisse et le site e-commerce, un webhook
         ou un appel API déclenché par chaque transaction. Pour les produits en faible
         quantité ou à forte rotation, cette connexion n&apos;est pas optionnelle.
       </p>
@@ -196,7 +196,7 @@ export function SiteEcommerceMagasinPhysiqueFonctionsContent() {
       <h2>Fonction 2 : retrait en magasin avec confirmation de disponibilité</h2>
 
       <p>
-        Le click &amp; collect — commander en ligne, retirer en boutique — est un
+        Le click &amp; collect (commander en ligne, retirer en boutique) est un
         argument fort pour les commerçants physiques. Mais il ne fonctionne que si
         la vérification de disponibilité se fait au moment où la commande est passée,
         pas à partir d&apos;un cache mis à jour la veille au soir.
@@ -213,7 +213,7 @@ export function SiteEcommerceMagasinPhysiqueFonctionsContent() {
       <h2>Fonction 3 : fiche produit liée à l&apos;ERP</h2>
 
       <p>
-        Prix, variantes et disponibilité doivent venir de l&apos;ERP — pas d&apos;une
+        Prix, variantes et disponibilité doivent venir de l&apos;ERP, pas d&apos;une
         saisie manuelle dans le back-office du site e-commerce. Quand une promotion
         est appliquée en boutique, elle doit apparaître en ligne automatiquement.
         Quand une nouvelle variante est ajoutée dans l&apos;ERP, elle doit être
@@ -251,7 +251,7 @@ export function SiteEcommerceMagasinPhysiqueFonctionsContent() {
         Une commande passée en ligne doit arriver dans le logiciel de caisse sans
         ressaisie manuelle. Une vente traitée en caisse doit décrémenter
         l&apos;inventaire en ligne sans ressaisie manuelle. C&apos;est la
-        bidirectionnalité — et c&apos;est ce qui élimine entièrement le travail
+        bidirectionnalité, et c&apos;est ce qui élimine entièrement le travail
         manuel.
       </p>
 
@@ -268,7 +268,7 @@ export function SiteEcommerceMagasinPhysiqueFonctionsContent() {
         Shopify gère son propre inventaire. Il ne connaît pas votre logiciel de
         caisse, vos niveaux de stock dans Cegid, Hiboutik, EBP ou Tactill. Connecter
         Shopify à votre caisse existante nécessite soit un développement sur mesure,
-        soit une intégration dédiée — pas une app générique de l&apos;App Store qui
+        soit une intégration dédiée, pas une app générique de l&apos;App Store qui
         couvre les cas les plus courants mais ne supporte pas forcément votre logiciel
         exact.
       </p>
@@ -287,7 +287,7 @@ export function SiteEcommerceMagasinPhysiqueFonctionsContent() {
         <em>
           Vous avez un magasin physique et souhaitez lancer ou améliorer votre site
           e-commerce ?{' '}
-          <Link href="/contact">Contactez-nous</Link> — nous construisons la connexion
+          <Link href="/contact">Contactez-nous</Link>: nous construisons la connexion
           entre votre logiciel de caisse et votre boutique en ligne pour que les deux
           canaux fonctionnent comme un seul.
         </em>

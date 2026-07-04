@@ -13,7 +13,7 @@ export function GoogleBusinessProfileOptimisationContent() {
       <p>
         When someone searches "hairdresser Bordeaux" or "mechanic near me," Google
         displays a block of three local business listings before regular results.
-        That's the "local pack" — and it's the first thing the user sees. Your Google
+        That's the "local pack", and it's the first thing the user sees. Your Google
         Business Profile determines whether you appear there.
       </p>
 
@@ -32,7 +32,7 @@ export function GoogleBusinessProfileOptimisationContent() {
         <li><strong>Primary and secondary categories.</strong> The strongest signal. Choose the most precise primary category and add relevant secondary ones.</li>
         <li><strong>Full description with keywords.</strong> The description is indexed by Google. Write 750 characters describing your activity, naturally including your main services and location.</li>
         <li><strong>Up-to-date hours.</strong> A listing with incorrect or missing hours loses credibility with Google and users.</li>
-        <li><strong>Recent, numerous photos.</strong> Listings with photos receive significantly more clicks. Add photos of your location, work, team — and refresh them regularly.</li>
+        <li><strong>Recent, numerous photos.</strong> Listings with photos receive significantly more clicks. Add photos of your location, work, team, and refresh them regularly.</li>
         <li><strong>Q&amp;A.</strong> Post and answer your own frequently asked questions. This controls the displayed information and enriches your profile.</li>
       </ul>
 
@@ -42,7 +42,7 @@ export function GoogleBusinessProfileOptimisationContent() {
         Review quantity and quality are among the most important factors for the local
         pack. A listing with 50 reviews at 4.7/5 almost always outranks one with 5
         reviews at 5/5. Set up a simple routine: after each satisfactory service, send
-        a direct link to your Google review page. Respond to all reviews — positive
+        a direct link to your Google review page. Respond to all reviews, positive
         and negative. Google considers responses a sign of activity.
       </p>
 
@@ -86,7 +86,7 @@ export function GoogleBusinessProfileOptimisationContent() {
       <p>
         Quand quelqu'un cherche "coiffeur Bordeaux" ou "mécanicien près de moi",
         Google affiche un bloc de trois fiches d'entreprises locales avant les résultats
-        classiques. C'est le "pack local" — et c'est la première chose que l'utilisateur
+        classiques. C'est le "pack local", et c'est la première chose que l'utilisateur
         voit. Votre fiche Google Business Profile détermine si vous y apparaissez.
       </p>
 
@@ -127,7 +127,7 @@ export function GoogleBusinessProfileOptimisationContent() {
         <li>
           <strong>Photos récentes et nombreuses.</strong>
           Les fiches avec des photos reçoivent significativement plus de clics.
-          Ajoutez des photos de votre lieu, de vos réalisations, de votre équipe —
+          Ajoutez des photos de votre lieu, de vos réalisations, de votre équipe,
           et renouvelez-les régulièrement.
         </li>
         <li>
@@ -147,7 +147,7 @@ export function GoogleBusinessProfileOptimisationContent() {
 
       <p>
         Mettez en place une routine simple : après chaque prestation satisfaisante,
-        envoyez un lien direct vers votre page d'avis Google. Répondez à tous les avis —
+        envoyez un lien direct vers votre page d'avis Google. Répondez à tous les avis,
         positifs comme négatifs. Google considère les réponses comme un signe d'activité.
       </p>
 

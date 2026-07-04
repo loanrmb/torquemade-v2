@@ -12,16 +12,16 @@ export function DashboardSombreVsClairContent() {
 
       <p>
         The dark or light theme question for a business dashboard isn't just a matter
-        of taste. It has real implications for daily tool effectiveness — and the answer
+        of taste. It has real implications for daily tool effectiveness, and the answer
         isn't universal. Here are the factors that should guide the choice.
       </p>
 
       <h2>Advantages of dark theme</h2>
 
       <ul>
-        <li><strong>Reduced eye strain on backlit screens.</strong> On LED or OLED screens, a dark background significantly reduces fatigue during prolonged use — especially in low-light environments.</li>
-        <li><strong>Better contrast for numerical data.</strong> Dashboards with many figures and charts stand out better on dark backgrounds — accent colours (red, green, orange) are more visible and their meaning perceived more immediately.</li>
-        <li><strong>Professional and modern appearance.</strong> For internal tools, a dark dashboard is often perceived as more premium — a signal of care in the design.</li>
+        <li><strong>Reduced eye strain on backlit screens.</strong> On LED or OLED screens, a dark background significantly reduces fatigue during prolonged use, especially in low-light environments.</li>
+        <li><strong>Better contrast for numerical data.</strong> Dashboards with many figures and charts stand out better on dark backgrounds, accent colours (red, green, orange) are more visible and their meaning perceived more immediately.</li>
+        <li><strong>Professional and modern appearance.</strong> For internal tools, a dark dashboard is often perceived as more premium, a signal of care in the design.</li>
       </ul>
 
       <h2>Advantages of light theme</h2>
@@ -45,7 +45,7 @@ export function DashboardSombreVsClairContent() {
 
       <p>
         <em>
-          Want a custom dashboard — dark or light?{' '}
+          Want a custom dashboard: dark or light?{' '}
           <Link href="/contact">Contact us</Link>.
         </em>
       </p>
@@ -81,7 +81,7 @@ export function DashboardSombreVsClairContent() {
       <p>
         La question du thème sombre ou clair pour un tableau de bord d'entreprise
         n'est pas qu'une question de goût. Elle a des implications réelles sur
-        l'efficacité de l'outil au quotidien — et la réponse n'est pas universelle.
+        l'efficacité de l'outil au quotidien, et la réponse n'est pas universelle.
         Voici les facteurs qui doivent guider le choix.
       </p>
 
@@ -91,13 +91,13 @@ export function DashboardSombreVsClairContent() {
         <li>
           <strong>Réduction de la fatigue oculaire sur écran rétroéclairé.</strong>
           Sur un écran LED ou OLED, un fond sombre réduit significativement la
-          fatigue lors d'une utilisation prolongée — surtout en environnement peu
+          fatigue lors d'une utilisation prolongée, surtout en environnement peu
           lumineux (bureau intérieur, soirée).
         </li>
         <li>
           <strong>Meilleur contraste pour les données chiffrées.</strong>
           Les tableaux de bord avec beaucoup de chiffres et de graphiques ressortent
-          mieux sur fond sombre — les couleurs d'accent (rouge, vert, orange) sont
+          mieux sur fond sombre, les couleurs d'accent (rouge, vert, orange) sont
           plus visibles et leur sens perçu plus immédiatement.
         </li>
         <li>
@@ -113,7 +113,7 @@ export function DashboardSombreVsClairContent() {
         <li>
           <strong>Meilleure lisibilité en environnement très lumineux.</strong>
           En plein soleil ou sous un éclairage puissant, le thème clair est
-          nettement plus lisible — le thème sombre devient difficile à lire.
+          nettement plus lisible, le thème sombre devient difficile à lire.
         </li>
         <li>
           <strong>Textes longs plus confortables à lire.</strong>

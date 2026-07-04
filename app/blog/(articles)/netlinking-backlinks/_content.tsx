@@ -11,7 +11,7 @@ export function NetlinkingBacklinksContent() {
       <h1 className="blog-article-title">Link Building: How to Get Backlinks Without Spamming Anyone</h1>
 
       <p>
-        Backlinks — links from other sites to yours — remain one of Google's three most
+        Backlinks (links from other sites to yours) remain one of Google's three most
         important SEO signals, alongside content and user experience. A site that earns
         quality links is perceived as a reference in its field. But getting backlinks
         without falling into Google-penalised practices requires a precise strategy.
@@ -30,8 +30,8 @@ export function NetlinkingBacklinksContent() {
       <h2>Strategies that work without spam</h2>
 
       <ul>
-        <li><strong>Create content people naturally cite.</strong> Original studies, sector data, reference guides — these formats generate backlinks without outreach. If your content is the best resource on a subject, other sites will cite it.</li>
-        <li><strong>Targeted guest blogging.</strong> Propose a guest article to a complementary site — not a competitor, but in the same ecosystem. In exchange for quality content, you earn a link.</li>
+        <li><strong>Create content people naturally cite.</strong> Original studies, sector data, reference guides, these formats generate backlinks without outreach. If your content is the best resource on a subject, other sites will cite it.</li>
+        <li><strong>Targeted guest blogging.</strong> Propose a guest article to a complementary site, not a competitor, but in the same ecosystem. In exchange for quality content, you earn a link.</li>
         <li><strong>Broken link technique.</strong> Find articles on sector sites pointing to 404 pages. Propose your own content as a replacement. Win-win: they fix a dead link, you get a backlink.</li>
         <li><strong>Local partnerships.</strong> For local providers, links from chambers of commerce, local professional associations, or regional media have real SEO value and are often accessible via a simple request.</li>
       </ul>
@@ -82,7 +82,7 @@ export function NetlinkingBacklinksContent() {
       <h1 className="blog-article-title">Netlinking : comment obtenir des backlinks sans spammer personne</h1>
 
       <p>
-        Les backlinks — les liens provenant d'autres sites vers le vôtre — restent
+        Les backlinks (les liens provenant d'autres sites vers le vôtre) restent
         l'un des trois signaux SEO les plus importants pour Google, après le contenu
         et l'expérience utilisateur. Un site qui reçoit des liens de qualité est perçu
         comme une référence dans son domaine. Mais obtenir des backlinks sans tomber
@@ -109,14 +109,14 @@ export function NetlinkingBacklinksContent() {
       <ul>
         <li>
           <strong>Créer du contenu qu'on cite naturellement.</strong>
-          Les études originales, les données sectorielles, les guides de référence —
+          Les études originales, les données sectorielles, les guides de référence :
           ce sont les formats qui génèrent des backlinks sans démarchage. Si votre
           contenu est la meilleure ressource disponible sur un sujet, d'autres sites
           vont le citer.
         </li>
         <li>
           <strong>Guest blogging ciblé.</strong>
-          Proposez un article invité à un site complémentaire au vôtre — pas concurrent,
+          Proposez un article invité à un site complémentaire au vôtre, pas concurrent,
           mais dans le même écosystème. En échange d'un contenu de qualité, vous obtenez
           un lien. Limitez-vous aux sites avec un vrai lectorat.
         </li>

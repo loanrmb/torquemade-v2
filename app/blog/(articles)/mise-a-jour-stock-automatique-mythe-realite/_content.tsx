@@ -13,7 +13,7 @@ export function MiseAJourStockAutomatiqueMytheRealiteContent() {
       <p>
         &ldquo;Your stock updates automatically across all your channels.&rdquo; That
         sentence appears on the marketing pages of most inventory and e-commerce tools.
-        It is not false — but it is incomplete in ways that matter. Here is what it
+        It is not false: but it is incomplete in ways that matter. Here is what it
         actually means, what it requires, and where it stops being true.
       </p>
 
@@ -27,24 +27,24 @@ export function MiseAJourStockAutomatiqueMytheRealiteContent() {
 
       <p>
         The result is that many retailers set up an integration, assume their stock is
-        synchronised, and discover the hard way — through a cancelled order or an
-        oversell — that the automation was not working as expected. Not because they
+        synchronised, and discover the hard way, through a cancelled order or an
+        oversell, that the automation was not working as expected. Not because they
         were deceived, but because they did not ask the right questions upfront.
       </p>
 
       <h2>&ldquo;Automatic&rdquo;: a word that covers three very different things</h2>
 
       <p>
-        <strong>Batch synchronisation.</strong> The stock is updated at fixed intervals —
+        <strong>Batch synchronisation.</strong> The stock is updated at fixed intervals:
         every night, every few hours, or on a manual trigger. It is &ldquo;automatic&rdquo;
-        in the sense that no human clicks a button — but there is always a lag between
+        in the sense that no human clicks a button, but there is always a lag between
         what happened and what the website shows. This is the most common implementation
         and the source of most stock discrepancy complaints.
       </p>
 
       <p>
         <strong>Event-driven synchronisation.</strong> The stock is updated when a
-        specific event occurs — an order is placed, a product is shipped, a receipt
+        specific event occurs, an order is placed, a product is shipped, a receipt
         is confirmed. Faster than batch, but still dependent on the right events being
         configured and firing correctly.
       </p>
@@ -53,7 +53,7 @@ export function MiseAJourStockAutomatiqueMytheRealiteContent() {
         <strong>True real-time synchronisation.</strong> Every transaction immediately
         triggers a stock update in all connected systems, in both directions. This is
         the only mode that fully eliminates discrepancy windows. For the technical
-        detail of how this works — webhooks, APIs, conflict handling — see our
+        detail of how this works (webhooks, APIs, conflict handling), see our
         dedicated article:{' '}
         <Link href="/blog/synchronisation-stock-temps-reel">
           real-time inventory sync: how it works and why it&apos;s essential
@@ -70,7 +70,7 @@ export function MiseAJourStockAutomatiqueMytheRealiteContent() {
 
       <p>
         <strong>A single source of truth.</strong> If your stock level exists in
-        multiple places — a spreadsheet, a POS system, and an e-commerce back-office —
+        multiple places (a spreadsheet, a POS system, and an e-commerce back-office)
         any synchronisation will eventually create conflicts. One system must be
         designated as the master record; the others receive from it, they do not
         feed it independently.
@@ -80,7 +80,7 @@ export function MiseAJourStockAutomatiqueMytheRealiteContent() {
         <strong>A reliable connector or API.</strong> The link between your systems
         must be maintained and monitored. A connector built on a deprecated API,
         a third-party integration that has not been updated since the last platform
-        version, a webhook that silently fails — each of these will cause your sync
+        version, a webhook that silently fails, each of these will cause your sync
         to break without anyone noticing until it is too late.
       </p>
 
@@ -98,14 +98,14 @@ export function MiseAJourStockAutomatiqueMytheRealiteContent() {
         stock sync. There is always a configuration phase: mapping product references
         between systems, deciding which direction stock flows, setting up exception
         handling. &ldquo;Plug and play&rdquo; means the integration can be installed
-        without code — it does not mean it works correctly out of the box without
+        without code, it does not mean it works correctly out of the box without
         configuration.
       </p>
 
       <p>
         <strong>&ldquo;100% automatic.&rdquo;</strong> The sync of existing products
         can be highly automated. The management of new products, product variants,
-        and catalogue changes is never fully automatic — it requires human input
+        and catalogue changes is never fully automatic, it requires human input
         at some stage.
       </p>
 
@@ -125,7 +125,7 @@ export function MiseAJourStockAutomatiqueMytheRealiteContent() {
       </p>
 
       <p>
-        Creating new products — their reference, description, photos, category —
+        Creating new products (their reference, description, photos, category)
         is a human task. So is managing variants (sizes, colours, configurations)
         when a new line is added. So is resolving a sync conflict when two systems
         disagree about a stock level after a failure. So is the periodic physical
@@ -166,7 +166,7 @@ export function MiseAJourStockAutomatiqueMytheRealiteContent() {
       <p>
         <em>
           You want to implement automatic stock sync that actually works?{' '}
-          <Link href="/contact">Contact us</Link> — we audit your current tools,
+          <Link href="/contact">Contact us</Link>: we audit your current tools,
           identify the right architecture, and set up the integration.
         </em>
       </p>
@@ -180,7 +180,7 @@ export function MiseAJourStockAutomatiqueMytheRealiteContent() {
       <p>
         "Votre stock se met à jour automatiquement sur tous vos canaux." Cette phrase
         figure sur les pages marketing de la plupart des outils de gestion de stock
-        et d&apos;e-commerce. Elle n&apos;est pas fausse — mais elle est incomplète
+        et d&apos;e-commerce. Elle n&apos;est pas fausse: mais elle est incomplète
         de façon importante. Voici ce qu&apos;elle signifie vraiment, ce qu&apos;elle
         requiert, et jusqu&apos;où elle s&apos;arrête.
       </p>
@@ -196,8 +196,8 @@ export function MiseAJourStockAutomatiqueMytheRealiteContent() {
 
       <p>
         Le résultat : beaucoup de commerçants mettent en place une intégration,
-        supposent que leur stock est synchronisé, et le découvrent à leurs dépens —
-        à travers une commande annulée ou une survente — que l&apos;automatisation
+        supposent que leur stock est synchronisé, et le découvrent à leurs dépens,
+        à travers une commande annulée ou une survente, que l&apos;automatisation
         ne fonctionnait pas comme prévu. Pas parce qu&apos;ils ont été induits en
         erreur, mais parce qu&apos;ils n&apos;ont pas posé les bonnes questions
         au départ.
@@ -207,16 +207,16 @@ export function MiseAJourStockAutomatiqueMytheRealiteContent() {
 
       <p>
         <strong>La synchronisation par lots (batch).</strong> Le stock est mis à jour
-        à intervalles fixes — chaque nuit, toutes les quelques heures, ou sur un
+        à intervalles fixes, chaque nuit, toutes les quelques heures, ou sur un
         déclencheur manuel. C&apos;est "automatique" dans le sens où personne
-        n&apos;appuie sur un bouton — mais il y a toujours un décalage entre ce qui
+        n&apos;appuie sur un bouton, mais il y a toujours un décalage entre ce qui
         s&apos;est passé et ce que le site affiche. C&apos;est l&apos;implémentation
         la plus courante et la source de la majorité des plaintes pour écarts de stock.
       </p>
 
       <p>
         <strong>La synchronisation sur événement.</strong> Le stock est mis à jour
-        quand un événement précis se produit — une commande est passée, un produit
+        quand un événement précis se produit, une commande est passée, un produit
         est expédié, une réception est confirmée. Plus rapide que le batch, mais
         toujours dépendant d&apos;un paramétrage correct des événements.
       </p>
@@ -225,8 +225,8 @@ export function MiseAJourStockAutomatiqueMytheRealiteContent() {
         <strong>La vraie synchronisation temps réel.</strong> Chaque transaction
         déclenche immédiatement une mise à jour du stock dans tous les systèmes
         connectés, dans les deux sens. C&apos;est le seul mode qui élimine totalement
-        les fenêtres d&apos;écart. Pour le détail technique de son fonctionnement —
-        webhooks, API, gestion des conflits — voir notre article dédié :{' '}
+        les fenêtres d&apos;écart. Pour le détail technique de son fonctionnement
+        (webhooks, API, gestion des conflits), voir notre article dédié :{' '}
         <Link href="/blog/synchronisation-stock-temps-reel">
           synchronisation stock en temps réel : comment ça marche et pourquoi
           c&apos;est indispensable
@@ -244,8 +244,8 @@ export function MiseAJourStockAutomatiqueMytheRealiteContent() {
 
       <p>
         <strong>Une seule source de vérité.</strong> Si votre niveau de stock existe
-        à plusieurs endroits — un tableur, un logiciel de caisse, et un back-office
-        e-commerce —, toute synchronisation créera tôt ou tard des conflits. Un seul
+        à plusieurs endroits, un tableur, un logiciel de caisse, et un back-office
+        e-commerce, , toute synchronisation créera tôt ou tard des conflits. Un seul
         système doit être désigné comme référence ; les autres reçoivent de lui, ils
         ne l&apos;alimentent pas indépendamment.
       </p>
@@ -254,7 +254,7 @@ export function MiseAJourStockAutomatiqueMytheRealiteContent() {
         <strong>Un connecteur ou une API fiable.</strong> Le lien entre vos systèmes
         doit être maintenu et surveillé. Un connecteur construit sur une API dépréciée,
         une intégration tierce non mise à jour depuis la dernière version de la
-        plateforme, un webhook qui échoue silencieusement — chacun de ces cas fera
+        plateforme, un webhook qui échoue silencieusement, chacun de ces cas fera
         casser votre synchro sans que personne ne s&apos;en aperçoive avant
         qu&apos;il soit trop tard.
       </p>
@@ -274,13 +274,13 @@ export function MiseAJourStockAutomatiqueMytheRealiteContent() {
         de stock. Il y a toujours une phase de configuration : mapping des références
         produit entre systèmes, choix du sens du flux, gestion des exceptions.
         "Plug and play" signifie que l&apos;intégration peut être installée sans code
-        — ça ne veut pas dire qu&apos;elle fonctionne correctement sans configuration.
+, ça ne veut pas dire qu&apos;elle fonctionne correctement sans configuration.
       </p>
 
       <p>
         <strong>"100% automatique."</strong> La synchro des produits existants peut
         être très largement automatisée. La gestion des nouveaux produits, des
-        variantes, et des évolutions du catalogue ne l&apos;est jamais totalement —
+        variantes, et des évolutions du catalogue ne l&apos;est jamais totalement :
         elle nécessite une intervention humaine à un moment ou un autre.
       </p>
 
@@ -300,7 +300,7 @@ export function MiseAJourStockAutomatiqueMytheRealiteContent() {
       </p>
 
       <p>
-        La création de nouveaux produits — référence, description, photos, catégorie —
+        La création de nouveaux produits (référence, description, photos, catégorie)
         est une tâche humaine. Idem pour la gestion des variantes (tailles, couleurs,
         configurations) à l&apos;ajout d&apos;une nouvelle ligne. Idem pour la
         résolution d&apos;un conflit de synchro quand deux systèmes sont en désaccord
@@ -344,7 +344,7 @@ export function MiseAJourStockAutomatiqueMytheRealiteContent() {
         <em>
           Vous voulez mettre en place une synchro automatique du stock qui fonctionne
           vraiment ?{' '}
-          <Link href="/contact">Contactez-nous</Link> — nous auditons vos outils,
+          <Link href="/contact">Contactez-nous</Link>: nous auditons vos outils,
           identifions la bonne architecture, et mettons en place l&apos;intégration.
         </em>
       </p>

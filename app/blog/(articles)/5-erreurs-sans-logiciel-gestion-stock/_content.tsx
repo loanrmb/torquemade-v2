@@ -12,7 +12,7 @@ export function CinqErreursSansLogicielGestionStockContent() {
 
       <p>
         Manual inventory management rarely appears as a line item in your accounts.
-        That is precisely the problem. The losses are real, but they are invisible —
+        That is precisely the problem. The losses are real, but they are invisible:
         scattered across shrinkage write-offs, cancelled orders, wasted purchasing
         decisions, and hours of labour that generate no value. Here are the five most
         common, and what each one costs.
@@ -24,7 +24,7 @@ export function CinqErreursSansLogicielGestionStockContent() {
         Without reliable visibility into stock rotation, the natural response to
         uncertainty is to order more. Better to have too much than to run out, the
         thinking goes. The result is cash tied up in inventory that may not move
-        for months — or at all.
+        for months, or at all.
       </p>
 
       <p>
@@ -43,7 +43,7 @@ export function CinqErreursSansLogicielGestionStockContent() {
       <h2>Mistake 2: Invisible shrinkage</h2>
 
       <p>
-        Shrinkage — the gap between theoretical stock and actual stock — has multiple
+        Shrinkage (the gap between theoretical stock and actual stock) has multiple
         sources: theft, breakage, administrative errors, supplier short-shipments.
         Without a system that logs every movement, you only discover the gap at the
         annual inventory count.
@@ -65,7 +65,7 @@ export function CinqErreursSansLogicielGestionStockContent() {
 
       <p>
         A product that runs out before you notice costs more than the missed sale.
-        A customer who found what they wanted elsewhere does not come back — or comes
+        A customer who found what they wanted elsewhere does not come back, or comes
         back with lower expectations. In e-commerce, a product shown as available
         that turns out not to be triggers a cancellation, a refund, and often a
         negative review.
@@ -79,7 +79,7 @@ export function CinqErreursSansLogicielGestionStockContent() {
 
       <p>
         Dedicated software sets reorder thresholds per product. When stock drops
-        below the threshold, the system alerts — before the product runs out,
+        below the threshold, the system alerts, before the product runs out,
         not after.
       </p>
 
@@ -94,16 +94,16 @@ export function CinqErreursSansLogicielGestionStockContent() {
       </p>
 
       <p>
-        The time cost alone is significant — and we have detailed it separately.{' '}
+        The time cost alone is significant, and we have detailed it separately.{' '}
         <Link href="/blog/temps-perdu-ressaisie-stock-manuel">
-          The hidden cost of manual re-entry deserves its own calculation — we have
+          The hidden cost of manual re-entry deserves its own calculation, we have
           laid it out here.
         </Link>
       </p>
 
       <p>
         Beyond time, re-entry errors compound. A transposed digit here, a missed
-        update there — over a week of transactions, the stock record drifts
+        update there, over a week of transactions, the stock record drifts
         progressively further from reality.
       </p>
 
@@ -120,7 +120,7 @@ export function CinqErreursSansLogicielGestionStockContent() {
         These decisions are not necessarily wrong, but they are not informed.
         A dedicated system gives you the rotation rate of every reference, the
         average days-to-stockout, and historical trends by period and category.
-        Purchasing decisions become data-driven rather than emotional — and the
+        Purchasing decisions become data-driven rather than emotional, and the
         results show in margin.
       </p>
 
@@ -128,7 +128,7 @@ export function CinqErreursSansLogicielGestionStockContent() {
         The cumulative cost of these five mistakes is rarely calculated because it
         is never attributed to a single cause. It shows up as slightly lower margin,
         slightly higher write-offs, slightly more staff time than expected. None of
-        it is dramatic enough to trigger action — until the sum becomes impossible
+        it is dramatic enough to trigger action, until the sum becomes impossible
         to ignore.
       </p>
 
@@ -137,7 +137,7 @@ export function CinqErreursSansLogicielGestionStockContent() {
       <p>
         <em>
           You want to assess what manual inventory management is actually costing you?{' '}
-          <Link href="/contact">Contact us</Link> — we run the numbers on your specific
+          <Link href="/contact">Contact us</Link>: we run the numbers on your specific
           situation and show you what a dedicated system would change.
         </em>
       </p>
@@ -151,7 +151,7 @@ export function CinqErreursSansLogicielGestionStockContent() {
       <p>
         La gestion manuelle du stock n&apos;apparaît que rarement dans les comptes
         comme une perte identifiée. C&apos;est précisément le problème. Les fuites
-        sont réelles, mais elles sont invisibles — disséminées dans des passages en
+        sont réelles, mais elles sont invisibles, disséminées dans des passages en
         pertes, des commandes annulées, des décisions d&apos;achat hasardeuses, et
         des heures de travail qui ne génèrent aucune valeur. Voici les cinq plus
         fréquentes, et ce que chacune coûte.
@@ -163,7 +163,7 @@ export function CinqErreursSansLogicielGestionStockContent() {
         Sans visibilité fiable sur la rotation du stock, la réponse naturelle à
         l&apos;incertitude est de commander plus. Mieux vaut trop que pas assez,
         raisonne-t-on. Le résultat : de la trésorerie immobilisée dans des références
-        qui ne tourneront peut-être pas pendant des mois — ou jamais.
+        qui ne tourneront peut-être pas pendant des mois: ou jamais.
       </p>
 
       <p>
@@ -183,7 +183,7 @@ export function CinqErreursSansLogicielGestionStockContent() {
       <h2>Erreur n°2 : la démarque invisible</h2>
 
       <p>
-        La démarque — l&apos;écart entre le stock théorique et le stock réel — a
+        La démarque (l&apos;écart entre le stock théorique et le stock réel) a
         plusieurs sources : vols, casse, erreurs administratives, livraisons
         incomplètes. Sans un système qui trace chaque mouvement, vous ne découvrez
         l&apos;écart qu&apos;à l&apos;inventaire annuel.
@@ -207,7 +207,7 @@ export function CinqErreursSansLogicielGestionStockContent() {
       <p>
         Un produit en rupture avant qu&apos;on s&apos;en rende compte coûte plus
         que la vente manquée. Un client qui a trouvé ce qu&apos;il cherchait ailleurs
-        ne revient pas — ou revient avec des attentes plus basses. En e-commerce,
+        ne revient pas: ou revient avec des attentes plus basses. En e-commerce,
         un produit affiché disponible qui ne l&apos;est pas déclenche une annulation,
         un remboursement, et souvent un avis négatif.
       </p>
@@ -221,7 +221,7 @@ export function CinqErreursSansLogicielGestionStockContent() {
 
       <p>
         Un logiciel dédié définit des seuils de réapprovisionnement par produit.
-        Quand le stock passe sous le seuil, le système alerte — avant la rupture,
+        Quand le stock passe sous le seuil, le système alerte, avant la rupture,
         pas après.
       </p>
 
@@ -236,17 +236,17 @@ export function CinqErreursSansLogicielGestionStockContent() {
       </p>
 
       <p>
-        Le coût en temps est déjà significatif — et nous l&apos;avons détaillé
+        Le coût en temps est déjà significatif, et nous l&apos;avons détaillé
         séparément.{' '}
         <Link href="/blog/temps-perdu-ressaisie-stock-manuel">
-          Le coût caché de la ressaisie manuelle mérite son propre calcul — nous
+          Le coût caché de la ressaisie manuelle mérite son propre calcul, nous
           l&apos;avons développé ici.
         </Link>
       </p>
 
       <p>
         Au-delà du temps, les erreurs de ressaisie s&apos;accumulent. Un chiffre
-        transposé ici, une mise à jour oubliée là — sur une semaine de transactions,
+        transposé ici, une mise à jour oubliée là, sur une semaine de transactions,
         le stock s&apos;éloigne progressivement de la réalité.
       </p>
 
@@ -264,7 +264,7 @@ export function CinqErreursSansLogicielGestionStockContent() {
         éclairées. Un logiciel dédié vous donne le taux de rotation de chaque
         référence, le délai moyen avant rupture, et les tendances historiques par
         période et par catégorie. Les décisions d&apos;achat deviennent
-        data-driven plutôt qu&apos;émotionnelles — et ça se voit sur la marge.
+        data-driven plutôt qu&apos;émotionnelles, et ça se voit sur la marge.
       </p>
 
       <p>
@@ -272,7 +272,7 @@ export function CinqErreursSansLogicielGestionStockContent() {
         n&apos;est jamais attribué à une seule cause. Il se manifeste par une marge
         légèrement plus faible, des passages en pertes légèrement plus élevés, un
         temps de travail légèrement supérieur aux attentes. Aucun n&apos;est assez
-        dramatique pour déclencher une action — jusqu&apos;à ce que la somme devienne
+        dramatique pour déclencher une action, jusqu&apos;à ce que la somme devienne
         impossible à ignorer.
       </p>
 
@@ -281,7 +281,7 @@ export function CinqErreursSansLogicielGestionStockContent() {
       <p>
         <em>
           Vous souhaitez évaluer ce que la gestion manuelle vous coûte vraiment ?{' '}
-          <Link href="/contact">Contactez-nous</Link> — nous chiffrons votre situation
+          <Link href="/contact">Contactez-nous</Link>: nous chiffrons votre situation
           concrète et vous montrons ce qu&apos;un logiciel dédié changerait.
         </em>
       </p>

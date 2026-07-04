@@ -20,17 +20,17 @@ export function ReservationsActiviteNautiqueContent() {
       <h2>Specific constraints to manage</h2>
 
       <ul>
-        <li><strong>Availability by unit.</strong> If you have three jet-skis, you can have three simultaneous bookings — not four. The system must manage inventory by unit, not just by time slot.</li>
+        <li><strong>Availability by unit.</strong> If you have three jet-skis, you can have three simultaneous bookings, not four. The system must manage inventory by unit, not just by time slot.</li>
         <li><strong>Weather conditions.</strong> Some days must be cancellable or reschedulable easily, without client charges. The system must handle refunds or reschedules in a few clicks.</li>
-        <li><strong>Required documents.</strong> Boat licence, insurance, minimum age — some activities require document validation before confirmation.</li>
-        <li><strong>Payment at booking.</strong> For nautical activities, prepayment is often essential to avoid no-shows — which are costly when equipment sits unused.</li>
+        <li><strong>Required documents.</strong> Boat licence, insurance, minimum age, some activities require document validation before confirmation.</li>
+        <li><strong>Payment at booking.</strong> For nautical activities, prepayment is often essential to avoid no-shows, which are costly when equipment sits unused.</li>
       </ul>
 
       <h2>The importance of real-time availability</h2>
 
       <p>
         For seasonal activities, last-minute bookings are frequent. A real-time calendar
-        prevents double bookings and lets clients immediately see available slots — without
+        prevents double bookings and lets clients immediately see available slots, without
         calling you to ask. This is what differentiates a professional booking system from
         a simple contact form: real-time transparency on availability.
       </p>
@@ -94,7 +94,7 @@ export function ReservationsActiviteNautiqueContent() {
       <ul>
         <li>
           <strong>La disponibilité par unité.</strong>
-          Si vous avez trois jet-skis, vous pouvez avoir trois réservations simultanées —
+          Si vous avez trois jet-skis, vous pouvez avoir trois réservations simultanées,
           pas quatre. Le système doit gérer l'inventaire par unité, pas juste par créneau.
         </li>
         <li>
@@ -105,14 +105,14 @@ export function ReservationsActiviteNautiqueContent() {
         </li>
         <li>
           <strong>Les documents obligatoires.</strong>
-          Permis bateau, assurance, âge minimum — certaines activités nécessitent
+          Permis bateau, assurance, âge minimum, certaines activités nécessitent
           la validation de documents avant la confirmation. Le système doit pouvoir
           collecter et vérifier ces informations.
         </li>
         <li>
           <strong>Le paiement à la réservation.</strong>
           Pour les activités nautiques, le prépaiement est souvent indispensable pour
-          éviter les no-shows — qui coûtent cher quand un équipement reste inutilisé.
+          éviter les no-shows, qui coûtent cher quand un équipement reste inutilisé.
         </li>
       </ul>
 
@@ -121,7 +121,7 @@ export function ReservationsActiviteNautiqueContent() {
       <p>
         Pour une activité saisonnière, les réservations de dernière minute sont
         fréquentes. Un calendrier qui se met à jour en temps réel évite les doubles
-        réservations et permet aux clients de voir immédiatement les créneaux disponibles —
+        réservations et permet aux clients de voir immédiatement les créneaux disponibles,
         sans vous appeler pour demander.
       </p>
 

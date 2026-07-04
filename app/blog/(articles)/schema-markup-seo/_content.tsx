@@ -11,7 +11,7 @@ export function SchemaMarkupSeoContent() {
       <h1 className="blog-article-title">Schema Markup: How to Help Google Understand Your Content</h1>
 
       <p>
-        Google reads your pages — but it doesn't always understand them as well as a
+        Google reads your pages: but it doesn't always understand them as well as a
         human. Schema markup is a structured language you add to your code to tell
         Google exactly what your content is: an article, a product, an event, a local
         business. The result: richer search results and better comprehension of your site.
@@ -21,7 +21,7 @@ export function SchemaMarkupSeoContent() {
 
       <p>
         Without schema markup, Google must guess the type and nature of your content.
-        With it, you give clear instructions. In return, Google can display rich snippets —
+        With it, you give clear instructions. In return, Google can display rich snippets,
         enriched results that take up more space and attract more clicks: review stars,
         product prices, opening hours, expandable FAQs directly in results. Rich snippets
         don't directly improve position, but they increase click-through rate significantly.
@@ -30,11 +30,11 @@ export function SchemaMarkupSeoContent() {
       <h2>The most useful schema types</h2>
 
       <ul>
-        <li><strong>LocalBusiness</strong> — for local businesses. Address, phone, hours, service area. Essential for local SEO.</li>
-        <li><strong>Article / BlogPosting</strong> — for blog posts. Publication date, author, featured image.</li>
-        <li><strong>Product</strong> — for e-commerce pages. Price, availability, reviews. Enables price and star display in Google.</li>
-        <li><strong>FAQPage</strong> — for Q&amp;A pages. FAQs can appear beneath your result, significantly increasing visibility.</li>
-        <li><strong>BreadcrumbList</strong> — to display your site's breadcrumb trail directly in Google URLs.</li>
+        <li><strong>LocalBusiness</strong>: for local businesses. Address, phone, hours, service area. Essential for local SEO.</li>
+        <li><strong>Article / BlogPosting</strong>: for blog posts. Publication date, author, featured image.</li>
+        <li><strong>Product</strong>: for e-commerce pages. Price, availability, reviews. Enables price and star display in Google.</li>
+        <li><strong>FAQPage</strong>: for Q&amp;A pages. FAQs can appear beneath your result, significantly increasing visibility.</li>
+        <li><strong>BreadcrumbList</strong>: to display your site's breadcrumb trail directly in Google URLs.</li>
       </ul>
 
       <h2>How to implement schema markup</h2>
@@ -94,7 +94,7 @@ export function SchemaMarkupSeoContent() {
       <h1 className="blog-article-title">Schema markup : comment aider Google à comprendre votre contenu</h1>
 
       <p>
-        Google lit vos pages — mais il ne les comprend pas toujours aussi bien qu'un
+        Google lit vos pages: mais il ne les comprend pas toujours aussi bien qu'un
         humain. Le schema markup est un langage structuré que vous ajoutez à votre
         code pour dire à Google exactement ce qu'est votre contenu : un article,
         un produit, un événement, une entreprise locale. Résultat : des résultats
@@ -106,14 +106,14 @@ export function SchemaMarkupSeoContent() {
       <p>
         Sans schema markup, Google doit deviner le type et la nature de votre contenu.
         Avec, vous lui donnez des instructions claires. En retour, il peut afficher
-        des "rich snippets" — des résultats enrichis qui occupent plus de place et
+        des "rich snippets", des résultats enrichis qui occupent plus de place et
         attirent davantage de clics : étoiles d'avis, prix de produit, horaires
         d'ouverture, FAQ dépliable directement dans les résultats.
       </p>
 
       <p>
         Ces rich snippets n'améliorent pas directement votre position, mais ils
-        augmentent votre taux de clic — parfois de façon significative. Une fiche
+        augmentent votre taux de clic, parfois de façon significative. Une fiche
         avec des étoiles et un prix affiché dans Google attire l'œil bien plus
         qu'un simple lien bleu.
       </p>
@@ -122,25 +122,25 @@ export function SchemaMarkupSeoContent() {
 
       <ul>
         <li>
-          <strong>LocalBusiness</strong> — pour les commerces et prestataires locaux.
+          <strong>LocalBusiness</strong>: pour les commerces et prestataires locaux.
           Adresse, téléphone, horaires, zone de service. Indispensable pour le SEO local.
         </li>
         <li>
-          <strong>Article / BlogPosting</strong> — pour vos articles de blog. Date de
+          <strong>Article / BlogPosting</strong>: pour vos articles de blog. Date de
           publication, auteur, image principale. Améliore la façon dont Google présente
           vos articles dans les résultats.
         </li>
         <li>
-          <strong>Product</strong> — pour les pages e-commerce. Prix, disponibilité,
+          <strong>Product</strong>: pour les pages e-commerce. Prix, disponibilité,
           avis. Permet l'affichage du prix et des étoiles directement dans Google.
         </li>
         <li>
-          <strong>FAQPage</strong> — pour les pages avec questions-réponses. Les FAQ
+          <strong>FAQPage</strong>: pour les pages avec questions-réponses. Les FAQ
           peuvent s'afficher sous votre résultat, augmentant considérablement votre
           visibilité dans la page.
         </li>
         <li>
-          <strong>BreadcrumbList</strong> — pour afficher le fil d'Ariane de votre
+          <strong>BreadcrumbList</strong>: pour afficher le fil d'Ariane de votre
           site directement dans l'URL Google. Aide les utilisateurs à comprendre
           la structure de votre site.
         </li>
@@ -167,7 +167,7 @@ export function SchemaMarkupSeoContent() {
       <p>
         Ne déclarez que ce qui est réellement visible sur la page. Ajouter un schema
         "Product" avec un prix alors que le prix n'est pas affiché sur la page est
-        contraire aux guidelines de Google — et peut entraîner une pénalité manuelle.
+        contraire aux guidelines de Google, et peut entraîner une pénalité manuelle.
         Validez toujours votre implémentation avec le{' '}
         <strong>Google Rich Results Test</strong> avant déploiement.
       </p>

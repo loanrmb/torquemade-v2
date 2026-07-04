@@ -9,13 +9,13 @@ export function PourquoiSynchroStockShopifyErpPlanteContent() {
   if (lang === 'en') return (
     <article className="blog-article">
       <h1 className="blog-article-title">
-        Why Shopify-ERP Stock Sync Breaks — and How to Prevent It
+        Why Shopify-ERP Stock Sync Breaks, and How to Prevent It
       </h1>
 
       <p>
         An ERP-Shopify integration that passes its first tests is not necessarily one that
         holds up over time. Stock discrepancies, overselling, and duplicate orders appear
-        days or weeks after launch — often on a busy day, never at a convenient time.
+        days or weeks after launch, often on a busy day, never at a convenient time.
         The root causes are almost always the same six architecture mistakes. Understanding
         them before you build saves you from discovering them in production.
       </p>
@@ -24,7 +24,7 @@ export function PourquoiSynchroStockShopifyErpPlanteContent() {
 
       <p>
         A first successful sync is the easiest part. You push stock from the ERP to Shopify,
-        you place a test order, it shows up in the ERP — the integration works. What this
+        you place a test order, it shows up in the ERP, the integration works. What this
         test does not cover is concurrency, failure scenarios, and edge cases that only
         appear under real load.
       </p>
@@ -57,7 +57,7 @@ export function PourquoiSynchroStockShopifyErpPlanteContent() {
         seconds of each other, both transactions can succeed if there is no atomic stock
         check. Shopify decrements its own inventory, but if the ERP stock is only updated
         asynchronously after the fact, there is a window during which the ERP still shows
-        one unit available — enough for both orders to go through.
+        one unit available, enough for both orders to go through.
       </p>
 
       <p>
@@ -99,8 +99,8 @@ export function PourquoiSynchroStockShopifyErpPlanteContent() {
 
       <p>
         A stock update in the ERP does not appear on Shopify instantaneously. Depending
-        on the sync frequency — scheduled job every 15 minutes, every hour, or triggered
-        on batch completion — the delay between an in-store sale and the corresponding
+        on the sync frequency, scheduled job every 15 minutes, every hour, or triggered
+        on batch completion. The delay between an in-store sale and the corresponding
         Shopify inventory update can be significant.
       </p>
 
@@ -129,7 +129,7 @@ export function PourquoiSynchroStockShopifyErpPlanteContent() {
       <h2>What a Sound Architecture Includes</h2>
 
       <p>
-        A reliable Shopify-ERP integration is bidirectional — stock and prices from ERP
+        A reliable Shopify-ERP integration is bidirectional, stock and prices from ERP
         to Shopify, orders and customer records from Shopify to ERP. It uses a persistent
         queue with retry logic and a dead letter queue for events that fail repeatedly.
         The SKU mapping is explicit, versioned, and tested across all variants. Propagation
@@ -147,7 +147,7 @@ export function PourquoiSynchroStockShopifyErpPlanteContent() {
       <p>
         <em>
           Your Shopify-ERP sync produces stock discrepancies or missed orders?{' '}
-          <Link href="/contact">Contact us</Link> — we will audit your current architecture
+          <Link href="/contact">Contact us</Link>: we will audit your current architecture
           and identify the exact failure points before they cost you further.
         </em>
       </p>
@@ -157,13 +157,13 @@ export function PourquoiSynchroStockShopifyErpPlanteContent() {
   return (
     <article className="blog-article">
       <h1 className="blog-article-title">
-        Pourquoi la synchronisation stock Shopify-ERP plante — et comment l&apos;éviter
+        Pourquoi la synchronisation stock Shopify-ERP plante, et comment l&apos;éviter
       </h1>
 
       <p>
         Une intégration ERP-Shopify qui passe ses premiers tests n&apos;est pas nécessairement
         une intégration qui tient dans la durée. Les décalages de stock, les surventes et
-        les doublons de commande apparaissent des jours ou des semaines après le lancement —
+        les doublons de commande apparaissent des jours ou des semaines après le lancement,
         souvent un jour de forte activité, jamais à un moment commode. Les causes profondes
         sont presque toujours les mêmes six erreurs d&apos;architecture. Les comprendre
         avant de construire vous évite de les découvrir en production.
@@ -174,7 +174,7 @@ export function PourquoiSynchroStockShopifyErpPlanteContent() {
       <p>
         Un premier test de synchronisation réussi est la partie la plus facile. Vous poussez
         le stock de l&apos;ERP vers Shopify, vous passez une commande de test, elle apparaît
-        dans l&apos;ERP — l&apos;intégration fonctionne. Ce test ne couvre pas la
+        dans l&apos;ERP: l&apos;intégration fonctionne. Ce test ne couvre pas la
         concurrence, les scénarios d&apos;échec et les cas limites qui n&apos;apparaissent
         que sous charge réelle.
       </p>
@@ -211,7 +211,7 @@ export function PourquoiSynchroStockShopifyErpPlanteContent() {
         si aucune vérification atomique du stock n&apos;est en place. Shopify décrémente
         son propre inventaire, mais si le stock ERP n&apos;est mis à jour qu&apos;en
         asynchrone après coup, il existe une fenêtre pendant laquelle l&apos;ERP affiche
-        encore une unité disponible — suffisant pour que les deux commandes passent.
+        encore une unité disponible, suffisant pour que les deux commandes passent.
       </p>
 
       <p>
@@ -256,8 +256,8 @@ export function PourquoiSynchroStockShopifyErpPlanteContent() {
 
       <p>
         Une mise à jour de stock dans l&apos;ERP n&apos;apparaît pas instantanément sur
-        Shopify. Selon la fréquence de synchronisation — job planifié toutes les 15 minutes,
-        toutes les heures, ou déclenché en fin de batch — le délai entre une vente en
+        Shopify. Selon la fréquence de synchronisation, job planifié toutes les 15 minutes,
+        toutes les heures, ou déclenché en fin de batch, le délai entre une vente en
         boutique et la mise à jour correspondante de l&apos;inventaire Shopify peut être
         significatif.
       </p>
@@ -289,7 +289,7 @@ export function PourquoiSynchroStockShopifyErpPlanteContent() {
       <h2>Ce qu&apos;une bonne architecture inclut systématiquement</h2>
 
       <p>
-        Une intégration Shopify-ERP fiable est bidirectionnelle — stock et prix de
+        Une intégration Shopify-ERP fiable est bidirectionnelle, stock et prix de
         l&apos;ERP vers Shopify, commandes et fiches clients de Shopify vers l&apos;ERP.
         Elle utilise une file d&apos;attente persistante avec logique de retry et dead
         letter queue pour les événements qui échouent de façon répétée. Le mapping SKU
@@ -310,7 +310,7 @@ export function PourquoiSynchroStockShopifyErpPlanteContent() {
         <em>
           Votre synchro Shopify-ERP produit des décalages de stock ou des commandes
           manquées ?{' '}
-          <Link href="/contact">Contactez-nous</Link> — nous auditons votre architecture
+          <Link href="/contact">Contactez-nous</Link>: nous auditons votre architecture
           actuelle et identifions les points de défaillance exacts avant qu&apos;ils vous
           coûtent davantage.
         </em>

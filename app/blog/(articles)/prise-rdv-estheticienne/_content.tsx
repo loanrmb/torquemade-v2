@@ -12,7 +12,7 @@ export function PriseRdvEstheticienneContent() {
 
       <p>
         In 2025, a majority of people prefer booking appointments online rather than calling.
-        True for doctors, hairdressers, restaurants — and increasingly true for beauticians.
+        True for doctors, hairdressers, restaurants, and increasingly true for beauticians.
         If your site offers only a contact form or phone number, you're losing clients who
         would have booked immediately if they could do so directly from your site.
       </p>
@@ -20,18 +20,18 @@ export function PriseRdvEstheticienneContent() {
       <h2>What online booking changes</h2>
 
       <ul>
-        <li><strong>24/7 availability.</strong> A client who sees your site at 10pm can book immediately — without waiting until the next morning when you're available.</li>
+        <li><strong>24/7 availability.</strong> A client who sees your site at 10pm can book immediately, without waiting until the next morning when you're available.</li>
         <li><strong>Reduced no-shows.</strong> Online booking systems automatically send SMS or email reminders 24h and 1h before. No-show rates drop significantly.</li>
         <li><strong>Time savings for you.</strong> Each online booking is one fewer call or SMS to handle. For a solo beautician, that's precious time recovered.</li>
-        <li><strong>Better schedule filling.</strong> When clients can see your availability in real time, they fill slots that were staying empty — often mid-day or early-week slots.</li>
+        <li><strong>Better schedule filling.</strong> When clients can see your availability in real time, they fill slots that were staying empty, often mid-day or early-week slots.</li>
       </ul>
 
       <h2>Available solutions</h2>
 
       <ul>
         <li><strong>Planity.</strong> Beauty-specialised in France, integrates on your site with complete booking, reminders, and optional payment.</li>
-        <li><strong>Sector platforms.</strong> Platforms that also bring visibility — with commission on new clients they bring.</li>
-        <li><strong>Custom integration.</strong> For beauticians with a personalised site, a booking system integrated directly in the site offers the smoothest experience — same branding, same domain.</li>
+        <li><strong>Sector platforms.</strong> Platforms that also bring visibility, with commission on new clients they bring.</li>
+        <li><strong>Custom integration.</strong> For beauticians with a personalised site, a booking system integrated directly in the site offers the smoothest experience, same branding, same domain.</li>
       </ul>
 
       <h2>Online deposit: reducing last-minute cancellations</h2>
@@ -81,7 +81,7 @@ export function PriseRdvEstheticienneContent() {
 
       <p>
         En 2025, une majorité de personnes préfère prendre rendez-vous en ligne plutôt
-        que d'appeler. C'est vrai pour les médecins, les coiffeurs, les restaurants —
+        que d'appeler. C'est vrai pour les médecins, les coiffeurs, les restaurants,
         et c'est de plus en plus vrai pour les esthéticiennes. Si votre site propose
         uniquement un formulaire de contact ou un numéro de téléphone, vous perdez
         des clientes qui auraient pris RDV immédiatement si elles avaient pu le faire
@@ -93,7 +93,7 @@ export function PriseRdvEstheticienneContent() {
       <ul>
         <li>
           <strong>Disponibilité 24h/24.</strong>
-          Une cliente qui voit votre site à 22h peut prendre RDV immédiatement —
+          Une cliente qui voit votre site à 22h peut prendre RDV immédiatement,
           sans attendre le lendemain matin que vous soyez disponible.
         </li>
         <li>
@@ -111,7 +111,7 @@ export function PriseRdvEstheticienneContent() {
         <li>
           <strong>Meilleur remplissage du planning.</strong>
           Quand les clientes peuvent voir vos disponibilités en temps réel, elles
-          se placent dans les créneaux qui restaient vides — souvent les créneaux
+          se placent dans les créneaux qui restaient vides, souvent les créneaux
           de milieu de journée ou de début de semaine.
         </li>
       </ul>
@@ -130,14 +130,14 @@ export function PriseRdvEstheticienneContent() {
         </li>
         <li>
           <strong>Doctolib Beauté / RDV Esthétique.</strong>
-          Des plateformes sectorielles qui apportent aussi de la visibilité —
+          Des plateformes sectorielles qui apportent aussi de la visibilité,
           avec commission sur les nouveaux clients apportés.
         </li>
         <li>
           <strong>Intégration sur mesure.</strong>
           Pour les esthéticiennes qui ont un site personnalisé, un système
           de RDV intégré directement dans le site offre l'expérience la plus
-          fluide — même charte graphique, même domaine.
+          fluide, même charte graphique, même domaine.
         </li>
       </ul>
 

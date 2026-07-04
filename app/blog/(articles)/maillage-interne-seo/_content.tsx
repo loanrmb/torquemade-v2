@@ -13,8 +13,8 @@ export function MaillageInterneSeoContent() {
       <p>
         Most sites publish articles and stop there. They skip the next step: creating
         links between their pages so Google understands the site structure and distributes
-        SEO authority correctly. Internal linking is one of the most accessible —
-        and most neglected — SEO levers.
+        SEO authority correctly. Internal linking is one of the most accessible
+        (and most neglected) SEO levers.
       </p>
 
       <h2>What an internal link actually does</h2>
@@ -23,7 +23,7 @@ export function MaillageInterneSeoContent() {
         An internal link does two things at once: it helps users navigate to a relevant
         page, and it passes a portion of SEO authority from the source page to the
         destination. This is called "internal PageRank." A page that receives many
-        internal links is seen by Google as more important — you can direct Google
+        internal links is seen by Google as more important, you can direct Google
         toward priority pages simply by adjusting your linking structure.
       </p>
 
@@ -96,7 +96,7 @@ export function MaillageInterneSeoContent() {
         La plupart des sites publient des articles et s'arrêtent là. Ils oublient
         l'étape suivante : créer des liens entre leurs pages pour que Google comprenne
         la structure du site et distribue correctement l'autorité SEO. Le maillage
-        interne est l'un des leviers les plus accessibles — et les plus négligés.
+        interne est l'un des leviers les plus accessibles, et les plus négligés.
       </p>
 
       <h2>Ce que fait réellement un lien interne</h2>
@@ -104,7 +104,7 @@ export function MaillageInterneSeoContent() {
       <p>
         Un lien interne fait deux choses en parallèle. D'abord, il aide l'utilisateur
         à naviguer vers une page pertinente. Ensuite, il transmet une partie de
-        l'autorité SEO de la page source vers la page de destination — c'est ce
+        l'autorité SEO de la page source vers la page de destination: c'est ce
         qu'on appelle le "PageRank interne".
       </p>
 
@@ -118,7 +118,7 @@ export function MaillageInterneSeoContent() {
 
       <p>
         Le modèle le plus efficace est celui en silos thématiques. Vous créez des
-        pages "piliers" — qui traitent un sujet en profondeur — et des "articles
+        pages "piliers" (qui traitent un sujet en profondeur) et des "articles
         satellites" qui approfondissent des aspects spécifiques. Les satellites
         pointent vers le pilier ; le pilier pointe vers les satellites.
       </p>

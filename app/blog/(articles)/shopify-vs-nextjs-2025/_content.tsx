@@ -74,7 +74,7 @@ function TableDecision({ lang }: { lang: 'fr' | 'en' }) {
         <ul className="space-y-3 text-sm">
           {shopifyItems.map((item) => (
             <li key={item} className="flex items-start gap-3">
-              <span className="font-mono text-xs mt-0.5 opacity-40">—</span>
+              <span className="font-mono text-xs mt-0.5 opacity-40">, </span>
               <span>{item}</span>
             </li>
           ))}
@@ -85,7 +85,7 @@ function TableDecision({ lang }: { lang: 'fr' | 'en' }) {
         <ul className="space-y-3 text-sm">
           {nextjsItems.map((item) => (
             <li key={item} className="flex items-start gap-3">
-              <span className="font-mono text-xs mt-0.5 opacity-40">—</span>
+              <span className="font-mono text-xs mt-0.5 opacity-40">, </span>
               <span>{item}</span>
             </li>
           ))}
@@ -106,7 +106,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
 
       <h1 className="blog-article-title">Shopify vs Next.js : lequel choisir pour votre commerce en 2025 ?</h1>
 
-      <p>La question revient dans presque toutes nos conversations avec des clients e-commerce. Shopify ou Next.js ? Les deux permettent de vendre en ligne — mais ils ne s&apos;adressent pas aux mêmes projets, ni aux mêmes ambitions.</p>
+      <p>La question revient dans presque toutes nos conversations avec des clients e-commerce. Shopify ou Next.js ? Les deux permettent de vendre en ligne, mais ils ne s&apos;adressent pas aux mêmes projets, ni aux mêmes ambitions.</p>
 
       <p>Voici notre comparaison directe, sans jargon inutile.</p>
 
@@ -114,7 +114,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
 
       <h2>Shopify : vendre vite, sans développeur</h2>
 
-      <p>Shopify est une plateforme SaaS pensée pour lancer rapidement une boutique en ligne. Abonnement mensuel, thème prêt à l&apos;emploi, produits ajoutés en quelques clics — vous pouvez être opérationnel en quelques jours.</p>
+      <p>Shopify est une plateforme SaaS pensée pour lancer rapidement une boutique en ligne. Abonnement mensuel, thème prêt à l&apos;emploi, produits ajoutés en quelques clics, vous pouvez être opérationnel en quelques jours.</p>
 
       <p><strong>Ses points forts :</strong></p>
       <ul>
@@ -139,7 +139,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
       <p><strong>Ses points forts :</strong></p>
       <ul>
         <li>Performances maximales : génération statique, rendu serveur, optimisation d&apos;images native</li>
-        <li>SEO technique irréprochable dès la conception — structure HTML propre, Core Web Vitals, métadonnées maîtrisées</li>
+        <li>SEO technique irréprochable dès la conception, structure HTML propre, Core Web Vitals, métadonnées maîtrisées</li>
         <li>Design pixel-perfect, adapté exactement à votre identité visuelle</li>
         <li>Zéro commission sur les ventes : vous intégrez Stripe directement, sans intermédiaire</li>
         <li>Évolutif et stable : de 10 à 100 000 visiteurs sans changer de plateforme</li>
@@ -148,7 +148,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
       <p><strong>Ses limites :</strong></p>
       <ul>
         <li>Nécessite un développeur pour la création initiale et la maintenance</li>
-        <li>Délai de mise en ligne plus long — plusieurs semaines, pas quelques jours</li>
+        <li>Délai de mise en ligne plus long, plusieurs semaines, pas quelques jours</li>
         <li>Stocks, paiements et logistique doivent être connectés via API</li>
       </ul>
 
@@ -156,7 +156,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
 
       <h2>Le calcul que personne ne fait</h2>
 
-      <p>Sur 10 000 € de ventes mensuelles, la commission Shopify représente entre 50 € et 200 € par mois. Sur trois ans, c&apos;est potentiellement le coût d&apos;un site Next.js sur mesure — développé une fois, sans commission à perpétuité.</p>
+      <p>Sur 10 000 € de ventes mensuelles, la commission Shopify représente entre 50 € et 200 € par mois. Sur trois ans, c&apos;est potentiellement le coût d&apos;un site Next.js sur mesure, développé une fois, sans commission à perpétuité.</p>
 
       <p>C&apos;est la raison pour laquelle la grande majorité de nos clients e-commerce choisissent Next.js après notre première conversation. Non pas parce que c&apos;est plus technique, mais parce que c&apos;est plus rentable à moyen terme.</p>
 
@@ -170,7 +170,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
 
       <hr />
 
-      <p><em>Vous hésitez entre les deux pour votre projet ? <Link href="/contact">Contactez-nous</Link> — nous vous donnons une recommandation claire en 30 minutes.</em></p>
+      <p><em>Vous hésitez entre les deux pour votre projet ? <Link href="/contact">Contactez-nous</Link>. Nous vous donnons une recommandation claire en 30 minutes.</em></p>
     </>
   )
 }
@@ -181,7 +181,7 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
 
       <h1 className="blog-article-title">Shopify vs Next.js: Which to Choose for Your Online Store in 2025?</h1>
 
-      <p>The question comes up in nearly every conversation we have with e-commerce clients. Shopify or Next.js? Both let you sell online — but they&apos;re not built for the same projects or the same ambitions.</p>
+      <p>The question comes up in nearly every conversation we have with e-commerce clients. Shopify or Next.js? Both let you sell online, but they&apos;re not built for the same projects or the same ambitions.</p>
 
       <p>Here&apos;s our direct comparison, without unnecessary jargon.</p>
 
@@ -189,7 +189,7 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
 
       <h2>Shopify: Sell Fast, No Developer Needed</h2>
 
-      <p>Shopify is a SaaS platform built to launch an online store quickly. Monthly subscription, ready-to-use theme, products added in a few clicks — you can be up and running within days.</p>
+      <p>Shopify is a SaaS platform built to launch an online store quickly. Monthly subscription, ready-to-use theme, products added in a few clicks, you can be up and running within days.</p>
 
       <p><strong>Its strengths:</strong></p>
       <ul>
@@ -214,7 +214,7 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
       <p><strong>Its strengths:</strong></p>
       <ul>
         <li>Maximum performance: static generation, server rendering, native image optimization</li>
-        <li>Impeccable technical SEO from day one — clean HTML structure, Core Web Vitals, controlled metadata</li>
+        <li>Impeccable technical SEO from day one, clean HTML structure, Core Web Vitals, controlled metadata</li>
         <li>Pixel-perfect design, tailored exactly to your visual identity</li>
         <li>Zero sales commission: integrate Stripe directly, no middleman</li>
         <li>Scalable and stable: from 10 to 100,000 visitors without changing platforms</li>
@@ -223,7 +223,7 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
       <p><strong>Its limitations:</strong></p>
       <ul>
         <li>Requires a developer for initial build and ongoing maintenance</li>
-        <li>Longer time to launch — several weeks, not a few days</li>
+        <li>Longer time to launch: several weeks, not a few days</li>
         <li>Inventory, payments, and logistics must be connected via API</li>
       </ul>
 
@@ -231,7 +231,7 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
 
       <h2>The Calculation Nobody Does</h2>
 
-      <p>On €10,000 in monthly sales, Shopify&apos;s commission amounts to €50 to €200 per month. Over three years, that&apos;s potentially the cost of a custom Next.js site — built once, with no ongoing commission.</p>
+      <p>On €10,000 in monthly sales, Shopify&apos;s commission amounts to €50 to €200 per month. Over three years, that&apos;s potentially the cost of a custom Next.js site, built once, with no ongoing commission.</p>
 
       <p>That&apos;s why the vast majority of our e-commerce clients choose Next.js after our first conversation. Not because it&apos;s more technical, but because it&apos;s more profitable in the medium term.</p>
 
@@ -245,7 +245,7 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
 
       <hr />
 
-      <p><em>Unsure which is right for your project? <Link href="/contact">Contact us</Link> — we&apos;ll give you a clear recommendation in 30 minutes.</em></p>
+      <p><em>Unsure which is right for your project? <Link href="/contact">Contact us</Link>, we&apos;ll give you a clear recommendation in 30 minutes.</em></p>
     </>
   )
 }

@@ -11,10 +11,10 @@ export function EstheticienneValenciennesSeoContent() {
       <h1 className="blog-article-title">Valenciennes Beautician: How to Attract Local Clients on Google</h1>
 
       <p>
-        Valenciennes is a medium-sized city in northern France — large enough for real
+        Valenciennes is a medium-sized city in northern France, large enough for real
         competition between beauticians, small enough for local SEO to be accessible.
         Ranking for "beautician Valenciennes" or "manicure Valenciennes" doesn't require
-        an advertising budget — it requires a consistent local strategy.
+        an advertising budget, it requires a consistent local strategy.
       </p>
 
       <h2>Understanding the local market</h2>
@@ -23,7 +23,7 @@ export function EstheticienneValenciennesSeoContent() {
         In Valenciennes, as in all mid-sized cities, a beautician faces two types of
         competition: established institutes with long history and client reviews, and
         mobile beauticians offering more accessible rates. The right SEO strategy first
-        identifies queries where competition is still low — often specific services
+        identifies queries where competition is still low, often specific services
         ("lash extensions Valenciennes," "keratin treatment Valenciennes") rather than
         generic queries.
       </p>
@@ -39,8 +39,8 @@ export function EstheticienneValenciennesSeoContent() {
       <h2>An example of a strategy that works in this context</h2>
 
       <p>
-        In the mobile beauty sector, beauticians who have structured their web presence —
-        site with online booking, optimised GBP, local content — have significantly
+        In the mobile beauty sector, beauticians who have structured their web presence
+        (site with online booking, optimised GBP, local content) have significantly
         improved their booking rate purely through organic search. The principle is simple:
         be findable in the right place at the right time, when a client is searching
         precisely for what you offer in your city.
@@ -85,11 +85,11 @@ export function EstheticienneValenciennesSeoContent() {
       <h1 className="blog-article-title">Valenciennes esthéticienne : comment capter les clientes locales sur Google</h1>
 
       <p>
-        Valenciennes est une ville de taille moyenne dans le Nord — suffisamment grande
+        Valenciennes est une ville de taille moyenne dans le Nord, suffisamment grande
         pour que la concurrence entre esthéticiennes soit réelle, suffisamment petite
         pour que le SEO local soit accessible. Se positionner sur "esthéticienne
         Valenciennes" ou "manucure Valenciennes" ne demande pas un budget publicitaire
-        — ça demande une stratégie locale cohérente.
+, ça demande une stratégie locale cohérente.
       </p>
 
       <h2>Comprendre le marché local</h2>
@@ -103,7 +103,7 @@ export function EstheticienneValenciennesSeoContent() {
 
       <p>
         La bonne stratégie SEO identifie d'abord les requêtes où la concurrence
-        est encore faible — souvent les prestations spécifiques ("extension de cils
+        est encore faible, souvent les prestations spécifiques ("extension de cils
         Valenciennes", "soin kératine Valenciennes") plutôt que les requêtes génériques.
       </p>
 
@@ -133,8 +133,8 @@ export function EstheticienneValenciennesSeoContent() {
 
       <p>
         Dans le secteur de la beauté à domicile, certaines esthéticiennes qui ont
-        structuré leur présence web — site avec RDV en ligne, GBP optimisé, contenu
-        local — ont significativement amélioré leur taux de remplissage uniquement
+        structuré leur présence web, site avec RDV en ligne, GBP optimisé, contenu
+        local, ont significativement amélioré leur taux de remplissage uniquement
         via le référencement naturel. Le principe est simple : être trouvable au bon
         endroit au bon moment, quand une cliente cherche précisément ce que vous
         proposez dans votre ville.

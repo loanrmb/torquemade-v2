@@ -14,7 +14,7 @@ export function StockMotoEnLigneConversionContent() {
         A motorcycle buyer spends several weeks comparing online before visiting a
         dealership. During this phase, your online stock presentation is your first
         salesperson. If photos are blurry, prices are missing, or information is
-        incomplete — the visitor moves to the next site. Here's how to avoid that.
+        incomplete, the visitor moves to the next site. Here's how to avoid that.
       </p>
 
       <h2>Essential elements on each motorcycle listing</h2>
@@ -23,7 +23,7 @@ export function StockMotoEnLigneConversionContent() {
         <li><strong>Numerous, quality photos.</strong> Minimum 8 photos per bike: 3/4 front, 3/4 rear, left profile, right profile, dashboard, engine detail, seat and riding position. For used bikes, add general condition photos. Honesty reassures.</li>
         <li><strong>Price displayed clearly.</strong> "Price on request" is eliminating on mobile. A buyer comparing several sites has no time to call for each model. A displayed price, even indicative, creates a natural filter that qualifies the contact.</li>
         <li><strong>Complete technical specifications.</strong> Displacement, power, torque, weight, seat height, required licence type, fuel consumption. These answer questions the buyer has before visiting.</li>
-        <li><strong>A clear call to action.</strong> "Request a test ride," "Get in touch," "Reserve this bike" — each listing must lead to an action, not just a generic contact page.</li>
+        <li><strong>A clear call to action.</strong> "Request a test ride," "Get in touch," "Reserve this bike", each listing must lead to an action, not just a generic contact page.</li>
       </ul>
 
       <h2>Catalogue organisation</h2>
@@ -32,7 +32,7 @@ export function StockMotoEnLigneConversionContent() {
         Offer filters by category (roadster, trail, custom, scooter), by displacement,
         by budget, and by condition (new/used). A buyer who can't quickly find what they
         want leaves. Filters reduce search time and increase time on your site. For used
-        bikes, add the registration date and number of previous owners — information any
+        bikes, add the registration date and number of previous owners, information any
         serious buyer will eventually ask for, so display it upfront.
       </p>
 
@@ -77,7 +77,7 @@ export function StockMotoEnLigneConversionContent() {
         Un acheteur de moto passe en moyenne plusieurs semaines à comparer en ligne avant
         de visiter une concession. Pendant cette phase, votre présentation de stock
         en ligne est votre premier commercial. Si les photos sont floues, si les prix
-        sont absents, si les informations sont incomplètes — le visiteur passe au site
+        sont absents, si les informations sont incomplètes, le visiteur passe au site
         suivant. Voici comment éviter ça.
       </p>
 
@@ -105,7 +105,7 @@ export function StockMotoEnLigneConversionContent() {
         </li>
         <li>
           <strong>Un appel à l'action clair.</strong>
-          "Demander un essai", "Prendre contact", "Réserver cette moto" — chaque
+          "Demander un essai", "Prendre contact", "Réserver cette moto", chaque
           fiche doit mener à une action. Pas juste à une page de contact générique.
         </li>
       </ul>
@@ -122,7 +122,7 @@ export function StockMotoEnLigneConversionContent() {
       <p>
         Pour les motos d'occasion, ajoutez la date de mise en circulation et le
         nombre de propriétaires précédents. Ce sont des informations que tout acheteur
-        sérieux finira par demander — autant les afficher d'emblée.
+        sérieux finira par demander, autant les afficher d'emblée.
       </p>
 
       <hr />

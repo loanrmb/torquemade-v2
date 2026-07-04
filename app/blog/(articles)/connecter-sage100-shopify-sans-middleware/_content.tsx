@@ -22,14 +22,14 @@ export function ConnecterSage100ShopifySansMiddlewareContent() {
 
       <p>
         Middleware connectors for ERP-Shopify integrations are sold as turnkey solutions.
-        In practice, they come with recurring costs — typically between €100 and €500 per
-        month — that accumulate indefinitely as long as your business runs.
+        In practice, they come with recurring costs, typically between €100 and €500 per
+        month, and they accumulate indefinitely as long as your business runs.
       </p>
 
       <p>
         Beyond cost, the dependency is structural. If the SaaS provider shuts down, changes
         their pricing, or simply stops supporting your version of Sage, your entire integration
-        is at risk. And when a sync fails — because it will at some point — the error message
+        is at risk. And when a sync fails (because it will at some point), the error message
         you get is often cryptic. You can&apos;t look inside the black box to understand
         what went wrong.
       </p>
@@ -46,7 +46,7 @@ export function ConnecterSage100ShopifySansMiddlewareContent() {
         Sage 100 exposes a programmatic interface called the Business Object Interface, or BOI.
         It is a COM layer installed alongside the Sage 100 application that allows external
         scripts to read from and write to the Sage data model using the same business logic
-        as the application itself — validation rules, triggers, and all.
+        as the application itself, validation rules, triggers, and all.
       </p>
 
       <p>
@@ -66,7 +66,7 @@ export function ConnecterSage100ShopifySansMiddlewareContent() {
 
       <p>
         Shopify exposes two complementary mechanisms for integration. The REST Admin API allows
-        you to query and update resources — inventory levels, product prices, order statuses —
+        you to query and update resources (inventory levels, product prices, order statuses)
         via standard HTTP requests authenticated with an access token.
       </p>
 
@@ -86,7 +86,7 @@ export function ConnecterSage100ShopifySansMiddlewareContent() {
       <h2>Architecture of a Direct Connection</h2>
 
       <p>
-        The integration is a script — typically a Python or Node.js process — that bridges
+        The integration is a script (typically a Python or Node.js process) that bridges
         the two systems. It runs on the same Windows server as Sage 100, or on a server
         with network access to the Sage installation.
       </p>
@@ -94,14 +94,14 @@ export function ConnecterSage100ShopifySansMiddlewareContent() {
       <p>
         The stock synchronization flow runs from Sage to Shopify: the script queries the BOI
         for updated stock levels at regular intervals or on a trigger, then calls the Shopify
-        Inventory API to update the corresponding location quantity. Deltas only — no need to
+        Inventory API to update the corresponding location quantity. Deltas only, no need to
         push the entire catalog on every run.
       </p>
 
       <p>
         The order flow runs in the other direction: a webhook endpoint receives the
         &ldquo;order created&rdquo; event from Shopify, validates the payload, and uses the BOI
-        to create the corresponding sales order in Sage — customer, lines, quantities, and
+        to create the corresponding sales order in Sage, customer, lines, quantities, and
         delivery address included.
       </p>
 
@@ -109,7 +109,7 @@ export function ConnecterSage100ShopifySansMiddlewareContent() {
 
       <p>
         A well-built direct integration typically covers four data types. Stock levels are
-        updated from Sage to Shopify after each inventory movement — sales, receipts, or manual
+        updated from Sage to Shopify after each inventory movement, sales, receipts, or manual
         adjustments. Prices are pushed from Sage to Shopify when a price list changes, ensuring
         the online store always reflects the current tariff.
       </p>
@@ -124,13 +124,13 @@ export function ConnecterSage100ShopifySansMiddlewareContent() {
 
       <p>
         A direct connection is the right choice for most merchants with an established catalog
-        and a development team — or a development partner — capable of maintaining the
+        and a development team (or a development partner) capable of maintaining the
         integration over time.
       </p>
 
       <p>
-        There are cases where a middleware makes sense. Very high order volumes — several
-        thousand orders per day — may benefit from an industrialized solution with dedicated
+        There are cases where a middleware makes sense. Very high order volumes, several
+        thousand orders per day, may benefit from an industrialized solution with dedicated
         infrastructure and high-availability guarantees. Teams with no developer internally
         who cannot commit to maintaining a script will find a managed middleware simpler to
         operate. And multi-channel setups connecting Sage to Amazon, WooCommerce, and Shopify
@@ -143,7 +143,7 @@ export function ConnecterSage100ShopifySansMiddlewareContent() {
       <p>
         <em>
           You use Sage 100 and want to connect it to Shopify without an ongoing subscription?{' '}
-          <Link href="/contact">Contact us</Link> — we&apos;ll audit your current setup and
+          <Link href="/contact">Contact us</Link>: we&apos;ll audit your current setup and
           design the direct integration that fits your catalog and your order volume.
         </em>
       </p>
@@ -167,16 +167,16 @@ export function ConnecterSage100ShopifySansMiddlewareContent() {
 
       <p>
         Les connecteurs middleware pour les intégrations ERP-Shopify sont vendus comme des
-        solutions clé en main. En pratique, ils impliquent des coûts récurrents — généralement
-        entre 100 € et 500 € par mois — qui s&apos;accumulent indéfiniment tant que votre
+        solutions clé en main. En pratique, ils impliquent des coûts récurrents, généralement
+        entre 100 € et 500 € par mois, qui s&apos;accumulent indéfiniment tant que votre
         activité tourne.
       </p>
 
       <p>
         Au-delà du coût, la dépendance est structurelle. Si le fournisseur SaaS ferme,
         change ses tarifs, ou arrête simplement de supporter votre version de Sage, toute
-        votre intégration est en danger. Et quand une synchronisation échoue — ce qui arrivera
-        tôt ou tard — le message d&apos;erreur que vous recevez est souvent cryptique. Vous
+        votre intégration est en danger. Et quand une synchronisation échoue, ce qui arrivera
+        tôt ou tard, le message d&apos;erreur que vous recevez est souvent cryptique. Vous
         ne pouvez pas regarder à l&apos;intérieur de la boîte noire pour comprendre ce qui
         s&apos;est passé.
       </p>
@@ -195,7 +195,7 @@ export function ConnecterSage100ShopifySansMiddlewareContent() {
         ou BOI. Il s&apos;agit d&apos;une couche COM installée avec l&apos;application Sage
         100 qui permet à des scripts externes de lire et d&apos;écrire dans le modèle de
         données Sage en utilisant la même logique métier que l&apos;application
-        elle-même — règles de validation, déclencheurs, et tout le reste.
+        elle-même, règles de validation, déclencheurs, et tout le reste.
       </p>
 
       <p>
@@ -217,8 +217,8 @@ export function ConnecterSage100ShopifySansMiddlewareContent() {
 
       <p>
         Shopify expose deux mécanismes complémentaires pour l&apos;intégration. L&apos;API
-        REST Admin permet d&apos;interroger et de mettre à jour des ressources — niveaux de
-        stock, prix des produits, statuts des commandes — via des requêtes HTTP standard
+        REST Admin permet d&apos;interroger et de mettre à jour des ressources, niveaux de
+        stock, prix des produits, statuts des commandes, via des requêtes HTTP standard
         authentifiées par un token d&apos;accès.
       </p>
 
@@ -240,7 +240,7 @@ export function ConnecterSage100ShopifySansMiddlewareContent() {
       <h2>Architecture d&apos;une connexion directe</h2>
 
       <p>
-        L&apos;intégration est un script — typiquement un processus Python ou Node.js — qui
+        L&apos;intégration est un script (typiquement un processus Python ou Node.js) qui
         fait le pont entre les deux systèmes. Il tourne sur le même serveur Windows que
         Sage 100, ou sur un serveur avec accès réseau à l&apos;installation Sage.
       </p>
@@ -249,14 +249,14 @@ export function ConnecterSage100ShopifySansMiddlewareContent() {
         Le flux de synchronisation du stock va de Sage vers Shopify : le script interroge
         le BOI pour les niveaux de stock mis à jour à intervalles réguliers ou sur
         déclencheur, puis appelle l&apos;API Inventory de Shopify pour mettre à jour la
-        quantité correspondante. En mode delta uniquement — pas besoin de pousser tout
+        quantité correspondante. En mode delta uniquement, pas besoin de pousser tout
         le catalogue à chaque exécution.
       </p>
 
       <p>
         Le flux des commandes va dans l&apos;autre sens : un endpoint webhook reçoit
         l&apos;événement &laquo; order created &raquo; de Shopify, valide le payload, et
-        utilise le BOI pour créer la commande de vente correspondante dans Sage —
+        utilise le BOI pour créer la commande de vente correspondante dans Sage :
         client, lignes, quantités et adresse de livraison inclus.
       </p>
 
@@ -265,7 +265,7 @@ export function ConnecterSage100ShopifySansMiddlewareContent() {
       <p>
         Une intégration directe bien construite couvre généralement quatre types de données.
         Les niveaux de stock sont mis à jour de Sage vers Shopify après chaque mouvement
-        d&apos;inventaire — ventes, réceptions, ou ajustements manuels. Les prix sont poussés
+        d&apos;inventaire, ventes, réceptions, ou ajustements manuels. Les prix sont poussés
         de Sage vers Shopify quand un tarif change, pour que la boutique en ligne reflète
         toujours le tarif en cours.
       </p>
@@ -281,13 +281,13 @@ export function ConnecterSage100ShopifySansMiddlewareContent() {
 
       <p>
         Une connexion directe est le bon choix pour la plupart des commerçants avec un
-        catalogue établi et une équipe de développement — ou un partenaire développement —
+        catalogue établi et une équipe de développement (ou un partenaire développement)
         capable de maintenir l&apos;intégration dans la durée.
       </p>
 
       <p>
-        Il existe des cas où un middleware a du sens. Les volumes de commandes très élevés —
-        plusieurs milliers de commandes par jour — peuvent bénéficier d&apos;une solution
+        Il existe des cas où un middleware a du sens. Les volumes de commandes très élevés,
+        plusieurs milliers de commandes par jour, peuvent bénéficier d&apos;une solution
         industrialisée avec une infrastructure dédiée et des garanties de haute disponibilité.
         Les équipes sans développeur interne qui ne peuvent pas s&apos;engager à maintenir
         un script trouveront un middleware géré plus simple à opérer. Et les configurations
@@ -301,7 +301,7 @@ export function ConnecterSage100ShopifySansMiddlewareContent() {
         <em>
           Vous utilisez Sage 100 et souhaitez le connecter à Shopify sans abonnement
           récurrent ?{' '}
-          <Link href="/contact">Contactez-nous</Link> — nous auditons votre configuration
+          <Link href="/contact">Contactez-nous</Link>: nous auditons votre configuration
           actuelle et concevons l&apos;intégration directe adaptée à votre catalogue et
           à votre volume de commandes.
         </em>

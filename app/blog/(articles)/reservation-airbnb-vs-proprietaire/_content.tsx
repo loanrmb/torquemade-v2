@@ -17,31 +17,31 @@ export function ReservationAirbnbVsPropriétaireContent() {
         direct client contact, more and more are choosing to take back control.
       </p>
 
-      <h2>What Airbnb and Booking bring — and what they cost</h2>
+      <h2>What Airbnb and Booking bring: and what they cost</h2>
 
       <p>
         The platforms' value is real: massive audience, traveller trust, secure payments.
         For someone starting out, it's often the fastest path to first bookings. But the
         price is steep. Airbnb takes 3–5% on the host side, plus 12–15% on the guest side.
         Booking takes up to 15–18% from the accommodation provider. On a €100/night rental,
-        €15–20 goes straight to commission — every night, every booking, without exception.
+        €15–20 goes straight to commission, every night, every booking, without exception.
       </p>
 
       <h2>What a proprietary solution provides</h2>
 
       <ul>
-        <li><strong>Zero commission per booking.</strong> The cost is fixed — design plus hosting — not proportional to your revenue. The more bookings you generate, the wider the gap in your favour.</li>
+        <li><strong>Zero commission per booking.</strong> The cost is fixed (design plus hosting), not proportional to your revenue. The more bookings you generate, the wider the gap in your favour.</li>
         <li><strong>Client data belongs to you.</strong> On Airbnb, you don't have access to your client's email before booking. With your own system, you build a loyal client database you can follow up with, thank, and retain.</li>
-        <li><strong>The booking experience in your image.</strong> Your branding, your photos, your storytelling. Not the platform's — which places your competitors right next to you.</li>
+        <li><strong>The booking experience in your image.</strong> Your branding, your photos, your storytelling. Not the platform's, which places your competitors right next to you.</li>
       </ul>
 
       <h2>The right strategy: both, with a hierarchy</h2>
 
       <p>
-        Abandoning Airbnb overnight is risky — especially if you're still building your
+        Abandoning Airbnb overnight is risky, especially if you're still building your
         reputation. The most effective strategy is maintaining a presence on platforms for
         visibility while encouraging repeat clients to book directly on your site next time.
-        A 5% direct booking discount costs less than the platform commission — you win, your
+        A 5% direct booking discount costs less than the platform commission, you win, your
         client wins too.
       </p>
 
@@ -85,7 +85,7 @@ export function ReservationAirbnbVsPropriétaireContent() {
         en plus choisissent de reprendre la main.
       </p>
 
-      <h2>Ce qu'Airbnb et Booking apportent — et ce qu'ils coûtent</h2>
+      <h2>Ce qu'Airbnb et Booking apportent, et ce qu'ils coûtent</h2>
 
       <p>
         La valeur des plateformes est réelle : audience massive, confiance des voyageurs,
@@ -96,7 +96,7 @@ export function ReservationAirbnbVsPropriétaireContent() {
       <p>
         Mais le prix est lourd. Airbnb prend entre 3 % et 5 % côté hôte, plus 12 à 15 %
         côté voyageur. Booking prend jusqu'à 15 à 18 % côté hébergeur. Sur une location
-        à 100 € la nuit, 15 à 20 € partent directement dans la commission — chaque nuit,
+        à 100 € la nuit, 15 à 20 € partent directement dans la commission, chaque nuit,
         chaque réservation, sans exception.
       </p>
 
@@ -105,7 +105,7 @@ export function ReservationAirbnbVsPropriétaireContent() {
       <ul>
         <li>
           <strong>Zéro commission par réservation.</strong>
-          Le coût est fixe — conception + hébergement — pas proportionnel à votre
+          Le coût est fixe (conception + hébergement), pas proportionnel à votre
           chiffre d'affaires. Plus vous générez de réservations, plus l'écart se creuse
           en votre faveur.
         </li>
@@ -125,7 +125,7 @@ export function ReservationAirbnbVsPropriétaireContent() {
       <h2>La bonne stratégie : les deux, avec une hiérarchie</h2>
 
       <p>
-        Abandonner Airbnb du jour au lendemain est risqué — surtout si vous êtes encore
+        Abandonner Airbnb du jour au lendemain est risqué, surtout si vous êtes encore
         en train de construire votre réputation. La stratégie la plus efficace est de
         maintenir une présence sur les plateformes pour la visibilité, tout en incitant
         vos clients récurrents à réserver directement sur votre site la prochaine fois.
@@ -133,7 +133,7 @@ export function ReservationAirbnbVsPropriétaireContent() {
 
       <p>
         Une réduction de 5 % pour réservation directe, c'est moins cher que la commission
-        de la plateforme — vous y gagnez, votre client aussi.
+        de la plateforme, vous y gagnez, votre client aussi.
       </p>
 
       <hr />

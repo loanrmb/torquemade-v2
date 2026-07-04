@@ -11,7 +11,7 @@ export function CrmSurMesureVsGeneriqueContent() {
       <h1 className="blog-article-title">Custom CRM vs off-the-shelf: which ROI wins?</h1>
 
       <p>
-        The question isn't which is "better" — it's which fits your situation. A
+        The question isn't which is "better": it's which fits your situation. A
         well-configured generic CRM beats a poorly conceived custom one. And a custom
         CRM adapted to your trade is worth infinitely more than a generic tool nobody
         uses because it's too complex or not relevant enough.
@@ -20,10 +20,10 @@ export function CrmSurMesureVsGeneriqueContent() {
       <h2>What generic CRMs do well</h2>
 
       <p>
-        HubSpot, Pipedrive, Salesforce, Zoho — designed to cover needs common to tens
+        HubSpot, Pipedrive, Salesforce, Zoho, designed to cover needs common to tens
         of thousands of companies. They manage sales pipelines, contacts, emails,
         reminders, and reports. They integrate with Gmail, Outlook, Slack, and hundreds
-        of other tools. For a standard activity — consulting, B2B services, e-commerce —
+        of other tools. For a standard activity (consulting, B2B services, e-commerce),
         they're more than sufficient and allow you to start in days.
       </p>
 
@@ -50,7 +50,7 @@ export function CrmSurMesureVsGeneriqueContent() {
       <p>
         <em>
           Have you identified the limits of your current CRM?{' '}
-          <Link href="/contact">Contact us</Link> — we'll analyse your situation
+          <Link href="/contact">Contact us</Link>: we'll analyse your situation
           and propose the most appropriate solution.
         </em>
       </p>
@@ -84,7 +84,7 @@ export function CrmSurMesureVsGeneriqueContent() {
       <h1 className="blog-article-title">CRM sur mesure vs générique : quel ROI gagne?</h1>
 
       <p>
-        La question n'est pas de savoir lequel est "meilleur" — c'est de savoir lequel
+        La question n'est pas de savoir lequel est "meilleur": c'est de savoir lequel
         correspond à votre situation. Un CRM générique bien configuré vaut mieux qu'un
         CRM sur mesure mal pensé. Et un CRM sur mesure adapté à votre métier vaut
         infiniment plus qu'un outil générique que personne n'utilise parce qu'il est
@@ -94,11 +94,11 @@ export function CrmSurMesureVsGeneriqueContent() {
       <h2>Ce que les CRM génériques font bien</h2>
 
       <p>
-        HubSpot, Pipedrive, Salesforce, Zoho — ces outils ont été conçus pour couvrir
+        HubSpot, Pipedrive, Salesforce, Zoho, ces outils ont été conçus pour couvrir
         les besoins communs à des dizaines de milliers d'entreprises. Ils gèrent les
         pipelines de vente, les contacts, les emails, les rappels et les rapports.
         Ils s'intègrent avec Gmail, Outlook, Slack et des centaines d'autres outils.
-        Pour une activité standard — conseil, services BtoB, e-commerce — ils suffisent
+        Pour une activité standard (conseil, services BtoB, e-commerce), ils suffisent
         largement et permettent de démarrer en quelques jours.
       </p>
 
@@ -132,7 +132,7 @@ export function CrmSurMesureVsGeneriqueContent() {
         Un CRM sur mesure se justifie quand : votre processus est suffisamment spécifique
         pour que les génériques créent de la friction constante, votre volume justifie
         l'investissement initial, et vous avez une vision claire de ce que l'outil doit
-        faire. Le sur mesure est construit autour de votre métier — pas l'inverse.
+        faire. Le sur mesure est construit autour de votre métier, pas l'inverse.
       </p>
 
       <p>
@@ -146,7 +146,7 @@ export function CrmSurMesureVsGeneriqueContent() {
       <p>
         <em>
           Vous avez identifié les limites de votre CRM actuel ?{' '}
-          <Link href="/contact">Contactez-nous</Link> — on analyse votre situation
+          <Link href="/contact">Contactez-nous</Link>: on analyse votre situation
           et on vous propose la solution la plus adaptée.
         </em>
       </p>

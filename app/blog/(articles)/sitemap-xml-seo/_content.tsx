@@ -12,7 +12,7 @@ export function SitemapXmlSeoContent() {
 
       <p>
         An XML sitemap is a file that lists all the pages of your site you want Google
-        to index — a map you give Google's crawler saying: "here's everything to explore."
+        to index, a map you give Google's crawler saying: "here's everything to explore."
         It's particularly useful for sites with more than twenty pages, new sites,
         or sites that regularly publish new content.
       </p>
@@ -20,7 +20,7 @@ export function SitemapXmlSeoContent() {
       <h2>Why a sitemap speeds up indexation</h2>
 
       <p>
-        Without a sitemap, Google discovers your pages by following links — from homepage
+        Without a sitemap, Google discovers your pages by following links, from homepage
         to internal pages, then to linked pages, and so on. This can take days or weeks
         for deeper pages. With a sitemap submitted in Search Console, you give Google a
         direct list of all your URLs, enabling faster and more comprehensive crawling.
@@ -29,9 +29,9 @@ export function SitemapXmlSeoContent() {
       <h2>What a good sitemap should contain</h2>
 
       <ul>
-        <li><strong>All important pages</strong> — service pages, blog posts, product pages, landing pages. Exclude confirmation pages, duplicates, and internal search results.</li>
-        <li><strong>Last modification date</strong> — the <code>&lt;lastmod&gt;</code> tag tells Google when a page was last updated, prompting re-crawling.</li>
-        <li><strong>No noindexed pages</strong> — if a page has a noindex tag, it shouldn't appear in the sitemap. It's a contradictory signal Google interprets negatively.</li>
+        <li><strong>All important pages</strong>: service pages, blog posts, product pages, landing pages. Exclude confirmation pages, duplicates, and internal search results.</li>
+        <li><strong>Last modification date</strong>: the <code>&lt;lastmod&gt;</code> tag tells Google when a page was last updated, prompting re-crawling.</li>
+        <li><strong>No noindexed pages</strong>: if a page has a noindex tag, it shouldn't appear in the sitemap. It's a contradictory signal Google interprets negatively.</li>
       </ul>
 
       <h2>How to generate and submit it</h2>
@@ -91,7 +91,7 @@ export function SitemapXmlSeoContent() {
       <h2>Pourquoi le sitemap accélère l'indexation</h2>
 
       <p>
-        Sans sitemap, Google découvre vos pages en suivant les liens — depuis votre
+        Sans sitemap, Google découvre vos pages en suivant les liens, depuis votre
         page d'accueil vers vos pages internes, puis vers les pages liées, etc.
         Ce processus peut prendre des jours ou des semaines pour les pages profondes
         de votre site.
@@ -100,7 +100,7 @@ export function SitemapXmlSeoContent() {
       <p>
         Avec un sitemap soumis dans Search Console, vous donnez à Google une liste
         directe de toutes vos URLs. Il peut ainsi les explorer plus rapidement et plus
-        exhaustivement — notamment les nouvelles pages ou les pages qui reçoivent peu
+        exhaustivement, notamment les nouvelles pages ou les pages qui reçoivent peu
         de liens internes.
       </p>
 
@@ -108,17 +108,17 @@ export function SitemapXmlSeoContent() {
 
       <ul>
         <li>
-          <strong>Toutes vos pages importantes</strong> — pages de services, articles
+          <strong>Toutes vos pages importantes</strong>: pages de services, articles
           de blog, pages produits, landing pages. Excluez les pages de confirmation,
           les doublons et les pages de résultats de recherche interne.
         </li>
         <li>
-          <strong>La date de dernière modification</strong> — balise{' '}
+          <strong>La date de dernière modification</strong>: balise{' '}
           <code>&lt;lastmod&gt;</code>. Elle indique à Google quand une page a été
           mise à jour et l'incite à la re-crawler.
         </li>
         <li>
-          <strong>Pas de pages noindexées</strong> — si une page est tagguée{' '}
+          <strong>Pas de pages noindexées</strong>: si une page est tagguée{' '}
           <code>noindex</code>, elle ne doit pas apparaître dans le sitemap. C'est
           un signal contradictoire que Google interprète négativement.
         </li>

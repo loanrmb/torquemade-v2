@@ -68,7 +68,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
 
       <p>La vitesse d&apos;un site web n&apos;est pas qu&apos;une question de confort utilisateur. Google la mesure, la note, et s&apos;en sert pour décider qui apparaît en premier dans les résultats de recherche. Un site lent perd sur deux tableaux : le SEO et la conversion.</p>
 
-      <p>WordPress domine encore 43 % du web. Mais cette popularité ne dit rien sur les performances — et la comparaison avec Next.js est sans appel.</p>
+      <p>WordPress domine encore 43 % du web. Mais cette popularité ne dit rien sur les performances, et la comparaison avec Next.js est sans appel.</p>
 
       <h2>Comment WordPress génère une page</h2>
 
@@ -85,7 +85,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
 
       <h2>Comment Next.js génère une page</h2>
 
-      <p>Next.js adopte une approche radicalement différente. Les pages sont générées <strong>une seule fois</strong>, au moment du build — pas à chaque visite. Le résultat : des fichiers HTML statiques, déployés directement sur un CDN mondial.</p>
+      <p>Next.js adopte une approche radicalement différente. Les pages sont générées <strong>une seule fois</strong>, au moment du build, pas à chaque visite. Le résultat : des fichiers HTML statiques, déployés directement sur un CDN mondial.</p>
 
       <p>Quand un visiteur arrive sur un site Next.js :</p>
 
@@ -95,7 +95,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
         <li>Aucun PHP, aucune base de données, aucune latence serveur</li>
       </ul>
 
-      <p>Le Time to First Byte (TTFB) — la métrique qui mesure ce délai — passe de plusieurs centaines de millisecondes à <strong>moins de 80 ms</strong>. C&apos;est une différence que les utilisateurs ressentent et que Google mesure.</p>
+      <p>Le Time to First Byte (TTFB), la métrique qui mesure ce délai, passe de plusieurs centaines de millisecondes à <strong>moins de 80 ms</strong>. C&apos;est une différence que les utilisateurs ressentent et que Google mesure.</p>
 
       <TablePerformance lang={lang} />
 
@@ -105,19 +105,19 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
 
       <p><strong>Sur la conversion</strong>, chaque seconde de chargement supplémentaire réduit le taux de conversion. Les données de Google montrent qu&apos;un délai de 3 secondes augmente le taux de rebond de 32 %. Sur un site e-commerce ou une landing page, c&apos;est directement mesurable en chiffre d&apos;affaires.</p>
 
-      <p><strong>Sur la stabilité</strong>, un site WordPress sous fort trafic nécessite un hébergement puissant et coûteux pour tenir. Un site Next.js sur CDN absorbe 10 ou 100 000 visiteurs simultanés sans configuration supplémentaire — le CDN scale automatiquement.</p>
+      <p><strong>Sur la stabilité</strong>, un site WordPress sous fort trafic nécessite un hébergement puissant et coûteux pour tenir. Un site Next.js sur CDN absorbe 10 ou 100 000 visiteurs simultanés sans configuration supplémentaire, le CDN scale automatiquement.</p>
 
       <h2>WordPress reste pertinent, mais pas pour les performances</h2>
 
       <p>WordPress excelle pour certains cas : blogs avec de nombreux contributeurs, sites nécessitant un back-office éditorial accessible à des non-développeurs, projets avec un budget très contraint.</p>
 
-      <p>Mais si la performance, le SEO et la fiabilité sont des priorités — et ils devraient l&apos;être pour tout commerce ou service local — Next.js est l&apos;option qui s&apos;impose.</p>
+      <p>Mais si la performance, le SEO et la fiabilité sont des priorités (et elles devraient l&apos;être pour tout commerce ou service local), Next.js est l&apos;option qui s&apos;impose.</p>
 
       <p>Nous l&apos;utilisons sur tous nos projets. Pas par dogmatisme technique, mais parce que les résultats sont systématiquement meilleurs : des sites qui chargent en moins d&apos;une seconde, des scores Core Web Vitals dans le vert, et un SEO qui performe dès le lancement.</p>
 
       <hr />
 
-      <p><em>Votre site actuel est lent ? <Link href="/contact">Contactez-nous</Link> — nous analysons vos performances et vous proposons une feuille de route claire.</em></p>
+      <p><em>Votre site actuel est lent ? <Link href="/contact">Contactez-nous</Link>. Nous analysons vos performances et vous proposons une feuille de route claire.</em></p>
     </>
   )
 }
@@ -130,7 +130,7 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
 
       <p>Website speed isn&apos;t just a matter of user comfort. Google measures it, scores it, and uses it to decide who appears first in search results. A slow site loses on two fronts: SEO and conversion.</p>
 
-      <p>WordPress still powers 43% of the web. But that popularity says nothing about performance — and the comparison with Next.js is unambiguous.</p>
+      <p>WordPress still powers 43% of the web. But that popularity says nothing about performance, and the comparison with Next.js is unambiguous.</p>
 
       <h2>How WordPress Generates a Page</h2>
 
@@ -143,11 +143,11 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
         <li>The result is sent to the browser</li>
       </ul>
 
-      <p>This process repeats <strong>on every visit, for every page</strong>. On standard shared hosting, this takes between 300ms and 1,500ms before the first byte is sent to the browser — before accounting for accumulating plugins, heavier DB queries, and traffic spikes that bring the server down.</p>
+      <p>This process repeats <strong>on every visit, for every page</strong>. On standard shared hosting, this takes between 300ms and 1,500ms before the first byte is sent to the browser, before accounting for accumulating plugins, heavier DB queries, and traffic spikes that bring the server down.</p>
 
       <h2>How Next.js Generates a Page</h2>
 
-      <p>Next.js takes a radically different approach. Pages are generated <strong>once</strong>, at build time — not on every visit. The result: static HTML files, deployed directly on a global CDN.</p>
+      <p>Next.js takes a radically different approach. Pages are generated <strong>once</strong>, at build time, not on every visit. The result: static HTML files, deployed directly on a global CDN.</p>
 
       <p>When a visitor lands on a Next.js site:</p>
 
@@ -157,29 +157,29 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
         <li>No PHP, no database, no server latency</li>
       </ul>
 
-      <p>Time to First Byte (TTFB) — the metric that measures this delay — drops from hundreds of milliseconds to <strong>under 80ms</strong>. That&apos;s a difference users feel and Google measures.</p>
+      <p>Time to First Byte (TTFB), the metric that measures this delay, drops from hundreds of milliseconds to <strong>under 80ms</strong>. That&apos;s a difference users feel and Google measures.</p>
 
       <TablePerformance lang={lang} />
 
       <h2>What This Changes in Practice</h2>
 
-      <p><strong>For SEO</strong>, Google has used Core Web Vitals as a ranking signal since 2021. An unoptimized WordPress site rarely scores well on LCP and TTFB. A properly built Next.js site achieves excellent scores by default — no cache plugin, no complex configuration.</p>
+      <p><strong>For SEO</strong>, Google has used Core Web Vitals as a ranking signal since 2021. An unoptimized WordPress site rarely scores well on LCP and TTFB. A properly built Next.js site achieves excellent scores by default, no cache plugin, no complex configuration.</p>
 
       <p><strong>For conversion</strong>, every additional second of load time reduces conversion rates. Google&apos;s data shows that a 3-second delay increases bounce rate by 32%. On an e-commerce site or landing page, that&apos;s directly measurable in revenue.</p>
 
-      <p><strong>For stability</strong>, a WordPress site under heavy traffic needs powerful, expensive hosting to hold up. A Next.js site on CDN handles 10 or 100,000 simultaneous visitors without additional configuration — the CDN scales automatically.</p>
+      <p><strong>For stability</strong>, a WordPress site under heavy traffic needs powerful, expensive hosting to hold up. A Next.js site on CDN handles 10 or 100,000 simultaneous visitors without additional configuration, the CDN scales automatically.</p>
 
-      <h2>WordPress Is Still Relevant — Just Not for Performance</h2>
+      <h2>WordPress Is Still Relevant: Just Not for Performance</h2>
 
       <p>WordPress excels in specific cases: blogs with many contributors, sites requiring an editorial back-office accessible to non-developers, projects with very tight budgets.</p>
 
-      <p>But if performance, SEO, and reliability are priorities — and they should be for any local business or service — Next.js is the clear choice.</p>
+      <p>But if performance, SEO, and reliability are priorities (and they should be for any local business or service), Next.js is the clear choice.</p>
 
       <p>We use it on all our projects. Not out of technical dogmatism, but because the results are consistently better: sites that load in under a second, green Core Web Vitals scores, and SEO that performs from day one.</p>
 
       <hr />
 
-      <p><em>Your current site is slow? <Link href="/contact">Contact us</Link> — we&apos;ll analyze your performance and give you a clear roadmap.</em></p>
+      <p><em>Your current site is slow? <Link href="/contact">Contact us</Link>: we&apos;ll analyze your performance and give you a clear roadmap.</em></p>
     </>
   )
 }

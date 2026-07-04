@@ -46,7 +46,7 @@ export function CustomBookingSystemContent() {
 
       <p className="mt-6 pl-4 border-l-2 border-neutral-300 italic">
         <strong>💰 What does each booking actually cost you?</strong><br />
-        Let&apos;s calculate how much you&apos;re losing to commissions — and whether a
+        Let&apos;s calculate how much you&apos;re losing to commissions, and whether a
         custom system pays for itself in 6 months.
       </p>
 
@@ -71,7 +71,7 @@ export function CustomBookingSystemContent() {
         The custom system pays for itself quickly. After that? Zero recurring fees.
       </p>
 
-      <p>Bonus — you can add whatever you want:</p>
+      <p>Bonus: you can add whatever you want:</p>
 
       <ul>
         <li>Pre-appointment questionnaire (client preferences)</li>
@@ -148,7 +148,7 @@ export function CustomBookingSystemContent() {
 
       <p className="mt-6 pl-4 border-l-2 border-neutral-300 italic">
         <strong>💰 Combien coûte vraiment chaque réservation ?</strong><br />
-        Calculons ensemble combien vous perdez en commissions — et si un système sur mesure
+        Calculons ensemble combien vous perdez en commissions, et si un système sur mesure
         vous paierait ses frais en 6 mois.
       </p>
 
@@ -173,7 +173,7 @@ export function CustomBookingSystemContent() {
         Le système sur mesure s&apos;autofinance rapidement. Et ensuite ? Zéro frais récurrents.
       </p>
 
-      <p>Bonus — vous pouvez ajouter ce que vous voulez :</p>
+      <p>Bonus: vous pouvez ajouter ce que vous voulez :</p>
 
       <ul>
         <li>Questionnaire avant le rendez-vous (préférences du client)</li>

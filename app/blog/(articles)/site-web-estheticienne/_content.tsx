@@ -22,8 +22,8 @@ export function SiteWebEstheticienneContent() {
       <p>A beautician with no photos on their site immediately loses half their potential visitors. Essential photos:</p>
 
       <ul>
-        <li><strong>Your professional photo.</strong> Not an Instagram profile picture — a clear, smiling photo in your work environment. Clients want to see who they're trusting.</li>
-        <li><strong>Your treatment room or workspace.</strong> Cleanliness, atmosphere, equipment — these photos reassure about the context of the service.</li>
+        <li><strong>Your professional photo.</strong> Not an Instagram profile picture, a clear, smiling photo in your work environment. Clients want to see who they're trusting.</li>
+        <li><strong>Your treatment room or workspace.</strong> Cleanliness, atmosphere, equipment: these photos reassure about the context of the service.</li>
         <li><strong>Before/after results.</strong> With your clients' consent, result photos are your best commercial argument. They concretely demonstrate your expertise.</li>
       </ul>
 
@@ -39,7 +39,7 @@ export function SiteWebEstheticienneContent() {
       <h2>Appointment booking</h2>
 
       <p>
-        The appointment button must be visible from every page — at the top of the site,
+        The appointment button must be visible from every page, at the top of the site,
         at the end of each service section, in the footer. An online booking system
         eliminates SMS or phone back-and-forth and reduces no-shows through automatic reminders.
       </p>
@@ -48,7 +48,7 @@ export function SiteWebEstheticienneContent() {
 
       <p>
         Service area if you're mobile, address if you have a fixed practice, opening hours,
-        accepted payment methods. These seem basic — their absence creates unnecessary friction
+        accepted payment methods. These seem basic, their absence creates unnecessary friction
         that drives away clients.
       </p>
 
@@ -107,13 +107,13 @@ export function SiteWebEstheticienneContent() {
       <ul>
         <li>
           <strong>Votre photo professionnelle.</strong>
-          Pas une photo de profil Instagram — une photo claire, souriante, dans
+          Pas une photo de profil Instagram: une photo claire, souriante, dans
           votre environnement de travail. Les clientes veulent voir à qui elles
           vont faire confiance.
         </li>
         <li>
           <strong>Votre cabinet ou espace de travail.</strong>
-          Propreté, ambiance, équipements — ces photos rassurent sur le cadre
+          Propreté, ambiance, équipements, ces photos rassurent sur le cadre
           dans lequel la prestation va se dérouler.
         </li>
         <li>
@@ -128,7 +128,7 @@ export function SiteWebEstheticienneContent() {
       <p>
         Chaque prestation mérite sa propre section avec : nom clair, description
         de ce qui est réalisé, durée, et tarif. L'absence de tarif sur un site
-        d'esthéticienne est l'une des principales causes d'abandon — les visiteuses
+        d'esthéticienne est l'une des principales causes d'abandon, les visiteuses
         passent au site suivant plutôt que d'appeler pour demander.
       </p>
 
@@ -141,7 +141,7 @@ export function SiteWebEstheticienneContent() {
       <h2>La prise de rendez-vous</h2>
 
       <p>
-        Le bouton de prise de RDV doit être visible depuis toutes les pages — en
+        Le bouton de prise de RDV doit être visible depuis toutes les pages, en
         haut du site, à la fin de chaque section de prestations, dans le footer.
         Le système de RDV en ligne (Calendly, Planity ou intégration sur mesure)
         élimine les allers-retours par SMS ou téléphone et réduit les no-shows
@@ -153,7 +153,7 @@ export function SiteWebEstheticienneContent() {
       <p>
         Zone de service si vous êtes itinérante, adresse si vous avez un cabinet fixe,
         horaires d'ouverture, modes de paiement acceptés. Ces informations semblent
-        basiques — leur absence crée des frictions inutiles qui font fuir les clientes.
+        basiques : leur absence crée des frictions inutiles qui font fuir les clientes.
       </p>
 
       <hr />

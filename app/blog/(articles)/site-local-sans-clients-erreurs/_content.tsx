@@ -11,8 +11,8 @@ export function SiteLocalSansClientsErreursContent() {
       <h1 className="blog-article-title">Why 80% of Local Sites Generate Zero Clients (And How to Avoid That)</h1>
 
       <p>
-        Having a website is no longer enough. Most local sites — created once, never updated,
-        little or no optimisation — are invisible on Google and don't convert visitors who
+        Having a website is no longer enough. Most local sites, created once, never updated,
+        little or no optimisation, are invisible on Google and don't convert visitors who
         find them. Here are the five mistakes that explain why, and how to fix them.
       </p>
 
@@ -21,7 +21,7 @@ export function SiteLocalSansClientsErreursContent() {
       <p>
         A site created without identifying the queries your future clients type will be
         invisible on those queries. Page titles, descriptions, and content must be built
-        around the terms your clients use — not those you use internally.
+        around the terms your clients use, not those you use internally.
       </p>
 
       <h2>Mistake 2: a slow site</h2>
@@ -43,7 +43,7 @@ export function SiteLocalSansClientsErreursContent() {
       <h2>Mistake 4: no social proof</h2>
 
       <p>
-        Client reviews, testimonials, client logos, key figures — without these, the visitor
+        Client reviews, testimonials, client logos, key figures, without these, the visitor
         has no reason to trust you over a competitor. In local sectors, trust is the main
         contact trigger.
       </p>
@@ -53,7 +53,7 @@ export function SiteLocalSansClientsErreursContent() {
       <p>
         A site without an optimised Google Business Profile is absent from local results
         and Google Maps. For most local businesses and service providers, the local pack
-        is the main source of qualified traffic — and it's managed from GBP, not from
+        is the main source of qualified traffic, and it's managed from GBP, not from
         the site.
       </p>
 
@@ -95,8 +95,8 @@ export function SiteLocalSansClientsErreursContent() {
       <h1 className="blog-article-title">Pourquoi 80 % des sites locaux ne génèrent aucun client (et comment éviter ça)</h1>
 
       <p>
-        Avoir un site web ne suffit plus. La majorité des sites locaux — créés une fois,
-        jamais mis à jour, peu ou pas optimisés — sont invisibles sur Google et ne
+        Avoir un site web ne suffit plus. La majorité des sites locaux, créés une fois,
+        jamais mis à jour, peu ou pas optimisés: sont invisibles sur Google et ne
         convertissent pas les visiteurs qui les trouvent. Voici les cinq erreurs qui
         expliquent pourquoi, et comment y remédier.
       </p>
@@ -106,7 +106,7 @@ export function SiteLocalSansClientsErreursContent() {
       <p>
         Un site créé sans avoir identifié les requêtes que tapent vos futurs clients
         sera invisible sur ces requêtes. Les titres de pages, les descriptions et le
-        contenu doivent être construits autour des termes que vos clients utilisent —
+        contenu doivent être construits autour des termes que vos clients utilisent,
         pas ceux que vous utilisez en interne.
       </p>
 
@@ -131,7 +131,7 @@ export function SiteLocalSansClientsErreursContent() {
       <h2>Erreur 4 : aucune preuve sociale</h2>
 
       <p>
-        Les avis clients, les témoignages, les logos de clients, les chiffres clés —
+        Les avis clients, les témoignages, les logos de clients, les chiffres clés :
         sans ces éléments, le visiteur n'a aucune raison de vous faire confiance plutôt
         qu'un concurrent. Dans les secteurs locaux, la confiance est le principal
         déclencheur de prise de contact.
@@ -142,7 +142,7 @@ export function SiteLocalSansClientsErreursContent() {
       <p>
         Un site sans Google Business Profile optimisé est absent des résultats locaux
         et de Google Maps. Pour la majorité des commerces et prestataires locaux, le pack
-        local est la principale source de trafic qualifié — et il est géré depuis GBP,
+        local est la principale source de trafic qualifié, et il est géré depuis GBP,
         pas depuis le site.
       </p>
 

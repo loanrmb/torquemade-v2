@@ -11,7 +11,7 @@ export function SynchronisationStockTempsReelContent() {
       <h1 className="blog-article-title">Real-time inventory sync: how it works and why it&apos;s essential</h1>
 
       <p>
-        Webhooks, APIs, automatic push — these terms come up constantly in conversations
+        Webhooks, APIs, automatic push, these terms come up constantly in conversations
         about inventory sync, but they rarely get explained clearly. This article breaks
         down how real-time stock synchronisation actually works, why it has become a
         baseline expectation, and what its real limits are.
@@ -25,7 +25,7 @@ export function SynchronisationStockTempsReelContent() {
       </p>
 
       <p>
-        <strong>Batch synchronisation.</strong> Stock is updated at fixed intervals —
+        <strong>Batch synchronisation.</strong> Stock is updated at fixed intervals:
         once a day, every few hours, or every night. Simple to implement, but the gap
         between two sync cycles is a window for errors. If a product sells out at
         11am and the next sync runs at 6pm, your website shows it as available for
@@ -34,7 +34,7 @@ export function SynchronisationStockTempsReelContent() {
 
       <p>
         <strong>Near real-time synchronisation.</strong> Stock is updated frequently
-        — every few minutes. Better than batch, but still leaves a small window. For
+, every few minutes. Better than batch, but still leaves a small window. For
         high-volume or low-stock products, even a few minutes can generate overselling.
       </p>
 
@@ -49,7 +49,7 @@ export function SynchronisationStockTempsReelContent() {
       <h2>Under the hood: webhooks and APIs</h2>
 
       <p>
-        Two systems synchronising in real time communicate via an API — an Application
+        Two systems synchronising in real time communicate via an API, an Application
         Programming Interface. Think of it as a standardised connector between two pieces
         of software: it defines how requests are made, what format the data takes, and
         how responses are structured.
@@ -58,7 +58,7 @@ export function SynchronisationStockTempsReelContent() {
       <p>
         The real-time trigger mechanism is called a webhook. The analogy: a text message
         notification. You don&apos;t check your inbox every minute to see if something
-        arrived — you get notified the moment it does. A webhook works the same way:
+        arrived, you get notified the moment it does. A webhook works the same way:
         instead of one system constantly asking the other "has anything changed?", the
         source system sends a notification the instant something happens.
       </p>
@@ -91,7 +91,7 @@ export function SynchronisationStockTempsReelContent() {
       <p>
         If another customer had that product in their online cart at the same moment, the
         cart either flags the item as unavailable before checkout, or the order is
-        blocked at payment — depending on how the system handles concurrent inventory.
+        blocked at payment, depending on how the system handles concurrent inventory.
       </p>
 
       <p>
@@ -110,8 +110,8 @@ export function SynchronisationStockTempsReelContent() {
       <p>
         Customers now expect the stock information shown on a website to be accurate.
         An item shown as available that turns out not to be triggers a cancellation,
-        a refund, and often a negative review. For click &amp; collect specifically —
-        where the customer travels to the store based on online availability — a stock
+        a refund, and often a negative review. For click &amp; collect specifically,
+        where the customer travels to the store based on online availability, a stock
         error is a direct service failure.
       </p>
 
@@ -131,7 +131,7 @@ export function SynchronisationStockTempsReelContent() {
 
       <p>
         <strong>Network latency.</strong> Webhooks travel over the internet. In normal
-        conditions, the delay is negligible — two to five seconds. But if either system
+        conditions, the delay is negligible, two to five seconds. But if either system
         is slow to respond or the network is congested, the update can take longer.
         For very high-volume operations (hundreds of transactions per minute), queuing
         mechanisms become necessary.
@@ -139,7 +139,7 @@ export function SynchronisationStockTempsReelContent() {
 
       <p>
         <strong>Conflict management.</strong> Two customers attempting to buy the last
-        unit simultaneously — one online, one in-store — is a race condition. Well-built
+        unit simultaneously (one online, one in-store) is a race condition. Well-built
         systems handle this with a reservation mechanism (the unit is &ldquo;locked&rdquo;
         the moment a transaction starts), but not all implementations do. Ask explicitly
         how your chosen integration handles this case.
@@ -153,8 +153,8 @@ export function SynchronisationStockTempsReelContent() {
       </p>
 
       <p>
-        For the full picture of connection methods between your POS and your website —
-        from manual entry to real-time sync — see our dedicated article:{' '}
+        For the full picture of connection methods between your POS and your website
+        (from manual entry to real-time sync), see our dedicated article:{' '}
         <Link href="/blog/connecter-stock-magasin-site-internet">
           how to connect your store inventory to your website
         </Link>
@@ -167,7 +167,7 @@ export function SynchronisationStockTempsReelContent() {
         <em>
           You want to implement real-time stock sync between your POS system and your
           website?{' '}
-          <Link href="/contact">Contact us</Link> — we assess the compatibility of your
+          <Link href="/contact">Contact us</Link>: we assess the compatibility of your
           tools and set up the integration.
         </em>
       </p>
@@ -179,7 +179,7 @@ export function SynchronisationStockTempsReelContent() {
       <h1 className="blog-article-title">Synchronisation stock en temps réel : comment ça marche et pourquoi c&apos;est indispensable</h1>
 
       <p>
-        Webhooks, API, push automatique — ces termes reviennent constamment dans les
+        Webhooks, API, push automatique, ces termes reviennent constamment dans les
         conversations sur la synchro de stock, mais ils sont rarement expliqués
         clairement. Cet article démonte comment la synchronisation stock temps réel
         fonctionne concrètement, pourquoi elle est devenue une exigence de base, et
@@ -195,7 +195,7 @@ export function SynchronisationStockTempsReelContent() {
 
       <p>
         <strong>La synchronisation par lots (batch).</strong> Le stock est mis à jour à
-        intervalles fixes — une fois par jour, toutes les quelques heures, ou chaque
+        intervalles fixes, une fois par jour, toutes les quelques heures, ou chaque
         nuit. Simple à mettre en place, mais l&apos;écart entre deux cycles de synchro
         est une fenêtre d&apos;erreur. Si un produit se vend à 11h et que la prochaine
         synchro tourne à 18h, votre site l&apos;affiche disponible pendant sept heures.
@@ -203,7 +203,7 @@ export function SynchronisationStockTempsReelContent() {
 
       <p>
         <strong>La synchronisation quasi temps réel.</strong> Le stock est mis à jour
-        fréquemment — toutes les quelques minutes. Mieux que le batch, mais une petite
+        fréquemment, toutes les quelques minutes. Mieux que le batch, mais une petite
         fenêtre subsiste. Pour des produits à fort volume ou en quantités limitées,
         quelques minutes suffisent à générer une survente.
       </p>
@@ -220,7 +220,7 @@ export function SynchronisationStockTempsReelContent() {
       <h2>Sous le capot : webhooks et API</h2>
 
       <p>
-        Deux systèmes qui se synchronisent en temps réel communiquent via une API —
+        Deux systèmes qui se synchronisent en temps réel communiquent via une API,
         une Application Programming Interface. Pensez-y comme un connecteur standardisé
         entre deux logiciels : il définit comment les requêtes sont formulées, quel
         format prennent les données, et comment les réponses sont structurées.
@@ -229,7 +229,7 @@ export function SynchronisationStockTempsReelContent() {
       <p>
         Le mécanisme de déclenchement temps réel s&apos;appelle un webhook. L&apos;analogie :
         une notification SMS. Vous ne consultez pas votre messagerie toutes les minutes
-        pour voir si quelque chose est arrivé — vous êtes notifié au moment même où ça
+        pour voir si quelque chose est arrivé, vous êtes notifié au moment même où ça
         arrive. Un webhook fonctionne de la même façon : au lieu qu&apos;un système
         demande en permanence à l&apos;autre "est-ce qu&apos;il s&apos;est passé
         quelque chose ?", le système source envoie une notification à l&apos;instant
@@ -266,7 +266,7 @@ export function SynchronisationStockTempsReelContent() {
       <p>
         Si un autre client avait ce produit dans son panier en ligne au même moment,
         le panier signale l&apos;article indisponible avant la validation, ou la commande
-        est bloquée au paiement — selon la façon dont le système gère les conflits
+        est bloquée au paiement, selon la façon dont le système gère les conflits
         d&apos;inventaire simultanés.
       </p>
 
@@ -288,8 +288,8 @@ export function SynchronisationStockTempsReelContent() {
         Les clients s&apos;attendent aujourd&apos;hui à ce que les informations de
         stock affichées sur un site soient fiables. Un article affiché disponible
         qui ne l&apos;est pas déclenche une annulation, un remboursement, et souvent
-        un avis négatif. Pour le click &amp; collect en particulier — où le client se
-        déplace en boutique sur la base de la disponibilité en ligne — une erreur de
+        un avis négatif. Pour le click &amp; collect en particulier, où le client se
+        déplace en boutique sur la base de la disponibilité en ligne, une erreur de
         stock est une défaillance de service directe.
       </p>
 
@@ -309,7 +309,7 @@ export function SynchronisationStockTempsReelContent() {
 
       <p>
         <strong>La latence réseau.</strong> Les webhooks transitent par internet. Dans
-        des conditions normales, le délai est négligeable — deux à cinq secondes. Mais
+        des conditions normales, le délai est négligeable, deux à cinq secondes. Mais
         si l&apos;un des systèmes répond lentement ou si le réseau est saturé, la mise
         à jour peut prendre plus de temps. Pour des opérations à très fort volume (des
         centaines de transactions par minute), des mécanismes de file d&apos;attente
@@ -318,7 +318,7 @@ export function SynchronisationStockTempsReelContent() {
 
       <p>
         <strong>La gestion des conflits.</strong> Deux clients qui tentent d&apos;acheter
-        la dernière unité simultanément — l&apos;un en boutique, l&apos;autre en ligne —
+        la dernière unité simultanément (l&apos;un en boutique, l&apos;autre en ligne)
         est un cas de concurrence. Les systèmes bien conçus gèrent cela avec un
         mécanisme de réservation (l&apos;unité est &laquo;&nbsp;verrouillée&nbsp;&raquo;
         dès qu&apos;une transaction commence), mais ce n&apos;est pas le cas de toutes
@@ -336,7 +336,7 @@ export function SynchronisationStockTempsReelContent() {
 
       <p>
         Pour un panorama complet des méthodes de connexion entre votre logiciel de
-        caisse et votre site — de la saisie manuelle à la synchro temps réel — voir
+        caisse et votre site (de la saisie manuelle à la synchro temps réel), voir
         notre article dédié :{' '}
         <Link href="/blog/connecter-stock-magasin-site-internet">
           comment connecter votre stock magasin à votre site internet
@@ -350,7 +350,7 @@ export function SynchronisationStockTempsReelContent() {
         <em>
           Vous souhaitez mettre en place une synchronisation stock temps réel entre
           votre logiciel de caisse et votre site ?{' '}
-          <Link href="/contact">Contactez-nous</Link> — nous évaluons la compatibilité
+          <Link href="/contact">Contactez-nous</Link>: nous évaluons la compatibilité
           de vos outils et mettons en place l&apos;intégration.
         </em>
       </p>

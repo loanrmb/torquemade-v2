@@ -11,7 +11,7 @@ export function ArticleBlogSeoContent() {
       <h1 className="blog-article-title">What Is an SEO Blog Post and How to Write One That Ranks?</h1>
       <p>
         A blog post is a blog post. An SEO blog post is a document engineered to answer
-        a specific search query — and to prove to Google that it deserves a top spot.
+        a specific search query, and to prove to Google that it deserves a top spot.
         The writing process looks the same on the surface. The logic underneath is entirely different.
       </p>
 
@@ -22,17 +22,17 @@ export function ArticleBlogSeoContent() {
       </p>
       <p>
         Take the query <strong>"how to write an SEO blog post"</strong>. The person
-        wants a practical guide — not a definition, not a history of SEO. If your
+        wants a practical guide, not a definition, not a history of SEO. If your
         article doesn't match that intent, it won't rank, no matter how well it's written.
       </p>
       <p>
         There are four main types of search intent:
       </p>
       <ul>
-        <li><strong>Informational</strong> — the person wants to learn ("what is a meta title")</li>
-        <li><strong>Navigational</strong> — the person is looking for a specific site ("Google Search Console login")</li>
-        <li><strong>Commercial</strong> — the person is comparing options ("Shopify vs Next.js")</li>
-        <li><strong>Transactional</strong> — the person is ready to act ("hire a web developer Bordeaux")</li>
+        <li><strong>Informational</strong>: the person wants to learn ("what is a meta title")</li>
+        <li><strong>Navigational</strong>: the person is looking for a specific site ("Google Search Console login")</li>
+        <li><strong>Commercial</strong>: the person is comparing options ("Shopify vs Next.js")</li>
+        <li><strong>Transactional</strong>: the person is ready to act ("hire a web developer Bordeaux")</li>
       </ul>
       <p>
         Before writing, type your target keyword into Google and study the first three results.
@@ -49,11 +49,11 @@ export function ArticleBlogSeoContent() {
         A working structure for an SEO blog post:
       </p>
       <ul>
-        <li><strong>H1</strong> — one per article, matches or closely mirrors the target keyword</li>
-        <li><strong>Introduction</strong> — 3 to 5 sentences that confirm the reader is in the right place and present the problem</li>
-        <li><strong>H2 sections</strong> — each one answers a sub-question or covers a distinct aspect of the topic</li>
-        <li><strong>H3 sub-sections</strong> — used to break down complex sections, not to fill space</li>
-        <li><strong>Conclusion or CTA</strong> — summarizes the key takeaway and offers a clear next step</li>
+        <li><strong>H1</strong>: one per article, matches or closely mirrors the target keyword</li>
+        <li><strong>Introduction</strong>: 3 to 5 sentences that confirm the reader is in the right place and present the problem</li>
+        <li><strong>H2 sections</strong>: each one answers a sub-question or covers a distinct aspect of the topic</li>
+        <li><strong>H3 sub-sections</strong>: used to break down complex sections, not to fill space</li>
+        <li><strong>Conclusion or CTA</strong>: summarizes the key takeaway and offers a clear next step</li>
       </ul>
       <p>
         Avoid decorative headings. Every H2 should add genuine informational value.
@@ -81,23 +81,23 @@ export function ArticleBlogSeoContent() {
       </p>
       <ul>
         <li>
-          <strong>Meta title</strong> — contains the target keyword, ideally near the start,
+          <strong>Meta title</strong>: contains the target keyword, ideally near the start,
           under 60 characters. This is what appears in Google results.
         </li>
         <li>
-          <strong>Meta description</strong> — 140 to 160 characters, reformulates the
+          <strong>Meta description</strong>: 140 to 160 characters, reformulates the
           promise of the article. Doesn't directly affect ranking, but affects click-through rate.
         </li>
         <li>
-          <strong>URL slug</strong> — short, keyword-rich, no stop words
+          <strong>URL slug</strong>: short, keyword-rich, no stop words
           (e.g. <code>/blog/article-blog-seo-redaction</code>).
         </li>
         <li>
-          <strong>Alt text on images</strong> — describes the image and naturally
+          <strong>Alt text on images</strong>: describes the image and naturally
           includes a relevant keyword where appropriate.
         </li>
         <li>
-          <strong>Internal links</strong> — 2 to 4 links to other articles or pages
+          <strong>Internal links</strong>: 2 to 4 links to other articles or pages
           on your site that are genuinely related to the topic.
         </li>
       </ul>
@@ -115,7 +115,7 @@ export function ArticleBlogSeoContent() {
         </li>
         <li>
           <strong>Writing for the algorithm, not the reader.</strong> Keyword stuffing,
-          artificially inflated paragraphs, repetitive phrasing — Google has been
+          artificially inflated paragraphs, repetitive phrasing: Google has been
           penalizing this since 2011. Write for the person first.
         </li>
         <li>
@@ -132,7 +132,7 @@ export function ArticleBlogSeoContent() {
         it can be 4 to 8 weeks.
       </p>
       <p>
-        This is not a reason to delay publishing — it's a reason to start now.
+        This is not a reason to delay publishing: it's a reason to start now.
         Every article you publish today is an asset that compounds over time.
         A blog of 50 well-structured articles generates consistent traffic
         that no ad budget can replicate.
@@ -143,7 +143,7 @@ export function ArticleBlogSeoContent() {
       <p>
         <em>
           Want a content strategy that actually ranks?{' '}
-          <Link href="/contact">Contact us</Link> — we audit your existing content
+          <Link href="/contact">Contact us</Link>: we audit your existing content
           and identify the keywords worth targeting for your sector.
         </em>
       </p>
@@ -176,7 +176,7 @@ export function ArticleBlogSeoContent() {
       <h1 className="blog-article-title">Qu&apos;est-ce qu&apos;un article de blog SEO et comment en écrire un qui classe ?</h1>
       <p>
         Un article de blog est un article de blog. Un article de blog SEO est un document
-        conçu pour répondre à une requête précise — et pour convaincre Google qu'il mérite
+        conçu pour répondre à une requête précise, et pour convaincre Google qu'il mérite
         une place en première page. Le processus d'écriture se ressemble en apparence.
         La logique en dessous est entièrement différente.
       </p>
@@ -188,7 +188,7 @@ export function ArticleBlogSeoContent() {
       </p>
       <p>
         Prenez la requête <strong>« comment écrire un article de blog SEO »</strong>.
-        La personne veut un guide pratique — pas une définition, pas un historique du SEO.
+        La personne veut un guide pratique, pas une définition, pas un historique du SEO.
         Si votre article ne correspond pas à cette attente, il ne classera pas,
         quelle que soit la qualité de l'écriture.
       </p>
@@ -196,10 +196,10 @@ export function ArticleBlogSeoContent() {
         Il existe quatre grands types d'intention de recherche :
       </p>
       <ul>
-        <li><strong>Informationnelle</strong> — la personne veut apprendre (« c'est quoi une balise meta title »)</li>
-        <li><strong>Navigationnelle</strong> — la personne cherche un site précis (« connexion Google Search Console »)</li>
-        <li><strong>Commerciale</strong> — la personne compare des options (« Shopify vs Next.js »)</li>
-        <li><strong>Transactionnelle</strong> — la personne est prête à agir (« développeur web Bordeaux »)</li>
+        <li><strong>Informationnelle</strong>: la personne veut apprendre (« c'est quoi une balise meta title »)</li>
+        <li><strong>Navigationnelle</strong>: la personne cherche un site précis (« connexion Google Search Console »)</li>
+        <li><strong>Commerciale</strong>: la personne compare des options (« Shopify vs Next.js »)</li>
+        <li><strong>Transactionnelle</strong>: la personne est prête à agir (« développeur web Bordeaux »)</li>
       </ul>
       <p>
         Avant d'écrire, tapez votre mot-clé dans Google et analysez les trois premiers résultats.
@@ -215,11 +215,11 @@ export function ArticleBlogSeoContent() {
         Une structure efficace pour un article de blog SEO :
       </p>
       <ul>
-        <li><strong>H1</strong> — un seul par article, contient ou reformule le mot-clé cible</li>
-        <li><strong>Introduction</strong> — 3 à 5 phrases qui confirment au lecteur qu'il est au bon endroit et posent le problème</li>
-        <li><strong>Sections H2</strong> — chacune répond à une sous-question ou couvre un aspect distinct du sujet</li>
-        <li><strong>Sous-sections H3</strong> — utilisées pour décomposer les sections complexes, pas pour remplir</li>
-        <li><strong>Conclusion ou CTA</strong> — résume l'essentiel et propose une étape suivante claire</li>
+        <li><strong>H1</strong>: un seul par article, contient ou reformule le mot-clé cible</li>
+        <li><strong>Introduction</strong>: 3 à 5 phrases qui confirment au lecteur qu'il est au bon endroit et posent le problème</li>
+        <li><strong>Sections H2</strong>: chacune répond à une sous-question ou couvre un aspect distinct du sujet</li>
+        <li><strong>Sous-sections H3</strong>: utilisées pour décomposer les sections complexes, pas pour remplir</li>
+        <li><strong>Conclusion ou CTA</strong>: résume l'essentiel et propose une étape suivante claire</li>
       </ul>
       <p>
         Évitez les titres décoratifs. Chaque H2 doit apporter une valeur informationnelle réelle.
@@ -247,23 +247,23 @@ export function ArticleBlogSeoContent() {
       </p>
       <ul>
         <li>
-          <strong>Meta title</strong> — contient le mot-clé cible, idéalement en début de phrase,
+          <strong>Meta title</strong>: contient le mot-clé cible, idéalement en début de phrase,
           sous 60 caractères. C'est ce qui apparaît dans les résultats Google.
         </li>
         <li>
-          <strong>Meta description</strong> — 140 à 160 caractères, reformule la promesse de l'article.
+          <strong>Meta description</strong>: 140 à 160 caractères, reformule la promesse de l'article.
           N'affecte pas directement le classement, mais impacte le taux de clic.
         </li>
         <li>
-          <strong>Slug d'URL</strong> — court, riche en mots-clés, sans mots vides
+          <strong>Slug d'URL</strong>: court, riche en mots-clés, sans mots vides
           (ex. <code>/blog/article-blog-seo-redaction</code>).
         </li>
         <li>
-          <strong>Texte alternatif des images</strong> — décrit l'image et inclut naturellement
+          <strong>Texte alternatif des images</strong>: décrit l'image et inclut naturellement
           un mot-clé pertinent quand c'est justifié.
         </li>
         <li>
-          <strong>Liens internes</strong> — 2 à 4 liens vers d'autres articles ou pages
+          <strong>Liens internes</strong>: 2 à 4 liens vers d'autres articles ou pages
           de votre site réellement liés au sujet.
         </li>
       </ul>
@@ -280,7 +280,7 @@ export function ArticleBlogSeoContent() {
         </li>
         <li>
           <strong>Écrire pour l'algorithme, pas pour le lecteur.</strong> Bourrage de mots-clés,
-          paragraphes artificiellement gonflés, formulations répétitives — Google pénalise
+          paragraphes artificiellement gonflés, formulations répétitives : Google pénalise
           cela depuis 2011. Écrivez d'abord pour la personne.
         </li>
         <li>
@@ -297,7 +297,7 @@ export function ArticleBlogSeoContent() {
         cela peut prendre 4 à 8 semaines.
       </p>
       <p>
-        Ce n'est pas une raison de différer la publication — c'est une raison de commencer maintenant.
+        Ce n'est pas une raison de différer la publication: c'est une raison de commencer maintenant.
         Chaque article publié aujourd'hui est un actif qui se bonifie dans le temps.
         Un blog de 50 articles bien structurés génère un trafic régulier qu'aucun budget
         publicitaire ne peut reproduire.
@@ -308,7 +308,7 @@ export function ArticleBlogSeoContent() {
       <p>
         <em>
           Vous voulez une stratégie de contenu qui classe réellement ?{' '}
-          <Link href="/contact">Contactez-nous</Link> — nous auditons votre contenu existant
+          <Link href="/contact">Contactez-nous</Link>: nous auditons votre contenu existant
           et identifions les mots-clés à cibler dans votre secteur.
         </em>
       </p>

@@ -68,7 +68,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
 
       <p>Un site lent perd sur tous les fronts : Google le pénalise dans ses classements, les visiteurs le quittent avant même de l&apos;avoir vu, et les conversions chutent à chaque seconde de chargement supplémentaire. Pourtant, dans la grande majorité des cas, les causes sont identifiables et corrigeables.</p>
 
-      <p>Voici les sept erreurs que nous retrouvons systématiquement lors de nos audits — et comment les éliminer.</p>
+      <p>Voici les sept erreurs que nous retrouvons systématiquement lors de nos audits, et comment les éliminer.</p>
 
       <TableErreurs lang={lang} />
 
@@ -88,21 +88,21 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
 
       <h2>3. Un hébergement sous-dimensionné</h2>
 
-      <p>Un hébergement mutualisé à 3 € par mois partage les ressources serveur entre des centaines de sites. Quand l&apos;un d&apos;eux reçoit un pic de trafic, tout le monde ralentit. Le Time to First Byte — le temps avant que le serveur réponde — peut dépasser la seconde.</p>
+      <p>Un hébergement mutualisé à 3 € par mois partage les ressources serveur entre des centaines de sites. Quand l&apos;un d&apos;eux reçoit un pic de trafic, tout le monde ralentit. Le Time to First Byte, le temps avant que le serveur réponde, peut dépasser la seconde.</p>
 
       <p>La solution la plus efficace à long terme : quitter l&apos;hébergement dynamique pour un déploiement statique sur CDN (Vercel, Cloudflare Pages). Le site est servi depuis le nœud le plus proche du visiteur, le TTFB tombe sous 50 ms.</p>
 
       <h2>4. Aucune mise en cache</h2>
 
-      <p>Sans cache, le serveur recalcule chaque page à chaque visite. Avec un cache correctement configuré, la page est servie depuis la mémoire — instantanément.</p>
+      <p>Sans cache, le serveur recalcule chaque page à chaque visite. Avec un cache correctement configuré, la page est servie depuis la mémoire, instantanément.</p>
 
       <p>Sur WordPress, un plugin de cache (WP Rocket, LiteSpeed Cache) est indispensable. Sur Next.js, la génération statique fait office de cache permanent : les pages sont pré-calculées une fois et servies directement sans aucun traitement serveur.</p>
 
       <h2>5. CSS et JavaScript non minifiés</h2>
 
-      <p>En développement, le code est lisible — avec des espaces, des commentaires, des sauts de ligne. En production, tout cela est inutile et représente des kilooctets téléchargés pour rien.</p>
+      <p>En développement, le code est lisible, avec des espaces, des commentaires, des sauts de ligne. En production, tout cela est inutile et représente des kilooctets téléchargés pour rien.</p>
 
-      <p>La minification supprime ces caractères superflus et réduit la taille des fichiers de 20 à 40 %. Les outils modernes (Next.js, Vite, Webpack) le font automatiquement à la compilation — il n&apos;y a rien à configurer si le projet est bien construit.</p>
+      <p>La minification supprime ces caractères superflus et réduit la taille des fichiers de 20 à 40 %. Les outils modernes (Next.js, Vite, Webpack) le font automatiquement à la compilation. Il n&apos;y a rien à configurer si le projet est bien construit.</p>
 
       <h2>6. Des polices web mal gérées</h2>
 
@@ -110,7 +110,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
 
       <p>La bonne pratique : précharger les polices critiques avec <code>&lt;link rel=&quot;preload&quot;&gt;</code>, utiliser <code>font-display: swap</code> pour afficher immédiatement une police de secours, et limiter le nombre de variantes chargées (poids, styles).</p>
 
-      <p>Sur Torquemade, nous utilisons Geist, hébergé en local — aucune requête externe, aucune latence réseau liée aux polices.</p>
+      <p>Sur Torquemade, nous utilisons Geist, hébergé en local, aucune requête externe, aucune latence réseau liée aux polices.</p>
 
       <h2>7. Des redirections en chaîne</h2>
 
@@ -126,7 +126,7 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
 
       <hr />
 
-      <p><em>Votre site est lent et vous ne savez pas par où commencer ? <Link href="/contact">Contactez-nous</Link> — nous réalisons un audit de performance complet et vous proposons un plan d&apos;action concret.</em></p>
+      <p><em>Votre site est lent et vous ne savez pas par où commencer ? <Link href="/contact">Contactez-nous</Link> : nous réalisons un audit de performance complet et vous proposons un plan d&apos;action concret.</em></p>
     </>
   )
 }
@@ -139,7 +139,7 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
 
       <p>A slow site loses on every front: Google penalizes it in rankings, visitors leave before they&apos;ve even seen it, and conversions drop with every extra second of load time. Yet in the vast majority of cases, the causes are identifiable and fixable.</p>
 
-      <p>Here are the seven mistakes we find consistently during our audits — and how to eliminate them.</p>
+      <p>Here are the seven mistakes we find consistently during our audits, and how to eliminate them.</p>
 
       <TableErreurs lang={lang} />
 
@@ -159,21 +159,21 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
 
       <h2>3. Underpowered Hosting</h2>
 
-      <p>A €3/month shared hosting plan shares server resources across hundreds of sites. When one of them gets a traffic spike, everyone slows down. Time to First Byte — the time before the server responds — can exceed one second.</p>
+      <p>A €3/month shared hosting plan shares server resources across hundreds of sites. When one of them gets a traffic spike, everyone slows down. Time to First Byte, the time before the server responds, can exceed one second.</p>
 
       <p>The most effective long-term solution: leave dynamic hosting for static deployment on a CDN (Vercel, Cloudflare Pages). The site is served from the node closest to the visitor, and TTFB drops below 50ms.</p>
 
       <h2>4. No Caching</h2>
 
-      <p>Without a cache, the server recalculates every page on every visit. With a properly configured cache, pages are served from memory — instantly.</p>
+      <p>Without a cache, the server recalculates every page on every visit. With a properly configured cache, pages are served from memory, instantly.</p>
 
       <p>On WordPress, a cache plugin (WP Rocket, LiteSpeed Cache) is essential. On Next.js, static generation acts as a permanent cache: pages are pre-computed once and served directly without any server processing.</p>
 
       <h2>5. Unminified CSS and JavaScript</h2>
 
-      <p>In development, code is readable — with spaces, comments, line breaks. In production, all of that is unnecessary and represents kilobytes downloaded for nothing.</p>
+      <p>In development, code is readable, with spaces, comments, line breaks. In production, all of that is unnecessary and represents kilobytes downloaded for nothing.</p>
 
-      <p>Minification removes these superfluous characters and reduces file sizes by 20 to 40%. Modern tools (Next.js, Vite, Webpack) do this automatically at build time — there&apos;s nothing to configure if the project is well set up.</p>
+      <p>Minification removes these superfluous characters and reduces file sizes by 20 to 40%. Modern tools (Next.js, Vite, Webpack) do this automatically at build time. There&apos;s nothing to configure if the project is well set up.</p>
 
       <h2>6. Poorly Managed Web Fonts</h2>
 
@@ -181,7 +181,7 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
 
       <p>Best practice: preload critical fonts with <code>&lt;link rel=&quot;preload&quot;&gt;</code>, use <code>font-display: swap</code> to immediately display a fallback font, and limit the number of variants loaded (weights, styles).</p>
 
-      <p>At Torquemade, we use Geist, hosted locally — no external requests, no network latency from fonts.</p>
+      <p>At Torquemade, we use Geist, hosted locally, no external requests, no network latency from fonts.</p>
 
       <h2>7. Redirect Chains</h2>
 
@@ -197,7 +197,7 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
 
       <hr />
 
-      <p><em>Your site is slow and you don&apos;t know where to start? <Link href="/contact">Contact us</Link> — we conduct a full performance audit and give you a concrete action plan.</em></p>
+      <p><em>Your site is slow and you don&apos;t know where to start? <Link href="/contact">Contact us</Link>. We conduct a full performance audit and give you a concrete action plan.</em></p>
     </>
   )
 }

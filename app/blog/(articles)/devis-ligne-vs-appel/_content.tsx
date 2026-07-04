@@ -11,7 +11,7 @@ export function DevisLigneVsAppelContent() {
       <h1 className="blog-article-title">Online Quote vs Phone Quote: Which Converts Better?</h1>
 
       <p>
-        "Contact us for a quote" — the standard formula. But is it really the most
+        "Contact us for a quote", the standard formula. But is it really the most
         effective? The choice between an online quote form and a phone call first changes
         your lead volume, their quality, and your commercial processing time.
       </p>
@@ -79,7 +79,7 @@ export function DevisLigneVsAppelContent() {
       <h1 className="blog-article-title">Devis en ligne vs devis sur appel : lequel convertit le mieux ?</h1>
 
       <p>
-        "Contactez-nous pour obtenir un devis" — c'est la formule standard. Mais est-ce
+        "Contactez-nous pour obtenir un devis": c'est la formule standard. Mais est-ce
         vraiment la plus efficace ? Le choix entre un formulaire de devis en ligne et
         une prise de contact téléphonique d'abord n'est pas anodin : il change votre
         volume de leads, leur qualité, et votre temps de traitement commercial.

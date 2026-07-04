@@ -12,7 +12,7 @@ export function TarificationVtcFixeCompteurContent() {
 
       <p>
         Price uncertainty is the main reason a visitor leaves a VTC site without booking.
-        "Rate according to itinerary," "contact us for a quote" — these formulations defer
+        "Rate according to itinerary," "contact us for a quote", these formulations defer
         the information and push the client toward a competitor who displays their rates.
         Here's how to solve this.
       </p>
@@ -22,7 +22,7 @@ export function TarificationVtcFixeCompteurContent() {
       <p>
         Fixed pricing is simple and reassuring: the client knows before getting in the vehicle
         what they'll pay. No bad surprises from traffic or detours. Metered pricing is more
-        flexible for unexpected or variable trips — but creates anxiety. On your website, if
+        flexible for unexpected or variable trips, but creates anxiety. On your website, if
         you use metered pricing, at minimum display a starting rate and estimates for common trips.
       </p>
 
@@ -37,7 +37,7 @@ export function TarificationVtcFixeCompteurContent() {
       <h2>The direct impact on conversion rate</h2>
 
       <p>
-        VTC sites that clearly display their rates convert better than those that don't —
+        VTC sites that clearly display their rates convert better than those that don't,
         at equivalent service and design quality. Price information reduces decision time
         and eliminates the main booking barrier.
       </p>
@@ -82,7 +82,7 @@ export function TarificationVtcFixeCompteurContent() {
       <p>
         L'incertitude sur le prix est la principale raison pour laquelle un visiteur
         quitte un site VTC sans réserver. "Tarif selon itinéraire", "nous contacter
-        pour un devis", "prix sur demande" — ces formulations reportent l'information
+        pour un devis", "prix sur demande", ces formulations reportent l'information
         à plus tard et poussent le client vers un concurrent qui affiche ses tarifs.
         Voici comment résoudre ce problème.
       </p>
@@ -98,7 +98,7 @@ export function TarificationVtcFixeCompteurContent() {
       </p>
 
       <p>
-        Le tarif au compteur est plus flexible pour les trajets imprévus ou variables —
+        Le tarif au compteur est plus flexible pour les trajets imprévus ou variables,
         mais il crée une anxiété chez le client qui ne contrôle pas le prix final.
         Sur votre site web, si vous pratiquez le compteur, affichez au minimum
         un tarif de départ et une estimation pour vos trajets courants.
@@ -130,7 +130,7 @@ export function TarificationVtcFixeCompteurContent() {
 
       <p>
         Les sites VTC qui affichent clairement leurs tarifs convertissent mieux que
-        ceux qui ne le font pas — à qualité de service et de design équivalents.
+        ceux qui ne le font pas: à qualité de service et de design équivalents.
         L'information sur le prix réduit le temps de décision et élimine le principal
         frein à la réservation.
       </p>

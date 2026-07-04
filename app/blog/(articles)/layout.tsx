@@ -10,7 +10,7 @@ import { strings } from '@/lib/strings'
 
 /**
  * Isolated in its own component so that useSearchParams is wrapped
- * in a Suspense boundary — required by Next.js 15 App Router.
+ * in a Suspense boundary, required by Next.js 15 App Router.
  */
 function BackButton() {
   const searchParams = useSearchParams()

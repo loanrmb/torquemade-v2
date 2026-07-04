@@ -74,7 +74,7 @@ export function ConnecterStockMagasinSiteInternetContent() {
 
       <p>
         This is the only method that eliminates the problem at its source. As soon as a
-        sale happens — in-store or online — stock is updated instantly in both systems.
+        sale happens (in-store or online), stock is updated instantly in both systems.
         No delay, no possible gap.
       </p>
 
@@ -100,7 +100,7 @@ export function ConnecterStockMagasinSiteInternetContent() {
       </p>
 
       <p>
-        This flow of information passes through an API — an interface that allows two
+        This flow of information passes through an API, an interface that allows two
         pieces of software to communicate securely and in a standardised way. Neither
         the retailer nor their team needs to intervene: everything happens automatically,
         in the background, in a matter of seconds.
@@ -115,8 +115,8 @@ export function ConnecterStockMagasinSiteInternetContent() {
       </p>
 
       <p>
-        On the e-commerce side, Shopify currently offers the best integration ecosystem
-        — native or third-party connectors exist for the vast majority of point-of-sale
+        On the e-commerce side, Shopify currently offers the best integration ecosystem:
+        native or third-party connectors exist for the vast majority of point-of-sale
         systems. WooCommerce (WordPress) and PrestaShop are also compatible, with
         integrations available but often more complex to maintain. A custom-built site
         in Next.js or another modern framework can be connected to any system that
@@ -144,8 +144,8 @@ export function ConnecterStockMagasinSiteInternetContent() {
       </p>
 
       <p>
-        Stock visibility becomes unified. Regardless of the channel — store, website,
-        marketplace — your actual stock level is visible in one place, permanently up
+        Stock visibility becomes unified. Regardless of the channel, store, website,
+        marketplace: your actual stock level is visible in one place, permanently up
         to date. This is the foundation of effective multi-channel management.
       </p>
 
@@ -159,7 +159,7 @@ export function ConnecterStockMagasinSiteInternetContent() {
       <p>
         <em>
           You have a physical store and an e-commerce site that don&apos;t communicate?{' '}
-          <Link href="/contact">Contact us</Link> — we&apos;ll analyse your current setup
+          <Link href="/contact">Contact us</Link>: we&apos;ll analyse your current setup
           and propose the right connection for your point-of-sale system and your site.
         </em>
       </p>
@@ -240,7 +240,7 @@ export function ConnecterStockMagasinSiteInternetContent() {
 
       <p>
         C&apos;est la seule méthode qui élimine le problème à la source. Dès
-        qu&apos;une vente a lieu — en magasin ou en ligne — le stock est mis à jour
+        qu&apos;une vente a lieu (en magasin ou en ligne), le stock est mis à jour
         instantanément dans les deux systèmes. Pas de délai, pas d&apos;écart possible.
       </p>
 
@@ -267,7 +267,7 @@ export function ConnecterStockMagasinSiteInternetContent() {
       </p>
 
       <p>
-        Ce flux d&apos;information passe par une API — une interface qui permet à deux
+        Ce flux d&apos;information passe par une API, une interface qui permet à deux
         logiciels de communiquer de façon sécurisée et standardisée. Ni le commerçant
         ni ses équipes n&apos;ont besoin d&apos;intervenir : tout se passe
         automatiquement, en arrière-plan, en quelques secondes.
@@ -284,7 +284,7 @@ export function ConnecterStockMagasinSiteInternetContent() {
 
       <p>
         Du côté des sites e-commerce, Shopify est la plateforme qui offre
-        aujourd&apos;hui le meilleur écosystème d&apos;intégrations — des connecteurs
+        aujourd&apos;hui le meilleur écosystème d&apos;intégrations, des connecteurs
         natifs ou tiers existent pour la grande majorité des logiciels de caisse.
         WooCommerce (WordPress) et PrestaShop sont également compatibles, avec des
         intégrations disponibles mais souvent plus complexes à maintenir. Un site sur
@@ -315,8 +315,8 @@ export function ConnecterStockMagasinSiteInternetContent() {
       </p>
 
       <p>
-        La vision du stock devient unifiée. Peu importe le canal — boutique, site,
-        marketplace — votre niveau de stock réel est visible en un seul endroit,
+        La vision du stock devient unifiée. Peu importe le canal, boutique, site,
+        marketplace : votre niveau de stock réel est visible en un seul endroit,
         à jour en permanence. C&apos;est la base d&apos;une gestion multi-canal efficace.
       </p>
 
@@ -330,7 +330,7 @@ export function ConnecterStockMagasinSiteInternetContent() {
       <p>
         <em>
           Vous avez un magasin physique et un site e-commerce qui ne se parlent pas ?{' '}
-          <Link href="/contact">Contactez-nous</Link> — nous analysons votre configuration
+          <Link href="/contact">Contactez-nous</Link>: nous analysons votre configuration
           actuelle et vous proposons la connexion adaptée à votre logiciel de caisse et
           à votre site.
         </em>

@@ -14,7 +14,7 @@ export function ErpSpecialiseBoutiquePoissonsContent() {
         Shop owners ask this after hitting the same wall: they've tried a generic ERP or
         inventory system, forced it to sort-of handle livestock, and drowned in workarounds.
         The short answer is that the big general-purpose ERPs were never designed for unique
-        living inventory — and the gap isn't cosmetic, it's structural. Here's what a
+        living inventory, and the gap isn't cosmetic, it's structural. Here's what a
         specialized system actually has to do differently.
       </p>
 
@@ -25,7 +25,7 @@ export function ErpSpecialiseBoutiquePoissonsContent() {
         orders, and quantity-based stock. That model is excellent for a distributor moving
         pallets of identical goods. It has no native concept of "specimen #4471, this exact
         coral, alive as of this morning." You can approximate it with serial numbers or custom
-        fields, but every process built on top — reordering, valuation, sync — still assumes
+        fields, but every process built on top (reordering, valuation, sync) still assumes
         interchangeable units. You spend your time translating your reality into a model that
         resists it.
       </p>
@@ -33,7 +33,7 @@ export function ErpSpecialiseBoutiquePoissonsContent() {
       <h2>The two things a specialized system must model natively</h2>
 
       <ul>
-        <li><strong>The unique specimen.</strong> Every fish and coral is its own record with an ID, photo, and status — not a line item with a quantity. This is the foundation everything else depends on.</li>
+        <li><strong>The unique specimen.</strong> Every fish and coral is its own record with an ID, photo, and status, not a line item with a quantity. This is the foundation everything else depends on.</li>
         <li><strong>Mortality.</strong> A living-inventory system needs death as a first-class event that instantly removes one specific unit from sale everywhere. In a generic ERP, "the item died" is an awkward manual stock adjustment with no real place in the data model.</li>
       </ul>
 
@@ -42,14 +42,14 @@ export function ErpSpecialiseBoutiquePoissonsContent() {
       <ol>
         <li><strong>Listings are one-to-one.</strong> Each online product maps to a single specimen, enforcing WYSIWYG so two buyers can't claim the same animal.</li>
         <li><strong>Sync is specimen-aware.</strong> Status changes push to your storefront per individual, in real time, instead of reconciling a shared counter.</li>
-        <li><strong>Evidence is a byproduct.</strong> Because each specimen has a record and a timeline, packing photos and delivery proofs attach naturally — giving you a chargeback file without extra effort.</li>
+        <li><strong>Evidence is a byproduct.</strong> Because each specimen has a record and a timeline, packing photos and delivery proofs attach naturally, giving you a chargeback file without extra effort.</li>
       </ol>
 
       <h2>Build, adapt, or buy specialized?</h2>
 
       <p>
         There are three realistic answers. <strong>Adapt a generic ERP</strong> and accept
-        permanent friction and workaround costs. <strong>Build fully custom</strong> — correct,
+        permanent friction and workaround costs. <strong>Build fully custom</strong>: correct,
         but expensive and slow if you start from a blank page. Or <strong>use software already
         built for livestock</strong>, where the specimen-and-mortality model is native and the
         Shopify sync ships with it. For most independent fish and coral shops, the third path is
@@ -104,7 +104,7 @@ export function ErpSpecialiseBoutiquePoissonsContent() {
         Les gérants posent la question après avoir heurté le même mur : ils ont essayé un ERP ou
         un système d'inventaire générique, l'ont forcé à gérer tant bien que mal du vivant, et se
         sont noyés dans les contournements. La réponse courte, c'est que les grands ERP
-        généralistes n'ont jamais été conçus pour un stock vivant et unique — et l'écart n'est pas
+        généralistes n'ont jamais été conçus pour un stock vivant et unique, et l'écart n'est pas
         cosmétique, il est structurel. Voici ce qu'un système spécialisé doit réellement faire
         différemment.
       </p>
@@ -117,7 +117,7 @@ export function ErpSpecialiseBoutiquePoissonsContent() {
         distributeur qui déplace des palettes de produits identiques. Il n'a aucune notion native
         de « spécimen n°4471, ce corail précis, vivant depuis ce matin ». Vous pouvez l'approcher
         avec des numéros de série ou des champs personnalisés, mais tous les processus bâtis
-        au-dessus — réapprovisionnement, valorisation, synchro — continuent de supposer des unités
+        au-dessus (réapprovisionnement, valorisation, synchro) continuent de supposer des unités
         interchangeables. Vous passez votre temps à traduire votre réalité dans un modèle qui y
         résiste.
       </p>
@@ -125,7 +125,7 @@ export function ErpSpecialiseBoutiquePoissonsContent() {
       <h2>Les deux choses qu'un système spécialisé doit modéliser nativement</h2>
 
       <ul>
-        <li><strong>Le spécimen unique.</strong> Chaque poisson et corail est sa propre fiche avec un identifiant, une photo et un statut — pas une ligne avec une quantité. C'est la fondation dont tout le reste dépend.</li>
+        <li><strong>Le spécimen unique.</strong> Chaque poisson et corail est sa propre fiche avec un identifiant, une photo et un statut, pas une ligne avec une quantité. C'est la fondation dont tout le reste dépend.</li>
         <li><strong>La mortalité.</strong> Un système de stock vivant a besoin de la mort comme événement de premier rang qui retire instantanément une unité précise de la vente partout. Dans un ERP générique, « l'article est mort » est un ajustement de stock manuel bancal, sans vraie place dans le modèle de données.</li>
       </ul>
 
@@ -134,7 +134,7 @@ export function ErpSpecialiseBoutiquePoissonsContent() {
       <ol>
         <li><strong>Les annonces sont en un-pour-un.</strong> Chaque produit en ligne correspond à un seul spécimen, imposant le WYSIWYG pour que deux acheteurs ne puissent pas revendiquer le même animal.</li>
         <li><strong>La synchro est consciente des spécimens.</strong> Les changements de statut sont poussés vers votre boutique par individu, en temps réel, au lieu de réconcilier un compteur partagé.</li>
-        <li><strong>La preuve est un sous-produit.</strong> Parce que chaque spécimen a une fiche et une chronologie, les photos d'emballage et les preuves de livraison s'y attachent naturellement — vous donnant un dossier de rétrofacturation sans effort supplémentaire.</li>
+        <li><strong>La preuve est un sous-produit.</strong> Parce que chaque spécimen a une fiche et une chronologie, les photos d'emballage et les preuves de livraison s'y attachent naturellement, vous donnant un dossier de rétrofacturation sans effort supplémentaire.</li>
       </ol>
 
       <h2>Construire, adapter ou acheter du spécialisé ?</h2>
@@ -142,7 +142,7 @@ export function ErpSpecialiseBoutiquePoissonsContent() {
       <p>
         Il y a trois réponses réalistes. <strong>Adapter un ERP générique</strong> et accepter une
         friction permanente et le coût des contournements. <strong>Construire entièrement sur
-        mesure</strong> — correct, mais cher et lent si vous partez d'une page blanche. Ou
+        mesure</strong>: correct, mais cher et lent si vous partez d'une page blanche. Ou
         <strong> utiliser un logiciel déjà conçu pour le vivant</strong>, où le modèle
         spécimen-et-mortalité est natif et la synchro Shopify livrée avec. Pour la plupart des
         boutiques indépendantes de poissons et coraux, la troisième voie est la seule à la fois

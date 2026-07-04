@@ -11,7 +11,7 @@ export function MotoNeuveOccasionSeoContent() {
       <h1 className="blog-article-title">New vs Used Motorcycle: How to Structure Pages for SEO</h1>
 
       <p>
-        On a motorcycle dealer's site, "new" and "used" aren't just two catalogue sections —
+        On a motorcycle dealer's site, "new" and "used" aren't just two catalogue sections:
         they're two distinct SEO strategies targeting different buyers at different stages
         of the purchase process. Mixing them on a single page dilutes both.
       </p>
@@ -33,13 +33,13 @@ export function MotoNeuveOccasionSeoContent() {
         €5,000," "Honda CBR used [region]," "cheap A2 used motorbike." Intent is often
         more urgent and budget more defined. Used pages must allow filtering by budget,
         mileage, displacement, and location. Each used bike needs its own individual
-        listing — no generic catalogue without photos or prices.
+        listing, no generic catalogue without photos or prices.
       </p>
 
       <h2>Why separate the two</h2>
 
       <p>
-        A "Motorcycle Stock" page mixing new and used is hard to optimise for Google —
+        A "Motorcycle Stock" page mixing new and used is hard to optimise for Google:
         it doesn't know whether the page targets new or used queries. Separate sections
         with their own URLs allow optimising each for its specific queries, creating
         dedicated pillar pages, and better meeting each buyer profile's expectations.
@@ -84,7 +84,7 @@ export function MotoNeuveOccasionSeoContent() {
 
       <p>
         Sur un site de concessionnaire moto, "neuf" et "occasion" ne sont pas
-        juste deux sections de catalogue — ce sont deux stratégies SEO distinctes
+        juste deux sections de catalogue, ce sont deux stratégies SEO distinctes
         qui ciblent des acheteurs différents, à des stades différents du processus
         d'achat. Les mélanger sur une seule page, c'est diluer les deux.
       </p>
@@ -95,7 +95,7 @@ export function MotoNeuveOccasionSeoContent() {
         Un acheteur de moto neuve cherche généralement par modèle, par marque, ou
         par caractéristique : "Yamaha MT-07 prix 2025", "moto 500cc A2 neuve",
         "meilleure trail débutant neuve". Ces requêtes ont une intention d'information
-        et d'achat — l'acheteur compare avant de décider.
+        et d'achat, l'acheteur compare avant de décider.
       </p>
 
       <p>
@@ -115,14 +115,14 @@ export function MotoNeuveOccasionSeoContent() {
       <p>
         Les pages d'occasion doivent permettre de filtrer par budget, par kilométrage,
         par cylindrée et par localisation. Chaque moto d'occasion doit avoir sa propre
-        fiche individuelle — pas de catalogue générique sans photos ni prix.
+        fiche individuelle, pas de catalogue générique sans photos ni prix.
       </p>
 
       <h2>Pourquoi séparer les deux</h2>
 
       <p>
         Une page "Stock motos" qui mélange neuf et occasion est difficile à optimiser
-        pour Google — il ne sait pas si la page cible les requêtes de neuf ou d'occasion.
+        pour Google : il ne sait pas si la page cible les requêtes de neuf ou d'occasion.
         Des sections séparées avec leurs propres URLs permettent d'optimiser chacune
         pour ses requêtes spécifiques, de créer des pages piliers dédiées, et de
         mieux répondre aux attentes de chaque profil d'acheteur.

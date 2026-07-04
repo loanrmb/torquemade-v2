@@ -13,8 +13,8 @@ export function MotsClesPeuConcurrentielsContent() {
       <p>
         Trying to rank for "web agency" or "SEO" when you're starting out is like
         racing Decathlon in a sprint. These queries are dominated by domains with
-        decades of authority. The right strategy: start with long-tail queries —
-        specific, low-competition — to build authority progressively.
+        decades of authority. The right strategy: start with long-tail queries,
+        specific and low-competition, to build authority progressively.
       </p>
 
       <h2>Understanding the long tail</h2>
@@ -22,7 +22,7 @@ export function MotsClesPeuConcurrentielsContent() {
       <p>
         Long-tail keywords are specific queries that individually generate low search
         volume but collectively represent more than 70% of Google searches. "Custom web
-        agency Bordeaux for SMEs" generates fewer searches than "web agency" — but the
+        agency Bordeaux for SMEs" generates fewer searches than "web agency", but the
         person typing it knows exactly what they want and is much closer to contacting you.
       </p>
 
@@ -30,7 +30,7 @@ export function MotsClesPeuConcurrentielsContent() {
 
       <ul>
         <li><strong>Google Suggest.</strong> Type your main query and look at the automatic suggestions. These are real customer searches, ranked by popularity.</li>
-        <li><strong>People Also Ask.</strong> In Google results, this section reveals questions people ask around your subject — perfect article opportunities.</li>
+        <li><strong>People Also Ask.</strong> In Google results, this section reveals questions people ask around your subject, perfect article opportunities.</li>
         <li><strong>Google Search Console.</strong> If your site exists, check which queries generate impressions without clicks yet. These are keywords where you already have a chance.</li>
         <li><strong>Google Trends.</strong> Compare two or three query variants to see which is growing. Targeting a rising query beats targeting a declining one at equal current volume.</li>
       </ul>
@@ -39,7 +39,7 @@ export function MotsClesPeuConcurrentielsContent() {
 
       <p>
         Type your target query into Google and analyse the top three results. If they're
-        generalist sites with little specific content on the subject, it's a good target —
+        generalist sites with little specific content on the subject, it's a good target:
         you can write a more precise and useful article. The right keyword is one where
         your content can honestly be the best available answer on Google. Start there.
       </p>
@@ -85,8 +85,8 @@ export function MotsClesPeuConcurrentielsContent() {
         Chercher à se positionner sur "agence web" ou "référencement naturel" quand
         vous démarrez, c'est vouloir battre Decathlon au sprint. Ces requêtes sont
         dominées par des domaines avec des dizaines d'années d'autorité. La bonne
-        stratégie, c'est de commencer par les requêtes longue traîne — précises, peu
-        concurrentielles — pour construire une autorité progressive.
+        stratégie, c'est de commencer par les requêtes longue traîne, précises, peu
+        concurrentielles, pour construire une autorité progressive.
       </p>
 
       <h2>Comprendre la longue traîne</h2>
@@ -95,7 +95,7 @@ export function MotsClesPeuConcurrentielsContent() {
         La longue traîne, ce sont toutes les requêtes spécifiques qui génèrent
         individuellement peu de volume de recherche, mais qui représentent collectivement
         plus de 70 % des recherches sur Google. "Agence web Bordeaux sur mesure PME"
-        génère moins de recherches que "agence web" — mais la personne qui tape cette
+        génère moins de recherches que "agence web", mais la personne qui tape cette
         requête sait exactement ce qu'elle cherche, et elle est beaucoup plus proche
         de l'achat ou du contact.
       </p>
@@ -106,7 +106,7 @@ export function MotsClesPeuConcurrentielsContent() {
         <li>
           <strong>Google Suggest.</strong> Tapez votre requête principale dans Google
           et regardez les suggestions automatiques qui apparaissent. Ce sont les vraies
-          recherches de vos clients — classées par popularité.
+          recherches de vos clients, classées par popularité.
         </li>
         <li>
           <strong>Section "Autres questions posées".</strong> Dans les résultats Google,
@@ -130,7 +130,7 @@ export function MotsClesPeuConcurrentielsContent() {
       <p>
         Tapez votre requête cible dans Google et analysez les trois premiers résultats.
         Si ce sont des sites généralistes avec peu de contenu spécifique sur le sujet,
-        c'est une bonne cible — vous pouvez écrire un article plus précis et plus utile.
+        c'est une bonne cible : vous pouvez écrire un article plus précis et plus utile.
         Si ce sont des sites spécialisés avec des centaines de pages sur la thématique,
         cherchez une variante plus spécifique.
       </p>

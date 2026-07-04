@@ -12,7 +12,7 @@ export function FicheProduitMotoRedactionContent() {
 
       <p>
         Most motorcycle product listings read like homologation data sheets: displacement,
-        power, torque, weight. This information is necessary — but it doesn't sell.
+        power, torque, weight. This information is necessary, but it doesn't sell.
         What sells is the answer to an implicit question every buyer asks themselves:
         "Does this bike match me?"
       </p>
@@ -31,9 +31,9 @@ export function FicheProduitMotoRedactionContent() {
       <h2>The structure of an effective description</h2>
 
       <ul>
-        <li><strong>A hook that qualifies the use.</strong> The first sentence says who and what the bike is for — a natural filter that keeps the right buyer reading.</li>
-        <li><strong>3 or 4 strong arguments.</strong> What differentiates this bike: design, equipment, ease of handling, comfort, range. Not all arguments — the best ones.</li>
-        <li><strong>Technical specifications.</strong> Displacement, power, weight, seat height — in a clear list, after the argument. For used bikes: mileage, condition, history.</li>
+        <li><strong>A hook that qualifies the use.</strong> The first sentence says who and what the bike is for: a natural filter that keeps the right buyer reading.</li>
+        <li><strong>3 or 4 strong arguments.</strong> What differentiates this bike: design, equipment, ease of handling, comfort, range. Not all arguments, the best ones.</li>
+        <li><strong>Technical specifications.</strong> Displacement, power, weight, seat height, in a clear list, after the argument. For used bikes: mileage, condition, history.</li>
         <li><strong>A personalised call to action.</strong> "Test this bike at our dealership" rather than "contact us." More precise, more engaging.</li>
       </ul>
 
@@ -42,7 +42,7 @@ export function FicheProduitMotoRedactionContent() {
       <p>
         A unique description written for each model has a dual benefit: it convinces buyers
         and helps Google index your page for model-specific queries. A copy-pasted
-        manufacturer description is duplicate content — Google doesn't prioritise it.
+        manufacturer description is duplicate content, Google doesn't prioritise it.
       </p>
 
       <hr />
@@ -85,7 +85,7 @@ export function FicheProduitMotoRedactionContent() {
       <p>
         La majorité des fiches produits moto ressemblent à des fiches techniques
         d'homologation : cylindrée, puissance, couple, poids. Ces informations sont
-        nécessaires — mais elles ne vendent pas. Ce qui vend, c'est la réponse à une
+        nécessaires, mais elles ne vendent pas. Ce qui vend, c'est la réponse à une
         question implicite que tout acheteur se pose : "Est-ce que cette moto me
         correspond ?"
       </p>
@@ -112,17 +112,17 @@ export function FicheProduitMotoRedactionContent() {
         <li>
           <strong>Une accroche qui qualifie l'usage.</strong>
           La première phrase dit à qui et à quoi la moto est destinée. Elle sert
-          de filtre naturel — le bon acheteur continue à lire, les autres passent.
+          de filtre naturel, le bon acheteur continue à lire, les autres passent.
         </li>
         <li>
           <strong>Les 3 ou 4 arguments forts.</strong>
           Ce qui différencie cette moto des autres : son design, son équipement,
           sa facilité de prise en main, son confort, son autonomie. Pas tous les
-          arguments — les meilleurs.
+          arguments, les meilleurs.
         </li>
         <li>
           <strong>Les caractéristiques techniques.</strong>
-          Cylindrée, puissance, poids, hauteur de selle — en liste claire, après
+          Cylindrée, puissance, poids, hauteur de selle, en liste claire, après
           l'argumentaire. Pour les motos d'occasion : kilométrage, état, historique.
         </li>
         <li>
@@ -138,7 +138,7 @@ export function FicheProduitMotoRedactionContent() {
         Une description unique et rédigée pour chaque modèle a un double bénéfice :
         elle convainc les acheteurs et elle aide Google à indexer votre page sur des
         requêtes spécifiques au modèle. Une description copiée-collée depuis le site
-        fabricant est du contenu dupliqué — Google ne l'indexe pas en priorité.
+        fabricant est du contenu dupliqué, Google ne l'indexe pas en priorité.
       </p>
 
       <hr />

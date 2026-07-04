@@ -11,7 +11,7 @@ export function RelierErpCaisseShopifyContent() {
       <h1 className="blog-article-title">How Do You Connect Your POS or ERP to Shopify for a Fish/Coral Business?</h1>
 
       <p>
-        Connecting a POS or ERP to Shopify is a solved problem — for shops selling
+        Connecting a POS or ERP to Shopify is a solved problem, for shops selling
         interchangeable products. The moment your catalog is live specimens, the standard
         connectors and integration patterns start leaking, because they were never designed
         to move "this exact individual" between systems. Here's how the integration actually
@@ -25,7 +25,7 @@ export function RelierErpCaisseShopifyContent() {
         <strong> pushes</strong> product and stock state out to the storefront, and it
         <strong> pulls</strong> orders back in. For a normal retailer, "stock state" is a
         number. For you, it has to be the status of a specific specimen. If the connector
-        can only speak in quantities, it can technically sync — but it can't stop two people
+        can only speak in quantities, it can technically sync, but it can't stop two people
         buying the same coral, and it has no idea what to do when one dies.
       </p>
 
@@ -33,7 +33,7 @@ export function RelierErpCaisseShopifyContent() {
 
       <ul>
         <li><strong>Off-the-shelf connector app.</strong> Fast to install, cheap monthly fee. But it maps SKUs to quantities, so it inherits every limitation of the quantity model. Fine for your dry goods, wrong for livestock.</li>
-        <li><strong>Vendor API / middleware.</strong> More flexible: your POS or ERP exposes an API, and a middleware pushes changes to Shopify's Admin API. This <em>can</em> carry per-specimen data — if your system stores it that way in the first place. The middleware is only as smart as the model beneath it.</li>
+        <li><strong>Vendor API / middleware.</strong> More flexible: your POS or ERP exposes an API, and a middleware pushes changes to Shopify's Admin API. This <em>can</em> carry per-specimen data, if your system stores it that way in the first place. The middleware is only as smart as the model beneath it.</li>
         <li><strong>Direct, custom integration.</strong> A purpose-built sync layer owns the specimen model end to end and talks to the Shopify Admin API directly. Most control, no per-transaction connector fees, and mortality is a native event.</li>
       </ul>
 
@@ -49,7 +49,7 @@ export function RelierErpCaisseShopifyContent() {
       <h2>Where POS/ERP connections usually fail here</h2>
 
       <p>
-        The most common failure isn't a broken API call — it's a modeling mismatch. Your POS
+        The most common failure isn't a broken API call: it's a modeling mismatch. Your POS
         thinks in quantities, Shopify thinks in quantities, so the connector faithfully syncs
         quantities, and your unique specimens get flattened into "12 of species X." From that
         point on, overselling and phantom stock are inevitable, and no amount of connector
@@ -62,7 +62,7 @@ export function RelierErpCaisseShopifyContent() {
         If your back-office already models specimens individually, a custom middleware to
         Shopify is very doable. If it doesn't, connecting it to Shopify just propagates the
         wrong model faster. In that case the fix is upstream: a system that treats each fish
-        and coral as its own record, then syncs. <strong>TankLogic</strong> is exactly that —
+        and coral as its own record, then syncs. <strong>TankLogic</strong> is exactly that:
         the specimen model and the Shopify sync in one, so the integration carries the right
         data instead of flattening it.
       </p>
@@ -105,7 +105,7 @@ export function RelierErpCaisseShopifyContent() {
       <h1 className="blog-article-title">Comment relier mon ERP ou ma caisse à Shopify pour l'aquariophilie ?</h1>
 
       <p>
-        Relier une caisse ou un ERP à Shopify est un problème résolu — pour les boutiques qui
+        Relier une caisse ou un ERP à Shopify est un problème résolu, pour les boutiques qui
         vendent des produits interchangeables. Dès que votre catalogue devient des spécimens
         vivants, les connecteurs standards et les schémas d'intégration commencent à fuir,
         parce qu'ils n'ont jamais été conçus pour déplacer « cet individu précis » d'un système
@@ -120,7 +120,7 @@ export function RelierErpCaisseShopifyContent() {
         <strong> pousse</strong> l'état des produits et du stock vers la boutique, et elle
         <strong> récupère</strong> les commandes. Pour un détaillant classique, « l'état du
         stock » est un nombre. Pour vous, ça doit être le statut d'un spécimen précis. Si le
-        connecteur ne parle qu'en quantités, il peut techniquement synchroniser — mais il ne
+        connecteur ne parle qu'en quantités, il peut techniquement synchroniser, mais il ne
         peut pas empêcher deux personnes d'acheter le même corail, et il n'a aucune idée de
         quoi faire quand l'un meurt.
       </p>
@@ -129,7 +129,7 @@ export function RelierErpCaisseShopifyContent() {
 
       <ul>
         <li><strong>Appli connecteur du marché.</strong> Rapide à installer, abonnement mensuel modique. Mais elle mappe des SKU vers des quantités : elle hérite de toutes les limites du modèle de quantité. Bien pour vos produits secs, faux pour le vivant.</li>
-        <li><strong>API éditeur / middleware.</strong> Plus souple : votre caisse ou ERP expose une API, et un middleware pousse les changements vers l'Admin API de Shopify. Ça <em>peut</em> transporter des données par spécimen — si votre système les stocke ainsi au départ. Le middleware n'est jamais plus intelligent que le modèle qui le porte.</li>
+        <li><strong>API éditeur / middleware.</strong> Plus souple : votre caisse ou ERP expose une API, et un middleware pousse les changements vers l'Admin API de Shopify. Ça <em>peut</em> transporter des données par spécimen, si votre système les stocke ainsi au départ. Le middleware n'est jamais plus intelligent que le modèle qui le porte.</li>
         <li><strong>Intégration directe et sur mesure.</strong> Une couche de synchro dédiée possède le modèle par spécimen de bout en bout et dialogue directement avec l'Admin API de Shopify. Contrôle maximal, aucun frais de connecteur par transaction, et la mortalité est un événement natif.</li>
       </ul>
 
@@ -145,7 +145,7 @@ export function RelierErpCaisseShopifyContent() {
       <h2>Où les connexions caisse/ERP échouent le plus souvent ici</h2>
 
       <p>
-        La panne la plus fréquente n'est pas un appel API cassé — c'est un décalage de
+        La panne la plus fréquente n'est pas un appel API cassé: c'est un décalage de
         modélisation. Votre caisse pense en quantités, Shopify pense en quantités, alors le
         connecteur synchronise fidèlement des quantités, et vos spécimens uniques sont aplatis
         en « 12 de l'espèce X ». À partir de là, la survente et le stock fantôme sont
@@ -160,7 +160,7 @@ export function RelierErpCaisseShopifyContent() {
         Shopify est tout à fait faisable. Sinon, le relier à Shopify ne fait que propager le
         mauvais modèle plus vite. Dans ce cas, la correction est en amont : un système qui traite
         chaque poisson et chaque corail comme sa propre fiche, puis synchronise.
-        <strong> TankLogic</strong> est exactement cela — le modèle par spécimen et la synchro
+        <strong> TankLogic</strong> est exactement cela: le modèle par spécimen et la synchro
         Shopify réunis, pour que l'intégration transporte la bonne donnée au lieu de l'aplatir.
       </p>
 

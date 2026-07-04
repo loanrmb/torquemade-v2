@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { PourquoiSynchroStockShopifyErpPlanteContent } from './_content'
 
 export const metadata: Metadata = {
-  title: "Pourquoi la synchronisation stock Shopify-ERP plante — et comment l'éviter",
+  title: "Pourquoi la synchronisation stock Shopify-ERP plante, et comment l'éviter",
   openGraph: {
     images: [{ url: '/api/og?title=Pourquoi+la+synchronisation+stock+Shopify-ERP+plante+%E2%80%94+et+comment+l%27%C3%A9viter&category=ERP+%26+Gestion+de+stock', width: 1200, height: 630 }],
   },

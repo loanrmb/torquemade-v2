@@ -13,7 +13,7 @@ export function GoogleSearchConsoleMetriquesContent() {
       <p>
         Google Search Console is free, directly connected to Google, and yet most
         sites never open it. That's a mistake. Here are the five metrics worth checking
-        every week — and what they reveal about your site's SEO health.
+        every week, and what they reveal about your site's SEO health.
       </p>
 
       <h2>1. Impressions</h2>
@@ -22,7 +22,7 @@ export function GoogleSearchConsoleMetriquesContent() {
         An impression is counted every time your site appears in Google results, even
         if the user doesn't click. If impressions rise, Google is showing more of your
         content. If they plateau or drop, something is blocking progress. Check impressions
-        by page — a high-impression, low-click page probably needs a better title or
+        by page, a high-impression, low-click page probably needs a better title or
         meta description.
       </p>
 
@@ -32,7 +32,7 @@ export function GoogleSearchConsoleMetriquesContent() {
         CTR is the clicks-to-impressions ratio. An average of 2–5% is typical; above 8%,
         your title and description are genuinely compelling. Below 1%, revisit your meta
         title. Filter by query to find keywords where you appear often but generate few
-        clicks — these are your first optimisation targets.
+        clicks, these are your first optimisation targets.
       </p>
 
       <h2>3. Average position</h2>
@@ -40,7 +40,7 @@ export function GoogleSearchConsoleMetriquesContent() {
       <p>
         Average position shows where Google ranks your site for a given query. Positions
         1–3: excellent. Positions 4–10: first page with room to improve. Beyond 10:
-        second page — near-zero visibility. Focus on pages oscillating between positions
+        second page, near-zero visibility. Focus on pages oscillating between positions
         8 and 15. A few places gained can double traffic on those queries.
       </p>
 
@@ -59,7 +59,7 @@ export function GoogleSearchConsoleMetriquesContent() {
         Since 2021, Google integrates Core Web Vitals into its ranking algorithm.
         The "Experience" section shows whether your pages are "Good," "Needs improvement,"
         or "Poor." A red-rated page is penalised versus a green competitor with equivalent
-        content — the invisible differentiator between two competing sites.
+        content, the invisible differentiator between two competing sites.
       </p>
 
       <hr />
@@ -102,7 +102,7 @@ export function GoogleSearchConsoleMetriquesContent() {
       <p>
         Google Search Console est gratuit, directement connecté à Google, et pourtant
         la majorité des sites ne l'ouvrent jamais. C'est une erreur. Voici les cinq
-        métriques qui méritent une attention hebdomadaire — et ce qu'elles révèlent
+        métriques qui méritent une attention hebdomadaire, et ce qu'elles révèlent
         sur la santé SEO de votre site.
       </p>
 
@@ -126,7 +126,7 @@ export function GoogleSearchConsoleMetriquesContent() {
       <p>
         Le CTR est le ratio clics/impressions. Un CTR moyen de 2 à 5 % est courant ;
         au-dessus de 8 %, votre titre et votre description accrochent vraiment.
-        En dessous de 1 %, revoir le meta title s'impose — il n'est pas assez incitatif.
+        En dessous de 1 %, revoir le meta title s'impose, il n'est pas assez incitatif.
       </p>
 
       <p>
@@ -139,7 +139,7 @@ export function GoogleSearchConsoleMetriquesContent() {
       <p>
         La position moyenne indique à quelle place Google affiche votre site pour une
         requête donnée. Entre 1 et 3 : excellente visibilité. Entre 4 et 10 : première
-        page, avec du potentiel. Au-delà de 10 : deuxième page ou plus — la visibilité
+        page, avec du potentiel. Au-delà de 10 : deuxième page ou plus, la visibilité
         est quasi nulle.
       </p>
 
@@ -151,7 +151,7 @@ export function GoogleSearchConsoleMetriquesContent() {
       <h2>4. La couverture d'index</h2>
 
       <p>
-        La section "Couverture" indique combien de pages sont indexées par Google —
+        La section "Couverture" indique combien de pages sont indexées par Google,
         et lesquelles posent problème. Les erreurs (pages non indexées, redirections
         cassées, erreurs 404) sont à corriger en priorité. Si Google n'indexe pas une
         page, elle n'apparaîtra jamais dans les résultats, quelle que soit la qualité
@@ -172,7 +172,7 @@ export function GoogleSearchConsoleMetriquesContent() {
       <p>
         <em>
           Vous voulez un audit complet de vos données Search Console ?{' '}
-          <Link href="/contact">Contactez-nous</Link> — nous analysons vos métriques
+          <Link href="/contact">Contactez-nous</Link>: nous analysons vos métriques
           et identifions les leviers prioritaires.
         </em>
       </p>
