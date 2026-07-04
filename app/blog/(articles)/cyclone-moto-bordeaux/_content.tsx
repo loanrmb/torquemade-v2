@@ -13,7 +13,7 @@ export function CycloneMotoBordeauxContent() {
       <p>
         Cyclone is one of those brands gaining recognition in France's motorcycle market,
         driven by an accessible positioning and modern range. If you're looking for a
-        Cyclone in Bordeaux, here's what to know about the brand — and how to find one
+        Cyclone in Bordeaux, here's what to know about the brand, and how to find one
         in Gironde.
       </p>
 
@@ -23,7 +23,7 @@ export function CycloneMotoBordeauxContent() {
         Cyclone positions itself in the accessible, modern motorcycle segment. The brand
         targets new riders and those seeking solid value without sacrificing style or
         equipment. Cyclone models are known for entry-level reliability, contemporary
-        aesthetics, and ease of handling — criteria particularly important for A2 licence
+        aesthetics, and ease of handling, criteria particularly important for A2 licence
         holders or those returning to motorcycling after a break.
       </p>
 
@@ -32,7 +32,7 @@ export function CycloneMotoBordeauxContent() {
       <ul>
         <li><strong>Warranty and after-sales service.</strong> Buying from an authorised dealer guarantees manufacturer warranty coverage, access to original parts, and professional after-sales support.</li>
         <li><strong>Test ride before buying.</strong> A physical dealership lets you see the bike in person, get a feel for it, and receive personalised advice on the right model for your rider profile.</li>
-        <li><strong>Financing solutions.</strong> Dealers typically offer financing options — leasing, consumer credit — not available through direct online purchase.</li>
+        <li><strong>Financing solutions.</strong> Dealers typically offer financing options (leasing, consumer credit) not available through direct online purchase.</li>
       </ul>
 
       <h2>Finding a Cyclone in Bordeaux</h2>
@@ -40,7 +40,7 @@ export function CycloneMotoBordeauxContent() {
       <p>
         To find a Cyclone dealer in Bordeaux and Gironde, check the brand's official
         distribution network or search for local dealers featuring the brand on their site.
-        Stock changes regularly — best to contact the dealership directly to check
+        Stock changes regularly: best to contact the dealership directly to check
         availability of models that interest you.
       </p>
 
@@ -85,7 +85,7 @@ export function CycloneMotoBordeauxContent() {
         Cyclone est l'une de ces marques qui gagnent en notoriété dans le secteur
         de la moto en France, portée par un positionnement accessible et une gamme
         moderne. Si vous cherchez une Cyclone à Bordeaux, voici ce qu'il faut savoir
-        sur la marque — et comment la trouver en Gironde.
+        sur la marque, et comment la trouver en Gironde.
       </p>
 
       <h2>Le positionnement de la marque Cyclone</h2>
@@ -98,7 +98,7 @@ export function CycloneMotoBordeauxContent() {
 
       <p>
         Les modèles Cyclone sont réputés pour leur fiabilité à l'entrée de gamme,
-        leur esthétique contemporaine et leur facilité de prise en main — des
+        leur esthétique contemporaine et leur facilité de prise en main, des
         critères particulièrement importants pour les motards A2 ou ceux qui
         reviennent à la moto après une pause.
       </p>
@@ -122,7 +122,7 @@ export function CycloneMotoBordeauxContent() {
         <li>
           <strong>Solutions de financement.</strong>
           Les concessionnaires proposent généralement des solutions de financement
-          adaptées — leasing, crédit à la consommation — qui ne sont pas disponibles
+          adaptées (leasing, crédit à la consommation) qui ne sont pas disponibles
           en achat direct en ligne.
         </li>
       </ul>
@@ -133,7 +133,7 @@ export function CycloneMotoBordeauxContent() {
         Pour trouver un concessionnaire Cyclone à Bordeaux et en Gironde, le plus
         simple est de vérifier le réseau de distribution officiel de la marque ou
         de chercher les concessionnaires locaux qui distribuent la marque sur leur site.
-        Les stocks évoluent régulièrement — mieux vaut contacter directement la
+        Les stocks évoluent régulièrement, mieux vaut contacter directement la
         concession pour connaître la disponibilité des modèles qui vous intéressent.
       </p>
 
