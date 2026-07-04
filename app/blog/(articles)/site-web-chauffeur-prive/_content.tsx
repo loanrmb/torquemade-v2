@@ -13,7 +13,7 @@ export function SiteWebChauffeurPriveContent() {
       <p>
         A visitor landing on your private driver site often has a precise, urgent need.
         They're comparing two or three providers. They decide in under two minutes. If
-        your site doesn't convince them in that time — they leave for a competitor.
+        your site doesn't convince them in that time, they leave for a competitor.
         Here's what makes the difference.
       </p>
 
@@ -21,7 +21,7 @@ export function SiteWebChauffeurPriveContent() {
 
       <ul>
         <li><strong>Vehicle photos.</strong> No stock photos. Real photos of your car, clean, recent, interior and exterior. It's the first thing a client looks at.</li>
-        <li><strong>Certifications and licences.</strong> VTC card, professional insurance, registration — mention them clearly. It reassures about service professionalism.</li>
+        <li><strong>Certifications and licences.</strong> VTC card, professional insurance, registration, mention them clearly. It reassures about service professionalism.</li>
         <li><strong>Client reviews.</strong> Integrate your Google reviews or collect testimonials. A client choosing between two providers always picks the one with more visible positive reviews.</li>
         <li><strong>Your service area.</strong> Clearly state the cities, airports, and stations you serve. It avoids unqualified contacts and helps local SEO.</li>
       </ul>
@@ -30,7 +30,7 @@ export function SiteWebChauffeurPriveContent() {
 
       <p>
         Often a divisive subject. Displaying fixed rates reassures clients and reduces
-        unqualified contacts — but can also create price-first objections. For a VTC,
+        unqualified contacts, but can also create price-first objections. For a VTC,
         the effective middle ground is displaying indicative rates for common trips
         (airport, station) and a quote form for special trips.
       </p>
@@ -38,7 +38,7 @@ export function SiteWebChauffeurPriveContent() {
       <h2>The booking form or button</h2>
 
       <p>
-        Booking must be accessible from any page — ideally in the navigation menu and
+        Booking must be accessible from any page, ideally in the navigation menu and
         at the end of each section. The form should be short: date, time, departure,
         destination, passenger count. Each additional field reduces conversion rate.
       </p>
@@ -84,7 +84,7 @@ export function SiteWebChauffeurPriveContent() {
         Un visiteur qui atterrit sur votre site de chauffeur privé a souvent un
         besoin précis et urgent. Il compare deux ou trois prestataires. Il prend
         sa décision en moins de deux minutes. Si votre site ne le convainc pas
-        dans ce laps de temps — il part chez le concurrent. Voici ce qui fait
+        dans ce laps de temps, il part chez le concurrent. Voici ce qui fait
         la différence.
       </p>
 
@@ -94,12 +94,12 @@ export function SiteWebChauffeurPriveContent() {
         <li>
           <strong>Les photos du véhicule.</strong>
           Pas de stock photo. Des photos réelles de votre voiture, propre, récente,
-          intérieur et extérieur. C'est la première chose qu'un client regarde —
+          intérieur et extérieur. C'est la première chose qu'un client regarde,
           c'est dans ce véhicule qu'il va passer son trajet.
         </li>
         <li>
           <strong>Vos certifications et licences.</strong>
-          Carte VTC, assurance professionnelle, carte grise — mentionnez-les
+          Carte VTC, assurance professionnelle, carte grise, mentionnez-les
           clairement. Ça rassure sur le sérieux de la prestation.
         </li>
         <li>
@@ -119,7 +119,7 @@ export function SiteWebChauffeurPriveContent() {
 
       <p>
         C'est souvent le sujet qui divise. Afficher des tarifs fixes rassure les
-        clients et réduit les contacts non qualifiés — mais peut aussi créer
+        clients et réduit les contacts non qualifiés: mais peut aussi créer
         des objections price-first. Pour un VTC, la solution intermédiaire
         efficace est d'afficher des tarifs indicatifs pour les trajets courants
         (aéroport, gare) et un formulaire de devis pour les trajets spéciaux.
@@ -128,7 +128,7 @@ export function SiteWebChauffeurPriveContent() {
       <h2>Le formulaire ou le bouton de réservation</h2>
 
       <p>
-        La réservation doit être accessible depuis n'importe quelle page du site —
+        La réservation doit être accessible depuis n'importe quelle page du site,
         idéalement dans le menu de navigation et à la fin de chaque section.
         Le formulaire doit être court : date, heure, point de départ, destination,
         nombre de passagers. Chaque champ supplémentaire fait baisser le taux

@@ -12,7 +12,7 @@ export function ArticlesLongsSeoContent() {
 
       <p>
         The correlation is well-documented: long articles average higher Google positions
-        than short ones. But "long" isn't a goal in itself — it's a consequence of
+        than short ones. But "long" isn't a goal in itself: it's a consequence of
         exhaustive content. Here's why it works, and where it stops.
       </p>
 
@@ -34,14 +34,14 @@ export function ArticlesLongsSeoContent() {
         content. To outperform them, you must cover the subject more completely: more
         angles, more examples, more sub-questions answered. That naturally produces longer
         articles. Studies show articles between 1,500 and 2,500 words dominate top
-        positions on informational and commercial queries. It's not length that ranks —
+        positions on informational and commercial queries. It's not length that ranks,
         it's completeness that requires it.
       </p>
 
       <h2>When short articles work better</h2>
 
       <ul>
-        <li><strong>Simple transactional queries.</strong> "Web developer rates Bordeaux" doesn't need a 2,000-word article — just a clear answer with a CTA.</li>
+        <li><strong>Simple transactional queries.</strong> "Web developer rates Bordeaux" doesn't need a 2,000-word article: just a clear answer with a CTA.</li>
         <li><strong>Navigational queries.</strong> The user is looking for a specific site, not an explanation.</li>
         <li><strong>Mobile audiences with low attention spans.</strong> A well-structured 500-word article that directly answers the question beats a 2,000-word article nobody reads to the end.</li>
       </ul>
@@ -52,7 +52,7 @@ export function ArticlesLongsSeoContent() {
         Before writing, ask: what are all the sub-questions a reader might have on this
         subject? If your article answers all of them, it will probably be long. If some
         sub-questions don't warrant detailed answers, don't develop them. Padding hurts
-        perceived quality — and Google detects it.
+        perceived quality, and Google detects it.
       </p>
 
       <hr />
@@ -95,7 +95,7 @@ export function ArticlesLongsSeoContent() {
       <p>
         La corrélation est bien documentée : les articles longs occupent en moyenne
         des positions plus élevées dans Google que les articles courts. Mais "long"
-        n'est pas un objectif en soi — c'est une conséquence d'un contenu exhaustif.
+        n'est pas un objectif en soi: c'est une conséquence d'un contenu exhaustif.
         Voici pourquoi ça fonctionne, et où ça s'arrête.
       </p>
 
@@ -112,7 +112,7 @@ export function ArticlesLongsSeoContent() {
       <p>
         Un article court qui répond parfaitement à une question courte peut très bien
         se classer. Un article long qui répond superficiellement à une question complexe
-        sera ignoré. La longueur est un outil — pas une garantie.
+        sera ignoré. La longueur est un outil: pas une garantie.
       </p>
 
       <h2>Pourquoi les requêtes concurrentielles exigent plus de profondeur</h2>
@@ -127,7 +127,7 @@ export function ArticlesLongsSeoContent() {
       <p>
         C'est pourquoi les études montrent que les articles entre 1 500 et 2 500 mots
         dominent les premières positions sur les requêtes informatives et commerciales.
-        Ce n'est pas la longueur qui classe — c'est la complétude qui l'exige.
+        Ce n'est pas la longueur qui classe: c'est la complétude qui l'exige.
       </p>
 
       <h2>Quand les articles courts fonctionnent mieux</h2>
@@ -135,7 +135,7 @@ export function ArticlesLongsSeoContent() {
       <ul>
         <li>
           <strong>Requêtes simples avec intention transactionnelle.</strong>
-          "Tarif développeur web Bordeaux" n'a pas besoin d'un article de 2 000 mots —
+          "Tarif développeur web Bordeaux" n'a pas besoin d'un article de 2 000 mots,
           juste une réponse claire avec un CTA.
         </li>
         <li>
@@ -155,7 +155,7 @@ export function ArticlesLongsSeoContent() {
         Avant d'écrire, posez-vous cette question : quelles sont toutes les sous-questions
         qu'un lecteur pourrait avoir sur ce sujet ? Si votre article répond à toutes,
         il sera probablement long. Si certaines sous-questions ne méritent pas de réponse
-        détaillée, ne les développez pas. Le remplissage nuit à la qualité perçue — et
+        détaillée, ne les développez pas. Le remplissage nuit à la qualité perçue, et
         Google le détecte.
       </p>
 

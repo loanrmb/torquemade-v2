@@ -11,7 +11,7 @@ export function IntentionRechercheSeoContent() {
       <h1 className="blog-article-title">Search Intent: Understanding What Users Really Want</h1>
 
       <p>
-        You can have the best article in the world on a topic — if your content doesn't
+        You can have the best article in the world on a topic, if your content doesn't
         match what the user actually wants when typing that query, it won't rank. That's
         search intent: the "why" behind every Google query.
       </p>
@@ -29,10 +29,10 @@ export function IntentionRechercheSeoContent() {
 
       <p>
         The most reliable method: type the query into Google and analyse the top results.
-        Google has already done the work — it displays the content type matching the
+        Google has already done the work, it displays the content type matching the
         majority intent for that query. If top results are all blog posts, your service
         page won't fit. And vice versa. Also note the dominant format: numbered lists,
-        step-by-step guides, comparisons, videos — Google favours the format users
+        step-by-step guides, comparisons, videos, Google favours the format users
         prefer for that query.
       </p>
 
@@ -41,7 +41,7 @@ export function IntentionRechercheSeoContent() {
       <p>
         It's the most expensive SEO mistake: publishing quality content in the wrong
         format for the wrong intent. An informational article on a transactional query
-        attracts only the curious — not buyers. A sales page on an informational query
+        attracts only the curious, not buyers. A sales page on an informational query
         will be ignored by Google. Before writing anything, ask: if I were the person
         typing this query, what would I hope to find? That answer defines your format,
         angle, and CTA.
@@ -85,7 +85,7 @@ export function IntentionRechercheSeoContent() {
       <h1 className="blog-article-title">Intentions de recherche : comprendre ce que veut vraiment l'utilisateur</h1>
 
       <p>
-        Vous pouvez avoir le meilleur article du monde sur un sujet — si votre contenu
+        Vous pouvez avoir le meilleur article du monde sur un sujet, si votre contenu
         ne correspond pas à ce que l'utilisateur veut vraiment obtenir en tapant cette
         requête, il ne classera pas. C'est ce qu'on appelle l'intention de recherche :
         le "pourquoi" derrière chaque requête Google.
@@ -120,7 +120,7 @@ export function IntentionRechercheSeoContent() {
 
       <p>
         La méthode la plus fiable : tapez la requête dans Google et analysez les
-        premiers résultats. Google a déjà fait le travail — il affiche le type de
+        premiers résultats. Google a déjà fait le travail, il affiche le type de
         contenu qui correspond à l'intention majoritaire des utilisateurs sur cette
         requête. Si les premiers résultats sont tous des articles de blog, votre
         page de service n'y aura pas sa place. Et vice versa.
@@ -137,7 +137,7 @@ export function IntentionRechercheSeoContent() {
       <p>
         C'est l'erreur la plus coûteuse en SEO : publier un contenu de qualité mais
         dans le mauvais format pour la mauvaise intention. Un article informatif sur
-        une requête transactionnelle n'attirera que des curieux — pas des acheteurs.
+        une requête transactionnelle n'attirera que des curieux, pas des acheteurs.
         Une page de vente sur une requête informationnelle sera ignorée par Google.
       </p>
 

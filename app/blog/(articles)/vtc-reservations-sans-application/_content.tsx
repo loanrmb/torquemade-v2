@@ -11,7 +11,7 @@ export function VtcReservationsSansApplicationContent() {
       <h1 className="blog-article-title">How a VTC Driver Can Generate Bookings Without a Third-Party App</h1>
 
       <p>
-        Dependence on VTC apps is a comfortable trap. They bring trips — but each trip
+        Dependence on VTC apps is a comfortable trap. They bring trips, but each trip
         costs 25–30% commission. And if the platform lowers your rating, reduces your
         zone, or changes its conditions, you have no recourse. Building a direct booking
         channel means taking back control of your business.
@@ -21,7 +21,7 @@ export function VtcReservationsSansApplicationContent() {
 
       <p>
         The foundation of a direct channel is a site that allows booking without leaving
-        the page. Not a simple contact form — a system where the client chooses their date,
+        the page. Not a simple contact form: a system where the client chooses their date,
         time, route, sees the rate, and confirms the booking. This site must be optimised
         for local SEO to appear on queries your potential clients type: "VTC Bordeaux,"
         "private driver Bordeaux airport rate."
@@ -30,8 +30,8 @@ export function VtcReservationsSansApplicationContent() {
       <h2>Step 2: complementary booking channels</h2>
 
       <ul>
-        <li><strong>Google Business Profile with booking link.</strong> GBP allows integrating a "Book" button directly in your Google listing — clients who find you on Maps can book without going through a third-party app.</li>
-        <li><strong>WhatsApp Business.</strong> A WhatsApp Business number displayed on your site lets regular clients contact you directly — preferred channel for recurring trips.</li>
+        <li><strong>Google Business Profile with booking link.</strong> GBP allows integrating a "Book" button directly in your Google listing: clients who find you on Maps can book without going through a third-party app.</li>
+        <li><strong>WhatsApp Business.</strong> A WhatsApp Business number displayed on your site lets regular clients contact you directly, preferred channel for recurring trips.</li>
         <li><strong>Loyalty email.</strong> After each trip, send a thank-you email with your direct booking link. Satisfied clients book directly next time.</li>
       </ul>
 
@@ -84,7 +84,7 @@ export function VtcReservationsSansApplicationContent() {
 
       <p>
         La dépendance aux applications VTC est un piège confortable. Elles apportent
-        des courses — mais chaque course coûte 25 à 30 % de commission. Et si la
+        des courses, mais chaque course coûte 25 à 30 % de commission. Et si la
         plateforme baisse votre note, réduit votre zone ou change ses conditions,
         vous n'avez aucun recours. Construire un canal de réservation direct, c'est
         reprendre le contrôle de son activité.
@@ -94,7 +94,7 @@ export function VtcReservationsSansApplicationContent() {
 
       <p>
         La base d'un canal direct, c'est un site qui permet de réserver sans quitter
-        la page. Pas un simple formulaire de contact — un système où le client choisit
+        la page. Pas un simple formulaire de contact: un système où le client choisit
         sa date, son heure, son trajet, voit le tarif, et confirme la réservation.
         Le paiement peut être en ligne (Stripe) ou à la course selon votre modèle.
       </p>
@@ -111,14 +111,14 @@ export function VtcReservationsSansApplicationContent() {
         <li>
           <strong>Google Business Profile avec lien de réservation.</strong>
           GBP permet d'intégrer un bouton "Réserver" directement dans votre fiche
-          Google — les clients qui vous trouvent sur Maps peuvent réserver sans
+          Google: les clients qui vous trouvent sur Maps peuvent réserver sans
           passer par une app tierce.
         </li>
         <li>
           <strong>WhatsApp Business.</strong>
           Un numéro WhatsApp Business affiché sur votre site permet aux clients
           habituels de vous contacter directement. C'est le canal préféré pour
-          les courses récurrentes — entreprises, transferts réguliers.
+          les courses récurrentes, entreprises, transferts réguliers.
         </li>
         <li>
           <strong>Email de fidélisation.</strong>
