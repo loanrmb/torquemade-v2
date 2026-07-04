@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [{ url: '/api/og?title=Comment+g%C3%A9rer+les+r%C3%A9servations+en+ligne+d%27une+activit%C3%A9+nautique&category=crm', width: 1200, height: 630 }],
   },
-  description: "Location de jet-ski, paddle, bateau — les activités nautiques ont des contraintes spécifiques. Voici comment gérer les réservations en ligne efficacement.",
+  description: "Location de jet-ski, paddle, bateau : les activités nautiques ont des contraintes spécifiques. Voici comment gérer les réservations en ligne efficacement.",
 }
 
 export default function Page() {

@@ -34,8 +34,8 @@ export const posts: Post[] = [
       en: 'Why a Next.js Site Is Faster Than a WordPress Site',
     },
     description: {
-      fr: "WordPress génère ses pages à la demande, Next.js les prépare à l'avance. Cette différence fondamentale explique tout — performances, SEO, Core Web Vitals.",
-      en: 'WordPress generates pages on demand, Next.js prepares them in advance. This fundamental difference explains everything — performance, SEO, Core Web Vitals.',
+      fr: "WordPress génère ses pages à la demande, Next.js les prépare à l'avance. Cette différence fondamentale explique tout : performances, SEO, Core Web Vitals.",
+      en: 'WordPress generates pages on demand, Next.js prepares them in advance. This fundamental difference explains everything: performance, SEO, Core Web Vitals.',
     },
     date: { fr: 'Décembre 2025', en: 'December 2025' },
     publishedAt: '2025-12-04',
@@ -49,8 +49,8 @@ export const posts: Post[] = [
       en: 'What a Professional Website Brings to a Local SME',
     },
     description: {
-      fr: "Visibilité Google, crédibilité, leads entrants — ce qu'un site vitrine bien construit change concrètement pour une PME ou un commerce de proximité.",
-      en: 'Google visibility, credibility, inbound leads — what a well-built website concretely changes for an SME or local business.',
+      fr: "Visibilité Google, crédibilité, leads entrants : ce qu'un site vitrine bien construit change concrètement pour une PME ou un commerce de proximité.",
+      en: 'Google visibility, credibility, inbound leads: what a well-built website concretely changes for an SME or local business.',
     },
     date: { fr: 'Décembre 2025', en: 'December 2025' },
     publishedAt: '2025-12-08',
@@ -64,8 +64,8 @@ export const posts: Post[] = [
       en: 'Custom Website vs Template: What Your Client Really Sees',
     },
     description: {
-      fr: "Un template peut ressembler à un site professionnel. Mais ce que voit votre client — et ce que lit Google — raconte une autre histoire.",
-      en: "A template can look like a professional site. But what your client sees — and what Google reads — tells a different story.",
+      fr: "Un template peut ressembler à un site professionnel. Mais ce que voit votre client (et ce que lit Google) raconte une autre histoire.",
+      en: "A template can look like a professional site. But what your client sees (and what Google reads) tells a different story.",
     },
     date: { fr: 'Décembre 2025', en: 'December 2025' },
     publishedAt: '2025-12-12',
@@ -94,8 +94,8 @@ export const posts: Post[] = [
       en: "The 7 Mistakes That Kill Your Website's Speed",
     },
     description: {
-      fr: "Images non compressées, plugins inutiles, hébergement sous-dimensionné — les 7 erreurs les plus fréquentes qui ralentissent un site et comment les corriger.",
-      en: "Uncompressed images, unnecessary plugins, underpowered hosting — the 7 most common mistakes that slow down a site and how to fix them.",
+      fr: "Images non compressées, plugins inutiles, hébergement sous-dimensionné : les 7 erreurs les plus fréquentes qui ralentissent un site et comment les corriger.",
+      en: "Uncompressed images, unnecessary plugins, underpowered hosting: the 7 most common mistakes that slow down a site and how to fix them.",
     },
     date: { fr: 'Décembre 2025', en: 'December 2025' },
     publishedAt: '2025-12-20',
@@ -124,8 +124,8 @@ export const posts: Post[] = [
       en: 'Core Web Vitals: What Google Really Measures on Your Site',
     },
     description: {
-      fr: "LCP, INP, CLS — les trois métriques que Google utilise pour évaluer l'expérience utilisateur de votre site et les intégrer dans son algorithme de classement.",
-      en: "LCP, INP, CLS — the three metrics Google uses to evaluate user experience on your site and factor them into its ranking algorithm.",
+      fr: "LCP, INP, CLS : les trois métriques que Google utilise pour évaluer l'expérience utilisateur de votre site et les intégrer dans son algorithme de classement.",
+      en: "LCP, INP, CLS: the three metrics Google uses to evaluate user experience on your site and factor them into its ranking algorithm.",
     },
     date: { fr: 'Décembre 2025', en: 'December 2025' },
     publishedAt: '2025-12-27',
@@ -199,8 +199,8 @@ export const posts: Post[] = [
       en: 'Local SEO in 2025: The Complete Guide for Local Businesses',
     },
     description: {
-      fr: "Google Business Profile, avis clients, mots-clés locaux, schema markup — tout ce qu'il faut maîtriser pour apparaître en tête des recherches locales en 2025.",
-      en: "Google Business Profile, customer reviews, local keywords, schema markup — everything you need to master to appear at the top of local search results in 2025.",
+      fr: "Google Business Profile, avis clients, mots-clés locaux, schema markup : tout ce qu'il faut maîtriser pour apparaître en tête des recherches locales en 2025.",
+      en: "Google Business Profile, customer reviews, local keywords, schema markup: everything you need to master to appear at the top of local search results in 2025.",
     },
     date: { fr: 'Janvier 2026', en: 'January 2026' },
     publishedAt: '2026-01-15',
@@ -285,7 +285,7 @@ export const posts: Post[] = [
   {
     slug: 'mots-cles-peu-concurrentiels',
     title: { fr: 'Comment trouver des mots-clés peu concurrentiels dans votre niche', en: 'How to Find Low-Competition Keywords in Your Niche' },
-    description: { fr: 'Cibler les bons mots-clés change tout. Comment identifier des requêtes à fort potentiel et faible concurrence — même sans outil payant.', en: 'Targeting the right keywords changes everything. How to identify high-potential, low-competition queries — even without a paid tool.' },
+    description: { fr: 'Cibler les bons mots-clés change tout. Comment identifier des requêtes à fort potentiel et faible concurrence, même sans outil payant.', en: 'Targeting the right keywords changes everything. How to identify high-potential, low-competition queries, even without a paid tool.' },
     date: { fr: 'Février 2026', en: 'February 2026' },
     publishedAt: '2026-02-15',
     category: 'SEO & Contenu',
@@ -294,7 +294,7 @@ export const posts: Post[] = [
   {
     slug: 'articles-longs-seo',
     title: { fr: 'Pourquoi les articles longs surclassent les articles courts sur Google', en: 'Why Long Articles Outrank Short Articles on Google' },
-    description: { fr: 'Les articles de 1 500 à 2 500 mots occupent la majorité des premières positions Google. Pourquoi la longueur est un signal fort — et ses limites.', en: 'Articles of 1,500 to 2,500 words occupy most top Google positions. Why length is a strong signal — and its real limits.' },
+    description: { fr: 'Les articles de 1 500 à 2 500 mots occupent la majorité des premières positions Google. Pourquoi la longueur est un signal fort, et ses limites.', en: 'Articles of 1,500 to 2,500 words occupy most top Google positions. Why length is a strong signal, and its real limits.' },
     date: { fr: 'Février 2026', en: 'February 2026' },
     publishedAt: '2026-02-19',
     category: 'SEO & Contenu',
@@ -394,7 +394,7 @@ export const posts: Post[] = [
   {
     slug: 'api-integrations-outils',
     title: { fr: 'API et intégrations : comment connecter vos outils sans coder', en: 'APIs and Integrations: How to Connect Your Tools Without Coding' },
-    description: { fr: 'Calendrier, paiement, CRM, email — vos outils peuvent communiquer entre eux sans écrire une ligne de code. Comment les connecter intelligemment.', en: 'Calendar, payment, CRM, email — your tools can communicate without a single line of code. How to connect them intelligently.' },
+    description: { fr: 'Calendrier, paiement, CRM, email : vos outils peuvent communiquer entre eux sans écrire une ligne de code. Comment les connecter intelligemment.', en: 'Calendar, payment, CRM, email: your tools can communicate without a single line of code. How to connect them intelligently.' },
     date: { fr: 'Avril 2026', en: 'April 2026' },
     publishedAt: '2026-04-02',
     category: 'crm',
@@ -403,7 +403,7 @@ export const posts: Post[] = [
   {
     slug: 'reservations-activite-nautique',
     title: { fr: 'Comment gérer les réservations en ligne d\'une activité nautique', en: 'How to Manage Online Bookings for a Nautical Activity' },
-    description: { fr: 'Location de jet-ski, paddle, bateau — les activités nautiques ont des contraintes spécifiques. Comment gérer les réservations en ligne efficacement.', en: 'Jet-ski rental, paddle, boat — nautical activities have specific constraints. How to manage online bookings effectively.' },
+    description: { fr: 'Location de jet-ski, paddle, bateau : les activités nautiques ont des contraintes spécifiques. Comment gérer les réservations en ligne efficacement.', en: 'Jet-ski rental, paddle, boat: nautical activities have specific constraints. How to manage online bookings effectively.' },
     date: { fr: 'Avril 2026', en: 'April 2026' },
     publishedAt: '2026-04-06',
     category: 'crm',
@@ -439,7 +439,7 @@ export const posts: Post[] = [
   {
     slug: 'seo-concessionnaire-moto',
     title: { fr: 'SEO pour concessionnaire moto : les mots-clés qui convertissent', en: 'SEO for Motorcycle Dealers: The Keywords That Convert' },
-    description: { fr: 'Les requêtes que vos clients tapent — moto Bordeaux, concessionnaire Honda Gironde — et comment vous positionner dessus efficacement.', en: 'The queries your clients type — motorbike Bordeaux, Honda dealer Gironde — and how to rank for them effectively.' },
+    description: { fr: 'Les requêtes que vos clients tapent (moto Bordeaux, concessionnaire Honda Gironde) et comment vous positionner dessus efficacement.', en: 'The queries your clients type (motorbike Bordeaux, Honda dealer Gironde) and how to rank for them effectively.' },
     date: { fr: 'Avril 2026', en: 'April 2026' },
     publishedAt: '2026-04-21',
     category: 'SEO & Contenu',
@@ -466,7 +466,7 @@ export const posts: Post[] = [
   {
     slug: 'seo-vtc-trajets',
     title: { fr: 'SEO pour service VTC : se positionner sur les trajets clés', en: 'SEO for VTC Service: Ranking for Key Routes' },
-    description: { fr: 'VTC Bordeaux aéroport, chauffeur gare Mérignac — les requêtes de trajet sont les plus rentables pour un VTC. Comment s\'y positionner.', en: 'VTC Bordeaux airport, driver Mérignac station — route queries are the most profitable for a VTC. How to rank for them.' },
+    description: { fr: 'VTC Bordeaux aéroport, chauffeur gare Mérignac : les requêtes de trajet sont les plus rentables pour un VTC. Comment s\'y positionner.', en: 'VTC Bordeaux airport, driver Mérignac station: route queries are the most profitable for a VTC. How to rank for them.' },
     date: { fr: 'Mai 2026', en: 'May 2026' },
     publishedAt: '2026-05-02',
     category: 'SEO & Contenu',
@@ -484,7 +484,7 @@ export const posts: Post[] = [
   {
     slug: 'seo-local-estheticienne',
     title: { fr: 'SEO local pour une esthéticienne : se positionner dans sa ville', en: 'Local SEO for a Beautician: How to Rank in Your City' },
-    description: { fr: 'Esthéticienne Bordeaux, institut beauté proche de moi — comment capter des clientes locales via Google sans budget publicitaire.', en: 'Beautician Bordeaux, beauty salon near me — how to attract local clients via Google without an advertising budget.' },
+    description: { fr: 'Esthéticienne Bordeaux, institut beauté proche de moi : comment capter des clientes locales via Google sans budget publicitaire.', en: 'Beautician Bordeaux, beauty salon near me: how to attract local clients via Google without an advertising budget.' },
     date: { fr: 'Mai 2026', en: 'May 2026' },
     publishedAt: '2026-05-10',
     category: 'SEO & Contenu',
@@ -520,7 +520,7 @@ export const posts: Post[] = [
   {
     slug: 'choisir-agence-web-bordeaux',
     title: { fr: 'Comment choisir son agence web à Bordeaux (sans se faire avoir)', en: 'How to Choose a Web Agency in Bordeaux (Without Getting Burned)' },
-    description: { fr: 'Tarifs opaques, sites génériques, délais non tenus — les mauvaises surprises existent. Comment choisir une agence web à Bordeaux en posant les bonnes questions.', en: 'Opaque pricing, generic sites, missed deadlines — bad surprises exist. How to choose a web agency in Bordeaux by asking the right questions.' },
+    description: { fr: 'Tarifs opaques, sites génériques, délais non tenus : les mauvaises surprises existent. Comment choisir une agence web à Bordeaux en posant les bonnes questions.', en: 'Opaque pricing, generic sites, missed deadlines: bad surprises exist. How to choose a web agency in Bordeaux by asking the right questions.' },
     date: { fr: 'Mai 2026', en: 'May 2026' },
     publishedAt: '2026-05-25',
     category: 'projets',
@@ -538,7 +538,7 @@ export const posts: Post[] = [
   {
     slug: 'roi-site-web',
     title: { fr: 'ROI d\'un site web : comment mesurer ce que ça vous rapporte vraiment', en: 'Website ROI: How to Measure What It Really Brings You' },
-    description: { fr: 'Trafic, leads, conversions, chiffre d\'affaires généré — comment mesurer le retour sur investissement réel d\'un site web, au-delà des métriques de vanité.', en: 'Traffic, leads, conversions, revenue — how to measure a website\'s real ROI, beyond vanity metrics.' },
+    description: { fr: 'Trafic, leads, conversions, chiffre d\'affaires généré : comment mesurer le retour sur investissement réel d\'un site web, au-delà des métriques de vanité.', en: 'Traffic, leads, conversions, revenue: how to measure a website\'s real ROI, beyond vanity metrics.' },
     date: { fr: 'Juin 2026', en: 'June 2026' },
     publishedAt: '2026-06-02',
     category: 'projets',
@@ -556,7 +556,7 @@ export const posts: Post[] = [
   {
     slug: 'constructeur-site-gratuit-pme',
     title: { fr: 'Petite entreprise : pourquoi ne pas utiliser un constructeur de site gratuit', en: 'Small Business: Why Not to Use a Free Website Builder' },
-    description: { fr: 'Wix, Squarespace, Webflow — ils semblent séduisants. Mais pour une PME qui veut performer sur Google et convertir, voici ce qu\'ils ne feront jamais.', en: 'Wix, Squarespace, Webflow — they seem attractive. But for an SME wanting to perform on Google, here\'s what they\'ll never do.' },
+    description: { fr: 'Wix, Squarespace, Webflow : ils semblent séduisants. Mais pour une PME qui veut performer sur Google et convertir, voici ce qu\'ils ne feront jamais.', en: 'Wix, Squarespace, Webflow: they seem attractive. But for an SME wanting to perform on Google, here\'s what they\'ll never do.' },
     date: { fr: 'Juin 2026', en: 'June 2026' },
     publishedAt: '2026-06-10',
     category: 'projets',
@@ -592,7 +592,7 @@ export const posts: Post[] = [
   {
     slug: 'site-local-sans-clients-erreurs',
     title: { fr: 'Pourquoi 80 % des sites locaux ne génèrent aucun client (et comment éviter ça)', en: 'Why 80% of Local Sites Generate Zero Clients (And How to Avoid That)' },
-    description: { fr: 'La plupart des sites locaux existent mais ne travaillent pas. Les 5 erreurs qui empêchent un site de générer des clients — et comment les corriger.', en: 'Most local sites exist but don\'t work. The 5 mistakes preventing a site from generating clients — and how to fix them.' },
+    description: { fr: 'La plupart des sites locaux existent mais ne travaillent pas. Les 5 erreurs qui empêchent un site de générer des clients, et comment les corriger.', en: 'Most local sites exist but don\'t work. The 5 mistakes preventing a site from generating clients, and how to fix them.' },
     date: { fr: 'Juin 2026', en: 'June 2026' },
     publishedAt: '2026-06-25',
     category: 'SEO & Contenu',
@@ -785,8 +785,8 @@ export const posts: Post[] = [
   {
     slug: 'pourquoi-synchro-stock-shopify-erp-plante',
     title: {
-      fr: "Pourquoi la synchronisation stock Shopify-ERP plante — et comment l'éviter",
-      en: 'Why Shopify-ERP Stock Sync Breaks — and How to Prevent It',
+      fr: "Pourquoi la synchronisation stock Shopify-ERP plante, et comment l'éviter",
+      en: 'Why Shopify-ERP Stock Sync Breaks, and How to Prevent It',
     },
     description: {
       fr: "Décalages de stock, surventes, doublons de commande : les causes sont presque toujours les mêmes. Voici les 6 erreurs d'architecture qui font échouer une intégration ERP-Shopify.",
@@ -819,8 +819,8 @@ export const posts: Post[] = [
       en: 'Connecting Your POS to Your E-Commerce Site: What Every Retailer Should Know Before Starting',
     },
     description: {
-      fr: "Les grandes familles de solutions pour relier un logiciel de caisse à un site marchand, leurs conditions, leurs risques contractuels et techniques — un guide honnête pour franchisés et indépendants.",
-      en: "The main families of solutions for linking a POS system to an online store, their conditions, their contractual and technical risks — an honest guide for franchisees and independent retailers.",
+      fr: "Les grandes familles de solutions pour relier un logiciel de caisse à un site marchand, leurs conditions, leurs risques contractuels et techniques : un guide honnête pour franchisés et indépendants.",
+      en: "The main families of solutions for linking a POS system to an online store, their conditions, their contractual and technical risks: an honest guide for franchisees and independent retailers.",
     },
     date: { fr: '5 juin 2026', en: 'June 5, 2026' },
     publishedAt: '2026-06-05',
@@ -830,8 +830,8 @@ export const posts: Post[] = [
   {
     slug: '3-methodes-synchroniser-caisse-boutique-en-ligne',
     title: {
-      fr: '3 méthodes pour synchroniser sa caisse et sa boutique en ligne — et les risques que personne ne mentionne',
-      en: '3 Methods to Sync Your POS with Your Online Store — and the Risks No One Mentions',
+      fr: '3 méthodes pour synchroniser sa caisse et sa boutique en ligne, et les risques que personne ne mentionne',
+      en: '3 Methods to Sync Your POS with Your Online Store, and the Risks No One Mentions',
     },
     description: {
       fr: "Export de fichiers, API éditeur, accès direct aux données : trois familles de solutions, leurs avantages, leurs limites et les risques contractuels et techniques associés.",
@@ -954,8 +954,8 @@ export const posts: Post[] = [
       en: 'How Do You Sync Live Fish and Coral Inventory With Your Online Store?',
     },
     description: {
-      fr: "Poissons et coraux sont des SKU uniques, pas des quantités fongibles. Pourquoi la synchronisation de stock d'une boutique aquariophilie exige une architecture par spécimen — et comment la mettre en place.",
-      en: 'Fish and coral are unique SKUs, not fungible quantities. Why syncing a live-inventory shop requires a per-specimen architecture — and how to build it.',
+      fr: "Poissons et coraux sont des SKU uniques, pas des quantités fongibles. Pourquoi la synchronisation de stock d'une boutique aquariophilie exige une architecture par spécimen, et comment la mettre en place.",
+      en: 'Fish and coral are unique SKUs, not fungible quantities. Why syncing a live-inventory shop requires a per-specimen architecture, and how to build it.',
     },
     date: { fr: '2 juillet 2026', en: 'July 2, 2026' },
     publishedAt: '2026-07-02',
@@ -985,7 +985,7 @@ export const posts: Post[] = [
     },
     description: {
       fr: "Relier une caisse ou un ERP à Shopify quand on vend des spécimens uniques ne se fait pas comme pour un stock classique. Les approches d'intégration et leurs pièges pour l'aquariophilie.",
-      en: 'Connecting a POS or ERP to Shopify when you sell unique specimens is nothing like a standard stock sync. The integration patterns — and where they break for livestock.',
+      en: 'Connecting a POS or ERP to Shopify when you sell unique specimens is nothing like a standard stock sync. The integration patterns, and where they break for livestock.',
     },
     date: { fr: '7 juillet 2026', en: 'July 7, 2026' },
     publishedAt: '2026-07-07',
@@ -999,8 +999,8 @@ export const posts: Post[] = [
       en: 'How Do You Prove a Fish Arrived Alive to Fight a Chargeback?',
     },
     description: {
-      fr: "Gagner une contestation de rétrofacturation sur un animal vivant se joue sur la preuve. Le dossier numérique — fiche spécimen, photo d'emballage, preuve de livraison — à constituer automatiquement.",
-      en: 'A chargeback on a live animal is won on evidence. The digital file — specimen record, packing photo, delivery proof — you should build automatically.',
+      fr: "Gagner une contestation de rétrofacturation sur un animal vivant se joue sur la preuve. Le dossier numérique (fiche spécimen, photo d'emballage, preuve de livraison) à constituer automatiquement.",
+      en: 'A chargeback on a live animal is won on evidence. The digital file (specimen record, packing photo, delivery proof) you should build automatically.',
     },
     date: { fr: '9 juillet 2026', en: 'July 9, 2026' },
     publishedAt: '2026-07-09',
@@ -1015,7 +1015,7 @@ export const posts: Post[] = [
     },
     description: {
       fr: "Les grands ERP généralistes ne modélisent ni les spécimens uniques ni la mortalité. Pourquoi les boutiques de poissons et coraux ont besoin d'un système dédié, et ce qu'il doit faire.",
-      en: "Mainstream ERPs model neither unique specimens nor mortality. Why fish and coral shops need a purpose-built system — and what it must do differently.",
+      en: "Mainstream ERPs model neither unique specimens nor mortality. Why fish and coral shops need a purpose-built system, and what it must do differently.",
     },
     date: { fr: '11 juillet 2026', en: 'July 11, 2026' },
     publishedAt: '2026-07-11',

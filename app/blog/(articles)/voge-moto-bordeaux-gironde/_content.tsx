@@ -21,7 +21,7 @@ export function VogeMotoBordeauxContent() {
 
       <ul>
         <li><strong>Voge 300R and 500R.</strong> Modern, well-finished roadsters suited for A2 licences and experienced riders seeking a reliable daily ride. Equipment/price ratio very competitive versus equivalent Japanese brands.</li>
-        <li><strong>Voge Valico 300DS / 525DS.</strong> The adventure segment — versatile bikes suited to road and trail alike, with European-influenced design.</li>
+        <li><strong>Voge Valico 300DS / 525DS.</strong> The adventure segment, versatile bikes suited to road and trail alike, with European-influenced design.</li>
         <li><strong>Voge 900DSX.</strong> The range's big adventure bike, positioned to compete with European and Japanese middleweights in the accessible premium segment.</li>
       </ul>
 
@@ -31,13 +31,13 @@ export function VogeMotoBordeauxContent() {
         The improvement in finish quality and electronic equipment (ABS, traction control,
         riding modes) on Voge models at prices 15–30% below Japanese or European equivalents
         is the main driver of adoption. The French after-sales network is progressively
-        structuring, lifting the main objection — fear of parts and maintenance difficulties.
+        structuring, lifting the main objection, fear of parts and maintenance difficulties.
       </p>
 
       <h2>Test riding a Voge in Bordeaux</h2>
 
       <p>
-        Before buying, a test ride is essential — as with any motorcycle. The Voge dealer
+        Before buying, a test ride is essential, as with any motorcycle. The Voge dealer
         network in Gironde allows you to get a feel for the models that interest you.
         Contact the dealership directly to check model availability and plan a test ride.
       </p>
@@ -122,14 +122,14 @@ export function VogeMotoBordeauxContent() {
 
       <p>
         Le réseau SAV se structure progressivement en France, ce qui lève l'une des
-        principales objections à l'achat — la crainte des difficultés de pièces et
+        principales objections à l'achat, la crainte des difficultés de pièces et
         d'entretien.
       </p>
 
       <h2>Essayer une Voge à Bordeaux</h2>
 
       <p>
-        Avant d'acheter, l'essai est indispensable — comme pour n'importe quelle moto.
+        Avant d'acheter, l'essai est indispensable, comme pour n'importe quelle moto.
         Le réseau de concessionnaires Voge en Gironde vous permet de prendre en main
         les modèles qui vous intéressent. Contactez directement la concession pour
         vérifier la disponibilité des modèles et planifier un essai.

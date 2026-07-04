@@ -19,7 +19,7 @@ export function SeoConcessionnaireMotoCont() {
       <h2>High-conversion keywords</h2>
 
       <ul>
-        <li><strong>"[Brand] dealer [city]".</strong> Purchase intent is explicit. The person has chosen their brand and is looking for where to buy it. The most valuable query — and often the most accessible locally.</li>
+        <li><strong>"[Brand] dealer [city]".</strong> Purchase intent is explicit. The person has chosen their brand and is looking for where to buy it. The most valuable query, and often the most accessible locally.</li>
         <li><strong>"[Model] test ride [city]".</strong> A serious buyer. They want to try before buying. If you offer test rides and your site says so clearly, you capture this traffic.</li>
         <li><strong>"Used motorcycle [budget or displacement] [department]".</strong> The buyer has a defined budget and searches locally. Highly qualified, often quick to decide.</li>
         <li><strong>"Motorcycle service [brand] [city]".</strong> Potential existing client. Monetisation through after-sales, potential loyalty.</li>
@@ -30,7 +30,7 @@ export function SeoConcessionnaireMotoCont() {
       <p>
         Each distributed brand deserves a dedicated page on your site, optimised for
         associated queries. This page must include the brand name, available models, and
-        dealership location — clearly, in the title, subheadings, and page text. Dealers
+        dealership location, clearly, in the title, subheadings, and page text. Dealers
         dominating their local SEO market consistently combine dedicated brand pages, an
         optimised Google Business Profile, and regular client reviews.
       </p>
@@ -94,7 +94,7 @@ export function SeoConcessionnaireMotoCont() {
         <li>
           <strong>"[Marque] concessionnaire [ville]".</strong>
           L'intention d'achat est explicite. La personne a choisi sa marque et
-          cherche où l'acheter. C'est la requête la plus précieuse — et souvent
+          cherche où l'acheter. C'est la requête la plus précieuse, et souvent
           la plus accessible localement.
         </li>
         <li>
@@ -118,7 +118,7 @@ export function SeoConcessionnaireMotoCont() {
       <p>
         Chaque marque distribuée mérite une page dédiée sur votre site, optimisée pour
         les requêtes associées. Cette page doit inclure le nom de la marque, les modèles
-        disponibles, et la localisation de la concession — clairement, dans le titre,
+        disponibles, et la localisation de la concession, clairement, dans le titre,
         les sous-titres et le texte de la page.
       </p>
 

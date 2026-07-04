@@ -11,8 +11,8 @@ export function FonctionnalitesCrmServicesContent() {
       <h1 className="blog-article-title">Essential CRM Features for a Service Business</h1>
 
       <p>
-        A CRM can offer hundreds of features. For a service business — consulting,
-        trades, coaching, care — most are superfluous. Here are the modules that
+        A CRM can offer hundreds of features. For a service business, consulting,
+        trades, coaching, care, most are superfluous. Here are the modules that
         generate real impact, and those you can ignore without regret.
       </p>
 
@@ -23,7 +23,7 @@ export function FonctionnalitesCrmServicesContent() {
         <li><strong>Visual sales pipeline.</strong> A Kanban board with your commercial process stages: prospect, quote sent, pending, won, lost. Seeing all your current deals at a glance changes how you manage your business.</li>
         <li><strong>Automatic follow-ups.</strong> An automatic follow-up 5 days after sending a quote without response. A planned task to contact a client 3 months after a service. These automations recover leads you would have forgotten.</li>
         <li><strong>Email integration.</strong> Emails exchanged with a client must automatically appear in their CRM record. Otherwise you keep juggling two tools.</li>
-        <li><strong>Simple reports.</strong> Revenue generated, quotes sent vs accepted, lead sources. No complex dashboards needed — just the numbers that enable decisions.</li>
+        <li><strong>Simple reports.</strong> Revenue generated, quotes sent vs accepted, lead sources. No complex dashboards needed: just the numbers that enable decisions.</li>
       </ul>
 
       <h2>What you can safely ignore for now</h2>
@@ -76,7 +76,7 @@ export function FonctionnalitesCrmServicesContent() {
 
       <p>
         Un CRM peut proposer des centaines de fonctionnalités. Pour une activité de
-        services — consulting, artisanat, prestation, coaching, soins — la plupart
+        services (conseil, artisanat, prestation, coaching, soins), la plupart
         sont superflues. Voici les modules qui génèrent un vrai impact et ceux que
         vous pouvez ignorer sans remords.
       </p>
@@ -112,7 +112,7 @@ export function FonctionnalitesCrmServicesContent() {
         <li>
           <strong>Rapports simples.</strong>
           Chiffre d'affaires généré, nombre de devis envoyés vs acceptés, sources
-          de leads. Pas besoin de tableaux complexes — juste les chiffres qui
+          de leads. Pas besoin de tableaux complexes: juste les chiffres qui
           permettent de décider.
         </li>
       </ul>

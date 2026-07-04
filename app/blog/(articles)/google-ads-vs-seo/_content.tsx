@@ -12,7 +12,7 @@ export function GoogleAdsVsSeoContent() {
 
       <p>
         One of the most frequent questions for a professional starting to invest in online
-        presence. The honest answer: it depends. But "it depends" isn't useful — here are
+        presence. The honest answer: it depends. But "it depends" isn't useful, here are
         the criteria for making an informed decision.
       </p>
 
@@ -22,7 +22,7 @@ export function GoogleAdsVsSeoContent() {
         Google Ads generates traffic immediately. Create a campaign, define keywords and
         budget, and ads appear the next day. Particularly useful for testing an offer,
         launching a new activity, or quickly occupying ground on a competitive query.
-        But the moment you stop paying, traffic stops. A tap model — open, it flows;
+        But the moment you stop paying, traffic stops. A tap model, open, it flows;
         closed, it stops. No lasting asset built.
       </p>
 
@@ -30,7 +30,7 @@ export function GoogleAdsVsSeoContent() {
 
       <p>
         SEO builds a lasting asset. A well-ranked article or service page keeps generating
-        traffic months and years after creation — without marginal cost. SEO ROI increases
+        traffic months and years after creation, without marginal cost. SEO ROI increases
         over time, whereas Google Ads cost-per-click tends to rise with competition.
         The trade-off: results take time. Between 3 and 12 months depending on sector
         competitiveness before reaching significant traffic.
@@ -84,7 +84,7 @@ export function GoogleAdsVsSeoContent() {
       <p>
         C'est l'une des questions les plus fréquentes pour un professionnel qui commence
         à investir dans sa présence en ligne. La réponse honnête : ça dépend. Mais
-        "ça dépend" n'est pas une réponse utile — voici les critères qui permettent
+        "ça dépend" n'est pas une réponse utile: voici les critères qui permettent
         de décider de façon éclairée.
       </p>
 
@@ -99,7 +99,7 @@ export function GoogleAdsVsSeoContent() {
 
       <p>
         Mais dès que vous arrêtez de payer, le trafic s'arrête. C'est le modèle du
-        robinet — ouvert, ça coule ; fermé, ça ne coule plus. Pas d'actif durable construit.
+        robinet, ouvert, ça coule ; fermé, ça ne coule plus. Pas d'actif durable construit.
       </p>
 
       <h2>Ce que le SEO fait bien</h2>
@@ -107,7 +107,7 @@ export function GoogleAdsVsSeoContent() {
       <p>
         Le SEO construit un actif durable. Un article bien positionné ou une page de
         service bien référencée continue de générer du trafic des mois et des années
-        après avoir été créée — sans coût marginal. Le retour sur investissement du
+        après avoir été créée, sans coût marginal. Le retour sur investissement du
         SEO augmente avec le temps, là où le coût par clic Google Ads tend à augmenter
         avec la concurrence.
       </p>

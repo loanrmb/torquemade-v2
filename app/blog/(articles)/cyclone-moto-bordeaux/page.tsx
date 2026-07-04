@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [{ url: '/api/og?title=Cyclone+moto+Bordeaux+%3A+tout+ce+qu%27il+faut+savoir+sur+la+marque', width: 1200, height: 630 }],
   },
-  description: "Cyclone est une marque de motos distribuée en France, disponible à Bordeaux. Gamme, tarifs, points forts — tout ce qu'il faut savoir avant de visiter le concessionnaire.",
+  description: "Cyclone est une marque de motos distribuée en France, disponible à Bordeaux. Gamme, tarifs, points forts : tout ce qu'il faut savoir avant de visiter le concessionnaire.",
 }
 
 export default function Page() {

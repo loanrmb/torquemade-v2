@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [{ url: '/api/og?title=SEO+local+en+2025+%3A+le+guide+complet+pour+les+commerces+de+proximit%C3%A9&category=SEO+%26+Contenu', width: 1200, height: 630 }],
   },
-  description: "Google Business Profile, avis clients, mots-clés locaux, schema markup — tout ce qu'il faut maîtriser pour apparaître en tête des recherches locales en 2025.",
+  description: "Google Business Profile, avis clients, mots-clés locaux, schema markup : tout ce qu'il faut maîtriser pour apparaître en tête des recherches locales en 2025.",
 }
 
 export default function Page() {

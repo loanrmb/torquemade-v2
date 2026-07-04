@@ -13,7 +13,7 @@ export function ChoisirAgenceWebBordeauxContent() {
       <p>
         Bordeaux's web agency market is broad and heterogeneous. From independent studios
         to large communication agencies, from freelance developers to standardised site
-        creation platforms — the choice is vast. And the criteria aren't always obvious.
+        creation platforms, the choice is vast. And the criteria aren't always obvious.
         Here's how to navigate this market effectively.
       </p>
 
@@ -23,7 +23,7 @@ export function ChoisirAgenceWebBordeauxContent() {
         <li><strong>"Who will actually work on my project?"</strong> Some agencies sell on their image but subcontract to developers on the other side of the world. Ask who codes, who writes, who is your daily contact.</li>
         <li><strong>"Can I see sites similar to mine in your portfolio?"</strong> An e-commerce portfolio doesn't guarantee competence for a local services site with booking.</li>
         <li><strong>"Who owns the site once delivered?"</strong> Some pricing models keep the code or CMS hostage. Verify you own the code, domain name, and hosting upon delivery.</li>
-        <li><strong>"What happens after delivery?"</strong> SEO, maintenance, updates — included? Billed separately? Delegated? Post-delivery conditions are often the real subject.</li>
+        <li><strong>"What happens after delivery?"</strong> SEO, maintenance, updates, included? Billed separately? Delegated? Post-delivery conditions are often the real subject.</li>
         <li><strong>"What's the process if you're late?"</strong> Delays exist. What matters is transparency and remedies for significant overruns.</li>
       </ul>
 
@@ -32,7 +32,7 @@ export function ChoisirAgenceWebBordeauxContent() {
       <p>
         Be wary of agencies that show no portfolio, offer "website package" prices without
         detailing what's included, or promise unrealistic timelines. A quality custom site
-        takes time — a promise of "site delivered in 5 days" typically means a generic
+        takes time: a promise of "site delivered in 5 days" typically means a generic
         template with your logo.
       </p>
 
@@ -85,7 +85,7 @@ export function ChoisirAgenceWebBordeauxContent() {
       <p>
         Le marché des agences web à Bordeaux est large et hétérogène. Des studios
         indépendants aux grandes agences de communication, des développeurs freelance
-        aux plateformes de création de sites standardisés — le choix est vaste.
+        aux plateformes de création de sites standardisés, le choix est vaste.
         Et les critères ne sont pas toujours évidents. Voici comment naviguer
         efficacement dans ce marché.
       </p>
@@ -112,7 +112,7 @@ export function ChoisirAgenceWebBordeauxContent() {
         </li>
         <li>
           <strong>"Que se passe-t-il après la livraison ?"</strong>
-          Le SEO, la maintenance, les mises à jour — sont-ils inclus ? Facturés
+          Le SEO, la maintenance, les mises à jour, sont-ils inclus ? Facturés
           séparément ? Délégués à quelqu'un d'autre ? Les conditions post-livraison
           sont souvent le vrai sujet.
         </li>
@@ -129,7 +129,7 @@ export function ChoisirAgenceWebBordeauxContent() {
         Méfiez-vous des agences qui ne montrent pas de portfolio, qui proposent
         des prix "forfait site web" sans détailler ce qui est inclus, ou qui
         promettent des délais irréalistes. Un site sur mesure de qualité prend
-        du temps — une promesse de "site livré en 5 jours" signifie généralement
+        du temps : une promesse de "site livré en 5 jours" signifie généralement
         un template générique avec votre logo.
       </p>
 

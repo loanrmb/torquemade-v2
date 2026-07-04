@@ -29,7 +29,7 @@ export function WhyGenericCrmFailContent() {
 
       <p>
         Salesforce costs $165 per user, per month. HubSpot from $50. You inherit advanced
-        workflow automation, lead scoring, pipeline forecasting — stuff you never asked for.
+        workflow automation, lead scoring, pipeline forecasting, stuff you never asked for.
       </p>
 
       <p>
@@ -42,7 +42,7 @@ export function WhyGenericCrmFailContent() {
 
       <p className="mt-6 pl-4 border-l-2 border-neutral-300 italic">
         <strong>💡 Need a CRM that costs less and does more?</strong><br />
-        Let&apos;s talk about what you could actually improve — 20 minutes to map your real needs.
+        Let&apos;s talk about what you could actually improve: 20 minutes to map your real needs.
       </p>
 
       <h2>Your team wastes time adapting the tool instead of selling</h2>
@@ -119,7 +119,7 @@ export function WhyGenericCrmFailContent() {
       <p>
         Salesforce coûte 165 $ par utilisateur et par mois. HubSpot à partir de 50 $.
         Vous héritez d&apos;automation de workflows, de scoring de leads avancé, de prévisions
-        de pipeline — des fonctions que vous n&apos;avez pas demandées.
+        de pipeline, des fonctions que vous n&apos;avez pas demandées.
       </p>
 
       <p>
@@ -132,7 +132,7 @@ export function WhyGenericCrmFailContent() {
 
       <p className="mt-6 pl-4 border-l-2 border-neutral-300 italic">
         <strong>💡 Besoin d&apos;un CRM qui coûte moins et fait plus ?</strong><br />
-        Parlons de ce que vous pouvez vraiment améliorer — 20 minutes pour tracer vos vrais besoins.
+        Parlons de ce que vous pouvez vraiment améliorer: 20 minutes pour tracer vos vrais besoins.
       </p>
 
       <h2>Vos équipes perdent du temps à adapter l&apos;outil plutôt que de vendre</h2>

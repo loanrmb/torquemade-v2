@@ -10,8 +10,8 @@ export default function TableChamps({ lang }: Props) {
     : ['Field', 'Verdict', 'Why']
 
   const caption = lang === 'fr'
-    ? 'Analyse champ par champ — formulaire de contact type'
-    : 'Field-by-field analysis — typical contact form'
+    ? 'Analyse champ par champ : formulaire de contact type'
+    : 'Field-by-field analysis: typical contact form'
 
   const rows = lang === 'fr'
     ? [
@@ -19,7 +19,7 @@ export default function TableChamps({ lang }: Props) {
         { col1: 'Email',    verdict: 'Garder',    col3: "Canal de réponse principal" },
         { col1: 'Message',  verdict: 'Garder',    col3: "Contexte minimal nécessaire" },
         { col1: 'Téléphone', verdict: 'Supprimer', col3: "Peut être demandé lors de l'échange suivant" },
-        { col1: 'Budget',   verdict: 'Supprimer', col3: "Freine les indécis — à qualifier en appel" },
+        { col1: 'Budget',   verdict: 'Supprimer', col3: "Freine les indécis, à qualifier en appel" },
         { col1: 'Société',  verdict: 'Optionnel', col3: "Utile en B2B, inutile en B2C" },
         { col1: 'Comment avez-vous entendu parler de nous ?', verdict: 'Supprimer', col3: "Friction inutile, donnée peu fiable" },
       ]
@@ -28,7 +28,7 @@ export default function TableChamps({ lang }: Props) {
         { col1: 'Email',    verdict: 'Keep',     col3: "Primary reply channel" },
         { col1: 'Message',  verdict: 'Keep',     col3: "Minimum context needed" },
         { col1: 'Phone',    verdict: 'Remove',   col3: "Can be asked during the follow-up exchange" },
-        { col1: 'Budget',   verdict: 'Remove',   col3: "Discourages undecided prospects — qualify on a call" },
+        { col1: 'Budget',   verdict: 'Remove',   col3: "Discourages undecided prospects, qualify on a call" },
         { col1: 'Company',  verdict: 'Optional', col3: "Useful in B2B, pointless in B2C" },
         { col1: 'How did you hear about us?', verdict: 'Remove', col3: "Unnecessary friction, unreliable data" },
       ]

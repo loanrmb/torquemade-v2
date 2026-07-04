@@ -22,9 +22,9 @@ export function ZoneInterventionSansAdresseContent() {
       <p>
         Google Business Profile has a specific option for professionals who travel to
         clients: you can hide your physical address and display only your service area.
-        In GBP settings, check "I deliver goods and services to my customers" — you can
+        In GBP settings, check "I deliver goods and services to my customers", you can
         define your service area by kilometre radius or by list of cities and departments.
-        Google will still display you in local results — without revealing your exact address.
+        Google will still display you in local results, without revealing your exact address.
       </p>
 
       <h2>How to display it on your site</h2>
@@ -32,7 +32,7 @@ export function ZoneInterventionSansAdresseContent() {
       <ul>
         <li><strong>A list of covered cities.</strong> "I work in Bordeaux, Mérignac, Pessac, Bègles and within a 20km radius of Bordeaux." Precise, honest, and helps local SEO.</li>
         <li><strong>A zone map.</strong> An illustration or map (without precise location of your home) showing your intervention perimeter visually.</li>
-        <li><strong>An FAQ.</strong> "Do you work in [city]?" — an FAQ answers this for most frequently asked cities.</li>
+        <li><strong>An FAQ.</strong> "Do you work in [city]?" An FAQ answers this for most frequently asked cities.</li>
       </ul>
 
       <h2>The SEO impact of a well-defined area</h2>
@@ -101,7 +101,7 @@ export function ZoneInterventionSansAdresseContent() {
       </p>
 
       <p>
-        Google vous affichera quand même dans les résultats locaux — sans révéler
+        Google vous affichera quand même dans les résultats locaux, sans révéler
         votre adresse exacte.
       </p>
 
@@ -126,7 +126,7 @@ export function ZoneInterventionSansAdresseContent() {
         </li>
         <li>
           <strong>Une FAQ.</strong>
-          "Intervenez-vous à [ville] ?" — une FAQ répond à cette question pour
+          "Intervenez-vous à [ville] ?", une FAQ répond à cette question pour
           les villes les plus fréquemment demandées.
         </li>
       </ul>

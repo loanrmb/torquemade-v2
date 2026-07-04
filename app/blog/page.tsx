@@ -6,7 +6,7 @@ import { BlogHero } from '@/components/blog/BlogHero'
 import { BlogList } from '@/components/blog/BlogList'
 
 export const metadata: Metadata = {
-  title: 'Blog — Torquemade',
+  title: 'Blog | Torquemade',
   description: 'Ressources et analyses pour les professionnels du web, du CRM et du SEO.',
 }
 
