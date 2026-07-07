@@ -13,6 +13,7 @@ import ServicesSection from '@/components/services-section'
 import { SeoFeaturesSection } from '@/components/seo-features-section'
 import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 import { CrmDashboardPreview } from '@/components/crm-dashboard-preview'
+import { HeroSyncPulse } from '@/components/hero-sync-pulse'
 
 const workContainerVariants: Variants = {
   hidden: {},
@@ -46,32 +47,38 @@ export default function HomePage() {
           <div className="flex flex-col items-start text-left max-w-5xl mx-auto">
 
             <h1
-              className="fade-up text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.15]"
+              className="fade-up text-hero-display"
               style={{ color: 'hsl(var(--text-primary))' }}
             >
               {t.hero.tagline}
               <br />
-              <span>
+              <span style={{ color: 'hsl(var(--text-tertiary))' }}>
                 {t.hero.tagline2Lead}
-                {t.hero.tagline2Accent}
+                <span style={{ color: 'hsl(var(--text-primary))' }}>
+                  {t.hero.tagline2Accent}
+                </span>
               </span>
             </h1>
 
             <p
-              className="fade-up fade-up-d1 mt-3 text-base md:mt-6 md:text-xl lg:text-2xl font-medium"
+              className="fade-up fade-up-d1 mt-4 text-base md:mt-7 md:text-xl lg:text-2xl font-medium max-w-3xl"
               style={{ color: 'hsl(var(--text-secondary))' }}
             >
               {t.hero.heroSubheadline}
             </p>
 
             <p
-              className="fade-up fade-up-d2 mt-2 text-sm md:text-base"
+              className="fade-up fade-up-d2 mt-2 font-mono text-xs md:text-sm uppercase tracking-[0.12em]"
               style={{ color: 'hsl(var(--text-tertiary))' }}
             >
               {t.hero.headline2}
             </p>
 
-            <div className="fade-up fade-up-d3 mt-6 md:mt-8 flex flex-wrap items-center justify-start gap-3">
+            <div className="fade-up fade-up-d3 mt-8 md:mt-10">
+              <HeroSyncPulse />
+            </div>
+
+            <div className="fade-up fade-up-d4 mt-6 md:mt-8 flex flex-wrap items-center justify-start gap-3">
               <Link
                 href="/contact"
                 className="btn-liquid-glass rounded-full px-6 py-3 text-sm font-semibold"

@@ -43,13 +43,12 @@ export function NavPill() {
       <header className="fixed left-1/2 top-4 z-50 -translate-x-1/2 w-[calc(100%-2rem)] max-w-2xl">
         <div className="flex items-center gap-3">
         <nav
-          className="flex flex-1 items-center justify-between gap-x-3 min-720:gap-x-2 rounded-full border px-3 py-2.5 min-720:px-4"
+          className="flex flex-1 items-center justify-between gap-x-3 min-720:gap-x-2 rounded-full px-3 py-2.5 min-720:px-4"
           style={{
-            background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.78)',
+            background: 'hsl(var(--nav-bg))',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
-            borderColor: 'hsl(var(--border-subtle))',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06)',
+            boxShadow: '0 0 0 1px hsl(var(--nav-border)), 0 12px 32px -16px rgba(0,0,0,0.12)',
           }}
         >
           <Link href="/" className="flex items-center gap-1.5 pr-1 min-720:pr-2 mr-0.5 min-720:mr-1 flex-shrink-0">
@@ -96,13 +95,12 @@ export function NavPill() {
               {servicesOpen && (
                 <div className="absolute left-0 top-full pt-3 min-w-[320px] z-50">
                   <div
-                    className="rounded-2xl border p-2 flex flex-col"
+                    className="rounded-2xl p-2 flex flex-col"
                     style={{
                       background: 'hsl(var(--bg-primary))',
                       backdropFilter: 'blur(16px)',
                       WebkitBackdropFilter: 'blur(16px)',
-                      borderColor: 'hsl(var(--border-subtle))',
-                      boxShadow: '0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.06)',
+                      boxShadow: '0 0 0 1px hsl(var(--nav-border)), 0 16px 40px -20px rgba(0,0,0,0.18)',
                     }}
                   >
                     {t.servicesItems.map((s) => (
@@ -215,11 +213,10 @@ export function NavPill() {
         />
 
         <div
-          className="absolute left-1/2 top-4 w-[calc(100%-2rem)] max-w-md rounded-3xl border p-4 max-h-[calc(100vh-2rem)] overflow-y-auto"
+          className="absolute left-1/2 top-4 w-[calc(100%-2rem)] max-w-md rounded-3xl p-4 max-h-[calc(100vh-2rem)] overflow-y-auto"
           style={{
             background: 'hsl(var(--bg-primary))',
-            borderColor: 'hsl(var(--border-subtle))',
-            boxShadow: '0 12px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06)',
+            boxShadow: '0 0 0 1px hsl(var(--nav-border)), 0 20px 48px -24px rgba(0,0,0,0.22)',
             opacity: menuOpen ? 1 : 0,
             transform: menuOpen
               ? 'translateX(-50%) translateY(0) scale(1)'
@@ -403,7 +400,7 @@ function CaretIcon({ open }: { open: boolean }) {
       viewBox="0 0 12 12"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2"
+      strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
       style={{
@@ -419,7 +416,7 @@ function CaretIcon({ open }: { open: boolean }) {
 
 function BurgerIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <line x1="4" y1="7" x2="20" y2="7" />
       <line x1="4" y1="12" x2="20" y2="12" />
       <line x1="4" y1="17" x2="20" y2="17" />
@@ -429,7 +426,7 @@ function BurgerIcon() {
 
 function CloseIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <line x1="6" y1="6" x2="18" y2="18" />
       <line x1="18" y1="6" x2="6" y2="18" />
     </svg>

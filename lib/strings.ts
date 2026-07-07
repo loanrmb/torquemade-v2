@@ -30,6 +30,9 @@ export const strings = {
       cta2: 'Nous contacter',
       heroCta1: 'Parlons de votre projet',
       heroCta2: 'Voir nos projets',
+      syncErp: 'ERP',
+      syncShop: 'Boutique',
+      syncStatus: 'Sync temps réel',
     },
     stats: [
       { value: '1M+', label: 'Impressions Google' },
@@ -601,6 +604,9 @@ export const strings = {
       cta2: 'Get in touch',
       heroCta1: "Let's talk",
       heroCta2: 'See our work',
+      syncErp: 'ERP',
+      syncShop: 'Store',
+      syncStatus: 'Real-time sync',
     },
     stats: [
       { value: '1M+', label: 'Google impressions' },

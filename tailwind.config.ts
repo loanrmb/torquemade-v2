@@ -46,6 +46,7 @@ const config: Config = {
         'title-2':   ['clamp(28px,4vw,40px)', { lineHeight: '1.1', letterSpacing: '-0.4px', fontWeight: '600' }],
         'title-1':   ['clamp(40px,6vw,56px)', { lineHeight: '1.05', letterSpacing: '-0.6px', fontWeight: '650' }],
         'spotlight': ['clamp(52px,8vw,72px)', { lineHeight: '1',    letterSpacing: '-0.8px', fontWeight: '650' }],
+        'hero-display': ['clamp(2.75rem,6.5vw,5.5rem)', { lineHeight: '1.02', letterSpacing: '-0.045em', fontWeight: '650' }],
         'showcase':  ['clamp(64px,10vw,96px)',{ lineHeight: '0.95', letterSpacing: '-1px',   fontWeight: '650' }],
       },
       animation: {
@@ -74,6 +75,8 @@ const config: Config = {
         'lg': '16px',
       },
       boxShadow: {
+        'hairline': '0 0 0 1px hsl(var(--hairline))',
+        'hairline-faint': '0 0 0 1px hsl(var(--hairline-faint))',
         'nav': '0 4px 20px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06)',
         'card': '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06)',
         'card-hover': '0 2px 4px rgba(0,0,0,0.06), 0 12px 28px rgba(0,0,0,0.10)',

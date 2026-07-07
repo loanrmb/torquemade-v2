@@ -18,7 +18,14 @@
   --border-subtle: 0 0% 25% / 8%;
   --border-hover:  0 0% 25% / 14%;
 
-  --nav-bg:        255 255 255 / 0.75;
+  /* Hairline system — 1px rings via box-shadow, remplace border+shadow */
+  --hairline:       0 0% 8% / 10%;
+  --hairline-faint: 0 0% 8% / 6%;
+
+  /* Glow radial doux — seule source de "profondeur" autorisée hors hairline */
+  --glow: 0 0% 8%;
+
+  --nav-bg:        0 0% 100% / 0.78;
   --nav-border:    0 0% 0% / 0.06;
 
   /* Dark sections (intentionally dark in both modes — clearly grey in light mode) */
@@ -46,6 +53,11 @@ html.dark {
 
   --border-subtle: 0 0% 100% / 7%;
   --border-hover:  0 0% 100% / 12%;
+
+  --hairline:       0 0% 100% / 12%;
+  --hairline-faint: 0 0% 100% / 7%;
+
+  --glow: 0 0% 100%;
 
   --nav-bg:        0 0% 8% / 0.85;
   --nav-border:    0 0% 100% / 0.07;
@@ -102,6 +114,28 @@ h1, h2, h3, h4, h5, h6 {
 /* ============================================================
    UTILITY CLASSES
    ============================================================ */
+/* Hairline ring 1px — à utiliser à la place de border + shadow-sm/md */
+.hairline {
+  box-shadow: 0 0 0 1px hsl(var(--hairline));
+}
+.hairline-faint {
+  box-shadow: 0 0 0 1px hsl(var(--hairline-faint));
+}
+
+/* Glow radial doux derrière un élément qui doit se détacher.
+   Monochrome (noir en light, blanc en dark), très faible opacité. */
+.glow-soft {
+  position: relative;
+}
+.glow-soft::before {
+  content: '';
+  position: absolute;
+  inset: -35%;
+  z-index: -1;
+  background: radial-gradient(50% 50% at 50% 50%, hsl(var(--glow) / 0.05), transparent 70%);
+  pointer-events: none;
+}
+
 .section-label {
   font-size: 0.75rem;
   font-weight: 600;
