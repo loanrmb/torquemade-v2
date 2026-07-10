@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useLang } from '@/components/app-provider'
+import { BlogUpdatedLine } from '@/components/blog-updated-line'
 
 export function RelierErpCaisseShopifyContent() {
   const lang = useLang()
@@ -9,6 +10,8 @@ export function RelierErpCaisseShopifyContent() {
   if (lang === 'en') return (
     <article className="blog-article">
       <h1 className="blog-article-title">How Do You Connect Your POS or ERP to Shopify for a Fish/Coral Business?</h1>
+
+      <BlogUpdatedLine slug="relier-erp-caisse-shopify-aquariophilie" />
 
       <p>
         Connecting a POS or ERP to Shopify is a solved problem, for shops selling
@@ -103,6 +106,8 @@ export function RelierErpCaisseShopifyContent() {
   return (
     <article className="blog-article">
       <h1 className="blog-article-title">Comment relier mon ERP ou ma caisse à Shopify pour l'aquariophilie ?</h1>
+
+      <BlogUpdatedLine slug="relier-erp-caisse-shopify-aquariophilie" />
 
       <p>
         Relier une caisse ou un ERP à Shopify est un problème résolu, pour les boutiques qui

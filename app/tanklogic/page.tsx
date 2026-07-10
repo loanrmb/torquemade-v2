@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import { SchemaRenderer } from '@/components/schema-renderer'
+import { tanklogicSchema } from '@/lib/schema'
 import { TankLogicContent } from './_content'
 
 const url = 'https://www.torquemade.com/tanklogic'
@@ -26,5 +28,10 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return <TankLogicContent />
+  return (
+    <>
+      <SchemaRenderer schema={tanklogicSchema} />
+      <TankLogicContent />
+    </>
+  )
 }

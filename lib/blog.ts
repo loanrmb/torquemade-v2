@@ -5,6 +5,8 @@ export type Post = {
   date: { fr: string; en: string }
   /** Machine-readable publication date (ISO 8601, YYYY-MM-DD) for sitemap/lastModified. */
   publishedAt: string
+  /** Optional last-update date (ISO 8601, YYYY-MM-DD). Shown as a freshness line on the article and used for sitemap lastModified + Article dateModified. */
+  updatedAt?: string
   category: string
   readingTime: number
   featured?: boolean
@@ -959,6 +961,7 @@ export const posts: Post[] = [
     },
     date: { fr: '2 juillet 2026', en: 'July 2, 2026' },
     publishedAt: '2026-07-02',
+    updatedAt: '2026-07-10',
     category: 'ERP & Gestion de stock',
     readingTime: 6,
   },
@@ -974,6 +977,7 @@ export const posts: Post[] = [
     },
     date: { fr: '4 juillet 2026', en: 'July 4, 2026' },
     publishedAt: '2026-07-04',
+    updatedAt: '2026-07-10',
     category: 'ERP & Gestion de stock',
     readingTime: 6,
   },
@@ -989,6 +993,7 @@ export const posts: Post[] = [
     },
     date: { fr: '7 juillet 2026', en: 'July 7, 2026' },
     publishedAt: '2026-07-07',
+    updatedAt: '2026-07-10',
     category: 'ERP & Gestion de stock',
     readingTime: 6,
   },
@@ -1004,6 +1009,7 @@ export const posts: Post[] = [
     },
     date: { fr: '9 juillet 2026', en: 'July 9, 2026' },
     publishedAt: '2026-07-09',
+    updatedAt: '2026-07-10',
     category: 'ERP & Gestion de stock',
     readingTime: 6,
   },
@@ -1019,6 +1025,7 @@ export const posts: Post[] = [
     },
     date: { fr: '11 juillet 2026', en: 'July 11, 2026' },
     publishedAt: '2026-07-11',
+    updatedAt: '2026-07-11',
     category: 'ERP & Gestion de stock',
     readingTime: 5,
   },
@@ -1034,6 +1041,7 @@ export const posts: Post[] = [
     },
     date: { fr: '14 juillet 2026', en: 'July 14, 2026' },
     publishedAt: '2026-07-14',
+    updatedAt: '2026-07-14',
     category: 'ERP & Gestion de stock',
     readingTime: 6,
   },
@@ -1049,6 +1057,7 @@ export const posts: Post[] = [
     },
     date: { fr: '16 juillet 2026', en: 'July 16, 2026' },
     publishedAt: '2026-07-16',
+    updatedAt: '2026-07-16',
     category: 'ERP & Gestion de stock',
     readingTime: 6,
   },

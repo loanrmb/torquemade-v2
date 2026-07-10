@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useLang } from '@/components/app-provider'
+import { BlogUpdatedLine } from '@/components/blog-updated-line'
 
 export function ProuverPoissonArriveVivantContent() {
   const lang = useLang()
@@ -9,6 +10,8 @@ export function ProuverPoissonArriveVivantContent() {
   if (lang === 'en') return (
     <article className="blog-article">
       <h1 className="blog-article-title">How Do You Prove a Fish Arrived Alive to Fight a Chargeback?</h1>
+
+      <BlogUpdatedLine slug="prouver-poisson-arrive-vivant-retrofacturation" />
 
       <p>
         A chargeback on a live animal is won or lost on one thing: the quality of your
@@ -109,6 +112,8 @@ export function ProuverPoissonArriveVivantContent() {
   return (
     <article className="blog-article">
       <h1 className="blog-article-title">Comment prouver qu'un poisson est arrivé vivant pour contester une rétrofacturation ?</h1>
+
+      <BlogUpdatedLine slug="prouver-poisson-arrive-vivant-retrofacturation" />
 
       <p>
         Une rétrofacturation sur un animal vivant se gagne ou se perd sur une seule chose : la
