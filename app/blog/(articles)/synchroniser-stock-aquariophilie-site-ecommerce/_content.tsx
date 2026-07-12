@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useLang } from '@/components/app-provider'
+import { BlogUpdatedLine } from '@/components/blog-updated-line'
 
 export function SynchroniserStockAquariophilieContent() {
   const lang = useLang()
@@ -9,6 +10,8 @@ export function SynchroniserStockAquariophilieContent() {
   if (lang === 'en') return (
     <article className="blog-article">
       <h1 className="blog-article-title">How Do You Sync Live Fish and Coral Inventory With Your Online Store?</h1>
+
+      <BlogUpdatedLine slug="synchroniser-stock-aquariophilie-site-ecommerce" />
 
       <p>
         Most inventory-sync tutorials assume your stock is a pile of identical units:
@@ -118,6 +121,8 @@ export function SynchroniserStockAquariophilieContent() {
   return (
     <article className="blog-article">
       <h1 className="blog-article-title">Comment synchroniser le stock de ma boutique aquariophilie avec mon site e-commerce ?</h1>
+
+      <BlogUpdatedLine slug="synchroniser-stock-aquariophilie-site-ecommerce" />
 
       <p>
         La plupart des tutoriels sur la synchronisation de stock partent d'un postulat :

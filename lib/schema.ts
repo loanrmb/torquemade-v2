@@ -59,6 +59,91 @@ export const organizationGraph = {
 }
 
 /**
+ * TankLogic product page graph (/tanklogic): Service node linked back to the
+ * org, plus a BreadcrumbList (Home → TankLogic). Rendered server-side from
+ * app/tanklogic/page.tsx so it is present in the initial HTML.
+ *
+ * URL uses the www host to match the page's canonical
+ * (https://www.torquemade.com/tanklogic).
+ */
+const TANKLOGIC_URL = 'https://www.torquemade.com/tanklogic'
+
+export const tanklogicSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': `${TANKLOGIC_URL}/#service`,
+      name: 'TankLogic',
+      serviceType:
+        'Inventory synchronization and chargeback evidence software for live fish and coral retailers',
+      description:
+        'TankLogic syncs unique-specimen (WYSIWYG) inventory to Shopify in real time — one record per fish or coral, mortality removes the exact unit from sale — and automatically assembles the packing-photo, QR delivery-proof and timestamp evidence file used to dispute DOA chargebacks. Built for mail-order live fish and coral shops.',
+      url: TANKLOGIC_URL,
+      provider: { '@id': ORG_ID },
+      audience: {
+        '@type': 'BusinessAudience',
+        name: 'Mail-order live fish and coral retailers',
+      },
+      areaServed: [
+        { '@type': 'Country', name: 'Canada' },
+        { '@type': 'Country', name: 'United States' },
+        { '@type': 'Country', name: 'France' },
+        { '@type': 'Country', name: 'Switzerland' },
+        { '@type': 'Country', name: 'Belgium' },
+      ],
+      availableLanguage: ['fr', 'en'],
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Accueil', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'TankLogic', item: TANKLOGIC_URL },
+      ],
+    },
+  ],
+}
+
+/**
+ * BlogPosting schema for a blog article, built from its lib/blog.ts entry.
+ *
+ * Each article URL serves both FR and EN variants of the same content (the
+ * language is toggled client-side via useLang, FR being the server-rendered
+ * default), so `inLanguage` declares both languages and the EN title is kept
+ * as `alternativeHeadline`. Rendered server-side from the article's page.tsx.
+ */
+export function blogPostingSchema(post: {
+  slug: string
+  title: { fr: string; en: string }
+  description: { fr: string; en: string }
+  publishedAt: string
+  updatedAt?: string
+}, opts?: { image?: string }) {
+  const url = `https://www.torquemade.com/blog/${post.slug}`
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    headline: post.title.fr,
+    alternativeHeadline: post.title.en,
+    description: post.description.fr,
+    url,
+    inLanguage: ['fr', 'en'],
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt ?? post.publishedAt,
+    author: {
+      '@type': 'Person',
+      name: 'Loan Rembeau',
+      url: SITE_URL,
+    },
+    publisher: { '@id': ORG_ID },
+    ...(opts?.image
+      ? { image: opts.image.startsWith('http') ? opts.image : `https://www.torquemade.com${opts.image}` }
+      : {}),
+  }
+}
+
+/**
  * Per-service page graph: a detailed Service node (linked back to the org) plus
  * a BreadcrumbList (Home → Services → this service).
  */

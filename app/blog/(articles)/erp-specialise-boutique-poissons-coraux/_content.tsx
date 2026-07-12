@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useLang } from '@/components/app-provider'
+import { BlogUpdatedLine } from '@/components/blog-updated-line'
 
 export function ErpSpecialiseBoutiquePoissonsContent() {
   const lang = useLang()
@@ -9,6 +10,8 @@ export function ErpSpecialiseBoutiquePoissonsContent() {
   if (lang === 'en') return (
     <article className="blog-article">
       <h1 className="blog-article-title">Is There ERP Software Built Specifically for Fish and Coral Shops?</h1>
+
+      <BlogUpdatedLine slug="erp-specialise-boutique-poissons-coraux" />
 
       <p>
         Shop owners ask this after hitting the same wall: they've tried a generic ERP or
@@ -99,6 +102,8 @@ export function ErpSpecialiseBoutiquePoissonsContent() {
   return (
     <article className="blog-article">
       <h1 className="blog-article-title">Existe-t-il un ERP spécialisé pour les boutiques de poissons et coraux ?</h1>
+
+      <BlogUpdatedLine slug="erp-specialise-boutique-poissons-coraux" />
 
       <p>
         Les gérants posent la question après avoir heurté le même mur : ils ont essayé un ERP ou

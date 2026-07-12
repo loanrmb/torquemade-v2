@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useLang } from '@/components/app-provider'
+import { BlogUpdatedLine } from '@/components/blog-updated-line'
 
 export function LogicielGestionStockAnimalerieContent() {
   const lang = useLang()
@@ -9,6 +10,8 @@ export function LogicielGestionStockAnimalerieContent() {
   if (lang === 'en') return (
     <article className="blog-article">
       <h1 className="blog-article-title">What's the Best Inventory Software for an Online Fish or Coral Shop?</h1>
+
+      <BlogUpdatedLine slug="logiciel-gestion-stock-animalerie-aquatique-en-ligne" />
 
       <p>
         "Best inventory software" is the wrong question if you sell live animals. The
@@ -107,6 +110,8 @@ export function LogicielGestionStockAnimalerieContent() {
   return (
     <article className="blog-article">
       <h1 className="blog-article-title">Quel logiciel de gestion de stock choisir pour une animalerie aquatique en ligne ?</h1>
+
+      <BlogUpdatedLine slug="logiciel-gestion-stock-animalerie-aquatique-en-ligne" />
 
       <p>
         « Quel est le meilleur logiciel de gestion de stock » est la mauvaise question quand

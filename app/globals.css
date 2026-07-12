@@ -422,6 +422,16 @@ html.dark .cta-card {
   border-bottom: 1px solid hsl(var(--border-subtle));
 }
 
+.blog-article .blog-article-updated {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: hsl(var(--text-primary));
+  opacity: 0.4;
+  margin: -1.5rem 0 2.5rem;
+}
+
 .blog-article h2 {
   font-size: 1.2rem;
   font-weight: 650;

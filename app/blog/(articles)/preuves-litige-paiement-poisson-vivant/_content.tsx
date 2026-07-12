@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useLang } from '@/components/app-provider'
+import { BlogUpdatedLine } from '@/components/blog-updated-line'
 
 export function PreuvesLitigePaiementContent() {
   const lang = useLang()
@@ -9,6 +10,8 @@ export function PreuvesLitigePaiementContent() {
   if (lang === 'en') return (
     <article className="blog-article">
       <h1 className="blog-article-title">What Evidence Do You Need to Win a Payment Dispute Over a Live Animal?</h1>
+
+      <BlogUpdatedLine slug="preuves-litige-paiement-poisson-vivant" />
 
       <p>
         When a customer disputes a payment on a live animal, whoever reviews it decides based
@@ -109,6 +112,8 @@ export function PreuvesLitigePaiementContent() {
   return (
     <article className="blog-article">
       <h1 className="blog-article-title">Quelles preuves conserver pour gagner un litige de paiement sur un poisson vivant ?</h1>
+
+      <BlogUpdatedLine slug="preuves-litige-paiement-poisson-vivant" />
 
       <p>
         Quand un client conteste un paiement sur un animal vivant, celui qui l'examine tranche

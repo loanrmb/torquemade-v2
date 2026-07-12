@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useLang } from '@/components/app-provider'
+import { BlogUpdatedLine } from '@/components/blog-updated-line'
 
 export function AutomatiserSuiviMortaliteContent() {
   const lang = useLang()
@@ -9,6 +10,8 @@ export function AutomatiserSuiviMortaliteContent() {
   if (lang === 'en') return (
     <article className="blog-article">
       <h1 className="blog-article-title">How Do You Automate Mortality Tracking for Your Online Fish Inventory?</h1>
+
+      <BlogUpdatedLine slug="automatiser-suivi-mortalite-stock-en-ligne" />
 
       <p>
         For a shop selling live animals online, mortality isn't a side task: it's the single
@@ -107,6 +110,8 @@ export function AutomatiserSuiviMortaliteContent() {
   return (
     <article className="blog-article">
       <h1 className="blog-article-title">Comment automatiser le suivi de mortalité pour mon stock en ligne ?</h1>
+
+      <BlogUpdatedLine slug="automatiser-suivi-mortalite-stock-en-ligne" />
 
       <p>
         Pour une boutique qui vend des animaux vivants en ligne, la mortalité n'est pas une

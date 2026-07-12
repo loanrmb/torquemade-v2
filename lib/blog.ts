@@ -5,6 +5,8 @@ export type Post = {
   date: { fr: string; en: string }
   /** Machine-readable publication date (ISO 8601, YYYY-MM-DD) for sitemap/lastModified. */
   publishedAt: string
+  /** Optional last-update date (ISO 8601, YYYY-MM-DD). Shown as a freshness line on the article and used for sitemap lastModified + Article dateModified. */
+  updatedAt?: string
   category: string
   readingTime: number
   featured?: boolean
@@ -959,6 +961,7 @@ export const posts: Post[] = [
     },
     date: { fr: '2 juillet 2026', en: 'July 2, 2026' },
     publishedAt: '2026-07-02',
+    updatedAt: '2026-07-10',
     category: 'ERP & Gestion de stock',
     readingTime: 6,
   },
@@ -974,6 +977,7 @@ export const posts: Post[] = [
     },
     date: { fr: '4 juillet 2026', en: 'July 4, 2026' },
     publishedAt: '2026-07-04',
+    updatedAt: '2026-07-10',
     category: 'ERP & Gestion de stock',
     readingTime: 6,
   },
@@ -989,6 +993,7 @@ export const posts: Post[] = [
     },
     date: { fr: '7 juillet 2026', en: 'July 7, 2026' },
     publishedAt: '2026-07-07',
+    updatedAt: '2026-07-10',
     category: 'ERP & Gestion de stock',
     readingTime: 6,
   },
@@ -1004,6 +1009,7 @@ export const posts: Post[] = [
     },
     date: { fr: '9 juillet 2026', en: 'July 9, 2026' },
     publishedAt: '2026-07-09',
+    updatedAt: '2026-07-10',
     category: 'ERP & Gestion de stock',
     readingTime: 6,
   },
@@ -1017,8 +1023,9 @@ export const posts: Post[] = [
       fr: "Les grands ERP généralistes ne modélisent ni les spécimens uniques ni la mortalité. Pourquoi les boutiques de poissons et coraux ont besoin d'un système dédié, et ce qu'il doit faire.",
       en: "Mainstream ERPs model neither unique specimens nor mortality. Why fish and coral shops need a purpose-built system, and what it must do differently.",
     },
-    date: { fr: '11 juillet 2026', en: 'July 11, 2026' },
-    publishedAt: '2026-07-11',
+    date: { fr: '10 juillet 2026', en: 'July 10, 2026' },
+    publishedAt: '2026-07-10',
+    updatedAt: '2026-07-11',
     category: 'ERP & Gestion de stock',
     readingTime: 5,
   },
@@ -1032,8 +1039,9 @@ export const posts: Post[] = [
       fr: "La mortalité doit retirer une unité précise de la vente en temps réel, pas via un tableur du dimanche soir. Comment câbler le suivi de mortalité dans votre synchro de stock en ligne.",
       en: 'Mortality has to remove one specific unit from sale in real time, not through a Sunday-night spreadsheet. How to wire mortality tracking into your online stock sync.',
     },
-    date: { fr: '14 juillet 2026', en: 'July 14, 2026' },
-    publishedAt: '2026-07-14',
+    date: { fr: '10 juillet 2026', en: 'July 10, 2026' },
+    publishedAt: '2026-07-10',
+    updatedAt: '2026-07-14',
     category: 'ERP & Gestion de stock',
     readingTime: 6,
   },
@@ -1047,8 +1055,9 @@ export const posts: Post[] = [
       fr: "Un litige de paiement sur un animal vivant se gagne avec un dossier structuré : fiche du spécimen, photo horodatée, preuve de livraison liée à la commande. Quoi conserver, et comment l'automatiser.",
       en: 'A payment dispute over a live animal is won with a structured file: specimen record, timestamped photo, delivery proof linked to the order. What to keep, and how to automate it.',
     },
-    date: { fr: '16 juillet 2026', en: 'July 16, 2026' },
-    publishedAt: '2026-07-16',
+    date: { fr: '10 juillet 2026', en: 'July 10, 2026' },
+    publishedAt: '2026-07-10',
+    updatedAt: '2026-07-16',
     category: 'ERP & Gestion de stock',
     readingTime: 6,
   },
