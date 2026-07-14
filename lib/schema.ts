@@ -3,6 +3,8 @@
  * `components/schema-renderer.tsx` — never gated on User-Agent.
  */
 
+import { strings } from '@/lib/strings'
+
 export const SITE_URL = 'https://torquemade.com'
 export const ORG_ID = `${SITE_URL}/#organization`
 
@@ -78,7 +80,7 @@ export const tanklogicSchema = {
       serviceType:
         'Inventory synchronization and chargeback evidence software for live fish and coral retailers',
       description:
-        'TankLogic syncs unique-specimen (WYSIWYG) inventory to Shopify in real time — one record per fish or coral, mortality removes the exact unit from sale — and automatically assembles the packing-photo, QR delivery-proof and timestamp evidence file used to dispute DOA chargebacks. Built for mail-order live fish and coral shops.',
+        'TankLogic syncs unique-specimen (WYSIWYG) inventory to the online store in real time — one record per fish or coral, mortality removes the exact unit from sale — manages orders and supplier/species analytics, and automatically assembles the packing-photo, QR delivery-proof and timestamp evidence file used to dispute DOA chargebacks. Built for mail-order live fish and coral shops.',
       url: TANKLOGIC_URL,
       provider: { '@id': ORG_ID },
       audience: {
@@ -100,6 +102,18 @@ export const tanklogicSchema = {
         { '@type': 'ListItem', position: 1, name: 'Accueil', item: SITE_URL },
         { '@type': 'ListItem', position: 2, name: 'TankLogic', item: TANKLOGIC_URL },
       ],
+    },
+    /* FAQPage — sourced word-for-word from the FR strings rendered in the
+       visible FAQ accordion on /tanklogic (Google rule: markup must mirror
+       on-page content; FR is the server-rendered default language). */
+    {
+      '@type': 'FAQPage',
+      '@id': `${TANKLOGIC_URL}/#faq`,
+      mainEntity: strings.fr.tanklogic.faq.map(({ q, a }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      })),
     },
   ],
 }

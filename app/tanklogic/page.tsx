@@ -6,14 +6,14 @@ import { TankLogicContent } from './_content'
 const url = 'https://www.torquemade.com/tanklogic'
 
 export const metadata: Metadata = {
-  title: 'TankLogic — Inventory sync for live fish & coral shops | Torquemade',
+  title: 'TankLogic — Inventory software for live fish & coral shops | Torquemade',
   description:
-    'TankLogic syncs unique-specimen inventory to Shopify down to the individual mortality — and builds the delivery-proof evidence file that fights chargebacks for mail-order live fish and coral sellers.',
+    'TankLogic gives live fish and coral retailers serialized WYSIWYG inventory, real-time online-store sync down to the individual mortality, orders, analytics — and the delivery-proof evidence file that fights DOA chargebacks.',
   alternates: { canonical: url },
   openGraph: {
-    title: 'TankLogic — Inventory sync for live fish & coral shops',
+    title: 'TankLogic — Inventory software for live fish & coral shops',
     description:
-      'Mortality-based inventory sync that prevents chargebacks for mail-order live fish and coral sellers.',
+      'Serialized WYSIWYG inventory, real-time online-store sync, and DOA chargeback evidence for mail-order live fish and coral sellers.',
     url,
     siteName: 'Torquemade',
     type: 'website',
@@ -21,9 +21,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TankLogic — Inventory sync for live fish & coral shops',
+    title: 'TankLogic — Inventory software for live fish & coral shops',
     description:
-      'Mortality-based inventory sync that prevents chargebacks for mail-order live fish and coral sellers.',
+      'Serialized WYSIWYG inventory, real-time online-store sync, and DOA chargeback evidence for mail-order live fish and coral sellers.',
   },
 }
 

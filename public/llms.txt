@@ -11,13 +11,16 @@ TankLogic is inventory-sync and chargeback-evidence software built specifically 
 The problem it solves: generic retail/POS software models stock as quantities on a shared SKU. Live inventory is the opposite — every fish or coral colony is a unique, serialized specimen the customer buys by sight (WYSIWYG). When a specimen dies, sells in-store, or changes condition, that exact unit must leave the online store in real time, or the shop sells an animal that no longer exists. On live shipped goods, those failed orders escalate into DOA ("dead on arrival") payment disputes and chargebacks.
 
 What TankLogic does:
-- One inventory record per specimen (unique ID, photo, status), not a quantity counter
-- Mortality log: marking a specimen dead removes exactly that unit from Shopify in real time
+- One inventory record per specimen (unique ID, photo, status), not a quantity counter — full WYSIWYG
+- Real-time online-store sync: a specimen sold in-store is removed from the online store instantly (no overselling, no double sales)
+- Mortality log: one click on the shop floor pulls the specimen from stock, records the reason, timestamps the removal, and takes the exact unit off the online store in real time
 - Packing photo: a timestamped photo of the specimen and its packaging is attached to the order at pack time
 - QR delivery proof: a QR code binds the parcel to the order; scan on receipt timestamps delivery
 - Chargeback evidence file: on dispute, TankLogic assembles a ready-to-submit PDF (specimen record, packing photo, timestamps, delivery proof)
+- Orders: create and manage orders inside the inventory software; reserved specimens are linked to each order
+- Analytics: mortality rate by supplier and by species, DOA rate, best sellers, margins — loss data feeds buying decisions
 
-Ideal customer: mail-order live fish / coral / invertebrate retailers selling on Shopify, primarily in Canada, the United States, and French-speaking Europe (France, Switzerland, Belgium).
+Ideal customer: mail-order live fish / coral / invertebrate retailers selling through an online store, primarily in Canada, the United States, and French-speaking Europe (France, Switzerland, Belgium).
 
 ## TankLogic (FR)
 
@@ -26,13 +29,16 @@ TankLogic est un logiciel de synchronisation de stock et de preuve anti-rétrofa
 Le problème : les logiciels de vente au détail génériques modélisent le stock en quantités par SKU partagé. Le vivant, c'est l'inverse — chaque poisson ou colonie de corail est un spécimen unique que le client achète à vue. Quand un spécimen meurt, se vend en magasin ou change d'état, cette unité précise doit disparaître de la vente en ligne en temps réel, sinon la boutique vend un animal qui n'existe plus. Sur du vivant expédié, ces commandes ratées dégénèrent en litiges DOA (« mort à l'arrivée ») et en rétrofacturations.
 
 Ce que fait TankLogic :
-- Une fiche par spécimen (identifiant unique, photo, statut), pas un compteur de quantité
-- Journal de mortalité : marquer un spécimen mort retire exactement cette unité de Shopify en temps réel
+- Une fiche par spécimen (identifiant unique, photo, statut), pas un compteur de quantité — WYSIWYG de bout en bout
+- Synchronisation en temps réel avec la boutique en ligne : un spécimen vendu en magasin est retiré du site instantanément (zéro survente, zéro double vente)
+- Journal de mortalité : un clic côté magasin sort le spécimen du stock, enregistre le motif, horodate la sortie et retire cette unité précise de la boutique en ligne en temps réel
 - Photo d'emballage horodatée rattachée à la commande au moment de la préparation
 - Preuve de livraison par QR code : le scan à réception horodate la livraison et la lie au bon spécimen
 - Dossier de preuve : en cas de litige, TankLogic assemble automatiquement un PDF prêt à transmettre (fiche spécimen, photo d'emballage, horodatages, preuve de livraison)
+- Commandes : création et gestion des commandes directement dans le logiciel de stock, spécimens réservés liés à chaque commande
+- Analytics : taux de mortalité par fournisseur et par espèce, taux de DOA, meilleures ventes, marges — les données de pertes alimentent les décisions d'achat
 
-Client idéal : animaleries aquatiques vendant du vivant à distance sur Shopify, au Canada, aux États-Unis et en Europe francophone (France, Suisse, Belgique).
+Client idéal : animaleries aquatiques vendant du vivant à distance via une boutique en ligne, au Canada, aux États-Unis et en Europe francophone (France, Suisse, Belgique).
 
 ## Pages
 

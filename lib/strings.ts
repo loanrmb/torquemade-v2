@@ -519,52 +519,64 @@ export const strings = {
     tanklogic: {
       eyebrow: 'Un produit Torquemade',
       wordmark: 'TankLogic',
-      hero: 'Un stock synchronisé à la mortalité près, pour que vos ventes de poissons et coraux vivants cessent de générer des rétrofacturations.',
+      heroTitle: 'Chaque spécimen compte.',
+      heroSub: 'TankLogic est le logiciel de stock des détaillants qui vendent des poissons et coraux vivants à distance — de la cuve de vente à la preuve de livraison.',
       heroCta: 'Parlons de votre projet',
 
-      problemTitle: 'Pourquoi les logiciels de vente au détail génériques cassent sur du vivant',
-      problemBody: [
-        'Un logiciel de retail classique raisonne en références interchangeables : 40 unités du même SKU, toutes identiques, toutes vendables l’une pour l’autre. Un poisson ou une colonie de corail, c’est l’inverse. Chaque spécimen est une pièce unique — une taille, une coloration, un état de santé qui lui sont propres. Le stock n’est pas un compteur, c’est une liste d’individus.',
-        'C’est le modèle WYSIWYG : le client achète exactement le spécimen qu’il voit en photo, pas « un » article de la catégorie. Dès qu’un poisson meurt, se vend en magasin ou change d’état, l’unité correspondante doit disparaître de la vente en ligne — immédiatement. Un logiciel générique n’a aucune notion de spécimen unique ni de mortalité : il continue d’afficher « disponible » un animal qui n’existe plus.',
-        'Résultat : vous vendez en ligne un poisson déjà mort ou déjà parti. Le client attend une livraison qui ne viendra pas, ou reçoit un remboursement. Et sur du vivant expédié, chaque litige dérape vite en rétrofacturation — vous perdez le montant de la vente, les frais de traitement, et souvent la marchandise.',
-      ],
-      problemPointsTitle: 'Ce qu’un compteur de stock générique ne sait pas gérer',
-      problemPoints: [
-        'Chaque poisson et chaque corail est un SKU unique, pas une quantité fongible.',
-        'La mortalité doit retirer une unité précise de la vente en temps réel.',
-        'Un spécimen vendu en magasin doit disparaître du site avant la prochaine commande en ligne.',
-        'Une survente sur du vivant expédié se transforme en rétrofacturation, pas en simple avoir.',
+      serialTitle: 'Un animal, une fiche.',
+      serialBody: [
+        'TankLogic ne compte pas des quantités : il enregistre des individus. Chaque poisson, chaque colonie de corail a sa fiche — photo, identifiant, statut.',
+        'C’est le modèle WYSIWYG de bout en bout : le client achète exactement l’animal qu’il voit, pas un exemplaire générique de la catégorie.',
       ],
 
-      howTitle: 'Comment fonctionne TankLogic',
-      howIntro: 'TankLogic relie votre inventaire de spécimens uniques à votre boutique Shopify, et construit au passage le dossier de preuve dont vous avez besoin le jour où un paiement est contesté.',
-      howSteps: [
-        {
-          title: 'Journal de mortalité',
-          desc: 'Chaque spécimen a sa fiche. Vous marquez un individu comme mort ou indisponible, et l’unité correspondante est retirée de la vente en ligne en temps réel — plus jamais de commande sur un animal qui n’existe plus.',
-        },
-        {
-          title: 'Photo d’emballage',
-          desc: 'Au moment de préparer la commande, une photo horodatée du spécimen et de son conditionnement est rattachée à la commande. La preuve visuelle de l’état au départ est capturée sans étape manuelle supplémentaire.',
-        },
-        {
-          title: 'Preuve de livraison (QR)',
-          desc: 'Un QR code lie le colis à sa commande. Le scan à réception horodate la livraison et l’associe au bon spécimen, reliant l’envoi physique à l’enregistrement numérique.',
-        },
-        {
-          title: 'Dossier de preuve PDF',
-          desc: 'En cas de litige, TankLogic assemble automatiquement un PDF : fiche du spécimen, photo d’emballage, horodatages et preuve de livraison. Un dossier structuré, prêt à être transmis, au lieu d’une recherche dans vos e-mails.',
-        },
+      syncTitle: 'Vendu en magasin. Retiré du site.',
+      syncBody: [
+        'Une vente au comptoir retire le spécimen de votre boutique en ligne en temps réel. Le même animal ne peut plus être vendu deux fois — zéro survente, zéro double vente, aucune mise à jour manuelle.',
       ],
 
-      positioningTitle: 'TankLogic vs. logiciel de stock générique',
-      positioningIntro: 'Là où un outil d’inventaire classique voit des quantités, TankLogic voit des spécimens — et documente leur cycle de vie de bout en bout.',
-      positioningRows: [
-        { label: 'Modèle de stock', generic: 'Quantité par SKU partagé', tanklogic: 'Un enregistrement par spécimen unique' },
-        { label: 'Mortalité', generic: 'Aucune notion — ajustement manuel', tanklogic: 'Retrait de l’unité en temps réel' },
-        { label: 'Synchro Shopify', generic: 'Décalages, surventes fréquentes', tanklogic: 'Un spécimen vendu = retiré partout' },
-        { label: 'Preuve de livraison', generic: 'À reconstituer à la main', tanklogic: 'Photo + QR liés à la commande' },
-        { label: 'Contestation de paiement', generic: 'Recherche dans les e-mails', tanklogic: 'Dossier PDF généré automatiquement' },
+      mortalityTitle: 'Un clic pour la mortalité. Un dossier pour les litiges.',
+      mortalityIntro: 'C’est la réalité du vivant : des pertes en cuve et des contestations à l’arrivée. TankLogic est construit autour des deux.',
+      mortalityClickTitle: 'Déclarer une perte en un clic',
+      mortalityClickBody: 'Côté magasin, un bouton sort immédiatement le spécimen du stock, enregistre le motif et horodate la sortie. Le journal de mortalité se construit tout seul, au fil de l’eau.',
+      traceTitle: 'La preuve, spécimen par spécimen',
+      traceBody: 'Photo avant expédition, historique de statuts, horodatages : chaque envoi laisse une trace. Quand un client conteste une livraison en invoquant un DOA, vous répondez avec un dossier — pas avec votre bonne foi.',
+
+      ordersTitle: 'Les commandes, au même endroit.',
+      ordersBody: [
+        'Créez et gérez vos commandes directement depuis le logiciel de stock. Les spécimens réservés sont liés à la commande — plus de jonglage entre tableur, boîte mail et back-office.',
+      ],
+
+      analyticsTitle: 'Vos pertes deviennent des décisions.',
+      analyticsBody: [
+        'Taux de mortalité par fournisseur et par espèce, taux de DOA, meilleures ventes, marges. Les données saisies au fil de l’eau ressortent en décisions d’achat : quel fournisseur garder, quelle espèce arrêter, quoi recommander.',
+      ],
+
+      faqTitle: 'Questions fréquentes',
+      faq: [
+        {
+          q: 'Comment éviter les chargebacks DOA quand je vends du corail à distance ?',
+          a: 'Un litige DOA (mort à l’arrivée) se gagne sur la preuve, pas sur la bonne foi. Il faut pouvoir montrer quel spécimen précis a été vendu (fiche avec photo), dans quel état il est parti (photo d’emballage horodatée) et qu’il a bien été livré (preuve de livraison liée à la commande). TankLogic capture ces trois éléments automatiquement dans le workflow d’expédition et les assemble en un dossier PDF prêt à transmettre à votre prestataire de paiement.',
+        },
+        {
+          q: 'Mon logiciel de caisse peut-il gérer des poissons vendus « à la pièce » (WYSIWYG) ?',
+          a: 'Dans la plupart des cas, non. Les caisses et ERP généralistes modélisent le stock en quantités par SKU partagé. Un spécimen WYSIWYG est un SKU unique : deux clients ne peuvent pas acheter le même corail. Sans fiche par spécimen, la synchro vers votre site traite tout en compteurs et finit par survendre. TankLogic modélise chaque animal comme un enregistrement individuel, avec photo et statut propres.',
+        },
+        {
+          q: 'Que se passe-t-il sur mon site quand un poisson meurt en cuve ?',
+          a: 'Avec un stock générique : rien — l’annonce reste « disponible » jusqu’à votre prochaine correction manuelle, et un client peut commander un animal qui n’existe plus. Avec TankLogic : vous marquez le spécimen mort dans le journal de mortalité, et cette unité précise est retirée de votre boutique en ligne en temps réel.',
+        },
+        {
+          q: 'TankLogic se connecte-t-il à ma boutique en ligne ?',
+          a: 'Oui. TankLogic pousse les changements d’état (vente en magasin, mortalité, réservation) vers votre boutique en ligne en quelques secondes, et les commandes en ligne redescendent réserver le spécimen. Votre inventaire TankLogic reste la source de vérité unique.',
+        },
+        {
+          q: 'Est-ce que je peux prouver l’état d’un animal au moment de l’expédition ?',
+          a: 'Oui — c’est le rôle de la photo d’emballage : au moment de préparer la commande, une photo horodatée du spécimen et de son conditionnement est rattachée à la commande, sans étape manuelle supplémentaire. Combinée au scan QR à la livraison, elle documente l’état au départ et la date de réception.',
+        },
+        {
+          q: 'Pour qui TankLogic est-il conçu ?',
+          a: 'Pour les animaleries aquatiques qui vendent du vivant à distance : poissons marins ou d’eau douce, coraux, invertébrés — en particulier les boutiques WYSIWYG expédiant par transporteur, au Canada, aux États-Unis et en Europe francophone.',
+        },
       ],
 
       ctaTitle: 'Parlons de votre boutique',
@@ -1159,52 +1171,64 @@ export const strings = {
     tanklogic: {
       eyebrow: 'A Torquemade product',
       wordmark: 'TankLogic',
-      hero: 'Inventory synced down to the individual mortality, so your live fish and coral sales stop turning into chargebacks.',
+      heroTitle: 'Every specimen counts.',
+      heroSub: 'TankLogic is the inventory software for retailers who sell live fish and coral by mail order — from the display tank to delivery proof.',
       heroCta: 'Let’s talk about your project',
 
-      problemTitle: 'Why generic retail software breaks on live inventory',
-      problemBody: [
-        'Standard retail software thinks in interchangeable units: 40 of the same SKU, all identical, any one substitutable for another. A fish or a coral colony is the opposite. Each specimen is a one-of-a-kind item — its own size, its own coloration, its own health. Your stock isn’t a counter, it’s a list of individuals.',
-        'That’s the WYSIWYG model: the customer buys the exact specimen in the photo, not “one” of a category. The moment a fish dies, sells in-store, or changes condition, its unit has to leave the online store — instantly. Generic software has no concept of a unique specimen or of mortality: it keeps showing “in stock” an animal that no longer exists.',
-        'The result: you sell a fish online that’s already dead or already gone. The customer waits on a delivery that never ships, or gets a refund. And with live animals in transit, every dispute escalates fast into a chargeback — you lose the sale amount, the processing fees, and usually the livestock too.',
-      ],
-      problemPointsTitle: 'What a generic stock counter can’t handle',
-      problemPoints: [
-        'Every fish and coral is a unique SKU, not a fungible quantity.',
-        'Mortality has to remove one specific unit from sale in real time.',
-        'A specimen sold in-store must vanish from the site before the next online order.',
-        'Overselling live, shipped animals becomes a chargeback — not a simple store credit.',
+      serialTitle: 'One animal, one record.',
+      serialBody: [
+        'TankLogic doesn’t count quantities: it records individuals. Every fish, every coral colony has its own card — photo, ID, status.',
+        'It’s the WYSIWYG model end to end: the customer buys the exact animal they see, not a generic unit from a category.',
       ],
 
-      howTitle: 'How TankLogic works',
-      howIntro: 'TankLogic ties your unique-specimen inventory to your Shopify store, and builds the evidence file you’ll need the day a payment gets disputed.',
-      howSteps: [
-        {
-          title: 'Mortality log',
-          desc: 'Every specimen has its own record. Mark an individual as dead or unavailable and its unit is pulled from online sale in real time — never another order on an animal that no longer exists.',
-        },
-        {
-          title: 'Packing photo',
-          desc: 'At pack time, a timestamped photo of the specimen and its packaging is attached to the order. Visual proof of condition at dispatch is captured with no extra manual step.',
-        },
-        {
-          title: 'Delivery proof (QR)',
-          desc: 'A QR code binds the parcel to its order. Scanning on receipt timestamps delivery and ties it to the right specimen, linking the physical shipment to the digital record.',
-        },
-        {
-          title: 'Chargeback evidence PDF',
-          desc: 'When a dispute lands, TankLogic assembles a PDF automatically: specimen record, packing photo, timestamps, and delivery proof. A structured, ready-to-submit file instead of digging through your inbox.',
-        },
+      syncTitle: 'Sold in store. Gone online.',
+      syncBody: [
+        'A counter sale removes the specimen from your online store in real time. The same animal can never be sold twice — no overselling, no double sales, no manual updates.',
       ],
 
-      positioningTitle: 'TankLogic vs. generic inventory software',
-      positioningIntro: 'Where a standard inventory tool sees quantities, TankLogic sees specimens — and documents their lifecycle end to end.',
-      positioningRows: [
-        { label: 'Stock model', generic: 'Quantity on a shared SKU', tanklogic: 'One record per unique specimen' },
-        { label: 'Mortality', generic: 'No concept — manual adjustment', tanklogic: 'Real-time removal of the unit' },
-        { label: 'Shopify sync', generic: 'Drift, frequent overselling', tanklogic: 'One specimen sold = removed everywhere' },
-        { label: 'Delivery proof', generic: 'Reconstructed by hand', tanklogic: 'Photo + QR bound to the order' },
-        { label: 'Payment dispute', generic: 'Search through emails', tanklogic: 'PDF evidence file generated automatically' },
+      mortalityTitle: 'One click for mortality. One file for disputes.',
+      mortalityIntro: 'This is the reality of live inventory: losses in the tank and disputes on arrival. TankLogic is built around both.',
+      mortalityClickTitle: 'Log a loss in one click',
+      mortalityClickBody: 'On the shop floor, one button pulls the specimen from stock immediately, records the reason and timestamps the removal. The mortality log builds itself, as you go.',
+      traceTitle: 'Proof, specimen by specimen',
+      traceBody: 'Pre-shipping photo, status history, timestamps: every shipment leaves a trail. When a customer disputes a delivery claiming DOA, you answer with a file — not with your good faith.',
+
+      ordersTitle: 'Orders, in the same place.',
+      ordersBody: [
+        'Create and manage orders right inside your inventory software. Reserved specimens are linked to the order — no more juggling spreadsheets, inbox, and back office.',
+      ],
+
+      analyticsTitle: 'Losses become decisions.',
+      analyticsBody: [
+        'Mortality rate by supplier and by species, DOA rate, best sellers, margins. The data you log day to day comes back as buying decisions: which supplier to keep, which species to drop, what to reorder.',
+      ],
+
+      faqTitle: 'Frequently asked questions',
+      faq: [
+        {
+          q: 'How do I avoid DOA chargebacks when I sell coral by mail order?',
+          a: 'A DOA (dead-on-arrival) dispute is won on evidence, not good faith. You need to show which exact specimen was sold (record with photo), the condition it left in (timestamped packing photo), and that it was delivered (delivery proof linked to the order). TankLogic captures all three automatically inside your shipping workflow and assembles them into a ready-to-submit PDF evidence file for your payment provider.',
+        },
+        {
+          q: 'Can my POS handle fish sold as individual (WYSIWYG) specimens?',
+          a: 'Usually not. Generic POS and ERP systems model stock as quantities on a shared SKU. A WYSIWYG specimen is a unique SKU: two customers can’t buy the same coral. Without per-specimen records, the sync to your site treats everything as counters and eventually oversells. TankLogic models every animal as an individual record with its own photo and status.',
+        },
+        {
+          q: 'What happens on my website when a fish dies in the tank?',
+          a: 'With generic inventory: nothing — the listing stays “in stock” until your next manual correction, and a customer can order an animal that no longer exists. With TankLogic: you mark the specimen dead in the mortality log and that exact unit is pulled from your online store in real time.',
+        },
+        {
+          q: 'Does TankLogic connect to my online store?',
+          a: 'Yes. TankLogic pushes state changes (in-store sale, mortality, reservation) to your online store within seconds, and online orders flow back to reserve the specimen. Your TankLogic inventory stays the single source of truth.',
+        },
+        {
+          q: 'Can I prove the condition of an animal at the moment it shipped?',
+          a: 'Yes — that’s what the packing photo is for: at pack time, a timestamped photo of the specimen and its packaging is attached to the order, with no extra manual step. Combined with the QR scan at delivery, it documents condition at dispatch and date of receipt.',
+        },
+        {
+          q: 'Who is TankLogic built for?',
+          a: 'Aquatic livestock retailers selling live animals by mail order: marine or freshwater fish, coral, invertebrates — especially WYSIWYG shops shipping by courier, in Canada, the United States, and French-speaking Europe.',
+        },
       ],
 
       ctaTitle: 'Let’s talk about your store',
