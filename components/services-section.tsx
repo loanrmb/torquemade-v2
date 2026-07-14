@@ -126,16 +126,15 @@ function FigureCrm() {
         alt="Aperçu CRM logiciel de gestion"
         className="w-full rounded-2xl md:hidden"
       />
-      {/* Desktop — static SVG mockup (replaces the former live HTML iframe preview) */}
+      {/* Desktop — static mockup (replaces the former live HTML iframe preview) */}
       <div className="hidden md:block w-full">
         <figure className="blog-figure">
           <Image
-            src="/images/crm-calendar-mockup.svg"
+            src="/images/crm-calendar-mockup.png"
             alt="Calendrier CRM personnalisé : gestion de réservations de cours avec avancement en temps réel"
-            width={800}
-            height={600}
+            width={1063}
+            height={1406}
             sizes="(max-width: 1024px) 90vw, 736px"
-            unoptimized
             loading="lazy"
             priority={false}
           />
