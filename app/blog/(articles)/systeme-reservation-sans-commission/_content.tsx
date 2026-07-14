@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLang } from '@/components/app-provider'
 import TableComparaison from './_illustrations/TableComparaison'
 
@@ -20,6 +21,19 @@ function ArticleFR({ lang }: { lang: 'fr' | 'en' }) {
           Planity, Booksy, ResaOnline prennent entre 1 % et 3 % de chaque réservation. Sur un an, c&apos;est plusieurs milliers d&apos;euros offerts à une plateforme tierce. Un système sur mesure intégré à votre site vous coûte moins, vous appartient entièrement, et donne une meilleure expérience à vos clients.
         </p>
       </header>
+
+      <figure className="blog-figure">
+        <Image
+          src="/images/crm-calendar-mockup.svg"
+          alt="Calendrier CRM personnalisé : gestion de réservations de cours avec avancement en temps réel"
+          width={800}
+          height={600}
+          unoptimized
+        />
+        <figcaption>
+          Dashboard de gestion de réservations intégré au site — données en temps réel, sans commission par réservation.
+        </figcaption>
+      </figure>
 
       <h2>Le modèle à commission : à quel coût réel ?</h2>
 
@@ -101,6 +115,19 @@ function ArticleEN({ lang }: { lang: 'fr' | 'en' }) {
           Planity, Booksy, ResaOnline take between 1% and 3% of every booking. Over a year, that&apos;s thousands of euros going straight to a third-party platform. A custom system integrated into your site costs less, belongs entirely to you, and gives your clients a better experience.
         </p>
       </header>
+
+      <figure className="blog-figure">
+        <Image
+          src="/images/crm-calendar-mockup.svg"
+          alt="Custom CRM calendar: course booking management with real-time progress tracking"
+          width={800}
+          height={600}
+          unoptimized
+        />
+        <figcaption>
+          Booking management dashboard integrated into the site — real-time data, no commission per booking.
+        </figcaption>
+      </figure>
 
       <h2>The Commission Model: What Does It Really Cost?</h2>
 
