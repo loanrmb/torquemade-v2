@@ -134,6 +134,7 @@ function FigureCrm() {
             alt="Calendrier CRM personnalisé : gestion de réservations de cours avec avancement en temps réel"
             width={800}
             height={600}
+            sizes="(max-width: 1024px) 90vw, 736px"
             unoptimized
             loading="lazy"
             priority={false}
