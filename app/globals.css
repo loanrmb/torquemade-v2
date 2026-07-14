@@ -503,6 +503,35 @@ html.dark .cta-card {
   background: hsl(var(--bg-secondary));
 }
 
+.blog-figure {
+  margin: 2rem 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blog-figure img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid hsl(var(--border-subtle));
+}
+
+.blog-figure figcaption {
+  font-size: 0.875rem;
+  color: hsl(var(--text-secondary));
+  margin-top: 0.75rem;
+  font-style: italic;
+}
+
+@media (max-width: 1024px) {
+  .blog-figure img {
+    border-radius: 4px;
+  }
+}
+
 .blog-related {
   margin-top: 1rem;
   padding: 1.5rem;

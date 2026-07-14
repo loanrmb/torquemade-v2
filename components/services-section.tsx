@@ -23,8 +23,9 @@
  *   jetski-site-v2.png · jetski-code-v2.png · crm-form.png · crm-dash.png
  */
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { useLang } from '@/components/app-provider';
 import { strings } from '@/lib/strings';
 
@@ -118,27 +119,6 @@ function FigureSites() {
 /* ------------------------------------------------------------------ */
 
 function FigureCrm() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(0.4);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-
-    const update = () => {
-      const containerWidth = el.getBoundingClientRect().width;
-      setScale(containerWidth / 1920);
-    };
-
-    update();
-    const ro = new ResizeObserver(update);
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
-
-  const iframeHeight = 1080;
-  const containerHeight = Math.round(iframeHeight * scale);
-
   return (
     <>
       <img
@@ -146,26 +126,18 @@ function FigureCrm() {
         alt="Aperçu CRM logiciel de gestion"
         className="w-full rounded-2xl md:hidden"
       />
-      {/* Desktop — live HTML dashboard rendered in an iframe (1920×1080 native);
-          scale is recomputed on resize so the iframe always fills its container. */}
-      <div
-        ref={containerRef}
-        className="hidden md:block w-full rounded-xl overflow-hidden"
-        style={{ height: `${containerHeight}px`, position: 'relative' }}
-      >
-        <iframe
-          src="/crm-dashboard-preview.html"
-          title="CRM Dashboard Preview"
-          scrolling="no"
-          style={{
-            width: '1920px',
-            height: `${iframeHeight}px`,
-            border: 'none',
-            transform: `scale(${scale})`,
-            transformOrigin: 'top left',
-            pointerEvents: 'none',
-          }}
-        />
+      {/* Desktop — static PNG mockup (replaces the former live HTML iframe preview) */}
+      <div className="hidden md:block w-full">
+        <figure className="blog-figure">
+          <Image
+            src="/images/crm-calendar-mockup.png"
+            alt="Calendrier CRM personnalisé : gestion de réservations de cours avec avancement en temps réel"
+            width={1942}
+            height={1272}
+            loading="lazy"
+            priority={false}
+          />
+        </figure>
       </div>
     </>
   );
