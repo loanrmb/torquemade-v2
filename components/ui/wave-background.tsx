@@ -1,0 +1,370 @@
+'use client'
+
+/**
+ * WaveBackground — interactive wave-line field for the TankLogic hero.
+ * ──────────────────────────────────────────────────────────────────
+ * Adapted from the 21st.dev "Waves" SVG component. Rewritten for this
+ * site's constraints:
+ *   • Light-only / monochrome — no dark background, no hardcoded hex.
+ *     Lines derive from --border-subtle, the cursor dot from
+ *     --text-secondary, background stays transparent so the hero's
+ *     --bg-secondary shows through.
+ *   • The cursor-following pointer-dot effect is preserved unchanged.
+ *   • Mobile (< md, 768px): the animated requestAnimationFrame loop
+ *     never starts. A static, deterministic SVG snapshot is rendered
+ *     instead, mirroring the site's `md:hidden` / `hidden md:block`
+ *     two-render pattern. prefers-reduced-motion falls back the same
+ *     way on desktop.
+ */
+
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { createNoise2D, type NoiseFunction2D } from 'simplex-noise'
+
+interface Point {
+  x: number
+  y: number
+  wave: { x: number; y: number }
+  cursor: { x: number; y: number; vx: number; vy: number }
+}
+
+interface WaveBackgroundProps {
+  className?: string
+  /** Stroke color of the wave lines. Defaults to the --border-subtle token. */
+  strokeColor?: string
+  /** Color of the cursor-following dot. Defaults to the --text-secondary token. */
+  pointerColor?: string
+  /** Background behind the lines. Transparent lets the hero surface show through. */
+  backgroundColor?: string
+  /** Diameter of the pointer dot, in rem. */
+  pointerSize?: number
+}
+
+/* ── Static fallback ──────────────────────────────────────────────
+   Deterministic (SSR-safe) vertical wavy lines. No JS loop, no noise,
+   no listeners — used below md and under prefers-reduced-motion. */
+const STATIC_W = 1200
+const STATIC_H = 500
+
+function buildStaticPaths(): string[] {
+  const xGap = 48
+  const yGap = 25
+  const cols = Math.ceil(STATIC_W / xGap) + 1
+  const rows = Math.ceil(STATIC_H / yGap) + 1
+  const paths: string[] = []
+
+  for (let i = 0; i < cols; i++) {
+    const x0 = i * xGap
+    let d = ''
+    for (let j = 0; j < rows; j++) {
+      const y = j * yGap
+      const x = x0 + Math.cos(y * 0.02 + i * 0.6) * 12 + Math.sin(y * 0.008 + i) * 6
+      d += (j === 0 ? 'M' : 'L') + ` ${x.toFixed(1)} ${y}`
+    }
+    paths.push(d)
+  }
+  return paths
+}
+
+const STATIC_PATHS = buildStaticPaths()
+
+function WavesStatic({ strokeColor }: { strokeColor: string }) {
+  return (
+    <svg
+      className="block h-full w-full"
+      viewBox={`0 0 ${STATIC_W} ${STATIC_H}`}
+      preserveAspectRatio="xMidYMid slice"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {STATIC_PATHS.map((d, i) => (
+        <path
+          key={i}
+          d={d}
+          fill="none"
+          stroke={strokeColor}
+          strokeWidth={1}
+          vectorEffect="non-scaling-stroke"
+        />
+      ))}
+    </svg>
+  )
+}
+
+export function WaveBackground({
+  className = '',
+  strokeColor = 'hsl(var(--border-subtle))',
+  pointerColor = 'hsl(var(--text-secondary))',
+  backgroundColor = 'transparent',
+  pointerSize = 0.5,
+}: WaveBackgroundProps) {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const svgRef = useRef<SVGSVGElement>(null)
+  const mouseRef = useRef({
+    x: -10,
+    y: 0,
+    lx: 0,
+    ly: 0,
+    sx: 0,
+    sy: 0,
+    v: 0,
+    vs: 0,
+    a: 0,
+    set: false,
+  })
+  const pathsRef = useRef<SVGPathElement[]>([])
+  const linesRef = useRef<Point[][]>([])
+  const noiseRef = useRef<NoiseFunction2D | null>(null)
+  const rafRef = useRef<number | null>(null)
+  const boundingRef = useRef<DOMRect | null>(null)
+
+  // Only run the animation on ≥ md pointers without a reduced-motion preference.
+  const [enabled, setEnabled] = useState(false)
+
+  useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 768px)')
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const update = () => setEnabled(desktop.matches && !reduce.matches)
+    update()
+    desktop.addEventListener('change', update)
+    reduce.addEventListener('change', update)
+    return () => {
+      desktop.removeEventListener('change', update)
+      reduce.removeEventListener('change', update)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!enabled) return
+    const container = containerRef.current
+    const svg = svgRef.current
+    if (!container || !svg) return
+
+    noiseRef.current = createNoise2D()
+
+    const setSize = () => {
+      boundingRef.current = container.getBoundingClientRect()
+      const { width, height } = boundingRef.current
+      svg.style.width = `${width}px`
+      svg.style.height = `${height}px`
+    }
+
+    const setLines = () => {
+      if (!boundingRef.current) return
+      const { width, height } = boundingRef.current
+      linesRef.current = []
+
+      pathsRef.current.forEach((path) => path.remove())
+      pathsRef.current = []
+
+      const xGap = 8
+      const yGap = 8
+      const oWidth = width + 200
+      const oHeight = height + 30
+      const totalLines = Math.ceil(oWidth / xGap)
+      const totalPoints = Math.ceil(oHeight / yGap)
+      const xStart = (width - xGap * totalLines) / 2
+      const yStart = (height - yGap * totalPoints) / 2
+
+      for (let i = 0; i < totalLines; i++) {
+        const points: Point[] = []
+        for (let j = 0; j < totalPoints; j++) {
+          points.push({
+            x: xStart + xGap * i,
+            y: yStart + yGap * j,
+            wave: { x: 0, y: 0 },
+            cursor: { x: 0, y: 0, vx: 0, vy: 0 },
+          })
+        }
+
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+        path.setAttribute('fill', 'none')
+        path.setAttribute('stroke', strokeColor)
+        path.setAttribute('stroke-width', '1')
+        svg.appendChild(path)
+        pathsRef.current.push(path)
+        linesRef.current.push(points)
+      }
+    }
+
+    const updateMousePosition = (x: number, y: number) => {
+      if (!boundingRef.current) return
+      const mouse = mouseRef.current
+      mouse.x = x - boundingRef.current.left
+      mouse.y = y - boundingRef.current.top + window.scrollY
+
+      if (!mouse.set) {
+        mouse.sx = mouse.x
+        mouse.sy = mouse.y
+        mouse.lx = mouse.x
+        mouse.ly = mouse.y
+        mouse.set = true
+      }
+
+      container.style.setProperty('--x', `${mouse.sx}px`)
+      container.style.setProperty('--y', `${mouse.sy}px`)
+    }
+
+    const onResize = () => {
+      setSize()
+      setLines()
+    }
+    const onMouseMove = (e: MouseEvent) => updateMousePosition(e.pageX, e.pageY)
+    const onTouchMove = (e: TouchEvent) => {
+      e.preventDefault()
+      const touch = e.touches[0]
+      updateMousePosition(touch.clientX, touch.clientY)
+    }
+
+    const movePoints = (time: number) => {
+      const lines = linesRef.current
+      const mouse = mouseRef.current
+      const noise = noiseRef.current
+      if (!noise) return
+
+      lines.forEach((points) => {
+        points.forEach((p) => {
+          const move =
+            noise((p.x + time * 0.008) * 0.003, (p.y + time * 0.003) * 0.002) * 8
+          p.wave.x = Math.cos(move) * 12
+          p.wave.y = Math.sin(move) * 6
+
+          const dx = p.x - mouse.sx
+          const dy = p.y - mouse.sy
+          const d = Math.hypot(dx, dy)
+          const l = Math.max(175, mouse.vs)
+
+          if (d < l) {
+            const s = 1 - d / l
+            const f = Math.cos(d * 0.001) * s
+            p.cursor.vx += Math.cos(mouse.a) * f * l * mouse.vs * 0.00035
+            p.cursor.vy += Math.sin(mouse.a) * f * l * mouse.vs * 0.00035
+          }
+
+          p.cursor.vx += (0 - p.cursor.x) * 0.01
+          p.cursor.vy += (0 - p.cursor.y) * 0.01
+          p.cursor.vx *= 0.95
+          p.cursor.vy *= 0.95
+          p.cursor.x += p.cursor.vx
+          p.cursor.y += p.cursor.vy
+          p.cursor.x = Math.min(50, Math.max(-50, p.cursor.x))
+          p.cursor.y = Math.min(50, Math.max(-50, p.cursor.y))
+        })
+      })
+    }
+
+    const moved = (point: Point, withCursorForce = true) => ({
+      x: point.x + point.wave.x + (withCursorForce ? point.cursor.x : 0),
+      y: point.y + point.wave.y + (withCursorForce ? point.cursor.y : 0),
+    })
+
+    const drawLines = () => {
+      const lines = linesRef.current
+      const paths = pathsRef.current
+      lines.forEach((points, lIndex) => {
+        if (points.length < 2 || !paths[lIndex]) return
+        const firstPoint = moved(points[0], false)
+        let d = `M ${firstPoint.x} ${firstPoint.y}`
+        for (let i = 1; i < points.length; i++) {
+          const current = moved(points[i])
+          d += `L ${current.x} ${current.y}`
+        }
+        paths[lIndex].setAttribute('d', d)
+      })
+    }
+
+    const tick = (time: number) => {
+      const mouse = mouseRef.current
+
+      mouse.sx += (mouse.x - mouse.sx) * 0.1
+      mouse.sy += (mouse.y - mouse.sy) * 0.1
+
+      const dx = mouse.x - mouse.lx
+      const dy = mouse.y - mouse.ly
+      const d = Math.hypot(dx, dy)
+
+      mouse.v = d
+      mouse.vs += (d - mouse.vs) * 0.1
+      mouse.vs = Math.min(100, mouse.vs)
+      mouse.lx = mouse.x
+      mouse.ly = mouse.y
+      mouse.a = Math.atan2(dy, dx)
+
+      container.style.setProperty('--x', `${mouse.sx}px`)
+      container.style.setProperty('--y', `${mouse.sy}px`)
+
+      movePoints(time)
+      drawLines()
+      rafRef.current = requestAnimationFrame(tick)
+    }
+
+    setSize()
+    setLines()
+
+    window.addEventListener('resize', onResize)
+    window.addEventListener('mousemove', onMouseMove)
+    container.addEventListener('touchmove', onTouchMove, { passive: false })
+    rafRef.current = requestAnimationFrame(tick)
+
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+      window.removeEventListener('resize', onResize)
+      window.removeEventListener('mousemove', onMouseMove)
+      container.removeEventListener('touchmove', onTouchMove)
+      pathsRef.current.forEach((path) => path.remove())
+      pathsRef.current = []
+      linesRef.current = []
+    }
+  }, [enabled, strokeColor])
+
+  return (
+    <div
+      aria-hidden="true"
+      className={['pointer-events-none absolute inset-0 z-0 overflow-hidden', className]
+        .filter(Boolean)
+        .join(' ')}
+      style={{
+        maskImage:
+          'radial-gradient(120% 100% at 50% 10%, #000 45%, transparent 100%)',
+        WebkitMaskImage:
+          'radial-gradient(120% 100% at 50% 10%, #000 45%, transparent 100%)',
+      }}
+    >
+      {/* ≥ md — interactive wave field (loop gated by `enabled`) */}
+      <div
+        ref={containerRef}
+        className="absolute inset-0 hidden md:block"
+        style={{ backgroundColor, '--x': '-0.5rem', '--y': '50%' } as CSSProperties}
+      >
+        {enabled ? (
+          <>
+            <svg
+              ref={svgRef}
+              className="block h-full w-full"
+              xmlns="http://www.w3.org/2000/svg"
+            />
+            <div
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: `${pointerSize}rem`,
+                height: `${pointerSize}rem`,
+                background: pointerColor,
+                borderRadius: '50%',
+                transform:
+                  'translate3d(calc(var(--x) - 50%), calc(var(--y) - 50%), 0)',
+                willChange: 'transform',
+              }}
+            />
+          </>
+        ) : (
+          <WavesStatic strokeColor={strokeColor} />
+        )}
+      </div>
+
+      {/* < md — static snapshot, no animation loop */}
+      <div className="absolute inset-0 md:hidden" style={{ backgroundColor }}>
+        <WavesStatic strokeColor={strokeColor} />
+      </div>
+    </div>
+  )
+}
