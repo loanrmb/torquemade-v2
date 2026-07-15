@@ -13,10 +13,12 @@ export function NavPill() {
 
   const [menuOpen, setMenuOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
+  const [produitsOpen, setProduitsOpen] = useState(false)
 
   useEffect(() => {
     setMenuOpen(false)
     setServicesOpen(false)
+    setProduitsOpen(false)
   }, [pathname])
 
   useEffect(() => {
@@ -37,6 +39,7 @@ export function NavPill() {
   }, [menuOpen])
 
   const servicesActive = pathname.startsWith('/services')
+  const produitsActive = pathname.startsWith('/tanklogic')
 
   return (
     <>
@@ -106,6 +109,55 @@ export function NavPill() {
                     }}
                   >
                     {t.servicesItems.map((s) => (
+                      <Link
+                        key={s.href}
+                        href={s.href}
+                        className="rounded-xl px-3 py-2.5 text-sm font-medium transition-colors duration-150"
+                        style={{
+                          color: pathname === s.href ? 'hsl(var(--text-primary))' : 'hsl(var(--text-secondary))',
+                          background: pathname === s.href ? 'hsl(var(--bg-secondary))' : 'transparent',
+                        }}
+                      >
+                        {s.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div
+              className="relative"
+              onMouseEnter={() => setProduitsOpen(true)}
+              onMouseLeave={() => setProduitsOpen(false)}
+            >
+              <button
+                type="button"
+                className="flex items-center gap-1 rounded-full px-4 py-2 text-base font-medium transition-colors duration-150 whitespace-nowrap"
+                style={{
+                  color: produitsActive || produitsOpen ? 'hsl(var(--text-primary))' : 'hsl(var(--text-tertiary))',
+                  background: produitsActive ? 'hsl(var(--bg-secondary))' : 'transparent',
+                }}
+                aria-haspopup="true"
+                aria-expanded={produitsOpen}
+              >
+                {t.produits}
+                <CaretIcon open={produitsOpen} />
+              </button>
+
+              {produitsOpen && (
+                <div className="absolute left-0 top-full pt-3 min-w-[320px] z-50">
+                  <div
+                    className="rounded-2xl border p-2 flex flex-col"
+                    style={{
+                      background: 'hsl(var(--bg-primary))',
+                      backdropFilter: 'blur(16px)',
+                      WebkitBackdropFilter: 'blur(16px)',
+                      borderColor: 'hsl(var(--border-subtle))',
+                      boxShadow: '0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.06)',
+                    }}
+                  >
+                    {t.produitsItems.map((s) => (
                       <Link
                         key={s.href}
                         href={s.href}
@@ -276,6 +328,43 @@ export function NavPill() {
                 }}
               >
                 {t.servicesItems.map((s) => {
+                  const active = pathname === s.href
+                  return (
+                    <Link
+                      key={s.href}
+                      href={s.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="rounded-lg px-3 py-2 text-sm transition-colors duration-150"
+                      style={{
+                        color: active ? 'hsl(var(--text-primary))' : 'hsl(var(--text-secondary))',
+                        background: active ? 'hsl(var(--bg-secondary))' : 'transparent',
+                      }}
+                    >
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span>{s.label}</span>
+                        <span style={{ opacity: active ? 1 : 0.4, fontSize: '0.75rem' }}>→</span>
+                      </div>
+                    </Link>
+                  )
+                })}
+              </div>
+
+              <div className="my-3 h-px" style={{ background: 'hsl(var(--border-subtle))' }} />
+
+              <div
+                className="px-3 pt-1 pb-1 text-xs font-semibold uppercase tracking-wider"
+                style={{ color: 'hsl(var(--text-secondary))' }}
+              >
+                {t.produits}
+              </div>
+              <div
+                className="ml-3 flex flex-col gap-0.5"
+                style={{
+                  borderLeft: '2px solid hsl(var(--text-primary) / 0.08)',
+                  paddingLeft: '12px',
+                }}
+              >
+                {t.produitsItems.map((s) => {
                   const active = pathname === s.href
                   return (
                     <Link

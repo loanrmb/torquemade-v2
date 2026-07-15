@@ -5,6 +5,7 @@ export const strings = {
     nav: {
       work: 'Projets',
       services: 'Services',
+      produits: 'Produits',
       about: 'À propos',
       blog: 'Blog',
       contact: 'Contact',
@@ -15,6 +16,9 @@ export const strings = {
         { label: 'Web Dev', href: '/services/web-dev' },
         { label: 'CRM sur mesure', href: '/services/crm' },
         { label: 'Connexion stock ERP - Site e-commerce', href: '/services/erp-ecommerce' },
+      ],
+      produitsItems: [
+        { label: 'TankLogic', href: '/tanklogic' },
       ],
     },
     hero: {
@@ -589,6 +593,7 @@ export const strings = {
     nav: {
       work: 'Work',
       services: 'Services',
+      produits: 'Products',
       about: 'About',
       blog: 'Blog',
       contact: 'Contact',
@@ -599,6 +604,9 @@ export const strings = {
         { label: 'Web Dev', href: '/services/web-dev' },
         { label: 'Custom CRM', href: '/services/crm' },
         { label: 'ERP - E-commerce connection', href: '/services/erp-ecommerce' },
+      ],
+      produitsItems: [
+        { label: 'TankLogic', href: '/tanklogic' },
       ],
     },
     hero: {
