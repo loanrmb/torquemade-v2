@@ -22,11 +22,26 @@ export const strings = {
       ],
     },
     hero: {
-      eyebrow: 'Studio',
+      eyebrow: 'Studio web — Bordeaux',
       heroSubheadline: 'Web Dev — CRM sur mesure & Connexion Stock Magasin ↔ site e-commerce.',
       headline2: 'Du design à la base de données.',
       sub: 'Nous construisons des sites qui performent, et les systèmes derrière.',
-      tagline: 'Torquemade conçoit des systèmes web sur mesure : sites vitrines ou e-commerce, CRM et logiciel développé sur mesure pour votre entreprise et la synchronisation stock en magasin ↔ boutique en ligne en temps réel.',
+      tagline: 'Torquemade conçoit des systèmes web sur mesure.',
+      heroLead: 'De la vitrine à la base de données — conçus, développés et connectés autour de votre métier.',
+      pillars: [
+        {
+          label: 'Sites & e-commerce',
+          desc: 'Vitrines et boutiques en ligne, du design au déploiement.',
+        },
+        {
+          label: 'CRM & logiciel sur mesure',
+          desc: 'Des outils construits autour de votre métier.',
+        },
+        {
+          label: 'Synchro stock en temps réel',
+          desc: 'Stock magasin ↔ boutique en ligne, toujours alignés.',
+        },
+      ],
       tagline2: 'On construit des systèmes.',
       tagline2Lead: 'On construit ',
       tagline2Accent: 'des systèmes.',
@@ -610,11 +625,26 @@ export const strings = {
       ],
     },
     hero: {
-      eyebrow: 'Studio',
+      eyebrow: 'Web studio — Bordeaux',
       heroSubheadline: 'Web Dev — Custom CRM & In-store Stock ↔ e-commerce sync.',
       headline2: 'From design to database.',
       sub: 'We build sites that perform, and the systems behind them.',
-      tagline: 'Torquemade builds custom web systems: showcase or e-commerce websites, custom CRM and software for your business, and real-time in-store ↔ online stock sync.',
+      tagline: 'Torquemade builds custom web systems.',
+      heroLead: 'From storefront to database — designed, built and connected around your business.',
+      pillars: [
+        {
+          label: 'Websites & e-commerce',
+          desc: 'Showcase sites and online stores, from design to launch.',
+        },
+        {
+          label: 'Custom CRM & software',
+          desc: 'Tools built around how your business actually works.',
+        },
+        {
+          label: 'Real-time stock sync',
+          desc: 'In-store ↔ online inventory, always aligned.',
+        },
+      ],
       tagline2: 'We build systems.',
       tagline2Lead: 'We build ',
       tagline2Accent: 'systems.',
