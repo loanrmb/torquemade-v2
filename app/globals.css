@@ -235,13 +235,16 @@ html.dark .perspective-grid {
    HOMEPAGE HERO — desktop/tablet two-column mockup (Linear-style)
    ------------------------------------------------------------
    Mobile keeps the existing stacked layout untouched. From md up,
-   the StockPro mock sits in the hero's right column: tilted in 3D,
-   bleeding off the right edge (clipped by <main>'s overflow-clip),
-   and softly faded toward its outer edges via a radial opacity mask
-   — the same mask idiom used by .perspective-grid-wrap and the wave
-   background. Border/background use existing dark-surface tokens
-   (--bg-inverse ≈ the previous #141414 frame); shadow uses the same
-   neutral rgba(0,0,0,…) idiom as .card.
+   the StockPro mock sits in the hero's right column: gently tilted in
+   3D and softly faded on ALL FOUR edges via a radial opacity mask
+   applied directly to the element (the same mask idiom used by
+   .perspective-grid-wrap and the wave background). The mask centre is
+   shifted right so the left/top/bottom edges feather fully into the
+   page background while the right side stays present and bleeds toward
+   the edge — no hard straight edges, no reliance on parent clipping to
+   shape it. Background uses the existing --bg-inverse dark-surface
+   token; overall opacity is dialled back so the mock reads as receded
+   atmosphere behind the headline rather than a competing black block.
    ============================================================ */
 @media (min-width: 768px) {
   /* Column reserves vertical space so the absolute frame can center. */
@@ -251,7 +254,7 @@ html.dark .perspective-grid {
   }
 
   /* Faded radial scrim behind the headline for guaranteed contrast
-     where the tilted mock bleeds toward the text block. */
+     where the tilted mock feathers toward the text block. */
   .hero-text-scrim {
     position: absolute;
     inset: -2rem -6rem -2rem -3rem;
@@ -268,41 +271,41 @@ html.dark .perspective-grid {
   .hero-mockup-frame {
     position: absolute;
     top: 50%;
-    left: -1.5rem;
-    width: 46rem;
+    left: 0;
+    width: 40rem;
     height: 29rem;
     transform:
       translateY(-50%)
-      perspective(2200px)
-      rotateY(-14deg)
-      rotateX(4deg)
-      scale(1.01);
-    transform-origin: left center;
-    border: 1px solid hsl(var(--border-subtle));
+      perspective(2400px)
+      rotateY(-8deg)
+      rotateX(3deg);
+    transform-origin: center center;
     border-radius: 20px;
     background: hsl(var(--bg-inverse));
     overflow: hidden;
-    box-shadow:
-      0 2px 6px rgba(0,0,0,.05),
-      0 24px 48px -12px rgba(0,0,0,.16),
-      0 48px 90px -28px rgba(0,0,0,.12);
-    -webkit-mask-image: radial-gradient(130% 78% at 6% 50%, #000 32%, rgba(0,0,0,.42) 62%, transparent 100%);
-    mask-image: radial-gradient(130% 78% at 6% 50%, #000 32%, rgba(0,0,0,.42) 62%, transparent 100%);
+    opacity: 0.95;
+    /* Large opaque core keeps the dashboard legible (sidebar, KPI row,
+       chart); the outer band on all four edges feathers to transparent
+       inside the bounds so nothing hits a hard straight cutoff. Same
+       #000→transparent radial idiom as .perspective-grid-wrap /
+       wave-background. */
+    -webkit-mask-image: radial-gradient(72% 64% at 48% 42%, #000 42%, rgba(0,0,0,.5) 71%, transparent 92%);
+    mask-image: radial-gradient(72% 64% at 48% 42%, #000 42%, rgba(0,0,0,.5) 71%, transparent 92%);
   }
 }
 
 @media (min-width: 1024px) {
   .hero-mockup-col { height: 33rem; }
   .hero-mockup-frame {
-    left: -1rem;
-    width: 52rem;
+    left: 0;
+    width: 44rem;
     height: 32rem;
+    opacity: 0.95;
     transform:
       translateY(-50%)
-      perspective(2400px)
-      rotateY(-15deg)
-      rotateX(4deg)
-      scale(1.02);
+      perspective(2600px)
+      rotateY(-9deg)
+      rotateX(3deg);
   }
 }
 
