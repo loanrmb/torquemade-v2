@@ -48,27 +48,15 @@ export default function HomePage() {
           <div className="relative z-10 flex flex-col items-start text-left max-w-5xl mx-auto">
 
             <h1
-              className="fade-up text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.15]"
+              className="fade-up text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.15]"
               style={{ color: 'hsl(var(--text-primary))' }}
             >
               {t.hero.tagline}
-              <br />
-              <span>
-                {t.hero.tagline2Lead}
-                {t.hero.tagline2Accent}
-              </span>
             </h1>
 
             <p
-              className="fade-up fade-up-d1 mt-3 text-base md:mt-6 md:text-xl lg:text-2xl font-medium"
+              className="fade-up fade-up-d1 mt-4 text-base md:mt-6 md:text-lg font-medium"
               style={{ color: 'hsl(var(--text-secondary))' }}
-            >
-              {t.hero.heroSubheadline}
-            </p>
-
-            <p
-              className="fade-up fade-up-d2 mt-2 text-sm md:text-base"
-              style={{ color: 'hsl(var(--text-tertiary))' }}
             >
               {t.hero.headline2}
             </p>

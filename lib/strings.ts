@@ -26,7 +26,7 @@ export const strings = {
       heroSubheadline: 'Web Dev — CRM sur mesure & Connexion Stock Magasin ↔ site e-commerce.',
       headline2: 'Du design à la base de données.',
       sub: 'Nous construisons des sites qui performent, et les systèmes derrière.',
-      tagline: 'On ne construit pas de sites vitrines.',
+      tagline: 'Torquemade conçoit des systèmes web sur mesure : sites vitrines ou e-commerce, CRM et logiciel développé sur mesure pour votre entreprise et la synchronisation stock en magasin ↔ boutique en ligne en temps réel.',
       tagline2: 'On construit des systèmes.',
       tagline2Lead: 'On construit ',
       tagline2Accent: 'des systèmes.',
@@ -523,8 +523,8 @@ export const strings = {
     tanklogic: {
       eyebrow: 'Un produit Torquemade',
       wordmark: 'TankLogic',
-      heroTitle: 'Chaque spécimen compte.',
-      heroSub: 'TankLogic est le logiciel de stock des détaillants qui vendent des poissons et coraux vivants à distance — de la cuve de vente à la preuve de livraison.',
+      heroTitle: 'La solution pour synchroniser votre stock de poissons et coraux en magasin avec votre boutique en ligne.',
+      heroSub: 'Chaque poisson et corail suivi comme un article unique — fini les chargebacks DOA et la survente.',
       heroCta: 'Parlons de votre projet',
 
       serialTitle: 'Un animal, une fiche.',
@@ -614,7 +614,7 @@ export const strings = {
       heroSubheadline: 'Web Dev — Custom CRM & In-store Stock ↔ e-commerce sync.',
       headline2: 'From design to database.',
       sub: 'We build sites that perform, and the systems behind them.',
-      tagline: 'We don\'t build showcase sites.',
+      tagline: 'Torquemade builds custom web systems: showcase or e-commerce websites, custom CRM and software for your business, and real-time in-store ↔ online stock sync.',
       tagline2: 'We build systems.',
       tagline2Lead: 'We build ',
       tagline2Accent: 'systems.',
@@ -1179,8 +1179,8 @@ export const strings = {
     tanklogic: {
       eyebrow: 'A Torquemade product',
       wordmark: 'TankLogic',
-      heroTitle: 'Every specimen counts.',
-      heroSub: 'TankLogic is the inventory software for retailers who sell live fish and coral by mail order — from the display tank to delivery proof.',
+      heroTitle: 'The solution to sync your in-store fish and coral inventory with your online store.',
+      heroSub: 'Every fish and coral tracked as a unique item — no more DOA chargebacks or overselling.',
       heroCta: 'Let’s talk about your project',
 
       serialTitle: 'One animal, one record.',
