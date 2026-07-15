@@ -22,11 +22,26 @@ export const strings = {
       ],
     },
     hero: {
-      eyebrow: 'Studio',
+      eyebrow: 'Studio web — Bordeaux',
       heroSubheadline: 'Web Dev — CRM sur mesure & Connexion Stock Magasin ↔ site e-commerce.',
       headline2: 'Du design à la base de données.',
       sub: 'Nous construisons des sites qui performent, et les systèmes derrière.',
-      tagline: 'On ne construit pas de sites vitrines.',
+      tagline: 'Torquemade conçoit des systèmes web sur mesure.',
+      heroLead: 'De la vitrine à la base de données — conçus, développés et connectés autour de votre métier.',
+      pillars: [
+        {
+          label: 'Sites & e-commerce',
+          desc: 'Site vitrine ou e-commerce, pensé pour avoir un réel impact.',
+        },
+        {
+          label: 'CRM & logiciel sur mesure',
+          desc: 'On construit **votre** CRM/logiciel sur mesure pour votre activité, et il vous appartient.',
+        },
+        {
+          label: 'Synchro stock en temps réel',
+          desc: 'Connectez votre stock magasin à votre site internet en temps réel.',
+        },
+      ],
       tagline2: 'On construit des systèmes.',
       tagline2Lead: 'On construit ',
       tagline2Accent: 'des systèmes.',
@@ -523,8 +538,8 @@ export const strings = {
     tanklogic: {
       eyebrow: 'Un produit Torquemade',
       wordmark: 'TankLogic',
-      heroTitle: 'Chaque spécimen compte.',
-      heroSub: 'TankLogic est le logiciel de stock des détaillants qui vendent des poissons et coraux vivants à distance — de la cuve de vente à la preuve de livraison.',
+      heroTitle: 'La solution pour synchroniser votre stock de poissons et coraux en magasin avec votre boutique en ligne.',
+      heroSub: 'Chaque poisson et corail suivi comme un article unique — fini les chargebacks DOA et la survente.',
       heroCta: 'Parlons de votre projet',
 
       serialTitle: 'Un animal, une fiche.',
@@ -610,11 +625,26 @@ export const strings = {
       ],
     },
     hero: {
-      eyebrow: 'Studio',
+      eyebrow: 'Web studio — Bordeaux',
       heroSubheadline: 'Web Dev — Custom CRM & In-store Stock ↔ e-commerce sync.',
       headline2: 'From design to database.',
       sub: 'We build sites that perform, and the systems behind them.',
-      tagline: 'We don\'t build showcase sites.',
+      tagline: 'Torquemade builds custom web systems.',
+      heroLead: 'From storefront to database — designed, built and connected around your business.',
+      pillars: [
+        {
+          label: 'Websites & e-commerce',
+          desc: 'A showcase or e-commerce site, built to make a real impact.',
+        },
+        {
+          label: 'Custom CRM & software',
+          desc: 'We build **your** custom CRM/software for your business — and you own it.',
+        },
+        {
+          label: 'Real-time stock sync',
+          desc: 'Connect your in-store stock to your website in real time.',
+        },
+      ],
       tagline2: 'We build systems.',
       tagline2Lead: 'We build ',
       tagline2Accent: 'systems.',
@@ -1179,8 +1209,8 @@ export const strings = {
     tanklogic: {
       eyebrow: 'A Torquemade product',
       wordmark: 'TankLogic',
-      heroTitle: 'Every specimen counts.',
-      heroSub: 'TankLogic is the inventory software for retailers who sell live fish and coral by mail order — from the display tank to delivery proof.',
+      heroTitle: 'The solution to sync your in-store fish and coral inventory with your online store.',
+      heroSub: 'Every fish and coral tracked as a unique item — no more DOA chargebacks or overselling.',
       heroCta: 'Let’s talk about your project',
 
       serialTitle: 'One animal, one record.',

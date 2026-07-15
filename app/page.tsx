@@ -47,33 +47,23 @@ export default function HomePage() {
           <WaveBackground />
           <div className="relative z-10 flex flex-col items-start text-left max-w-5xl mx-auto">
 
+            <p className="fade-up section-label">{t.hero.eyebrow}</p>
+
             <h1
-              className="fade-up text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.15]"
+              className="fade-up fade-up-d1 max-w-4xl text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.05]"
               style={{ color: 'hsl(var(--text-primary))' }}
             >
               {t.hero.tagline}
-              <br />
-              <span>
-                {t.hero.tagline2Lead}
-                {t.hero.tagline2Accent}
-              </span>
             </h1>
 
             <p
-              className="fade-up fade-up-d1 mt-3 text-base md:mt-6 md:text-xl lg:text-2xl font-medium"
+              className="fade-up fade-up-d2 mt-5 md:mt-6 max-w-2xl text-base md:text-xl leading-relaxed"
               style={{ color: 'hsl(var(--text-secondary))' }}
             >
-              {t.hero.heroSubheadline}
+              {t.hero.heroLead}
             </p>
 
-            <p
-              className="fade-up fade-up-d2 mt-2 text-sm md:text-base"
-              style={{ color: 'hsl(var(--text-tertiary))' }}
-            >
-              {t.hero.headline2}
-            </p>
-
-            <div className="fade-up fade-up-d3 mt-6 md:mt-8 flex flex-wrap items-center justify-start gap-3">
+            <div className="fade-up fade-up-d3 mt-7 md:mt-9 flex flex-wrap items-center justify-start gap-3">
               <Link
                 href="/contact"
                 className="btn-liquid-glass rounded-full px-6 py-3 text-sm font-semibold"
@@ -86,6 +76,39 @@ export default function HomePage() {
               >
                 {t.hero.heroCta2}
               </Link>
+            </div>
+
+            {/* ── PILLARS — structured service breakdown ── */}
+            <div
+              className="fade-up fade-up-d4 mt-12 md:mt-16 grid w-full grid-cols-1 border-t min-720:grid-cols-3"
+              style={{ borderColor: 'hsl(var(--border-subtle))' }}
+            >
+              {t.hero.pillars.map((pillar, i) => (
+                <div
+                  key={pillar.label}
+                  className="border-t py-6 first:border-t-0 min-720:border-t-0 min-720:border-l min-720:px-7 min-720:py-8 min-720:first:border-l-0 min-720:first:pl-0"
+                  style={{ borderColor: 'hsl(var(--border-subtle))' }}
+                >
+                  <span
+                    className="mb-3 block text-xs font-semibold tabular-nums tracking-widest"
+                    style={{ color: 'hsl(var(--text-tertiary))' }}
+                  >
+                    0{i + 1}
+                  </span>
+                  <h2
+                    className="mb-1.5 text-base font-semibold tracking-tight"
+                    style={{ color: 'hsl(var(--text-primary))' }}
+                  >
+                    {pillar.label}
+                  </h2>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: 'hsl(var(--text-secondary))' }}
+                  >
+                    <EmphasisText text={pillar.desc} />
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -298,6 +321,28 @@ export default function HomePage() {
       </main>
 
       <Footer />
+    </>
+  )
+}
+
+// Renders a string, converting inline **bold** markers to emphasized <strong>.
+// Mirrors the dropdown subtitle treatment in nav-pill.tsx.
+function EmphasisText({ text }: { text: string }) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g)
+  return (
+    <>
+      {parts.map((part, i) =>
+        part.startsWith('**') && part.endsWith('**') ? (
+          <strong
+            key={i}
+            style={{ fontWeight: 600, color: 'hsl(var(--text-primary))' }}
+          >
+            {part.slice(2, -2)}
+          </strong>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
     </>
   )
 }
