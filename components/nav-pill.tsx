@@ -43,10 +43,10 @@ export function NavPill() {
 
   return (
     <>
-      <header className="fixed left-1/2 top-4 z-50 -translate-x-1/2 w-[calc(100%-2rem)] max-w-2xl">
+      <header className="fixed left-1/2 top-4 z-50 -translate-x-1/2 w-[calc(100%-2rem)] max-w-[980px]">
         <div className="flex items-center gap-3">
         <nav
-          className="flex flex-1 items-center justify-between gap-x-3 min-720:gap-x-2 rounded-full border px-3 py-2.5 min-720:px-4"
+          className="flex flex-1 items-center justify-between gap-x-3 min-1024:gap-x-2 rounded-full border px-3 py-2.5 min-1024:px-4"
           style={{
             background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.78)',
             backdropFilter: 'blur(16px)',
@@ -55,7 +55,7 @@ export function NavPill() {
             boxShadow: '0 4px 20px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06)',
           }}
         >
-          <Link href="/" className="flex items-center gap-1.5 pr-1 min-720:pr-2 mr-0.5 min-720:mr-1 flex-shrink-0">
+          <Link href="/" className="flex items-center gap-1.5 pr-1 min-1024:pr-2 mr-0.5 min-1024:mr-1 flex-shrink-0">
             <LogoMark />
             <span
               className="block font-semibold text-sm tracking-tight whitespace-nowrap"
@@ -65,7 +65,7 @@ export function NavPill() {
             </span>
           </Link>
 
-          <div className="hidden min-720:flex items-center gap-1 flex-1">
+          <div className="hidden min-1024:flex items-center gap-1 flex-1">
             <Link
               href="/work"
               className="rounded-full px-4 py-2 text-base font-medium transition-colors duration-150 whitespace-nowrap"
@@ -208,14 +208,14 @@ export function NavPill() {
           </div>
 
           <div
-            className="hidden min-720:block w-px h-5 mx-1 flex-shrink-0"
+            className="hidden min-1024:block w-px h-5 mx-1 flex-shrink-0"
             style={{ background: 'hsl(var(--border-subtle))' }}
           />
 
           <div className="flex items-center gap-0 flex-shrink-0">
             <button
               onClick={toggleLang}
-              className="flex items-center gap-1.5 rounded-full px-2 min-720:px-2.5 py-1.5 text-xs font-semibold transition-colors duration-150 hover:bg-bg-secondary whitespace-nowrap"
+              className="flex items-center gap-1.5 rounded-full px-2 min-1024:px-2.5 py-1.5 text-xs font-semibold transition-colors duration-150 hover:bg-bg-secondary whitespace-nowrap"
               style={{ color: 'hsl(var(--text-secondary))' }}
               aria-label="Toggle language"
             >
@@ -225,7 +225,7 @@ export function NavPill() {
 
             <button
               onClick={() => setMenuOpen(true)}
-              className="min-720:hidden flex items-center justify-center w-7 h-7 rounded-full ml-0.5 transition-colors duration-150 hover:bg-bg-secondary"
+              className="min-1024:hidden flex items-center justify-center w-7 h-7 rounded-full ml-0.5 transition-colors duration-150 hover:bg-bg-secondary"
               style={{ color: 'hsl(var(--text-secondary))' }}
               aria-label={t.menuLabel}
               aria-expanded={menuOpen}
@@ -238,7 +238,7 @@ export function NavPill() {
 
           <Link
             href="/contact"
-            className="btn-liquid-glass hidden min-720:flex items-center flex-shrink-0 rounded-full py-1.5 px-3 text-sm font-semibold text-white whitespace-nowrap"
+            className="btn-liquid-glass hidden min-1024:flex items-center flex-shrink-0 rounded-full py-1.5 px-3 text-sm font-semibold text-white whitespace-nowrap"
           >
             {lang === 'fr' ? 'Démarrer →' : 'Start →'}
           </Link>
@@ -247,7 +247,7 @@ export function NavPill() {
 
       <div
         id="mobile-menu"
-        className="fixed inset-0 z-[60] min-720:hidden"
+        className="fixed inset-0 z-[60] min-1024:hidden"
         role="dialog"
         aria-modal="true"
         aria-hidden={!menuOpen}
