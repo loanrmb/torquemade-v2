@@ -805,31 +805,34 @@ html.dark .cta-card {
    Used in erp-feature-section.tsx autonomous stock sync loop
    ============================================================ */
 
-/* Row highlight flash */
+/* Row highlight flash — restrained wash, aligned to the site red/green accents.
+   Softer alpha than a raw alert colour: reads as a considered state change,
+   not a warning banner (TankLogic-parity restraint). */
 @keyframes highlightRed {
-  0%   { background-color: rgba(239, 68, 68, 0.18); }
+  0%   { background-color: rgba(248, 113, 113, 0.12); }
   100% { background-color: transparent; }
 }
 @keyframes highlightGreen {
-  0%   { background-color: rgba(34, 197, 94, 0.18); }
+  0%   { background-color: rgba(74, 222, 128, 0.12); }
   100% { background-color: transparent; }
 }
-.row-flash-red   { animation: highlightRed   900ms ease-out forwards; }
-.row-flash-green { animation: highlightGreen 900ms ease-out forwards; }
+.row-flash-red   { animation: highlightRed   1000ms ease-out forwards; }
+.row-flash-green { animation: highlightGreen 1000ms ease-out forwards; }
 
-/* Number bump — scale + brief color shift */
+/* Number bump — subtle scale + brief colour shift.
+   Gentler scale (1.14, not 1.22) and the site's own accent hues. */
 @keyframes numBumpRed {
   0%   { transform: scale(1); }
-  30%  { transform: scale(1.22); color: rgb(239, 68, 68); }
+  32%  { transform: scale(1.14); color: #f87171; }
   100% { transform: scale(1); }
 }
 @keyframes numBumpGreen {
   0%   { transform: scale(1); }
-  30%  { transform: scale(1.22); color: rgb(34, 197, 94); }
+  32%  { transform: scale(1.14); color: #4ade80; }
   100% { transform: scale(1); }
 }
-.num-bump-red   { display: inline-block; animation: numBumpRed   320ms cubic-bezier(0.23, 1, 0.32, 1) both; }
-.num-bump-green { display: inline-block; animation: numBumpGreen 320ms cubic-bezier(0.23, 1, 0.32, 1) both; }
+.num-bump-red   { display: inline-block; animation: numBumpRed   360ms cubic-bezier(0.23, 1, 0.32, 1) both; }
+.num-bump-green { display: inline-block; animation: numBumpGreen 360ms cubic-bezier(0.23, 1, 0.32, 1) both; }
 
 /* API panel "syncing" pulse — opacity only (hardware-accelerated) */
 @keyframes syncPulse {

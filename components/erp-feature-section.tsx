@@ -26,7 +26,7 @@
  * Animations: transform + opacity only (Emil §6.A hardware-acceleration rule)
  */
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { motion, type Variants } from 'framer-motion'
 import { useLang } from '@/components/app-provider'
 import { strings } from '@/lib/strings'
@@ -204,6 +204,13 @@ function useSyncCounter(): number {
   return n
 }
 
+/* ─── Shared panel chrome tokens (dark-adapted, TankLogic-parity) ──
+   One vocabulary across the three panels: identical hairline borders,
+   16px radius, quiet header bar, mono uppercase tag. Depth is carried
+   by layered soft shadows, not by border weight. */
+const PANEL_BORDER = 'rgba(255,255,255,0.09)'
+const HAIRLINE     = 'rgba(255,255,255,0.07)'
+
 /* ─── GreenDot: soft CSS pulse (no Framer overhead) ─────────── */
 function GreenDot({ size = 6 }: { size?: number }) {
   return (
@@ -219,54 +226,137 @@ function GreenDot({ size = 6 }: { size?: number }) {
   )
 }
 
-/* ─── SVG Connector: decorative flowing dots between panels ─── */
+/* ─── WindowDots: macOS-style chrome dots (shared across panels) ── */
+function WindowDots({ tone = 'dark' }: { tone?: 'dark' | 'light' }) {
+  const c = tone === 'dark' ? 'rgba(255,255,255,0.16)' : '#e2e2e4'
+  return (
+    <span className="flex flex-shrink-0 gap-1.5" aria-hidden>
+      <span className="block h-[7px] w-[7px] rounded-full" style={{ background: c }} />
+      <span className="block h-[7px] w-[7px] rounded-full" style={{ background: c }} />
+      <span className="block h-[7px] w-[7px] rounded-full" style={{ background: c }} />
+    </span>
+  )
+}
+
+/* ─── PanelHeader: shared title bar — dots · title … [live] tag ── */
+function PanelHeader({
+  title,
+  tag,
+  tone = 'dark',
+  live = false,
+  px = 'px-5',
+  py = 'py-3.5',
+}: {
+  title: string
+  tag?: string
+  tone?: 'dark' | 'light'
+  live?: boolean
+  px?: string
+  py?: string
+}) {
+  const light = tone === 'light'
+  return (
+    <header
+      className={`flex items-center justify-between ${px} ${py}`}
+      style={{
+        borderBottom: `1px solid ${light ? '#e8e8ea' : HAIRLINE}`,
+        background: light ? '#f7f7f8' : 'rgba(255,255,255,0.018)',
+      }}
+    >
+      <span className="flex min-w-0 items-center gap-2.5">
+        <WindowDots tone={tone} />
+        <span
+          className={`truncate text-[13px] font-semibold tracking-tight ${light ? 'text-[#1a1a1a]' : 'text-white/90'}`}
+        >
+          {title}
+        </span>
+      </span>
+      {tag && (
+        <span className="ml-3 flex flex-shrink-0 items-center gap-1.5">
+          {live && <GreenDot size={5} />}
+          <span
+            className={`font-mono text-[10px] uppercase tracking-[0.14em] ${light ? 'text-[#8a8a8e]' : 'text-white/38'}`}
+          >
+            {tag}
+          </span>
+        </span>
+      )}
+    </header>
+  )
+}
+
+/* ─── SVG Connector: crafted data-flow link between panels ──────
+   A gradient-faded track with fixed anchor nodes at each end plus a
+   glowing packet that travels left→right. Gradient/glow ids are made
+   unique per instance (useId) so multiple connectors don't collide. */
 function SvgConnector({ className }: { className?: string }) {
+  const uid   = useId().replace(/:/g, '')
+  const track = `erp-track-${uid}`
+  const glow  = `erp-glow-${uid}`
   return (
     <div className={`erp-svg-connector ${className ?? ''}`} aria-hidden>
-      <svg
-        viewBox="0 0 120 24"
-        fill="none"
-        preserveAspectRatio="none"
-        className="w-full h-6"
-      >
-        <line
-          x1="0" y1="12" x2="120" y2="12"
-          stroke="rgba(255,255,255,0.12)"
-          strokeWidth="1"
-          strokeDasharray="4 4"
-        />
-        <circle r="3" cy="12" fill="rgba(255,255,255,0.85)">
-          <animate attributeName="cx" values="-6;126" dur="2.4s" repeatCount="indefinite" />
-          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="2.4s" repeatCount="indefinite" />
+      <svg viewBox="0 0 132 24" fill="none" preserveAspectRatio="none" className="h-6 w-full">
+        <defs>
+          <linearGradient id={track} x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0"    stopColor="rgba(255,255,255,0)" />
+            <stop offset="0.18" stopColor="rgba(255,255,255,0.22)" />
+            <stop offset="0.82" stopColor="rgba(255,255,255,0.22)" />
+            <stop offset="1"    stopColor="rgba(255,255,255,0)" />
+          </linearGradient>
+          <radialGradient id={glow} cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0"   stopColor="rgba(255,255,255,0.9)" />
+            <stop offset="0.5" stopColor="rgba(255,255,255,0.35)" />
+            <stop offset="1"   stopColor="rgba(255,255,255,0)" />
+          </radialGradient>
+        </defs>
+
+        {/* Base track — hairline dashed, faded at both ends */}
+        <line x1="4" y1="12" x2="128" y2="12" stroke={`url(#${track})`} strokeWidth="1.25" strokeDasharray="1 5" strokeLinecap="round" />
+
+        {/* Fixed anchor nodes */}
+        <circle cx="4"   cy="12" r="1.6" fill="rgba(255,255,255,0.45)" />
+        <circle cx="128" cy="12" r="1.6" fill="rgba(255,255,255,0.45)" />
+
+        {/* Travelling packet — soft halo + bright core */}
+        <circle r="7" cy="12" fill={`url(#${glow})`}>
+          <animate attributeName="cx" values="4;128" dur="2.6s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.8;1" dur="2.6s" repeatCount="indefinite" />
         </circle>
-        <circle r="2.5" cy="12" fill="rgba(255,255,255,0.6)">
-          <animate attributeName="cx" values="-6;126" dur="2.4s" begin="0.8s" repeatCount="indefinite" />
-          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="2.4s" begin="0.8s" repeatCount="indefinite" />
+        <circle r="2" cy="12" fill="#ffffff">
+          <animate attributeName="cx" values="4;128" dur="2.6s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.8;1" dur="2.6s" repeatCount="indefinite" />
         </circle>
-        <circle r="2" cy="12" fill="rgba(255,255,255,0.4)">
-          <animate attributeName="cx" values="-6;126" dur="2.4s" begin="1.6s" repeatCount="indefinite" />
-          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="2.4s" begin="1.6s" repeatCount="indefinite" />
-        </circle>
-        <rect x="0" y="11" width="120" height="2" rx="1">
-          <animate attributeName="fill" values="rgba(255,255,255,0);rgba(255,255,255,0.04);rgba(255,255,255,0)" dur="2.4s" repeatCount="indefinite" />
-        </rect>
       </svg>
-      <span className="text-white/30 text-[11px] font-mono ml-1 select-none">→</span>
     </div>
   )
 }
 
-/* ─── Connectors: positioned in the panel overlap zones ─────── */
+/* ─── Connectors: threaded through the panel seams ─────────────
+   The panels deliberately overlap for depth, so each connector lives
+   in the sliver where the upstream panel is still visible, then the
+   travelling packet slips *under* the downstream panel — reading as
+   data crossing ERP → API → Web. Each sits at the z-layer just below
+   its downstream panel:
+     A  z-15  (above ERP z-10, below API z-20)
+     B  z-25  (above API z-20, below Web z-30) */
 function Connectors() {
   return (
-    <div className="pointer-events-none absolute inset-0 z-[15]" aria-hidden>
-      <div className="absolute top-1/2 -translate-y-1/2" style={{ left: '28%', width: '14%' }}>
+    <>
+      <div
+        className="pointer-events-none absolute top-1/2 z-[15] -translate-y-1/2"
+        style={{ left: '19%', width: '15%' }}
+        aria-hidden
+      >
         <SvgConnector />
       </div>
-      <div className="absolute top-1/2 -translate-y-1/2" style={{ left: '58%', width: '14%' }}>
+      <div
+        className="pointer-events-none absolute top-1/2 z-[25] -translate-y-1/2"
+        style={{ left: '47%', width: '15%' }}
+        aria-hidden
+      >
         <SvgConnector />
       </div>
-    </div>
+    </>
   )
 }
 
@@ -292,21 +382,18 @@ function ErpPanel({
   return (
     <article
       aria-label={t.panelLeftTitle}
-      className="h-full overflow-hidden rounded-[14px] border border-white/[0.07] text-white flex flex-col"
+      className="h-full overflow-hidden rounded-2xl text-white flex flex-col"
       style={{
-        background: 'linear-gradient(180deg, hsl(0 0% 13%) 0%, hsl(0 0% 9%) 100%)',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.2), 0 1px 3px rgba(0,0,0,0.15)',
+        background: 'linear-gradient(180deg, hsl(0 0% 13.5%) 0%, hsl(0 0% 9.5%) 100%)',
+        border: `1px solid ${PANEL_BORDER}`,
+        boxShadow:
+          'inset 0 1px 0 rgba(255,255,255,0.04), ' +
+          '0 10px 28px rgba(0,0,0,0.35), ' +
+          '0 2px 6px rgba(0,0,0,0.22)',
         WebkitFontSmoothing: 'antialiased',
       }}
     >
-      <header className={`flex items-center justify-between border-b border-white/[0.08] ${px} ${pyH}`}>
-        <span className={`whitespace-nowrap font-semibold tracking-tight ${mobile ? 'text-[13px]' : 'text-[13.5px]'}`}>
-          {t.panelLeftTitle}
-        </span>
-        <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-white/40" style={{ fontFamily: 'var(--font-mono, monospace)' }}>
-          ERP
-        </span>
-      </header>
+      <PanelHeader title={t.panelLeftTitle} tag="ERP" px={px} py={mobile ? 'py-3' : 'py-3.5'} />
 
       <div className="flex-1 overflow-hidden">
         <table className="w-full border-collapse">
@@ -365,7 +452,10 @@ function ErpPanel({
         </table>
       </div>
 
-      <footer className={`flex items-center gap-2 border-t border-white/[0.08] bg-white/[0.015] ${px} ${mobile ? 'py-2' : 'py-3'} text-[12px] text-white/55`}>
+      <footer
+        className={`flex items-center gap-2 bg-white/[0.015] ${px} ${mobile ? 'py-2' : 'py-3'} text-[12px] text-white/55`}
+        style={{ borderTop: `1px solid ${HAIRLINE}` }}
+      >
         <GreenDot size={6} />
         {t.connected}
       </footer>
@@ -403,28 +493,29 @@ function ApiPanel({
   return (
     <aside
       aria-label="Requête API sync"
-      className={`h-full flex flex-col rounded-[14px] border border-white/[0.10] ${mobile ? 'px-4' : 'px-5'} pb-3.5 pt-4 text-white/55`}
+      className="h-full flex flex-col overflow-hidden rounded-2xl text-white/55"
       style={{
-        background: 'rgba(255,255,255,0.025)',
+        background: 'rgba(255,255,255,0.028)',
+        border: `1px solid ${PANEL_BORDER}`,
         backdropFilter: 'blur(24px) saturate(1.2)',
         WebkitBackdropFilter: 'blur(24px) saturate(1.2)',
         boxShadow:
-          '0 0 0 1px rgba(255,255,255,0.06), ' +
-          'inset 0 1px 0 rgba(255,255,255,0.06), ' +
-          '0 16px 40px rgba(0,0,0,0.45), ' +
+          'inset 0 1px 0 rgba(255,255,255,0.08), ' +
+          '0 20px 48px rgba(0,0,0,0.42), ' +
           '0 4px 12px rgba(0,0,0,0.25)',
-        fontFamily: 'var(--font-mono, monospace)',
-        fontSize: mobile ? 11.5 : 12.5,
-        lineHeight: 1.75,
         WebkitFontSmoothing: 'antialiased',
       }}
     >
-      <div className="mb-2 flex items-center gap-2 whitespace-nowrap border-b border-white/[0.06] pb-2.5 text-[10.5px] uppercase tracking-[0.14em] text-white/40">
-        <GreenDot size={6} />
-        <span>{t.apiLabel}</span>
-      </div>
+      <PanelHeader title={t.apiLabel} tag="Live" live px={mobile ? 'px-4' : 'px-5'} py="py-3" />
 
-      <div className="flex-1 overflow-hidden">
+      <div
+        className={`flex flex-1 flex-col justify-center overflow-hidden ${mobile ? 'px-4' : 'px-5'} py-3.5`}
+        style={{
+          fontFamily: 'var(--font-mono, monospace)',
+          fontSize: mobile ? 11.5 : 12.5,
+          lineHeight: 1.75,
+        }}
+      >
         <CLine><Verb>POST</Verb> <CPath>/api/sync</CPath> <CMute>HTTP/1.1</CMute></CLine>
         {!mobile && (
           <CLine><CKey>Authorization:</CKey> <CMute>Bearer</CMute> <CStr>sk_live_***</CStr></CLine>
@@ -435,9 +526,9 @@ function ApiPanel({
         <CLine>{'  '}<CKey>&quot;stock&quot;</CKey><CMute>:</CMute>{' '}<CNum>{displayStock}</CNum><CMute>,</CMute></CLine>
         <CLine>{'  '}<CKey>&quot;price&quot;</CKey><CMute>:</CMute>{' '}<CNum>{displayPrice}</CNum></CLine>
         <CLine><CBrace>{'}'}</CBrace></CLine>
-        <span className="my-2.5 -mx-1 block h-px bg-white/[0.06]" />
+        <span className="my-2.5 block h-px" style={{ background: HAIRLINE }} />
         <CLine>
-          <span className="text-white/40">→</span>{' '}
+          <ArrowGlyph dir="right" />{' '}
           {isSyncing ? (
             <span className="syncing-text">{t.syncing}</span>
           ) : (
@@ -449,11 +540,38 @@ function ApiPanel({
         </CLine>
       </div>
 
-      <div className="mt-2 flex items-center gap-1.5 whitespace-nowrap border-t border-white/[0.06] pt-2.5 text-[10.5px] tracking-[0.06em] text-white/40">
-        <span className="text-white/55">↓</span>
+      <div
+        className={`flex items-center gap-1.5 whitespace-nowrap ${mobile ? 'px-4' : 'px-5'} py-2.5 text-[10.5px] uppercase tracking-[0.12em] text-white/40`}
+        style={{ borderTop: `1px solid ${HAIRLINE}`, fontFamily: 'var(--font-mono, monospace)' }}
+      >
+        <ArrowGlyph dir="down" />
         <span>{t.realtimeLabel}</span>
       </div>
     </aside>
+  )
+}
+
+/* ─── ArrowGlyph: unified inline arrow icon (replaces text glyphs) ── */
+function ArrowGlyph({ dir }: { dir: 'right' | 'down' }) {
+  return (
+    <svg
+      width="11" height="11" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round"
+      aria-hidden
+      className="inline-block flex-shrink-0 text-white/45 align-[-1px]"
+    >
+      {dir === 'right' ? (
+        <>
+          <line x1="4" y1="12" x2="18" y2="12" />
+          <polyline points="13 7 18 12 13 17" />
+        </>
+      ) : (
+        <>
+          <line x1="12" y1="4" x2="12" y2="18" />
+          <polyline points="7 13 12 18 17 13" />
+        </>
+      )}
+    </svg>
   )
 }
 
@@ -476,27 +594,19 @@ function EcomPanel({
   return (
     <article
       aria-label={t.panelRightTitle}
-      className="h-full overflow-hidden rounded-[14px] border border-[#e1e3e5] bg-white flex flex-col"
+      className="h-full overflow-hidden rounded-2xl bg-white flex flex-col"
       style={{
         color: '#303030',
         fontFamily: 'var(--font-sans, system-ui, sans-serif)',
         boxShadow:
-          '0 32px 80px rgba(0,0,0,0.55), ' +
-          '0 12px 24px rgba(0,0,0,0.3), ' +
-          '0 0 0 1px rgba(255,255,255,0.10)',
+          '0 24px 60px rgba(0,0,0,0.46), ' +
+          '0 8px 20px rgba(0,0,0,0.26), ' +
+          '0 0 0 1px rgba(255,255,255,0.06), ' +
+          'inset 0 1px 0 rgba(255,255,255,0.7)',
         WebkitFontSmoothing: 'antialiased',
       }}
     >
-      <header className="flex items-center justify-between border-b border-[#e1e3e5] bg-[#f6f6f7] px-4 py-3.5">
-        <span className="whitespace-nowrap text-[13.5px] font-semibold tracking-tight text-[#1a1a1a]">
-          {t.panelRightTitle}
-        </span>
-        <div className="flex items-center gap-1.5">
-          <span className="block w-[9px] h-[9px] rounded-full bg-[#e2e2e4]" />
-          <span className="block w-[9px] h-[9px] rounded-full bg-[#e2e2e4]" />
-          <span className="block w-[9px] h-[9px] rounded-full bg-[#e2e2e4]" />
-        </div>
-      </header>
+      <PanelHeader title={t.panelRightTitle} tag="Web" tone="light" px="px-4" py="py-3.5" />
 
       <div
         className="grid items-center gap-2.5 border-b border-[#ebebeb] bg-[#fafafa] px-4 py-2.5 text-[11px] font-medium tracking-[0.01em] text-[#616161]"
@@ -573,15 +683,24 @@ function Row({ label, meta, variant }: { label: string; meta: string; variant: '
       }}
     >
       <span
-        className="flex-shrink-0 grid place-items-center rounded font-semibold text-[10px] leading-none"
+        className="flex-shrink-0 grid place-items-center rounded-[6px] leading-none"
         style={{
           width: 18, height: 18, marginTop: 1,
-          background: isBad ? 'rgba(255,80,80,0.05)' : 'rgba(255,255,255,0.06)',
-          color:      isBad ? 'rgba(255,80,80,0.70)' : '#ffffff',
-          border:     `1px solid ${isBad ? 'rgba(255,80,80,0.18)' : 'rgba(255,255,255,0.18)'}`,
+          background: isBad ? 'rgba(248,113,113,0.06)' : 'rgba(255,255,255,0.07)',
+          color:      isBad ? 'rgba(248,113,113,0.82)' : '#ffffff',
+          border:     `1px solid ${isBad ? 'rgba(248,113,113,0.22)' : 'rgba(255,255,255,0.20)'}`,
         }}
       >
-        {isBad ? '✕' : '✓'}
+        {isBad ? (
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" aria-hidden>
+            <line x1="6" y1="6" x2="18" y2="18" />
+            <line x1="18" y1="6" x2="6" y2="18" />
+          </svg>
+        ) : (
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        )}
       </span>
       <span className="flex-1 min-w-0">{label}</span>
       <span
