@@ -18,6 +18,7 @@ import { Footer } from '@/components/footer'
 import { useLang } from '@/components/app-provider'
 import { strings } from '@/lib/strings'
 import { useScrollReveal } from '@/lib/use-scroll-reveal'
+import { WaveBackground } from '@/components/ui/wave-background'
 import {
   Reveal,
   HeroInventoryMock,
@@ -45,9 +46,7 @@ export function TankLogicContent() {
           className="relative overflow-hidden pb-16 pt-28 min-720:pb-20 min-720:pt-36"
           style={{ background: 'hsl(var(--bg-secondary))' }}
         >
-          <div className="perspective-grid-wrap" aria-hidden="true">
-            <div className="perspective-grid" />
-          </div>
+          <WaveBackground />
           <div className="relative z-10 mx-auto max-w-4xl px-5">
             <div className="text-center">
               <p className="fade-up section-label">{t.eyebrow}</p>
