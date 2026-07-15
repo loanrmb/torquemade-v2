@@ -35,7 +35,7 @@ const ROTATE_MS = 7000;
 /* Mobile preview images for the vertical stack (services 01-03). */
 const MOBILE_PREVIEWS = [
   '/images/preview-site-jetski-arcachon.png',
-  '/images/preview-crm-logiciel.png',
+  '/images/crm-calendar-mockup.png',
   '/images/preview-erp-site-ecommerce.png',
 ];
 
