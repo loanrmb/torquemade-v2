@@ -99,7 +99,7 @@ export function NavPill() {
               {servicesOpen && (
                 <div className="absolute left-0 top-full pt-3 w-[360px] z-50">
                   <div
-                    className="rounded-2xl border p-2 flex flex-col"
+                    className="rounded-2xl border p-2 flex flex-col gap-1"
                     style={{
                       background: 'hsl(var(--bg-primary))',
                       backdropFilter: 'blur(16px)',
@@ -138,7 +138,7 @@ export function NavPill() {
               {produitsOpen && (
                 <div className="absolute left-0 top-full pt-3 w-[360px] z-50">
                   <div
-                    className="rounded-2xl border p-2 flex flex-col"
+                    className="rounded-2xl border p-2 flex flex-col gap-1"
                     style={{
                       background: 'hsl(var(--bg-primary))',
                       backdropFilter: 'blur(16px)',
@@ -301,7 +301,7 @@ export function NavPill() {
                 {t.services}
               </div>
               <div
-                className="ml-3 flex flex-col gap-0.5"
+                className="ml-3 flex flex-col gap-1.5"
                 style={{
                   borderLeft: '2px solid hsl(var(--text-primary) / 0.08)',
                   paddingLeft: '12px',
@@ -326,7 +326,7 @@ export function NavPill() {
                 {t.produits}
               </div>
               <div
-                className="ml-3 flex flex-col gap-0.5"
+                className="ml-3 flex flex-col gap-1.5"
                 style={{
                   borderLeft: '2px solid hsl(var(--text-primary) / 0.08)',
                   paddingLeft: '12px',

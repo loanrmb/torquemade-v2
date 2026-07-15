@@ -13,12 +13,12 @@ export const strings = {
       menuLabel: 'Ouvrir le menu',
       closeLabel: 'Fermer',
       servicesItems: [
-        { label: 'Développement Web', href: '/services/web-dev', subtitle: 'Un site "simple", mais pensé pour avoir un réel impact.' },
-        { label: 'CRM sur mesure', href: '/services/crm', subtitle: 'On construit **votre** CRM/logiciel pour votre activité, et il vous appartient.' },
+        { label: 'Développement Web', href: '/services/web-dev', subtitle: 'Site vitrine ou e-commerce, pensé pour avoir un réel impact.' },
+        { label: 'CRM sur mesure', href: '/services/crm', subtitle: 'On construit **votre** CRM/logiciel sur mesure pour votre activité, et il vous appartient.' },
         { label: 'Connexion Stock Magasin <> Site e-commerce', href: '/services/erp-ecommerce', subtitle: 'Connectez votre stock magasin à votre site internet en temps réel.' },
       ],
       produitsItems: [
-        { label: 'TankLogic', href: '/tanklogic', subtitle: 'Le Logiciel dédié aux magasins de poissons et aquarium. Connecter votre être vivant en magasin à votre plateforme de vente en ligne en temps réel.' },
+        { label: 'TankLogic', href: '/tanklogic', subtitle: 'Le Logiciel dédié aux magasins de poissons et aquarium. Connecter vos êtres vivants en magasin à votre plateforme de vente en ligne en temps réel.' },
       ],
     },
     hero: {
@@ -601,8 +601,8 @@ export const strings = {
       menuLabel: 'Open menu',
       closeLabel: 'Close',
       servicesItems: [
-        { label: 'Web Development', href: '/services/web-dev', subtitle: 'A straightforward site, built to make a real impact.' },
-        { label: 'Custom CRM', href: '/services/crm', subtitle: 'We build **your** CRM/software for your business — and you own it.' },
+        { label: 'Web Development', href: '/services/web-dev', subtitle: 'A showcase or e-commerce site, built to make a real impact.' },
+        { label: 'Custom CRM', href: '/services/crm', subtitle: 'We build **your** custom CRM/software for your business — and you own it.' },
         { label: 'In-Store Inventory <> E-commerce Website Real-Time Sync', href: '/services/erp-ecommerce', subtitle: 'Connect your in-store stock to your website in real time.' },
       ],
       produitsItems: [
