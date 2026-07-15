@@ -31,15 +31,15 @@ export const strings = {
       pillars: [
         {
           label: 'Sites & e-commerce',
-          desc: 'Vitrines et boutiques en ligne, du design au déploiement.',
+          desc: 'Site vitrine ou e-commerce, pensé pour avoir un réel impact.',
         },
         {
           label: 'CRM & logiciel sur mesure',
-          desc: 'Des outils construits autour de votre métier.',
+          desc: 'On construit **votre** CRM/logiciel sur mesure pour votre activité, et il vous appartient.',
         },
         {
           label: 'Synchro stock en temps réel',
-          desc: 'Stock magasin ↔ boutique en ligne, toujours alignés.',
+          desc: 'Connectez votre stock magasin à votre site internet en temps réel.',
         },
       ],
       tagline2: 'On construit des systèmes.',
@@ -634,15 +634,15 @@ export const strings = {
       pillars: [
         {
           label: 'Websites & e-commerce',
-          desc: 'Showcase sites and online stores, from design to launch.',
+          desc: 'A showcase or e-commerce site, built to make a real impact.',
         },
         {
           label: 'Custom CRM & software',
-          desc: 'Tools built around how your business actually works.',
+          desc: 'We build **your** custom CRM/software for your business — and you own it.',
         },
         {
           label: 'Real-time stock sync',
-          desc: 'In-store ↔ online inventory, always aligned.',
+          desc: 'Connect your in-store stock to your website in real time.',
         },
       ],
       tagline2: 'We build systems.',

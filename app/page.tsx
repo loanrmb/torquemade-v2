@@ -105,7 +105,7 @@ export default function HomePage() {
                     className="text-sm leading-relaxed"
                     style={{ color: 'hsl(var(--text-secondary))' }}
                   >
-                    {pillar.desc}
+                    <EmphasisText text={pillar.desc} />
                   </p>
                 </div>
               ))}
@@ -321,6 +321,28 @@ export default function HomePage() {
       </main>
 
       <Footer />
+    </>
+  )
+}
+
+// Renders a string, converting inline **bold** markers to emphasized <strong>.
+// Mirrors the dropdown subtitle treatment in nav-pill.tsx.
+function EmphasisText({ text }: { text: string }) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g)
+  return (
+    <>
+      {parts.map((part, i) =>
+        part.startsWith('**') && part.endsWith('**') ? (
+          <strong
+            key={i}
+            style={{ fontWeight: 600, color: 'hsl(var(--text-primary))' }}
+          >
+            {part.slice(2, -2)}
+          </strong>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
     </>
   )
 }
