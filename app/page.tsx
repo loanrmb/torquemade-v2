@@ -13,6 +13,7 @@ import ServicesSection from '@/components/services-section'
 import { SeoFeaturesSection } from '@/components/seo-features-section'
 import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 import { CrmDashboardPreview } from '@/components/crm-dashboard-preview'
+import { WaveBackground } from '@/components/ui/wave-background'
 
 const workContainerVariants: Variants = {
   hidden: {},
@@ -42,8 +43,9 @@ export default function HomePage() {
       <main className="relative z-10 overflow-clip rounded-b-32 bg-bg-primary">
 
         {/* ── HERO ── */}
-        <section className="px-4 pt-28 pb-4 min-720:px-5 min-720:pt-36 min-1280:pt-44">
-          <div className="flex flex-col items-start text-left max-w-5xl mx-auto">
+        <section className="relative overflow-hidden px-4 pt-28 pb-4 min-720:px-5 min-720:pt-36 min-1280:pt-44">
+          <WaveBackground />
+          <div className="relative z-10 flex flex-col items-start text-left max-w-5xl mx-auto">
 
             <h1
               className="fade-up text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.15]"
