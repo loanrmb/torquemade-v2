@@ -41,66 +41,81 @@ export default function HomePage() {
 
       <main className="relative z-10 overflow-clip rounded-b-32 bg-bg-primary">
 
-        {/* ── HERO ── */}
+        {/* ── HERO ──
+            Mobile (< md): single-column text stack (unchanged).
+            Desktop/tablet (≥ md): two columns — text left, StockPro
+            mock right (tilted + edge-faded, styled in globals.css). */}
         <section className="px-4 pt-28 pb-4 min-720:px-5 min-720:pt-36 min-1280:pt-44">
-          <div className="flex flex-col items-start text-left max-w-5xl mx-auto">
+          <div className="mx-auto max-w-5xl md:max-w-6xl md:grid md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:items-center md:gap-8 lg:gap-12">
 
-            <h1
-              className="fade-up text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.15]"
-              style={{ color: 'hsl(var(--text-primary))' }}
-            >
-              {t.hero.tagline}
-              <br />
-              <span>
-                {t.hero.tagline2Lead}
-                {t.hero.tagline2Accent}
-              </span>
-            </h1>
+            {/* LEFT — text column */}
+            <div className="relative z-10 flex flex-col items-start text-left">
+              <div aria-hidden="true" className="hero-text-scrim hidden md:block" />
 
-            <p
-              className="fade-up fade-up-d1 mt-3 text-base md:mt-6 md:text-xl lg:text-2xl font-medium"
-              style={{ color: 'hsl(var(--text-secondary))' }}
-            >
-              {t.hero.heroSubheadline}
-            </p>
-
-            <p
-              className="fade-up fade-up-d2 mt-2 text-sm md:text-base"
-              style={{ color: 'hsl(var(--text-tertiary))' }}
-            >
-              {t.hero.headline2}
-            </p>
-
-            <div className="fade-up fade-up-d3 mt-6 md:mt-8 flex flex-wrap items-center justify-start gap-3">
-              <Link
-                href="/contact"
-                className="btn-liquid-glass rounded-full px-6 py-3 text-sm font-semibold"
+              <h1
+                className="fade-up text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.15]"
+                style={{ color: 'hsl(var(--text-primary))' }}
               >
-                {t.hero.heroCta1}
-              </Link>
-              <Link
-                href="/work"
-                className="btn-outline-glass rounded-full px-6 py-3 text-sm font-semibold"
+                {t.hero.tagline}
+                <br />
+                <span>
+                  {t.hero.tagline2Lead}
+                  {t.hero.tagline2Accent}
+                </span>
+              </h1>
+
+              <p
+                className="fade-up fade-up-d1 mt-3 text-base md:mt-6 md:text-xl lg:text-2xl font-medium"
+                style={{ color: 'hsl(var(--text-secondary))' }}
               >
-                {t.hero.heroCta2}
-              </Link>
+                {t.hero.heroSubheadline}
+              </p>
+
+              <p
+                className="fade-up fade-up-d2 mt-2 text-sm md:text-base"
+                style={{ color: 'hsl(var(--text-tertiary))' }}
+              >
+                {t.hero.headline2}
+              </p>
+
+              <div className="fade-up fade-up-d3 mt-6 md:mt-8 flex flex-wrap items-center justify-start gap-3">
+                <Link
+                  href="/contact"
+                  className="btn-liquid-glass rounded-full px-6 py-3 text-sm font-semibold"
+                >
+                  {t.hero.heroCta1}
+                </Link>
+                <Link
+                  href="/work"
+                  className="btn-outline-glass rounded-full px-6 py-3 text-sm font-semibold"
+                >
+                  {t.hero.heroCta2}
+                </Link>
+              </div>
+            </div>
+
+            {/* RIGHT — StockPro mock (desktop/tablet only, decorative) */}
+            <div className="hero-mockup-col fade-up fade-up-d2 hidden md:block" aria-hidden="true">
+              <div className="hero-mockup-frame">
+                <CrmDashboardPreview />
+              </div>
             </div>
           </div>
         </section>
 
-        {/* ── CONTAINER SCROLL — animated dashboard (desktop) + static PNG (mobile) ── */}
-        <ContainerScroll titleComponent={<div aria-hidden="true" />}>
-          <div className="block md:hidden w-full px-4">
-            <img
-              src="/images/preview-dashboard-stock-sombre.png"
-              alt="Dashboard logiciel de gestion de stock"
-              className="w-full rounded-2xl shadow-lg"
-            />
-          </div>
-          <div className="hidden md:flex w-full h-full">
-            <CrmDashboardPreview />
-          </div>
-        </ContainerScroll>
+        {/* ── STACKED DASHBOARD — mobile only (static PNG).
+            On desktop the mock lives in the hero's right column above. ── */}
+        <div className="md:hidden">
+          <ContainerScroll titleComponent={<div aria-hidden="true" />}>
+            <div className="w-full px-4">
+              <img
+                src="/images/preview-dashboard-stock-sombre.png"
+                alt="Dashboard logiciel de gestion de stock"
+                className="w-full rounded-2xl shadow-lg"
+              />
+            </div>
+          </ContainerScroll>
+        </div>
 
         {/* ── SERVICES ── */}
         <ServicesSection />
