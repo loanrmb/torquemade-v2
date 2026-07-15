@@ -97,7 +97,7 @@ export function NavPill() {
               </button>
 
               {servicesOpen && (
-                <div className="absolute left-0 top-full pt-3 min-w-[320px] z-50">
+                <div className="absolute left-0 top-full pt-3 w-[360px] z-50">
                   <div
                     className="rounded-2xl border p-2 flex flex-col"
                     style={{
@@ -109,17 +109,7 @@ export function NavPill() {
                     }}
                   >
                     {t.servicesItems.map((s) => (
-                      <Link
-                        key={s.href}
-                        href={s.href}
-                        className="rounded-xl px-3 py-2.5 text-sm font-medium transition-colors duration-150"
-                        style={{
-                          color: pathname === s.href ? 'hsl(var(--text-primary))' : 'hsl(var(--text-secondary))',
-                          background: pathname === s.href ? 'hsl(var(--bg-secondary))' : 'transparent',
-                        }}
-                      >
-                        {s.label}
-                      </Link>
+                      <DropdownItem key={s.href} item={s} active={pathname === s.href} />
                     ))}
                   </div>
                 </div>
@@ -146,7 +136,7 @@ export function NavPill() {
               </button>
 
               {produitsOpen && (
-                <div className="absolute left-0 top-full pt-3 min-w-[320px] z-50">
+                <div className="absolute left-0 top-full pt-3 w-[360px] z-50">
                   <div
                     className="rounded-2xl border p-2 flex flex-col"
                     style={{
@@ -158,17 +148,7 @@ export function NavPill() {
                     }}
                   >
                     {t.produitsItems.map((s) => (
-                      <Link
-                        key={s.href}
-                        href={s.href}
-                        className="rounded-xl px-3 py-2.5 text-sm font-medium transition-colors duration-150"
-                        style={{
-                          color: pathname === s.href ? 'hsl(var(--text-primary))' : 'hsl(var(--text-secondary))',
-                          background: pathname === s.href ? 'hsl(var(--bg-secondary))' : 'transparent',
-                        }}
-                      >
-                        {s.label}
-                      </Link>
+                      <DropdownItem key={s.href} item={s} active={pathname === s.href} />
                     ))}
                   </div>
                 </div>
@@ -327,26 +307,14 @@ export function NavPill() {
                   paddingLeft: '12px',
                 }}
               >
-                {t.servicesItems.map((s) => {
-                  const active = pathname === s.href
-                  return (
-                    <Link
-                      key={s.href}
-                      href={s.href}
-                      onClick={() => setMenuOpen(false)}
-                      className="rounded-lg px-3 py-2 text-sm transition-colors duration-150"
-                      style={{
-                        color: active ? 'hsl(var(--text-primary))' : 'hsl(var(--text-secondary))',
-                        background: active ? 'hsl(var(--bg-secondary))' : 'transparent',
-                      }}
-                    >
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span>{s.label}</span>
-                        <span style={{ opacity: active ? 1 : 0.4, fontSize: '0.75rem' }}>→</span>
-                      </div>
-                    </Link>
-                  )
-                })}
+                {t.servicesItems.map((s) => (
+                  <MobileDropdownItem
+                    key={s.href}
+                    item={s}
+                    active={pathname === s.href}
+                    onClick={() => setMenuOpen(false)}
+                  />
+                ))}
               </div>
 
               <div className="my-3 h-px" style={{ background: 'hsl(var(--border-subtle))' }} />
@@ -364,26 +332,14 @@ export function NavPill() {
                   paddingLeft: '12px',
                 }}
               >
-                {t.produitsItems.map((s) => {
-                  const active = pathname === s.href
-                  return (
-                    <Link
-                      key={s.href}
-                      href={s.href}
-                      onClick={() => setMenuOpen(false)}
-                      className="rounded-lg px-3 py-2 text-sm transition-colors duration-150"
-                      style={{
-                        color: active ? 'hsl(var(--text-primary))' : 'hsl(var(--text-secondary))',
-                        background: active ? 'hsl(var(--bg-secondary))' : 'transparent',
-                      }}
-                    >
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span>{s.label}</span>
-                        <span style={{ opacity: active ? 1 : 0.4, fontSize: '0.75rem' }}>→</span>
-                      </div>
-                    </Link>
-                  )
-                })}
+                {t.produitsItems.map((s) => (
+                  <MobileDropdownItem
+                    key={s.href}
+                    item={s}
+                    active={pathname === s.href}
+                    onClick={() => setMenuOpen(false)}
+                  />
+                ))}
               </div>
 
               <div className="my-3 h-px" style={{ background: 'hsl(var(--border-subtle))' }} />
@@ -418,6 +374,82 @@ export function NavPill() {
           </div>
         </div>
     </>
+  )
+}
+
+type NavDropdownItem = { label: string; href: string; subtitle?: string }
+
+// Renders a subtitle string, converting inline **bold** markers to <strong>.
+function SubtitleText({ text }: { text: string }) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g)
+  return (
+    <>
+      {parts.map((part, i) =>
+        part.startsWith('**') && part.endsWith('**') ? (
+          <strong key={i} style={{ fontWeight: 600, color: 'hsl(var(--text-primary))' }}>
+            {part.slice(2, -2)}
+          </strong>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
+    </>
+  )
+}
+
+function DropdownItem({ item, active }: { item: NavDropdownItem; active: boolean }) {
+  return (
+    <Link
+      href={item.href}
+      className="rounded-xl px-3 py-2.5 transition-colors duration-150"
+      style={{ background: active ? 'hsl(var(--bg-secondary))' : 'transparent' }}
+    >
+      <div
+        className="text-sm font-semibold"
+        style={{ color: 'hsl(var(--text-primary))' }}
+      >
+        {item.label}
+      </div>
+      {item.subtitle && (
+        <div
+          className="mt-0.5 text-xs leading-snug"
+          style={{ color: 'hsl(var(--text-secondary))' }}
+        >
+          <SubtitleText text={item.subtitle} />
+        </div>
+      )}
+    </Link>
+  )
+}
+
+function MobileDropdownItem({
+  item,
+  active,
+  onClick,
+}: {
+  item: NavDropdownItem
+  active: boolean
+  onClick: () => void
+}) {
+  return (
+    <Link
+      href={item.href}
+      onClick={onClick}
+      className="rounded-lg px-3 py-2 transition-colors duration-150"
+      style={{ background: active ? 'hsl(var(--bg-secondary))' : 'transparent' }}
+    >
+      <div className="flex items-center justify-between gap-2">
+        <span className="text-sm font-semibold" style={{ color: 'hsl(var(--text-primary))' }}>
+          {item.label}
+        </span>
+        <span style={{ opacity: active ? 1 : 0.4, fontSize: '0.75rem', color: 'hsl(var(--text-primary))' }}>→</span>
+      </div>
+      {item.subtitle && (
+        <div className="mt-0.5 text-xs leading-snug" style={{ color: 'hsl(var(--text-secondary))' }}>
+          <SubtitleText text={item.subtitle} />
+        </div>
+      )}
+    </Link>
   )
 }
 

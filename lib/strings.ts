@@ -13,12 +13,12 @@ export const strings = {
       menuLabel: 'Ouvrir le menu',
       closeLabel: 'Fermer',
       servicesItems: [
-        { label: 'Web Dev', href: '/services/web-dev' },
-        { label: 'CRM sur mesure', href: '/services/crm' },
-        { label: 'Connexion stock ERP - Site e-commerce', href: '/services/erp-ecommerce' },
+        { label: 'Développement Web', href: '/services/web-dev', subtitle: 'Un site "simple", mais pensé pour avoir un réel impact.' },
+        { label: 'CRM sur mesure', href: '/services/crm', subtitle: 'On construit **votre** CRM/logiciel pour votre activité, et il vous appartient.' },
+        { label: 'Connexion Stock Magasin <> Site e-commerce', href: '/services/erp-ecommerce', subtitle: 'Connectez votre stock magasin à votre site internet en temps réel.' },
       ],
       produitsItems: [
-        { label: 'TankLogic', href: '/tanklogic' },
+        { label: 'TankLogic', href: '/tanklogic', subtitle: 'Le Logiciel dédié aux magasins de poissons et aquarium. Connecter votre être vivant en magasin à votre plateforme de vente en ligne en temps réel.' },
       ],
     },
     hero: {
@@ -601,12 +601,12 @@ export const strings = {
       menuLabel: 'Open menu',
       closeLabel: 'Close',
       servicesItems: [
-        { label: 'Web Dev', href: '/services/web-dev' },
-        { label: 'Custom CRM', href: '/services/crm' },
-        { label: 'ERP - E-commerce connection', href: '/services/erp-ecommerce' },
+        { label: 'Web Development', href: '/services/web-dev', subtitle: 'A straightforward site, built to make a real impact.' },
+        { label: 'Custom CRM', href: '/services/crm', subtitle: 'We build **your** CRM/software for your business — and you own it.' },
+        { label: 'In-Store Inventory <> E-commerce Website Real-Time Sync', href: '/services/erp-ecommerce', subtitle: 'Connect your in-store stock to your website in real time.' },
       ],
       produitsItems: [
-        { label: 'TankLogic', href: '/tanklogic' },
+        { label: 'TankLogic', href: '/tanklogic', subtitle: 'Software built for fish and aquarium stores. Sync your live inventory in-store with your online sales platform in real time.' },
       ],
     },
     hero: {
