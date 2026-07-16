@@ -50,7 +50,7 @@ export default function HomePage() {
             <p className="fade-up section-label">{t.hero.eyebrow}</p>
 
             <h1
-              className="fade-up fade-up-d1 max-w-4xl text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.05]"
+              className="fade-up fade-up-d1 max-w-5xl text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.05]"
               style={{ color: 'hsl(var(--text-primary))' }}
             >
               {t.hero.tagline}
