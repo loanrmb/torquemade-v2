@@ -57,7 +57,7 @@ export function TankLogicContent() {
                 {t.wordmark}
               </p>
               <h1
-                className="fade-up fade-up-d1 mx-auto mb-5 max-w-2xl text-title-1 font-semibold tracking-tight"
+                className="fade-up fade-up-d1 mx-auto mb-5 max-w-3xl text-title-1 font-semibold tracking-tight"
                 style={{ color: 'hsl(var(--text-primary))', letterSpacing: '-0.03em' }}
               >
                 {t.heroTitle}
