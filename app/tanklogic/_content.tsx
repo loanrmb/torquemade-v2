@@ -47,7 +47,7 @@ export function TankLogicContent() {
           style={{ background: 'hsl(var(--bg-secondary))' }}
         >
           <WaveBackground />
-          <div className="relative z-10 mx-auto max-w-4xl px-5">
+          <div className="relative z-10 mx-auto max-w-5xl px-5">
             <div className="text-center">
               <p className="fade-up section-label">{t.eyebrow}</p>
               <p
@@ -57,7 +57,7 @@ export function TankLogicContent() {
                 {t.wordmark}
               </p>
               <h1
-                className="fade-up fade-up-d1 mx-auto mb-5 max-w-3xl text-title-1 font-semibold tracking-tight"
+                className="fade-up fade-up-d1 mx-auto mb-5 max-w-4xl text-title-1 font-semibold tracking-tight"
                 style={{ color: 'hsl(var(--text-primary))', letterSpacing: '-0.03em' }}
               >
                 {t.heroTitle}
