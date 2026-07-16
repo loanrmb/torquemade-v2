@@ -210,20 +210,11 @@ export function TankLogicContent() {
                 >
                   {t.traceTitle}
                 </h3>
-                {t.traceBody.map((para, i) => (
-                  <p
-                    key={i}
-                    className="fade-up mb-3 max-w-md text-body leading-relaxed last:mb-0"
-                    style={{ color: 'hsl(var(--text-secondary))' }}
-                  >
-                    {para}
-                  </p>
-                ))}
                 <p
-                  className="fade-up mb-6 mt-3 max-w-md text-sm italic leading-relaxed"
-                  style={{ color: 'hsl(var(--text-tertiary))' }}
+                  className="fade-up mb-6 max-w-md text-body leading-relaxed"
+                  style={{ color: 'hsl(var(--text-secondary))' }}
                 >
-                  {t.traceNote}
+                  {t.traceBody}
                 </p>
                 <Reveal className="mt-auto" delay={0.12}>
                   <TraceMock />
