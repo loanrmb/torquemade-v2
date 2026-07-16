@@ -6,6 +6,14 @@ import { Footer } from '@/components/footer'
 import { useLang } from '@/components/app-provider'
 import { strings } from '@/lib/strings'
 import { useScrollReveal } from '@/lib/use-scroll-reveal'
+import { posts } from '@/lib/blog'
+
+const RELATED_CATEGORIES = ['Web & Développement', 'SEO & Contenu']
+
+const relatedPosts = posts
+  .filter((post) => RELATED_CATEGORIES.includes(post.category))
+  .sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1))
+  .slice(0, 3)
 
 export default function WebDevPage() {
   const lang = useLang()
@@ -40,6 +48,230 @@ export default function WebDevPage() {
             >
               {t.intro}
             </p>
+          </div>
+        </section>
+
+        {/* REFRAME */}
+        <section className="px-5 py-20 min-720:py-24">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2
+              className="fade-up text-title-2 font-semibold tracking-tight mb-5"
+              style={{ color: 'hsl(var(--text-primary))' }}
+            >
+              {t.reframeTitle}
+            </h2>
+            <p
+              className="fade-up fade-up-d1 text-body-lg leading-relaxed"
+              style={{ color: 'hsl(var(--text-secondary))' }}
+            >
+              {t.reframeBody}
+            </p>
+          </div>
+        </section>
+
+        {/* BENTO: WHAT WE DON'T TELL YOU */}
+        <section
+          className="px-5 py-20 min-720:py-24"
+          style={{ background: 'hsl(var(--bg-secondary))' }}
+        >
+          <div className="mx-auto max-w-5xl">
+            <h2
+              className="fade-up text-title-2 font-semibold tracking-tight mb-10 text-center"
+              style={{ color: 'hsl(var(--text-primary))' }}
+            >
+              {t.bentoTitle}
+            </h2>
+            <div
+              className="fade-up grid grid-cols-1 min-720:grid-cols-3 overflow-hidden rounded-2xl"
+              style={{
+                background: 'hsl(var(--bg-primary))',
+                border: '1px solid hsl(var(--border-subtle))',
+              }}
+            >
+              {t.bento.map((item, i) => (
+                <div
+                  key={i}
+                  className={[
+                    'p-6 min-720:p-8 flex flex-col gap-2',
+                    i > 0 ? 'border-t' : '',
+                    i >= 3 ? 'min-720:border-t' : 'min-720:border-t-0',
+                    i % 3 !== 0 ? 'min-720:border-l' : 'min-720:border-l-0',
+                  ].join(' ')}
+                  style={{ borderColor: 'hsl(var(--border-subtle))' }}
+                >
+                  <span
+                    className="text-caption font-mono font-semibold tracking-widest"
+                    style={{ color: 'hsl(var(--text-tertiary))' }}
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3
+                    className="text-body font-semibold"
+                    style={{ color: 'hsl(var(--text-primary))' }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: 'hsl(var(--text-secondary))' }}
+                  >
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* PROCESS */}
+        <section className="px-5 py-20 min-720:py-24">
+          <div className="mx-auto max-w-5xl">
+            <h2
+              className="fade-up text-title-2 font-semibold tracking-tight mb-10 text-center"
+              style={{ color: 'hsl(var(--text-primary))' }}
+            >
+              {t.processTitle}
+            </h2>
+            <div className="grid grid-cols-1 min-720:grid-cols-4 gap-4">
+              {t.process.map((step, i) => (
+                <div
+                  key={i}
+                  className="fade-up p-6 flex flex-col gap-2"
+                  style={{
+                    borderTop: '1px solid hsl(var(--border-subtle))',
+                  }}
+                >
+                  <span
+                    className="text-caption font-mono font-semibold tracking-widest"
+                    style={{ color: 'hsl(var(--text-tertiary))' }}
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3
+                    className="text-body font-semibold"
+                    style={{ color: 'hsl(var(--text-primary))' }}
+                  >
+                    {step.title}
+                  </h3>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: 'hsl(var(--text-secondary))' }}
+                  >
+                    {step.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* STACK BANNER */}
+        <section
+          className="px-5 py-8"
+          style={{
+            borderTop: '1px solid hsl(var(--border-subtle))',
+            borderBottom: '1px solid hsl(var(--border-subtle))',
+          }}
+        >
+          <p
+            className="fade-up mx-auto max-w-3xl text-center text-sm leading-relaxed"
+            style={{ color: 'hsl(var(--text-tertiary))' }}
+          >
+            {t.stackBanner}
+          </p>
+        </section>
+
+        {/* RELATED ARTICLES */}
+        {relatedPosts.length > 0 && (
+          <section className="px-5 py-20 min-720:py-24">
+            <div className="mx-auto max-w-5xl">
+              <h2
+                className="fade-up text-title-2 font-semibold tracking-tight mb-10 text-center"
+                style={{ color: 'hsl(var(--text-primary))' }}
+              >
+                {t.relatedTitle}
+              </h2>
+              <div className="grid grid-cols-1 min-720:grid-cols-3 gap-4">
+                {relatedPosts.map((post) => (
+                  <Link
+                    key={post.slug}
+                    href={`/blog/${post.slug}`}
+                    className="fade-up p-6 rounded-2xl flex flex-col gap-3 transition-opacity duration-150 hover:opacity-70"
+                    style={{
+                      background: 'hsl(var(--bg-secondary))',
+                      border: '1px solid hsl(var(--border-subtle))',
+                    }}
+                  >
+                    <span
+                      className="text-caption font-semibold tracking-widest uppercase"
+                      style={{ color: 'hsl(var(--text-tertiary))' }}
+                    >
+                      {post.date[lang]}
+                    </span>
+                    <h3
+                      className="text-body font-semibold leading-snug"
+                      style={{ color: 'hsl(var(--text-primary))' }}
+                    >
+                      {post.title[lang]}
+                    </h3>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* FAQ */}
+        <section
+          className="px-5 py-20 min-720:py-24"
+          style={{ background: 'hsl(var(--bg-secondary))' }}
+        >
+          <div className="mx-auto max-w-3xl">
+            <h2
+              className="fade-up mb-8 text-title-2 font-semibold tracking-tight min-720:mb-10 text-center"
+              style={{ color: 'hsl(var(--text-primary))' }}
+            >
+              {t.faqTitle}
+            </h2>
+            <div
+              className="fade-up overflow-hidden rounded-2xl"
+              style={{
+                background: 'hsl(var(--bg-primary))',
+                border: '1px solid hsl(var(--border-subtle))',
+              }}
+            >
+              {t.faq.map((item, i) => (
+                <details
+                  key={i}
+                  className="group"
+                  style={{
+                    borderTop: i === 0 ? 'none' : '1px solid hsl(var(--border-subtle))',
+                  }}
+                >
+                  <summary className="flex cursor-pointer list-none items-baseline justify-between gap-4 px-5 py-4 min-720:px-7 min-720:py-5 [&::-webkit-details-marker]:hidden">
+                    <h3
+                      className="text-body font-semibold leading-snug"
+                      style={{ color: 'hsl(var(--text-primary))' }}
+                    >
+                      {item.q}
+                    </h3>
+                    <span
+                      aria-hidden="true"
+                      className="flex-shrink-0 self-center text-lg font-light leading-none transition-transform duration-200 ease-out group-open:rotate-45"
+                      style={{ color: 'hsl(var(--text-tertiary))' }}
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p
+                    className="px-5 pb-5 text-body leading-relaxed min-720:px-7 min-720:pb-6"
+                    style={{ color: 'hsl(var(--text-secondary))' }}
+                  >
+                    {item.a}
+                  </p>
+                </details>
+              ))}
+            </div>
           </div>
         </section>
 

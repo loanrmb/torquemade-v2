@@ -11,6 +11,7 @@ const schema = serviceSchema({
   serviceType: 'Web development',
   slug: 'web-dev',
   description: meta.description,
+  faq: strings.fr.webDev.faq,
 })
 
 export const metadata: Metadata = {
