@@ -7,142 +7,128 @@
  * hex, no color, no words baked in (captions live in lib/strings.ts).
  */
 
-/* Cumulative cost over time: a subscription that keeps climbing (stepped area)
-   versus a custom build paid once (flat baseline with a single upfront dot). */
+/* Break-even over time: a subscription cost that starts near zero and keeps
+   accelerating upward (curve + soft area), versus a custom build paid once
+   (flat threshold line). The marked point is where the running subscription
+   cost overtakes the one-time build cost. */
 export function CostCurveIllustration() {
+  const gradId = 'crm-cost-grad'
+  const curve = 'M70 250 C210 246 320 186 442 68'
   return (
     <svg
-      viewBox="0 0 460 300"
+      viewBox="0 0 480 300"
       role="img"
       aria-hidden="true"
       className="h-auto w-full"
       style={{ color: 'hsl(var(--text-primary))' }}
     >
-      {/* axes */}
-      <path
-        d="M60 44 L60 240 L432 240"
-        fill="none"
-        stroke="currentColor"
-        strokeOpacity="0.22"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      {/* subscription: accumulating area */}
-      <path
-        d="M60 240 L132 240 L132 206 L204 206 L204 168 L276 168 L276 128 L348 128 L348 86 L420 86 L420 240 Z"
-        fill="currentColor"
-        fillOpacity="0.08"
-      />
-      <path
-        d="M60 240 L132 240 L132 206 L204 206 L204 168 L276 168 L276 128 L348 128 L348 86 L420 86"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinejoin="round"
-        strokeLinecap="round"
-      />
-      {/* custom build: flat one-time cost */}
-      <path
-        d="M60 214 L420 214"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeDasharray="2 7"
-        strokeLinecap="round"
-      />
-      <circle cx="60" cy="214" r="5" fill="currentColor" />
+      <defs>
+        <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="currentColor" stopOpacity="0.16" />
+          <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+
+      {/* subscription area */}
+      <path d={`${curve} L442 250 Z`} fill={`url(#${gradId})`} />
+
+      {/* baseline */}
+      <path d="M70 250 L452 250" fill="none" stroke="currentColor" strokeOpacity="0.22" strokeWidth="1.5" strokeLinecap="round" />
+
+      {/* year ticks */}
+      {[1, 2, 3, 4, 5].map((yr) => {
+        const x = 70 + yr * 74
+        return (
+          <g key={yr}>
+            <path d={`M${x} 250 L${x} 256`} stroke="currentColor" strokeOpacity="0.28" strokeWidth="1.5" />
+            <text x={x} y={273} textAnchor="middle" fontSize="12" fill="currentColor" fillOpacity="0.42">
+              {yr}
+            </text>
+          </g>
+        )
+      })}
+
+      {/* custom: flat one-time threshold */}
+      <path d="M70 198 L442 198" fill="none" stroke="currentColor" strokeOpacity="0.55" strokeWidth="2" strokeDasharray="5 6" strokeLinecap="round" />
+      <circle cx="70" cy="198" r="4.5" fill="currentColor" />
+
+      {/* subscription curve */}
+      <path d={curve} fill="none" stroke="currentColor" strokeWidth="2.75" strokeLinecap="round" />
+
+      {/* break-even: where the running subscription cost passes the build cost */}
+      <path d="M262 198 L262 250" stroke="currentColor" strokeOpacity="0.3" strokeWidth="1.5" strokeDasharray="3 4" />
+      <circle cx="262" cy="198" r="6.5" fill="hsl(var(--bg-secondary))" stroke="currentColor" strokeWidth="2.5" />
     </svg>
   )
 }
 
-/* Ownership: a rented database sits inside someone else's infrastructure with
-   the key on a severable leash (left); an owned database sits inside your own
-   infrastructure, key held, verified (right). */
+/* Ownership: a rented database lives on someone else's infrastructure behind a
+   lock the vendor controls (dashed boundary, left); an owned database lives on
+   your own infrastructure with the key in hand and verified (solid, right). */
 export function OwnershipIllustration() {
   return (
     <svg
-      viewBox="0 0 460 260"
+      viewBox="0 0 460 240"
       role="img"
       aria-hidden="true"
       className="h-auto w-full"
       style={{ color: 'hsl(var(--text-primary))' }}
     >
       {/* LEFT — rented */}
-      <rect
-        x="26"
-        y="66"
-        width="170"
-        height="150"
-        rx="14"
-        fill="none"
-        stroke="currentColor"
-        strokeOpacity="0.5"
-        strokeWidth="2"
-        strokeDasharray="6 6"
-      />
-      <Database cx={111} top={112} />
-      {/* severable leash + key outside the box */}
-      <path
-        d="M111 96 C 111 60, 70 58, 60 44"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeDasharray="4 5"
-        strokeOpacity="0.55"
-      />
-      <path
-        d="M74 34 l14 14 M81 41 l-9 9 a7 7 0 1 1 -10 -10 a7 7 0 0 1 10 0 Z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      {/* cut mark on the leash */}
-      <path
-        d="M92 66 l12 12 M104 66 l-12 12"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
+      <g style={{ opacity: 0.85 }}>
+        <rect x="34" y="46" width="158" height="152" rx="18" fill="none" stroke="currentColor" strokeOpacity="0.5" strokeWidth="2" strokeDasharray="8 7" />
+        <Padlock cx={113} cy={82} />
+        <Database cx={113} top={132} />
+      </g>
 
       {/* RIGHT — owned */}
-      <rect
-        x="264"
-        y="66"
-        width="170"
-        height="150"
-        rx="14"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.5"
-      />
-      <Database cx={349} top={112} />
-      {/* verified badge */}
-      <circle cx="410" cy="78" r="16" fill="currentColor" />
-      <path
-        d="M403 78 l5 5 l9 -10"
-        fill="none"
-        stroke="hsl(var(--bg-primary))"
-        strokeWidth="2.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <g>
+        <rect x="268" y="46" width="158" height="152" rx="18" fill="none" stroke="currentColor" strokeWidth="2.5" />
+        <Database cx={347} top={94} />
+        <Key cx={347} cy={168} />
+        {/* verified badge */}
+        <circle cx="412" cy="58" r="15" fill="currentColor" />
+        <path d="M405 58 l5 5 l9 -10" fill="none" stroke="hsl(var(--bg-secondary))" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" />
+      </g>
     </svg>
   )
 }
 
 function Database({ cx, top }: { cx: number; top: number }) {
-  const rx = 34
-  const ry = 11
-  const h = 60
+  const rx = 30
+  const ry = 10
+  const h = 46
   return (
     <g fill="none" stroke="currentColor" strokeWidth="2.25">
-      <path
-        d={`M${cx - rx} ${top} L${cx - rx} ${top + h} A${rx} ${ry} 0 0 0 ${cx + rx} ${top + h} L${cx + rx} ${top}`}
-      />
+      <path d={`M${cx - rx} ${top} L${cx - rx} ${top + h} A${rx} ${ry} 0 0 0 ${cx + rx} ${top + h} L${cx + rx} ${top}`} />
       <ellipse cx={cx} cy={top} rx={rx} ry={ry} />
       <path d={`M${cx - rx} ${top + h / 2} A${rx} ${ry} 0 0 0 ${cx + rx} ${top + h / 2}`} strokeOpacity="0.4" />
+    </g>
+  )
+}
+
+function Padlock({ cx, cy }: { cx: number; cy: number }) {
+  return (
+    <g fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round">
+      {/* shackle */}
+      <path d={`M${cx - 9} ${cy} v-7 a9 9 0 0 1 18 0 v7`} />
+      {/* body */}
+      <rect x={cx - 15} y={cy} width="30" height="22" rx="4" />
+      {/* keyhole */}
+      <circle cx={cx} cy={cy + 9} r="2.4" fill="currentColor" stroke="none" />
+      <path d={`M${cx} ${cy + 11} v4`} />
+    </g>
+  )
+}
+
+function Key({ cx, cy }: { cx: number; cy: number }) {
+  return (
+    <g stroke="currentColor" strokeWidth="2.25" fill="none" strokeLinecap="round" strokeLinejoin="round">
+      {/* bow */}
+      <circle cx={cx - 16} cy={cy} r="7.5" />
+      <circle cx={cx - 16} cy={cy} r="2.6" fill="currentColor" stroke="none" />
+      {/* shaft + teeth */}
+      <path d={`M${cx - 8.5} ${cy} L${cx + 18} ${cy} M${cx + 9} ${cy} v6 M${cx + 16} ${cy} v6`} />
     </g>
   )
 }

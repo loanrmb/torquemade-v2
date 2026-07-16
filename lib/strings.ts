@@ -308,7 +308,7 @@ export const strings = {
     crm: {
       eyebrow: 'Services',
       hero: 'Louer un CRM générique ou construire le vôtre ?',
-      intro: '55 % des professionnels français estiment que leur CRM ne peut pas être personnalisé selon leurs besoins, et 58 % disent qu\'il leur coûte plus qu\'il ne leur rapporte (selon une étude récente). La vraie question n\'est donc pas quel abonnement choisir, mais s\'il faut louer un outil pensé pour tout le monde ou construire celui qui colle exactement à votre activité.',
+      intro: 'Un CRM générique est pensé pour le plus grand nombre, jamais pour votre façon de travailler : beaucoup d\'entreprises se retrouvent avec un outil qu\'elles ne peuvent pas vraiment adapter, et qui finit par coûter plus qu\'il ne rapporte. La vraie question n\'est pas quel abonnement choisir, mais s\'il faut louer un outil conçu pour tout le monde ou construire celui qui colle exactement à votre activité.',
 
       compareTitle: 'Abonnement générique ou développement sur mesure',
       compareIntro: 'Les deux approches gèrent des clients. Elles ne vous laissent pas au même endroit au bout de trois ans.',
@@ -944,7 +944,7 @@ export const strings = {
     crm: {
       eyebrow: 'Services',
       hero: 'Rent a generic CRM, or build your own?',
-      intro: '55% of French professionals say their CRM cannot be customized to their needs, and 58% say it costs them more than it earns them (according to a recent study). So the real question is not which subscription to pick, but whether to rent a tool built for everyone or build the one that fits your business exactly.',
+      intro: 'A generic CRM is built for the many, never for the way you work: plenty of businesses end up with a tool they cannot truly adapt, one that costs more than it returns. The real question is not which subscription to pick, but whether to rent a tool built for everyone or build the one that fits your business exactly.',
 
       compareTitle: 'Generic subscription or custom build',
       compareIntro: 'Both approaches manage clients. They do not leave you in the same place three years later.',

@@ -173,7 +173,7 @@ export default function CrmPage() {
                     {t.compareColGeneric}
                   </span>
                   <span className="flex items-center gap-2 text-sm" style={{ color: 'hsl(var(--text-secondary))' }}>
-                    <span aria-hidden="true" className="inline-block h-[2px] w-6 rounded" style={{ background: 'hsl(var(--text-primary))', opacity: 0.45 }} />
+                    <span aria-hidden="true" className="inline-block w-6" style={{ borderTop: '2px dashed hsl(var(--text-primary))', opacity: 0.6 }} />
                     {t.compareColCustom}
                   </span>
                 </div>
@@ -405,8 +405,8 @@ export default function CrmPage() {
           </div>
         </section>
 
-        {/* CTA — unchanged (out of scope) */}
-        <section className="px-5 pb-20 min-720:pb-24">
+        {/* CTA */}
+        <section className="px-5 pb-20 pt-16 min-720:pb-24 min-720:pt-20">
           <div className="mx-auto max-w-5xl">
             <div className="cta-card p-10 min-720:p-16 text-center fade-up">
               <ShaderBackground className="absolute inset-0 z-0" />
