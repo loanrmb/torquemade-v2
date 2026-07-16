@@ -55,6 +55,14 @@ const CONTENT = {
     cardPublished: 'Publié sur la boutique en ligne',
     cardUnique: 'Pièce unique',
 
+    cardSku: 'SKU',
+    cardSkuSubtitle: 'Poisson clown · 4 cm',
+    cardStockQty: '14 en stock',
+    cardBatch: 'Lot',
+    cardBatchValue: '12 mai · Sunda Aquatics',
+    cardZone: 'Zone',
+    cardZoneValue: 'B-02',
+
     posTitle: 'Caisse · Magasin',
     storeTitle: 'Boutique en ligne',
     posSaleLine: 'Vente comptoir',
@@ -130,6 +138,14 @@ const CONTENT = {
     cardTankValue: 'A-03',
     cardPublished: 'Published to the online store',
     cardUnique: 'One of a kind',
+
+    cardSku: 'SKU',
+    cardSkuSubtitle: 'Clownfish · 4 cm',
+    cardStockQty: '14 in stock',
+    cardBatch: 'Batch',
+    cardBatchValue: 'May 12 · Sunda Aquatics',
+    cardZone: 'Zone',
+    cardZoneValue: 'B-02',
 
     posTitle: 'POS · In store',
     storeTitle: 'Online store',
@@ -442,47 +458,86 @@ function SearchIcon() {
 
 /* ═══════════════════════════════════════════════════════════════
    2 · WYSIWYG — single specimen card
+   Two mirrored variants, one component:
+     'unique' → serialized WYSIWYG piece (ACRO-0042, "Pièce unique")
+     'sku'    → classic SKU + quantity line (AMPH-PERC, "SKU")
+   Same chrome, styles and layout; only the data + row labels differ.
 ═══════════════════════════════════════════════════════════════ */
-export function SpecimenCardMock() {
+
+/** Filled badge (same style as the 'stock' Badge) with free-form text. */
+function FilledBadge({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center whitespace-nowrap rounded-full border border-[#161616] bg-[#161616] px-2 py-0.5 text-[10.5px] font-medium leading-[1.5] text-white">
+      {children}
+    </span>
+  )
+}
+
+export function SpecimenCardMock({ variant = 'unique' }: { variant?: 'unique' | 'sku' }) {
   const lang = useLang()
   const t = CONTENT[lang]
-  const s = SPECIMENS[0] // ACRO-0042
+
+  const s = SPECIMENS[0] // ACRO-0042 (unique reference)
+
+  const config =
+    variant === 'sku'
+      ? {
+          id: 'AMPH-PERC',
+          emoji: '🐠',
+          name: 'Amphiprion percula',
+          subtitle: t.cardSkuSubtitle,
+          price: 35,
+          tag: t.cardSku,
+          statusBadge: <FilledBadge>{t.cardStockQty}</FilledBadge>,
+          rows: [
+            [t.cardBatch, t.cardBatchValue],
+            [t.cardZone, t.cardZoneValue],
+          ] as Array<[string, string]>,
+        }
+      : {
+          id: s.id,
+          emoji: s.emoji,
+          name: s.name,
+          subtitle: `« ${s.variant} » · SPS · ${s.size[lang]}`,
+          price: s.price,
+          tag: t.cardUnique,
+          statusBadge: <Badge status="stock" t={t} />,
+          rows: [
+            [t.cardArrival, t.cardArrivalValue],
+            [t.cardTank, t.cardTankValue],
+          ] as Array<[string, string]>,
+        }
 
   return (
-    <Window title={`${s.id}`} tag={t.cardUnique}>
+    <Window title={config.id} tag={config.tag}>
       {/* Photo area */}
       <div
         className="relative flex h-40 items-center justify-center border-b border-[#ececee] min-720:h-48"
         style={{ background: 'linear-gradient(135deg,#f6f6f7 0%,#e9e9eb 100%)' }}
       >
         <span className="text-[56px] leading-none min-720:text-[64px]" aria-hidden>
-          {s.emoji}
+          {config.emoji}
         </span>
         <span className="absolute left-3 top-3 rounded-md bg-white/85 px-2 py-1 font-mono text-[10px] tracking-[0.08em] text-[#616161] backdrop-blur-sm">
-          {s.id}
+          {config.id}
         </span>
       </div>
 
       {/* Identity */}
       <div className="flex items-start justify-between gap-3 px-4 pb-3 pt-3.5">
         <span>
-          <span className="block text-[14.5px] font-semibold tracking-tight">{s.name}</span>
-          <span className="block text-[12px] text-[#8a8a8e]">
-            « {s.variant} » · SPS · {s.size[lang]}
-          </span>
+          <span className="block text-[14.5px] font-semibold tracking-tight">{config.name}</span>
+          <span className="block text-[12px] text-[#8a8a8e]">{config.subtitle}</span>
         </span>
         <span className="text-right">
-          <span className="block font-mono text-[15px] font-medium tabular-nums">{price(s.price, lang)}</span>
-          <Badge status="stock" t={t} />
+          <span className="block font-mono text-[15px] font-medium tabular-nums">{price(config.price, lang)}</span>
+          {config.statusBadge}
         </span>
       </div>
 
       {/* Meta rows */}
       <div className="border-t border-[#f2f2f3] px-4 py-3">
-        {[
-          [t.cardArrival, t.cardArrivalValue],
-          [t.cardTank, t.cardTankValue],
-        ].map(([label, value], i) => (
+        {config.rows.map(([label, value], i) => (
           <div key={label} className={`flex items-baseline justify-between py-1.5 ${i === 0 ? '' : 'border-t border-[#f7f7f8]'}`}>
             <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">{label}</span>
             <span className="text-[12px] text-[#1a1a1a]">{value}</span>

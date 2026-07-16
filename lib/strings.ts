@@ -544,9 +544,12 @@ export const strings = {
 
       serialTitle: 'Un animal, une fiche.',
       serialBody: [
-        'TankLogic ne se comporte pas comme un logiciel général avec un SKU et des quantités. Il vous permet d\'enregistrer chaque poisson, chaque colonie de corail, avec une fiche dédiée.',
+        ‘Pour vos pièces uniques, coraux et poissons à forte valeur, TankLogic ne se comporte pas comme un logiciel général avec un SKU et une quantité. Il vous permet d’enregistrer chaque individu avec une fiche dédiée.’,
         'C’est le modèle WYSIWYG de bout en bout : le client achète exactement l’animal qu’il voit, pas un exemplaire générique de la catégorie.',
       ],
+      batchTitle: 'Un lot, une fiche.',
+      batchBody:
+        'Pour vos poissons vendus en volume, un mode SKU et quantité classique reste disponible : une fiche par espèce, un stock qui se décrémente à chaque vente, sans saisie individuelle inutile.',
 
       syncTitle: 'Vendu en magasin. Retiré du site.',
       syncBody: [
@@ -1220,9 +1223,12 @@ export const strings = {
 
       serialTitle: 'One animal, one record.',
       serialBody: [
-        'TankLogic doesn\'t behave like a generic app with SKUs and quantities. It lets you log every fish, every coral colony, with its own dedicated profile.',
+        ‘For your one-of-a-kind pieces, corals, and high-value fish, TankLogic doesn’t behave like a generic app with a SKU and a quantity. It lets you log every individual with its own dedicated profile.’,
         'It’s the WYSIWYG model end to end: the customer buys the exact animal they see, not a generic unit from a category.',
       ],
+      batchTitle: 'A batch, one entry.',
+      batchBody:
+        'For fish sold in volume, a classic SKU and quantity mode is also available: one entry per species, stock that decreases with each sale, no unnecessary individual entry.',
 
       syncTitle: 'Sold in store. Gone online.',
       syncBody: [
