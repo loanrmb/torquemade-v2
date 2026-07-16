@@ -331,35 +331,6 @@ function SvgConnector({ className }: { className?: string }) {
   )
 }
 
-/* ─── Connectors: threaded through the panel seams ─────────────
-   The panels deliberately overlap for depth, so each connector lives
-   in the sliver where the upstream panel is still visible, then the
-   travelling packet slips *under* the downstream panel — reading as
-   data crossing ERP → API → Web. Each sits at the z-layer just below
-   its downstream panel:
-     A  z-15  (above ERP z-10, below API z-20)
-     B  z-25  (above API z-20, below Web z-30) */
-function Connectors() {
-  return (
-    <>
-      <div
-        className="pointer-events-none absolute top-1/2 z-[15] -translate-y-1/2"
-        style={{ left: '19%', width: '15%' }}
-        aria-hidden
-      >
-        <SvgConnector />
-      </div>
-      <div
-        className="pointer-events-none absolute top-1/2 z-[25] -translate-y-1/2"
-        style={{ left: '47%', width: '15%' }}
-        aria-hidden
-      >
-        <SvgConnector />
-      </div>
-    </>
-  )
-}
-
 /* ─── LEFT PANEL — ERP stock table ──────────────────────────── */
 function ErpPanel({
   t,
@@ -382,12 +353,14 @@ function ErpPanel({
   return (
     <article
       aria-label={t.panelLeftTitle}
-      className="h-full overflow-hidden rounded-2xl text-white flex flex-col"
+      className="erp-glass-panel h-full overflow-hidden rounded-2xl text-white flex flex-col"
       style={{
-        background: 'linear-gradient(180deg, hsl(0 0% 13.5%) 0%, hsl(0 0% 9.5%) 100%)',
+        background: 'rgba(255,255,255,0.035)',
         border: `1px solid ${PANEL_BORDER}`,
+        backdropFilter: 'blur(20px) saturate(1.15)',
+        WebkitBackdropFilter: 'blur(20px) saturate(1.15)',
         boxShadow:
-          'inset 0 1px 0 rgba(255,255,255,0.04), ' +
+          'inset 0 1px 0 rgba(255,255,255,0.05), ' +
           '0 10px 28px rgba(0,0,0,0.35), ' +
           '0 2px 6px rgba(0,0,0,0.22)',
         WebkitFontSmoothing: 'antialiased',
@@ -493,7 +466,7 @@ function ApiPanel({
   return (
     <aside
       aria-label="Requête API sync"
-      className="h-full flex flex-col overflow-hidden rounded-2xl text-white/55"
+      className="erp-glass-panel h-full flex flex-col overflow-hidden rounded-2xl text-white/55"
       style={{
         background: 'rgba(255,255,255,0.028)',
         border: `1px solid ${PANEL_BORDER}`,
@@ -530,10 +503,17 @@ function ApiPanel({
         <CLine>
           <ArrowGlyph dir="right" />{' '}
           {isSyncing ? (
-            <span className="syncing-text">{t.syncing}</span>
+            <span className="inline-flex items-center gap-1.5">
+              <span className="syncing-text">{t.syncing.replace(/[…]|\.{3}$/, '')}</span>
+              <span className="inline-flex items-center gap-[3px]" aria-hidden>
+                <span className="sync-dot" />
+                <span className="sync-dot" />
+                <span className="sync-dot" />
+              </span>
+            </span>
           ) : (
             <>
-              <span style={{ color: '#4ade80' }}>{t.apiOk}</span>{' '}
+              <span className="text-white/90">{t.apiOk}</span>{' '}
               <CMute>·</CMute> <CMute>142ms</CMute>
             </>
           )}
@@ -594,7 +574,7 @@ function EcomPanel({
   return (
     <article
       aria-label={t.panelRightTitle}
-      className="h-full overflow-hidden rounded-2xl bg-white flex flex-col"
+      className="erp-glass-panel h-full overflow-hidden rounded-2xl bg-white flex flex-col"
       style={{
         color: '#303030',
         fontFamily: 'var(--font-sans, system-ui, sans-serif)',
@@ -676,35 +656,37 @@ function Row({ label, meta, variant }: { label: string; meta: string; variant: '
   return (
     <motion.div
       variants={revealItem}
-      className="flex items-start gap-3 min-720:gap-3.5 py-2.5 text-[13px] min-720:text-[14px] leading-[1.45] border-t first:border-t-0"
+      className="grid grid-cols-[18px_1fr_auto] items-start gap-3 min-720:gap-3.5 py-2.5 text-[13px] min-720:text-[14px] leading-[1.45] border-t first:border-t-0"
       style={{
         borderColor: 'rgba(255,255,255,0.06)',
-        color: isBad ? 'rgba(255,255,255,0.56)' : 'rgba(255,255,255,0.88)',
+        color: isBad ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.92)',
       }}
     >
+      {/* Single accent: solid fill = the "good" state. Everything else stays
+          monochrome, differentiated by weight/opacity, never by hue. */}
       <span
-        className="flex-shrink-0 grid place-items-center rounded-[6px] leading-none"
+        className="grid place-items-center rounded-full leading-none"
         style={{
           width: 18, height: 18, marginTop: 1,
-          background: isBad ? 'rgba(248,113,113,0.06)' : 'rgba(255,255,255,0.07)',
-          color:      isBad ? 'rgba(248,113,113,0.82)' : '#ffffff',
-          border:     `1px solid ${isBad ? 'rgba(248,113,113,0.22)' : 'rgba(255,255,255,0.20)'}`,
+          background: isBad ? 'transparent' : 'rgba(255,255,255,0.94)',
+          color:      isBad ? 'rgba(255,255,255,0.32)' : '#0a0a0a',
+          border:     `1px solid ${isBad ? 'rgba(255,255,255,0.16)' : 'rgba(255,255,255,0.94)'}`,
         }}
       >
         {isBad ? (
-          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" aria-hidden>
+          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" aria-hidden>
             <line x1="6" y1="6" x2="18" y2="18" />
             <line x1="18" y1="6" x2="6" y2="18" />
           </svg>
         ) : (
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <polyline points="20 6 9 17 4 12" />
           </svg>
         )}
       </span>
-      <span className="flex-1 min-w-0">{label}</span>
+      <span className="min-w-0" style={{ fontWeight: isBad ? 400 : 500 }}>{label}</span>
       <span
-        className="font-mono text-[10px] min-720:text-[10.5px] tracking-[0.04em] flex-shrink-0 self-center"
+        className="font-mono text-[10px] min-720:text-[10.5px] tracking-[0.04em] self-center"
         style={{ color: 'rgba(255,255,255,0.36)' }}
       >
         {meta}
@@ -982,63 +964,59 @@ export function ErpFeatureSection() {
             }}
           />
 
-          {/* ═══ DESKTOP: three overlapping panels (≥768px) ═══
+          {/* ═══ DESKTOP: three panels, aerated grid — no overlap (≥768px) ═══
               Refs attached here only — mobile panels are purely visual.
               Animation classes applied via erpRowRefs / siteRowRefs.
+              Connectors live in their own grid columns, so panels never
+              stack or hide behind one another — each card stays legible
+              and equally weighted (§ Linear.app direction: distinct,
+              spaced cards, not overlapping windows).
           ═══ */}
-          <div className="relative hidden md:block w-full mt-4" style={{ minHeight: 400, zIndex: 2 }}>
-            <Connectors />
-
-            {/* LEFT — ERP panel (recessed, z-10) */}
+          <div
+            className="relative hidden md:grid w-full mt-4"
+            style={{
+              gridTemplateColumns: '1fr 88px 1fr 88px 1fr',
+              alignItems: 'stretch',
+              minHeight: 380,
+              zIndex: 2,
+            }}
+          >
             <motion.div
-              className="absolute z-[10]"
-              style={{ left: 0, top: 36, width: '40%', height: 350 }}
-              initial={{ opacity: 0, y: 48, scale: 0.92 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              style={{ minHeight: 380 }}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.7, ease: EASE_OUT }}
+              transition={{ duration: 0.6, ease: EASE_OUT }}
             >
-              <div style={{ transform: 'scale(0.95)', transformOrigin: 'center bottom', height: '100%' }}>
-                <ErpPanel
-                  t={t}
-                  stock={stock}
-                  onRowRef={setErpRow}
-                  onNumRef={setErpNum}
-                />
-              </div>
+              <ErpPanel t={t} stock={stock} onRowRef={setErpRow} onNumRef={setErpNum} />
             </motion.div>
 
-            {/* MIDDLE — API panel (glassmorphism, z-20) */}
+            <div className="flex items-center justify-center" aria-hidden>
+              <SvgConnector className="w-16" />
+            </div>
+
             <motion.div
-              className="absolute z-[20]"
-              style={{ left: '29%', top: 16, width: '42%', height: 360 }}
-              initial={{ opacity: 0, y: 48, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              style={{ minHeight: 380 }}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.7, delay: 0.15, ease: EASE_OUT }}
+              transition={{ duration: 0.6, delay: 0.1, ease: EASE_OUT }}
             >
-              <ApiPanel
-                t={t}
-                isSyncing={isSyncing}
-                syncingData={syncingData}
-              />
+              <ApiPanel t={t} isSyncing={isSyncing} syncingData={syncingData} />
             </motion.div>
 
-            {/* RIGHT — Ecom panel (foreground, z-30) */}
+            <div className="flex items-center justify-center" aria-hidden>
+              <SvgConnector className="w-16" />
+            </div>
+
             <motion.div
-              className="absolute z-[30]"
-              style={{ left: '58%', top: 0, width: '42%', height: 370 }}
-              initial={{ opacity: 0, y: 48, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              style={{ minHeight: 380 }}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.7, delay: 0.30, ease: EASE_OUT }}
+              transition={{ duration: 0.6, delay: 0.2, ease: EASE_OUT }}
             >
-              <EcomPanel
-                t={t}
-                stock={stock}
-                onRowRef={setSiteRow}
-                onNumRef={setSiteNum}
-              />
+              <EcomPanel t={t} stock={stock} onRowRef={setSiteRow} onNumRef={setSiteNum} />
             </motion.div>
           </div>
 
