@@ -55,7 +55,7 @@ const CONTENT = {
     cardPublished: 'Publié sur la boutique en ligne',
     cardUnique: 'Pièce unique',
 
-    posTitle: 'Caisse — Magasin',
+    posTitle: 'Caisse · Magasin',
     storeTitle: 'Boutique en ligne',
     posSaleLine: 'Vente comptoir',
     syncing: 'sync…',
@@ -70,11 +70,11 @@ const CONTENT = {
 
     traceTitle: 'Traçabilité',
     traceSteps: [
-      { label: 'Réception fournisseur — Sunda Aquatics', time: '12 mai · 14:02' },
+      { label: 'Réception fournisseur · Sunda Aquatics', time: '12 mai · 14:02' },
       { label: 'Acclimatation cuve A-03', time: '12 mai · 15:20' },
       { label: 'Photo avant expédition', time: '15 mai · 09:47', photo: 'IMG_2841.jpg' },
       { label: 'Remis au transporteur', time: '15 mai · 11:05' },
-      { label: 'Livré — scan QR', time: '16 mai · 09:41', done: true },
+      { label: 'Livré · scan QR', time: '16 mai · 09:41', done: true },
     ],
     traceExport: 'Exporter le dossier PDF',
 
@@ -101,9 +101,9 @@ const CONTENT = {
     ],
     bestSellers: 'Meilleures ventes · 90 j',
     sellers: [
-      { name: 'Euphyllia « Gold Torch »', value: '×28', pct: 1 },
-      { name: 'Frags Acropora', value: '×24', pct: 0.86 },
-      { name: 'Amphiprion percula', value: '×19', pct: 0.68 },
+      { name: 'Amphiprion percula', value: '×28', pct: 1 },
+      { name: 'Paracanthurus hepatus', value: '×24', pct: 0.86 },
+      { name: 'Euphyllia « Gold Torch »', value: '×19', pct: 0.68 },
     ],
   },
   en: {
@@ -131,7 +131,7 @@ const CONTENT = {
     cardPublished: 'Published to the online store',
     cardUnique: 'One of a kind',
 
-    posTitle: 'POS — In store',
+    posTitle: 'POS · In store',
     storeTitle: 'Online store',
     posSaleLine: 'Counter sale',
     syncing: 'sync…',
@@ -146,11 +146,11 @@ const CONTENT = {
 
     traceTitle: 'Traceability',
     traceSteps: [
-      { label: 'Received from supplier — Sunda Aquatics', time: 'May 12 · 14:02' },
+      { label: 'Received from supplier · Sunda Aquatics', time: 'May 12 · 14:02' },
       { label: 'Acclimated in tank A-03', time: 'May 12 · 15:20' },
       { label: 'Pre-shipping photo', time: 'May 15 · 09:47', photo: 'IMG_2841.jpg' },
       { label: 'Handed to carrier', time: 'May 15 · 11:05' },
-      { label: 'Delivered — QR scan', time: 'May 16 · 09:41', done: true },
+      { label: 'Delivered · QR scan', time: 'May 16 · 09:41', done: true },
     ],
     traceExport: 'Export the PDF evidence file',
 
@@ -177,9 +177,9 @@ const CONTENT = {
     ],
     bestSellers: 'Best sellers · 90 d',
     sellers: [
-      { name: 'Euphyllia “Gold Torch”', value: '×28', pct: 1 },
-      { name: 'Acropora frags', value: '×24', pct: 0.86 },
-      { name: 'Amphiprion percula', value: '×19', pct: 0.68 },
+      { name: 'Amphiprion percula', value: '×28', pct: 1 },
+      { name: 'Paracanthurus hepatus', value: '×24', pct: 0.86 },
+      { name: 'Euphyllia “Gold Torch”', value: '×19', pct: 0.68 },
     ],
   },
 } as const
@@ -205,6 +205,9 @@ const SPECIMENS: Specimen[] = [
   { id: 'WRS-0201', name: 'Cirrhilabrus scottorum', emoji: '🐠', size: { fr: '8 cm', en: '8 cm' }, price: 189, status: 'reserved' },
   { id: 'EUPH-0073', name: 'Euphyllia glabrescens', variant: 'Gold Torch', emoji: '🪸', size: { fr: '2 têtes', en: '2 heads' }, price: 159, status: 'shipped' },
   { id: 'CLWN-0342', name: 'Amphiprion percula', emoji: '🐠', size: { fr: '4 cm', en: '4 cm' }, price: 85, status: 'stock' },
+  { id: 'PARA-0056', name: 'Paracanthurus hepatus', emoji: '🐠', size: { fr: '6 cm', en: '6 cm' }, price: 79, status: 'stock' },
+  { id: 'CHRY-0089', name: 'Chrysiptera cyanea', emoji: '🐠', size: { fr: '4 cm', en: '4 cm' }, price: 25, status: 'stock' },
+  { id: 'PTER-0127', name: 'Pterapogon kauderni', emoji: '🐠', size: { fr: '6 cm', en: '6 cm' }, price: 65, status: 'reserved' },
 ]
 
 function price(n: number, lang: 'fr' | 'en') {
@@ -720,7 +723,7 @@ export function TraceMock() {
 
   return (
     <Window
-      title={`${t.traceTitle} — ${s.id}`}
+      title={`${t.traceTitle} · ${s.id}`}
       footer={
         <span className="flex w-full items-center justify-center gap-1.5 rounded-lg border border-[#dcdcde] bg-white py-1.5 text-[12px] font-medium text-[#1a1a1a]">
           <FileIcon />
