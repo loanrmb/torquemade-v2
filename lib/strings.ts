@@ -90,17 +90,17 @@ export const strings = {
       tabs: [
         {
           title: 'Sites web',
-          desc: 'Next.js sur mesure, mobile-first, SEO-ready. Livraison 15 jours ouvrés.',
+          desc: "Torquemade construit votre site vitrine ou e-commerce sur mesure, pensé pour la conversion, mobile-first, structure optimisée pour le référencement naturel et les moteurs IA (SEO & GEO).",
           tag: '',
         },
         {
           title: 'CRM & Logiciel sur mesure',
-          desc: 'Réservations, dashboards, workflows métier, bâtis autour de votre process exact.',
+          desc: 'Torquemade développe votre CRM/Logiciel (Réservations, dashboards, workflows métier...). Un logiciel construit autour de votre process exact, qui vous appartient.',
           tag: 'CRM sur mesure',
         },
         {
           title: 'Connexion ERP · Stock',
-          desc: 'Synchronisation temps réel entre votre ERP et votre site e-commerce.',
+          desc: 'Torquemade construit votre solution de synchronisation en temps réel entre votre stock magasin et votre site e-commerce : fini les ruptures de stock non reportées, les doubles saisies et les écarts de prix entre canaux de vente.',
           tag: '',
         },
       ],
@@ -696,17 +696,17 @@ export const strings = {
       tabs: [
         {
           title: 'Websites',
-          desc: 'Custom Next.js, mobile-first, SEO-ready. Delivered in 15 business days.',
+          desc: 'Torquemade builds your custom showcase or e-commerce site, designed for conversion, mobile-first, with a structure optimized for search engines and AI search (SEO & GEO).',
           tag: '',
         },
         {
           title: 'Custom CRM & Software',
-          desc: 'Bookings, dashboards, business workflows, built around your exact process.',
+          desc: 'Torquemade develops your CRM/software (bookings, dashboards, business workflows...). Software built around your exact process, that belongs to you.',
           tag: 'Custom CRM',
         },
         {
           title: 'ERP · Inventory sync',
-          desc: 'Real-time synchronization between your ERP and your e-commerce site.',
+          desc: 'Torquemade builds your real-time synchronization solution between your in-store inventory and your e-commerce site: no more unreported stockouts, double entries, or price mismatches between sales channels.',
           tag: '',
         },
       ],
