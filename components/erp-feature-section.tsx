@@ -26,7 +26,7 @@
  * Animations: transform + opacity only (Emil §6.A hardware-acceleration rule)
  */
 
-import { useCallback, useEffect, useId, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { motion, type Variants } from 'framer-motion'
 import { useLang } from '@/components/app-provider'
 import { strings } from '@/lib/strings'
@@ -45,7 +45,7 @@ const revealItem: Variants = {
 }
 
 /* ─── Bilingual content (UI labels only — stock data in PRODUCTS) */
-type Rows = ReadonlyArray<readonly [string, string]>
+type Rows = ReadonlyArray<string>
 
 const CONTENT: Record<
   'fr' | 'en',
@@ -94,20 +94,20 @@ const CONTENT: Record<
     stateOff:        'État · 00',
     stateOn:         'État · 01',
     rowsBad: [
-      ['Stock mis à jour à la main, en CSV',  '~2h / jour'],
-      ['Ventes de produits déjà épuisés',      '~8 / mois'],
-      ['Prix désynchronisés entre canaux',      'manuel'],
-      ["Commandes ressaisies dans l'ERP",      'erreurs'],
-      ['Pas de source de vérité unique',        '2 bases'],
-      ['Réconciliation comptable manuelle',     'fin de mois'],
+      'Stock mis à jour à la main, en CSV',
+      'Ventes de produits déjà épuisés',
+      'Prix désynchronisés entre canaux',
+      "Commandes ressaisies dans l'ERP",
+      'Pas de source de vérité unique',
+      'Réconciliation comptable manuelle',
     ],
     rowsGood: [
-      ['Stock synchronisé en temps réel',                  '< 3 s'],
-      ['Mises hors ligne automatiques à zéro',             'auto'],
-      ["Prix poussés depuis l'ERP, un seul endroit",       'bi-dir'],
-      ["Commandes web créées directement dans l'ERP",      'webhook'],
-      ["Une seule base — l'ERP fait foi",                  '1 base'],
-      ['Export comptable automatisé',                       'quotidien'],
+      'Stock synchronisé en temps réel',
+      'Mises hors ligne automatiques à zéro',
+      "Prix poussés depuis l'ERP, un seul endroit",
+      "Commandes web créées directement dans l'ERP",
+      "Une seule base — l'ERP fait foi",
+      'Export comptable automatisé',
     ],
   },
   en: {
@@ -131,20 +131,20 @@ const CONTENT: Record<
     stateOff:        'State · 00',
     stateOn:         'State · 01',
     rowsBad: [
-      ['Stock updated manually, via CSV',      '~2h / day'],
-      ['Sales of already out-of-stock items',  '~8 / month'],
-      ['Prices out of sync between channels',  'manual'],
-      ['Orders re-keyed into the ERP',         'errors'],
-      ['No single source of truth',            '2 databases'],
-      ['Manual accounting reconciliation',     'end of month'],
+      'Stock updated manually, via CSV',
+      'Sales of already out-of-stock items',
+      'Prices out of sync between channels',
+      'Orders re-keyed into the ERP',
+      'No single source of truth',
+      'Manual accounting reconciliation',
     ],
     rowsGood: [
-      ['Stock synced in real time',             '< 3 s'],
-      ['Automatic zero-stock takedowns',        'auto'],
-      ['Prices pushed from ERP, one place',     'bi-dir'],
-      ['Web orders created directly in ERP',    'webhook'],
-      ['One database — ERP is the authority',   '1 db'],
-      ['Automated accounting export',           'daily'],
+      'Stock synced in real time',
+      'Automatic zero-stock takedowns',
+      'Prices pushed from ERP, one place',
+      'Web orders created directly in ERP',
+      'One database — ERP is the authority',
+      'Automated accounting export',
     ],
   },
 }
@@ -285,48 +285,37 @@ function PanelHeader({
   )
 }
 
-/* ─── SVG Connector: crafted data-flow link between panels ──────
-   A gradient-faded track with fixed anchor nodes at each end plus a
-   glowing packet that travels left→right. Gradient/glow ids are made
-   unique per instance (useId) so multiple connectors don't collide. */
-function SvgConnector({ className }: { className?: string }) {
-  const uid   = useId().replace(/:/g, '')
-  const track = `erp-track-${uid}`
-  const glow  = `erp-glow-${uid}`
+/* ─── FlowConnector: data-flow indicator between panels ─────────
+   Two chevrons travelling in the direction of sync, staggered so they
+   read as a continuous flow rather than a single static arrow.
+   `right` on desktop (panels sit side by side), `down` on mobile
+   (panels stack vertically) — same component, direction-aware. */
+function ChevronGlyph({ direction, delayClass }: { direction: 'right' | 'down'; delayClass: string }) {
   return (
-    <div className={`erp-svg-connector ${className ?? ''}`} aria-hidden>
-      <svg viewBox="0 0 132 24" fill="none" preserveAspectRatio="none" className="h-6 w-full">
-        <defs>
-          <linearGradient id={track} x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0"    stopColor="rgba(255,255,255,0)" />
-            <stop offset="0.18" stopColor="rgba(255,255,255,0.22)" />
-            <stop offset="0.82" stopColor="rgba(255,255,255,0.22)" />
-            <stop offset="1"    stopColor="rgba(255,255,255,0)" />
-          </linearGradient>
-          <radialGradient id={glow} cx="0.5" cy="0.5" r="0.5">
-            <stop offset="0"   stopColor="rgba(255,255,255,0.9)" />
-            <stop offset="0.5" stopColor="rgba(255,255,255,0.35)" />
-            <stop offset="1"   stopColor="rgba(255,255,255,0)" />
-          </radialGradient>
-        </defs>
+    <svg
+      width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+      className={`flow-chevron ${direction === 'down' ? 'flow-chevron-down' : 'flow-chevron-right'} ${delayClass} text-white/50`}
+      aria-hidden
+    >
+      {direction === 'down' ? (
+        <polyline points="6 9 12 15 18 9" />
+      ) : (
+        <polyline points="9 6 15 12 9 18" />
+      )}
+    </svg>
+  )
+}
 
-        {/* Base track — hairline dashed, faded at both ends */}
-        <line x1="4" y1="12" x2="128" y2="12" stroke={`url(#${track})`} strokeWidth="1.25" strokeDasharray="1 5" strokeLinecap="round" />
-
-        {/* Fixed anchor nodes */}
-        <circle cx="4"   cy="12" r="1.6" fill="rgba(255,255,255,0.45)" />
-        <circle cx="128" cy="12" r="1.6" fill="rgba(255,255,255,0.45)" />
-
-        {/* Travelling packet — soft halo + bright core */}
-        <circle r="7" cy="12" fill={`url(#${glow})`}>
-          <animate attributeName="cx" values="4;128" dur="2.6s" repeatCount="indefinite" />
-          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.8;1" dur="2.6s" repeatCount="indefinite" />
-        </circle>
-        <circle r="2" cy="12" fill="#ffffff">
-          <animate attributeName="cx" values="4;128" dur="2.6s" repeatCount="indefinite" />
-          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.8;1" dur="2.6s" repeatCount="indefinite" />
-        </circle>
-      </svg>
+function FlowConnector({ direction, className = '' }: { direction: 'right' | 'down'; className?: string }) {
+  const isDown = direction === 'down'
+  return (
+    <div
+      className={`flex items-center justify-center ${isDown ? 'flex-col gap-0.5' : 'flex-row gap-0.5'} ${className}`}
+      aria-hidden
+    >
+      <ChevronGlyph direction={direction} delayClass="flow-chevron-d1" />
+      <ChevronGlyph direction={direction} delayClass="flow-chevron-d2" />
     </div>
   )
 }
@@ -651,15 +640,14 @@ function EcomPanel({
 }
 
 /* ─── Comparison row ─────────────────────────────────────────── */
-function Row({ label, meta, variant }: { label: string; meta: string; variant: 'bad' | 'good' }) {
+function Row({ label, variant }: { label: string; variant: 'bad' | 'good' }) {
   const isBad = variant === 'bad'
   return (
     <motion.div
       variants={revealItem}
-      className="grid grid-cols-[18px_1fr_auto] items-start gap-3 min-720:gap-3.5 py-2.5 text-[13px] min-720:text-[14px] leading-[1.45] border-t first:border-t-0"
+      className="grid grid-cols-[20px_1fr] items-center gap-4 min-720:gap-5 py-4 min-720:py-5 text-[13.5px] min-720:text-[14.5px] leading-[1.5]"
       style={{
-        borderColor: 'rgba(255,255,255,0.06)',
-        color: isBad ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.92)',
+        color: isBad ? 'rgba(255,255,255,0.48)' : 'rgba(255,255,255,0.92)',
       }}
     >
       {/* Single accent: solid fill = the "good" state. Everything else stays
@@ -667,10 +655,10 @@ function Row({ label, meta, variant }: { label: string; meta: string; variant: '
       <span
         className="grid place-items-center rounded-full leading-none"
         style={{
-          width: 18, height: 18, marginTop: 1,
+          width: 20, height: 20,
           background: isBad ? 'transparent' : 'rgba(255,255,255,0.94)',
-          color:      isBad ? 'rgba(255,255,255,0.32)' : '#0a0a0a',
-          border:     `1px solid ${isBad ? 'rgba(255,255,255,0.16)' : 'rgba(255,255,255,0.94)'}`,
+          color:      isBad ? 'rgba(255,255,255,0.3)' : '#0a0a0a',
+          border:     `1px solid ${isBad ? 'rgba(255,255,255,0.14)' : 'rgba(255,255,255,0.94)'}`,
         }}
       >
         {isBad ? (
@@ -685,12 +673,6 @@ function Row({ label, meta, variant }: { label: string; meta: string; variant: '
         )}
       </span>
       <span className="min-w-0" style={{ fontWeight: isBad ? 400 : 500 }}>{label}</span>
-      <span
-        className="font-mono text-[10px] min-720:text-[10.5px] tracking-[0.04em] self-center"
-        style={{ color: 'rgba(255,255,255,0.36)' }}
-      >
-        {meta}
-      </span>
     </motion.div>
   )
 }
@@ -928,18 +910,18 @@ export function ErpFeatureSection() {
   return (
     <section
       ref={sectionRef}
-      className="flex items-center justify-center px-4 py-10 md:py-16"
+      className="flex items-center justify-center px-4 md:px-6 lg:px-8 py-10 md:py-16"
       style={{
         background: 'radial-gradient(1200px 600px at 50% -10%, rgba(255,255,255,0.025), transparent 60%), hsl(var(--bg-dark))',
         color: 'rgba(255,255,255,0.88)',
       }}
     >
       <div
-        className="relative w-full max-w-[1280px] overflow-hidden rounded-2xl md:rounded-3xl"
+        className="relative w-full max-w-[1280px] lg:max-w-[1440px] xl:max-w-[1600px] 2xl:max-w-[1760px] overflow-hidden rounded-2xl md:rounded-3xl"
         style={{ background: 'hsl(var(--bg-dark-card))', border: '1px solid rgba(255,255,255,0.10)' }}
       >
         {/* ── Figure area ── */}
-        <div className="relative px-4 md:px-8 pt-16 md:pt-20 pb-6 md:pb-10">
+        <div className="relative px-4 md:px-8 lg:px-10 xl:px-12 pt-16 md:pt-20 pb-6 md:pb-10">
 
           {/* Radial glow — atmosphere */}
           <div
@@ -975,7 +957,8 @@ export function ErpFeatureSection() {
           <div
             className="relative hidden md:grid w-full mt-4"
             style={{
-              gridTemplateColumns: '1fr 88px 1fr 88px 1fr',
+              gridTemplateColumns: '1fr clamp(72px,6vw,120px) 1fr clamp(72px,6vw,120px) 1fr',
+              gap: 'clamp(0px,1.5vw,24px)',
               alignItems: 'stretch',
               minHeight: 380,
               zIndex: 2,
@@ -992,7 +975,7 @@ export function ErpFeatureSection() {
             </motion.div>
 
             <div className="flex items-center justify-center" aria-hidden>
-              <SvgConnector className="w-16" />
+              <FlowConnector direction="right" />
             </div>
 
             <motion.div
@@ -1006,7 +989,7 @@ export function ErpFeatureSection() {
             </motion.div>
 
             <div className="flex items-center justify-center" aria-hidden>
-              <SvgConnector className="w-16" />
+              <FlowConnector direction="right" />
             </div>
 
             <motion.div
@@ -1023,12 +1006,12 @@ export function ErpFeatureSection() {
           {/* ═══ MOBILE: vertical stack (<768px) — visual only, no refs ═══ */}
           <div className="relative md:hidden flex flex-col gap-3 mt-8 w-full overflow-hidden" style={{ zIndex: 1 }}>
             <ErpPanel t={t} stock={stock} mobile />
-            <div className="flex justify-center py-1" aria-hidden>
-              <SvgConnector className="w-32" />
+            <div className="flex justify-center py-2" aria-hidden>
+              <FlowConnector direction="down" />
             </div>
             <ApiPanel t={t} isSyncing={isSyncing} syncingData={syncingData} mobile />
-            <div className="flex justify-center py-1" aria-hidden>
-              <SvgConnector className="w-32" />
+            <div className="flex justify-center py-2" aria-hidden>
+              <FlowConnector direction="down" />
             </div>
             <EcomPanel t={t} stock={stock} />
           </div>
@@ -1083,13 +1066,13 @@ export function ErpFeatureSection() {
             style={{ background: 'hsl(var(--bg-dark-card))', border: '1px solid rgba(255,255,255,0.10)' }}
           >
             <motion.div
-              className="erp-compare-left p-5 min-720:p-9"
+              className="erp-compare-left p-6 min-720:p-11"
               variants={revealContainer}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-60px' }}
             >
-              <div className="flex items-center justify-between mb-5 min-720:mb-6" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: 16 }}>
+              <div className="flex items-center justify-between mb-2 min-720:mb-3" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: 16 }}>
                 <div className="font-semibold uppercase tracking-[0.04em]" style={{ fontSize: 12, color: 'rgba(255,255,255,0.36)' }}>
                   {t.badHeader}
                 </div>
@@ -1097,19 +1080,19 @@ export function ErpFeatureSection() {
                   {t.stateOff}
                 </div>
               </div>
-              {t.rowsBad.map(([label, meta]) => (
-                <Row key={label} label={label} meta={meta} variant="bad" />
+              {t.rowsBad.map(label => (
+                <Row key={label} label={label} variant="bad" />
               ))}
             </motion.div>
 
             <motion.div
-              className="p-5 min-720:p-9"
+              className="p-6 min-720:p-11"
               variants={revealContainer}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-60px' }}
             >
-              <div className="flex items-center justify-between mb-5 min-720:mb-6" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: 16 }}>
+              <div className="flex items-center justify-between mb-2 min-720:mb-3" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: 16 }}>
                 <div className="font-semibold uppercase tracking-[0.04em] text-white" style={{ fontSize: 12 }}>
                   {t.goodHeader}
                 </div>
@@ -1117,8 +1100,8 @@ export function ErpFeatureSection() {
                   {t.stateOn}
                 </div>
               </div>
-              {t.rowsGood.map(([label, meta]) => (
-                <Row key={label} label={label} meta={meta} variant="good" />
+              {t.rowsGood.map(label => (
+                <Row key={label} label={label} variant="good" />
               ))}
             </motion.div>
           </div>
