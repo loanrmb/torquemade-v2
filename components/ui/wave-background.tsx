@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * WaveBackground — interactive wave-line field for the TankLogic hero.
+ * WaveBackground — ambient wave-line field used behind page heroes.
  * ──────────────────────────────────────────────────────────────────
  * Adapted from the 21st.dev "Waves" SVG component. Rewritten for this
  * site's constraints:
@@ -9,12 +9,12 @@
  *     Lines derive from --border-subtle, the cursor dot from
  *     --text-secondary, background stays transparent so the hero's
  *     --bg-secondary shows through.
- *   • The cursor-following pointer-dot effect is preserved unchanged.
- *   • Mobile (< md, 768px): the animated requestAnimationFrame loop
- *     never starts. A static, deterministic SVG snapshot is rendered
- *     instead, mirroring the site's `md:hidden` / `hidden md:block`
- *     two-render pattern. prefers-reduced-motion falls back the same
- *     way on desktop.
+ *   • The automatic time-based drift (noise field) runs on every
+ *     viewport size, including mobile/touch — it never depends on a
+ *     pointer event. Only the cursor-following push/dot is gated to
+ *     fine-pointer + hover devices; touch never drives the field.
+ *   • prefers-reduced-motion freezes the loop and renders a static,
+ *     deterministic SVG snapshot instead.
  */
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
@@ -116,20 +116,27 @@ export function WaveBackground({
   const rafRef = useRef<number | null>(null)
   const boundingRef = useRef<DOMRect | null>(null)
 
-  // Only run the animation on ≥ md pointers without a reduced-motion preference.
+  // Automatic drift runs everywhere unless the user prefers reduced motion —
+  // it is never gated by viewport size or pointer availability.
   const [enabled, setEnabled] = useState(false)
+  // Cursor-following push + dot are opt-in for devices with a real pointer
+  // (mouse/trackpad). Touch never drives the field.
+  const [pointerCapable, setPointerCapable] = useState(false)
 
   useEffect(() => {
-    const desktop = window.matchMedia('(min-width: 768px)')
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const update = () => setEnabled(desktop.matches && !reduce.matches)
+    const update = () => setEnabled(!reduce.matches)
     update()
-    desktop.addEventListener('change', update)
     reduce.addEventListener('change', update)
-    return () => {
-      desktop.removeEventListener('change', update)
-      reduce.removeEventListener('change', update)
-    }
+    return () => reduce.removeEventListener('change', update)
+  }, [])
+
+  useEffect(() => {
+    const fine = window.matchMedia('(hover: hover) and (pointer: fine)')
+    const update = () => setPointerCapable(fine.matches)
+    update()
+    fine.addEventListener('change', update)
+    return () => fine.removeEventListener('change', update)
   }, [])
 
   useEffect(() => {
@@ -208,11 +215,6 @@ export function WaveBackground({
       setLines()
     }
     const onMouseMove = (e: MouseEvent) => updateMousePosition(e.pageX, e.pageY)
-    const onTouchMove = (e: TouchEvent) => {
-      e.preventDefault()
-      const touch = e.touches[0]
-      updateMousePosition(touch.clientX, touch.clientY)
-    }
 
     const movePoints = (time: number) => {
       const lines = linesRef.current
@@ -300,20 +302,18 @@ export function WaveBackground({
     setLines()
 
     window.addEventListener('resize', onResize)
-    window.addEventListener('mousemove', onMouseMove)
-    container.addEventListener('touchmove', onTouchMove, { passive: false })
+    if (pointerCapable) window.addEventListener('mousemove', onMouseMove)
     rafRef.current = requestAnimationFrame(tick)
 
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current)
       window.removeEventListener('resize', onResize)
-      window.removeEventListener('mousemove', onMouseMove)
-      container.removeEventListener('touchmove', onTouchMove)
+      if (pointerCapable) window.removeEventListener('mousemove', onMouseMove)
       pathsRef.current.forEach((path) => path.remove())
       pathsRef.current = []
       linesRef.current = []
     }
-  }, [enabled, strokeColor])
+  }, [enabled, strokeColor, pointerCapable])
 
   return (
     <div
@@ -328,10 +328,12 @@ export function WaveBackground({
           'radial-gradient(120% 100% at 50% 10%, #000 45%, transparent 100%)',
       }}
     >
-      {/* ≥ md — interactive wave field (loop gated by `enabled`) */}
+      {/* Ambient wave field — animates on every viewport/input type once
+          `enabled` (reduced-motion permits it). The cursor dot only
+          renders for fine-pointer devices; touch never drives it. */}
       <div
         ref={containerRef}
-        className="absolute inset-0 hidden md:block"
+        className="absolute inset-0"
         style={{ backgroundColor, '--x': '-0.5rem', '--y': '50%' } as CSSProperties}
       >
         {enabled ? (
@@ -341,29 +343,26 @@ export function WaveBackground({
               className="block h-full w-full"
               xmlns="http://www.w3.org/2000/svg"
             />
-            <div
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: `${pointerSize}rem`,
-                height: `${pointerSize}rem`,
-                background: pointerColor,
-                borderRadius: '50%',
-                transform:
-                  'translate3d(calc(var(--x) - 50%), calc(var(--y) - 50%), 0)',
-                willChange: 'transform',
-              }}
-            />
+            {pointerCapable && (
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: `${pointerSize}rem`,
+                  height: `${pointerSize}rem`,
+                  background: pointerColor,
+                  borderRadius: '50%',
+                  transform:
+                    'translate3d(calc(var(--x) - 50%), calc(var(--y) - 50%), 0)',
+                  willChange: 'transform',
+                }}
+              />
+            )}
           </>
         ) : (
           <WavesStatic strokeColor={strokeColor} />
         )}
-      </div>
-
-      {/* < md — static snapshot, no animation loop */}
-      <div className="absolute inset-0 md:hidden" style={{ backgroundColor }}>
-        <WavesStatic strokeColor={strokeColor} />
       </div>
     </div>
   )
