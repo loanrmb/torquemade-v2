@@ -67,8 +67,6 @@ const CONTENT: Record<
     description: string
     badHeader: string
     goodHeader: string
-    stateOff: string
-    stateOn: string
     rowsBad: Rows
     rowsGood: Rows
   }
@@ -91,8 +89,6 @@ const CONTENT: Record<
     description:     'On branche votre ERP existant — ou on en construit un sur mesure — directement à votre boutique en ligne. Une seule source de vérité, mise à jour en quelques secondes, sans intervention manuelle.',
     badHeader:       'Sans connexion ERP',
     goodHeader:      'Avec connexion ERP',
-    stateOff:        'État · 00',
-    stateOn:         'État · 01',
     rowsBad: [
       'Stock mis à jour à la main, en CSV',
       'Ventes de produits déjà épuisés',
@@ -128,8 +124,6 @@ const CONTENT: Record<
     description:     'We connect your existing ERP — or build a custom one — directly to your online store. One single source of truth, updated in seconds, with no manual intervention.',
     badHeader:       'Without ERP connection',
     goodHeader:      'With ERP connection',
-    stateOff:        'State · 00',
-    stateOn:         'State · 01',
     rowsBad: [
       'Stock updated manually, via CSV',
       'Sales of already out-of-stock items',
@@ -169,7 +163,7 @@ const PRODUCTS: Record<SKU, Product> = {
   'TX-550': { name: 'Botte TCX',         emoji: '👢', price: 189, priceLabel: '189 €', initErp: 5,  initSite: 5  },
 }
 
-const ECOM_GRID = '36px minmax(60px,1fr) 48px 72px'
+const ECOM_GRID = 'clamp(36px,3vw,44px) minmax(60px,1fr) clamp(48px,4vw,60px) clamp(72px,6vw,92px)'
 
 /* ─── Stock state ────────────────────────────────────────────── */
 type StockMap = Record<SKU, { erp: number; site: number }>
@@ -246,6 +240,9 @@ function PanelHeader({
   live = false,
   px = 'px-5',
   py = 'py-3.5',
+  bg,
+  borderColor,
+  titleColor,
 }: {
   title: string
   tag?: string
@@ -253,20 +250,24 @@ function PanelHeader({
   live?: boolean
   px?: string
   py?: string
+  bg?: string
+  borderColor?: string
+  titleColor?: string
 }) {
   const light = tone === 'light'
   return (
     <header
       className={`flex items-center justify-between ${px} ${py}`}
       style={{
-        borderBottom: `1px solid ${light ? '#e8e8ea' : HAIRLINE}`,
-        background: light ? '#f7f7f8' : 'rgba(255,255,255,0.018)',
+        borderBottom: `1px solid ${borderColor ?? (light ? '#e8e8ea' : HAIRLINE)}`,
+        background: bg ?? (light ? '#f7f7f8' : 'rgba(255,255,255,0.018)'),
       }}
     >
       <span className="flex min-w-0 items-center gap-2.5">
         <WindowDots tone={tone} />
         <span
-          className={`truncate text-[13px] font-semibold tracking-tight ${light ? 'text-[#1a1a1a]' : 'text-white/90'}`}
+          className={`truncate text-[13px] lg:text-[14px] xl:text-[15px] font-semibold tracking-tight ${titleColor ? '' : light ? 'text-[#1a1a1a]' : 'text-white/90'}`}
+          style={titleColor ? { color: titleColor } : undefined}
         >
           {title}
         </span>
@@ -275,7 +276,7 @@ function PanelHeader({
         <span className="ml-3 flex flex-shrink-0 items-center gap-1.5">
           {live && <GreenDot size={5} />}
           <span
-            className={`font-mono text-[10px] uppercase tracking-[0.14em] ${light ? 'text-[#8a8a8e]' : 'text-white/38'}`}
+            className={`font-mono text-[10px] lg:text-[11px] uppercase tracking-[0.14em] ${light ? 'text-[#8a8a8e]' : 'text-white/38'}`}
           >
             {tag}
           </span>
@@ -334,10 +335,9 @@ function ErpPanel({
   onRowRef?: (sku: SKU, el: HTMLElement | null) => void
   onNumRef?: (sku: SKU, el: HTMLElement | null) => void
 }) {
-  const px  = mobile ? 'px-4' : 'px-5'
-  const pyH = mobile ? 'py-3' : 'py-4'
-  const pyR = mobile ? 'py-[6px]' : 'py-3'
-  const fs  = mobile ? 'text-[12px]' : 'text-[13px]'
+  const px  = mobile ? 'px-4' : 'px-5 lg:px-6 xl:px-7'
+  const pyR = mobile ? 'py-[6px]' : 'py-3 lg:py-3.5 xl:py-4'
+  const fs  = mobile ? 'text-[12px]' : 'text-[13px] lg:text-[14px] xl:text-[15px]'
 
   return (
     <article
@@ -361,19 +361,19 @@ function ErpPanel({
         <table className="w-full border-collapse">
           <thead>
             <tr>
-              <th className={`border-b border-white/[0.08] ${px} pb-2 pt-2.5 text-[10px] font-normal uppercase tracking-[0.12em] text-white/40 text-left`} style={{ fontFamily: 'var(--font-mono, monospace)' }}>
+              <th className={`border-b border-white/[0.08] ${px} pb-2 pt-2.5 text-[10px] lg:text-[11px] font-normal uppercase tracking-[0.12em] text-white/40 text-left`} style={{ fontFamily: 'var(--font-mono, monospace)' }}>
                 {t.colProduct}
               </th>
               {!mobile && (
-                <th className="border-b border-white/[0.08] px-5 pb-2.5 pt-3 text-[10px] font-normal uppercase tracking-[0.12em] text-white/40 text-left" style={{ fontFamily: 'var(--font-mono, monospace)' }}>
+                <th className="border-b border-white/[0.08] px-5 lg:px-6 xl:px-7 pb-2.5 pt-3 text-[10px] lg:text-[11px] font-normal uppercase tracking-[0.12em] text-white/40 text-left" style={{ fontFamily: 'var(--font-mono, monospace)' }}>
                   {t.colSku}
                 </th>
               )}
-              <th className={`border-b border-white/[0.08] ${px} pb-2 pt-2.5 text-[10px] font-normal uppercase tracking-[0.12em] text-white/40 text-left`} style={{ fontFamily: 'var(--font-mono, monospace)' }}>
+              <th className={`border-b border-white/[0.08] ${px} pb-2 pt-2.5 text-[10px] lg:text-[11px] font-normal uppercase tracking-[0.12em] text-white/40 text-left`} style={{ fontFamily: 'var(--font-mono, monospace)' }}>
                 {t.colStock}
               </th>
               {!mobile && (
-                <th className="border-b border-white/[0.08] px-5 pb-2.5 pt-3 text-[10px] font-normal uppercase tracking-[0.12em] text-white/40 text-right" style={{ fontFamily: 'var(--font-mono, monospace)' }}>
+                <th className="border-b border-white/[0.08] px-5 lg:px-6 xl:px-7 pb-2.5 pt-3 text-[10px] lg:text-[11px] font-normal uppercase tracking-[0.12em] text-white/40 text-right" style={{ fontFamily: 'var(--font-mono, monospace)' }}>
                   {t.colPrice}
                 </th>
               )}
@@ -392,7 +392,7 @@ function ErpPanel({
                     {p.name}
                   </td>
                   {!mobile && (
-                    <td className="whitespace-nowrap px-5 py-3 align-middle text-[11.5px] tracking-[0.02em] text-white/40" style={{ fontFamily: 'var(--font-mono, monospace)' }}>
+                    <td className="whitespace-nowrap px-5 lg:px-6 xl:px-7 py-3 lg:py-3.5 xl:py-4 align-middle text-[11.5px] lg:text-[12.5px] tracking-[0.02em] text-white/40" style={{ fontFamily: 'var(--font-mono, monospace)' }}>
                       {sku}
                     </td>
                   )}
@@ -403,7 +403,7 @@ function ErpPanel({
                     </span>
                   </td>
                   {!mobile && (
-                    <td className="whitespace-nowrap px-5 py-3 align-middle text-right text-[13px] text-white/90 tabular-nums" style={{ fontFamily: 'var(--font-mono, monospace)' }}>
+                    <td className="whitespace-nowrap px-5 lg:px-6 xl:px-7 py-3 lg:py-3.5 xl:py-4 align-middle text-right text-[13px] lg:text-[14px] xl:text-[15px] text-white/90 tabular-nums" style={{ fontFamily: 'var(--font-mono, monospace)' }}>
                       {p.priceLabel}
                     </td>
                   )}
@@ -415,7 +415,7 @@ function ErpPanel({
       </div>
 
       <footer
-        className={`flex items-center gap-2 bg-white/[0.015] ${px} ${mobile ? 'py-2' : 'py-3'} text-[12px] text-white/55`}
+        className={`flex items-center gap-2 bg-white/[0.015] ${px} ${mobile ? 'py-2' : 'py-3 lg:py-3.5 xl:py-4'} text-[12px] lg:text-[13px] text-white/55`}
         style={{ borderTop: `1px solid ${HAIRLINE}` }}
       >
         <GreenDot size={6} />
@@ -426,14 +426,17 @@ function ErpPanel({
 }
 
 /* ─── Syntax token helpers (API panel) ───────────────────────── */
-const CLine  = ({ children }: { children: React.ReactNode }) => <span className="block whitespace-pre">{children}</span>
-const Verb   = ({ children }: { children: React.ReactNode }) => <span className="font-medium text-white">{children}</span>
-const CPath  = ({ children }: { children: React.ReactNode }) => <span className="text-white/90">{children}</span>
-const CKey   = ({ children }: { children: React.ReactNode }) => <span className="text-white/[0.78]">{children}</span>
-const CStr   = ({ children }: { children: React.ReactNode }) => <span className="text-white/[0.62]">{children}</span>
-const CNum   = ({ children }: { children: React.ReactNode }) => <span className="text-white">{children}</span>
-const CMute  = ({ children }: { children: React.ReactNode }) => <span className="text-white/40">{children}</span>
-const CBrace = ({ children }: { children: React.ReactNode }) => <span className="text-white/40">{children}</span>
+/* VS Code "Dark+" token palette — intentional exception to the site's
+   monochrome rule, scoped to this one code-editor mockup (per request). */
+const CLine    = ({ children }: { children: React.ReactNode }) => <span className="block whitespace-pre">{children}</span>
+const Verb     = ({ children }: { children: React.ReactNode }) => <span className="font-semibold" style={{ color: '#4FC1FF' }}>{children}</span>
+const CPath    = ({ children }: { children: React.ReactNode }) => <span style={{ color: '#D7E4DE' }}>{children}</span>
+const CKey     = ({ children }: { children: React.ReactNode }) => <span style={{ color: '#9CDCFE' }}>{children}</span>
+const CStr     = ({ children }: { children: React.ReactNode }) => <span style={{ color: '#CE9178' }}>{children}</span>
+const CNum     = ({ children }: { children: React.ReactNode }) => <span style={{ color: '#B5CEA8' }}>{children}</span>
+const CComment = ({ children }: { children: React.ReactNode }) => <span style={{ color: '#6A9955' }}>{children}</span>
+const CPunct   = ({ children }: { children: React.ReactNode }) => <span style={{ color: '#7FA396' }}>{children}</span>
+const CBrace   = ({ children }: { children: React.ReactNode }) => <span style={{ color: '#89B3A0' }}>{children}</span>
 
 /* ─── MIDDLE PANEL — API code block (glassmorphism) ──────────── */
 function ApiPanel({
@@ -452,23 +455,39 @@ function ApiPanel({
   const displayStock = syncingData?.stock ?? 12
   const displayPrice = syncingData?.price ?? 389
 
+  /* VS Code-style editor green — header/body/footer share one deep
+     forest-green surface, like a real editor tab left open on this
+     file (per request, an intentional exception to the site's
+     monochrome rule, scoped to this one code-mockup panel). */
+  const EDITOR_BG   = 'linear-gradient(180deg, #1B4536 0%, #163A2D 100%)'
+  const EDITOR_LINE = 'rgba(160,220,195,0.14)'
+  const EDITOR_TEXT = '#D7E4DE'
+
   return (
     <aside
       aria-label="Requête API sync"
-      className="erp-glass-panel h-full flex flex-col overflow-hidden rounded-2xl text-white/55"
+      className="erp-glass-panel h-full flex flex-col overflow-hidden rounded-2xl"
       style={{
-        background: 'rgba(255,255,255,0.028)',
-        border: `1px solid ${PANEL_BORDER}`,
-        backdropFilter: 'blur(24px) saturate(1.2)',
-        WebkitBackdropFilter: 'blur(24px) saturate(1.2)',
+        background: EDITOR_BG,
+        border: '1px solid rgba(150,220,190,0.20)',
         boxShadow:
-          'inset 0 1px 0 rgba(255,255,255,0.08), ' +
+          'inset 0 1px 0 rgba(255,255,255,0.06), ' +
           '0 20px 48px rgba(0,0,0,0.42), ' +
           '0 4px 12px rgba(0,0,0,0.25)',
         WebkitFontSmoothing: 'antialiased',
+        color: EDITOR_TEXT,
       }}
     >
-      <PanelHeader title={t.apiLabel} tag="Live" live px={mobile ? 'px-4' : 'px-5'} py="py-3" />
+      <PanelHeader
+        title={t.apiLabel}
+        tag="Live"
+        live
+        px={mobile ? 'px-4' : 'px-5'}
+        py="py-3"
+        bg="rgba(255,255,255,0.05)"
+        borderColor={EDITOR_LINE}
+        titleColor={EDITOR_TEXT}
+      />
 
       <div
         className={`flex flex-1 flex-col justify-center overflow-hidden ${mobile ? 'px-4' : 'px-5'} py-3.5`}
@@ -478,17 +497,17 @@ function ApiPanel({
           lineHeight: 1.75,
         }}
       >
-        <CLine><Verb>POST</Verb> <CPath>/api/sync</CPath> <CMute>HTTP/1.1</CMute></CLine>
+        <CLine><Verb>POST</Verb> <CPath>/api/sync</CPath> <CComment>HTTP/1.1</CComment></CLine>
         {!mobile && (
-          <CLine><CKey>Authorization:</CKey> <CMute>Bearer</CMute> <CStr>sk_live_***</CStr></CLine>
+          <CLine><CKey>Authorization:</CKey> <CComment>Bearer</CComment> <CStr>sk_live_***</CStr></CLine>
         )}
         <span className="block h-1.5" />
         <CLine><CBrace>{'{'}</CBrace></CLine>
-        <CLine>{'  '}<CKey>&quot;sku&quot;</CKey><CMute>:</CMute>{' '}<CStr>&quot;{displaySku}&quot;</CStr><CMute>,</CMute></CLine>
-        <CLine>{'  '}<CKey>&quot;stock&quot;</CKey><CMute>:</CMute>{' '}<CNum>{displayStock}</CNum><CMute>,</CMute></CLine>
-        <CLine>{'  '}<CKey>&quot;price&quot;</CKey><CMute>:</CMute>{' '}<CNum>{displayPrice}</CNum></CLine>
+        <CLine>{'  '}<CKey>&quot;sku&quot;</CKey><CPunct>:</CPunct>{' '}<CStr>&quot;{displaySku}&quot;</CStr><CPunct>,</CPunct></CLine>
+        <CLine>{'  '}<CKey>&quot;stock&quot;</CKey><CPunct>:</CPunct>{' '}<CNum>{displayStock}</CNum><CPunct>,</CPunct></CLine>
+        <CLine>{'  '}<CKey>&quot;price&quot;</CKey><CPunct>:</CPunct>{' '}<CNum>{displayPrice}</CNum></CLine>
         <CLine><CBrace>{'}'}</CBrace></CLine>
-        <span className="my-2.5 block h-px" style={{ background: HAIRLINE }} />
+        <span className="my-2.5 block h-px" style={{ background: EDITOR_LINE }} />
         <CLine>
           <ArrowGlyph dir="right" />{' '}
           {isSyncing ? (
@@ -502,16 +521,16 @@ function ApiPanel({
             </span>
           ) : (
             <>
-              <span className="text-white/90">{t.apiOk}</span>{' '}
-              <CMute>·</CMute> <CMute>142ms</CMute>
+              <span style={{ color: '#89D185' }}>{t.apiOk}</span>{' '}
+              <CPunct>·</CPunct> <CComment>142ms</CComment>
             </>
           )}
         </CLine>
       </div>
 
       <div
-        className={`flex items-center gap-1.5 whitespace-nowrap ${mobile ? 'px-4' : 'px-5'} py-2.5 text-[10.5px] uppercase tracking-[0.12em] text-white/40`}
-        style={{ borderTop: `1px solid ${HAIRLINE}`, fontFamily: 'var(--font-mono, monospace)' }}
+        className={`flex items-center gap-1.5 whitespace-nowrap ${mobile ? 'px-4' : 'px-5'} py-2.5 text-[10.5px] uppercase tracking-[0.12em]`}
+        style={{ borderTop: `1px solid ${EDITOR_LINE}`, fontFamily: 'var(--font-mono, monospace)', color: '#7FA396' }}
       >
         <ArrowGlyph dir="down" />
         <span>{t.realtimeLabel}</span>
@@ -578,7 +597,7 @@ function EcomPanel({
       <PanelHeader title={t.panelRightTitle} tag="Web" tone="light" px="px-4" py="py-3.5" />
 
       <div
-        className="grid items-center gap-2.5 border-b border-[#ebebeb] bg-[#fafafa] px-4 py-2.5 text-[11px] font-medium tracking-[0.01em] text-[#616161]"
+        className="grid items-center gap-2.5 border-b border-[#ebebeb] bg-[#fafafa] px-4 lg:px-5 xl:px-6 py-2.5 lg:py-3 text-[11px] lg:text-[12px] font-medium tracking-[0.01em] text-[#616161]"
         style={{ gridTemplateColumns: ECOM_GRID }}
         aria-hidden
       >
@@ -595,11 +614,11 @@ function EcomPanel({
             <div
               key={sku}
               ref={el => onRowRef?.(sku, el)}
-              className="grid items-center gap-2.5 border-b border-[#ebebeb] px-4 py-2.5 text-[13px] last:border-b-0"
+              className="grid items-center gap-2.5 border-b border-[#ebebeb] px-4 lg:px-5 xl:px-6 py-2.5 lg:py-3.5 xl:py-4 text-[13px] lg:text-[14px] xl:text-[15px] last:border-b-0"
               style={{ gridTemplateColumns: ECOM_GRID }}
             >
               <span
-                className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-[6px] border border-[#e6e6e8] text-[17px] leading-none flex-shrink-0"
+                className="flex h-8 w-8 lg:h-9 lg:w-9 items-center justify-center overflow-hidden rounded-[6px] border border-[#e6e6e8] text-[17px] lg:text-[19px] leading-none flex-shrink-0"
                 style={{ background: 'linear-gradient(135deg,#f4f4f5 0%,#e8e8ea 100%)' }}
               >
                 {p.emoji}
@@ -614,7 +633,7 @@ function EcomPanel({
                 {stock[sku].site}
               </span>
               <span className="flex justify-end">
-                <span className="inline-flex items-center gap-1 rounded-full bg-[#cdf4dd] py-0.5 pl-1.5 pr-2 text-[11px] font-medium leading-[1.4] text-[#0c5132] whitespace-nowrap">
+                <span className="inline-flex items-center gap-1 rounded-full bg-[#cdf4dd] py-0.5 pl-1.5 pr-2 text-[11px] lg:text-[12px] font-medium leading-[1.4] text-[#0c5132] whitespace-nowrap">
                   <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-[#008060] flex-shrink-0" />
                   {t.statusActive}
                 </span>
@@ -624,7 +643,7 @@ function EcomPanel({
         })}
       </div>
 
-      <footer className="flex items-center gap-2 border-t border-[#ebebeb] bg-[#fafafa] px-4 py-2.5 text-[12px] text-[#616161]">
+      <footer className="flex items-center gap-2 border-t border-[#ebebeb] bg-[#fafafa] px-4 lg:px-5 xl:px-6 py-2.5 lg:py-3.5 xl:py-4 text-[12px] lg:text-[13px] text-[#616161]">
         <span className="inline-flex text-[#008060]">
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <path d="M2 5.5a4 4 0 0 1 7-1.6" />
@@ -960,12 +979,12 @@ export function ErpFeatureSection() {
               gridTemplateColumns: '1fr clamp(72px,6vw,120px) 1fr clamp(72px,6vw,120px) 1fr',
               gap: 'clamp(0px,1.5vw,24px)',
               alignItems: 'stretch',
-              minHeight: 380,
+              minHeight: 'clamp(380px,29vw,460px)',
               zIndex: 2,
             }}
           >
             <motion.div
-              style={{ minHeight: 380 }}
+              style={{ minHeight: 'clamp(380px,29vw,460px)' }}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
@@ -979,7 +998,7 @@ export function ErpFeatureSection() {
             </div>
 
             <motion.div
-              style={{ minHeight: 380 }}
+              style={{ minHeight: 'clamp(380px,29vw,460px)' }}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
@@ -993,7 +1012,7 @@ export function ErpFeatureSection() {
             </div>
 
             <motion.div
-              style={{ minHeight: 380 }}
+              style={{ minHeight: 'clamp(380px,29vw,460px)' }}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
@@ -1072,12 +1091,9 @@ export function ErpFeatureSection() {
               whileInView="visible"
               viewport={{ once: true, margin: '-60px' }}
             >
-              <div className="flex items-center justify-between mb-2 min-720:mb-3" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: 16 }}>
+              <div className="mb-2 min-720:mb-3" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: 16 }}>
                 <div className="font-semibold uppercase tracking-[0.04em]" style={{ fontSize: 12, color: 'rgba(255,255,255,0.36)' }}>
                   {t.badHeader}
-                </div>
-                <div className="font-mono uppercase" style={{ fontSize: 10, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.36)' }}>
-                  {t.stateOff}
                 </div>
               </div>
               {t.rowsBad.map(label => (
@@ -1092,12 +1108,9 @@ export function ErpFeatureSection() {
               whileInView="visible"
               viewport={{ once: true, margin: '-60px' }}
             >
-              <div className="flex items-center justify-between mb-2 min-720:mb-3" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: 16 }}>
+              <div className="mb-2 min-720:mb-3" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: 16 }}>
                 <div className="font-semibold uppercase tracking-[0.04em] text-white" style={{ fontSize: 12 }}>
                   {t.goodHeader}
-                </div>
-                <div className="font-mono uppercase" style={{ fontSize: 10, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.36)' }}>
-                  {t.stateOn}
                 </div>
               </div>
               {t.rowsGood.map(label => (
