@@ -37,3 +37,4 @@ scripts/crawl-analysis-report.md
 # Service-account key — NEVER commit
 torquemade-indexing-key.json
 *-key.json
+.env*
