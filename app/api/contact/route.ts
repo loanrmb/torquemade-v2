@@ -4,7 +4,12 @@ import { NextResponse } from 'next/server';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
-  const { firstName, lastName, email, company, service, budget, message } = await req.json();
+  const { firstName, lastName, email, company, service, budget, message, website } = await req.json();
+
+  // Honeypot: bots fill hidden fields humans never see. Pretend success, skip the send.
+  if (website) {
+    return NextResponse.json({ success: true });
+  }
 
   try {
     await resend.emails.send({
