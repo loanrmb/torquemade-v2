@@ -108,11 +108,11 @@ function FeatureCard({
         background: 'hsl(var(--bg-primary))',
       }}
     >
-      <div className="flex flex-col items-center gap-8 p-6 min-720:flex-row min-720:items-center min-720:gap-10 min-720:p-10">
+      <div className="flex h-[700px] flex-col items-center gap-6 p-6 min-720:h-[400px] min-720:flex-row min-720:gap-10 min-720:p-10">
         <AnimatePresence mode="wait">
           <motion.div
             key={step.name}
-            className="flex w-full flex-col gap-4 min-720:flex-1"
+            className="flex min-h-0 w-full flex-1 flex-col gap-4 overflow-y-auto min-720:h-full"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -150,7 +150,7 @@ function FeatureCard({
             </motion.div>
           </motion.div>
         </AnimatePresence>
-        {children}
+        <div className="flex shrink-0 items-center justify-center">{children}</div>
       </div>
     </div>
   )
