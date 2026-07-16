@@ -6,7 +6,31 @@ import { Footer } from '@/components/footer'
 import { useLang } from '@/components/app-provider'
 import { strings } from '@/lib/strings'
 import { useScrollReveal } from '@/lib/use-scroll-reveal'
+import { posts } from '@/lib/blog'
+import { SeoFeatureCarousel } from '@/components/ui/seo-feature-carousel'
+import {
+  SeoIllustration,
+  GeoIllustration,
+  IndexingIllustration,
+  PerformanceIllustration,
+  ArchitectureIllustration,
+} from '@/components/ui/seo-feature-illustrations'
 import { ShaderBackground } from '@/components/ui/shader-background'
+
+const CAROUSEL_ILLUSTRATIONS = [
+  <SeoIllustration key="seo" />,
+  <GeoIllustration key="geo" />,
+  <IndexingIllustration key="indexing" />,
+  <PerformanceIllustration key="performance" />,
+  <ArchitectureIllustration key="architecture" />,
+]
+
+const RELATED_CATEGORIES = ['Web & Développement', 'SEO & Contenu']
+
+const relatedPosts = posts
+  .filter((post) => RELATED_CATEGORIES.includes(post.category))
+  .sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1))
+  .slice(0, 3)
 
 export default function WebDevPage() {
   const lang = useLang()
@@ -41,6 +65,34 @@ export default function WebDevPage() {
             >
               {t.intro}
             </p>
+          </div>
+        </section>
+
+        {/* REFRAME */}
+        <section className="px-5 py-20 min-720:py-24">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2
+              className="fade-up text-title-2 font-semibold tracking-tight mb-5"
+              style={{ color: 'hsl(var(--text-primary))' }}
+            >
+              {t.reframeTitle}
+            </h2>
+            <p
+              className="fade-up fade-up-d1 text-body-lg leading-relaxed"
+              style={{ color: 'hsl(var(--text-secondary))' }}
+            >
+              {t.reframeBody}
+            </p>
+          </div>
+        </section>
+
+        {/* FEATURE CAROUSEL: SEO / GEO / INDEXING / PERFORMANCE / ARCHITECTURE */}
+        <section
+          className="px-5 py-20 min-720:py-24"
+          style={{ background: 'hsl(var(--bg-secondary))' }}
+        >
+          <div className="fade-up">
+            <SeoFeatureCarousel steps={t.carouselSteps} illustrations={CAROUSEL_ILLUSTRATIONS} />
           </div>
         </section>
 
@@ -264,6 +316,125 @@ export default function WebDevPage() {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        {/* STACK BANNER */}
+        <section
+          className="px-5 py-8"
+          style={{
+            borderTop: '1px solid hsl(var(--border-subtle))',
+            borderBottom: '1px solid hsl(var(--border-subtle))',
+          }}
+        >
+          <p
+            className="fade-up mx-auto max-w-3xl text-center text-sm leading-relaxed"
+            style={{ color: 'hsl(var(--text-tertiary))' }}
+          >
+            {t.stackBanner}
+          </p>
+        </section>
+
+        {/* RELATED ARTICLES */}
+        {relatedPosts.length > 0 && (
+          <section className="px-5 py-20 min-720:py-24">
+            <div className="mx-auto max-w-5xl">
+              <h2
+                className="fade-up text-title-2 font-semibold tracking-tight mb-10 text-center"
+                style={{ color: 'hsl(var(--text-primary))' }}
+              >
+                {t.relatedTitle}
+              </h2>
+              <div className="grid grid-cols-1 min-720:grid-cols-3 gap-4">
+                {relatedPosts.map((post) => (
+                  <Link
+                    key={post.slug}
+                    href={`/blog/${post.slug}`}
+                    className="fade-up group p-6 rounded-2xl flex flex-col gap-3"
+                    style={{
+                      background: 'hsl(var(--bg-secondary))',
+                      border: '1px solid hsl(var(--border-subtle))',
+                    }}
+                  >
+                    <span
+                      className="text-caption font-semibold tracking-widest uppercase"
+                      style={{ color: 'hsl(var(--text-tertiary))' }}
+                    >
+                      {post.date[lang]}
+                    </span>
+                    <h3
+                      className="text-body font-semibold leading-snug"
+                      style={{ color: 'hsl(var(--text-primary))' }}
+                    >
+                      {post.title[lang]}
+                    </h3>
+                    <span
+                      className="mt-auto inline-flex w-fit items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm font-semibold transition-opacity duration-150 group-hover:opacity-70"
+                      style={{
+                        border: '1px solid hsl(var(--border-subtle))',
+                        color: 'hsl(var(--text-primary))',
+                      }}
+                    >
+                      {t.relatedCta} →
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* FAQ */}
+        <section
+          className="px-5 py-20 min-720:py-24"
+          style={{ background: 'hsl(var(--bg-secondary))' }}
+        >
+          <div className="mx-auto max-w-3xl">
+            <h2
+              className="fade-up mb-8 text-title-2 font-semibold tracking-tight min-720:mb-10 text-center"
+              style={{ color: 'hsl(var(--text-primary))' }}
+            >
+              {t.faqTitle}
+            </h2>
+            <div
+              className="fade-up overflow-hidden rounded-2xl"
+              style={{
+                background: 'hsl(var(--bg-primary))',
+                border: '1px solid hsl(var(--border-subtle))',
+              }}
+            >
+              {t.faq.map((item, i) => (
+                <details
+                  key={i}
+                  className="group"
+                  style={{
+                    borderTop: i === 0 ? 'none' : '1px solid hsl(var(--border-subtle))',
+                  }}
+                >
+                  <summary className="flex cursor-pointer list-none items-baseline justify-between gap-4 px-5 py-4 min-720:px-7 min-720:py-5 [&::-webkit-details-marker]:hidden">
+                    <h3
+                      className="text-body font-semibold leading-snug"
+                      style={{ color: 'hsl(var(--text-primary))' }}
+                    >
+                      {item.q}
+                    </h3>
+                    <span
+                      aria-hidden="true"
+                      className="flex-shrink-0 self-center text-lg font-light leading-none transition-transform duration-200 ease-out group-open:rotate-45"
+                      style={{ color: 'hsl(var(--text-tertiary))' }}
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p
+                    className="px-5 pb-5 text-body leading-relaxed min-720:px-7 min-720:pb-6"
+                    style={{ color: 'hsl(var(--text-secondary))' }}
+                  >
+                    {item.a}
+                  </p>
+                </details>
+              ))}
+            </div>
           </div>
         </section>
 

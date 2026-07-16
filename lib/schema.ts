@@ -166,6 +166,10 @@ export function serviceSchema(opts: {
   serviceType: string
   slug: string
   description: string
+  /** Optional FAQPage entity, sourced word-for-word from the FR strings
+   *  rendered in the visible FAQ accordion on the page (Google rule: markup
+   *  must mirror on-page content; FR is the server-rendered default language). */
+  faq?: readonly { q: string; a: string }[]
 }) {
   const url = `${SITE_URL}/services/${opts.slug}`
   return {
@@ -199,6 +203,19 @@ export function serviceSchema(opts: {
           { '@type': 'ListItem', position: 3, name: opts.name, item: url },
         ],
       },
+      ...(opts.faq
+        ? [
+            {
+              '@type': 'FAQPage',
+              '@id': `${url}/#faq`,
+              mainEntity: opts.faq.map(({ q, a }) => ({
+                '@type': 'Question',
+                name: q,
+                acceptedAnswer: { '@type': 'Answer', text: a },
+              })),
+            },
+          ]
+        : []),
     ],
   }
 }
