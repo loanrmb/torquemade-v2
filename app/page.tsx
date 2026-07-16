@@ -45,12 +45,12 @@ export default function HomePage() {
         {/* ── HERO ── */}
         <section className="relative overflow-hidden px-4 pt-28 pb-4 min-720:px-5 min-720:pt-36 min-1280:pt-44">
           <WaveBackground />
-          <div className="relative z-10 flex flex-col items-start text-left max-w-5xl mx-auto">
+          <div className="relative z-10 flex flex-col items-start text-left max-w-6xl mx-auto">
 
             <p className="fade-up section-label">{t.hero.eyebrow}</p>
 
             <h1
-              className="fade-up fade-up-d1 max-w-5xl text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.05]"
+              className="fade-up fade-up-d1 max-w-6xl text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.05]"
               style={{ color: 'hsl(var(--text-primary))' }}
             >
               {t.hero.tagline}
