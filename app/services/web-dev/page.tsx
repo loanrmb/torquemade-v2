@@ -16,6 +16,7 @@ import {
   ArchitectureIllustration,
 } from '@/components/ui/seo-feature-illustrations'
 import { ShaderBackground } from '@/components/ui/shader-background'
+import { WaveBackground } from '@/components/ui/wave-background'
 
 const CAROUSEL_ILLUSTRATIONS = [
   <SeoIllustration key="seo" />,
@@ -48,6 +49,7 @@ export default function WebDevPage() {
           className="relative overflow-hidden pb-16 pt-28 min-720:pt-36"
           style={{ background: 'hsl(var(--bg-secondary))' }}
         >
+          <WaveBackground />
           <div className="perspective-grid-wrap" aria-hidden="true">
             <div className="perspective-grid" />
           </div>

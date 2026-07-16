@@ -7,6 +7,7 @@ import { ContactForm } from '@/components/contact-form'
 import { useLang } from '@/components/app-provider'
 import { strings } from '@/lib/strings'
 import { useScrollReveal } from '@/lib/use-scroll-reveal'
+import { WaveBackground } from '@/components/ui/wave-background'
 
 export default function ContactPage() {
   const lang = useLang()
@@ -24,6 +25,7 @@ export default function ContactPage() {
           className="relative overflow-hidden pb-14 pt-28 min-720:pt-36"
           style={{ background: 'hsl(var(--bg-secondary))' }}
         >
+          <WaveBackground />
           <div className="perspective-grid-wrap" aria-hidden="true">
             <div className="perspective-grid" />
           </div>
