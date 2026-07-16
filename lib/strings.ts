@@ -307,50 +307,50 @@ export const strings = {
     },
     crm: {
       eyebrow: 'Services',
-      hero: 'Des outils pensés pour votre métier',
-      intro: 'Les logiciels génériques ne correspondent jamais parfaitement à votre façon de travailler. Nous construisons des CRM et outils de gestion sur mesure, adaptés à vos processus.',
-      targetsTitle: 'Qui en a besoin ?',
-      targets: [
-        {
-          title: 'Entreprises de location',
-          desc: 'Véhicules, matériel, équipements, gérez vos disponibilités, réservations et clients en un seul endroit.',
-        },
-        {
-          title: 'Chauffeurs privés & VTC',
-          desc: 'Courses, clients récurrents, facturation, un outil pensé pour votre activité mobile.',
-        },
-        {
-          title: 'Salles de sport & studios',
-          desc: 'Abonnements, présences, cours collectifs, pilotez votre activité sans jongler entre dix outils.',
-        },
-        {
-          title: 'Prestataires de services',
-          desc: 'Agences, artisans, consultants, suivez vos prospects, devis, projets et relances depuis une seule interface.',
-        },
-        {
-          title: 'Professions médicales & paramédicales',
-          desc: 'Rendez-vous, patients, historique, une solution confidentielle et adaptée à votre pratique.',
-        },
-        {
-          title: 'Tout métier avec des clients récurrents',
-          desc: 'Si vous avez des clients, un historique à suivre et des actions à automatiser, un CRM sur mesure vous fait gagner du temps chaque jour.',
-        },
+      hero: 'Louer un CRM générique ou construire le vôtre ?',
+      intro: 'Un CRM générique est pensé pour le plus grand nombre, jamais pour votre façon de travailler : beaucoup d\'entreprises se retrouvent avec un outil qu\'elles ne peuvent pas vraiment adapter, et qui finit par coûter plus qu\'il ne rapporte. La vraie question n\'est pas quel abonnement choisir, mais s\'il faut louer un outil conçu pour tout le monde ou construire celui qui colle exactement à votre activité.',
+
+      compareTitle: 'Abonnement générique ou développement sur mesure',
+      compareIntro: 'Les deux approches gèrent des clients. Elles ne vous laissent pas au même endroit au bout de trois ans.',
+      compareColGeneric: 'Abonnement générique',
+      compareColCustom: 'CRM sur mesure',
+      compareRows: [
+        { aspect: 'Coût dans le temps', generic: 'Une mensualité par utilisateur qui ne s\'arrête jamais et augmente à chaque montée en gamme. Salesforce facture environ 165 $ par utilisateur et par mois, HubSpot démarre autour de 50 $ par mois.', custom: 'Un investissement de départ, payé une fois. Pas de mensualité par siège, pas de palier tarifaire qui verrouille une fonctionnalité.' },
+        { aspect: 'Propriété des données', generic: 'Vos données vivent sur l\'infrastructure du fournisseur. Vous louez un accès : le jour où vous arrêtez de payer, vous le perdez.', custom: 'Le code et les données vous appartiennent en propre. Ils sont hébergés là où vous le décidez, sans tiers entre vous et vos données.' },
+        { aspect: 'Personnalisation', generic: 'Des réglages dans un cadre fixe. Vous adaptez votre façon de travailler au logiciel.', custom: 'Chaque écran, chaque champ, chaque automatisation est construit autour de votre processus réel.' },
+        { aspect: 'Adaptation à votre flux', generic: 'Un schéma générique que vous forcez à ressembler à votre métier.', custom: 'Le flux du logiciel suit exactement celui de votre activité, cas particuliers compris.' },
+        { aspect: 'Dépendance au fournisseur', generic: 'Prix, fonctionnalités et feuille de route décidés par un tiers. Une hausse de tarif ou un rachat, et vous subissez.', custom: 'Aucune dépendance. L\'outil évolue quand vous le décidez, au rythme de votre entreprise.' },
       ],
-      deliveryTitle: 'Ce qu\'on livre',
-      delivery: [
-        'CRM sur mesure adapté à vos processus exacts',
-        'Systèmes de réservation et gestion de planning',
-        'Tableaux de bord et reporting en temps réel',
-        'Gestion clients, historique et suivi des interactions',
-        'Automatisations : relances, notifications, rappels',
-        'Gestion des devis, commandes et suivi commercial',
-        'Accès multi-utilisateurs avec rôles et permissions',
-        'Import / export de vos données existantes',
-        'Intégrations tierces : email, calendrier, comptabilité',
-        'Interface mobile-friendly, utilisable partout',
-        'Évolutions et nouvelles fonctionnalités dans le temps',
-        'Support dédié — un interlocuteur qui connaît votre outil',
+      compareCalcLabel: 'Le calcul sur cinq ans',
+      compareCalc: 'Une équipe de cinq personnes qui paie 50 $ par utilisateur et par mois pour un CRM générique dépense 3 000 $ par an, soit 15 000 $ sur cinq ans, sans rien posséder au bout du compte, là où un CRM développé sur mesure est un coût unique qui reste la propriété de l\'entreprise.',
+
+      compareOwnTitle: 'Louer un accès ou posséder un outil',
+      compareOwnBody: 'Avec un abonnement, vous ne possédez rien : vos données vivent sur l\'infrastructure de quelqu\'un d\'autre, et le jour où vous arrêtez de payer, l\'accès se ferme. Avec un développement sur mesure, le code et les données appartiennent au client, entièrement. C\'est la différence entre payer un loyer indéfiniment et détenir un actif.',
+
+      buildTitle: 'Comment un CRM sur mesure se construit',
+      buildIntro: 'Un logiciel générique part d\'une base commune à des milliers d\'entreprises. Un outil sur mesure part de la vôtre. Voici les cinq étapes, dans l\'ordre.',
+      buildPhases: [
+        { num: '01', name: 'Cadrage', title: 'Comprendre votre activité avant d\'écrire du code', body: 'Avant la moindre ligne de code, on cartographie vos processus réels : comment un client entre dans votre système, ce qui déclenche une relance, comment un devis devient une commande, et surtout les cas particuliers que vous gérez à la main aujourd\'hui. C\'est précisément l\'étape qu\'un logiciel générique saute, puisqu\'il ne peut pas connaître votre métier. Bien la traiter au départ, c\'est ce qui évite de reproduire dans un outil neuf les contournements que vous subissez déjà.' },
+        { num: '02', name: 'Architecture', title: 'Une structure bâtie sur votre modèle de données', body: 'Une fois vos processus clairs, on conçoit la structure du logiciel autour de vos données à vous : les objets que vous manipulez vraiment, les liens entre eux, les statuts par lesquels passe une affaire. Rien n\'est forcé dans un schéma préexistant. Là où un outil générique vous demande de ranger votre activité dans ses cases, ici les cases sont dessinées d\'après votre activité.' },
+        { num: '03', name: 'Construction', title: 'Un outil construit par étapes, avec vos retours', body: 'Le logiciel se construit et s\'affine par paliers, pas en une livraison unique à prendre ou à laisser. Vous voyez des versions intermédiaires, vous les utilisez, vous donnez votre avis, et l\'outil se corrige avant d\'aller plus loin. Chaque écran est validé sur votre réalité, pas sur une supposition. Cette boucle de retours est ce qui distingue un outil qui vous ressemble d\'un produit figé qu\'on adapte de force.' },
+        { num: '04', name: 'Livraison', title: 'La mise en ligne et la propriété, concrètement', body: 'À la livraison, l\'outil est mis en ligne et vos données existantes y sont reprises. La propriété n\'est pas une formule : le code source et la base de données vous reviennent, hébergés là où vous le choisissez. Vous n\'êtes pas locataire d\'un accès qui peut se couper, vous détenez l\'outil et ce qu\'il contient.' },
+        { num: '05', name: 'Évolution', title: 'Un outil qui change quand votre entreprise change', body: 'Une activité bouge : nouveaux services, nouvelles règles, nouvelle façon de vendre. Un CRM sur mesure suit ce mouvement. On ajoute une fonctionnalité quand vous en avez besoin, sans attendre qu\'un fournisseur l\'inscrive à sa feuille de route et sans être bloqué par un palier tarifaire qui la réserve à l\'offre supérieure. L\'outil vieillit avec votre entreprise au lieu de la freiner.' },
       ],
+
+      relatedTitle: 'À lire aussi',
+      relatedCta: 'Lire l\'article',
+
+      faqTitle: 'Questions fréquentes',
+      faq: [
+        { q: 'CRM sur mesure ou logiciel générique, que choisir ?', a: 'Un logiciel générique convient si vos besoins sont standards et que vous acceptez d\'adapter votre façon de travailler à l\'outil. Un CRM sur mesure se justifie dès que vos processus ont des particularités, que vous voulez posséder vos données, ou que les mensualités par utilisateur deviennent lourdes dans le temps.' },
+        { q: 'Combien coûte un CRM sur mesure ?', a: 'Le coût dépend du périmètre, mais il prend la forme d\'un investissement de départ payé une fois, et non d\'un abonnement mensuel par utilisateur. Sur plusieurs années, l\'absence de mensualité qui augmente fait souvent pencher la balance vers le sur mesure.' },
+        { q: 'Est-ce qu\'on est propriétaire d\'un CRM développé sur mesure ?', a: 'Oui. Le code source et la base de données appartiennent au client, hébergés là où il le décide. Contrairement à un abonnement où vous louez un accès, rien ne se ferme si vous cessez une relation commerciale.' },
+        { q: 'Un CRM sur mesure est-il plus cher qu\'un abonnement au départ ?', a: 'Au départ, oui : un abonnement démarre à quelques dizaines d\'euros par mois, un développement sur mesure demande un investissement initial plus élevé. Mais l\'abonnement ne s\'arrête jamais et augmente avec le nombre d\'utilisateurs, tandis que le sur mesure est payé une fois. Le point de bascule arrive généralement en quelques années.' },
+        { q: 'Peut-on faire évoluer un CRM sur mesure après sa mise en ligne ?', a: 'Oui. C\'est même un de ses avantages : on ajoute des fonctionnalités quand votre activité en a besoin, sans attendre la feuille de route d\'un fournisseur ni débloquer un palier tarifaire. L\'outil évolue au rythme de l\'entreprise.' },
+        { q: 'Combien de temps pour construire un CRM sur mesure ?', a: 'Le délai varie selon la complexité, mais l\'outil se construit par étapes : vous utilisez des versions intermédiaires et donnez votre avis avant la livraison finale, plutôt que d\'attendre un produit complet livré d\'un bloc.' },
+        { q: 'Que se passe-t-il si on arrête un abonnement CRM générique ?', a: 'Vous perdez l\'accès à l\'outil, et vos données restent sur l\'infrastructure du fournisseur. Récupérer un export exploitable est parfois possible, mais l\'historique et les automatisations construits dans l\'outil ne partent pas avec vous. C\'est le risque propre à la location d\'un logiciel.' },
+      ],
+
       ctaTitle: 'Prêt pour un outil qui colle à votre métier ?',
       ctaSub: 'Parlez-nous de vos processus. Nous revenons vers vous dans les 24h.',
       ctaButton: 'Démarrer une conversation',
@@ -943,50 +943,50 @@ export const strings = {
     },
     crm: {
       eyebrow: 'Services',
-      hero: 'Software built around your business',
-      intro: 'Generic software never fits perfectly. We build custom CRMs and management tools tailored to your exact processes.',
-      targetsTitle: 'Who needs it?',
-      targets: [
-        {
-          title: 'Rental businesses',
-          desc: 'Vehicles, equipment, gear, manage your availability, bookings and clients in one place.',
-        },
-        {
-          title: 'Private drivers & ride services',
-          desc: 'Rides, recurring clients, invoicing, a tool built for your mobile business.',
-        },
-        {
-          title: 'Gyms & fitness studios',
-          desc: 'Memberships, attendance, group classes, run your business without juggling ten different tools.',
-        },
-        {
-          title: 'Service providers',
-          desc: 'Agencies, tradespeople, consultants, track your leads, quotes, projects and follow-ups from one interface.',
-        },
-        {
-          title: 'Medical & paramedical practices',
-          desc: 'Appointments, patients, history, a confidential solution adapted to your practice.',
-        },
-        {
-          title: 'Any business with recurring clients',
-          desc: 'If you have clients, history to track and actions to automate, a custom CRM saves you time every day.',
-        },
+      hero: 'Rent a generic CRM, or build your own?',
+      intro: 'A generic CRM is built for the many, never for the way you work: plenty of businesses end up with a tool they cannot truly adapt, one that costs more than it returns. The real question is not which subscription to pick, but whether to rent a tool built for everyone or build the one that fits your business exactly.',
+
+      compareTitle: 'Generic subscription or custom build',
+      compareIntro: 'Both approaches manage clients. They do not leave you in the same place three years later.',
+      compareColGeneric: 'Generic subscription',
+      compareColCustom: 'Custom CRM',
+      compareRows: [
+        { aspect: 'Long-term cost', generic: 'A per-user monthly fee that never stops and rises with every tier upgrade. Salesforce charges around $165 per user per month, HubSpot starts around $50 per month.', custom: 'An upfront investment, paid once. No per-seat fee, no pricing tier that locks a feature behind it.' },
+        { aspect: 'Data ownership', generic: 'Your data lives on the vendor\'s infrastructure. You rent access: the day you stop paying, you lose it.', custom: 'The code and the data belong to you outright. They are hosted where you decide, with no third party between you and your data.' },
+        { aspect: 'Customization', generic: 'Settings inside a fixed frame. You bend your way of working to fit the software.', custom: 'Every screen, field and automation is built around your real process.' },
+        { aspect: 'Fit to your workflow', generic: 'A generic schema you force to look like your business.', custom: 'The software\'s flow follows your business flow exactly, edge cases included.' },
+        { aspect: 'Vendor dependency', generic: 'Price, features and roadmap decided by a third party. One price hike or acquisition, and you absorb it.', custom: 'No dependency. The tool changes when you decide, at your company\'s pace.' },
       ],
-      deliveryTitle: 'What we deliver',
-      delivery: [
-        'CRM tailored to your exact processes',
-        'Booking systems and schedule management',
-        'Real-time dashboards and reporting',
-        'Client management, history and interaction tracking',
-        'Automations: follow-ups, notifications, reminders',
-        'Quote, order and sales pipeline management',
-        'Multi-user access with roles and permissions',
-        'Import / export of your existing data',
-        'Third-party integrations: email, calendar, accounting',
-        'Mobile-friendly interface, usable anywhere',
-        'Ongoing improvements and new features over time',
-        'Dedicated support — someone who knows your tool',
+      compareCalcLabel: 'The five-year math',
+      compareCalc: 'A five-person team paying $50 per user per month for a generic CRM spends $3,000 a year, or $15,000 over five years, and owns nothing at the end, whereas a custom-built CRM is a one-time cost that stays the property of the business.',
+
+      compareOwnTitle: 'Renting access or owning a tool',
+      compareOwnBody: 'With a subscription you own nothing: your data lives on someone else\'s infrastructure, and the day you stop paying, access closes. With a custom build, the code and the data belong to the client, entirely. It is the difference between paying rent indefinitely and holding an asset.',
+
+      buildTitle: 'How a custom CRM is built',
+      buildIntro: 'Generic software starts from a base shared by thousands of businesses. A custom tool starts from yours. Here are the five stages, in order.',
+      buildPhases: [
+        { num: '01', name: 'Discovery', title: 'Understanding your business before any code', body: 'Before a single line of code, we map your real processes: how a client enters your system, what triggers a follow-up, how a quote becomes an order, and above all the edge cases you handle by hand today. This is exactly the step a generic tool skips, because it cannot know your business. Getting it right up front is what keeps a new tool from reproducing the workarounds you already put up with.' },
+        { num: '02', name: 'Architecture', title: 'A structure built on your data model', body: 'Once your processes are clear, we design the structure of the software around your data: the objects you actually work with, the links between them, the statuses a deal moves through. Nothing is forced into a pre-existing schema. Where a generic tool asks you to file your business into its boxes, here the boxes are drawn from your business.' },
+        { num: '03', name: 'Build', title: 'A tool built in stages, with your feedback', body: 'The software is built and refined in stages, not delivered as one take-it-or-leave-it release. You see intermediate versions, you use them, you give feedback, and the tool is corrected before moving on. Every screen is checked against your reality, not an assumption. That feedback loop is what separates a tool that fits you from a fixed product bent to fit.' },
+        { num: '04', name: 'Handover', title: 'Deployment and ownership, concretely', body: 'At delivery, the tool goes live and your existing data is migrated in. Ownership is not a figure of speech: the source code and the database are yours, hosted where you choose. You are not renting access that can be switched off, you hold the tool and everything in it.' },
+        { num: '05', name: 'Evolution', title: 'A tool that changes as your business changes', body: 'A business moves: new services, new rules, a new way of selling. A custom CRM follows that movement. A feature is added when you need it, without waiting for a vendor to put it on a roadmap and without being blocked by a pricing tier that reserves it for a higher plan. The tool ages with your company instead of holding it back.' },
       ],
+
+      relatedTitle: 'Further reading',
+      relatedCta: 'Read the article',
+
+      faqTitle: 'Frequently asked questions',
+      faq: [
+        { q: 'Custom CRM or generic software, which to choose?', a: 'Generic software works if your needs are standard and you accept adapting your way of working to the tool. A custom CRM makes sense as soon as your processes have particularities, you want to own your data, or per-user monthly fees become heavy over time.' },
+        { q: 'How much does a custom CRM cost?', a: 'The cost depends on scope, but it takes the form of an upfront investment paid once, not a monthly per-user subscription. Over several years, the absence of a fee that keeps rising often tips the balance toward custom.' },
+        { q: 'Do you own a custom-built CRM?', a: 'Yes. The source code and the database belong to the client, hosted where they decide. Unlike a subscription where you rent access, nothing shuts off if a commercial relationship ends.' },
+        { q: 'Is a custom CRM more expensive than a subscription upfront?', a: 'Upfront, yes: a subscription starts at a few tens of euros a month, a custom build needs a larger initial investment. But the subscription never stops and grows with the number of users, while the custom build is paid once. The crossover point usually arrives within a few years.' },
+        { q: 'Can a custom CRM evolve after it goes live?', a: 'Yes, and it is one of its advantages: features are added when your business needs them, without waiting for a vendor roadmap or unlocking a pricing tier. The tool evolves at the company\'s pace.' },
+        { q: 'How long does it take to build a custom CRM?', a: 'The timeline varies with complexity, but the tool is built in stages: you use intermediate versions and give feedback before final delivery, rather than waiting for a complete product handed over in one block.' },
+        { q: 'What happens if you stop a generic CRM subscription?', a: 'You lose access to the tool, and your data stays on the vendor\'s infrastructure. Getting a usable export is sometimes possible, but the history and the automations built inside the tool do not leave with you. That is the risk specific to renting software.' },
+      ],
+
       ctaTitle: 'Ready for a tool built around your business?',
       ctaSub: 'Tell us about your processes. We\'ll get back to you within 24h.',
       ctaButton: 'Start a conversation',
