@@ -636,12 +636,18 @@ export const strings = {
       ctaButton: 'Parlons de votre projet',
 
       trialForm: {
+        modalTitle: 'Parlons de votre boutique',
         namePlaceholder: 'Votre nom',
         emailPlaceholder: 'Votre email',
+        phonePlaceholder: 'Numéro de téléphone',
+        storeNamePlaceholder: 'Nom de la boutique',
+        storeUrlPlaceholder: 'Site web de la boutique (optionnel)',
+        messagePlaceholder: 'Parlez-nous de votre situation…',
         submit: 'Envoyer',
         sending: 'Envoi…',
         success: 'Reçu — on vous recontacte sous 24h.',
         error: 'Erreur d’envoi, réessayez.',
+        close: 'Fermer',
       },
       trialCtas: {
         serial: {
@@ -1366,12 +1372,18 @@ export const strings = {
       ctaButton: 'Let’s talk about your project',
 
       trialForm: {
+        modalTitle: 'Let’s talk about your store',
         namePlaceholder: 'Your name',
         emailPlaceholder: 'Your email',
+        phonePlaceholder: 'Phone number',
+        storeNamePlaceholder: 'Store name',
+        storeUrlPlaceholder: 'Store website (optional)',
+        messagePlaceholder: 'Tell us about your situation…',
         submit: 'Send',
         sending: 'Sending…',
         success: 'Got it — we’ll reach out within 24h.',
         error: 'Something went wrong, try again.',
+        close: 'Close',
       },
       trialCtas: {
         serial: {
