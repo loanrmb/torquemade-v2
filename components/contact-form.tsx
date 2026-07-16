@@ -25,6 +25,15 @@ const CURRENCY_SYMBOLS: Record<string, string> = {
   PLN: 'zł',
 }
 
+const CURRENCY_FLAGS: Record<string, string> = {
+  CHF: '🇨🇭',
+  EUR: '🇪🇺',
+  USD: '🇺🇸',
+  GBP: '🇬🇧',
+  CAD: '🇨🇦',
+  PLN: '🇵🇱',
+}
+
 const TOTAL_STEPS = 3
 
 export function ContactForm() {
@@ -312,6 +321,7 @@ export function ContactForm() {
                             border: '1px solid hsl(var(--border-subtle))',
                           }}
                         >
+                          <span className="mr-1">{CURRENCY_FLAGS[code]}</span>
                           {code}
                         </button>
                       )
