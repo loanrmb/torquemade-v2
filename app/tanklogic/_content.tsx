@@ -20,6 +20,7 @@ import { strings } from '@/lib/strings'
 import { useScrollReveal } from '@/lib/use-scroll-reveal'
 import { ShaderBackground } from '@/components/ui/shader-background'
 import { WaveBackground } from '@/components/ui/wave-background'
+import { TankLogicTrialCta } from '@/components/tanklogic-trial-cta'
 import {
   Reveal,
   HeroInventoryMock,
@@ -134,6 +135,9 @@ export function TankLogicContent() {
               </Reveal>
             </div>
           </div>
+          <div className="mx-auto mt-14 max-w-5xl min-720:mt-20">
+            <TankLogicTrialCta intentKey="serial" />
+          </div>
         </section>
 
         {/* ── STOCK ↔ ONLINE STORE SYNC ── */}
@@ -162,6 +166,9 @@ export function TankLogicContent() {
             <Reveal>
               <SyncMock />
             </Reveal>
+            <div className="mt-14 min-720:mt-20">
+              <TankLogicTrialCta intentKey="sync" />
+            </div>
           </div>
         </section>
 
@@ -221,6 +228,10 @@ export function TankLogicContent() {
                   <TraceMock />
                 </Reveal>
               </div>
+            </div>
+
+            <div className="mt-14 min-720:mt-20">
+              <TankLogicTrialCta intentKey="doa" />
             </div>
           </div>
         </section>

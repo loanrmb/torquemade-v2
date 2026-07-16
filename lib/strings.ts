@@ -634,6 +634,38 @@ export const strings = {
       ctaTitle: 'Parlons de votre boutique',
       ctaSub: 'Décrivez-nous vos spécimens, vos canaux de vente et votre volume d’expédition. On vous montre comment TankLogic s’articulerait autour de votre workflow.',
       ctaButton: 'Parlons de votre projet',
+
+      trialForm: {
+        modalTitle: 'Parlons de votre boutique',
+        namePlaceholder: 'Votre nom',
+        emailPlaceholder: 'Votre email',
+        phonePlaceholder: 'Numéro de téléphone',
+        storeNamePlaceholder: 'Nom de la boutique',
+        storeUrlPlaceholder: 'Site web de la boutique (optionnel)',
+        messagePlaceholder: 'Parlez-nous de votre situation…',
+        submit: 'Envoyer',
+        sending: 'Envoi…',
+        success: 'Reçu — on vous recontacte sous 24h.',
+        error: 'Erreur d’envoi, réessayez.',
+        close: 'Fermer',
+      },
+      trialCtas: {
+        serial: {
+          title: 'Réduisez les erreurs de survente sur vos pièces uniques.',
+          question: 'Votre principal défi : gérer des spécimens uniques ou des lots par espèce ?',
+          cta: 'Tester la gestion sérialisée',
+        },
+        sync: {
+          title: 'Voyez une vente comptoir disparaître de votre site en temps réel.',
+          question: 'Combien de fois par semaine devez-vous corriger le stock à la main ?',
+          cta: 'Voir la synchro en action',
+        },
+        doa: {
+          title: 'Réduisez les litiges DOA avec un dossier de preuve automatique.',
+          question: 'Combien de contestations DOA traitez-vous par mois ?',
+          cta: 'Découvrir la protection DOA',
+        },
+      },
     },
   },
 
@@ -1338,6 +1370,38 @@ export const strings = {
       ctaTitle: 'Let’s talk about your store',
       ctaSub: 'Tell us about your specimens, your sales channels, and your shipping volume. We’ll show you how TankLogic would fit around your workflow.',
       ctaButton: 'Let’s talk about your project',
+
+      trialForm: {
+        modalTitle: 'Let’s talk about your store',
+        namePlaceholder: 'Your name',
+        emailPlaceholder: 'Your email',
+        phonePlaceholder: 'Phone number',
+        storeNamePlaceholder: 'Store name',
+        storeUrlPlaceholder: 'Store website (optional)',
+        messagePlaceholder: 'Tell us about your situation…',
+        submit: 'Send',
+        sending: 'Sending…',
+        success: 'Got it — we’ll reach out within 24h.',
+        error: 'Something went wrong, try again.',
+        close: 'Close',
+      },
+      trialCtas: {
+        serial: {
+          title: 'Cut overselling errors on your one-of-a-kind pieces.',
+          question: 'Your biggest challenge: unique specimens or per-species batches?',
+          cta: 'Try serialized inventory',
+        },
+        sync: {
+          title: 'Watch a counter sale disappear from your site in real time.',
+          question: 'How many times a week do you correct stock by hand?',
+          cta: 'See the sync in action',
+        },
+        doa: {
+          title: 'Cut DOA disputes with an automatic evidence file.',
+          question: 'How many DOA disputes do you deal with a month?',
+          cta: 'Explore DOA protection',
+        },
+      },
     },
   },
 } as const

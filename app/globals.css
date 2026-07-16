@@ -775,6 +775,30 @@ html.dark .cta-card {
   .btn-liquid-glass { animation: none; }
 }
 
+/* Floating trial-CTA modal — permanent rainbow gradient ring around the
+   panel edge (same technique as .btn-outline-glass, always-on not hover). */
+.tanklogic-glass-modal {
+  position: relative;
+  isolation: isolate;
+  border-radius: 1.5rem;
+  padding: 2px;
+  background: linear-gradient(
+    90deg,
+    #f97316, #eab308, #22c55e, #3b82f6, #a855f7, #ec4899, #f97316
+  );
+  background-size: 300% 100%;
+  animation: gradient-shift 8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tanklogic-glass-modal { animation: none; }
+}
+
+.tanklogic-glass-modal-inner {
+  border-radius: calc(1.5rem - 2px);
+  background: hsl(var(--bg-primary));
+}
+
 /* Outline button — rainbow gradient border fades in on hover via ::before.
    isolation: isolate keeps the negative z-index pseudo-element scoped to the
    button. Explicit background prevents the gradient bleeding through. */
