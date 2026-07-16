@@ -224,6 +224,7 @@ const SPECIMENS: Specimen[] = [
   { id: 'PARA-0056', name: 'Paracanthurus hepatus', emoji: '🐠', size: { fr: '6 cm', en: '6 cm' }, price: 79, status: 'stock' },
   { id: 'CHRY-0089', name: 'Chrysiptera cyanea', emoji: '🐠', size: { fr: '4 cm', en: '4 cm' }, price: 25, status: 'stock' },
   { id: 'PTER-0127', name: 'Pterapogon kauderni', emoji: '🐠', size: { fr: '6 cm', en: '6 cm' }, price: 65, status: 'reserved' },
+  { id: 'GRAM-0164', name: 'Gramma loreto', emoji: '🐠', size: { fr: '5 cm', en: '5 cm' }, price: 45, status: 'stock' },
 ]
 
 function price(n: number, lang: 'fr' | 'en') {
