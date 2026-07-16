@@ -18,6 +18,7 @@ import { Footer } from '@/components/footer'
 import { useLang } from '@/components/app-provider'
 import { strings } from '@/lib/strings'
 import { useScrollReveal } from '@/lib/use-scroll-reveal'
+import { CtaGlobeSection } from '@/components/cta-globe-section'
 import { WaveBackground } from '@/components/ui/wave-background'
 import {
   Reveal,
@@ -334,25 +335,13 @@ export function TankLogicContent() {
         </section>
 
         {/* ── CTA ── */}
-        <section className="px-5 pb-20 pt-16 min-720:pb-24 min-720:pt-20">
-          <div className="mx-auto max-w-5xl">
-            <div className="cta-card fade-up p-10 text-center min-720:p-16">
-              <h2 className="mb-4 text-title-2 font-semibold tracking-tight" style={{ color: '#ffffff' }}>
-                {t.ctaTitle}
-              </h2>
-              <p className="mx-auto mb-8 max-w-lg text-body-lg" style={{ color: 'rgba(255,255,255,0.72)' }}>
-                {t.ctaSub}
-              </p>
-              <Link
-                href="/contact?service=tanklogic"
-                className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-opacity duration-150 hover:opacity-80"
-                style={{ background: '#ffffff', color: '#0a0a0a' }}
-              >
-                {t.ctaButton} →
-              </Link>
-            </div>
-          </div>
-        </section>
+        <CtaGlobeSection
+          title={t.ctaTitle}
+          sub={t.ctaSub}
+          buttonLabel={`${t.ctaButton} →`}
+          href="/contact?service=tanklogic"
+          sectionClassName="px-5 pb-20 pt-16 min-720:pb-24 min-720:pt-20"
+        />
       </main>
 
       <Footer />
