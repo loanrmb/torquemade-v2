@@ -94,7 +94,6 @@ function IconCheck({ className }: { className?: string }) {
 function FeatureCard({
   children,
   step,
-  stepsCount,
 }: {
   children: ReactNode
   step: Step
@@ -103,17 +102,17 @@ function FeatureCard({
 }) {
   return (
     <div
-      className="relative w-full overflow-hidden rounded-3xl"
+      className="w-full overflow-hidden rounded-3xl"
       style={{
         border: '1px solid hsl(var(--border-subtle))',
         background: 'hsl(var(--bg-primary))',
       }}
     >
-      <div className="m-6 min-h-[420px] w-full min-720:m-10">
+      <div className="flex flex-col items-center gap-8 p-6 min-720:flex-row min-720:items-center min-720:gap-10 min-720:p-10">
         <AnimatePresence mode="wait">
           <motion.div
             key={step.name}
-            className="flex w-full flex-col gap-4 min-720:w-3/5"
+            className="flex w-full flex-col gap-4 min-720:flex-1"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -221,11 +220,9 @@ export function SeoFeatureCarousel({ steps, illustrations, interval = 5000 }: Se
           <motion.div
             key={step}
             {...ANIMATION_PRESETS.fadeInScale}
-            className="absolute inset-0 flex h-full w-full items-center justify-center min-720:justify-end min-720:pr-4"
+            className="flex h-36 w-36 shrink-0 items-center justify-center min-720:h-44 min-720:w-44"
           >
-            <div className="flex h-40 w-40 items-center justify-center min-720:h-56 min-720:w-56">
-              {illustrations[step]}
-            </div>
+            {illustrations[step]}
           </motion.div>
         </AnimatePresence>
       </FeatureCard>

@@ -1,94 +1,77 @@
 /**
- * Monochrome line-art illustrations for SeoFeatureCarousel (/services/web-dev).
- * One shape per concept: SEO, GEO, indexing, performance, architecture.
- * Same convention as the site's other line icons: stroke="currentColor",
- * fill="none", round caps/joins, color driven by CSS vars (no hardcoded hex).
+ * Apple-style glyph tiles for SeoFeatureCarousel (/services/web-dev).
+ * One concept per tile: SEO, GEO, indexing, performance, architecture.
+ *
+ * Style: a solid rounded-square tile (SF Symbols / iOS app-icon convention)
+ * filled with --text-primary, holding a bold white (--bg-primary) glyph.
+ * Strictly monochrome (site design system forbids color) — the "Apple-like"
+ * feel comes from the tile + bold reductive glyph shape, not from hue.
  */
 
-const BASE_PROPS = {
-  viewBox: '0 0 160 160',
-  fill: 'none' as const,
-  xmlns: 'http://www.w3.org/2000/svg',
+function Tile({ children }: { children: React.ReactNode }) {
+  return (
+    <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-full w-full" aria-hidden="true">
+      <rect x="12" y="12" width="136" height="136" rx="34" fill="hsl(var(--text-primary))" />
+      {children}
+    </svg>
+  )
 }
 
 export function SeoIllustration() {
   return (
-    <svg {...BASE_PROPS} className="h-full w-full" aria-hidden="true">
-      <rect x="28" y="24" width="72" height="92" rx="6" stroke="hsl(var(--border-subtle))" strokeWidth="2" />
-      <line x1="40" y1="44" x2="88" y2="44" stroke="hsl(var(--text-tertiary))" strokeWidth="2" strokeLinecap="round" />
-      <line x1="40" y1="58" x2="80" y2="58" stroke="hsl(var(--text-tertiary))" strokeWidth="2" strokeLinecap="round" />
-      <line x1="40" y1="72" x2="72" y2="72" stroke="hsl(var(--text-tertiary))" strokeWidth="2" strokeLinecap="round" />
-      <circle cx="98" cy="100" r="22" stroke="hsl(var(--text-primary))" strokeWidth="3" />
-      <line x1="114" y1="116" x2="132" y2="134" stroke="hsl(var(--text-primary))" strokeWidth="3" strokeLinecap="round" />
-    </svg>
+    <Tile>
+      <circle cx="70" cy="70" r="27" stroke="hsl(var(--bg-primary))" strokeWidth="10" />
+      <line x1="90" y1="90" x2="114" y2="114" stroke="hsl(var(--bg-primary))" strokeWidth="10" strokeLinecap="round" />
+    </Tile>
   )
 }
 
 export function GeoIllustration() {
   return (
-    <svg {...BASE_PROPS} className="h-full w-full" aria-hidden="true">
+    <Tile>
       <path
-        d="M28 46c0-11 9-20 20-20h64c11 0 20 9 20 20v38c0 11-9 20-20 20H70l-24 20v-20h-2c-11 0-20-9-20-20V46Z"
-        stroke="hsl(var(--text-primary))"
-        strokeWidth="2.5"
-        strokeLinejoin="round"
+        d="M34 58c0-14 11-25 25-25h42c14 0 25 11 25 25v18c0 14-11 25-25 25H72l-19 16v-16h-4c-14 0-25-11-25-25V58Z"
+        fill="hsl(var(--bg-primary))"
       />
-      <line x1="48" y1="52" x2="112" y2="52" stroke="hsl(var(--text-tertiary))" strokeWidth="2" strokeLinecap="round" />
-      <line x1="48" y1="65" x2="96" y2="65" stroke="hsl(var(--text-tertiary))" strokeWidth="2" strokeLinecap="round" />
       <path
-        d="M126 30l3.2 7.8L137 41l-7.8 3.2L126 52l-3.2-7.8L115 41l7.8-3.2L126 30Z"
-        stroke="hsl(var(--text-primary))"
-        strokeWidth="2"
-        strokeLinejoin="round"
+        d="M120 30l3.6 8.8 8.8 3.6-8.8 3.6-3.6 8.8-3.6-8.8-8.8-3.6 8.8-3.6 3.6-8.8Z"
+        fill="hsl(var(--text-primary))"
       />
-    </svg>
+    </Tile>
   )
 }
 
 export function IndexingIllustration() {
   return (
-    <svg {...BASE_PROPS} className="h-full w-full" aria-hidden="true">
-      <rect x="34" y="22" width="66" height="86" rx="6" stroke="hsl(var(--border-subtle))" strokeWidth="2" />
-      <path d="M48 46l8 8 14-16" stroke="hsl(var(--text-primary))" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-      <line x1="48" y1="70" x2="86" y2="70" stroke="hsl(var(--text-tertiary))" strokeWidth="2" strokeLinecap="round" />
-      <path d="M48 88l8 8 14-16" stroke="hsl(var(--text-primary))" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="104" cy="104" r="16" stroke="hsl(var(--text-primary))" strokeWidth="2.5" />
-      <line x1="115" y1="115" x2="128" y2="128" stroke="hsl(var(--text-primary))" strokeWidth="2.5" strokeLinecap="round" />
-    </svg>
+    <Tile>
+      <rect x="42" y="30" width="60" height="76" rx="10" stroke="hsl(var(--bg-primary))" strokeWidth="8" />
+      <path d="M53 55l8 8 15-17" stroke="hsl(var(--bg-primary))" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M53 84l8 8 15-17" stroke="hsl(var(--bg-primary))" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+    </Tile>
   )
 }
 
 export function PerformanceIllustration() {
   return (
-    <svg {...BASE_PROPS} className="h-full w-full" aria-hidden="true">
+    <Tile>
       <path
-        d="M30 100a50 50 0 0 1 100 0"
-        stroke="hsl(var(--border-subtle))"
-        strokeWidth="2.5"
+        d="M36 100a44 44 0 0 1 88 0"
+        stroke="hsl(var(--bg-primary))"
+        strokeWidth="9"
         strokeLinecap="round"
       />
-      <path
-        d="M30 100a50 50 0 0 1 78-41"
-        stroke="hsl(var(--text-tertiary))"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
-      <line x1="80" y1="100" x2="102" y2="70" stroke="hsl(var(--text-primary))" strokeWidth="3" strokeLinecap="round" />
-      <circle cx="80" cy="100" r="5" fill="hsl(var(--text-primary))" />
-      <line x1="62" y1="120" x2="98" y2="120" stroke="hsl(var(--text-tertiary))" strokeWidth="2" strokeLinecap="round" />
-    </svg>
+      <line x1="80" y1="100" x2="103" y2="72" stroke="hsl(var(--bg-primary))" strokeWidth="9" strokeLinecap="round" />
+      <circle cx="80" cy="100" r="8" fill="hsl(var(--bg-primary))" />
+    </Tile>
   )
 }
 
 export function ArchitectureIllustration() {
   return (
-    <svg {...BASE_PROPS} className="h-full w-full" aria-hidden="true">
-      <rect x="40" y="26" width="80" height="26" rx="4" stroke="hsl(var(--text-primary))" strokeWidth="2.5" />
-      <rect x="30" y="60" width="80" height="26" rx="4" stroke="hsl(var(--text-tertiary))" strokeWidth="2.5" />
-      <rect x="40" y="94" width="80" height="26" rx="4" stroke="hsl(var(--border-subtle))" strokeWidth="2.5" />
-      <line x1="56" y1="39" x2="88" y2="39" stroke="hsl(var(--text-primary))" strokeWidth="2" strokeLinecap="round" />
-      <line x1="46" y1="73" x2="78" y2="73" stroke="hsl(var(--text-tertiary))" strokeWidth="2" strokeLinecap="round" />
-      <line x1="56" y1="107" x2="88" y2="107" stroke="hsl(var(--text-tertiary))" strokeWidth="2" strokeLinecap="round" opacity="0.6" />
-    </svg>
+    <Tile>
+      <rect x="44" y="32" width="72" height="26" rx="7" fill="hsl(var(--bg-primary))" />
+      <rect x="44" y="67" width="72" height="26" rx="7" fill="hsl(var(--bg-primary))" opacity="0.72" />
+      <rect x="44" y="102" width="72" height="26" rx="7" fill="hsl(var(--bg-primary))" opacity="0.44" />
+    </Tile>
   )
 }
