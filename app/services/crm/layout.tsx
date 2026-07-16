@@ -11,6 +11,7 @@ const schema = serviceSchema({
   serviceType: 'Custom CRM software',
   slug: 'crm',
   description: meta.description,
+  faq: strings.fr.crm.faq,
 })
 
 export const metadata: Metadata = {
