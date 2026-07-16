@@ -85,10 +85,11 @@ export function TankLogicContent() {
           </div>
         </section>
 
-        {/* ── SERIALIZED INVENTORY (WYSIWYG) ── */}
+        {/* ── HYBRID INVENTORY (unique piece + SKU/quantity) ── */}
         <section className="px-5 py-20 min-720:py-28">
-          <div className="mx-auto grid max-w-5xl items-center gap-10 min-720:grid-cols-[1.1fr_1fr] min-720:gap-16">
-            <div>
+          <div className="mx-auto grid max-w-5xl gap-12 min-720:grid-cols-2 min-720:gap-16">
+            {/* Unique piece */}
+            <div className="flex flex-col">
               <h2
                 className="fade-up mb-5 text-title-2 font-semibold tracking-tight"
                 style={{ color: 'hsl(var(--text-primary))' }}
@@ -104,12 +105,33 @@ export function TankLogicContent() {
                   {para}
                 </p>
               ))}
+              <Reveal className="mt-8 min-720:mt-auto min-720:pt-8">
+                <div className="mx-auto w-full max-w-sm">
+                  <SpecimenCardMock variant="unique" />
+                </div>
+              </Reveal>
             </div>
-            <Reveal>
-              <div className="mx-auto w-full max-w-sm">
-                <SpecimenCardMock />
-              </div>
-            </Reveal>
+
+            {/* SKU + quantity */}
+            <div className="flex flex-col">
+              <h2
+                className="fade-up mb-5 text-title-2 font-semibold tracking-tight"
+                style={{ color: 'hsl(var(--text-primary))' }}
+              >
+                {t.batchTitle}
+              </h2>
+              <p
+                className="fade-up mb-4 max-w-lg text-body leading-relaxed last:mb-0"
+                style={{ color: 'hsl(var(--text-secondary))' }}
+              >
+                {t.batchBody}
+              </p>
+              <Reveal className="mt-8 min-720:mt-auto min-720:pt-8" delay={0.12}>
+                <div className="mx-auto w-full max-w-sm">
+                  <SpecimenCardMock variant="sku" />
+                </div>
+              </Reveal>
+            </div>
           </div>
         </section>
 
@@ -188,20 +210,11 @@ export function TankLogicContent() {
                 >
                   {t.traceTitle}
                 </h3>
-                {t.traceBody.map((para, i) => (
-                  <p
-                    key={i}
-                    className="fade-up mb-3 max-w-md text-body leading-relaxed last:mb-0"
-                    style={{ color: 'hsl(var(--text-secondary))' }}
-                  >
-                    {para}
-                  </p>
-                ))}
                 <p
-                  className="fade-up mb-6 mt-3 max-w-md text-sm italic leading-relaxed"
-                  style={{ color: 'hsl(var(--text-tertiary))' }}
+                  className="fade-up mb-6 max-w-md text-body leading-relaxed"
+                  style={{ color: 'hsl(var(--text-secondary))' }}
                 >
-                  {t.traceNote}
+                  {t.traceBody}
                 </p>
                 <Reveal className="mt-auto" delay={0.12}>
                   <TraceMock />
