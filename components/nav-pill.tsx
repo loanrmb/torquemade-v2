@@ -14,12 +14,21 @@ export function NavPill() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
   const [produitsOpen, setProduitsOpen] = useState(false)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
 
   useEffect(() => {
     setMenuOpen(false)
     setServicesOpen(false)
     setProduitsOpen(false)
   }, [pathname])
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setPrefersReducedMotion(mq.matches)
+    const onChange = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
 
   useEffect(() => {
     if (!menuOpen) return
@@ -96,24 +105,35 @@ export function NavPill() {
                 <CaretIcon open={servicesOpen} />
               </button>
 
-              {servicesOpen && (
-                <div className="absolute left-0 top-full pt-3 w-[360px] z-50">
-                  <div
-                    className="rounded-2xl border p-2 flex flex-col gap-1"
-                    style={{
-                      background: 'hsl(var(--bg-primary))',
-                      backdropFilter: 'blur(16px)',
-                      WebkitBackdropFilter: 'blur(16px)',
-                      borderColor: 'hsl(var(--border-subtle))',
-                      boxShadow: '0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.06)',
-                    }}
-                  >
-                    {t.servicesItems.map((s) => (
-                      <DropdownItem key={s.href} item={s} active={pathname === s.href} />
-                    ))}
-                  </div>
+              <div className="absolute left-0 top-full pt-3 w-[360px] z-50" aria-hidden={!servicesOpen}>
+                <div
+                  className="rounded-2xl border p-2 flex flex-col gap-1"
+                  style={{
+                    background: 'hsl(var(--bg-primary))',
+                    backdropFilter: 'blur(16px)',
+                    WebkitBackdropFilter: 'blur(16px)',
+                    borderColor: 'hsl(var(--border-subtle))',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.06)',
+                    transformOrigin: 'top left',
+                    opacity: servicesOpen ? 1 : 0,
+                    transform: prefersReducedMotion
+                      ? 'none'
+                      : servicesOpen
+                      ? 'translateY(0) scale(1)'
+                      : 'translateY(-8px) scale(0.98)',
+                    transition: prefersReducedMotion
+                      ? 'none'
+                      : servicesOpen
+                      ? 'opacity 180ms ease, transform 180ms ease'
+                      : 'opacity 150ms ease, transform 150ms ease',
+                    pointerEvents: servicesOpen ? 'auto' : 'none',
+                  }}
+                >
+                  {t.servicesItems.map((s) => (
+                    <DropdownItem key={s.href} item={s} active={pathname === s.href} />
+                  ))}
                 </div>
-              )}
+              </div>
             </div>
 
             <div
@@ -135,24 +155,35 @@ export function NavPill() {
                 <CaretIcon open={produitsOpen} />
               </button>
 
-              {produitsOpen && (
-                <div className="absolute left-0 top-full pt-3 w-[360px] z-50">
-                  <div
-                    className="rounded-2xl border p-2 flex flex-col gap-1"
-                    style={{
-                      background: 'hsl(var(--bg-primary))',
-                      backdropFilter: 'blur(16px)',
-                      WebkitBackdropFilter: 'blur(16px)',
-                      borderColor: 'hsl(var(--border-subtle))',
-                      boxShadow: '0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.06)',
-                    }}
-                  >
-                    {t.produitsItems.map((s) => (
-                      <DropdownItem key={s.href} item={s} active={pathname === s.href} />
-                    ))}
-                  </div>
+              <div className="absolute left-0 top-full pt-3 w-[360px] z-50" aria-hidden={!produitsOpen}>
+                <div
+                  className="rounded-2xl border p-2 flex flex-col gap-1"
+                  style={{
+                    background: 'hsl(var(--bg-primary))',
+                    backdropFilter: 'blur(16px)',
+                    WebkitBackdropFilter: 'blur(16px)',
+                    borderColor: 'hsl(var(--border-subtle))',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.06)',
+                    transformOrigin: 'top left',
+                    opacity: produitsOpen ? 1 : 0,
+                    transform: prefersReducedMotion
+                      ? 'none'
+                      : produitsOpen
+                      ? 'translateY(0) scale(1)'
+                      : 'translateY(-8px) scale(0.98)',
+                    transition: prefersReducedMotion
+                      ? 'none'
+                      : produitsOpen
+                      ? 'opacity 180ms ease, transform 180ms ease'
+                      : 'opacity 150ms ease, transform 150ms ease',
+                    pointerEvents: produitsOpen ? 'auto' : 'none',
+                  }}
+                >
+                  {t.produitsItems.map((s) => (
+                    <DropdownItem key={s.href} item={s} active={pathname === s.href} />
+                  ))}
                 </div>
-              )}
+              </div>
             </div>
 
             <Link
