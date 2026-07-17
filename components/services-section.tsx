@@ -28,7 +28,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useLang } from '@/components/app-provider';
 import { strings } from '@/lib/strings';
-import { useReducedMotionSafe } from '@/lib/motion';
+import { useReducedMotionSafe, EASE_DECELERATE, EASE_STANDARD } from '@/lib/motion';
 
 const IMG = '/images';
 const ROTATE_MS = 7000;
@@ -39,8 +39,6 @@ const MOBILE_PREVIEWS = [
   '/images/crm-calendar-mockup.png',
   '/images/preview-erp-site-ecommerce.png',
 ];
-
-const EASE = [0, 0, 0.2, 1] as const;
 
 /* ------------------------------------------------------------------ */
 /*  Window chrome (shared by figures 1 & 2)                           */
@@ -416,7 +414,7 @@ function Stage({ active, tag }: { active: number; tag: string }) {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.4, ease: EASE }}
+            transition={{ duration: 0.4, ease: EASE_DECELERATE }}
           >
             <Figure />
           </motion.div>
@@ -515,7 +513,7 @@ export default function ServicesSection() {
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.7, ease: EASE_STANDARD }}
         >
           <div>
             {t.eyebrow && (

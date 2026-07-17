@@ -9,7 +9,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { useReducedMotionSafe } from '@/lib/motion'
+import { useReducedMotionSafe, EASE_OUT_EXPO } from '@/lib/motion'
 
 interface Situation {
   number: string
@@ -186,7 +186,7 @@ export function SituationDiagnostic({ situations }: SituationDiagnosticProps) {
             key={current.number}
             initial={{ opacity: 0, y: reducedMotion ? 0 : 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.3, ease: EASE_OUT_EXPO }}
           >
             <SituationPanel situation={current} />
           </motion.div>
@@ -236,7 +236,7 @@ export function SituationDiagnostic({ situations }: SituationDiagnosticProps) {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 0.25, ease: EASE_OUT_EXPO }}
                     className="overflow-hidden"
                   >
                     <div className="px-6 pb-7">

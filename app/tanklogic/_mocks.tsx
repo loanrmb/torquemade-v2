@@ -24,9 +24,7 @@ import { useEffect, useState } from 'react'
 import { motion, useInView, useReducedMotion } from 'framer-motion'
 import { useRef } from 'react'
 import { useLang } from '@/components/app-provider'
-
-/* ─── Ease (Emil strong curve, shared with home ERP section) ── */
-const EASE_OUT: [number, number, number, number] = [0.23, 1, 0.32, 1]
+import { EASE_OUT } from '@/lib/motion'
 
 /* ─── Bilingual UI chrome labels ────────────────────────────── */
 const CONTENT = {

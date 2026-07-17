@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { motion, type Variants } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { NavPill } from '@/components/nav-pill'
 import { Footer } from '@/components/footer'
 import { useLang } from '@/components/app-provider'
@@ -15,22 +15,7 @@ import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 import { CrmDashboardPreview } from '@/components/crm-dashboard-preview'
 import { WaveBackground } from '@/components/ui/wave-background'
 import { ShaderBackground } from '@/components/ui/shader-background'
-
-const workContainerVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
-  },
-}
-
-const workCardVariants: Variants = {
-  hidden: { opacity: 0, y: 44 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
-  },
-}
+import { fadeUpVariants, staggerContainerVariants } from '@/lib/motion'
 
 export default function HomePage() {
   const lang = useLang()
@@ -189,7 +174,7 @@ export default function HomePage() {
 
             <motion.div
               className="grid grid-cols-1 gap-4 min-720:grid-cols-2"
-              variants={workContainerVariants}
+              variants={staggerContainerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-80px' }}
@@ -197,7 +182,7 @@ export default function HomePage() {
               {featuredProjects.slice(0, 4).map((project) => (
                 <motion.div
                   key={project.id}
-                  variants={workCardVariants}
+                  variants={fadeUpVariants}
                   className="card overflow-hidden"
                 >
                   <div className="work-card-img">

@@ -27,22 +27,10 @@
  */
 
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { motion, type Variants } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useLang } from '@/components/app-provider'
 import { strings } from '@/lib/strings'
-
-/* ─── Ease (Emil strong curve) ──────────────────────────────── */
-const EASE_OUT: [number, number, number, number] = [0.23, 1, 0.32, 1]
-
-/* ─── Comparison table stagger variants ─────────────────────── */
-const revealContainer: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
-}
-const revealItem: Variants = {
-  hidden:   { opacity: 0, y: 44 },
-  visible:  { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } },
-}
+import { EASE_OUT, fadeUpVariants, staggerContainerVariants } from '@/lib/motion'
 
 /* ─── Bilingual content (UI labels only — stock data in PRODUCTS) */
 type Rows = ReadonlyArray<string>
@@ -663,7 +651,7 @@ function Row({ label, variant }: { label: string; variant: 'bad' | 'good' }) {
   const isBad = variant === 'bad'
   return (
     <motion.div
-      variants={revealItem}
+      variants={fadeUpVariants}
       className="grid grid-cols-[20px_1fr] items-center gap-4 min-720:gap-5 py-4 min-720:py-5 text-[13.5px] min-720:text-[14.5px] leading-[1.5]"
       style={{
         color: isBad ? 'rgba(255,255,255,0.48)' : 'rgba(255,255,255,0.92)',
@@ -1086,7 +1074,7 @@ export function ErpFeatureSection() {
           >
             <motion.div
               className="erp-compare-left p-6 min-720:p-11"
-              variants={revealContainer}
+              variants={staggerContainerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-60px' }}
@@ -1103,7 +1091,7 @@ export function ErpFeatureSection() {
 
             <motion.div
               className="p-6 min-720:p-11"
-              variants={revealContainer}
+              variants={staggerContainerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-60px' }}
