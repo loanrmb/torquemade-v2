@@ -48,10 +48,8 @@ export default function AboutPage() {
         </section>
 
         {/* DIFFERENTIATORS — index keys prevent DOM recreation on lang change */}
-        <section className="relative overflow-hidden px-5 py-24 min-720:py-32">
-          <ShaderBackground className="absolute inset-0 z-0" variant="halftone" />
-          <div className="differentiator-scrim" />
-          <div className="relative z-10 mx-auto max-w-5xl">
+        <section className="px-5 py-24 min-720:py-32">
+          <div className="mx-auto max-w-5xl">
             <p className="fade-up section-label">{t.whyEyebrow}</p>
             <h2
               className="fade-up fade-up-d1 text-title-2 font-semibold tracking-tight mb-16 min-720:mb-20"
