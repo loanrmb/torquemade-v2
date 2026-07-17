@@ -17,6 +17,19 @@ export function useReducedMotionSafe(): boolean {
 }
 
 /**
+ * Press feedback for any tappable control (buttons, chips). Spread onto a
+ * motion.button. Not gated behind reduced motion — it's a discrete tap
+ * acknowledgment tied directly to a user gesture, not ambient movement, and
+ * matches the plain-CSS `:active { transform: scale(0.97) }` already used
+ * unconditionally on .btn-primary/.btn-outline/.btn-liquid-glass.
+ */
+export const pressable = {
+  whileHover: { scale: 1.015 },
+  whileTap: { scale: 0.97 },
+  transition: { duration: 0.12, ease: [0.23, 1, 0.32, 1] as const },
+}
+
+/**
  * Movement-based reveal pattern (infra only — not wired up anywhere yet).
  * ---------------------------------------------------------------------
  * Fades and translate-entrances degrade fine by just zeroing out the x/y
