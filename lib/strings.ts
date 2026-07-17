@@ -437,6 +437,31 @@ export const strings = {
         },
       ],
 
+      floatingCtas: {
+        reframe: {
+          title: 'Parlons de votre stock et de votre site.',
+          question: 'Combien de temps par semaine perdez-vous à corriger le stock à la main ?',
+          cta: 'Diagnostiquer mon stock',
+        },
+        diagnostic: {
+          title: 'Parlons de votre stack actuelle.',
+          question: 'Vous avez trouvé votre situation ? Dites-nous-en plus.',
+          cta: 'Décrire ma situation',
+        },
+      },
+      ctaForm: {
+        namePlaceholder: 'Votre nom',
+        emailPlaceholder: 'Votre email',
+        phonePlaceholder: 'Numéro de téléphone',
+        companyPlaceholder: 'Nom de votre entreprise',
+        messagePlaceholder: 'Décrivez votre ERP, votre caisse ou votre site actuel…',
+        submit: 'Envoyer',
+        sending: 'Envoi…',
+        success: 'Reçu — on vous recontacte sous 24h.',
+        error: 'Erreur d\'envoi, réessayez.',
+        close: 'Fermer',
+      },
+
       relatedTitle: 'À lire aussi',
       relatedCta: 'Lire l\'article',
 
@@ -1167,6 +1192,31 @@ export const strings = {
           linkLabel: 'See how we build your sites',
         },
       ],
+
+      floatingCtas: {
+        reframe: {
+          title: 'Let\'s talk about your stock and your site.',
+          question: 'How many hours a week do you lose fixing stock by hand?',
+          cta: 'Diagnose my stock',
+        },
+        diagnostic: {
+          title: 'Let\'s talk about your current stack.',
+          question: 'Found your situation? Tell us more.',
+          cta: 'Describe my situation',
+        },
+      },
+      ctaForm: {
+        namePlaceholder: 'Your name',
+        emailPlaceholder: 'Your email',
+        phonePlaceholder: 'Phone number',
+        companyPlaceholder: 'Your company name',
+        messagePlaceholder: 'Describe your ERP, POS or current site…',
+        submit: 'Send',
+        sending: 'Sending…',
+        success: 'Received, we\'ll get back to you within 24h.',
+        error: 'Send failed, try again.',
+        close: 'Close',
+      },
 
       relatedTitle: 'Related reading',
       relatedCta: 'Read the article',

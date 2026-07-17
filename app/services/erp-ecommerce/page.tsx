@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import { NavPill } from '@/components/nav-pill'
 import { Footer } from '@/components/footer'
 import { useLang } from '@/components/app-provider'
@@ -8,8 +9,19 @@ import { strings } from '@/lib/strings'
 import { useScrollReveal } from '@/lib/use-scroll-reveal'
 import { posts } from '@/lib/blog'
 import { SituationDiagnostic } from '@/components/ui/situation-diagnostic'
+import { ErpDiagnosticCta } from '@/components/erp-diagnostic-cta'
 import { ShaderBackground } from '@/components/ui/shader-background'
 import { WaveBackground } from '@/components/ui/wave-background'
+
+const statContainerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+} as const
+
+const statItemVariants = {
+  hidden: { opacity: 0, y: 20, scale: 0.96 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const } },
+} as const
 
 const RELATED_CATEGORY = 'ERP & Gestion de stock'
 
@@ -79,23 +91,29 @@ export default function ErpEcommercePage() {
                 {t.reframeBody2}
               </p>
             </div>
-            <div
-              className="fade-up fade-up-d3 mt-10 grid grid-cols-1 min-720:grid-cols-3"
+            <motion.div
+              className="mt-10 grid grid-cols-1 min-720:grid-cols-3"
               style={{
                 border: '1px solid hsl(var(--border-subtle))',
                 borderRadius: '16px',
                 overflow: 'hidden',
               }}
+              variants={statContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.4 }}
             >
               {t.reframeStats.map((stat, i) => (
-                <div
+                <motion.div
                   key={stat.value}
-                  className="flex flex-col gap-2 p-6"
+                  className="flex flex-col gap-2 p-6 transition-colors duration-200 hover:bg-[hsl(var(--bg-primary))]"
                   style={{
                     background: 'hsl(var(--bg-secondary))',
                     borderTop: i > 0 ? '1px solid hsl(var(--border-subtle))' : 'none',
                     borderLeft: i > 0 ? '1px solid hsl(var(--border-subtle))' : 'none',
                   }}
+                  variants={statItemVariants}
+                  whileHover={{ y: -4, transition: { duration: 0.2, ease: 'easeOut' } }}
                 >
                   <span
                     className="text-title-1 font-semibold tracking-tight"
@@ -109,9 +127,12 @@ export default function ErpEcommercePage() {
                   >
                     {stat.label}
                   </span>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
+          </div>
+          <div className="mt-14">
+            <ErpDiagnosticCta intentKey="reframe" />
           </div>
         </section>
 
@@ -138,6 +159,9 @@ export default function ErpEcommercePage() {
           <div className="fade-up fade-up-d2">
             <SituationDiagnostic situations={t.situations} />
           </div>
+          <div className="mt-14">
+            <ErpDiagnosticCta intentKey="diagnostic" />
+          </div>
         </section>
 
         {/* RELATED ARTICLES */}
@@ -155,7 +179,7 @@ export default function ErpEcommercePage() {
                   <Link
                     key={post.slug}
                     href={`/blog/${post.slug}`}
-                    className="fade-up group p-6 rounded-2xl flex flex-col gap-3"
+                    className="fade-up group p-6 rounded-2xl flex flex-col gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
                     style={{
                       background: 'hsl(var(--bg-secondary))',
                       border: '1px solid hsl(var(--border-subtle))',
@@ -216,7 +240,7 @@ export default function ErpEcommercePage() {
                     borderTop: i === 0 ? 'none' : '1px solid hsl(var(--border-subtle))',
                   }}
                 >
-                  <summary className="flex cursor-pointer list-none items-baseline justify-between gap-4 px-5 py-4 min-720:px-7 min-720:py-5 [&::-webkit-details-marker]:hidden">
+                  <summary className="flex cursor-pointer list-none items-baseline justify-between gap-4 px-5 py-4 min-720:px-7 min-720:py-5 transition-colors duration-200 hover:bg-[hsl(var(--bg-secondary))] [&::-webkit-details-marker]:hidden">
                     <h3
                       className="text-body font-semibold leading-snug"
                       style={{ color: 'hsl(var(--text-primary))' }}

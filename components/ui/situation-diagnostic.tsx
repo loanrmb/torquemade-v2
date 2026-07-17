@@ -24,6 +24,16 @@ interface SituationDiagnosticProps {
   situations: readonly Situation[]
 }
 
+const chipContainerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.04, delayChildren: 0.1 } },
+} as const
+
+const chipItemVariants = {
+  hidden: { opacity: 0, y: 6 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.2, ease: 'easeOut' as const } },
+} as const
+
 function IconCheck() {
   return (
     <svg
@@ -77,10 +87,17 @@ function SituationPanel({ situation }: { situation: Situation }) {
         {situation.body}
       </p>
       {situation.delivery && (
-        <div className="flex flex-wrap gap-2">
+        <motion.div
+          className="flex flex-wrap gap-2"
+          variants={chipContainerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {situation.delivery.map((item) => (
-            <span
+            <motion.span
               key={item}
+              variants={chipItemVariants}
+              whileHover={{ y: -2, transition: { duration: 0.15 } }}
               className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm"
               style={{
                 border: '1px solid hsl(var(--border-subtle))',
@@ -89,14 +106,14 @@ function SituationPanel({ situation }: { situation: Situation }) {
             >
               <IconCheck />
               {item}
-            </span>
+            </motion.span>
           ))}
-        </div>
+        </motion.div>
       )}
       {situation.linkHref && situation.linkLabel && (
         <Link
           href={situation.linkHref}
-          className="inline-flex w-fit items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-opacity duration-150 hover:opacity-70"
+          className="inline-flex w-fit items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-150 hover:-translate-y-0.5 hover:opacity-70"
           style={{
             border: '1px solid hsl(var(--border-subtle))',
             color: 'hsl(var(--text-primary))',
@@ -127,11 +144,14 @@ export function SituationDiagnostic({ situations }: SituationDiagnosticProps) {
           {situations.map((situation, i) => {
             const isActive = active === i
             return (
-              <button
+              <motion.button
                 key={situation.number}
                 type="button"
                 onClick={() => setActive(i)}
                 aria-current={isActive || undefined}
+                whileHover={{ x: 3 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.15, ease: 'easeOut' }}
                 className="flex w-full flex-col gap-2 p-6 text-left transition-colors duration-150"
                 style={{
                   borderTop: i === 0 ? 'none' : '1px solid hsl(var(--border-subtle))',
@@ -151,7 +171,7 @@ export function SituationDiagnostic({ situations }: SituationDiagnosticProps) {
                 >
                   {situation.question}
                 </span>
-              </button>
+              </motion.button>
             )
           })}
         </nav>
@@ -182,11 +202,13 @@ export function SituationDiagnostic({ situations }: SituationDiagnosticProps) {
               key={situation.number}
               style={{ borderTop: i === 0 ? 'none' : '1px solid hsl(var(--border-subtle))' }}
             >
-              <button
+              <motion.button
                 type="button"
                 onClick={() => setActive(i)}
                 aria-expanded={isOpen}
-                className="grid w-full grid-cols-[auto_1fr_auto] items-start gap-4 p-6 text-left"
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.15, ease: 'easeOut' }}
+                className="grid w-full grid-cols-[auto_1fr_auto] items-start gap-4 p-6 text-left transition-colors duration-150 hover:bg-[hsl(var(--bg-secondary))]"
               >
                 <span
                   className="pt-0.5 font-mono text-caption font-semibold tracking-widest"
@@ -201,7 +223,7 @@ export function SituationDiagnostic({ situations }: SituationDiagnosticProps) {
                   {situation.question}
                 </span>
                 <ChevronIcon isOpen={isOpen} />
-              </button>
+              </motion.button>
               <AnimatePresence initial={false}>
                 {isOpen && (
                   <motion.div
