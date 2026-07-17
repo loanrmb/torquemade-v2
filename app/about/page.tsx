@@ -61,34 +61,6 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* STATS */}
-        <section
-          className="px-5 py-16"
-          style={{ background: 'hsl(var(--bg-secondary))' }}
-        >
-          <div className="mx-auto max-w-3xl">
-            <p className="section-label text-center mb-10">{t.statsEyebrow}</p>
-            <div className="grid grid-cols-3 gap-8 min-720:gap-12 text-center">
-              {t.stats.map((stat, i) => (
-                <div key={i} className="flex flex-col gap-2">
-                  <span
-                    className="text-4xl font-bold tracking-tight min-720:text-5xl"
-                    style={{ color: 'hsl(var(--text-primary))' }}
-                  >
-                    {stat.value}
-                  </span>
-                  <span
-                    className="text-caption"
-                    style={{ color: 'hsl(var(--text-tertiary))' }}
-                  >
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* CTA */}
         <section className="px-5 py-20 min-720:py-24">
           <div className="mx-auto max-w-5xl">
