@@ -15,7 +15,7 @@ import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 import { CrmDashboardPreview } from '@/components/crm-dashboard-preview'
 import { WaveBackground } from '@/components/ui/wave-background'
 import { ShaderBackground } from '@/components/ui/shader-background'
-import { HeroHeading } from '@/components/ui/hero-heading'
+import { HeroHeading, HeroRevealBlock } from '@/components/ui/hero-heading'
 import { fadeUpVariants, staggerContainerVariants } from '@/lib/motion'
 
 export default function HomePage() {
@@ -43,12 +43,14 @@ export default function HomePage() {
               {t.hero.tagline}
             </HeroHeading>
 
-            <p
-              className="fade-up fade-up-d2 mt-5 md:mt-6 max-w-2xl text-base md:text-xl leading-relaxed"
+            <HeroRevealBlock
+              as="p"
+              delay={0.16}
+              className="mt-5 md:mt-6 max-w-2xl text-base md:text-xl leading-relaxed"
               style={{ color: 'hsl(var(--text-secondary))' }}
             >
               {t.hero.heroLead}
-            </p>
+            </HeroRevealBlock>
 
             <div className="fade-up fade-up-d3 mt-7 md:mt-9 flex flex-wrap items-center justify-start gap-3">
               <Link
@@ -66,8 +68,10 @@ export default function HomePage() {
             </div>
 
             {/* ── PILLARS — structured service breakdown ── */}
-            <div
-              className="fade-up fade-up-d4 mt-12 md:mt-16 grid w-full grid-cols-1 border-t min-720:grid-cols-3"
+            <HeroRevealBlock
+              as="div"
+              delay={0.32}
+              className="mt-12 md:mt-16 grid w-full grid-cols-1 border-t min-720:grid-cols-3"
               style={{ borderColor: 'hsl(var(--border-subtle))' }}
             >
               {t.hero.pillars.map((pillar, i) => (
@@ -96,7 +100,7 @@ export default function HomePage() {
                   </p>
                 </div>
               ))}
-            </div>
+            </HeroRevealBlock>
           </div>
         </section>
 
