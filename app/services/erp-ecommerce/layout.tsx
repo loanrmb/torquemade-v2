@@ -11,6 +11,7 @@ const schema = serviceSchema({
   serviceType: 'ERP to e-commerce inventory synchronization',
   slug: 'erp-ecommerce',
   description: meta.description,
+  faq: strings.fr.erp.faq,
 })
 
 export const metadata: Metadata = {
