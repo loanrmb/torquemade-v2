@@ -7,6 +7,7 @@ import {
   motion,
   MotionValue,
 } from 'framer-motion'
+import { useReducedMotionSafe } from '@/lib/motion'
 
 const springConfig = { stiffness: 400, damping: 80, mass: 0.3 }
 
@@ -23,6 +24,7 @@ export const ContainerScroll = ({
     offset: ['start end', 'end start'],
   })
   const [isMobile, setIsMobile] = React.useState(false)
+  const reducedMotion = useReducedMotionSafe()
 
   React.useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768)
@@ -35,10 +37,11 @@ export const ContainerScroll = ({
 
   // Animation completes in the first 45% of the in-view scroll progress,
   // not the full 100% — feels snappier and avoids dragging through the
-  // rest of the page.
-  const rotate = useTransform(scrollYProgress, [0, 0.45], [20, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.45], scaleDimensions())
-  const translate = useTransform(scrollYProgress, [0, 0.45], [0, -100])
+  // rest of the page. Under reduced motion the output range collapses to a
+  // constant (final) value, so the transform never interpolates with scroll.
+  const rotate = useTransform(scrollYProgress, [0, 0.45], reducedMotion ? [0, 0] : [20, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.45], reducedMotion ? [1, 1] : scaleDimensions())
+  const translate = useTransform(scrollYProgress, [0, 0.45], reducedMotion ? [0, 0] : [0, -100])
 
   // Spring physics wrapping every motion value for smooth 60/120fps animation
   const rotateSpring = useSpring(rotate, springConfig)

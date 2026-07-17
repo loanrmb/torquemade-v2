@@ -9,6 +9,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useReducedMotionSafe } from '@/lib/motion'
 
 interface Situation {
   number: string
@@ -29,10 +30,12 @@ const chipContainerVariants = {
   visible: { transition: { staggerChildren: 0.04, delayChildren: 0.1 } },
 } as const
 
-const chipItemVariants = {
-  hidden: { opacity: 0, y: 6 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.2, ease: 'easeOut' as const } },
-} as const
+function getChipItemVariants(reducedMotion: boolean) {
+  return {
+    hidden: { opacity: 0, y: reducedMotion ? 0 : 6 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.2, ease: 'easeOut' as const } },
+  }
+}
 
 function IconCheck() {
   return (
@@ -72,6 +75,8 @@ function ChevronIcon({ isOpen }: { isOpen: boolean }) {
 }
 
 function SituationPanel({ situation }: { situation: Situation }) {
+  const reducedMotion = useReducedMotionSafe()
+  const chipItemVariants = getChipItemVariants(reducedMotion)
   return (
     <div className="flex flex-col gap-5">
       <p
@@ -129,6 +134,7 @@ function SituationPanel({ situation }: { situation: Situation }) {
 export function SituationDiagnostic({ situations }: SituationDiagnosticProps) {
   const [active, setActive] = useState(0)
   const current = situations[active] ?? situations[0]
+  const reducedMotion = useReducedMotionSafe()
 
   return (
     <div className="mx-auto max-w-5xl">
@@ -178,7 +184,7 @@ export function SituationDiagnostic({ situations }: SituationDiagnosticProps) {
         <div className="relative overflow-hidden p-10 min-1024:p-12">
           <motion.div
             key={current.number}
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: reducedMotion ? 0 : 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >

@@ -2,6 +2,7 @@
 
 import { FC, ReactNode, useRef } from "react";
 import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
+import { useReducedMotionSafe } from "@/lib/motion";
 
 interface TextRevealByWordProps {
   text: string;
@@ -42,7 +43,10 @@ interface WordProps {
 }
 
 const Word: FC<WordProps> = ({ children, progress, range }) => {
-  const opacity = useTransform(progress, range, [0, 1]);
+  const reducedMotion = useReducedMotionSafe();
+  // Under reduced motion the output range collapses to a constant (fully
+  // revealed), so opacity never interpolates with scroll position.
+  const opacity = useTransform(progress, range, reducedMotion ? [1, 1] : [0, 1]);
   return (
     <span className="xl:lg-3 relative mx-1 lg:mx-2.5">
       <span
