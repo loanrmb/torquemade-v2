@@ -12,6 +12,7 @@ import { SituationDiagnostic } from '@/components/ui/situation-diagnostic'
 import { ErpDiagnosticCta } from '@/components/erp-diagnostic-cta'
 import { ShaderBackground } from '@/components/ui/shader-background'
 import { WaveBackground } from '@/components/ui/wave-background'
+import { EASE_OUT_EXPO } from '@/lib/motion'
 
 const statContainerVariants = {
   hidden: {},
@@ -20,7 +21,7 @@ const statContainerVariants = {
 
 const statItemVariants = {
   hidden: { opacity: 0, y: 20, scale: 0.96 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const } },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.4, ease: EASE_OUT_EXPO } },
 } as const
 
 const RELATED_CATEGORY = 'ERP & Gestion de stock'

@@ -31,7 +31,7 @@ import {
   motion,
   type Variants,
 } from 'framer-motion'
-import { useReducedMotionSafe } from '@/lib/motion'
+import { useReducedMotionSafe, EASE_OUT_EXPO } from '@/lib/motion'
 
 interface Step {
   name: string
@@ -120,14 +120,14 @@ function FeatureCard({
             initial={{ opacity: 0, y }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -y }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.4, ease: EASE_OUT_EXPO }}
           >
             <motion.div
               className="text-caption font-mono font-semibold tracking-widest uppercase"
               style={{ color: 'hsl(var(--text-tertiary))' }}
               initial={{ opacity: 0, x }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.05, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ delay: 0.05, duration: 0.3, ease: EASE_OUT_EXPO }}
             >
               {step.name}
             </motion.div>
@@ -136,14 +136,14 @@ function FeatureCard({
               style={{ color: 'hsl(var(--text-primary))' }}
               initial={{ opacity: 0, x }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.1, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ delay: 0.1, duration: 0.3, ease: EASE_OUT_EXPO }}
             >
               {step.title}
             </motion.h2>
             <motion.div
               initial={{ opacity: 0, x }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.15, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ delay: 0.15, duration: 0.3, ease: EASE_OUT_EXPO }}
             >
               <p
                 className="text-body leading-relaxed"
