@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/seo-feature-illustrations'
 import { ShaderBackground } from '@/components/ui/shader-background'
 import { WaveBackground } from '@/components/ui/wave-background'
+import { HeroHeading } from '@/components/ui/hero-heading'
 
 const CAROUSEL_ILLUSTRATIONS = [
   <SeoIllustration key="seo" />,
@@ -55,12 +56,12 @@ export default function WebDevPage() {
           </div>
           <div className="relative z-10 mx-auto max-w-3xl px-5 text-center">
             <p className="fade-up section-label">{t.eyebrow}</p>
-            <h1
-              className="fade-up fade-up-d1 text-title-1 font-semibold tracking-tight mb-5"
+            <HeroHeading
+              className="text-title-1 font-semibold tracking-tight mb-5"
               style={{ color: 'hsl(var(--text-primary))' }}
             >
               {t.hero}
-            </h1>
+            </HeroHeading>
             <p
               className="fade-up fade-up-d2 text-body-lg max-w-2xl mx-auto"
               style={{ color: 'hsl(var(--text-secondary))' }}

@@ -15,6 +15,7 @@ import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 import { CrmDashboardPreview } from '@/components/crm-dashboard-preview'
 import { WaveBackground } from '@/components/ui/wave-background'
 import { ShaderBackground } from '@/components/ui/shader-background'
+import { HeroHeading } from '@/components/ui/hero-heading'
 import { fadeUpVariants, staggerContainerVariants } from '@/lib/motion'
 
 export default function HomePage() {
@@ -35,12 +36,12 @@ export default function HomePage() {
 
             <p className="fade-up section-label">{t.hero.eyebrow}</p>
 
-            <h1
-              className="fade-up fade-up-d1 max-w-5xl text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.05]"
+            <HeroHeading
+              className="max-w-5xl text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.05]"
               style={{ color: 'hsl(var(--text-primary))' }}
             >
               {t.hero.tagline}
-            </h1>
+            </HeroHeading>
 
             <p
               className="fade-up fade-up-d2 mt-5 md:mt-6 max-w-2xl text-base md:text-xl leading-relaxed"
