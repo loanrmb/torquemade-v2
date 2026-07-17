@@ -34,8 +34,6 @@ export default function HomePage() {
           <WaveBackground />
           <div className="relative z-10 flex flex-col items-start text-left max-w-5xl mx-auto">
 
-            <p className="fade-up section-label">{t.hero.eyebrow}</p>
-
             <HeroHeading
               className="max-w-5xl text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.05]"
               style={{ color: 'hsl(var(--text-primary))' }}
