@@ -26,7 +26,7 @@ export function Footer() {
             </p>
             <a
               href={`mailto:${t.email}`}
-              className="text-sm transition-colors duration-150 hover:text-white"
+              className="footer-link text-sm transition-colors duration-150 hover:text-white"
               style={{ color: 'hsl(0 0% 50%)' }}
             >
               {t.email}
@@ -39,7 +39,7 @@ export function Footer() {
               <Link
                 key={label}
                 href={t.navHref[i]}
-                className="text-sm transition-colors duration-150 hover:text-white"
+                className="footer-link text-sm transition-colors duration-150 hover:text-white"
                 style={{ color: 'hsl(0 0% 50%)' }}
               >
                 {label}
@@ -59,14 +59,14 @@ export function Footer() {
           <div className="flex items-center gap-5">
             <Link
               href="/tanklogic"
-              className="transition-colors duration-150 hover:text-white"
+              className="footer-link transition-colors duration-150 hover:text-white"
               style={{ color: 'hsl(0 0% 35%)' }}
             >
               {t.tanklogic}
             </Link>
             <Link
               href="/mentions-legales"
-              className="transition-colors duration-150 hover:text-white"
+              className="footer-link transition-colors duration-150 hover:text-white"
               style={{ color: 'hsl(0 0% 35%)' }}
             >
               {t.legal}

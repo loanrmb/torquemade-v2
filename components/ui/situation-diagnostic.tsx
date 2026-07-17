@@ -9,7 +9,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { useReducedMotionSafe } from '@/lib/motion'
+import { springSnappy, useReducedMotionSafe } from '@/lib/motion'
 
 interface Situation {
   number: string
@@ -102,7 +102,7 @@ function SituationPanel({ situation }: { situation: Situation }) {
             <motion.span
               key={item}
               variants={chipItemVariants}
-              whileHover={{ y: -2, transition: { duration: 0.15 } }}
+              whileHover={{ y: reducedMotion ? 0 : -2, transition: springSnappy }}
               className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm"
               style={{
                 border: '1px solid hsl(var(--border-subtle))',
@@ -155,9 +155,9 @@ export function SituationDiagnostic({ situations }: SituationDiagnosticProps) {
                 type="button"
                 onClick={() => setActive(i)}
                 aria-current={isActive || undefined}
-                whileHover={{ x: 3 }}
+                whileHover={{ x: reducedMotion ? 0 : 3 }}
                 whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.15, ease: 'easeOut' }}
+                transition={springSnappy}
                 className="flex w-full flex-col gap-2 p-6 text-left transition-colors duration-150"
                 style={{
                   borderTop: i === 0 ? 'none' : '1px solid hsl(var(--border-subtle))',

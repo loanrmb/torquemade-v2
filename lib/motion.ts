@@ -3,6 +3,15 @@
 import { useReducedMotion } from 'framer-motion'
 
 /**
+ * Spring presets — Apple's { duration, bounce } form (see emil-design-eng
+ * skill's spring-physics section). Two presets is the intended ceiling per
+ * the micro-interactions audit; do not add a third without revisiting that
+ * audit.
+ */
+export const springSnappy = { type: 'spring', duration: 0.35, bounce: 0.15 } as const
+export const springSoft = { type: 'spring', duration: 0.5, bounce: 0.2 } as const
+
+/**
  * Single source of truth for reduced-motion checks across the Framer Motion
  * layer. Thin wrapper around Framer's useReducedMotion() — that hook returns
  * `boolean | null` (null until mount, to avoid an SSR/client mismatch), this
