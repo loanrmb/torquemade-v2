@@ -231,12 +231,13 @@ export const strings = {
       whyEyebrow: 'Différenciateurs',
       whyTitle: 'Ce qui nous différencie.',
       differentiators: [
-        { title: 'Livraison en 15 jours', text: 'Du début du projet à la livraison du site live, 15 jours ouvrés. Pas de blabla, pas d\'attente inutile.' },
-        { title: 'Métriques réelles uniquement', text: 'Chaque décision est basée sur Search Console et GA4. Pas d\'estimations, pas de spin.' },
+        { title: 'Métriques réelles uniquement', text: 'Chaque décision s\'appuie sur les pratiques actuelles d\'optimisation web. Pas d\'estimations, pas de spin.' },
         { title: 'Pas de template', text: 'Chaque site est construit de zéro autour de votre business. Aucun thème prémâché.' },
         { title: 'Support post-lancement', text: 'Disponible après le lancement. Analyses mensuelles, mises à jour, évolutions.' },
+        { title: 'On respecte nos délais', text: 'Vos lancements, campagnes et rendez-vous arrivent à l\'heure. Votre site aussi.' },
         { title: 'Interlocuteur unique', text: 'Un seul contact du début à la fin. Pas de chef de projet qui relaie, pas de junior.' },
-        { title: 'Visible sur l\'IA', text: 'Vos pages sont structurées pour apparaître dans ChatGPT, Claude et Perplexity et autres.' },
+        { title: 'Petite équipe, attention personnalisée', text: 'Pas de chef de projet qui relaie, pas de dilution. Un interlocuteur qui connaît votre dossier du début à la fin.' },
+        { title: 'Visible sur l\'IA', text: 'Vos pages sont structurées pour apparaître dans ChatGPT, Claude, Perplexity et les moteurs de demain. On reste à jour sur les pratiques qui évoluent vite.' },
       ],
       statsEyebrow: 'En chiffres',
       stats: [
@@ -986,12 +987,13 @@ export const strings = {
       whyEyebrow: 'Differentiators',
       whyTitle: 'What sets us apart.',
       differentiators: [
-        { title: '15-day delivery', text: 'From project start to live site, 15 business days. No fluff, no waiting.' },
-        { title: 'Real metrics only', text: 'Every decision is based on Search Console and GA4. No estimates, no spin.' },
+        { title: 'Real metrics only', text: 'Every decision is grounded in current web optimization best practices. No guesswork, no spin.' },
         { title: 'No templates', text: 'Every site is built from scratch around your business. No pre-made themes.' },
         { title: 'Post-launch support', text: 'Available after launch. Monthly analytics, updates, and improvements.' },
+        { title: 'We actually meet our deadlines', text: 'Your launches, campaigns, and meetings happen on schedule. Your website should too.' },
         { title: 'Single contact', text: 'One point of contact from start to finish. No relaying PMs, no junior execution.' },
-        { title: 'AI-search visible', text: 'Pages structured to appear in ChatGPT, Claude, Perplexity and other AI models — not just Google.' },
+        { title: 'Small team, personal attention', text: 'No relay project manager, no dilution. One point of contact who knows your project inside out.' },
+        { title: 'AI-search visible', text: 'Your pages are structured to surface in ChatGPT, Claude, Perplexity, and whatever comes next. We stay current as best practices evolve fast.' },
       ],
       statsEyebrow: 'By the numbers',
       stats: [

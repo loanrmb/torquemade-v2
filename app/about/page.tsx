@@ -8,6 +8,7 @@ import { strings } from '@/lib/strings'
 import { useScrollReveal } from '@/lib/use-scroll-reveal'
 import { ShaderBackground } from '@/components/ui/shader-background'
 import { WaveBackground } from '@/components/ui/wave-background'
+import { DifferentiatorTimeline } from '@/components/differentiator-timeline'
 
 export default function AboutPage() {
   const lang = useLang()
@@ -56,45 +57,7 @@ export default function AboutPage() {
             >
               {t.whyTitle}
             </h2>
-            <div
-              className="grid grid-cols-1 min-720:grid-cols-2 min-1024:grid-cols-3"
-              style={{
-                border: '1px solid hsl(var(--border-subtle))',
-                borderRadius: '16px',
-                overflow: 'hidden',
-              }}
-            >
-              {t.differentiators.map((d, i) => (
-                <div
-                  key={i}
-                  className="p-7 flex flex-col gap-3"
-                  style={{
-                    background: 'hsl(var(--bg-primary))',
-                    borderRight: (i % 3 < 2) ? '1px solid hsl(var(--border-subtle))' : 'none',
-                    borderBottom: (i < 3) ? '1px solid hsl(var(--border-subtle))' : 'none',
-                  }}
-                >
-                  <div
-                    className="w-8 h-8 rounded-lg flex items-center justify-center text-base"
-                    style={{ background: 'hsl(var(--bg-secondary))' }}
-                  >
-                    {DIFF_ICONS[i]}
-                  </div>
-                  <h3
-                    className="text-base font-semibold"
-                    style={{ color: 'hsl(var(--text-primary))' }}
-                  >
-                    {d.title}
-                  </h3>
-                  <p
-                    className="text-sm leading-relaxed"
-                    style={{ color: 'hsl(var(--text-secondary))' }}
-                  >
-                    {d.text}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <DifferentiatorTimeline items={t.differentiators} icons={DIFF_ICONS} />
           </div>
         </section>
 
@@ -157,4 +120,4 @@ export default function AboutPage() {
   )
 }
 
-const DIFF_ICONS = ['⚡', '📊', '🔧', '📡', '🎯', '🤖']
+const DIFF_ICONS = ['📊', '🔧', '📡', '⏱️', '🎯', '👥', '🤖']
