@@ -31,6 +31,7 @@ import {
   motion,
   type Variants,
 } from 'framer-motion'
+import { useReducedMotionSafe } from '@/lib/motion'
 
 interface Step {
   name: string
@@ -100,6 +101,9 @@ function FeatureCard({
   stepsCount: number
   stepIndex: number
 }) {
+  const reducedMotion = useReducedMotionSafe()
+  const y = reducedMotion ? 0 : 20
+  const x = reducedMotion ? 0 : -20
   return (
     <div
       className="w-full overflow-hidden rounded-3xl"
@@ -113,15 +117,15 @@ function FeatureCard({
           <motion.div
             key={step.name}
             className="flex min-h-0 w-full flex-1 flex-col gap-4 overflow-y-auto min-720:h-full"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            exit={{ opacity: 0, y: -y }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
             <motion.div
               className="text-caption font-mono font-semibold tracking-widest uppercase"
               style={{ color: 'hsl(var(--text-tertiary))' }}
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.05, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
@@ -130,14 +134,14 @@ function FeatureCard({
             <motion.h2
               className="text-headline font-semibold tracking-tight min-720:text-title-2"
               style={{ color: 'hsl(var(--text-primary))' }}
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
               {step.title}
             </motion.h2>
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.15, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
