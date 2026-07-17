@@ -120,4 +120,4 @@ export default function AboutPage() {
   )
 }
 
-const DIFF_ICONS = ['📊', '🔧', '📡', '⏱️', '🎯', '👥', '🤖']
+const DIFF_ICONS = ['📊', '🔧', '📡', '⏱️', '👥', '🤖']
