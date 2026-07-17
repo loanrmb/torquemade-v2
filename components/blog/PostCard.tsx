@@ -1,10 +1,19 @@
 'use client'
 
 import Link from 'next/link'
+import type { CSSProperties } from 'react'
 import { useLang } from '@/components/app-provider'
 import type { Post } from '@/lib/blog'
 
-export function PostCard({ post, activeFilter }: { post: Post; activeFilter?: string }) {
+export function PostCard({
+  post,
+  activeFilter,
+  index = 0,
+}: {
+  post: Post
+  activeFilter?: string
+  index?: number
+}) {
   const lang = useLang()
   const href = activeFilter
     ? `/blog/${post.slug}?from=${encodeURIComponent(activeFilter)}`
@@ -13,7 +22,8 @@ export function PostCard({ post, activeFilter }: { post: Post; activeFilter?: st
   return (
     <Link
       href={href}
-      className="group block bg-white p-8 transition-colors duration-200 hover:bg-black hover:text-white"
+      className="group block bg-white p-8 transition-colors duration-200 hover:bg-black hover:text-white fade-up stagger-up"
+      style={{ '--stagger-i': index } as CSSProperties}
     >
       <div className="mb-8 flex items-center justify-between">
         <span className="font-mono text-[10px] uppercase tracking-widest opacity-40 transition-opacity group-hover:opacity-60">
