@@ -48,11 +48,11 @@ export default function AboutPage() {
         </section>
 
         {/* DIFFERENTIATORS — index keys prevent DOM recreation on lang change */}
-        <section className="px-5 py-20 min-720:py-24">
+        <section className="px-5 py-24 min-720:py-32">
           <div className="mx-auto max-w-5xl">
             <p className="fade-up section-label">{t.whyEyebrow}</p>
             <h2
-              className="fade-up fade-up-d1 text-title-2 font-semibold tracking-tight mb-12"
+              className="fade-up fade-up-d1 text-title-2 font-semibold tracking-tight mb-16 min-720:mb-20"
               style={{ color: 'hsl(var(--text-primary))' }}
             >
               {t.whyTitle}
@@ -68,11 +68,11 @@ export default function AboutPage() {
         >
           <div className="mx-auto max-w-3xl">
             <p className="section-label text-center mb-10">{t.statsEyebrow}</p>
-            <div className="grid grid-cols-3 gap-8 text-center">
+            <div className="grid grid-cols-3 gap-8 min-720:gap-12 text-center">
               {t.stats.map((stat, i) => (
-                <div key={i} className="flex flex-col gap-1">
+                <div key={i} className="flex flex-col gap-2">
                   <span
-                    className="text-3xl font-bold tracking-tight"
+                    className="text-4xl font-bold tracking-tight min-720:text-5xl"
                     style={{ color: 'hsl(var(--text-primary))' }}
                   >
                     {stat.value}

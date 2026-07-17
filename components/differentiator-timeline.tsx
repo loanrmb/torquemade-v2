@@ -43,11 +43,11 @@ function StaticTimeline({ items, icons }: DifferentiatorTimelineProps) {
   return (
     <div className="relative">
       <div
-        className="absolute left-4 top-0 bottom-0 w-px min-1024:left-1/2"
+        className="absolute left-5 top-0 bottom-0 w-0.5 min-1024:left-1/2"
         style={{ background: 'hsl(var(--text-primary))' }}
         aria-hidden="true"
       />
-      <div className="flex flex-col gap-10 min-720:gap-12">
+      <div className="flex flex-col gap-16 min-720:gap-20">
         {items.map((item, i) => (
           <TimelineCard key={i} index={i} item={item} icon={icons[i]} static />
         ))}
@@ -67,12 +67,12 @@ function AnimatedTimeline({ items, icons }: DifferentiatorTimelineProps) {
   return (
     <div ref={containerRef} className="relative">
       <div
-        className="absolute left-4 top-0 bottom-0 w-px min-1024:left-1/2"
+        className="absolute left-5 top-0 bottom-0 w-0.5 min-1024:left-1/2"
         style={{ background: 'hsl(var(--border-subtle))' }}
         aria-hidden="true"
       />
       <motion.div
-        className="absolute left-4 top-0 w-px min-1024:left-1/2"
+        className="absolute left-5 top-0 w-0.5 min-1024:left-1/2"
         style={{
           background: 'hsl(var(--text-primary))',
           height: '100%',
@@ -82,7 +82,7 @@ function AnimatedTimeline({ items, icons }: DifferentiatorTimelineProps) {
         }}
         aria-hidden="true"
       />
-      <div className="flex flex-col gap-10 min-720:gap-12">
+      <div className="flex flex-col gap-16 min-720:gap-20">
         {items.map((item, i) => (
           <TimelineCard key={i} index={i} item={item} icon={icons[i]} />
         ))}
@@ -108,7 +108,7 @@ function TimelineCard({
   const content = (
     <>
       <div
-        className="absolute left-4 top-0 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full text-xs font-semibold min-1024:left-1/2"
+        className="absolute left-5 top-0 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full text-sm font-semibold min-1024:left-1/2"
         style={{
           background: 'hsl(var(--bg-primary))',
           border: '1px solid hsl(var(--text-primary))',
@@ -118,30 +118,26 @@ function TimelineCard({
         {num}
       </div>
       <div
-        className={`pl-12 min-1024:w-[calc(50%-2.5rem)] min-1024:pl-0 ${
-          alignRight ? 'min-1024:ml-auto min-1024:pl-12' : 'min-1024:mr-auto min-1024:pr-12 min-1024:text-right'
+        className={`pl-16 min-1024:w-[calc(50%-3rem)] min-1024:pl-0 ${
+          alignRight ? 'min-1024:ml-auto min-1024:pl-16' : 'min-1024:mr-auto min-1024:pr-16'
         }`}
       >
-        <div
-          className={`mb-3 flex items-center gap-3 min-1024:flex-row ${
-            alignRight ? '' : 'min-1024:flex-row-reverse min-1024:justify-end'
-          }`}
-        >
+        <div className="mb-4 flex items-center gap-4">
           <div
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-base"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-xl"
             style={{ background: 'hsl(var(--bg-secondary))' }}
           >
             {icon}
           </div>
           <h3
-            className="text-base font-semibold"
+            className="text-xl font-semibold tracking-tight"
             style={{ color: 'hsl(var(--text-primary))' }}
           >
             {item.title}
           </h3>
         </div>
         <p
-          className="text-sm leading-relaxed"
+          className="text-base leading-relaxed"
           style={{ color: 'hsl(var(--text-secondary))' }}
         >
           {item.text}
