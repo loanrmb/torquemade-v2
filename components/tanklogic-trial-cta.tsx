@@ -5,12 +5,11 @@ import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLang } from './app-provider'
 import { strings } from '@/lib/strings'
+import { PHONE_COUNTRIES } from '@/lib/phone-codes'
 
 type FormState = 'idle' | 'loading' | 'success' | 'error'
 
 const SESSION_LOCK_KEY = 'tanklogic-trial-submitted'
-
-const PHONE_CODES = ['+33', '+41', '+32', '+1', '+44']
 
 export function TankLogicTrialCta({ intentKey }: { intentKey: 'serial' | 'sync' | 'doa' }) {
   const lang = useLang()
@@ -52,7 +51,7 @@ function TrialModal({
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [phoneCode, setPhoneCode] = useState(PHONE_CODES[0])
+  const [phoneIso, setPhoneIso] = useState(PHONE_COUNTRIES[0].iso)
   const [phone, setPhone] = useState('')
   const [storeName, setStoreName] = useState('')
   const [storeUrl, setStoreUrl] = useState('')
@@ -78,6 +77,8 @@ function TrialModal({
     }
   }, [open, onClose])
 
+  const phoneCountry = PHONE_COUNTRIES.find((c) => c.iso === phoneIso) ?? PHONE_COUNTRIES[0]
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (state === 'success' || state === 'loading') return
@@ -91,7 +92,7 @@ function TrialModal({
           firstName: name,
           lastName: '',
           email,
-          phone: phone ? `${phoneCode} ${phone}` : '',
+          phone: phone ? `${phoneCountry.dial} ${phone}` : '',
           company: storeName,
           storeUrl,
           service: `TankLogic — essai (${intentKey})`,
@@ -194,17 +195,20 @@ function TrialModal({
 
                       <div className="flex gap-2">
                         <select
-                          value={phoneCode}
-                          onChange={(e) => setPhoneCode(e.target.value)}
-                          className="rounded-xl px-2 text-sm outline-none"
+                          value={phoneIso}
+                          onChange={(e) => setPhoneIso(e.target.value)}
+                          aria-label={form.phonePlaceholder}
+                          className="max-w-[7.5rem] rounded-xl px-2 text-sm outline-none"
                           style={{
                             background: 'hsl(var(--bg-secondary))',
                             border: '1px solid hsl(var(--border-subtle))',
                             color: 'hsl(var(--text-primary))',
                           }}
                         >
-                          {PHONE_CODES.map((code) => (
-                            <option key={code} value={code}>{code}</option>
+                          {PHONE_COUNTRIES.map((c) => (
+                            <option key={c.iso} value={c.iso}>
+                              {c.flag} {lang === 'fr' ? c.fr : c.en} ({c.dial})
+                            </option>
                           ))}
                         </select>
                         <FormInput
