@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useLang } from './app-provider'
 import { strings } from '@/lib/strings'
 import { PHONE_COUNTRIES } from '@/lib/phone-codes'
+import { pressable } from '@/lib/motion'
 
 type FormState = 'idle' | 'loading' | 'success' | 'error'
 
@@ -138,15 +139,16 @@ function TrialModal({
             transition={{ duration: 0.25, ease: 'easeInOut' }}
           >
             <div className="tanklogic-glass-modal-inner max-h-[85vh] overflow-y-auto px-6 py-8 min-720:px-9 min-720:py-9">
-              <button
+              <motion.button
                 type="button"
                 onClick={onClose}
                 aria-label={form.close}
                 className="absolute right-5 top-5 flex h-8 w-8 items-center justify-center rounded-full text-lg font-light transition-opacity duration-150 hover:opacity-60"
                 style={{ color: 'hsl(var(--text-tertiary))' }}
+                {...pressable}
               >
                 ×
-              </button>
+              </motion.button>
 
               <AnimatePresence mode="wait">
                 {state === 'success' ? (
@@ -249,6 +251,7 @@ function TrialModal({
                             background: 'hsl(var(--bg-secondary))',
                             border: '1px solid hsl(var(--border-subtle))',
                             color: 'hsl(var(--text-primary))',
+                            transition: 'border-color 150ms var(--ease-out)',
                           }}
                           onFocus={(e) => (e.currentTarget.style.borderColor = 'hsl(var(--border-hover))')}
                           onBlur={(e) => (e.currentTarget.style.borderColor = 'hsl(var(--border-subtle))')}
@@ -321,6 +324,7 @@ function FormInput({
         background: 'hsl(var(--bg-secondary))',
         border: '1px solid hsl(var(--border-subtle))',
         color: 'hsl(var(--text-primary))',
+        transition: 'border-color 150ms var(--ease-out)',
       }}
       onFocus={(e) => (e.currentTarget.style.borderColor = 'hsl(var(--border-hover))')}
       onBlur={(e) => (e.currentTarget.style.borderColor = 'hsl(var(--border-subtle))')}

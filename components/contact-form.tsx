@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useLang } from './app-provider'
 import { strings } from '@/lib/strings'
+import { pressable } from '@/lib/motion'
 
 type FormState = 'idle' | 'loading' | 'success' | 'error'
 
@@ -177,14 +178,15 @@ export function ContactForm() {
 
       {/* Back button */}
       {step > 0 && (
-        <button
+        <motion.button
           type="button"
           onClick={goBack}
           className="self-start text-sm font-medium"
           style={{ color: 'hsl(var(--text-secondary))' }}
+          {...pressable}
         >
           {t.back}
-        </button>
+        </motion.button>
       )}
 
       <div className="relative overflow-hidden">
@@ -260,7 +262,7 @@ export function ContactForm() {
                   {t.services.map((service, i) => {
                     const isActive = selected.has(i)
                     return (
-                      <button
+                      <motion.button
                         key={i}
                         type="button"
                         onClick={() => toggleService(i)}
@@ -270,10 +272,11 @@ export function ContactForm() {
                           color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',
                           border: '1px solid hsl(var(--border-subtle))',
                         }}
+                        {...pressable}
                       >
                         {isActive && <span className="mr-1.5 text-xs">✓</span>}
                         {service}
-                      </button>
+                      </motion.button>
                     )
                   })}
                 </div>
@@ -310,7 +313,7 @@ export function ContactForm() {
                     {t.currencies.map((code, i) => {
                       const isActive = currency === i
                       return (
-                        <button
+                        <motion.button
                           key={code}
                           type="button"
                           onClick={() => setCurrency(i)}
@@ -320,10 +323,11 @@ export function ContactForm() {
                             color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',
                             border: '1px solid hsl(var(--border-subtle))',
                           }}
+                          {...pressable}
                         >
                           <span className="mr-1">{CURRENCY_FLAGS[code]}</span>
                           {code}
-                        </button>
+                        </motion.button>
                       )
                     })}
                   </div>
@@ -345,7 +349,7 @@ export function ContactForm() {
                       const isActive = budget === i
                       const symbol = CURRENCY_SYMBOLS[t.currencies[currency]]
                       return (
-                        <button
+                        <motion.button
                           key={i}
                           type="button"
                           onClick={() => setBudget(isActive ? null : i)}
@@ -355,10 +359,11 @@ export function ContactForm() {
                             color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',
                             border: '1px solid hsl(var(--border-subtle))',
                           }}
+                          {...pressable}
                         >
                           {isActive && <span className="mr-1.5 text-xs">✓</span>}
                           {range} {symbol}
-                        </button>
+                        </motion.button>
                       )
                     })}
                   </div>
@@ -382,6 +387,7 @@ export function ContactForm() {
                       background: 'hsl(var(--bg-secondary))',
                       border: '1px solid hsl(var(--border-subtle))',
                       color: 'hsl(var(--text-primary))',
+                      transition: 'border-color 150ms var(--ease-out)',
                     }}
                     onFocus={(e) => (e.currentTarget.style.borderColor = 'hsl(var(--border-hover))')}
                     onBlur={(e) => (e.currentTarget.style.borderColor = 'hsl(var(--border-subtle))')}
@@ -442,6 +448,7 @@ function InputField({
           background: 'hsl(var(--bg-secondary))',
           border: '1px solid hsl(var(--border-subtle))',
           color: 'hsl(var(--text-primary))',
+          transition: 'border-color 150ms var(--ease-out)',
         }}
         onFocus={(e) => (e.currentTarget.style.borderColor = 'hsl(var(--border-hover))')}
         onBlur={(e) => (e.currentTarget.style.borderColor = 'hsl(var(--border-subtle))')}
