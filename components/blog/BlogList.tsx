@@ -1,11 +1,12 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useLang } from '@/components/app-provider'
 import { posts } from '@/lib/blog'
 import { FeaturedPosts } from '@/components/blog/FeaturedPosts'
+import { ScrollRevealGroup } from '@/lib/use-scroll-reveal'
 
 const LABELS = {
   fr: {
@@ -325,6 +326,10 @@ export function BlogList() {
 
         {/* ── LISTE D'ARTICLES ── */}
         <div ref={listRef} style={{ borderTop: '1px solid hsl(var(--border-subtle))' }}>
+          {/* Keyed on category + sort (not search) so the reveal observer
+              re-scans freshly-mounted cards when the set changes — but typing
+              in the search box never retriggers the entrance animation. */}
+          <ScrollRevealGroup resetKey={`${activeKey}|${sortOrder}`}>
           {filtered.length === 0 && (
             <p
               className="text-center py-16 text-sm"
@@ -341,8 +346,8 @@ export function BlogList() {
                   ? `/blog/${post.slug}?from=${encodeURIComponent(activeKey)}`
                   : `/blog/${post.slug}`
               }
-              className="group flex gap-12 md:gap-16 py-8 sm:py-10 px-4 -mx-4 transition-colors duration-150 rounded-sm"
-              style={{ borderBottom: '1px solid hsl(var(--border-subtle))' }}
+              className="group flex gap-12 md:gap-16 py-8 sm:py-10 px-4 -mx-4 transition-colors duration-150 rounded-sm fade-up stagger-up"
+              style={{ borderBottom: '1px solid hsl(var(--border-subtle))', '--stagger-i': i } as CSSProperties}
             >
               {/* Gauche : numéro + date + catégorie */}
               <div className="w-24 sm:w-32 flex-shrink-0">
@@ -386,6 +391,7 @@ export function BlogList() {
               </div>
             </Link>
           ))}
+          </ScrollRevealGroup>
         </div>
 
       </div>

@@ -127,6 +127,15 @@ h1, h2, h3, h4, h5, h6 {
 .fade-up-d4 { transition-delay: 0.32s; }
 .fade-up-d5 { transition-delay: 0.40s; }
 
+/* Per-item entrance stagger for grids of variable length (e.g. filtered card
+   lists). Pair with .fade-up and set `--stagger-i` (0-based sibling index)
+   via inline style. Capped at 5 steps so long lists don't feel sluggish.
+   Specificity must match `.js-reveal .fade-up` (which sets the `transition`
+   shorthand, implicitly zeroing delay) or that rule wins and the stagger
+   silently collapses to 0 — hence the `.js-reveal` prefix here too. */
+.stagger-up,
+.js-reveal .stagger-up { transition-delay: calc(min(var(--stagger-i, 0), 5) * 0.08s); }
+
 @media (prefers-reduced-motion: reduce) {
   .js-reveal .fade-up { opacity: 1; transform: none; transition: none; }
 }

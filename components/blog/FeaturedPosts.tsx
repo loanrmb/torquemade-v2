@@ -1,13 +1,16 @@
 'use client'
 
 import Link from 'next/link'
+import type { CSSProperties } from 'react'
 import { useLang } from '@/components/app-provider'
 import { strings } from '@/lib/strings'
+import { useScrollReveal } from '@/lib/use-scroll-reveal'
 import type { Post } from '@/lib/blog'
 
 export function FeaturedPosts({ posts }: { posts: Post[] }) {
   const lang = useLang()
   const t = strings[lang].blog
+  useScrollReveal()
 
   if (posts.length === 0) return null
 
@@ -26,8 +29,8 @@ export function FeaturedPosts({ posts }: { posts: Post[] }) {
         className="grid grid-cols-1 gap-px md:grid-cols-3"
         style={{ background: 'hsl(var(--border-subtle))' }}
       >
-        {posts.map((post) => (
-          <FeaturedCard key={post.slug} post={post} readLabel={t.featuredRead} lang={lang} />
+        {posts.map((post, index) => (
+          <FeaturedCard key={post.slug} post={post} readLabel={t.featuredRead} lang={lang} index={index} />
         ))}
       </div>
     </div>
@@ -38,16 +41,18 @@ function FeaturedCard({
   post,
   readLabel,
   lang,
+  index,
 }: {
   post: Post
   readLabel: string
   lang: 'fr' | 'en'
+  index: number
 }) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group block p-8 transition-colors duration-200 hover:bg-black hover:text-white"
-      style={{ background: 'hsl(var(--bg-primary))' }}
+      className="group block p-8 transition-colors duration-200 hover:bg-black hover:text-white fade-up stagger-up"
+      style={{ background: 'hsl(var(--bg-primary))', '--stagger-i': index } as CSSProperties}
     >
       {/* Meta row */}
       <div className="mb-8 flex items-center justify-between">

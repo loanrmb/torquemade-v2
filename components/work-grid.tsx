@@ -1,11 +1,12 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, type CSSProperties } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useLang } from './app-provider'
 import { strings } from '@/lib/strings'
 import { projects, type ProjectTag } from '@/lib/projects'
+import { ScrollRevealGroup } from '@/lib/use-scroll-reveal'
 
 type Filter = 'all' | 'web' | 'logiciel'
 
@@ -86,22 +87,26 @@ export function WorkGrid() {
 
       {/* ── PROJECT CARDS ── */}
       <div ref={gridRef} className="flex flex-col gap-6">
+        {/* Keyed on the active filter so the reveal observer re-scans
+            freshly-mounted cards whenever the filtered set changes. */}
+        <ScrollRevealGroup resetKey={activeFilter}>
         {filtered.length === 0 ? (
           <p className="text-body py-12 text-center" style={{ color: 'hsl(var(--text-tertiary))' }}>
             {t.noMatch}
           </p>
         ) : (
-          filtered.map((project) => {
+          filtered.map((project, index) => {
             const isExternal = project.imageHero.startsWith('http')
 
             return (
               <div
                 key={project.id}
-                className="group rounded-2xl overflow-hidden border transition-colors"
+                className="group rounded-2xl overflow-hidden border transition-colors fade-up stagger-up"
                 style={{
                   background: 'hsl(var(--bg-secondary))',
                   borderColor: 'hsl(var(--border))',
-                }}
+                  '--stagger-i': index,
+                } as CSSProperties}
               >
                 {/* Image */}
                 {project.caseStudy ? (
@@ -188,6 +193,7 @@ export function WorkGrid() {
             )
           })
         )}
+        </ScrollRevealGroup>
 
         {/* CTA CARD */}
         <div className="rounded-2xl border p-8 min-720:p-10 text-center" style={{ background: 'hsl(var(--bg-secondary))', borderColor: 'hsl(var(--border))' }}>
