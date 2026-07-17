@@ -100,12 +100,31 @@ export function BlogList() {
   const [search, setSearch] = useState('')
   const [searchOpen, setSearchOpen] = useState(false)
   const searchInputRef = useRef<HTMLInputElement>(null)
+  // Typing changes which posts render (featured section + filtered list),
+  // which can shrink the document enough that the browser force-adjusts
+  // scrollY — firing one or more native "scroll" events that aren't a real
+  // user scroll (image loads / reveal animations can trigger extra ones as
+  // the layout settles). Suppress scroll-close for a short window after each
+  // keystroke so none of those get mistaken for a manual scroll.
+  const suppressScrollCloseRef = useRef(false)
+  const suppressScrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const SUPPRESS_SCROLL_MS = 200
+
+  function handleSearchChange(value: string) {
+    suppressScrollCloseRef.current = true
+    if (suppressScrollTimeoutRef.current) clearTimeout(suppressScrollTimeoutRef.current)
+    suppressScrollTimeoutRef.current = setTimeout(() => {
+      suppressScrollCloseRef.current = false
+    }, SUPPRESS_SCROLL_MS)
+    setSearch(value)
+  }
 
   // Auto-collapse the search field as soon as the visitor scrolls,
   // to avoid the input overlapping the sticky navbar.
   useEffect(() => {
     if (!searchOpen) return
     const handleScroll = () => {
+      if (suppressScrollCloseRef.current) return
       setSearchOpen(false)
       setSearch('')
     }
@@ -247,7 +266,7 @@ export function BlogList() {
             {/* Bouton clear — apparaît visuellement à gauche de l'input grâce à row-reverse */}
             {search && (
               <button
-                onClick={() => setSearch('')}
+                onClick={() => handleSearchChange('')}
                 className="p-1 rounded-full shrink-0 transition-colors"
                 style={{ color: 'hsl(var(--text-secondary))' }}
                 aria-label={t.clearAria}
@@ -282,7 +301,7 @@ export function BlogList() {
                 ref={searchInputRef}
                 type="text"
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => handleSearchChange(e.target.value)}
                 placeholder={t.searchPlaceholder}
                 className="w-full text-sm outline-none bg-transparent px-2 text-right"
                 style={{ color: 'hsl(var(--text-primary))' }}
