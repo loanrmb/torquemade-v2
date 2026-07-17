@@ -9,6 +9,7 @@ import { useScrollReveal } from '@/lib/use-scroll-reveal'
 import { posts } from '@/lib/blog'
 import { ShaderBackground } from '@/components/ui/shader-background'
 import { WaveBackground } from '@/components/ui/wave-background'
+import { HeroHeading, HeroRevealBlock } from '@/components/ui/hero-heading'
 import {
   CostCurveIllustration,
   OwnershipIllustration,
@@ -44,18 +45,20 @@ export default function CrmPage() {
           </div>
           <div className="relative z-10 mx-auto max-w-3xl px-5 text-center">
             <p className="fade-up section-label">{t.eyebrow}</p>
-            <h1
-              className="fade-up fade-up-d1 text-title-1 font-semibold tracking-tight mb-5"
+            <HeroHeading
+              className="text-title-1 font-semibold tracking-tight mb-5"
               style={{ color: 'hsl(var(--text-primary))' }}
             >
               {t.hero}
-            </h1>
-            <p
-              className="fade-up fade-up-d2 text-body-lg max-w-2xl mx-auto"
+            </HeroHeading>
+            <HeroRevealBlock
+              as="p"
+              delay={0.16}
+              className="text-body-lg max-w-2xl mx-auto"
               style={{ color: 'hsl(var(--text-secondary))' }}
             >
               {t.intro}
-            </p>
+            </HeroRevealBlock>
           </div>
         </section>
 

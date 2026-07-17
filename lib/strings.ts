@@ -22,7 +22,6 @@ export const strings = {
       ],
     },
     hero: {
-      eyebrow: 'Studio web — Bordeaux',
       heroSubheadline: 'Web Dev — CRM sur mesure & Connexion Stock Magasin ↔ site e-commerce.',
       headline2: 'Du design à la base de données.',
       sub: 'Nous construisons des sites qui performent, et les systèmes derrière.',
@@ -778,7 +777,6 @@ export const strings = {
       ],
     },
     hero: {
-      eyebrow: 'Web studio — Bordeaux',
       heroSubheadline: 'Web Dev — Custom CRM & In-store Stock ↔ e-commerce sync.',
       headline2: 'From design to database.',
       sub: 'We build sites that perform, and the systems behind them.',
