@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { AppProvider } from '@/components/app-provider'
+import { PageTransition } from '@/components/page-transition'
 import { SchemaRenderer } from '@/components/schema-renderer'
 import { organizationGraph } from '@/lib/schema'
 import { Analytics } from '@vercel/analytics/react'
@@ -45,7 +46,7 @@ export default function RootLayout({
       <body className="isolate flex flex-col bg-bg-primary text-text-secondary font-sans">
         <SchemaRenderer schema={organizationGraph} />
         <AppProvider>
-          {children}
+          <PageTransition>{children}</PageTransition>
         </AppProvider>
         {/* Reveal script: runs before React hydration so above-the-fold
             `.fade-up` content paints immediately (fast LCP). Below-the-fold +

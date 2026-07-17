@@ -1,10 +1,30 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import type { CSSProperties, ReactNode } from 'react'
+import { useLayoutEffect, useState, type CSSProperties, type ReactNode } from 'react'
 import { EASE_OUT, useReducedMotionSafe } from '@/lib/motion'
 
 const HERO_ARRIVAL_DURATION = 1.4
+
+/**
+ * sessionStorage (not localStorage) so the full reveal plays again on a new
+ * tab/session but not on every client-side nav back to a hero route within
+ * the same one. It persists across a hard reload within that same tab/session
+ * (confirmed: sessionStorage survives reloads, only clears when the tab/
+ * window closes), so typing the URL again after the flag is set still gets
+ * the instant version, matching a client-side nav back.
+ */
+const HERO_REVEAL_SESSION_KEY = 'hero-reveal-seen'
+
+/**
+ * Plain useEffect would flip the render after the browser already painted
+ * the animated markup, producing a visible flash on the second+ mount within
+ * a session. useLayoutEffect flushes the resulting setState synchronously
+ * before paint instead. Guarded for SSR (no-op there; first load already
+ * renders the animated tree server-side, which is the desired behavior for
+ * a true first visit and matches what hydration expects).
+ */
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : () => {}
 
 /**
  * Shared "arrival" keyframes for hero titles and the content immediately
@@ -52,8 +72,21 @@ export function HeroHeading({
   children: ReactNode
 }) {
   const reducedMotion = useReducedMotionSafe()
+  const [skipAnimation, setSkipAnimation] = useState(false)
 
-  if (reducedMotion) {
+  useIsomorphicLayoutEffect(() => {
+    try {
+      if (sessionStorage.getItem(HERO_REVEAL_SESSION_KEY)) {
+        setSkipAnimation(true)
+      } else {
+        sessionStorage.setItem(HERO_REVEAL_SESSION_KEY, '1')
+      }
+    } catch {
+      // sessionStorage unavailable (private browsing, etc.) — fall back to always animating
+    }
+  }, [])
+
+  if (reducedMotion || skipAnimation) {
     return (
       <h1 className={className} style={style}>
         {children}
