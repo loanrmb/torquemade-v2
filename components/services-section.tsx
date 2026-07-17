@@ -28,6 +28,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useLang } from '@/components/app-provider';
 import { strings } from '@/lib/strings';
+import { useReducedMotionSafe } from '@/lib/motion';
 
 const IMG = '/images';
 const ROTATE_MS = 7000;
@@ -233,14 +234,15 @@ function ColHead({
 
 function ApiPanel() {
   const t = strings[useLang()].servicesSection;
+  const reducedMotion = useReducedMotionSafe();
   return (
     <div className="flex w-[15rem] shrink-0 flex-col overflow-hidden rounded-xl border border-white/15 bg-black/50 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.6)]">
       <div className="flex items-center justify-between border-b border-white/10 px-3 py-2.5">
         <span className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-white/40">{t.erp.apiLabel}</span>
         <motion.span
           className="h-1.5 w-1.5 rounded-full bg-white"
-          animate={{ opacity: [0.3, 1, 0.3] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+          animate={reducedMotion ? { opacity: 1 } : { opacity: [0.3, 1, 0.3] }}
+          transition={reducedMotion ? { duration: 0 } : { duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
         />
       </div>
       <div className="flex-1 overflow-hidden px-3 pt-3.5 pb-1 font-mono text-[9px] leading-[1.65] text-white/55">
@@ -268,8 +270,8 @@ function ApiPanel() {
         <span>$</span>
         <motion.span
           className="ml-0.5 inline-block h-2.5 w-1.5 bg-white"
-          animate={{ opacity: [1, 1, 0, 0] }}
-          transition={{ duration: 1, repeat: Infinity, ease: 'linear', times: [0, 0.5, 0.5, 1] }}
+          animate={reducedMotion ? { opacity: 1 } : { opacity: [1, 1, 0, 0] }}
+          transition={reducedMotion ? { duration: 0 } : { duration: 1, repeat: Infinity, ease: 'linear', times: [0, 0.5, 0.5, 1] }}
         />
       </div>
     </div>
@@ -300,6 +302,7 @@ function ErpConnector({ label }: { label: string }) {
 function FigureErp() {
   const lang = useLang()
   const t = strings[lang].servicesSection
+  const reducedMotion = useReducedMotionSafe();
   return (
     <>
       <img
@@ -319,8 +322,8 @@ function FigureErp() {
                 <>
                   <motion.span
                     className="inline-block h-1.5 w-1.5 rounded-full bg-white"
-                    animate={{ opacity: [1, 0.4, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                    animate={reducedMotion ? { opacity: 1 } : { opacity: [1, 0.4, 1] }}
+                    transition={reducedMotion ? { duration: 0 } : { duration: 2, repeat: Infinity, ease: 'easeInOut' }}
                   />
                   <span>{t.erp.stockFooter}</span>
                 </>

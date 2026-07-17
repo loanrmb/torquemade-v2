@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useLang } from './app-provider'
 import { strings } from '@/lib/strings'
 import { PHONE_COUNTRIES } from '@/lib/phone-codes'
+import { useReducedMotionSafe } from '@/lib/motion'
 
 type FormState = 'idle' | 'loading' | 'success' | 'error'
 
@@ -48,6 +49,7 @@ function TrialModal({
 }) {
   const lang = useLang()
   const form = strings[lang].tanklogic.trialForm
+  const reducedMotion = useReducedMotionSafe()
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -132,9 +134,9 @@ function TrialModal({
 
           <motion.div
             className="tanklogic-glass-modal relative w-full max-w-lg"
-            initial={{ opacity: 0, scale: 0.96, y: 12 }}
+            initial={{ opacity: 0, scale: reducedMotion ? 1 : 0.96, y: reducedMotion ? 0 : 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.96, y: 12 }}
+            exit={{ opacity: 0, scale: reducedMotion ? 1 : 0.96, y: reducedMotion ? 0 : 12 }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
           >
             <div className="tanklogic-glass-modal-inner max-h-[85vh] overflow-y-auto px-6 py-8 min-720:px-9 min-720:py-9">
@@ -152,7 +154,7 @@ function TrialModal({
                 {state === 'success' ? (
                   <motion.div
                     key="success"
-                    initial={{ opacity: 0, y: 8 }}
+                    initial={{ opacity: 0, y: reducedMotion ? 0 : 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                     className="py-8 text-center"
@@ -164,7 +166,7 @@ function TrialModal({
                 ) : (
                   <motion.div
                     key="form"
-                    initial={{ opacity: 0, y: 8 }}
+                    initial={{ opacity: 0, y: reducedMotion ? 0 : 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                   >
