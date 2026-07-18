@@ -57,7 +57,7 @@ export default function ArticleLayout({ children }: { children: React.ReactNode 
           </Suspense>
         </div>
 
-        <article className="mx-auto max-w-3xl px-6 py-16 md:py-24">
+        <article className="mx-auto max-w-4xl px-6 py-16 md:py-24">
           {children}
         </article>
 
