@@ -1107,4 +1107,20 @@ export const posts: Post[] = [
     category: 'SEO & Contenu',
     readingTime: 7,
   },
+  {
+    slug: 'etude-de-cas-4-sites-cites-google-ia-generative-avant-france',
+    title: {
+      fr: "Étude de cas : 4 sites cités par Google IA générative avant l'arrivée du modèle en France",
+      en: "Case study: 4 sites cited by Google's generative AI before the model reaches France",
+    },
+    description: {
+      fr: 'Quatre sites, quatre profils différents, un même signal : ils sont déjà cités dans les réponses IA générative de Google, avant même le déploiement du modèle en France.',
+      en: "Four sites, four different profiles, one shared signal: already cited in Google's generative AI answers, before the model has even reached France.",
+    },
+    date: { fr: '18 juillet 2026', en: 'July 18, 2026' },
+    publishedAt: '2026-07-18',
+    updatedAt: '2026-07-18',
+    category: 'SEO & Contenu',
+    readingTime: 8,
+  },
 ]

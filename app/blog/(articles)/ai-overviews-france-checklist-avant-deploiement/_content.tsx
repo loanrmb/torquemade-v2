@@ -126,7 +126,7 @@ export function AiOverviewsFranceChecklistContent() {
         These are principles, not proof. A full case study covering all four sites from our
         citation analysis, including exactly which pages got cited and why, is coming next
         in this series:{' '}
-        <Link href="/blog/etude-cas-quatre-sites-ia-generative-google">
+        <Link href="/blog/etude-de-cas-4-sites-cites-google-ia-generative-avant-france">
           Sprint Motors, BordeauxRide, Voge Bordeaux, and MotoPassion65 against Google&apos;s
           generative AI report
         </Link>
@@ -341,7 +341,7 @@ export function AiOverviewsFranceChecklistContent() {
         Ce sont des principes, pas une preuve. Une étude de cas complète couvrant les quatre
         sites de notre analyse de citations, avec le détail précis de quelles pages ont été
         citées et pourquoi, arrive dans le prochain article de cette série :{' '}
-        <Link href="/blog/etude-cas-quatre-sites-ia-generative-google">
+        <Link href="/blog/etude-de-cas-4-sites-cites-google-ia-generative-avant-france">
           Sprint Motors, BordeauxRide, Voge Bordeaux et MotoPassion65 face au rapport IA
           générative de Google
         </Link>
