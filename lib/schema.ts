@@ -132,10 +132,15 @@ export function blogPostingSchema(post: {
   description: { fr: string; en: string }
   publishedAt: string
   updatedAt?: string
-}, opts?: { image?: string }) {
+}, opts?: {
+  image?: string
+  /** Optional FAQPage entity, sourced word-for-word from the FR strings
+   *  rendered in the visible FAQ section of the article (Google rule: markup
+   *  must mirror on-page content; FR is the server-rendered default language). */
+  faq?: readonly { q: string; a: string }[]
+}) {
   const url = `https://www.torquemade.com/blog/${post.slug}`
-  return {
-    '@context': 'https://schema.org',
+  const blogPosting = {
     '@type': 'BlogPosting',
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     headline: post.title.fr,
@@ -154,6 +159,26 @@ export function blogPostingSchema(post: {
     ...(opts?.image
       ? { image: opts.image.startsWith('http') ? opts.image : `https://www.torquemade.com${opts.image}` }
       : {}),
+  }
+
+  if (!opts?.faq) {
+    return { '@context': 'https://schema.org', ...blogPosting }
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      blogPosting,
+      {
+        '@type': 'FAQPage',
+        '@id': `${url}/#faq`,
+        mainEntity: opts.faq.map(({ q, a }) => ({
+          '@type': 'Question',
+          name: q,
+          acceptedAnswer: { '@type': 'Answer', text: a },
+        })),
+      },
+    ],
   }
 }
 
