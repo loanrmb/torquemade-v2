@@ -1061,4 +1061,19 @@ export const posts: Post[] = [
     category: 'ERP & Gestion de stock',
     readingTime: 6,
   },
+  {
+    slug: 'rapport-ia-generative-google-search-console',
+    title: {
+      fr: 'Rapport IA générative dans Google Search Console : comment le lire (et pourquoi il ne dit encore rien en France)',
+      en: "Google Search Console's Generative AI report: how to read it (and why it shows almost nothing in France yet)",
+    },
+    description: {
+      fr: 'Google a lancé un nouveau rapport dans Search Console pour mesurer sa visibilité dans les réponses IA. Voici ce qu\'il contient, ce qu\'il ne montre pas encore, et pourquoi les sites français voient si peu de données.',
+      en: "Google launched a new Search Console report tracking visibility in AI-generated answers. Here's what it covers, what it's missing, and why French sites barely show data yet.",
+    },
+    date: { fr: '18 juillet 2026', en: 'July 18, 2026' },
+    publishedAt: '2026-07-18',
+    category: 'SEO & Contenu',
+    readingTime: 6,
+  },
 ]
