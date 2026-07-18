@@ -179,6 +179,8 @@ export const strings = {
     erpFeature: {
       eyebrow: 'Synchronisation en temps réel',
       syncLabel: 'Dernière sync : il y a {n}s',
+      erpUpdateLabel: 'Mis à jour : il y a {n}s',
+      ctaLabel: 'Découvrir notre solution ERP →',
     },
     workPreview: {
       eyebrow: 'Projets à la une',
@@ -940,6 +942,8 @@ export const strings = {
     erpFeature: {
       eyebrow: 'Real-time synchronization',
       syncLabel: 'Last sync: {n}s ago',
+      erpUpdateLabel: 'Updated: {n}s ago',
+      ctaLabel: 'Discover our ERP solution →',
     },
     workPreview: {
       eyebrow: 'Featured work',

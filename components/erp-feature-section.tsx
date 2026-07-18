@@ -27,6 +27,7 @@
  */
 
 import { useCallback, useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useLang } from '@/components/app-provider'
 import { strings } from '@/lib/strings'
@@ -190,7 +191,7 @@ function useSyncCounter(): number {
    One vocabulary across the three panels: identical hairline borders,
    16px radius, quiet header bar, mono uppercase tag. Depth is carried
    by layered soft shadows, not by border weight. */
-const PANEL_BORDER = 'rgba(255,255,255,0.09)'
+const PANEL_BORDER = 'rgba(255,255,255,0.13)'
 const HAIRLINE     = 'rgba(255,255,255,0.07)'
 
 /* ─── GreenDot: soft CSS pulse (no Framer overhead) ─────────── */
@@ -323,6 +324,10 @@ function ErpPanel({
   onRowRef?: (sku: SKU, el: HTMLElement | null) => void
   onNumRef?: (sku: SKU, el: HTMLElement | null) => void
 }) {
+  const lang = useLang()
+  const n    = useSyncCounter()
+  const updateText = strings[lang].erpFeature.erpUpdateLabel.replace('{n}', String(n))
+
   const px  = mobile ? 'px-4' : 'px-5 lg:px-6 xl:px-7'
   const pyR = mobile ? 'py-[6px]' : 'py-3 lg:py-3.5 xl:py-4'
   const fs  = mobile ? 'text-[12px]' : 'text-[13px] lg:text-[14px] xl:text-[15px]'
@@ -337,8 +342,9 @@ function ErpPanel({
         backdropFilter: 'blur(20px) saturate(1.15)',
         WebkitBackdropFilter: 'blur(20px) saturate(1.15)',
         boxShadow:
-          'inset 0 1px 0 rgba(255,255,255,0.05), ' +
-          '0 10px 28px rgba(0,0,0,0.35), ' +
+          'inset 0 1px 0 rgba(255,255,255,0.06), ' +
+          '0 24px 52px rgba(0,0,0,0.42), ' +
+          '0 10px 24px rgba(0,0,0,0.30), ' +
           '0 2px 6px rgba(0,0,0,0.22)',
         WebkitFontSmoothing: 'antialiased',
       }}
@@ -403,11 +409,19 @@ function ErpPanel({
       </div>
 
       <footer
-        className={`flex items-center gap-2 bg-white/[0.015] ${px} ${mobile ? 'py-2' : 'py-3 lg:py-3.5 xl:py-4'} text-[12px] lg:text-[13px] text-white/55`}
+        className={`flex flex-col gap-1 bg-white/[0.015] ${px} ${mobile ? 'py-2' : 'py-3 lg:py-3.5 xl:py-4'}`}
         style={{ borderTop: `1px solid ${HAIRLINE}` }}
       >
-        <GreenDot size={6} />
-        {t.connected}
+        <span className="flex items-center gap-2 text-[12px] lg:text-[13px] text-white/55">
+          <GreenDot size={6} />
+          {t.connected}
+        </span>
+        <span
+          className="pl-[14px] text-[11px] lg:text-[11.5px] tabular-nums text-white/32"
+          style={{ fontFamily: 'var(--font-mono, monospace)' }}
+        >
+          {updateText}
+        </span>
       </footer>
     </article>
   )
@@ -487,7 +501,10 @@ function ApiPanel({
       >
         <CLine><Verb>POST</Verb> <CPath>/api/sync</CPath> <CComment>HTTP/1.1</CComment></CLine>
         {!mobile && (
-          <CLine><CKey>Authorization:</CKey> <CComment>Bearer</CComment> <CStr>sk_live_***</CStr></CLine>
+          <>
+            <CLine><CKey>Authorization:</CKey> <CComment>Bearer</CComment> <CStr>sk_live_***</CStr></CLine>
+            <CLine><CKey>Content-Type:</CKey> <CStr>application/json</CStr></CLine>
+          </>
         )}
         <span className="block h-1.5" />
         <CLine><CBrace>{'{'}</CBrace></CLine>
@@ -575,9 +592,9 @@ function EcomPanel({
         color: '#303030',
         fontFamily: 'var(--font-sans, system-ui, sans-serif)',
         boxShadow:
-          '0 24px 60px rgba(0,0,0,0.46), ' +
-          '0 8px 20px rgba(0,0,0,0.26), ' +
-          '0 0 0 1px rgba(255,255,255,0.06), ' +
+          '0 28px 64px rgba(0,0,0,0.48), ' +
+          '0 10px 24px rgba(0,0,0,0.28), ' +
+          '0 0 0 1px rgba(255,255,255,0.15), ' +
           'inset 0 1px 0 rgba(255,255,255,0.7)',
         WebkitFontSmoothing: 'antialiased',
       }}
@@ -1060,6 +1077,21 @@ export function ErpFeatureSection() {
             >
               {t.description}
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.28, duration: 0.6, ease: 'easeOut' }}
+            >
+              <Link
+                href="/services/erp-ecommerce"
+                className="mt-5 inline-flex w-fit items-center rounded-full px-4 py-2 text-sm font-semibold text-white transition-all duration-150 hover:-translate-y-0.5 hover:opacity-80"
+                style={{ border: '1px solid rgba(255,255,255,0.18)' }}
+              >
+                {strings[lang].erpFeature.ctaLabel}
+              </Link>
+            </motion.div>
           </div>
         </div>
 
