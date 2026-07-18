@@ -40,12 +40,9 @@ export default function OGImage() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          // Literal values for the site's --bg-dark token (light-mode value,
-          // 0 0% 16%) — the "intentionally dark section" convention used
-          // elsewhere (e.g. components/erp-feature-section.tsx).
-          backgroundColor: 'hsl(0, 0%, 16%)',
-          backgroundImage:
-            'radial-gradient(1200px 600px at 50% -10%, rgba(255,255,255,0.025), transparent 60%)',
+          // Literal value for the site's --bg-primary token (light mode,
+          // 0 0% 91%) — the site's default light surface.
+          backgroundColor: 'hsl(0, 0%, 91%)',
         }}
       >
         {/* Frozen wave field */}
@@ -56,27 +53,28 @@ export default function OGImage() {
           style={{ position: 'absolute', top: 0, left: 0 }}
         >
           {WAVE_PATHS.map((d, i) => (
-            <path key={i} d={d} fill="none" stroke="rgba(255,255,255,0.10)" strokeWidth={1} />
+            <path key={i} d={d} fill="none" stroke="rgba(0,0,0,0.10)" strokeWidth={1} />
           ))}
         </svg>
 
-        {/* Icon + wordmark lockup — same combo as the nav LogoMark, resolved
-            to the tokens' dark-mode values since this card renders on a
-            dark section (bg-inverse -> 0 0% 96%, text-primary -> 0 0% 96%). */}
+        {/* Icon + wordmark lockup — same combo as the nav LogoMark (black
+            square, light "tm", black wordmark), literal light-mode token
+            values: bg-inverse -> 0 0% 8%, bg-primary -> 0 0% 91%,
+            text-primary -> 0 0% 8%. */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '26px' }}>
           <div
             style={{
               width: '96px',
               height: '96px',
               borderRadius: '15px',
-              background: 'hsl(0, 0%, 96%)',
+              background: 'hsl(0, 0%, 8%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               fontSize: '54px',
               fontWeight: 600,
               letterSpacing: '-3px',
-              color: 'hsl(0, 0%, 6%)',
+              color: 'hsl(0, 0%, 91%)',
             }}
           >
             tm
@@ -87,7 +85,7 @@ export default function OGImage() {
               fontSize: '60px',
               fontWeight: 600,
               letterSpacing: '-1.5px',
-              color: 'hsl(0, 0%, 96%)',
+              color: 'hsl(0, 0%, 8%)',
             }}
           >
             Torquemade
