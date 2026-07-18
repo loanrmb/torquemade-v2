@@ -105,7 +105,11 @@ export function NavPill() {
                 <CaretIcon open={servicesOpen} />
               </button>
 
-              <div className="absolute left-0 top-full pt-3 w-[360px] z-50" aria-hidden={!servicesOpen}>
+              <div
+                className="absolute left-0 top-full pt-3 w-[360px] z-50"
+                aria-hidden={!servicesOpen}
+                style={{ pointerEvents: servicesOpen ? 'auto' : 'none' }}
+              >
                 <div
                   className="rounded-2xl border p-2 flex flex-col gap-1"
                   style={{
@@ -155,7 +159,11 @@ export function NavPill() {
                 <CaretIcon open={produitsOpen} />
               </button>
 
-              <div className="absolute left-0 top-full pt-3 w-[360px] z-50" aria-hidden={!produitsOpen}>
+              <div
+                className="absolute left-0 top-full pt-3 w-[360px] z-50"
+                aria-hidden={!produitsOpen}
+                style={{ pointerEvents: produitsOpen ? 'auto' : 'none' }}
+              >
                 <div
                   className="rounded-2xl border p-2 flex flex-col gap-1"
                   style={{
