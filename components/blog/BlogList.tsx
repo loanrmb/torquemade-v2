@@ -194,10 +194,8 @@ export function BlogList() {
             <div
               className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 flex-shrink-0"
               style={{
-                background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.72)',
-                backdropFilter: 'blur(20px) saturate(150%)',
-                WebkitBackdropFilter: 'blur(20px) saturate(150%)',
-                border: '1px solid rgba(var(--nav-bg-raw, 255 255 255), 0.25)',
+                background: 'hsl(var(--bg-secondary))',
+                border: '1px solid hsl(var(--border-subtle))',
                 boxShadow: '0 2px 16px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.5) inset',
               }}
             >
@@ -212,11 +210,12 @@ export function BlogList() {
                   <button
                     key={key}
                     onClick={() => handleFilter(key)}
-                    className="flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 whitespace-nowrap"
+                    className={`flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 whitespace-nowrap ${
+                      isActive ? '' : 'hover:bg-[hsl(var(--bg-tertiary))]'
+                    }`}
                     style={{
-                      background: isActive ? 'hsl(var(--bg-inverse))' : 'transparent',
-                      color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-primary))',
-                      opacity: isActive ? 1 : 0.6,
+                      background: isActive ? 'hsl(var(--bg-inverse))' : undefined,
+                      color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',
                     }}
                   >
                     {CATEGORY_LABELS[cat]?.[lang] ?? cat}
@@ -231,10 +230,8 @@ export function BlogList() {
           <div
             className="inline-flex items-center gap-1 rounded-full px-1.5 py-1 shrink-0"
             style={{
-              background: 'rgba(var(--nav-bg-raw, 255 255 255), 0.72)',
-              backdropFilter: 'blur(20px) saturate(150%)',
-              WebkitBackdropFilter: 'blur(20px) saturate(150%)',
-              border: '1px solid rgba(var(--nav-bg-raw, 255 255 255), 0.25)',
+              background: 'hsl(var(--bg-secondary))',
+              border: '1px solid hsl(var(--border-subtle))',
               boxShadow: '0 2px 16px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.5) inset',
             }}
           >
@@ -245,11 +242,12 @@ export function BlogList() {
                   key={order}
                   onClick={() => handleSort(order)}
                   aria-pressed={isActive}
-                  className="rounded-full px-3 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 whitespace-nowrap"
+                  className={`rounded-full px-3 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 whitespace-nowrap ${
+                    isActive ? '' : 'hover:bg-[hsl(var(--bg-tertiary))]'
+                  }`}
                   style={{
-                    background: isActive ? 'hsl(var(--bg-inverse))' : 'transparent',
-                    color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-primary))',
-                    opacity: isActive ? 1 : 0.6,
+                    background: isActive ? 'hsl(var(--bg-inverse))' : undefined,
+                    color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',
                   }}
                 >
                   {t[order]}
