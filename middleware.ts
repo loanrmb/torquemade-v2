@@ -19,7 +19,8 @@ import { NextRequest, NextResponse } from 'next/server'
 // 'from'    remembers the originating filter on an article so the back-link
 //           can return to /blog?cat=<from> (/blog/[slug]?from=...)
 // 'sort'    toggles the blog list order (sort=oldest; newest is the default/no-param)
-const WHITELIST = new Set(['page', 'sort', 'filter', 'service', 'cat', 'from'])
+// 'q'       blog search query (/blog?q=...)
+const WHITELIST = new Set(['page', 'sort', 'filter', 'service', 'cat', 'from', 'q'])
 
 // ÉTAPE 2 — tracking params we explicitly strip (documented for audits)
 const TRACKING_PARAMS = new Set([
