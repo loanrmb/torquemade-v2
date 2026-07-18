@@ -1076,4 +1076,19 @@ export const posts: Post[] = [
     category: 'SEO & Contenu',
     readingTime: 6,
   },
+  {
+    slug: 'comment-apparaitre-reponses-google-ia-generative',
+    title: {
+      fr: 'Comment apparaître dans les réponses IA générative de Google ?',
+      en: "How to appear in Google's generative AI answers",
+    },
+    description: {
+      fr: 'Ce qui détermine si une page est citée par Google IA générative, avec des données réelles issues de quatre sites différents.',
+      en: "What determines whether a page gets cited by Google's generative AI, backed by real data from four different websites.",
+    },
+    date: { fr: '18 juillet 2026', en: 'July 18, 2026' },
+    publishedAt: '2026-07-18',
+    category: 'SEO & Contenu',
+    readingTime: 7,
+  },
 ]
