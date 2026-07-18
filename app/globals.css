@@ -444,7 +444,7 @@ html.dark .cta-card {
    BLOG ARTICLE
    ============================================================ */
 .blog-article {
-  max-width: 700px;
+  max-width: clamp(700px, 90vw, 820px);
   margin: 0 auto;
   padding: 2rem 0 5rem;
 }
@@ -475,36 +475,58 @@ html.dark .cta-card {
   font-weight: 650;
   letter-spacing: -0.01em;
   color: hsl(var(--text-primary));
-  margin-top: 2.5rem;
-  margin-bottom: 0.75rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
 }
 
 .blog-article p {
+  font-size: 1.125rem;
   color: hsl(var(--text-secondary));
-  line-height: 1.75;
-  margin-bottom: 1.25rem;
+  line-height: 1.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .blog-article ul,
 .blog-article ol {
+  font-size: 1.125rem;
   padding-left: 1.25rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
   color: hsl(var(--text-secondary));
-  line-height: 1.75;
+  line-height: 1.75rem;
 }
 
 .blog-article li {
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.75rem;
 }
 
 .blog-article li strong {
   color: hsl(var(--text-primary));
 }
 
+.blog-article blockquote {
+  margin: 2.5rem 0;
+  padding: 0.25rem 0 0.25rem 1.5rem;
+  border-left: 2px solid hsl(var(--text-primary));
+  font-size: 1.25rem;
+  font-weight: 650;
+  font-style: italic;
+  line-height: 1.5;
+  color: hsl(var(--text-primary));
+}
+
+.blog-article blockquote p {
+  margin-bottom: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
 .blog-article hr {
   border: none;
   border-top: 1px solid hsl(var(--border-subtle));
-  margin: 2.5rem 0;
+  margin: 3rem 0;
 }
 
 .blog-article code {

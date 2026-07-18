@@ -1078,6 +1078,7 @@ export const posts: Post[] = [
   },
   {
     slug: 'comment-apparaitre-reponses-google-ia-generative',
+    featured: true,
     title: {
       fr: 'Comment apparaître dans les réponses IA générative de Google ?',
       en: "How to appear in Google's generative AI answers",
@@ -1109,6 +1110,7 @@ export const posts: Post[] = [
   },
   {
     slug: 'etude-de-cas-4-sites-cites-google-ia-generative-avant-france',
+    featured: true,
     title: {
       fr: "Étude de cas : 4 sites cités par Google IA générative avant l'arrivée du modèle en France",
       en: "Case study: 4 sites cited by Google's generative AI before the model reaches France",
