@@ -97,7 +97,7 @@ function TrialModal({
           phone: phone ? `${phoneCountry.dial} ${phone}` : '',
           company: storeName,
           storeUrl,
-          service: `TankLogic — essai (${intentKey})`,
+          service: `TankLogic: essai (${intentKey})`,
           budget: '',
           message: message.slice(0, 500),
           website,

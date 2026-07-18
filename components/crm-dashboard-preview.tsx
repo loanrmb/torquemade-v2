@@ -265,7 +265,7 @@ const rowItem = {
 // Exception to lib/strings.ts — UI mock with ~50 micro-labels, co-location justified
 const LABELS = {
   fr: {
-    chartTitle:    'Activité du stock — 30 derniers jours',
+    chartTitle:    'Activité du stock : 30 derniers jours',
     receiving:     'Réceptions',
     sales:         'Ventes',
     donutTitle:    'Répartition par catégorie',
@@ -283,7 +283,7 @@ const LABELS = {
     connected:     'Connecté · Sync actif',
   },
   en: {
-    chartTitle:    'Stock activity — last 30 days',
+    chartTitle:    'Stock activity: last 30 days',
     receiving:     'Receiving',
     sales:         'Sales',
     donutTitle:    'Category breakdown',

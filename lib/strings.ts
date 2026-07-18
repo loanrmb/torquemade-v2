@@ -22,11 +22,11 @@ export const strings = {
       ],
     },
     hero: {
-      heroSubheadline: 'Web Dev — CRM sur mesure & Connexion Stock Magasin ↔ site e-commerce.',
+      heroSubheadline: 'Web Dev, CRM sur mesure & Connexion Stock Magasin ↔ site e-commerce.',
       headline2: 'Du design à la base de données.',
       sub: 'Nous construisons des sites qui performent, et les systèmes derrière.',
       tagline: 'Torquemade conçoit des systèmes web sur mesure.',
-      heroLead: 'De la vitrine à la base de données — conçus, développés et connectés autour de votre métier.',
+      heroLead: 'De la vitrine à la base de données : conçus, développés et connectés autour de votre métier.',
       pillars: [
         {
           label: 'Sites & e-commerce',
@@ -132,7 +132,7 @@ export const strings = {
         titleValue: 'Magasin de vin Genève | Cave…',
         labelDesc: 'Description de page',
         descValue:
-          'Achetez vos vins en ligne — livraison sous 24h sur Genève. Bordeaux, Bourgogne, Champagne.',
+          'Achetez vos vins en ligne : livraison sous 24h sur Genève. Bordeaux, Bourgogne, Champagne.',
         redirectsTitle: 'Redirections',
         oldUrl: 'Ancienne URL',
         newUrl: 'Nouvelle URL',
@@ -145,17 +145,17 @@ export const strings = {
         sessions: 'sessions',
       },
       alts: {
-        site: 'jetski-arcachon.fr — production',
-        code: 'index.html — source',
-        crmForm: 'CRM sur mesure — réservation',
-        crmDash: 'Mes Rendez-vous — dashboard',
+        site: 'jetski-arcachon.fr : production',
+        code: 'index.html : source',
+        crmForm: 'CRM sur mesure : réservation',
+        crmDash: 'Mes Rendez-vous : dashboard',
       },
     },
     home: {
       partnerTitle: 'Un seul interlocuteur pour tout votre écosystème digital',
       partnerBody: 'Site e-commerce, logiciel métier, stock connecté, nous construisons l\'ensemble et assurons que tout fonctionne ensemble.',
       erp: {
-        title: 'Votre stock, votre site, votre logiciel — connectés.',
+        title: 'Votre stock, votre site, votre logiciel : connectés.',
         subtitle: 'ERP existant ou sur mesure, nous le construisons selon vos besoins et le connectons à votre site e-commerce. Stock synchronisé en temps réel, commandes remontées automatiquement, zéro double saisie.',
         erpBox: 'ERP / Logiciel de gestion',
         syncBox: 'Synchronisation',
@@ -190,7 +190,7 @@ export const strings = {
       title: 'Ce que disent nos clients.',
       items: [
         {
-          quote: 'Loan a pris le temps d\'écouter et a proposé les solutions les plus adaptées. Le site a eu un impact énorme sur notre activité — les retours sont extrêmement positifs. Nous lui avons ensuite confié 2 missions supplémentaires pour mettre en avant 2 marques importantes via 2 sites séparés, avec le même résultat. Nous recommandons Loan pour sa disponibilité et son professionnalisme.',
+          quote: 'Loan a pris le temps d\'écouter et a proposé les solutions les plus adaptées. Le site a eu un impact énorme sur notre activité. Les retours sont extrêmement positifs. Nous lui avons ensuite confié 2 missions supplémentaires pour mettre en avant 2 marques importantes via 2 sites séparés, avec le même résultat. Nous recommandons Loan pour sa disponibilité et son professionnalisme.',
           name: 'Pierre',
           role: 'Commercial · Sprint Motors, Bordeaux',
           url: 'https://sprintmotors.com',
@@ -450,7 +450,7 @@ export const strings = {
         messagePlaceholder: 'Décrivez votre ERP, votre caisse ou votre site actuel…',
         submit: 'Envoyer',
         sending: 'Envoi…',
-        success: 'Reçu — on vous recontacte sous 24h.',
+        success: 'Reçu : on vous recontacte sous 24h.',
         error: 'Erreur d\'envoi, réessayez.',
         close: 'Fermer',
       },
@@ -482,7 +482,7 @@ export const strings = {
       email: 'Email',
       company: 'Entreprise / Projet',
       serviceLabel: 'Ce que vous cherchez',
-      services: ['Site web', 'CRM sur mesure', 'SEO & Contenu', 'Connexion stock - site en ligne', 'TankLogic — poissons & coraux', 'Pas encore sûr(e)'],
+      services: ['Site web', 'CRM sur mesure', 'SEO & Contenu', 'Connexion stock - site en ligne', 'TankLogic : poissons & coraux', 'Pas encore sûr(e)'],
       budgetLabel: 'Quel budget allouez-vous à ce projet ?',
       budgetOptional: '(optionnel)',
       currencyLabel: 'Devise',
@@ -510,7 +510,7 @@ export const strings = {
       copy: '© 2025 Torquemade.',
       email: 'loanrmb@gmail.com',
       legal: 'Mentions légales',
-      tanklogic: 'TankLogic — poissons & coraux',
+      tanklogic: 'TankLogic : poissons & coraux',
     },
     blog: {
       eyebrow: 'Blog',
@@ -592,8 +592,8 @@ export const strings = {
       problemTitle: 'Un corail n’est pas un t-shirt en taille M',
       problemBody: [
         'La plupart des logiciels de stock partent d’une hypothèse simple : un SKU, une quantité, un réassort. Un t-shirt en M, vous en avez douze, vous en vendez un, il en reste onze. L’aquariophilie ne fonctionne pas comme ça.',
-        'Vos coraux sont vendus en WYSIWYG — « what you see is what you get ». Chaque frag est photographié individuellement, porte un prix unique et existe en quantité 1. Une fois parti, il n’y a pas de réassort : c’est une colonie vivante, pas un article de catalogue.',
-        'Ajoutez à cela le vivant : poissons sous quarantaine, politiques DOA (dead on arrival), fenêtres d’expédition qui dépendent de la météo, packs chauffants l’hiver québécois. Et surtout, vous vendez partout à la fois — au comptoir à Laval ou Montréal, sur votre boutique en ligne, et souvent en direct sur les groupes Facebook et les ventes live.',
+        'Vos coraux sont vendus en WYSIWYG : « what you see is what you get ». Chaque frag est photographié individuellement, porte un prix unique et existe en quantité 1. Une fois parti, il n’y a pas de réassort : c’est une colonie vivante, pas un article de catalogue.',
+        'Ajoutez à cela le vivant : poissons sous quarantaine, politiques DOA (dead on arrival), fenêtres d’expédition qui dépendent de la météo, packs chauffants l’hiver québécois. Et surtout, vous vendez partout à la fois : au comptoir à Laval ou Montréal, sur votre boutique en ligne, et souvent en direct sur les groupes Facebook et les ventes live.',
       ],
       problemPointsTitle: 'Ce qui rend votre stock ingérable en standard',
       problemPoints: [
@@ -605,15 +605,15 @@ export const strings = {
 
       genericTitle: 'Pourquoi Shopify ou Lightspeed seul ne suffit pas',
       genericBody: [
-        'Le problème n’est pas Shopify. Le problème n’est pas Lightspeed — dont le siège est d’ailleurs à Montréal et qui équipe une grande partie du commerce de détail québécois. Le problème, c’est qu’aucun des deux n’est la source de vérité de l’autre.',
-        'Votre caisse tient un compteur. Votre site en tient un autre. Les applications de synchro grand public sont pensées pour des SKU classiques avec des quantités élevées et un réassort régulier — pas pour du vivant unique en quantité 1. Elles synchronisent par lots, toutes les quelques minutes. Sur un t-shirt, ce délai n’a aucune importance. Sur un corail unique, ces quelques minutes suffisent à ce qu’il soit encaissé au comptoir et commandé en ligne en même temps.',
+        'Le problème n’est pas Shopify. Le problème n’est pas Lightspeed, dont le siège est d’ailleurs à Montréal et qui équipe une grande partie du commerce de détail québécois. Le problème, c’est qu’aucun des deux n’est la source de vérité de l’autre.',
+        'Votre caisse tient un compteur. Votre site en tient un autre. Les applications de synchro grand public sont pensées pour des SKU classiques avec des quantités élevées et un réassort régulier, pas pour du vivant unique en quantité 1. Elles synchronisent par lots, toutes les quelques minutes. Sur un t-shirt, ce délai n’a aucune importance. Sur un corail unique, ces quelques minutes suffisent à ce qu’il soit encaissé au comptoir et commandé en ligne en même temps.',
         'Résultat : le survente. Vous annulez, vous remboursez, vous vous excusez auprès d’un client qui attendait précisément cette colonie. Et vous ressaisissez le stock à la main, le soir, sur deux systèmes qui ne se parlent pas.',
       ],
 
       solveTitle: 'Ce que Torquemade met en place',
       solveSubtitle: 'Une seule source de vérité, une déduction à la seconde.',
       solveBody:
-        'Nous construisons la couche de synchronisation qui manque entre votre caisse et votre boutique en ligne — taillée pour le vivant unique, pas pour du prêt-à-porter.',
+        'Nous construisons la couche de synchronisation qui manque entre votre caisse et votre boutique en ligne, taillée pour le vivant unique, pas pour du prêt-à-porter.',
       solveDelivery: [
         'Source de vérité unique : un stock, pas deux compteurs qui divergent.',
         'Déduction en temps réel : une vente comptoir retire l’article du site en quelques secondes.',
@@ -627,11 +627,11 @@ export const strings = {
       techBody:
         'Concrètement, nous relions vos systèmes existants avec une couche middleware légère. Pas de refonte : votre caisse et votre site restent les vôtres.',
       techSteps: [
-        'Une vente se produit — au comptoir (Lightspeed, Square, système legacy) ou en ligne (Shopify).',
+        'Une vente se produit : au comptoir (Lightspeed, Square, système legacy) ou en ligne (Shopify).',
         'Un webhook déclenche instantanément notre couche de synchronisation.',
         'Le stock réel est déduit et l’article unique passe en « vendu ».',
         'La fiche produit se masque du site avant qu’un autre client ne la commande.',
-        'Les cas particuliers — DOA, retour, avoir — remontent au bon endroit, sans ressaisie.',
+        'Les cas particuliers (DOA, retour, avoir) remontent au bon endroit, sans ressaisie.',
       ],
       techNote:
         'Vous êtes sur un ERP ou un logiciel de caisse plus ancien ? C’est exactement notre spécialité : connecter le legacy au web. Voir notre service ',
@@ -650,7 +650,7 @@ export const strings = {
       eyebrow: 'Un produit Torquemade',
       wordmark: 'TankLogic',
       heroTitle: 'La solution pour synchroniser votre stock de poissons et coraux en magasin avec votre boutique en ligne.',
-      heroSub: 'Chaque poisson et corail suivi comme un article unique — fini les chargebacks DOA et la survente.',
+      heroSub: 'Chaque poisson et corail suivi comme un article unique : fini les chargebacks DOA et la survente.',
       heroCta: 'Parlons de votre projet',
 
       serialTitle: 'Un animal, une fiche.',
@@ -664,7 +664,7 @@ export const strings = {
 
       syncTitle: 'Vendu en magasin. Retiré du site.',
       syncBody: [
-        'Une vente au comptoir retire le spécimen de votre boutique en ligne en temps réel. Le même animal ne peut plus être vendu deux fois — zéro survente, zéro double vente, aucune mise à jour manuelle.',
+        'Une vente au comptoir retire le spécimen de votre boutique en ligne en temps réel. Le même animal ne peut plus être vendu deux fois : zéro survente, zéro double vente, aucune mise à jour manuelle.',
       ],
 
       mortalityTitle: 'Un clic pour la mortalité. Un dossier pour les litiges.',
@@ -672,11 +672,11 @@ export const strings = {
       mortalityClickTitle: 'Déclarer une perte en un clic',
       mortalityClickBody: 'Côté magasin, un bouton sort immédiatement le spécimen du stock, enregistre le motif et horodate la sortie. Le journal de mortalité se construit tout seul, au fil de l’eau.',
       traceTitle: 'La preuve, spécimen par spécimen',
-      traceBody: 'Photo avant expédition, historique de statuts, horodatages : chaque envoi laisse une trace. Quand un client conteste une livraison en invoquant un DOA, vous répondez avec un dossier — pas avec votre bonne foi.',
+      traceBody: 'Photo avant expédition, historique de statuts, horodatages : chaque envoi laisse une trace. Quand un client conteste une livraison en invoquant un DOA, vous répondez avec un dossier, pas avec votre bonne foi.',
 
       ordersTitle: 'Les commandes, au même endroit.',
       ordersBody: [
-        'Créez et gérez vos commandes directement depuis le logiciel de stock. Les spécimens réservés sont liés à la commande — plus de jonglage entre tableur, boîte mail et back-office.',
+        'Créez et gérez vos commandes directement depuis le logiciel de stock. Les spécimens réservés sont liés à la commande : plus de jonglage entre tableur, boîte mail et back-office.',
       ],
 
       analyticsTitle: 'Vos pertes deviennent des décisions.',
@@ -696,7 +696,7 @@ export const strings = {
         },
         {
           q: 'Que se passe-t-il sur mon site quand un poisson meurt en cuve ?',
-          a: 'Avec un stock générique : rien — l’annonce reste « disponible » jusqu’à votre prochaine correction manuelle, et un client peut commander un animal qui n’existe plus. Avec TankLogic : vous marquez le spécimen mort dans le journal de mortalité, et cette unité précise est retirée de votre boutique en ligne en temps réel.',
+          a: 'Avec un stock générique : rien. L’annonce reste « disponible » jusqu’à votre prochaine correction manuelle, et un client peut commander un animal qui n’existe plus. Avec TankLogic : vous marquez le spécimen mort dans le journal de mortalité, et cette unité précise est retirée de votre boutique en ligne en temps réel.',
         },
         {
           q: 'TankLogic se connecte-t-il à ma boutique en ligne ?',
@@ -704,11 +704,11 @@ export const strings = {
         },
         {
           q: 'Est-ce que je peux prouver l’état d’un animal au moment de l’expédition ?',
-          a: 'Oui — c’est le rôle de la photo d’emballage : au moment de préparer la commande, une photo horodatée du spécimen et de son conditionnement est rattachée à la commande, sans étape manuelle supplémentaire. Combinée au scan QR à la livraison, elle documente l’état au départ et la date de réception.',
+          a: 'Oui, c’est le rôle de la photo d’emballage : au moment de préparer la commande, une photo horodatée du spécimen et de son conditionnement est rattachée à la commande, sans étape manuelle supplémentaire. Combinée au scan QR à la livraison, elle documente l’état au départ et la date de réception.',
         },
         {
           q: 'Pour qui TankLogic est-il conçu ?',
-          a: 'Pour les animaleries aquatiques qui vendent du vivant à distance : poissons marins ou d’eau douce, coraux, invertébrés — en particulier les boutiques WYSIWYG expédiant par transporteur, au Canada, aux États-Unis et en Europe francophone.',
+          a: 'Pour les animaleries aquatiques qui vendent du vivant à distance : poissons marins ou d’eau douce, coraux, invertébrés, en particulier les boutiques WYSIWYG expédiant par transporteur, au Canada, aux États-Unis et en Europe francophone.',
         },
       ],
 
@@ -726,7 +726,7 @@ export const strings = {
         messagePlaceholder: 'Parlez-nous de votre situation…',
         submit: 'Envoyer',
         sending: 'Envoi…',
-        success: 'Reçu — on vous recontacte sous 24h.',
+        success: 'Reçu : on vous recontacte sous 24h.',
         error: 'Erreur d’envoi, réessayez.',
         close: 'Fermer',
       },
@@ -763,7 +763,7 @@ export const strings = {
       closeLabel: 'Close',
       servicesItems: [
         { label: 'Web Development', href: '/services/web-dev', subtitle: 'A showcase or e-commerce site, built to make a real impact.' },
-        { label: 'Custom CRM', href: '/services/crm', subtitle: 'We build **your** custom CRM/software for your business — and you own it.' },
+        { label: 'Custom CRM', href: '/services/crm', subtitle: 'We build **your** custom CRM/software for your business, and you own it.' },
         { label: 'In-Store Inventory <> E-commerce Website Real-Time Sync', href: '/services/erp-ecommerce', subtitle: 'Connect your in-store stock to your website in real time.' },
       ],
       produitsItems: [
@@ -771,11 +771,11 @@ export const strings = {
       ],
     },
     hero: {
-      heroSubheadline: 'Web Dev — Custom CRM & In-store Stock ↔ e-commerce sync.',
+      heroSubheadline: 'Web Dev, Custom CRM & In-store Stock ↔ e-commerce sync.',
       headline2: 'From design to database.',
       sub: 'We build sites that perform, and the systems behind them.',
       tagline: 'Torquemade builds custom web systems.',
-      heroLead: 'From storefront to database — designed, built and connected around your business.',
+      heroLead: 'From storefront to database: designed, built and connected around your business.',
       pillars: [
         {
           label: 'Websites & e-commerce',
@@ -783,7 +783,7 @@ export const strings = {
         },
         {
           label: 'Custom CRM & software',
-          desc: 'We build **your** custom CRM/software for your business — and you own it.',
+          desc: 'We build **your** custom CRM/software for your business, and you own it.',
         },
         {
           label: 'Real-time stock sync',
@@ -881,7 +881,7 @@ export const strings = {
         titleValue: 'Geneva wine shop | Cellar…',
         labelDesc: 'Page Description',
         descValue:
-          'Buy your wines online — 24h delivery across Geneva. Bordeaux, Burgundy, Champagne.',
+          'Buy your wines online: 24h delivery across Geneva. Bordeaux, Burgundy, Champagne.',
         redirectsTitle: 'Redirects',
         oldUrl: 'Old URL',
         newUrl: 'New URL',
@@ -894,17 +894,17 @@ export const strings = {
         sessions: 'sessions',
       },
       alts: {
-        site: 'jetski-arcachon.fr — production',
-        code: 'index.html — source',
-        crmForm: 'Custom CRM — booking',
-        crmDash: 'My Appointments — dashboard',
+        site: 'jetski-arcachon.fr: production',
+        code: 'index.html: source',
+        crmForm: 'Custom CRM: booking',
+        crmDash: 'My Appointments: dashboard',
       },
     },
     home: {
       partnerTitle: 'One partner for your entire digital ecosystem',
       partnerBody: 'E-commerce site, business software, connected inventory, we build the whole stack and make sure everything works together.',
       erp: {
-        title: 'Your inventory, your site, your software — connected.',
+        title: 'Your inventory, your site, your software: connected.',
         subtitle: 'Existing ERP or custom-built, we build it around your business needs and connect it to your e-commerce site. Real-time stock sync, automatic order flow, zero double entry.',
         erpBox: 'ERP / Management Software',
         syncBox: 'Synchronization',
@@ -939,7 +939,7 @@ export const strings = {
       title: 'What our clients say.',
       items: [
         {
-          quote: 'Loan took the time to listen and proposed the most adapted solutions. The website had a huge impact on our business — the feedback has been extremely positive. We then entrusted him with 2 additional missions to highlight 2 important brands through 2 separate sites, with the same result. We highly recommend Loan for his availability and professionalism.',
+          quote: 'Loan took the time to listen and proposed the most adapted solutions. The website had a huge impact on our business. The feedback has been extremely positive. We then entrusted him with 2 additional missions to highlight 2 important brands through 2 separate sites, with the same result. We highly recommend Loan for his availability and professionalism.',
           name: 'Pierre',
           role: 'Salesman · Sprint Motors, Bordeaux',
           url: 'https://sprintmotors.com',
@@ -980,8 +980,8 @@ export const strings = {
       whyEyebrow: 'Differentiators',
       whyTitle: 'What sets us apart.',
       differentiators: [
-        { title: 'Real metrics only', text: 'Every decision is grounded in current web optimization practices, tested and measured on real projects. No rough estimates, no marketing spin — just choices that make a measurable difference to your results.' },
-        { title: 'No templates', text: 'Every ecosystem is built from scratch, shaped around your business, your customers, and your actual goals. No pre-made themes, no structure recycled from another project — everything is designed specifically for you.' },
+        { title: 'Real metrics only', text: 'Every decision is grounded in current web optimization practices, tested and measured on real projects. No rough estimates, no marketing spin: just choices that make a measurable difference to your results.' },
+        { title: 'No templates', text: 'Every ecosystem is built from scratch, shaped around your business, your customers, and your actual goals. No pre-made themes, no structure recycled from another project: everything is designed specifically for you.' },
         { title: 'Post-launch support', text: 'Launch is just one milestone among many. We stay available afterward to review your analytics, make the adjustments that matter, and evolve the ecosystem at the pace of your business, month after month.' },
         { title: 'We actually meet our deadlines', text: 'Your launches, marketing campaigns, and sales meetings are planned well in advance. Your ecosystem needs to be ready on time, with no excuses and no last-minute delays.' },
         { title: 'Small team, personal attention', text: 'No relay project manager, no dilution inside a large agency. One point of contact who knows your project in detail, from the very first conversation to the final tweak.' },
@@ -1231,7 +1231,7 @@ export const strings = {
       email: 'Email',
       company: 'Company / Project',
       serviceLabel: 'What you\'re looking for',
-      services: ['Website', 'Custom CRM', 'SEO & Content', 'Stock sync - online shop', 'TankLogic — fish & coral', 'Not sure yet'],
+      services: ['Website', 'Custom CRM', 'SEO & Content', 'Stock sync - online shop', 'TankLogic: fish & coral', 'Not sure yet'],
       budgetLabel: 'What budget do you allocate to this project?',
       budgetOptional: '(optional)',
       currencyLabel: 'Currency',
@@ -1259,7 +1259,7 @@ export const strings = {
       copy: '© 2025 Torquemade.',
       email: 'loanrmb@gmail.com',
       legal: 'Legal Notice',
-      tanklogic: 'TankLogic — fish & coral',
+      tanklogic: 'TankLogic: fish & coral',
     },
     blog: {
       eyebrow: 'Blog',
@@ -1342,37 +1342,37 @@ export const strings = {
       eyebrow: 'Aquarium trade · Canada',
       hero: 'You drop 80 WYSIWYG frags on Friday. By Saturday, half your stock counts are wrong.',
       intro:
-        'Coral shops in Toronto, Vancouver and Calgary don’t sell catalog SKUs — they sell one-of-a-kind livestock, across a counter, a Shopify store and a Friday-night live drop, all at once. We build the real-time sync layer that keeps those channels honest, so a frag that sells in one place disappears everywhere else before the next order lands.',
+        'Coral shops in Toronto, Vancouver and Calgary don’t sell catalog SKUs: they sell one-of-a-kind livestock, across a counter, a Shopify store and a Friday-night live drop, all at once. We build the real-time sync layer that keeps those channels honest, so a frag that sells in one place disappears everywhere else before the next order lands.',
 
       problemTitle: 'Every frag is a serial number, not a stock level',
       problemBody: [
-        'Retail inventory software assumes depth: one SKU, a quantity, a reorder point. Sell one of twelve mugs and eleven remain. Livestock breaks that model at the root. A WYSIWYG coral is photographed individually, priced on its own, and exists in quantity one. When it’s gone, there is no reorder — it was a living colony, not a catalog line.',
-        'Now layer on how Canadian reef shops actually sell. New corals go up in weekly WYSIWYG batches — the Friday drop — where dozens of unique pieces hit the site at once and demand spikes for minutes, not days. The same tank is shoppable in-store, online, and often live on Instagram or Facebook at the same time. Whoever pays first should win; everyone else needs the item gone from their screen immediately.',
-        'And it’s alive. Fish sit in quarantine before they’re sellable. Shipping runs on transit-time and weather windows — heat packs from Toronto to a prairie winter, cold packs in an Okanagan summer. DOA policies mean credits and reships, not clean refunds. None of that fits a simple in-stock / out-of-stock flag.',
+        'Retail inventory software assumes depth: one SKU, a quantity, a reorder point. Sell one of twelve mugs and eleven remain. Livestock breaks that model at the root. A WYSIWYG coral is photographed individually, priced on its own, and exists in quantity one. When it’s gone, there is no reorder: it was a living colony, not a catalog line.',
+        'Now layer on how Canadian reef shops actually sell. New corals go up in weekly WYSIWYG batches (the Friday drop) where dozens of unique pieces hit the site at once and demand spikes for minutes, not days. The same tank is shoppable in-store, online, and often live on Instagram or Facebook at the same time. Whoever pays first should win; everyone else needs the item gone from their screen immediately.',
+        'And it’s alive. Fish sit in quarantine before they’re sellable. Shipping runs on transit-time and weather windows: heat packs from Toronto to a prairie winter, cold packs in an Okanagan summer. DOA policies mean credits and reships, not clean refunds. None of that fits a simple in-stock / out-of-stock flag.',
       ],
       problemPointsTitle: 'Why off-the-shelf inventory can’t hold this',
       problemPoints: [
-        'Every coral is a unique quantity-1 item — photographed, individually priced, never restocked.',
+        'Every coral is a unique quantity-1 item: photographed, individually priced, never restocked.',
         'Weekly WYSIWYG drops spike demand on dozens of unique SKUs in minutes.',
         'The same livestock is sold in-store, on Shopify and on live streams simultaneously.',
         'Livestock rules: quarantine holds, DOA credits, weather-based shipping windows.',
       ],
 
-      genericTitle: 'Why Shopify — and the sync apps bolted onto it — fall short',
+      genericTitle: 'Why Shopify (and the sync apps bolted onto it) fall short',
       genericBody: [
         'This isn’t a knock on Shopify; it’s the right storefront for most reef shops. The gap is what happens between the storefront and the counter. Your POS keeps one count. Shopify keeps another. The popular sync apps were built for apparel and dry goods: high quantities, predictable restocks, batch updates every few minutes.',
-        'On a t-shirt, a five-minute sync lag is invisible. On a single $400 acropora colony during a Friday drop, five minutes is the whole problem — long enough for the piece to be rung up at the counter and checked out online at the same time. Neither system knew about the other in time.',
+        'On a t-shirt, a five-minute sync lag is invisible. On a single $400 acropora colony during a Friday drop, five minutes is the whole problem: long enough for the piece to be rung up at the counter and checked out online at the same time. Neither system knew about the other in time.',
         'The outcome is the tax every busy shop pays: overselling. You cancel the online order, issue the refund, and message a customer who drove across the GTA for exactly that frag. Then you re-key counts by hand after close, reconciling two systems that were never designed to agree.',
       ],
 
       solveTitle: 'What Torquemade builds',
       solveSubtitle: 'One source of truth, deduction measured in seconds.',
       solveBody:
-        'We build the missing layer between your POS, your Shopify store and your live-sale channels — engineered for unique livestock and drop-day traffic, not steady catalog demand.',
+        'We build the missing layer between your POS, your Shopify store and your live-sale channels: engineered for unique livestock and drop-day traffic, not steady catalog demand.',
       solveDelivery: [
         'One source of truth: a single stock, not two counts drifting apart after every sale.',
         'Real-time deduction: a sale on any channel pulls the item from the others within seconds.',
-        'Quantity-1 native: a sold frag flips to "sold" and hides itself — no manual archiving.',
+        'Quantity-1 native: a sold frag flips to "sold" and hides itself. No manual archiving.',
         'Reservation lock: an online cart holds the piece for the length of checkout.',
         'Drop tooling: batch-upload a Friday drop of dozens of WYSIWYG items in one pass.',
         'Livestock-aware: quarantine holds, DOA credits and transit windows handled, not faked.',
@@ -1380,13 +1380,13 @@ export const strings = {
 
       techTitle: 'How the POS → Shopify → live-sale sync works',
       techBody:
-        'We connect the systems you already run with a lightweight middleware layer. No rebuild, no migration — your POS and storefront stay exactly where they are.',
+        'We connect the systems you already run with a lightweight middleware layer. No rebuild, no migration: your POS and storefront stay exactly where they are.',
       techSteps: [
-        'A sale fires on any channel — counter (Shopify POS, Lightspeed, Square) or online checkout.',
+        'A sale fires on any channel: counter (Shopify POS, Lightspeed, Square) or online checkout.',
         'A webhook hits our sync layer the moment the sale is confirmed.',
         'Real stock is deducted and the unique item is flipped to "sold".',
-        'The product page hides itself before another shopper — or the live-sale queue — can order it.',
-        'Livestock edge cases — DOA credit, reship, quarantine release — route to the right place, no re-keying.',
+        'The product page hides itself before another shopper (or the live-sale queue) can order it.',
+        'Livestock edge cases (DOA credit, reship, quarantine release) route to the right place, no re-keying.',
       ],
       techNote:
         'Running an older POS or a custom back office? Connecting legacy systems to the web is exactly what we do. See our ',
@@ -1397,7 +1397,7 @@ export const strings = {
       relatedTitle: 'Related reading',
 
       ctaTitle: 'See your stock stay in sync',
-      ctaSub: 'Tell us about your shop, your POS and your sales channels. We’ll show you exactly what the sync would look like on your next drop — no commitment.',
+      ctaSub: 'Tell us about your shop, your POS and your sales channels. We’ll show you exactly what the sync would look like on your next drop, no commitment.',
       ctaButton: 'Book a demo',
     },
     aquariumQc: {
@@ -1408,9 +1408,9 @@ export const strings = {
 
       problemTitle: 'A coral isn’t a t-shirt in size M',
       problemBody: [
-        'Most inventory software starts from a simple assumption: one SKU, one quantity, restock as needed. A medium t-shirt — you have twelve, you sell one, eleven remain. The aquarium trade doesn’t work like that.',
-        'Your corals sell WYSIWYG — what you see is what you get. Each frag is photographed individually, carries its own price, and exists in quantity 1. Once it’s gone, there’s no restock: it’s a living colony, not a catalog item.',
-        'Then add livestock: fish in quarantine, DOA (dead on arrival) policies, shipping windows that depend on the weather, heat packs through a Quebec winter. And above all, you sell everywhere at once — at the counter in Laval or Montreal, on your online store, and often live in Facebook groups and live sales.',
+        'Most inventory software starts from a simple assumption: one SKU, one quantity, restock as needed. A medium t-shirt: you have twelve, you sell one, eleven remain. The aquarium trade doesn’t work like that.',
+        'Your corals sell WYSIWYG: what you see is what you get. Each frag is photographed individually, carries its own price, and exists in quantity 1. Once it’s gone, there’s no restock: it’s a living colony, not a catalog item.',
+        'Then add livestock: fish in quarantine, DOA (dead on arrival) policies, shipping windows that depend on the weather, heat packs through a Quebec winter. And above all, you sell everywhere at once: at the counter in Laval or Montreal, on your online store, and often live in Facebook groups and live sales.',
       ],
       problemPointsTitle: 'What makes your stock unmanageable off the shelf',
       problemPoints: [
@@ -1422,15 +1422,15 @@ export const strings = {
 
       genericTitle: 'Why Shopify or Lightspeed alone isn’t enough',
       genericBody: [
-        'The problem isn’t Shopify. It isn’t Lightspeed either — headquartered in Montreal and running a large share of Quebec retail. The problem is that neither one is the source of truth for the other.',
-        'Your POS keeps a count. Your site keeps another. Consumer sync apps are built for classic SKUs with high quantities and regular restocking — not for unique livestock in quantity 1. They sync in batches, every few minutes. On a t-shirt, that delay doesn’t matter. On a one-of-a-kind coral, those few minutes are enough for it to be rung up at the counter and ordered online at the same time.',
+        'The problem isn’t Shopify. It isn’t Lightspeed either, headquartered in Montreal and running a large share of Quebec retail. The problem is that neither one is the source of truth for the other.',
+        'Your POS keeps a count. Your site keeps another. Consumer sync apps are built for classic SKUs with high quantities and regular restocking, not for unique livestock in quantity 1. They sync in batches, every few minutes. On a t-shirt, that delay doesn’t matter. On a one-of-a-kind coral, those few minutes are enough for it to be rung up at the counter and ordered online at the same time.',
         'The result: overselling. You cancel, you refund, you apologize to a customer who wanted precisely that colony. And you re-key the stock by hand, at night, across two systems that don’t talk to each other.',
       ],
 
       solveTitle: 'What Torquemade puts in place',
       solveSubtitle: 'A single source of truth, deduction to the second.',
       solveBody:
-        'We build the missing sync layer between your POS and your online store — designed for unique livestock, not ready-to-wear.',
+        'We build the missing sync layer between your POS and your online store: designed for unique livestock, not ready-to-wear.',
       solveDelivery: [
         'Single source of truth: one stock, not two counters that drift apart.',
         'Real-time deduction: a counter sale removes the item from the site within seconds.',
@@ -1444,11 +1444,11 @@ export const strings = {
       techBody:
         'Concretely, we connect your existing systems with a lightweight middleware layer. No rebuild: your POS and your site stay yours.',
       techSteps: [
-        'A sale happens — at the counter (Lightspeed, Square, legacy system) or online (Shopify).',
+        'A sale happens: at the counter (Lightspeed, Square, legacy system) or online (Shopify).',
         'A webhook instantly triggers our sync layer.',
         'Real stock is deducted and the unique item flips to "sold".',
         'The product page hides itself from the site before another customer can order it.',
-        'Edge cases — DOA, return, store credit — land in the right place, with no re-keying.',
+        'Edge cases (DOA, return, store credit) land in the right place, with no re-keying.',
       ],
       techNote:
         'On an older ERP or POS? That’s exactly our specialty: connecting legacy to the web. See our ',
@@ -1467,7 +1467,7 @@ export const strings = {
       eyebrow: 'A Torquemade product',
       wordmark: 'TankLogic',
       heroTitle: 'The solution to sync your in-store fish and coral inventory with your online store.',
-      heroSub: 'Every fish and coral tracked as a unique item — no more DOA chargebacks or overselling.',
+      heroSub: 'Every fish and coral tracked as a unique item: no more DOA chargebacks or overselling.',
       heroCta: 'Let’s talk about your project',
 
       serialTitle: 'One animal, one record.',
@@ -1481,7 +1481,7 @@ export const strings = {
 
       syncTitle: 'Sold in store. Gone online.',
       syncBody: [
-        'A counter sale removes the specimen from your online store in real time. The same animal can never be sold twice — no overselling, no double sales, no manual updates.',
+        'A counter sale removes the specimen from your online store in real time. The same animal can never be sold twice: no overselling, no double sales, no manual updates.',
       ],
 
       mortalityTitle: 'One click for mortality. One file for disputes.',
@@ -1489,11 +1489,11 @@ export const strings = {
       mortalityClickTitle: 'Log a loss in one click',
       mortalityClickBody: 'On the shop floor, one button pulls the specimen from stock immediately, records the reason and timestamps the removal. The mortality log builds itself, as you go.',
       traceTitle: 'Proof, specimen by specimen',
-      traceBody: 'Pre-shipping photo, status history, timestamps: every shipment leaves a trail. When a customer disputes a delivery claiming DOA, you answer with a file — not with your good faith.',
+      traceBody: 'Pre-shipping photo, status history, timestamps: every shipment leaves a trail. When a customer disputes a delivery claiming DOA, you answer with a file, not with your good faith.',
 
       ordersTitle: 'Orders, in the same place.',
       ordersBody: [
-        'Create and manage orders right inside your inventory software. Reserved specimens are linked to the order — no more juggling spreadsheets, inbox, and back office.',
+        'Create and manage orders right inside your inventory software. Reserved specimens are linked to the order: no more juggling spreadsheets, inbox, and back office.',
       ],
 
       analyticsTitle: 'Losses become decisions.',
@@ -1513,7 +1513,7 @@ export const strings = {
         },
         {
           q: 'What happens on my website when a fish dies in the tank?',
-          a: 'With generic inventory: nothing — the listing stays "in stock" until your next manual correction, and a customer can order an animal that no longer exists. With TankLogic: you mark the specimen dead in the mortality log and that exact unit is pulled from your online store in real time.',
+          a: 'With generic inventory: nothing. The listing stays "in stock" until your next manual correction, and a customer can order an animal that no longer exists. With TankLogic: you mark the specimen dead in the mortality log and that exact unit is pulled from your online store in real time.',
         },
         {
           q: 'Does TankLogic connect to my online store?',
@@ -1521,11 +1521,11 @@ export const strings = {
         },
         {
           q: 'Can I prove the condition of an animal at the moment it shipped?',
-          a: 'Yes — that’s what the packing photo is for: at pack time, a timestamped photo of the specimen and its packaging is attached to the order, with no extra manual step. Combined with the QR scan at delivery, it documents condition at dispatch and date of receipt.',
+          a: 'Yes, that’s what the packing photo is for: at pack time, a timestamped photo of the specimen and its packaging is attached to the order, with no extra manual step. Combined with the QR scan at delivery, it documents condition at dispatch and date of receipt.',
         },
         {
           q: 'Who is TankLogic built for?',
-          a: 'Aquatic livestock retailers selling live animals by mail order: marine or freshwater fish, coral, invertebrates — especially WYSIWYG shops shipping by courier, in Canada, the United States, and French-speaking Europe.',
+          a: 'Aquatic livestock retailers selling live animals by mail order: marine or freshwater fish, coral, invertebrates, especially WYSIWYG shops shipping by courier, in Canada, the United States, and French-speaking Europe.',
         },
       ],
 
@@ -1543,7 +1543,7 @@ export const strings = {
         messagePlaceholder: 'Tell us about your situation…',
         submit: 'Send',
         sending: 'Sending…',
-        success: 'Got it — we’ll reach out within 24h.',
+        success: 'Got it: we’ll reach out within 24h.',
         error: 'Something went wrong, try again.',
         close: 'Close',
       },

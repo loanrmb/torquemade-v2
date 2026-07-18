@@ -225,9 +225,9 @@ export function CaseStudyContent() {
               >
                 {challengeExternal ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={project.imageChallenge} alt={`${project.client} — challenge`} className="w-full h-full object-cover" />
+                  <img src={project.imageChallenge} alt={`${project.client}: challenge`} className="w-full h-full object-cover" />
                 ) : (
-                  <Image src={project.imageChallenge} alt={`${project.client} — challenge`} fill className="object-cover" sizes="(max-width: 720px) 100vw, 50vw" />
+                  <Image src={project.imageChallenge} alt={`${project.client}: challenge`} fill className="object-cover" sizes="(max-width: 720px) 100vw, 50vw" />
                 )}
               </div>
             </div>
@@ -248,9 +248,9 @@ export function CaseStudyContent() {
               >
                 {approachExternal ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={project.imageApproach} alt={`${project.client} — approche`} className="w-full h-full object-cover" />
+                  <img src={project.imageApproach} alt={`${project.client}: approche`} className="w-full h-full object-cover" />
                 ) : (
-                  <Image src={project.imageApproach} alt={`${project.client} — approche`} fill className="object-cover" sizes="(max-width: 720px) 100vw, 50vw" />
+                  <Image src={project.imageApproach} alt={`${project.client}: approche`} fill className="object-cover" sizes="(max-width: 720px) 100vw, 50vw" />
                 )}
               </div>
               <div className="order-1 min-720:order-2">
