@@ -80,7 +80,7 @@ export const tanklogicSchema = {
       serviceType:
         'Inventory synchronization and chargeback evidence software for live fish and coral retailers',
       description:
-        'TankLogic syncs unique-specimen (WYSIWYG) inventory to the online store in real time — one record per fish or coral, mortality removes the exact unit from sale — manages orders and supplier/species analytics, and automatically assembles the packing-photo, QR delivery-proof and timestamp evidence file used to dispute DOA chargebacks. Built for mail-order live fish and coral shops.',
+        'TankLogic syncs unique-specimen (WYSIWYG) inventory to the online store in real time: one record per fish or coral, mortality removes the exact unit from sale. It manages orders and supplier/species analytics, and automatically assembles the packing-photo, QR delivery-proof and timestamp evidence file used to dispute DOA chargebacks. Built for mail-order live fish and coral shops.',
       url: TANKLOGIC_URL,
       provider: { '@id': ORG_ID },
       audience: {

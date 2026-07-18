@@ -96,7 +96,7 @@ function ErpCtaModal({
           email,
           phone: phone ? `${phoneCountry.dial} ${phone}` : '',
           company,
-          service: `ERP / Stock — ${intentKey}`,
+          service: `ERP / Stock: ${intentKey}`,
           budget: '',
           message: message.slice(0, 500),
           website,

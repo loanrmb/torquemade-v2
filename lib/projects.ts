@@ -42,10 +42,10 @@ export const projects: Project[] = [
     },
     description: {
       fr: 'Sprint Motors est un concessionnaire moto multimarques à Bordeaux. Vente de motos neuves, occasions et accessoires. À l\'origine sans présence digitale, le site est aujourd\'hui le premier point de contact commercial avant même l\'appel téléphonique.',
-      en: 'Sprint Motors is a multibrand motorcycle dealer in Bordeaux. Specializing in new bikes, used vehicles and accessories. Originally with no digital presence, the site is now the primary commercial touchpoint — before the phone call.',
+      en: 'Sprint Motors is a multibrand motorcycle dealer in Bordeaux. Specializing in new bikes, used vehicles and accessories. Originally with no digital presence, the site is now the primary commercial touchpoint: before the phone call.',
     },
     outcomes: [
-      { fr: '800 000+ impressions Google — en partant de zéro', en: '800K+ Google impressions — starting from scratch' },
+      { fr: '800 000+ impressions Google, en partant de zéro', en: '800K+ Google impressions, starting from scratch' },
       { fr: 'Plus de 1 000 visites organiques par mois, en hausse constante', en: 'Over 1,000 organic monthly visits and growing' },
       { fr: 'Stock motos et accessoires visible et indexé en ligne', en: 'Bike and accessory stock visible and indexed online' },
       { fr: 'Site adopté comme outil de vente par l\'équipe commerciale', en: 'Site adopted as a sales tool by the commercial team' },
@@ -73,14 +73,14 @@ export const projects: Project[] = [
       en: 'The project started with a full local market audit and keyword opportunity mapping. Then a complete rebuild: SEO-first architecture, dedicated pages per category (new bikes, used, accessories), optimized stock descriptions with structured data, and a clearer service presentation. Alongside this, a local content strategy to anchor Sprint Motors on high-intent Bordeaux search queries.',
     },
     resultsTitle: {
-      fr: 'De zéro à 800 000 impressions — et ça continue',
-      en: 'From zero to 800K impressions — and growing',
+      fr: 'De zéro à 800 000 impressions, et ça continue',
+      en: 'From zero to 800K impressions, and growing',
     },
     results: {
-      fr: 'En partant d\'une page blanche côté SEO, sprintmotors.com approche aujourd\'hui le million d\'impressions Google. Plus de 1 000 visites organiques par mois, en croissance constante. Le site est devenu le premier point de contact commercial — avant l\'appel téléphonique. Les résultats ont été suffisamment convaincants pour que Sprint Motors confie ensuite deux missions supplémentaires : deux microsites de marque dédiés pour Cyclone et Voge Bordeaux.',
-      en: 'Starting from a blank SEO slate, sprintmotors.com is now approaching one million Google impressions. Over 1,000 organic visits per month, consistently growing. The site has become the primary commercial touchpoint — before the phone call. Results were convincing enough for Sprint Motors to commission two additional brand microsites for Cyclone and Voge Bordeaux.',
+      fr: 'En partant d\'une page blanche côté SEO, sprintmotors.com approche aujourd\'hui le million d\'impressions Google. Plus de 1 000 visites organiques par mois, en croissance constante. Le site est devenu le premier point de contact commercial : avant l\'appel téléphonique. Les résultats ont été suffisamment convaincants pour que Sprint Motors confie ensuite deux missions supplémentaires : deux microsites de marque dédiés pour Cyclone et Voge Bordeaux.',
+      en: 'Starting from a blank SEO slate, sprintmotors.com is now approaching one million Google impressions. Over 1,000 organic visits per month, consistently growing. The site has become the primary commercial touchpoint: before the phone call. Results were convincing enough for Sprint Motors to commission two additional brand microsites for Cyclone and Voge Bordeaux.',
     },
-    quote: 'Loan a pris le temps d\'écouter et a proposé les solutions les plus adaptées. Le site a eu un impact énorme sur notre activité — les retours ont été extrêmement positifs. Nous lui avons ensuite confié 2 missions supplémentaires pour mettre en valeur 2 marques importantes via 2 sites séparés, avec le même résultat. Je recommande vivement Loan pour sa disponibilité et son professionnalisme.',
+    quote: 'Loan a pris le temps d\'écouter et a proposé les solutions les plus adaptées. Le site a eu un impact énorme sur notre activité. Les retours ont été extrêmement positifs. Nous lui avons ensuite confié 2 missions supplémentaires pour mettre en valeur 2 marques importantes via 2 sites séparés, avec le même résultat. Je recommande vivement Loan pour sa disponibilité et son professionnalisme.',
     quoteAuthor: 'Pierre',
     quoteRole: 'Commercial · Sprint Motors, Bordeaux',
   },
@@ -104,8 +104,8 @@ export const projects: Project[] = [
     outcomes: [
       { fr: 'Présence SEO locale construite de zéro sur Tarbes et la région', en: 'Local SEO presence built from scratch across Tarbes and the region' },
       { fr: 'Articles de blog ciblés pour ancrer les positions organiques', en: 'Targeted blog content to lock in organic rankings' },
-      { fr: 'Stock et services clairement présentés — trafic qualifié en hausse', en: 'Stock and services clearly presented — qualified traffic growing' },
-      { fr: 'Très bon retour client — satisfaction immédiate', en: 'Very positive client feedback — immediate satisfaction' },
+      { fr: 'Stock et services clairement présentés, trafic qualifié en hausse', en: 'Stock and services clearly presented, qualified traffic growing' },
+      { fr: 'Très bon retour client, satisfaction immédiate', en: 'Very positive client feedback, immediate satisfaction' },
     ],
     imageHero: '/images/motopassion65.png',
     imageChallenge: '/images/motopassion65-challenge.png',
@@ -118,8 +118,8 @@ export const projects: Project[] = [
       en: 'The same problem as too many local businesses',
     },
     challenge: {
-      fr: 'Vieux site, aucun référencement naturel travaillé, stock invisible en ligne, services peu lisibles. Moto Passion 65 s\'appuyait uniquement sur le bouche-à-oreille et la fidélité locale — sans chercher à capter de nouveaux clients via Google. Sur un marché où la recherche en ligne précède systématiquement la visite physique, c\'est une part de marché entière qui s\'échappe.',
-      en: 'Old site, no SEO work done, stock invisible online, services unclear. Moto Passion 65 relied entirely on word-of-mouth and local loyalty — without trying to capture new clients through Google. In a market where online research consistently precedes the physical visit, that\'s an entire segment of market share slipping away.',
+      fr: 'Vieux site, aucun référencement naturel travaillé, stock invisible en ligne, services peu lisibles. Moto Passion 65 s\'appuyait uniquement sur le bouche-à-oreille et la fidélité locale, sans chercher à capter de nouveaux clients via Google. Sur un marché où la recherche en ligne précède systématiquement la visite physique, c\'est une part de marché entière qui s\'échappe.',
+      en: 'Old site, no SEO work done, stock invisible online, services unclear. Moto Passion 65 relied entirely on word-of-mouth and local loyalty, without trying to capture new clients through Google. In a market where online research consistently precedes the physical visit, that\'s an entire segment of market share slipping away.',
     },
     approachTitle: {
       fr: 'Refonte + stratégie de contenu local sur le long terme',
@@ -134,8 +134,8 @@ export const projects: Project[] = [
       en: 'Local visibility built, immediate client satisfaction',
     },
     results: {
-      fr: 'Le site a rapidement pris des positions sur les requêtes locales liées à la moto dans les Hautes-Pyrénées. Le blog génère un trafic organique régulier qui alimente les pages produits. L\'équipe de Moto Passion 65 a exprimé une satisfaction immédiate — le site reflète enfin ce qu\'ils proposent vraiment, et les retours clients ont été très positifs dès le lancement.',
-      en: 'The site quickly ranked for local motorcycle queries in the Hautes-Pyrénées area. The blog generates steady organic traffic feeding the product pages. The Moto Passion 65 team expressed immediate satisfaction — the site finally reflects what they actually offer, and client feedback was very positive from day one.',
+      fr: 'Le site a rapidement pris des positions sur les requêtes locales liées à la moto dans les Hautes-Pyrénées. Le blog génère un trafic organique régulier qui alimente les pages produits. L\'équipe de Moto Passion 65 a exprimé une satisfaction immédiate : le site reflète enfin ce qu\'ils proposent vraiment, et les retours clients ont été très positifs dès le lancement.',
+      en: 'The site quickly ranked for local motorcycle queries in the Hautes-Pyrénées area. The blog generates steady organic traffic feeding the product pages. The Moto Passion 65 team expressed immediate satisfaction: the site finally reflects what they actually offer, and client feedback was very positive from day one.',
     },
     quote: 'Je recommande vivement le professionnalisme de Loan pour la création de site internet. Il a su écouter mes demandes et rapidement comprendre mes attentes. Je suis extrêmement satisfait de son travail. Merci pour la qualité, la disponibilité et la rapidité.',
     quoteAuthor: 'Paul',
@@ -155,8 +155,8 @@ export const projects: Project[] = [
       en: 'Capturing Cyclone brand traffic before competitors.',
     },
     description: {
-      fr: 'Cyclonebordeaux.fr est un microsite dédié à la marque Cyclone — 100 % conçu pour apparaître sur les recherches Google propres à la marque, présenter chaque modèle, et transformer les visites en contacts qualifiés.',
-      en: 'Cyclonebordeaux.fr is a dedicated brand microsite for Cyclone — 100% designed to rank on brand-specific Google searches, present each model, and convert visits into qualified leads.',
+      fr: 'Cyclonebordeaux.fr est un microsite dédié à la marque Cyclone : 100 % conçu pour apparaître sur les recherches Google propres à la marque, présenter chaque modèle, et transformer les visites en contacts qualifiés.',
+      en: 'Cyclonebordeaux.fr is a dedicated brand microsite for Cyclone: 100% designed to rank on brand-specific Google searches, present each model, and convert visits into qualified leads.',
     },
     outcomes: [
       { fr: 'Positions SEO sur les requêtes "Cyclone moto Bordeaux" et variantes', en: 'SEO rankings on "Cyclone moto Bordeaux" queries and variants' },
@@ -175,8 +175,8 @@ export const projects: Project[] = [
       en: 'Brand traffic that was evaporating',
     },
     challenge: {
-      fr: 'Les personnes qui cherchaient "Cyclone moto Bordeaux" sur Google trouvaient des résultats génériques, des pages de marques concurrentes ou rien de pertinent. Ce trafic qualifié — des acheteurs avec une intention claire sur une marque précise — n\'était pas capté. Il fallait une présence dédiée, rapide à indexer et assez autoritaire pour s\'imposer sur ces requêtes.',
-      en: 'People searching "Cyclone moto Bordeaux" on Google found generic results, competitor brand pages, or nothing relevant. This qualified traffic — buyers with clear intent on a specific brand — wasn\'t being captured. A dedicated presence was needed: fast to index and authoritative enough to rank on those queries.',
+      fr: 'Les personnes qui cherchaient "Cyclone moto Bordeaux" sur Google trouvaient des résultats génériques, des pages de marques concurrentes ou rien de pertinent. Ce trafic qualifié (des acheteurs avec une intention claire sur une marque précise) n\'était pas capté. Il fallait une présence dédiée, rapide à indexer et assez autoritaire pour s\'imposer sur ces requêtes.',
+      en: 'People searching "Cyclone moto Bordeaux" on Google found generic results, competitor brand pages, or nothing relevant. This qualified traffic (buyers with clear intent on a specific brand) wasn\'t being captured. A dedicated presence was needed: fast to index and authoritative enough to rank on those queries.',
     },
     approachTitle: {
       fr: 'Un microsite conçu autour de l\'identité et du référencement de marque',
@@ -191,8 +191,8 @@ export const projects: Project[] = [
       en: 'The Cyclone brand finally findable in Bordeaux',
     },
     results: {
-      fr: 'Le microsite s\'est positionné sur les requêtes de marque ciblées, captant un trafic qualifié qui passait auparavant sous les radars. Les visiteurs arrivent avec une intention claire — ils cherchent précisément Cyclone à Bordeaux — et le formulaire de contact sur chaque fiche modèle convertit ces visites en demandes directes.',
-      en: 'The microsite ranked on targeted brand queries, capturing qualified traffic that previously slipped through. Visitors arrive with clear intent — specifically searching for Cyclone in Bordeaux — and the contact form on every model page converts those visits into direct inquiries.',
+      fr: 'Le microsite s\'est positionné sur les requêtes de marque ciblées, captant un trafic qualifié qui passait auparavant sous les radars. Les visiteurs arrivent avec une intention claire (ils cherchent précisément Cyclone à Bordeaux) et le formulaire de contact sur chaque fiche modèle convertit ces visites en demandes directes.',
+      en: 'The microsite ranked on targeted brand queries, capturing qualified traffic that previously slipped through. Visitors arrive with clear intent (specifically searching for Cyclone in Bordeaux) and the contact form on every model page converts those visits into direct inquiries.',
     },
   },
 
@@ -209,8 +209,8 @@ export const projects: Project[] = [
       en: 'A dedicated SEO position for Voge in Bordeaux.',
     },
     description: {
-      fr: 'Vogebordeaux.fr est le microsite officieux de la marque Voge pour le marché bordelais. Identité de marque, catalogue complet, formulaire par modèle — et un blog pour tenir les positions dans le temps.',
-      en: 'Vogebordeaux.fr is the brand-aligned microsite for Voge on the Bordeaux market. Brand identity, full catalogue, per-model contact forms — and a blog to hold rankings over time.',
+      fr: 'Vogebordeaux.fr est le microsite officieux de la marque Voge pour le marché bordelais. Identité de marque, catalogue complet, formulaire par modèle, et un blog pour tenir les positions dans le temps.',
+      en: 'Vogebordeaux.fr is the brand-aligned microsite for Voge on the Bordeaux market. Brand identity, full catalogue, per-model contact forms, and a blog to hold rankings over time.',
     },
     outcomes: [
       { fr: 'Positions SEO sur les requêtes "Voge moto Bordeaux" et Gironde', en: 'SEO rankings on "Voge moto Bordeaux" and Gironde queries' },
@@ -241,8 +241,8 @@ export const projects: Project[] = [
       en: 'Dedicated microsite with Voge visual identity: colors, typography, brand tone. Full catalogue with individual pages per model (specs, visuals, indicative price). Contact form on every page to capture inquiries. Blog with targeted articles on Voge to build sustained local organic presence.',
     },
     resultsTitle: {
-      fr: 'Voge visible à Bordeaux — et le trafic de marque capté',
-      en: 'Voge visible in Bordeaux — brand traffic captured',
+      fr: 'Voge visible à Bordeaux, et le trafic de marque capté',
+      en: 'Voge visible in Bordeaux: brand traffic captured',
     },
     results: {
       fr: 'Le microsite a pris des positions sur les requêtes de marque Voge en Gironde, capturant un trafic intentionnel que la concurrence n\'avait pas anticipé. Le formulaire de contact génère des leads directs, sans intermédiaire ni plateforme tierce.',
@@ -299,8 +299,8 @@ export const projects: Project[] = [
       en: 'Brand traffic captured, qualified leads generated',
     },
     results: {
-      fr: 'Orcalbordeaux.com s\'est positionné sur les recherches de marque en Gironde. La niche est précise — les visiteurs qui arrivent cherchent spécifiquement Orcal — ce qui génère des contacts directs d\'une qualité nettement supérieure à celle des leads obtenus via des agrégateurs ou des places de marché.',
-      en: 'Orcalbordeaux.com ranked on brand searches in Gironde. The niche is precise — visitors who land here are specifically looking for Orcal — generating direct contacts of significantly higher quality than leads from aggregators or marketplaces.',
+      fr: 'Orcalbordeaux.com s\'est positionné sur les recherches de marque en Gironde. La niche est précise (les visiteurs qui arrivent cherchent spécifiquement Orcal), ce qui génère des contacts directs d\'une qualité nettement supérieure à celle des leads obtenus via des agrégateurs ou des places de marché.',
+      en: 'Orcalbordeaux.com ranked on brand searches in Gironde. The niche is precise (visitors who land here are specifically looking for Orcal), generating direct contacts of significantly higher quality than leads from aggregators or marketplaces.',
     },
   },
 
@@ -321,7 +321,7 @@ export const projects: Project[] = [
       en: 'Bordeaux Ride is a private chauffeur and VTC group based in Bordeaux. The site clearly presents their services, allows ride requests, fare estimation, and generates organic traffic through an SEO blog.',
     },
     outcomes: [
-      { fr: 'Services clairement détaillés — chaque prestation a sa propre page', en: 'Services clearly detailed — each offering has its own page' },
+      { fr: 'Services clairement détaillés, chaque prestation a sa propre page', en: 'Services clearly detailed, each offering has its own page' },
       { fr: 'Formulaire de demande de course intégré directement sur le site', en: 'Ride request form integrated directly on the site' },
       { fr: 'Estimation de tarifs de trajet en ligne', en: 'Online journey fare estimation' },
       { fr: 'Blog SEO pour capter les recherches VTC et chauffeur Bordeaux', en: 'SEO blog to capture VTC and chauffeur Bordeaux searches' },
@@ -345,8 +345,8 @@ export const projects: Project[] = [
       en: 'Service clarity, conversion tools, and local SEO',
     },
     approach: {
-      fr: 'Refonte centrée sur trois axes : 1/ Clarté de l\'offre — chaque service a une page dédiée avec description complète, zone de couverture et cas d\'usage. 2/ Conversion — formulaire de demande de course simplifié et estimateur de tarifs trajet pour qualifier l\'intention avant contact. 3/ Visibilité — blog SEO ciblant les requêtes locales (VTC Bordeaux, chauffeur privé Gironde, taxi aéroport Bordeaux...) pour capter un trafic organique qualifié.',
-      en: 'Rebuild focused on three axes: 1/ Service clarity — each service has a dedicated page with full description, coverage area and use cases. 2/ Conversion — simplified ride request form and journey fare estimator to qualify intent before contact. 3/ Visibility — SEO blog targeting local queries (VTC Bordeaux, private chauffeur Gironde, airport taxi Bordeaux...) to capture qualified organic traffic.',
+      fr: 'Refonte centrée sur trois axes : 1/ Clarté de l\'offre : chaque service a une page dédiée avec description complète, zone de couverture et cas d\'usage. 2/ Conversion : formulaire de demande de course simplifié et estimateur de tarifs trajet pour qualifier l\'intention avant contact. 3/ Visibilité : blog SEO ciblant les requêtes locales (VTC Bordeaux, chauffeur privé Gironde, taxi aéroport Bordeaux...) pour capter un trafic organique qualifié.',
+      en: 'Rebuild focused on three axes: 1/ Service clarity: each service has a dedicated page with full description, coverage area and use cases. 2/ Conversion: simplified ride request form and journey fare estimator to qualify intent before contact. 3/ Visibility: SEO blog targeting local queries (VTC Bordeaux, private chauffeur Gironde, airport taxi Bordeaux...) to capture qualified organic traffic.',
     },
     resultsTitle: {
       fr: 'Un site qui génère des leads qualifiés, pas des curieux',
@@ -375,10 +375,10 @@ export const projects: Project[] = [
       en: 'Spicy Beauty by T. is an independent beauty specialist based in the Valenciennes area. Mobile-first site, clear pricing and services, service area visible, direct appointment booking.',
     },
     outcomes: [
-      { fr: 'Présence locale sur Google — esthéticienne Valenciennes', en: 'Local Google presence — esthéticienne Valenciennes' },
+      { fr: 'Présence locale sur Google : esthéticienne Valenciennes', en: 'Local Google presence: esthéticienne Valenciennes' },
       { fr: 'Tarifs et prestations lisibles en 30 secondes', en: 'Pricing and services readable in 30 seconds' },
       { fr: 'Zone d\'intervention affichée sans exposer l\'adresse exacte', en: 'Service area displayed without exposing the exact address' },
-      { fr: 'CTA direct — prise de RDV par SMS ou Instagram DM', en: 'Direct CTA — appointment booking via SMS or Instagram DM' },
+      { fr: 'CTA direct : prise de RDV par SMS ou Instagram DM', en: 'Direct CTA: appointment booking via SMS or Instagram DM' },
     ],
     imageHero: '/images/sbbt.png',
     imageChallenge: '/images/sbbt.png',
@@ -391,8 +391,8 @@ export const projects: Project[] = [
       en: 'A serious business, without a digital storefront',
     },
     challenge: {
-      fr: 'Spicy Beauty by T. exerçait avec une clientèle fidèle, mais sans site internet. Dans un marché local concurrentiel — les recherches "esthéticienne Valenciennes" affichent de nombreux résultats — l\'absence de présence en ligne freine directement l\'acquisition de nouveaux clients. Par ailleurs, la nature de l\'activité à domicile imposait de communiquer sur une zone sans dévoiler l\'adresse précise.',
-      en: 'Spicy Beauty by T. had a loyal client base but no website. In a competitive local market — "esthéticienne Valenciennes" searches return many results — the absence of an online presence directly limits new client acquisition. Additionally, the home-based nature of the business required communicating a service area without revealing the exact address.',
+      fr: 'Spicy Beauty by T. exerçait avec une clientèle fidèle, mais sans site internet. Dans un marché local concurrentiel (les recherches "esthéticienne Valenciennes" affichent de nombreux résultats), l\'absence de présence en ligne freine directement l\'acquisition de nouveaux clients. Par ailleurs, la nature de l\'activité à domicile imposait de communiquer sur une zone sans dévoiler l\'adresse précise.',
+      en: 'Spicy Beauty by T. had a loyal client base but no website. In a competitive local market ("esthéticienne Valenciennes" searches return many results), the absence of an online presence directly limits new client acquisition. Additionally, the home-based nature of the business required communicating a service area without revealing the exact address.',
     },
     approachTitle: {
       fr: 'Mobile-first, mots-clés locaux, et prise de RDV directe',
@@ -407,8 +407,8 @@ export const projects: Project[] = [
       en: 'Locally visible, directly accessible',
     },
     results: {
-      fr: 'Spicy Beauty by T. dispose aujourd\'hui d\'une vitrine professionnelle qui reflète la qualité de ses prestations. Le site est optimisé pour les recherches locales liées à l\'esthétique dans la région de Valenciennes. Les nouvelles clientes trouvent les infos dont elles ont besoin — tarifs, prestations, zone, contact — en quelques secondes, et passent directement à la prise de RDV.',
-      en: 'Spicy Beauty by T. now has a professional showcase that reflects the quality of its services. The site is optimized for local beauty-related searches in the Valenciennes region. New clients find the information they need — pricing, services, area, contact — in seconds, and go straight to booking.',
+      fr: 'Spicy Beauty by T. dispose aujourd\'hui d\'une vitrine professionnelle qui reflète la qualité de ses prestations. Le site est optimisé pour les recherches locales liées à l\'esthétique dans la région de Valenciennes. Les nouvelles clientes trouvent les infos dont elles ont besoin (tarifs, prestations, zone, contact) en quelques secondes, et passent directement à la prise de RDV.',
+      en: 'Spicy Beauty by T. now has a professional showcase that reflects the quality of its services. The site is optimized for local beauty-related searches in the Valenciennes region. New clients find the information they need (pricing, services, area, contact) in seconds, and go straight to booking.',
     },
   },
 ]
