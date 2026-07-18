@@ -73,10 +73,11 @@ function FeaturedCard({
         </span>
         <div className="flex items-center gap-2">
           <span
-            className="rounded-full border px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest"
+            className="rounded-full border px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest backdrop-blur-lg"
             style={{
               borderColor: 'hsl(var(--border-subtle))',
-              background: 'hsl(var(--bg-secondary))',
+              background: 'hsl(var(--bg-secondary) / 55%)',
+              boxShadow: '0 2px 12px rgba(0,0,0,0.08), 0 1px 0 rgba(255,255,255,0.6) inset',
               color: 'hsl(var(--text-secondary))',
             }}
           >

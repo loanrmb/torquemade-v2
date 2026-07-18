@@ -1094,6 +1094,7 @@ export const posts: Post[] = [
   },
   {
     slug: 'ai-overviews-france-checklist-avant-deploiement',
+    featured: true,
     title: {
       fr: "AI Overviews arrivent en France avant septembre 2026 : ce qu'il faut avoir fait avant",
       en: 'AI Overviews are coming to France before September 2026: what to prepare now',
