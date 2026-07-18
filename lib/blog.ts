@@ -1091,4 +1091,20 @@ export const posts: Post[] = [
     category: 'SEO & Contenu',
     readingTime: 7,
   },
+  {
+    slug: 'ai-overviews-france-checklist-avant-deploiement',
+    title: {
+      fr: "AI Overviews arrivent en France avant septembre 2026 : ce qu'il faut avoir fait avant",
+      en: 'AI Overviews are coming to France before September 2026: what to prepare now',
+    },
+    description: {
+      fr: 'Google déploiera les AI Overviews en France avant septembre 2026. Voici la checklist concrète pour que votre contenu soit prêt à être cité.',
+      en: "Google will roll out AI Overviews in France before September 2026. Here's the concrete checklist to get your content ready to be cited.",
+    },
+    date: { fr: '18 juillet 2026', en: 'July 18, 2026' },
+    publishedAt: '2026-07-18',
+    updatedAt: '2026-07-18',
+    category: 'SEO & Contenu',
+    readingTime: 7,
+  },
 ]
