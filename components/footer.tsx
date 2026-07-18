@@ -11,7 +11,7 @@ export function Footer() {
   return (
     <footer className="site-footer px-5 py-16 min-720:py-20">
       <div className="mx-auto max-w-5xl">
-        <div className="flex flex-col gap-12 min-720:flex-row min-720:items-start min-720:justify-between">
+        <div className="grid grid-cols-1 gap-12 min-720:grid-cols-2 min-1024:grid-cols-4">
 
           {/* Brand */}
           <div className="flex flex-col gap-3">
@@ -46,6 +46,34 @@ export function Footer() {
               </Link>
             ))}
           </nav>
+
+          {/* Services */}
+          <div className="flex flex-col gap-2">
+            <span className="text-sm font-semibold text-white">{t.servicesTitle}</span>
+            {t.servicesItems.map((s) => (
+              <Link
+                key={s.href}
+                href={s.href}
+                className="footer-link text-sm transition-colors duration-150 hover:text-white"
+                style={{ color: 'hsl(0 0% 50%)' }}
+              >
+                {s.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* TankLogic */}
+          <div className="flex flex-col gap-2">
+            <Link
+              href="/tanklogic"
+              className="footer-link text-sm font-semibold text-white transition-colors duration-150 hover:text-white"
+            >
+              {t.tanklogicColumnTitle}
+            </Link>
+            <p className="text-sm" style={{ color: 'hsl(0 0% 50%)' }}>
+              {t.tanklogicColumnTagline}
+            </p>
+          </div>
         </div>
 
         <div
@@ -57,13 +85,6 @@ export function Footer() {
         >
           <p>{t.copy}</p>
           <div className="flex items-center gap-5">
-            <Link
-              href="/tanklogic"
-              className="footer-link transition-colors duration-150 hover:text-white"
-              style={{ color: 'hsl(0 0% 35%)' }}
-            >
-              {t.tanklogic}
-            </Link>
             <Link
               href="/mentions-legales"
               className="footer-link transition-colors duration-150 hover:text-white"
