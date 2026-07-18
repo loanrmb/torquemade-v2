@@ -159,7 +159,7 @@ export function CommentApparaitreReponsesIaContent() {
           <Link href="/services/web-dev">SEO &amp; GEO support</Link> covers exactly that. A
           full case study covering all four sites analyzed in this article, in more depth,
           is coming soon:{' '}
-          <Link href="/blog/sprint-motors-bordeauxride-voge-bordeaux-motopassion65-cites-google-ia">
+          <Link href="/blog/etude-de-cas-4-sites-cites-google-ia-generative-avant-france">
             four sites and Google&apos;s generative AI report
           </Link>
           .
@@ -349,7 +349,7 @@ export function CommentApparaitreReponsesIaContent() {
           <Link href="/services/web-dev">accompagnement SEO &amp; GEO</Link> couvre
           exactement ça. Une étude de cas complète, qui détaille les quatre sites analysés
           dans cet article, arrive prochainement :{' '}
-          <Link href="/blog/sprint-motors-bordeauxride-voge-bordeaux-motopassion65-cites-google-ia">
+          <Link href="/blog/etude-de-cas-4-sites-cites-google-ia-generative-avant-france">
             quatre sites face au rapport IA générative de Google
           </Link>
           .

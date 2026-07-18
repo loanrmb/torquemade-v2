@@ -1108,14 +1108,14 @@ export const posts: Post[] = [
     readingTime: 7,
   },
   {
-    slug: 'sprint-motors-bordeauxride-voge-bordeaux-motopassion65-cites-google-ia',
+    slug: 'etude-de-cas-4-sites-cites-google-ia-generative-avant-france',
     title: {
-      fr: 'Sprint Motors, BordeauxRide, Voge Bordeaux, MotoPassion65 : cités par Google IA générative en moins de 3 mois',
-      en: "Sprint Motors, BordeauxRide, Voge Bordeaux, MotoPassion65: cited by Google's generative AI in under 3 months",
+      fr: "Étude de cas : 4 sites cités par Google IA générative avant l'arrivée du modèle en France",
+      en: "Case study: 4 sites cited by Google's generative AI before the model reaches France",
     },
     description: {
-      fr: 'Quatre sites, quatre profils différents, un même signal : voici les chiffres réels de leur visibilité dans les réponses IA générative de Google, captés en moins de 3 mois.',
-      en: "Four sites, four different profiles, one shared signal: the real numbers behind their visibility in Google's generative AI answers, captured in under 3 months.",
+      fr: 'Quatre sites, quatre profils différents, un même signal : ils sont déjà cités dans les réponses IA générative de Google, avant même le déploiement du modèle en France.',
+      en: "Four sites, four different profiles, one shared signal: already cited in Google's generative AI answers, before the model has even reached France.",
     },
     date: { fr: '18 juillet 2026', en: 'July 18, 2026' },
     publishedAt: '2026-07-18',

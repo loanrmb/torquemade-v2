@@ -4,8 +4,8 @@ import { blogPostingSchema } from '@/lib/schema'
 import { posts } from '@/lib/blog'
 import { EtudeCasQuatreSitesContent } from './_content'
 
-const ogImage = '/api/og?title=Sprint+Motors%2C+BordeauxRide%2C+Voge+Bordeaux%2C+MotoPassion65+%3A+cit%C3%A9s+par+Google+IA+g%C3%A9n%C3%A9rative+en+moins+de+3+mois&category=SEO+%26+Contenu'
-const post = posts.find((p) => p.slug === 'sprint-motors-bordeauxride-voge-bordeaux-motopassion65-cites-google-ia')!
+const ogImage = '/api/og?title=%C3%89tude+de+cas+%3A+4+sites+cit%C3%A9s+par+Google+IA+g%C3%A9n%C3%A9rative+avant+l%27arriv%C3%A9e+du+mod%C3%A8le+en+France&category=SEO+%26+Contenu'
+const post = posts.find((p) => p.slug === 'etude-de-cas-4-sites-cites-google-ia-generative-avant-france')!
 
 // FAQ sourced word-for-word from the FR strings rendered in _content.tsx.
 const faq = [
@@ -28,11 +28,11 @@ const faq = [
 ]
 
 export const metadata: Metadata = {
-  title: 'Sprint Motors, BordeauxRide, Voge Bordeaux, MotoPassion65 : cités par Google IA générative en moins de 3 mois',
+  title: "Étude de cas : 4 sites cités par Google IA générative avant l'arrivée du modèle en France",
   openGraph: {
     images: [{ url: ogImage, width: 1200, height: 630 }],
   },
-  description: 'Quatre sites, quatre profils différents, un même signal : voici les chiffres réels de leur visibilité dans les réponses IA générative de Google, captés en moins de 3 mois.',
+  description: 'Quatre sites, quatre profils différents, un même signal : ils sont déjà cités dans les réponses IA générative de Google, avant même le déploiement du modèle en France.',
 }
 
 export default function Page() {

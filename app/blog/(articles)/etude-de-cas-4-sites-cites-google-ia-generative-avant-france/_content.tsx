@@ -9,9 +9,9 @@ export function EtudeCasQuatreSitesContent() {
 
   if (lang === 'en') return (
     <article className="blog-article">
-      <h1 className="blog-article-title">Sprint Motors, BordeauxRide, Voge Bordeaux, MotoPassion65: cited by Google&apos;s generative AI in under 3 months</h1>
+      <h1 className="blog-article-title">Case study: 4 sites cited by Google&apos;s generative AI before the model reaches France</h1>
 
-      <BlogUpdatedLine slug="sprint-motors-bordeauxride-voge-bordeaux-motopassion65-cites-google-ia" />
+      <BlogUpdatedLine slug="etude-de-cas-4-sites-cites-google-ia-generative-avant-france" />
 
       <p>
         Four independently run websites, covering an e-commerce dealership, a tourist VTC
@@ -228,9 +228,9 @@ export function EtudeCasQuatreSitesContent() {
 
   return (
     <article className="blog-article">
-      <h1 className="blog-article-title">Sprint Motors, BordeauxRide, Voge Bordeaux, MotoPassion65 : cités par Google IA générative en moins de 3 mois</h1>
+      <h1 className="blog-article-title">Étude de cas : 4 sites cités par Google IA générative avant l&apos;arrivée du modèle en France</h1>
 
-      <BlogUpdatedLine slug="sprint-motors-bordeauxride-voge-bordeaux-motopassion65-cites-google-ia" />
+      <BlogUpdatedLine slug="etude-de-cas-4-sites-cites-google-ia-generative-avant-france" />
 
       <p>
         Quatre sites web gérés indépendamment, une concession moto e-commerce, un service VTC
