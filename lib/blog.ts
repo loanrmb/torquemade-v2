@@ -1107,4 +1107,20 @@ export const posts: Post[] = [
     category: 'SEO & Contenu',
     readingTime: 7,
   },
+  {
+    slug: 'sprint-motors-bordeauxride-voge-bordeaux-motopassion65-cites-google-ia',
+    title: {
+      fr: 'Sprint Motors, BordeauxRide, Voge Bordeaux, MotoPassion65 : cités par Google IA générative en moins de 3 mois',
+      en: "Sprint Motors, BordeauxRide, Voge Bordeaux, MotoPassion65: cited by Google's generative AI in under 3 months",
+    },
+    description: {
+      fr: 'Quatre sites, quatre profils différents, un même signal : voici les chiffres réels de leur visibilité dans les réponses IA générative de Google, captés en moins de 3 mois.',
+      en: "Four sites, four different profiles, one shared signal: the real numbers behind their visibility in Google's generative AI answers, captured in under 3 months.",
+    },
+    date: { fr: '18 juillet 2026', en: 'July 18, 2026' },
+    publishedAt: '2026-07-18',
+    updatedAt: '2026-07-18',
+    category: 'SEO & Contenu',
+    readingTime: 8,
+  },
 ]
