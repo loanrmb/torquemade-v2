@@ -33,12 +33,14 @@ import { useReducedMotionSafe, EASE_DECELERATE, EASE_STANDARD } from '@/lib/moti
 const IMG = '/images';
 const ROTATE_MS = 7000;
 
-/* Mobile preview images for the vertical stack (services 01-03). */
+/* Mobile preview images for the vertical stack (services 01-02). Tab 03
+   (ERP · Stock, ERP_TAB_INDEX below) renders the live FigureErpMobile
+   component instead — see the "Mobile stack" section in ServicesSection. */
 const MOBILE_PREVIEWS = [
   '/images/preview-site-jetski-arcachon.png',
   '/images/crm-calendar-mockup.png',
-  '/images/preview-erp-site-ecommerce.png',
 ];
+const ERP_TAB_INDEX = 2;
 
 /* ------------------------------------------------------------------ */
 /*  Window chrome (shared by figures 1 & 2)                           */
@@ -234,7 +236,7 @@ function ApiPanel() {
   const t = strings[useLang()].servicesSection;
   const reducedMotion = useReducedMotionSafe();
   return (
-    <div className="flex w-[15rem] shrink-0 flex-col overflow-hidden rounded-xl border border-white/15 bg-black/50 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.6)]">
+    <div className="flex w-full shrink-0 flex-col overflow-hidden rounded-xl border border-white/15 bg-black/50 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.6)] md:w-[15rem]">
       <div className="flex items-center justify-between border-b border-white/10 px-3 py-2.5">
         <span className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-white/40">{t.erp.apiLabel}</span>
         <motion.span
@@ -297,18 +299,97 @@ function ErpConnector({ label }: { label: string }) {
   );
 }
 
+/**
+ * Mobile rendering of the ERP figure — same live panels as desktop
+ * (ErpPanel / ApiPanel / ErpConnector, all shared, all already gated behind
+ * useReducedMotionSafe), stacked top-to-bottom instead of laid out
+ * left-to-right. Kept as its own component (rather than a md:hidden branch
+ * inside FigureErp) so the mobile "Mobile stack" section below can mount it
+ * directly without also mounting — and animating — the desktop 3-column
+ * tree in a hidden subtree.
+ */
+function FigureErpMobile() {
+  const t = strings[useLang()].servicesSection;
+  const reducedMotion = useReducedMotionSafe();
+  return (
+    <div className="w-full overflow-hidden rounded-2xl bg-[#080808] p-4 text-white">
+      <div className="flex flex-col items-stretch">
+        <ErpPanel
+          title={t.erp.stockTitle}
+          footer={
+            <>
+              <motion.span
+                className="inline-block h-1.5 w-1.5 rounded-full bg-white"
+                animate={reducedMotion ? { opacity: 1 } : { opacity: [1, 0.4, 1] }}
+                transition={reducedMotion ? { duration: 0 } : { duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              <span>{t.erp.stockFooter}</span>
+            </>
+          }
+        >
+          <div className="flex flex-1 flex-col">
+            <ColHead cols={STOCK_COLS}>
+              <span>{t.erp.colProduct}</span>
+              <span>{t.erp.colSku}</span>
+              <span>{t.erp.colStock}</span>
+            </ColHead>
+            {ERP_MOBILE_ROWS.map((r) => (
+              <div key={r.sku} className={`${STOCK_COLS} py-2 text-xs`}>
+                <span className="truncate font-medium text-white">{r.name}</span>
+                <span className="truncate font-mono text-[11px] text-white/55">{r.sku}</span>
+                <span className={`truncate font-mono text-[11px] font-medium ${r.stock === 0 ? 'text-red-400' : 'text-white/90'}`}>{r.stock}</span>
+              </div>
+            ))}
+          </div>
+        </ErpPanel>
+
+        <ErpConnector label={t.erp.connectorSync} />
+
+        <ApiPanel />
+
+        <ErpConnector label={t.erp.connectorPush} />
+
+        <ErpPanel light title={t.erp.siteTitle} footer={<span>{t.erp.siteFooter}</span>}>
+          <div className="flex flex-1 flex-col">
+            <ColHead cols={SITE_COLS} light>
+              <span>{t.erp.colProduct}</span>
+              <span>{t.erp.colStock}</span>
+              <span>{t.erp.colStatus}</span>
+            </ColHead>
+            {ERP_MOBILE_ROWS.map((r) => (
+              <div key={r.sku} className={`${SITE_COLS} py-2 text-xs`}>
+                <span className="flex min-w-0 items-center gap-1.5 font-medium text-neutral-900">
+                  <span aria-hidden>{r.emoji}</span>
+                  <span className="truncate">{r.name}</span>
+                </span>
+                <span className="truncate font-mono text-[11px] font-medium text-neutral-700">{r.stock}</span>
+                {r.stock === 0 ? (
+                  <span className="inline-flex h-6 items-center justify-center whitespace-nowrap rounded-full bg-red-100 px-2.5 text-[10px] font-medium text-red-600">
+                    {t.erp.statusRupture}
+                  </span>
+                ) : (
+                  <span className="inline-flex h-6 items-center justify-center whitespace-nowrap rounded-full bg-green-100 px-2.5 text-[10px] font-medium text-green-700">
+                    {t.erp.statusActive}
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+        </ErpPanel>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Figure 03 (desktop) — 3-column horizontal layout                  */
+/* ------------------------------------------------------------------ */
+
 function FigureErp() {
-  const lang = useLang()
-  const t = strings[lang].servicesSection
+  const t = strings[useLang()].servicesSection;
   const reducedMotion = useReducedMotionSafe();
   return (
     <>
-      <img
-        src="/images/preview-erp-site-ecommerce.png"
-        alt="Aperçu synchronisation ERP et site e-commerce"
-        className="w-full rounded-2xl md:hidden"
-      />
-
       {/* Desktop — 3-column horizontal layout */}
       <div className="hidden w-full text-white md:block">
         <div className="flex flex-col">
@@ -571,13 +652,17 @@ export default function ServicesSection() {
               </p>
               <div className="relative left-1/2 -translate-x-1/2 w-screen">
                 <div className="mx-auto w-[90vw] overflow-hidden rounded-xl">
-                  <img
-                    src={MOBILE_PREVIEWS[i]}
-                    alt={tab.title}
-                    className="w-full h-auto object-contain"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  {i === ERP_TAB_INDEX ? (
+                    <FigureErpMobile />
+                  ) : (
+                    <img
+                      src={MOBILE_PREVIEWS[i]}
+                      alt={tab.title}
+                      className="w-full h-auto object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
                 </div>
               </div>
             </div>
