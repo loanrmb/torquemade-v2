@@ -2,8 +2,9 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import Link from 'next/link'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useLang } from '@/components/app-provider'
+import { strings } from '@/lib/strings'
 import { posts } from '@/lib/blog'
 import { FeaturedPosts } from '@/components/blog/FeaturedPosts'
 import { ScrollRevealGroup } from '@/lib/use-scroll-reveal'
@@ -12,7 +13,6 @@ const LABELS = {
   fr: {
     all: 'Tous',
     read: "Lire l'article",
-    empty: 'Aucun article ne correspond à votre recherche.',
     searchPlaceholder: 'Rechercher…',
     searchAria: 'Rechercher',
     clearAria: 'Effacer',
@@ -22,7 +22,6 @@ const LABELS = {
   en: {
     all: 'All',
     read: 'Read article',
-    empty: 'No articles match your search.',
     searchPlaceholder: 'Search…',
     searchAria: 'Search',
     clearAria: 'Clear',
@@ -57,32 +56,73 @@ const CATEGORY_LABELS: Record<string, { fr: string; en: string }> = {
   },
 }
 
+const CATEGORY_ORDER = [
+  'SEO & Contenu',
+  'ERP & Gestion de stock',
+  'crm',
+  'Web & Développement',
+  'projets',
+]
+
+const SEARCH_DEBOUNCE_MS = 300
+
+// Case- and accent-insensitive comparison key: strip diacritics via NFD so
+// "esthéticienne" matches "estheticienne".
+function normalize(value: string): string {
+  return value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim()
+}
+
 export function BlogList() {
   const lang = useLang()
   const t = LABELS[lang]
+  const tBlog = strings[lang].blog
   const ALL = t.all
 
-  const CATEGORY_ORDER = [
-    'SEO & Contenu',
-    'ERP & Gestion de stock',
-    'crm',
-    'Web & Développement',
-    'projets',
-  ]
-
-  const allCategories = Array.from(new Set(posts.map((p) => p.category)))
-  const categories = [
-    ALL,
-    ...CATEGORY_ORDER.filter((c) => allCategories.includes(c)),
-    ...allCategories.filter((c) => !CATEGORY_ORDER.includes(c)),
-  ]
   const router = useRouter()
+  const pathname = usePathname()
   const searchParams = useSearchParams()
+  // Lets the debounce timeout read the freshest searchParams (e.g. an
+  // in-flight category change) without re-arming the timer on every render.
+  const searchParamsRef = useRef(searchParams)
+  searchParamsRef.current = searchParams
+
   const activeKey = searchParams.get('cat') ?? 'all'
+  const urlQuery = searchParams.get('q') ?? ''
   // 'oldest' = ascending by publishedAt; default (no param) = newest first.
   const sortOrder = searchParams.get('sort') === 'oldest' ? 'oldest' : 'newest'
-  const listRef = useRef<HTMLDivElement>(null)
+  const isSearching = urlQuery.trim().length > 0
+
   const filterBarRef = useRef<HTMLDivElement>(null)
+  const searchInputRef = useRef<HTMLInputElement>(null)
+
+  // Local, controlled value for typing responsiveness — the URL (urlQuery)
+  // is what actually drives filtering, synced from this with a debounce.
+  const [inputValue, setInputValue] = useState(urlQuery)
+
+  // Reconcile the input with the URL when it changes from outside typing:
+  // back/forward navigation, a direct link with ?q=, or our own debounced
+  // commit landing.
+  useEffect(() => {
+    setInputValue(urlQuery)
+  }, [urlQuery])
+
+  useEffect(() => {
+    if (inputValue === urlQuery) return
+    const timer = setTimeout(() => {
+      const params = new URLSearchParams(searchParamsRef.current.toString())
+      if (inputValue.trim()) {
+        params.set('q', inputValue)
+      } else {
+        params.delete('q')
+      }
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false })
+    }, SEARCH_DEBOUNCE_MS)
+    return () => clearTimeout(timer)
+  }, [inputValue, urlQuery, pathname, router])
 
   // Scroll the filter/sort bar to its sticky resting spot (top-20 = 80px)
   // rather than the list top, which would slide the first articles behind
@@ -91,46 +131,9 @@ export function BlogList() {
   function scrollToFilterBar() {
     const bar = filterBarRef.current
     if (!bar) return
-    // Absolute document position of the bar minus its sticky top → lands the
-    // bar at its resting spot with the list right below it.
     const top = bar.getBoundingClientRect().top + window.scrollY - STICKY_OFFSET
     window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' })
   }
-
-  const [search, setSearch] = useState('')
-  const [searchOpen, setSearchOpen] = useState(false)
-  const searchInputRef = useRef<HTMLInputElement>(null)
-  // Typing changes which posts render (featured section + filtered list),
-  // which can shrink the document enough that the browser force-adjusts
-  // scrollY — firing one or more native "scroll" events that aren't a real
-  // user scroll (image loads / reveal animations can trigger extra ones as
-  // the layout settles). Suppress scroll-close for a short window after each
-  // keystroke so none of those get mistaken for a manual scroll.
-  const suppressScrollCloseRef = useRef(false)
-  const suppressScrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const SUPPRESS_SCROLL_MS = 200
-
-  function handleSearchChange(value: string) {
-    suppressScrollCloseRef.current = true
-    if (suppressScrollTimeoutRef.current) clearTimeout(suppressScrollTimeoutRef.current)
-    suppressScrollTimeoutRef.current = setTimeout(() => {
-      suppressScrollCloseRef.current = false
-    }, SUPPRESS_SCROLL_MS)
-    setSearch(value)
-  }
-
-  // Auto-collapse the search field as soon as the visitor scrolls,
-  // to avoid the input overlapping the sticky navbar.
-  useEffect(() => {
-    if (!searchOpen) return
-    const handleScroll = () => {
-      if (suppressScrollCloseRef.current) return
-      setSearchOpen(false)
-      setSearch('')
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [searchOpen])
 
   function handleFilter(key: string) {
     const params = new URLSearchParams(searchParams.toString())
@@ -139,7 +142,7 @@ export function BlogList() {
     } else {
       params.set('cat', key)
     }
-    router.push(`/blog?${params.toString()}`, { scroll: false })
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false })
     scrollToFilterBar()
   }
 
@@ -151,13 +154,34 @@ export function BlogList() {
     } else {
       params.set('sort', 'oldest')
     }
-    router.push(`/blog?${params.toString()}`, { scroll: false })
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false })
     scrollToFilterBar()
   }
 
-  const featuredPosts = posts.filter((p) => p.featured)
-  const isSearching = search.trim().length > 0
+  function handleClear() {
+    setInputValue('')
+    const params = new URLSearchParams(searchParams.toString())
+    params.delete('q')
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false })
+    searchInputRef.current?.focus()
+  }
 
+  function handleReset() {
+    setInputValue('')
+    router.replace(pathname, { scroll: false })
+  }
+
+  const allCategories = Array.from(new Set(posts.map((p) => p.category)))
+  const categories = [
+    ALL,
+    ...CATEGORY_ORDER.filter((c) => allCategories.includes(c)),
+    ...allCategories.filter((c) => !CATEGORY_ORDER.includes(c)),
+  ]
+
+  const featuredPosts = posts.filter((p) => p.featured)
+  const showFeatured = activeKey === 'all' && !isSearching
+
+  const nq = normalize(urlQuery)
   const filtered = posts
     .filter((p) => {
       if (activeKey === 'all') {
@@ -168,13 +192,8 @@ export function BlogList() {
       return p.category === activeKey
     })
     .filter((p) => {
-      if (!isSearching) return true
-      const q = search.toLowerCase()
-      return (
-        p.title[lang].toLowerCase().includes(q) ||
-        p.description[lang].toLowerCase().includes(q) ||
-        p.category.toLowerCase().includes(q)
-      )
+      if (!nq) return true
+      return normalize(p.title[lang]).includes(nq) || normalize(p.description[lang]).includes(nq)
     })
     .sort((a, b) => {
       const diff = a.publishedAt.localeCompare(b.publishedAt)
@@ -186,10 +205,10 @@ export function BlogList() {
       <div className="mx-auto max-w-7xl">
 
         {/* ── À LA UNE — visible uniquement sur "Tous", hors recherche ── */}
-        {activeKey === 'all' && !isSearching && <FeaturedPosts posts={featuredPosts} />}
+        {showFeatured && <FeaturedPosts posts={featuredPosts} />}
 
-        {/* ── FILTRES — pill sticky liquid glass + loupe sur la même ligne ── */}
-        <div ref={filterBarRef} className="sticky top-20 z-40 mb-16 flex items-center gap-3">
+        {/* ── FILTRES — pill sticky liquid glass + recherche sur la même ligne ── */}
+        <div ref={filterBarRef} className="sticky top-20 z-40 mb-16 flex flex-wrap items-center gap-3">
           <div className="flex-1 min-w-0 overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0 md:flex md:justify-center scrollbar-hide">
             <div
               className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 flex-shrink-0"
@@ -256,16 +275,43 @@ export function BlogList() {
             })}
           </div>
 
-          {/* ── ZONE RECHERCHE — sibling du pill, même ligne horizontale ── */}
+          {/* ── RECHERCHE — toujours visible, aucun état caché ── */}
           <div
-            className="flex items-center shrink-0 gap-1"
-            style={{ flexDirection: 'row-reverse' }}
+            className="flex items-center gap-1.5 rounded-full pl-3 pr-1.5 py-1.5 shrink-0"
+            style={{
+              background: 'hsl(var(--bg-secondary))',
+              border: '1px solid hsl(var(--border-subtle))',
+              boxShadow: '0 2px 16px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.5) inset',
+            }}
           >
-            {/* Bouton clear — apparaît visuellement à gauche de l'input grâce à row-reverse */}
-            {search && (
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{ color: 'hsl(var(--text-secondary))', opacity: 0.5, flexShrink: 0 }}
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input
+              ref={searchInputRef}
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              placeholder={t.searchPlaceholder}
+              aria-label={t.searchAria}
+              className="w-24 sm:w-40 md:w-48 text-sm outline-none bg-transparent"
+              style={{ color: 'hsl(var(--text-primary))' }}
+            />
+            {inputValue && (
               <button
-                onClick={() => handleSearchChange('')}
-                className="p-1 rounded-full shrink-0 transition-colors"
+                onClick={handleClear}
+                className="p-1.5 rounded-full shrink-0 transition-colors hover:bg-[hsl(var(--bg-tertiary))]"
                 style={{ color: 'hsl(var(--text-secondary))' }}
                 aria-label={t.clearAria}
               >
@@ -283,77 +329,33 @@ export function BlogList() {
                 </svg>
               </button>
             )}
-
-            {/* Input animé — s'étend visuellement vers la gauche depuis la loupe */}
-            <div
-              style={{
-                width: searchOpen ? '220px' : '0px',
-                opacity: searchOpen ? 1 : 0,
-                overflow: 'hidden',
-                transition: 'width 280ms ease, opacity 200ms ease',
-                display: 'flex',
-                alignItems: 'center',
-              }}
-            >
-              <input
-                ref={searchInputRef}
-                type="text"
-                value={search}
-                onChange={(e) => handleSearchChange(e.target.value)}
-                placeholder={t.searchPlaceholder}
-                className="w-full text-sm outline-none bg-transparent px-2 text-right"
-                style={{ color: 'hsl(var(--text-primary))' }}
-              />
-            </div>
-
-            {/* Bouton loupe — visuellement à droite via row-reverse */}
-            <button
-              onClick={() => {
-                setSearchOpen((prev) => {
-                  if (prev) setSearch('')
-                  setTimeout(() => {
-                    if (!prev) searchInputRef.current?.focus()
-                  }, 50)
-                  return !prev
-                })
-              }}
-              aria-label={t.searchAria}
-              className="p-2 rounded-full transition-colors"
-              style={{
-                color: 'hsl(var(--text-secondary))',
-                background: searchOpen ? 'hsl(var(--border-subtle))' : 'transparent',
-              }}
-            >
-              <svg
-                width="15"
-                height="15"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-            </button>
           </div>
         </div>
 
         {/* ── LISTE D'ARTICLES ── */}
-        <div ref={listRef} style={{ borderTop: '1px solid hsl(var(--border-subtle))' }}>
-          {/* Keyed on category + sort (not search) so the reveal observer
-              re-scans freshly-mounted cards when the set changes — but typing
-              in the search box never retriggers the entrance animation. */}
-          <ScrollRevealGroup resetKey={`${activeKey}|${sortOrder}`}>
+        {/* min-h prevents the empty state from shrinking the page enough that
+            position:sticky's pinning overlaps this section once scrolled to
+            the bottom (only reachable when filtering leaves few/no results). */}
+        <div className="min-h-[60vh]" style={{ borderTop: '1px solid hsl(var(--border-subtle))' }}>
+          {/* Keyed on category + sort + query so the reveal observer re-scans
+              freshly-mounted cards whenever the filtered set changes. */}
+          <ScrollRevealGroup resetKey={`${activeKey}|${sortOrder}|${urlQuery}`}>
           {filtered.length === 0 && (
-            <p
-              className="text-center py-16 text-sm"
-              style={{ color: 'hsl(var(--text-secondary))' }}
-            >
-              {t.empty}
-            </p>
+            <div className="text-center py-16">
+              <p
+                className="text-sm mb-4"
+                style={{ color: 'hsl(var(--text-secondary))' }}
+              >
+                {tBlog.emptyResults}
+              </p>
+              <button
+                onClick={handleReset}
+                className="font-mono text-[10px] uppercase tracking-widest px-4 py-2 rounded-full border transition-colors hover:bg-[hsl(var(--bg-tertiary))]"
+                style={{ borderColor: 'hsl(var(--border-subtle))', color: 'hsl(var(--text-primary))' }}
+              >
+                {tBlog.resetFilters}
+              </button>
+            </div>
           )}
           {filtered.map((post, i) => (
             <Link
