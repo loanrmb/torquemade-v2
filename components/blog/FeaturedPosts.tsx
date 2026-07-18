@@ -25,10 +25,7 @@ export function FeaturedPosts({ posts }: { posts: Post[] }) {
       </p>
 
       {/* Grid */}
-      <div
-        className="grid grid-cols-1 gap-px md:grid-cols-3"
-        style={{ background: 'hsl(var(--border-subtle))' }}
-      >
+      <div className="blog-featured-grid grid grid-cols-1 gap-px md:grid-cols-3">
         {posts.map((post, index) => (
           <FeaturedCard
             key={post.slug}

@@ -17,8 +17,8 @@ export const posts: Post[] = [
     slug: 'shopify-vs-nextjs-2025',
     featured: true,
     title: {
-      fr: 'Shopify vs Next.js : lequel choisir pour votre commerce en 2025 ?',
-      en: 'Shopify vs Next.js: Which to Choose for Your Online Store in 2025?',
+      fr: 'Shopify vs Next.js : lequel choisir pour votre commerce en 2026 ?',
+      en: 'Shopify vs Next.js: Which to Choose for Your Online Store in 2026?',
     },
     description: {
       fr: 'Shopify ou Next.js pour votre e-commerce ? Nous comparons les deux solutions pour vous aider à faire le bon choix selon votre projet et vos ambitions.',
@@ -211,6 +211,7 @@ export const posts: Post[] = [
   },
   {
     slug: 'impressions-google-sans-publicite',
+    featured: true,
     title: {
       fr: 'Comment passer de 0 à 800 000 impressions Google sans publicité',
       en: 'How to Go from 0 to 800,000 Google Impressions Without Advertising',
@@ -1111,7 +1112,6 @@ export const posts: Post[] = [
   },
   {
     slug: 'etude-de-cas-4-sites-cites-google-ia-generative-avant-france',
-    featured: true,
     title: {
       fr: "Étude de cas : 4 sites cités par Google IA générative avant l'arrivée du modèle en France",
       en: "Case study: 4 sites cited by Google's generative AI before the model reaches France",

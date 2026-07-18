@@ -893,6 +893,21 @@ html.dark .cta-card {
   .btn-outline-glass::before { animation: none; }
 }
 
+/* Featured blog grid separators — same rainbow gradient recipe as the CTA
+   buttons above, run thin as the grid-gap lines instead of a flat fill. */
+.blog-featured-grid {
+  background: linear-gradient(
+    90deg,
+    #f97316, #eab308, #22c55e, #3b82f6, #a855f7, #ec4899, #f97316
+  );
+  background-size: 300% 100%;
+  animation: gradient-shift 8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-featured-grid { animation: none; }
+}
+
 /* ============================================================
    ERP SYNC ANIMATION — Row flash + number bump
    Used in erp-feature-section.tsx autonomous stock sync loop
