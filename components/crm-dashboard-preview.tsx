@@ -4,7 +4,13 @@
  * CrmDashboardPreview
  * ───────────────────────────────────────────────────────────────
  * Self-contained animated stock-management CRM dashboard mock.
- * Desktop only — mobile keeps the static PNG in page.tsx.
+ *
+ * Also exported as CrmDashboardPreviewMobile — same component, same
+ * animations (cursor included), rendered at its native 1024×640 desktop
+ * canvas and scaled down with CSS transform to fit any container width.
+ * The `scale` prop feeds back into the cursor's getBoundingClientRect-based
+ * positioning math (see the coordinated nav + cursor loop below) so the
+ * autonomous cursor still lands on the right nav item post-scale.
  *
  * Animations:
  *  - Sidebar auto-navigates Dashboard → Products → Movements (3 500 ms)
@@ -942,7 +948,7 @@ function Sidebar({ view, onNav, navItemRefs, lang }: SidebarProps) {
    MAIN EXPORT
 ═══════════════════════════════════════════════════════════════ */
 
-export function CrmDashboardPreview() {
+export function CrmDashboardPreview({ scale = 1 }: { scale?: number }) {
   const lang = useLang()
 
   /* ── Reduced motion ────────────────────────────────────────── */
@@ -958,8 +964,10 @@ export function CrmDashboardPreview() {
   /* Stable refs to avoid stale closures in setTimeout chains */
   const isVisRef   = useRef(false)
   const reducedRef = useRef(false)
+  const scaleRef   = useRef(scale)
   useEffect(() => { isVisRef.current   = isVisible }, [isVisible])
   useEffect(() => { reducedRef.current = reduced   }, [reduced])
+  useEffect(() => { scaleRef.current   = scale     }, [scale])
 
   /* ── Nav state ─────────────────────────────────────────────── */
   const [navIdx, setNavIdx] = useState(0)
@@ -1008,12 +1016,19 @@ export function CrmDashboardPreview() {
       const nextIdx = (navIdxRef.current + 1) % NAV_CYCLE.length
       const navRef  = NAV_ITEM_REFS[nextIdx]
 
-      /* Move cursor toward next nav item — live measurement via getBoundingClientRect */
+      /* Move cursor toward next nav item — live measurement via getBoundingClientRect.
+         getBoundingClientRect returns post-transform (screen) pixels, but this
+         component may be rendered inside an ancestor `transform: scale()` (see
+         CrmDashboardPreviewMobile) — translate/position values here are read by
+         children of that same scaled ancestor, so they apply in *pre-scale*
+         local units. Divide by `scale` to convert screen-space deltas back to
+         local units; scale defaults to 1 so desktop (no scale wrapper) is a no-op. */
       if (navRef.current && containerRef.current) {
         const navRect  = navRef.current.getBoundingClientRect()
         const contRect = containerRef.current.getBoundingClientRect()
-        const relX = navRect.left - contRect.left + navRect.width  / 2
-        const relY = navRect.top  - contRect.top  + navRect.height / 2
+        const s = scaleRef.current
+        const relX = (navRect.left - contRect.left + navRect.width  / 2) / s
+        const relY = (navRect.top  - contRect.top  + navRect.height / 2) / s
         clickTarget.current = { x: relX, y: relY }
         cursorX.set(relX)
         cursorY.set(relY)
@@ -1167,6 +1182,54 @@ export function CrmDashboardPreview() {
             v2.4.1
           </span>
         </div>
+      </div>
+    </div>
+  )
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE WRAPPER — scales the desktop canvas to fit any width
+═══════════════════════════════════════════════════════════════ */
+
+// Native canvas size, matching ContainerScroll's desktop Card exactly
+// (md:max-w-5xl × md:h-[40rem] in app/page.tsx) — same pixels the dashboard
+// already renders at on desktop, just visually scaled down instead of
+// reflowed, so every fixed-width piece (sidebar, KPI grid, table columns)
+// stays pixel-identical to desktop.
+const NATIVE_W = 1024
+const NATIVE_H = 640
+
+export function CrmDashboardPreviewMobile() {
+  const wrapperRef = useRef<HTMLDivElement>(null)
+  // Rough guess for a phone-width first paint; ResizeObserver corrects it
+  // immediately on mount (same pattern as the FigureCrm iframe scaler).
+  const [scale, setScale] = useState(375 / NATIVE_W)
+
+  useEffect(() => {
+    const el = wrapperRef.current
+    if (!el) return
+    const update = () => setScale(el.getBoundingClientRect().width / NATIVE_W)
+    update()
+    const ro = new ResizeObserver(update)
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+
+  return (
+    <div
+      ref={wrapperRef}
+      className="w-full overflow-hidden rounded-2xl border-4"
+      style={{ height: NATIVE_H * scale, borderColor: '#2a2a2a', background: '#141414' }}
+    >
+      <div
+        style={{
+          width: NATIVE_W,
+          height: NATIVE_H,
+          transform: `scale(${scale})`,
+          transformOrigin: 'top left',
+        }}
+      >
+        <CrmDashboardPreview scale={scale} />
       </div>
     </div>
   )

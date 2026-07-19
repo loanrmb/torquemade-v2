@@ -12,7 +12,7 @@ import { ErpFeatureSection } from '@/components/erp-feature-section'
 import ServicesSection from '@/components/services-section'
 import { SeoFeaturesSection } from '@/components/seo-features-section'
 import { ContainerScroll } from '@/components/ui/container-scroll-animation'
-import { CrmDashboardPreview } from '@/components/crm-dashboard-preview'
+import { CrmDashboardPreview, CrmDashboardPreviewMobile } from '@/components/crm-dashboard-preview'
 import { WaveBackground } from '@/components/ui/wave-background'
 import { ShaderBackground } from '@/components/ui/shader-background'
 import { HeroHeading, HeroRevealBlock } from '@/components/ui/hero-heading'
@@ -102,14 +102,10 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── CONTAINER SCROLL — animated dashboard (desktop) + static PNG (mobile) ── */}
+        {/* ── CONTAINER SCROLL — animated dashboard, scaled to fit on mobile ── */}
         <ContainerScroll titleComponent={<div aria-hidden="true" />}>
           <div className="block md:hidden w-full px-4">
-            <img
-              src="/images/preview-dashboard-stock-sombre.png"
-              alt="Dashboard logiciel de gestion de stock"
-              className="w-full rounded-2xl shadow-lg"
-            />
+            <CrmDashboardPreviewMobile />
           </div>
           <div className="hidden md:flex w-full h-full">
             <CrmDashboardPreview />
