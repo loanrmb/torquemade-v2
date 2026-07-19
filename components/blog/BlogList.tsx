@@ -103,6 +103,27 @@ export function BlogList() {
   // is what actually drives filtering, synced from this with a debounce.
   const [inputValue, setInputValue] = useState(urlQuery)
 
+  // Mobile-only filter sheet (category + sort). Presentation state only —
+  // filtering/sorting itself still flows through handleFilter/handleSort.
+  const [mobileFilterOpen, setMobileFilterOpen] = useState(false)
+
+  useEffect(() => {
+    if (!mobileFilterOpen) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileFilterOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [mobileFilterOpen])
+
+  useEffect(() => {
+    if (mobileFilterOpen) document.body.style.overflow = 'hidden'
+    else document.body.style.overflow = ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileFilterOpen])
+
   // Reconcile the input with the URL when it changes from outside typing:
   // back/forward navigation, a direct link with ?q=, or our own debounced
   // commit landing.
@@ -214,7 +235,40 @@ export function BlogList() {
 
         {/* ── FILTRES — pill sticky liquid glass + recherche sur la même ligne ── */}
         <div ref={filterBarRef} className="sticky top-20 z-40 mb-16 flex flex-wrap items-center gap-3">
-          <div className="flex-1 min-w-0 overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0 md:flex md:justify-center scrollbar-hide">
+          {/* ── Trigger mobile — remplace pills catégories + tri par un sheet ── */}
+          <button
+            type="button"
+            onClick={() => setMobileFilterOpen(true)}
+            className="flex md:hidden items-center gap-2 rounded-full px-4 py-1.5 shrink-0 transition-colors duration-150"
+            style={{
+              background: 'hsl(var(--bg-secondary))',
+              border: '1px solid hsl(var(--border-subtle))',
+              boxShadow: '0 2px 16px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.5) inset',
+              color: 'hsl(var(--text-secondary))',
+            }}
+            aria-haspopup="dialog"
+            aria-expanded={mobileFilterOpen}
+            aria-controls="blog-mobile-filters"
+          >
+            <FilterIcon />
+            <span className="font-mono text-xs uppercase tracking-widest">{tBlog.filterTrigger}</span>
+            {activeKey !== 'all' && (
+              <span
+                className="flex items-center justify-center rounded-full font-mono text-[10px] font-semibold"
+                style={{
+                  minWidth: '18px',
+                  height: '18px',
+                  padding: '0 5px',
+                  background: 'hsl(var(--bg-inverse))',
+                  color: 'hsl(var(--bg-primary))',
+                }}
+              >
+                1
+              </span>
+            )}
+          </button>
+
+          <div className="hidden flex-1 min-w-0 overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0 md:flex md:justify-center scrollbar-hide">
             <div
               className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 flex-shrink-0"
               style={{
@@ -252,7 +306,7 @@ export function BlogList() {
 
           {/* ── TRI — bascule récent / ancien, même style liquid glass ── */}
           <div
-            className="inline-flex items-center gap-1 rounded-full px-1.5 py-1 shrink-0"
+            className="hidden md:inline-flex items-center gap-1 rounded-full px-1.5 py-1 shrink-0"
             style={{
               background: 'hsl(var(--bg-secondary))',
               border: '1px solid hsl(var(--border-subtle))',
@@ -334,6 +388,153 @@ export function BlogList() {
                 </svg>
               </button>
             )}
+          </div>
+        </div>
+
+        {/* ── SHEET FILTRES MOBILE — sort + catégories, mêmes handlers que le bar desktop ── */}
+        <div
+          id="blog-mobile-filters"
+          className="fixed inset-0 z-[70] md:hidden"
+          role="dialog"
+          aria-modal="true"
+          aria-hidden={!mobileFilterOpen}
+          style={{ pointerEvents: mobileFilterOpen ? 'auto' : 'none' }}
+        >
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'rgba(0, 0, 0, 0.4)',
+              backdropFilter: 'blur(8px)',
+              WebkitBackdropFilter: 'blur(8px)',
+              opacity: mobileFilterOpen ? 1 : 0,
+              transition: 'opacity 220ms ease',
+              pointerEvents: mobileFilterOpen ? 'auto' : 'none',
+            }}
+            onClick={() => setMobileFilterOpen(false)}
+          />
+
+          <div
+            className="absolute left-1/2 top-20 w-[calc(100%-2rem)] max-w-md rounded-3xl border p-4 max-h-[calc(100vh-6rem)] overflow-y-auto"
+            style={{
+              background: 'hsl(var(--bg-primary))',
+              borderColor: 'hsl(var(--border-subtle))',
+              boxShadow: '0 12px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06)',
+              opacity: mobileFilterOpen ? 1 : 0,
+              transform: mobileFilterOpen
+                ? 'translateX(-50%) translateY(0) scale(1)'
+                : 'translateX(-50%) translateY(-8px) scale(0.98)',
+              transition: mobileFilterOpen
+                ? 'opacity 220ms ease, transform 220ms ease'
+                : 'opacity 180ms ease, transform 180ms ease',
+              pointerEvents: mobileFilterOpen ? 'auto' : 'none',
+            }}
+          >
+            <div className="flex items-center justify-between mb-4">
+              <span
+                className="font-mono text-xs uppercase tracking-widest"
+                style={{ color: 'hsl(var(--text-primary))' }}
+              >
+                {tBlog.filterTrigger}
+              </span>
+              <button
+                onClick={() => setMobileFilterOpen(false)}
+                className="w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-150 hover:bg-bg-secondary"
+                style={{ color: 'hsl(var(--text-secondary))' }}
+                aria-label={tBlog.closeLabel}
+              >
+                <CloseIcon />
+              </button>
+            </div>
+
+            {/* Tri — même toggle exclusif, mêmes handlers que la barre desktop */}
+            <div className="mb-5">
+              <p
+                className="mb-2 font-mono text-[10px] uppercase tracking-widest opacity-40"
+                style={{ color: 'hsl(var(--text-primary))' }}
+              >
+                {tBlog.filterSortLabel}
+              </p>
+              <div
+                className="inline-flex items-center gap-1 rounded-full p-1"
+                style={{ background: 'hsl(var(--bg-secondary))', border: '1px solid hsl(var(--border-subtle))' }}
+              >
+                {(['newest', 'oldest'] as const).map((order) => {
+                  const isActive = sortOrder === order
+                  return (
+                    <button
+                      key={order}
+                      type="button"
+                      onClick={() => handleSort(order)}
+                      aria-pressed={isActive}
+                      className={`rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 ${
+                        isActive ? '' : 'hover:bg-[hsl(var(--bg-tertiary))]'
+                      }`}
+                      style={{
+                        background: isActive ? 'hsl(var(--bg-inverse))' : undefined,
+                        color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',
+                      }}
+                    >
+                      {t[order]}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Catégories — présentées en checkbox, mais toujours mono-sélection
+                (même handleFilter que la barre desktop : "Tous" = reset) */}
+            <div>
+              <p
+                className="mb-2 font-mono text-[10px] uppercase tracking-widest opacity-40"
+                style={{ color: 'hsl(var(--text-primary))' }}
+              >
+                {tBlog.filterCategoriesLabel}
+              </p>
+              <div className="flex flex-col gap-1">
+                {categories.map((cat) => {
+                  const key = cat === ALL ? 'all' : cat
+                  const isActive = activeKey === key
+                  const count =
+                    cat === ALL
+                      ? posts.length
+                      : posts.filter((p) => p.category === cat).length
+                  return (
+                    <button
+                      key={key}
+                      type="button"
+                      onClick={() => handleFilter(key)}
+                      role="checkbox"
+                      aria-checked={isActive}
+                      className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-colors duration-150 hover:bg-[hsl(var(--bg-tertiary))]"
+                    >
+                      <span
+                        className="flex items-center justify-center rounded-md flex-shrink-0"
+                        style={{
+                          width: '18px',
+                          height: '18px',
+                          border: `1.5px solid ${isActive ? 'hsl(var(--bg-inverse))' : 'hsl(var(--border-subtle))'}`,
+                          background: isActive ? 'hsl(var(--bg-inverse))' : 'transparent',
+                        }}
+                      >
+                        {isActive && <CheckIcon />}
+                      </span>
+                      <span
+                        className="flex-1 font-mono text-xs uppercase tracking-widest"
+                        style={{ color: 'hsl(var(--text-primary))' }}
+                      >
+                        {CATEGORY_LABELS[cat]?.[lang] ?? cat}
+                      </span>
+                      <span
+                        className="font-mono text-[10px] opacity-40"
+                        style={{ color: 'hsl(var(--text-primary))' }}
+                      >
+                        {count}
+                      </span>
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -464,5 +665,53 @@ export function BlogList() {
 
       </div>
     </section>
+  )
+}
+
+function FilterIcon() {
+  return (
+    <svg
+      width="13"
+      height="13"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="7" y1="12" x2="17" y2="12" />
+      <line x1="10" y1="18" x2="14" y2="18" />
+    </svg>
+  )
+}
+
+function CloseIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <line x1="6" y1="6" x2="18" y2="18" />
+      <line x1="18" y1="6" x2="6" y2="18" />
+    </svg>
+  )
+}
+
+function CheckIcon() {
+  return (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      style={{ color: 'hsl(var(--bg-primary))' }}
+      aria-hidden="true"
+    >
+      <path d="M20 6L9 17l-5-5" />
+    </svg>
   )
 }
