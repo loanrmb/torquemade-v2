@@ -106,6 +106,26 @@ export function BlogList() {
   // is what actually drives filtering, synced from this with a debounce.
   const [inputValue, setInputValue] = useState(urlQuery)
 
+  // "À la une" only exists as a separate block on desktop (md:) — on mobile
+  // it's removed entirely and its posts fold into the single list instead.
+  // Drives whether featured posts get excluded from the list below, so
+  // pagination math stays correct on both breakpoints.
+  const [isDesktop, setIsDesktop] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)')
+    const sync = () => setIsDesktop(mq.matches)
+    sync()
+    // Both listeners re-read mq.matches on fire — belt and suspenders across
+    // browsers/emulators where the MediaQueryList 'change' event alone can be
+    // unreliable (e.g. some devtools viewport overrides).
+    mq.addEventListener('change', sync)
+    window.addEventListener('resize', sync)
+    return () => {
+      mq.removeEventListener('change', sync)
+      window.removeEventListener('resize', sync)
+    }
+  }, [])
+
   // Reconcile the input with the URL when it changes from outside typing:
   // back/forward navigation, a direct link with ?q=, or our own debounced
   // commit landing.
@@ -128,10 +148,10 @@ export function BlogList() {
     return () => clearTimeout(timer)
   }, [inputValue, urlQuery, pathname, router])
 
-  // Scroll the filter/sort bar to its sticky resting spot (top-20 = 80px)
+  // Scroll the filter/sort bar to its sticky resting spot (top-24 = 96px)
   // rather than the list top, which would slide the first articles behind
   // the sticky bar. Fixed offset → consistent across viewport heights.
-  const STICKY_OFFSET = 80
+  const STICKY_OFFSET = 96
   function scrollToFilterBar() {
     const bar = filterBarRef.current
     if (!bar) return
@@ -197,15 +217,17 @@ export function BlogList() {
   ]
 
   const featuredPosts = posts.filter((p) => p.featured)
-  const showFeatured = activeKey === 'all' && !isSearching
+  // "À la une" only renders on desktop — on mobile it's removed entirely,
+  // so its posts must fold into the list instead of vanishing.
+  const showFeatured = isDesktop && activeKey === 'all' && !isSearching
 
   const nq = normalize(urlQuery)
   const filtered = posts
     .filter((p) => {
       if (activeKey === 'all') {
-        // Include featured posts only when searching, otherwise they're shown
-        // in the FeaturedPosts section above and would be duplicated below.
-        return isSearching || !p.featured
+        // Exclude featured posts only when they're actually shown above
+        // (desktop, "all", no search) — otherwise they'd be duplicated.
+        return !showFeatured || !p.featured
       }
       return p.category === activeKey
     })
@@ -226,67 +248,35 @@ export function BlogList() {
     <section className="px-4 pb-24 md:px-8 lg:px-12 xl:px-16">
       <div className="mx-auto max-w-7xl flex flex-col">
 
-        {/* ── FILTRES + RECHERCHE — mobile : filtres puis recherche en dessous ; desktop : même ligne (ordre d'origine).
-            Un seul conteneur sticky pour les deux, sinon deux sticky indépendants au même offset se superposent. ── */}
+        {/* ── FILTRES + RECHERCHE — mobile : pills plein-bleed (leur propre ligne), tri en dessous,
+            recherche flottante séparée ; desktop : tout sur une ligne (comportement d'origine).
+            Un seul conteneur sticky, sinon deux sticky indépendants au même offset se superposent. ── */}
         <div
           ref={filterBarRef}
-          className="order-1 md:order-2 sticky top-20 z-40 mb-16 flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center"
+          className="order-1 md:order-2 sticky top-24 z-40 mb-16 flex flex-col items-start gap-3 md:flex-row md:flex-wrap md:items-center"
         >
-          {/* ── FILTRES — pill liquid glass ── */}
-          <div className="flex items-center gap-3 md:flex-1 md:min-w-0">
-            <div className="flex-1 min-w-0 overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0 md:flex md:justify-center scrollbar-hide">
-              <div
-                className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 flex-shrink-0"
-                style={{
-                  background: 'hsl(var(--bg-secondary))',
-                  border: '1px solid hsl(var(--border-subtle))',
-                  boxShadow: '0 2px 16px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.5) inset',
-                }}
-              >
-                {categories.map((cat) => {
-                  const key = cat === ALL ? 'all' : cat
-                  const isActive = activeKey === key
-                  const count =
-                    cat === ALL
-                      ? posts.length
-                      : posts.filter((p) => p.category === cat).length
-                  return (
-                    <button
-                      key={key}
-                      onClick={() => handleFilter(key)}
-                      className={`flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 whitespace-nowrap ${
-                        isActive ? '' : 'hover:bg-[hsl(var(--bg-tertiary))]'
-                      }`}
-                      style={{
-                        background: isActive ? 'hsl(var(--bg-inverse))' : undefined,
-                        color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',
-                      }}
-                    >
-                      {CATEGORY_LABELS[cat]?.[lang] ?? cat}
-                      <span style={{ opacity: 0.5 }}>{count}</span>
-                    </button>
-                  )
-                })}
-              </div>
-            </div>
-
-            {/* ── TRI — bascule récent / ancien, même style liquid glass ── */}
+          {/* ── FILTRES — pills, scroll horizontal plein-bleed, chaque pill atteignable ── */}
+          <div className="w-full min-w-0 overflow-x-auto -mx-4 px-4 snap-x snap-mandatory scrollbar-hide md:w-auto md:flex-1 md:mx-0 md:px-0 md:flex md:justify-center md:snap-none">
             <div
-              className="inline-flex items-center gap-1 rounded-full px-1.5 py-1 shrink-0"
+              className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 flex-shrink-0"
               style={{
                 background: 'hsl(var(--bg-secondary))',
                 border: '1px solid hsl(var(--border-subtle))',
                 boxShadow: '0 2px 16px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.5) inset',
               }}
             >
-              {(['newest', 'oldest'] as const).map((order) => {
-                const isActive = sortOrder === order
+              {categories.map((cat) => {
+                const key = cat === ALL ? 'all' : cat
+                const isActive = activeKey === key
+                const count =
+                  cat === ALL
+                    ? posts.length
+                    : posts.filter((p) => p.category === cat).length
                 return (
                   <button
-                    key={order}
-                    onClick={() => handleSort(order)}
-                    aria-pressed={isActive}
-                    className={`rounded-full px-3 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 whitespace-nowrap ${
+                    key={key}
+                    onClick={() => handleFilter(key)}
+                    className={`snap-start flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 whitespace-nowrap ${
                       isActive ? '' : 'hover:bg-[hsl(var(--bg-tertiary))]'
                     }`}
                     style={{
@@ -294,16 +284,47 @@ export function BlogList() {
                       color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',
                     }}
                   >
-                    {t[order]}
+                    {CATEGORY_LABELS[cat]?.[lang] ?? cat}
+                    <span style={{ opacity: 0.5 }}>{count}</span>
                   </button>
                 )
               })}
             </div>
           </div>
 
-          {/* ── RECHERCHE — toujours visible, aucun état caché ── */}
+          {/* ── TRI — bascule récent / ancien, même style liquid glass ── */}
           <div
-            className="flex items-center gap-1.5 self-start rounded-full pl-3 pr-1.5 py-1.5 shrink-0"
+            className="inline-flex items-center gap-1 rounded-full px-1.5 py-1 shrink-0"
+            style={{
+              background: 'hsl(var(--bg-secondary))',
+              border: '1px solid hsl(var(--border-subtle))',
+              boxShadow: '0 2px 16px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.5) inset',
+            }}
+          >
+            {(['newest', 'oldest'] as const).map((order) => {
+              const isActive = sortOrder === order
+              return (
+                <button
+                  key={order}
+                  onClick={() => handleSort(order)}
+                  aria-pressed={isActive}
+                  className={`rounded-full px-3 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 whitespace-nowrap ${
+                    isActive ? '' : 'hover:bg-[hsl(var(--bg-tertiary))]'
+                  }`}
+                  style={{
+                    background: isActive ? 'hsl(var(--bg-inverse))' : undefined,
+                    color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',
+                  }}
+                >
+                  {t[order]}
+                </button>
+              )
+            })}
+          </div>
+
+          {/* ── RECHERCHE — pill flottante, toujours visible, séparée de la barre de filtres ── */}
+          <div
+            className="flex items-center gap-1.5 rounded-full pl-3 pr-1.5 py-1.5 shrink-0"
             style={{
               background: 'hsl(var(--bg-secondary))',
               border: '1px solid hsl(var(--border-subtle))',
@@ -358,13 +379,11 @@ export function BlogList() {
           </div>
         </div>
 
-        {/* ── À LA UNE — visible uniquement sur "Tous", hors recherche ── */}
-        <div className="order-2 md:order-1">
-          {showFeatured && (
-            <div className="rounded-3xl border border-[hsl(var(--border-subtle))] bg-[hsl(var(--bg-secondary)/45%)] p-5 backdrop-blur-xl md:rounded-none md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none">
-              <FeaturedPosts posts={featuredPosts} />
-            </div>
-          )}
+        {/* ── À LA UNE — desktop uniquement (showFeatured est déjà false sur mobile, donc
+            FeaturedPosts n'est jamais monté là : pas de rendu, pas d'espace réservé).
+            Ses articles rejoignent la liste unique en dessous sur mobile à la place. ── */}
+        <div className="md:order-1">
+          {showFeatured && <FeaturedPosts posts={featuredPosts} />}
         </div>
 
         {/* ── LISTE D'ARTICLES ── */}
@@ -393,9 +412,7 @@ export function BlogList() {
               </button>
             </div>
           )}
-          {paginated.map((post, i) => {
-            const globalIndex = (currentPage - 1) * PAGE_SIZE + i
-            return (
+          {paginated.map((post, i) => (
             <Link
               key={post.slug}
               href={
@@ -403,22 +420,11 @@ export function BlogList() {
                   ? `/blog/${post.slug}?from=${encodeURIComponent(activeKey)}`
                   : `/blog/${post.slug}`
               }
-              className="group flex gap-12 md:gap-16 py-8 sm:py-10 px-4 -mx-4 transition-colors duration-150 rounded-sm fade-up stagger-up"
+              className="group block py-8 sm:py-10 px-4 -mx-4 transition-colors duration-150 rounded-sm fade-up stagger-up"
               style={{ borderBottom: '1px solid hsl(var(--border-subtle))', '--stagger-i': i } as CSSProperties}
             >
-              {/* Gauche : numéro + date + catégorie */}
-              <div className="w-24 sm:w-32 flex-shrink-0">
-                <div className="flex items-center gap-2 mb-2">
-                  <span
-                    className="font-mono text-sm md:text-base font-bold opacity-30"
-                    style={{ color: 'hsl(var(--text-primary))' }}
-                  >
-                    {String(globalIndex + 1).padStart(2, '0')}
-                  </span>
-                  <span className="font-mono text-xs uppercase tracking-widest opacity-40">
-                    {post.date[lang]}
-                  </span>
-                </div>
+              {/* Catégorie + date — au-dessus du titre, plus de colonne dédiée */}
+              <div className="flex items-center gap-3 mb-3">
                 <span
                   className="inline-block font-mono text-[9px] uppercase tracking-widest px-2 py-0.5 border"
                   style={{
@@ -428,29 +434,29 @@ export function BlogList() {
                 >
                   {post.category.split(' & ')[0]}
                 </span>
-              </div>
-
-              {/* Droite : titre + description + lien */}
-              <div className="flex-1 min-w-0">
-                <h2
-                  className="text-xl md:text-2xl font-bold leading-snug mb-3 transition-opacity duration-150 group-hover:opacity-60"
-                  style={{ color: 'hsl(var(--text-primary))' }}
-                >
-                  {post.title[lang]}
-                </h2>
-                <p className="text-base leading-relaxed mb-5 max-w-xl opacity-50">
-                  {post.description[lang]}
-                </p>
-                <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest opacity-40 transition-all duration-150 group-hover:opacity-100">
-                  {t.read}
-                  <span className="transition-transform duration-200 group-hover:translate-x-1">
-                    →
-                  </span>
+                <span className="font-mono text-xs uppercase tracking-widest opacity-40">
+                  {post.date[lang]}
                 </span>
               </div>
+
+              {/* Titre + description pleine largeur */}
+              <h2
+                className="text-xl md:text-2xl font-bold leading-snug mb-3 transition-opacity duration-150 group-hover:opacity-60"
+                style={{ color: 'hsl(var(--text-primary))' }}
+              >
+                {post.title[lang]}
+              </h2>
+              <p className="text-base leading-relaxed mb-5 opacity-50">
+                {post.description[lang]}
+              </p>
+              <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest opacity-40 transition-all duration-150 group-hover:opacity-100">
+                {t.read}
+                <span className="transition-transform duration-200 group-hover:translate-x-1">
+                  →
+                </span>
+              </span>
             </Link>
-            )
-          })}
+          ))}
           </ScrollRevealGroup>
         </div>
 
