@@ -65,6 +65,7 @@ const CATEGORY_ORDER = [
 ]
 
 const SEARCH_DEBOUNCE_MS = 300
+const PAGE_SIZE = 15
 
 // Case- and accent-insensitive comparison key: strip diacritics via NFD so
 // "esthéticienne" matches "estheticienne".
@@ -95,6 +96,8 @@ export function BlogList() {
   // 'oldest' = ascending by publishedAt; default (no param) = newest first.
   const sortOrder = searchParams.get('sort') === 'oldest' ? 'oldest' : 'newest'
   const isSearching = urlQuery.trim().length > 0
+  const requestedPage = Number(searchParams.get('page'))
+  const requestedPageValid = Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1
 
   const filterBarRef = useRef<HTMLDivElement>(null)
   const searchInputRef = useRef<HTMLInputElement>(null)
@@ -119,6 +122,7 @@ export function BlogList() {
       } else {
         params.delete('q')
       }
+      params.delete('page')
       router.replace(`${pathname}?${params.toString()}`, { scroll: false })
     }, SEARCH_DEBOUNCE_MS)
     return () => clearTimeout(timer)
@@ -142,6 +146,7 @@ export function BlogList() {
     } else {
       params.set('cat', key)
     }
+    params.delete('page')
     router.replace(`${pathname}?${params.toString()}`, { scroll: false })
     scrollToFilterBar()
   }
@@ -154,6 +159,7 @@ export function BlogList() {
     } else {
       params.set('sort', 'oldest')
     }
+    params.delete('page')
     router.replace(`${pathname}?${params.toString()}`, { scroll: false })
     scrollToFilterBar()
   }
@@ -162,6 +168,7 @@ export function BlogList() {
     setInputValue('')
     const params = new URLSearchParams(searchParams.toString())
     params.delete('q')
+    params.delete('page')
     router.replace(`${pathname}?${params.toString()}`, { scroll: false })
     searchInputRef.current?.focus()
   }
@@ -169,6 +176,17 @@ export function BlogList() {
   function handleReset() {
     setInputValue('')
     router.replace(pathname, { scroll: false })
+  }
+
+  function handlePageChange(page: number) {
+    const params = new URLSearchParams(searchParams.toString())
+    if (page <= 1) {
+      params.delete('page')
+    } else {
+      params.set('page', String(page))
+    }
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false })
+    scrollToFilterBar()
   }
 
   const allCategories = Array.from(new Set(posts.map((p) => p.category)))
@@ -200,36 +218,75 @@ export function BlogList() {
       return sortOrder === 'oldest' ? diff : -diff
     })
 
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE))
+  const currentPage = Math.min(requestedPageValid, totalPages)
+  const paginated = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE)
+
   return (
     <section className="px-4 pb-24 md:px-8 lg:px-12 xl:px-16">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-7xl flex flex-col">
 
-        {/* ── À LA UNE — visible uniquement sur "Tous", hors recherche ── */}
-        {showFeatured && <FeaturedPosts posts={featuredPosts} />}
+        {/* ── FILTRES + RECHERCHE — mobile : filtres puis recherche en dessous ; desktop : même ligne (ordre d'origine).
+            Un seul conteneur sticky pour les deux, sinon deux sticky indépendants au même offset se superposent. ── */}
+        <div
+          ref={filterBarRef}
+          className="order-1 md:order-2 sticky top-20 z-40 mb-16 flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center"
+        >
+          {/* ── FILTRES — pill liquid glass ── */}
+          <div className="flex items-center gap-3 md:flex-1 md:min-w-0">
+            <div className="flex-1 min-w-0 overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0 md:flex md:justify-center scrollbar-hide">
+              <div
+                className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 flex-shrink-0"
+                style={{
+                  background: 'hsl(var(--bg-secondary))',
+                  border: '1px solid hsl(var(--border-subtle))',
+                  boxShadow: '0 2px 16px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.5) inset',
+                }}
+              >
+                {categories.map((cat) => {
+                  const key = cat === ALL ? 'all' : cat
+                  const isActive = activeKey === key
+                  const count =
+                    cat === ALL
+                      ? posts.length
+                      : posts.filter((p) => p.category === cat).length
+                  return (
+                    <button
+                      key={key}
+                      onClick={() => handleFilter(key)}
+                      className={`flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 whitespace-nowrap ${
+                        isActive ? '' : 'hover:bg-[hsl(var(--bg-tertiary))]'
+                      }`}
+                      style={{
+                        background: isActive ? 'hsl(var(--bg-inverse))' : undefined,
+                        color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',
+                      }}
+                    >
+                      {CATEGORY_LABELS[cat]?.[lang] ?? cat}
+                      <span style={{ opacity: 0.5 }}>{count}</span>
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
 
-        {/* ── FILTRES — pill sticky liquid glass + recherche sur la même ligne ── */}
-        <div ref={filterBarRef} className="sticky top-20 z-40 mb-16 flex flex-wrap items-center gap-3">
-          <div className="flex-1 min-w-0 overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0 md:flex md:justify-center scrollbar-hide">
+            {/* ── TRI — bascule récent / ancien, même style liquid glass ── */}
             <div
-              className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 flex-shrink-0"
+              className="inline-flex items-center gap-1 rounded-full px-1.5 py-1 shrink-0"
               style={{
                 background: 'hsl(var(--bg-secondary))',
                 border: '1px solid hsl(var(--border-subtle))',
                 boxShadow: '0 2px 16px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.5) inset',
               }}
             >
-              {categories.map((cat) => {
-                const key = cat === ALL ? 'all' : cat
-                const isActive = activeKey === key
-                const count =
-                  cat === ALL
-                    ? posts.length
-                    : posts.filter((p) => p.category === cat).length
+              {(['newest', 'oldest'] as const).map((order) => {
+                const isActive = sortOrder === order
                 return (
                   <button
-                    key={key}
-                    onClick={() => handleFilter(key)}
-                    className={`flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 whitespace-nowrap ${
+                    key={order}
+                    onClick={() => handleSort(order)}
+                    aria-pressed={isActive}
+                    className={`rounded-full px-3 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 whitespace-nowrap ${
                       isActive ? '' : 'hover:bg-[hsl(var(--bg-tertiary))]'
                     }`}
                     style={{
@@ -237,47 +294,16 @@ export function BlogList() {
                       color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',
                     }}
                   >
-                    {CATEGORY_LABELS[cat]?.[lang] ?? cat}
-                    <span style={{ opacity: 0.5 }}>{count}</span>
+                    {t[order]}
                   </button>
                 )
               })}
             </div>
           </div>
 
-          {/* ── TRI — bascule récent / ancien, même style liquid glass ── */}
-          <div
-            className="inline-flex items-center gap-1 rounded-full px-1.5 py-1 shrink-0"
-            style={{
-              background: 'hsl(var(--bg-secondary))',
-              border: '1px solid hsl(var(--border-subtle))',
-              boxShadow: '0 2px 16px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.5) inset',
-            }}
-          >
-            {(['newest', 'oldest'] as const).map((order) => {
-              const isActive = sortOrder === order
-              return (
-                <button
-                  key={order}
-                  onClick={() => handleSort(order)}
-                  aria-pressed={isActive}
-                  className={`rounded-full px-3 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 whitespace-nowrap ${
-                    isActive ? '' : 'hover:bg-[hsl(var(--bg-tertiary))]'
-                  }`}
-                  style={{
-                    background: isActive ? 'hsl(var(--bg-inverse))' : undefined,
-                    color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',
-                  }}
-                >
-                  {t[order]}
-                </button>
-              )
-            })}
-          </div>
-
           {/* ── RECHERCHE — toujours visible, aucun état caché ── */}
           <div
-            className="flex items-center gap-1.5 rounded-full pl-3 pr-1.5 py-1.5 shrink-0"
+            className="flex items-center gap-1.5 self-start rounded-full pl-3 pr-1.5 py-1.5 shrink-0"
             style={{
               background: 'hsl(var(--bg-secondary))',
               border: '1px solid hsl(var(--border-subtle))',
@@ -332,14 +358,24 @@ export function BlogList() {
           </div>
         </div>
 
+        {/* ── À LA UNE — visible uniquement sur "Tous", hors recherche ── */}
+        <div className="order-2 md:order-1">
+          {showFeatured && (
+            <div className="rounded-3xl border border-[hsl(var(--border-subtle))] bg-[hsl(var(--bg-secondary)/45%)] p-5 backdrop-blur-xl md:rounded-none md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none">
+              <FeaturedPosts posts={featuredPosts} />
+            </div>
+          )}
+        </div>
+
         {/* ── LISTE D'ARTICLES ── */}
         {/* min-h prevents the empty state from shrinking the page enough that
             position:sticky's pinning overlaps this section once scrolled to
             the bottom (only reachable when filtering leaves few/no results). */}
+        <div className="order-3">
         <div className="min-h-[60vh]" style={{ borderTop: '1px solid hsl(var(--border-subtle))' }}>
-          {/* Keyed on category + sort + query so the reveal observer re-scans
-              freshly-mounted cards whenever the filtered set changes. */}
-          <ScrollRevealGroup resetKey={`${activeKey}|${sortOrder}|${urlQuery}`}>
+          {/* Keyed on category + sort + query + page so the reveal observer
+              re-scans freshly-mounted cards whenever the visible set changes. */}
+          <ScrollRevealGroup resetKey={`${activeKey}|${sortOrder}|${urlQuery}|${currentPage}`}>
           {filtered.length === 0 && (
             <div className="text-center py-16">
               <p
@@ -357,7 +393,9 @@ export function BlogList() {
               </button>
             </div>
           )}
-          {filtered.map((post, i) => (
+          {paginated.map((post, i) => {
+            const globalIndex = (currentPage - 1) * PAGE_SIZE + i
+            return (
             <Link
               key={post.slug}
               href={
@@ -370,15 +408,17 @@ export function BlogList() {
             >
               {/* Gauche : numéro + date + catégorie */}
               <div className="w-24 sm:w-32 flex-shrink-0">
-                <p
-                  className="font-mono text-4xl md:text-5xl font-bold mb-2 opacity-15"
-                  style={{ color: 'hsl(var(--text-primary))' }}
-                >
-                  {String(i + 1).padStart(2, '0')}
-                </p>
-                <p className="font-mono text-xs uppercase tracking-widest opacity-40 mb-2">
-                  {post.date[lang]}
-                </p>
+                <div className="flex items-center gap-2 mb-2">
+                  <span
+                    className="font-mono text-sm md:text-base font-bold opacity-30"
+                    style={{ color: 'hsl(var(--text-primary))' }}
+                  >
+                    {String(globalIndex + 1).padStart(2, '0')}
+                  </span>
+                  <span className="font-mono text-xs uppercase tracking-widest opacity-40">
+                    {post.date[lang]}
+                  </span>
+                </div>
                 <span
                   className="inline-block font-mono text-[9px] uppercase tracking-widest px-2 py-0.5 border"
                   style={{
@@ -409,8 +449,55 @@ export function BlogList() {
                 </span>
               </div>
             </Link>
-          ))}
+            )
+          })}
           </ScrollRevealGroup>
+        </div>
+
+        {totalPages > 1 && (
+          <nav
+            aria-label={tBlog.paginationAriaLabel}
+            className="mt-12 flex flex-wrap items-center justify-center gap-2"
+          >
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 disabled:opacity-30 disabled:cursor-not-allowed hover:enabled:bg-[hsl(var(--bg-tertiary))]"
+              style={{ border: '1px solid hsl(var(--border-subtle))', color: 'hsl(var(--text-secondary))' }}
+            >
+              {tBlog.prevPage}
+            </button>
+
+            {Array.from({ length: totalPages }, (_, idx) => idx + 1).map((page) => {
+              const isActive = page === currentPage
+              return (
+                <button
+                  key={page}
+                  onClick={() => handlePageChange(page)}
+                  aria-current={isActive ? 'page' : undefined}
+                  aria-label={`${tBlog.pageAriaPrefix} ${page}`}
+                  className="min-w-9 rounded-full px-3 py-1.5 font-mono text-xs transition-colors duration-150"
+                  style={{
+                    background: isActive ? 'hsl(var(--bg-inverse))' : undefined,
+                    color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',
+                    border: isActive ? 'none' : '1px solid hsl(var(--border-subtle))',
+                  }}
+                >
+                  {page}
+                </button>
+              )
+            })}
+
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className="rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 disabled:opacity-30 disabled:cursor-not-allowed hover:enabled:bg-[hsl(var(--bg-tertiary))]"
+              style={{ border: '1px solid hsl(var(--border-subtle))', color: 'hsl(var(--text-secondary))' }}
+            >
+              {tBlog.nextPage}
+            </button>
+          </nav>
+        )}
         </div>
 
       </div>
