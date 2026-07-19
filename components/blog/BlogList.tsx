@@ -255,11 +255,10 @@ export function BlogList() {
           ref={filterBarRef}
           className="order-1 md:order-2 sticky top-24 z-40 mb-16 flex flex-col items-start gap-3 md:flex-row md:flex-wrap md:items-center"
         >
-          {/* ── FILTRES — labels plats, fixes côte à côte, retombent à la ligne si besoin
-              (plus d'effet coulissant). Pas de fond conteneur : seul le filtre actif
-              reçoit un fond plein (pill). ── */}
-          <div className="w-full min-w-0 md:w-auto md:flex-1 md:flex md:justify-center">
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+          {/* ── FILTRES — MOBILE (< md) : labels plats, scroll horizontal, pas de fond
+              conteneur, seul le filtre actif reçoit un fond plein. Masqué à partir de md. ── */}
+          <div className="w-full min-w-0 overflow-x-auto -mx-4 px-4 snap-x snap-mandatory scrollbar-hide md:hidden">
+            <div className="inline-flex items-center gap-6 flex-shrink-0">
               {categories.map((cat) => {
                 const key = cat === ALL ? 'all' : cat
                 const isActive = activeKey === key
@@ -271,7 +270,7 @@ export function BlogList() {
                   <button
                     key={key}
                     onClick={() => handleFilter(key)}
-                    className={`flex items-center gap-1.5 rounded-full px-4 py-2 font-mono text-xs uppercase tracking-widest transition-opacity duration-150 whitespace-nowrap ${
+                    className={`snap-start flex items-center gap-1.5 rounded-full px-4 py-2 font-mono text-xs uppercase tracking-widest transition-opacity duration-150 whitespace-nowrap ${
                       isActive ? '' : 'hover:opacity-70'
                     }`}
                     style={{
@@ -287,8 +286,8 @@ export function BlogList() {
             </div>
           </div>
 
-          {/* ── TRI — même traitement plat : actif = pill pleine, inactif = texte simple ── */}
-          <div className="inline-flex items-center gap-4 shrink-0">
+          {/* ── TRI — MOBILE (< md) : même traitement plat. Masqué à partir de md. ── */}
+          <div className="inline-flex items-center gap-4 shrink-0 md:hidden">
             {(['newest', 'oldest'] as const).map((order) => {
               const isActive = sortOrder === order
               return (
@@ -301,6 +300,74 @@ export function BlogList() {
                   }`}
                   style={{
                     background: isActive ? 'hsl(var(--bg-inverse))' : 'transparent',
+                    color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',
+                  }}
+                >
+                  {t[order]}
+                </button>
+              )
+            })}
+          </div>
+
+          {/* ── FILTRES — DESKTOP (md+) : conteneur pill flottant d'origine, une seule
+              ligne, jamais de retour à la ligne. Masqué en dessous de md. ── */}
+          <div className="hidden md:flex md:flex-1 md:min-w-0 md:justify-center">
+            <div
+              className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 flex-shrink-0"
+              style={{
+                background: 'hsl(var(--bg-secondary))',
+                border: '1px solid hsl(var(--border-subtle))',
+                boxShadow: '0 2px 16px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.5) inset',
+              }}
+            >
+              {categories.map((cat) => {
+                const key = cat === ALL ? 'all' : cat
+                const isActive = activeKey === key
+                const count =
+                  cat === ALL
+                    ? posts.length
+                    : posts.filter((p) => p.category === cat).length
+                return (
+                  <button
+                    key={key}
+                    onClick={() => handleFilter(key)}
+                    className={`flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 whitespace-nowrap ${
+                      isActive ? '' : 'hover:bg-[hsl(var(--bg-tertiary))]'
+                    }`}
+                    style={{
+                      background: isActive ? 'hsl(var(--bg-inverse))' : undefined,
+                      color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',
+                    }}
+                  >
+                    {CATEGORY_LABELS[cat]?.[lang] ?? cat}
+                    <span style={{ opacity: 0.5 }}>{count}</span>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* ── TRI — DESKTOP (md+) : conteneur pill flottant d'origine. Masqué en dessous de md. ── */}
+          <div
+            className="hidden md:inline-flex items-center gap-1 rounded-full px-1.5 py-1 shrink-0"
+            style={{
+              background: 'hsl(var(--bg-secondary))',
+              border: '1px solid hsl(var(--border-subtle))',
+              boxShadow: '0 2px 16px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.5) inset',
+            }}
+          >
+            {(['newest', 'oldest'] as const).map((order) => {
+              const isActive = sortOrder === order
+              return (
+                <button
+                  key={order}
+                  onClick={() => handleSort(order)}
+                  aria-pressed={isActive}
+                  className={`rounded-full px-3 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 whitespace-nowrap ${
+                    isActive ? '' : 'hover:bg-[hsl(var(--bg-tertiary))]'
+                  }`}
+                  style={{
+                    background: isActive ? 'hsl(var(--bg-inverse))' : undefined,
                     color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',
                   }}
                 >
