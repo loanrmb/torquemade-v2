@@ -92,7 +92,6 @@ export function Footer() {
             >
               {t.legal}
             </Link>
-            <p>Bordeaux, France</p>
           </div>
         </div>
       </div>
