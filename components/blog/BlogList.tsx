@@ -255,16 +255,10 @@ export function BlogList() {
           ref={filterBarRef}
           className="order-1 md:order-2 sticky top-24 z-40 mb-16 flex flex-col items-start gap-3 md:flex-row md:flex-wrap md:items-center"
         >
-          {/* ── FILTRES — pills, scroll horizontal plein-bleed, chaque pill atteignable ── */}
+          {/* ── FILTRES — labels plats, scroll horizontal plein-bleed, chaque label atteignable.
+              Pas de fond conteneur : seul le filtre actif reçoit un fond plein (pill). ── */}
           <div className="w-full min-w-0 overflow-x-auto -mx-4 px-4 snap-x snap-mandatory scrollbar-hide md:w-auto md:flex-1 md:mx-0 md:px-0 md:flex md:justify-center md:snap-none">
-            <div
-              className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 flex-shrink-0"
-              style={{
-                background: 'hsl(var(--bg-secondary))',
-                border: '1px solid hsl(var(--border-subtle))',
-                boxShadow: '0 2px 16px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.5) inset',
-              }}
-            >
+            <div className="inline-flex items-center gap-6 flex-shrink-0">
               {categories.map((cat) => {
                 const key = cat === ALL ? 'all' : cat
                 const isActive = activeKey === key
@@ -276,11 +270,11 @@ export function BlogList() {
                   <button
                     key={key}
                     onClick={() => handleFilter(key)}
-                    className={`snap-start flex items-center gap-1.5 rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 whitespace-nowrap ${
-                      isActive ? '' : 'hover:bg-[hsl(var(--bg-tertiary))]'
+                    className={`snap-start flex items-center gap-1.5 rounded-full px-4 py-2 font-mono text-xs uppercase tracking-widest transition-opacity duration-150 whitespace-nowrap ${
+                      isActive ? '' : 'hover:opacity-70'
                     }`}
                     style={{
-                      background: isActive ? 'hsl(var(--bg-inverse))' : undefined,
+                      background: isActive ? 'hsl(var(--bg-inverse))' : 'transparent',
                       color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',
                     }}
                   >
@@ -292,15 +286,8 @@ export function BlogList() {
             </div>
           </div>
 
-          {/* ── TRI — bascule récent / ancien, même style liquid glass ── */}
-          <div
-            className="inline-flex items-center gap-1 rounded-full px-1.5 py-1 shrink-0"
-            style={{
-              background: 'hsl(var(--bg-secondary))',
-              border: '1px solid hsl(var(--border-subtle))',
-              boxShadow: '0 2px 16px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.5) inset',
-            }}
-          >
+          {/* ── TRI — même traitement plat : actif = pill pleine, inactif = texte simple ── */}
+          <div className="inline-flex items-center gap-4 shrink-0">
             {(['newest', 'oldest'] as const).map((order) => {
               const isActive = sortOrder === order
               return (
@@ -308,11 +295,11 @@ export function BlogList() {
                   key={order}
                   onClick={() => handleSort(order)}
                   aria-pressed={isActive}
-                  className={`rounded-full px-3 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-150 whitespace-nowrap ${
-                    isActive ? '' : 'hover:bg-[hsl(var(--bg-tertiary))]'
+                  className={`rounded-full px-3 py-2 font-mono text-xs uppercase tracking-widest transition-opacity duration-150 whitespace-nowrap ${
+                    isActive ? '' : 'hover:opacity-70'
                   }`}
                   style={{
-                    background: isActive ? 'hsl(var(--bg-inverse))' : undefined,
+                    background: isActive ? 'hsl(var(--bg-inverse))' : 'transparent',
                     color: isActive ? 'hsl(var(--bg-primary))' : 'hsl(var(--text-secondary))',
                   }}
                 >
