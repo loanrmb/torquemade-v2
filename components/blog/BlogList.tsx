@@ -255,10 +255,11 @@ export function BlogList() {
           ref={filterBarRef}
           className="order-1 md:order-2 sticky top-24 z-40 mb-16 flex flex-col items-start gap-3 md:flex-row md:flex-wrap md:items-center"
         >
-          {/* ── FILTRES — labels plats, scroll horizontal plein-bleed, chaque label atteignable.
-              Pas de fond conteneur : seul le filtre actif reçoit un fond plein (pill). ── */}
-          <div className="w-full min-w-0 overflow-x-auto -mx-4 px-4 snap-x snap-mandatory scrollbar-hide md:w-auto md:flex-1 md:mx-0 md:px-0 md:flex md:justify-center md:snap-none">
-            <div className="inline-flex items-center gap-6 flex-shrink-0">
+          {/* ── FILTRES — labels plats, fixes côte à côte, retombent à la ligne si besoin
+              (plus d'effet coulissant). Pas de fond conteneur : seul le filtre actif
+              reçoit un fond plein (pill). ── */}
+          <div className="w-full min-w-0 md:w-auto md:flex-1 md:flex md:justify-center">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
               {categories.map((cat) => {
                 const key = cat === ALL ? 'all' : cat
                 const isActive = activeKey === key
@@ -270,7 +271,7 @@ export function BlogList() {
                   <button
                     key={key}
                     onClick={() => handleFilter(key)}
-                    className={`snap-start flex items-center gap-1.5 rounded-full px-4 py-2 font-mono text-xs uppercase tracking-widest transition-opacity duration-150 whitespace-nowrap ${
+                    className={`flex items-center gap-1.5 rounded-full px-4 py-2 font-mono text-xs uppercase tracking-widest transition-opacity duration-150 whitespace-nowrap ${
                       isActive ? '' : 'hover:opacity-70'
                     }`}
                     style={{
