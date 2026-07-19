@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { Fragment, useEffect, useRef, useState, type CSSProperties } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useLang } from '@/components/app-provider'
@@ -205,7 +205,12 @@ export function BlogList() {
       <div className="mx-auto max-w-7xl">
 
         {/* ── À LA UNE — visible uniquement sur "Tous", hors recherche ── */}
-        {showFeatured && <FeaturedPosts posts={featuredPosts} />}
+        {/* Desktop only: hidden on mobile per mobile-layout scope */}
+        {showFeatured && (
+          <div className="hidden md:block">
+            <FeaturedPosts posts={featuredPosts} />
+          </div>
+        )}
 
         {/* ── FILTRES — pill sticky liquid glass + recherche sur la même ligne ── */}
         <div ref={filterBarRef} className="sticky top-20 z-40 mb-16 flex flex-wrap items-center gap-3">
@@ -357,59 +362,103 @@ export function BlogList() {
               </button>
             </div>
           )}
-          {filtered.map((post, i) => (
-            <Link
-              key={post.slug}
-              href={
-                activeKey !== 'all'
-                  ? `/blog/${post.slug}?from=${encodeURIComponent(activeKey)}`
-                  : `/blog/${post.slug}`
-              }
-              className="group flex gap-12 md:gap-16 py-8 sm:py-10 px-4 -mx-4 transition-colors duration-150 rounded-sm fade-up stagger-up"
-              style={{ borderBottom: '1px solid hsl(var(--border-subtle))', '--stagger-i': i } as CSSProperties}
-            >
-              {/* Gauche : numéro + date + catégorie */}
-              <div className="w-24 sm:w-32 flex-shrink-0">
-                <p
-                  className="font-mono text-4xl md:text-5xl font-bold mb-2 opacity-15"
-                  style={{ color: 'hsl(var(--text-primary))' }}
+          {filtered.map((post, i) => {
+            const href =
+              activeKey !== 'all'
+                ? `/blog/${post.slug}?from=${encodeURIComponent(activeKey)}`
+                : `/blog/${post.slug}`
+            return (
+              <Fragment key={post.slug}>
+                {/* ── Mobile card — category badge top, date moved below title ── */}
+                <Link
+                  key={`${post.slug}-mobile`}
+                  href={href}
+                  className="group flex md:hidden flex-col py-8 sm:py-10 px-4 -mx-4 transition-colors duration-150 rounded-sm fade-up stagger-up"
+                  style={{ borderBottom: '1px solid hsl(var(--border-subtle))', '--stagger-i': i } as CSSProperties}
                 >
-                  {String(i + 1).padStart(2, '0')}
-                </p>
-                <p className="font-mono text-xs uppercase tracking-widest opacity-40 mb-2">
-                  {post.date[lang]}
-                </p>
-                <span
-                  className="inline-block font-mono text-[9px] uppercase tracking-widest px-2 py-0.5 border"
-                  style={{
-                    borderColor: 'hsl(var(--border-subtle))',
-                    color: 'hsl(var(--text-tertiary))',
-                  }}
-                >
-                  {post.category.split(' & ')[0]}
-                </span>
-              </div>
-
-              {/* Droite : titre + description + lien */}
-              <div className="flex-1 min-w-0">
-                <h2
-                  className="text-xl md:text-2xl font-bold leading-snug mb-3 transition-opacity duration-150 group-hover:opacity-60"
-                  style={{ color: 'hsl(var(--text-primary))' }}
-                >
-                  {post.title[lang]}
-                </h2>
-                <p className="text-base leading-relaxed mb-5 max-w-xl opacity-50">
-                  {post.description[lang]}
-                </p>
-                <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest opacity-40 transition-all duration-150 group-hover:opacity-100">
-                  {t.read}
-                  <span className="transition-transform duration-200 group-hover:translate-x-1">
-                    →
+                  <span
+                    className="inline-block self-start font-mono text-[9px] uppercase tracking-widest px-2 py-0.5 border mb-3"
+                    style={{
+                      borderColor: 'hsl(var(--border-subtle))',
+                      color: 'hsl(var(--text-tertiary))',
+                    }}
+                  >
+                    {post.category.split(' & ')[0]}
                   </span>
-                </span>
-              </div>
-            </Link>
-          ))}
+
+                  <div className="w-[90%]">
+                    <h2
+                      className="text-xl font-bold leading-snug mb-2 transition-opacity duration-150 group-hover:opacity-60"
+                      style={{ color: 'hsl(var(--text-primary))' }}
+                    >
+                      {post.title[lang]}
+                    </h2>
+                    <p className="font-mono text-[10px] uppercase tracking-widest opacity-40 mb-3">
+                      {post.date[lang]}
+                    </p>
+                    <p className="text-base leading-relaxed mb-5 opacity-50">
+                      {post.description[lang]}
+                    </p>
+                    <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest opacity-40 transition-all duration-150 group-hover:opacity-100">
+                      {t.read}
+                      <span className="transition-transform duration-200 group-hover:translate-x-1">
+                        →
+                      </span>
+                    </span>
+                  </div>
+                </Link>
+
+                {/* ── Desktop card — unchanged original markup ── */}
+                <Link
+                  key={`${post.slug}-desktop`}
+                  href={href}
+                  className="group hidden md:flex gap-12 md:gap-16 py-8 sm:py-10 px-4 -mx-4 transition-colors duration-150 rounded-sm fade-up stagger-up"
+                  style={{ borderBottom: '1px solid hsl(var(--border-subtle))', '--stagger-i': i } as CSSProperties}
+                >
+                  {/* Gauche : numéro + date + catégorie */}
+                  <div className="w-24 sm:w-32 flex-shrink-0">
+                    <p
+                      className="font-mono text-4xl md:text-5xl font-bold mb-2 opacity-15"
+                      style={{ color: 'hsl(var(--text-primary))' }}
+                    >
+                      {String(i + 1).padStart(2, '0')}
+                    </p>
+                    <p className="font-mono text-xs uppercase tracking-widest opacity-40 mb-2">
+                      {post.date[lang]}
+                    </p>
+                    <span
+                      className="inline-block font-mono text-[9px] uppercase tracking-widest px-2 py-0.5 border"
+                      style={{
+                        borderColor: 'hsl(var(--border-subtle))',
+                        color: 'hsl(var(--text-tertiary))',
+                      }}
+                    >
+                      {post.category.split(' & ')[0]}
+                    </span>
+                  </div>
+
+                  {/* Droite : titre + description + lien */}
+                  <div className="flex-1 min-w-0">
+                    <h2
+                      className="text-xl md:text-2xl font-bold leading-snug mb-3 transition-opacity duration-150 group-hover:opacity-60"
+                      style={{ color: 'hsl(var(--text-primary))' }}
+                    >
+                      {post.title[lang]}
+                    </h2>
+                    <p className="text-base leading-relaxed mb-5 max-w-xl opacity-50">
+                      {post.description[lang]}
+                    </p>
+                    <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest opacity-40 transition-all duration-150 group-hover:opacity-100">
+                      {t.read}
+                      <span className="transition-transform duration-200 group-hover:translate-x-1">
+                        →
+                      </span>
+                    </span>
+                  </div>
+                </Link>
+              </Fragment>
+            )
+          })}
           </ScrollRevealGroup>
         </div>
 
