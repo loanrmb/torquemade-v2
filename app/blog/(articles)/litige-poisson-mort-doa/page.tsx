@@ -10,16 +10,12 @@ const post = posts.find((p) => p.slug === 'litige-poisson-mort-doa')!
 // FAQ sourced word-for-word from the FR strings rendered in _content.tsx.
 const faq = [
   {
-    q: 'Combien de temps ai-je pour déclarer un DOA ?',
-    a: "Ça dépend de votre propre politique de vente, mais un délai court, généralement entre 30 minutes et 2 heures après réception, est standard dans le secteur du vivant. Ce délai doit être écrit noir sur blanc dans vos conditions de vente et rappelé au client à la livraison, sinon il ne peut pas être opposé en cas de litige.",
-  },
-  {
     q: 'Qui paie les frais de retour ?',
     a: "Sur un animal mort à la livraison, il n'y a en général rien à retourner physiquement : la preuve remplace le retour. La question des frais se règle plutôt sur le remplacement ou le remboursement, selon ce qui est écrit dans vos conditions de vente et selon que la cause est identifiée comme un défaut au départ ou un incident de transport.",
   },
   {
     q: 'Un logiciel peut-il générer automatiquement les preuves pour un litige DOA ?',
-    a: "Oui, à condition que la capture de preuve soit intégrée au workflow d'expédition plutôt qu'ajoutée après coup. Un système qui horodate automatiquement la photo, la remise au transporteur et la livraison, puis assemble ces éléments en un document exportable, remplace la reconstitution manuelle sous pression au moment du litige.",
+    a: "Oui, à condition que la capture de preuve soit intégrée au workflow d'expédition plutôt qu'ajoutée après coup. Un système comme TankLogic horodate automatiquement la photo, la remise au transporteur et la livraison à chaque étape de manutention, puis assemble ces éléments en un PDF prêt à transmettre, ce qui remplace la reconstitution manuelle sous pression au moment du litige.",
   },
   {
     q: "Que faire si je n'ai pas pris de photo avant l'envoi ?",
