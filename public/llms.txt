@@ -1,14 +1,14 @@
 # Torquemade
 
-> Torquemade is an independent web and software studio in Bordeaux, France (founder: Loan Rembeau). It builds custom websites and e-commerce storefronts, bespoke CRM systems, and real-time ERP-to-e-commerce inventory synchronization for legacy systems (SAGE 100, Cegid, Odoo). Primary markets are French-speaking Switzerland (Romandie), Belgium/Wallonia, Brussels, and Luxembourg, with a secondary focus on the US/English-speaking market.
+> Torquemade is an independent web and software studio founded by Loan Rembeau, based in Bordeaux, France, and working remotely with clients internationally. It builds custom websites and e-commerce storefronts, bespoke CRM systems, and real-time ERP-to-e-commerce inventory synchronization for legacy systems (SAGE 100, Cegid, Odoo). Primary markets are French-speaking Switzerland (Romandie), Belgium/Wallonia, Brussels, and Luxembourg, with a secondary focus on the US/English-speaking market.
 
 Site is bilingual: every URL below serves both French and English (language toggle on the page). No separate locale URLs.
 
 ## Services
 
-- [Custom websites & e-commerce / Sites web sur mesure](https://www.torquemade.com/services/web-dev): Next.js and Shopify builds, mobile-first, SEO-optimized, with custom CRM and API integrations.
-- [Custom CRM / CRM sur mesure](https://www.torquemade.com/services/crm): Business management software built around a client's specific workflows, such as bookings, real-time dashboards, and follow-up automation.
-- [ERP to e-commerce stock sync / Synchronisation stock ERP ↔ site e-commerce](https://www.torquemade.com/services/erp-ecommerce): Real-time inventory connection between a legacy ERP or point-of-sale system and an online storefront so stock levels stay accurate across channels.
+- [Custom websites & e-commerce / Sites web sur mesure](https://www.torquemade.com/services/web-dev): Next.js and Shopify builds, mobile-first and structured for both traditional SEO and AI-engine visibility (GEO). Clients include motorcycle dealerships (multi-brand dealer sites and single-brand microsites), premium chauffeur/VTC services, and independent service providers such as beauty specialists. Sites are built as the primary sales channel, with stock, booking, and quote requests handled directly rather than routed through third-party platforms.
+- [Custom CRM / CRM sur mesure](https://www.torquemade.com/services/crm): Business management software built around a client's exact workflow, such as bookings, real-time dashboards, quotes, and follow-up automation. Delivered to specialty retailers and booking-based service businesses whose processes don't fit generic tools like Salesforce or HubSpot. The client owns the system outright, with no per-seat fees and none of the commission structure of platforms like Airbnb, Booking, or ride-hailing apps.
+- [ERP to e-commerce stock sync / Synchronisation stock ERP ↔ site e-commerce](https://www.torquemade.com/services/erp-ecommerce): Real-time inventory connection between a legacy ERP or point-of-sale system (SAGE 100, Cegid, Odoo) and an online storefront, built via direct API/webhook integration rather than a subscription middleware layer. Used where stock desyncs cause overselling or chargebacks, including specialty inventory such as live fish and coral (see TankLogic), where each unit is a unique, non-fungible specimen rather than a quantity count.
 
 SEO and GEO (generative-engine optimization) content strategy is delivered as part of website projects rather than as a standalone service page; related articles are grouped under the SEO & Contenu category on the blog.
 
@@ -25,3 +25,10 @@ SEO and GEO (generative-engine optimization) content strategy is delivered as pa
 - [Homepage](https://www.torquemade.com): Torquemade overview and entry point to all services.
 - [Legal notice / Mentions légales](https://www.torquemade.com/mentions-legales): Legal information about the company.
 - Contact: hello@torquemade.com
+
+## Optional
+
+- [How to appear in Google's generative AI answers](https://www.torquemade.com/blog/comment-apparaitre-reponses-google-ia-generative): What determines whether a page is cited by Google's generative AI, based on real data from four different websites.
+- [AI Overviews are coming to France before September 2026: what to prepare now](https://www.torquemade.com/blog/ai-overviews-france-checklist-avant-deploiement): Concrete checklist to get content ready to be cited once Google rolls out AI Overviews in France.
+- [How to connect Sage 100 to Shopify without third-party middleware](https://www.torquemade.com/blog/connecter-sage100-shopify-sans-middleware): Direct integration via the Shopify API and Sage's Business Object Interface, without a monthly middleware subscription.
+- [Why Shopify-ERP stock sync breaks, and how to prevent it](https://www.torquemade.com/blog/pourquoi-synchro-stock-shopify-erp-plante): The six architecture mistakes behind stock discrepancies, overselling, and duplicate orders in ERP-Shopify integrations.
