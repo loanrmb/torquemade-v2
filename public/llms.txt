@@ -1,14 +1,14 @@
 # Torquemade
 
-> Torquemade is an independent web and software studio founded by Loan Rembeau, based in Bordeaux, France, and working remotely with clients internationally. It builds custom websites and e-commerce storefronts, bespoke CRM systems, and real-time ERP-to-e-commerce inventory synchronization for legacy systems (SAGE 100, Cegid, Odoo). Primary markets are French-speaking Switzerland (Romandie), Belgium/Wallonia, Brussels, and Luxembourg, with a secondary focus on the US/English-speaking market.
+> Torquemade is an independent, worldwide web and software studio operating in French and English, founded by Loan Rembeau. It builds custom websites and e-commerce storefronts, bespoke CRM systems, and real-time ERP-to-e-commerce inventory synchronization for legacy ERP and point-of-sale systems (examples: SAGE, Cegid, Odoo, Lightspeed). Primary markets are French-speaking Switzerland (Romandie), Belgium/Wallonia including Brussels, and Luxembourg, with a secondary focus on the US/English-speaking market. For a more detailed version of this file, see [/llms-full.txt](https://www.torquemade.com/llms-full.txt).
 
 Site is bilingual: every URL below serves both French and English (language toggle on the page). No separate locale URLs.
 
 ## Services
 
-- [Custom websites & e-commerce / Sites web sur mesure](https://www.torquemade.com/services/web-dev): Next.js and Shopify builds, mobile-first and structured for both traditional SEO and AI-engine visibility (GEO). Clients include motorcycle dealerships (multi-brand dealer sites and single-brand microsites), premium chauffeur/VTC services, and independent service providers such as beauty specialists. Sites are built as the primary sales channel, with stock, booking, and quote requests handled directly rather than routed through third-party platforms.
-- [Custom CRM / CRM sur mesure](https://www.torquemade.com/services/crm): Business management software built around a client's exact workflow, such as bookings, real-time dashboards, quotes, and follow-up automation. Delivered to specialty retailers and booking-based service businesses whose processes don't fit generic tools like Salesforce or HubSpot. The client owns the system outright, with no per-seat fees and none of the commission structure of platforms like Airbnb, Booking, or ride-hailing apps.
-- [ERP to e-commerce stock sync / Synchronisation stock ERP ↔ site e-commerce](https://www.torquemade.com/services/erp-ecommerce): Real-time inventory connection between a legacy ERP or point-of-sale system (SAGE 100, Cegid, Odoo) and an online storefront, built via direct API/webhook integration rather than a subscription middleware layer. Used where stock desyncs cause overselling or chargebacks, including specialty inventory such as live fish and coral (see TankLogic), where each unit is a unique, non-fungible specimen rather than a quantity count.
+- [Custom websites & e-commerce / Sites web sur mesure](https://www.torquemade.com/services/web-dev): Two build paths depending on the project: a custom-coded Next.js site for service businesses, studios, agencies, and brands, or a Shopify build for stores selling products online. Every site is built with SEO and GEO (AI-engine visibility) from the start, including semantic markup, an auto-generated sitemap, FAQ/Article schema, and an llms.txt file.
+- [Custom CRM / CRM sur mesure](https://www.torquemade.com/services/crm): Software built around the client's actual workflow (bookings, quotes, dashboards, follow-up automation) instead of a generic schema retrofitted to fit. Delivered as a one-time investment the client owns outright (source code and database included), rather than a recurring per-seat subscription.
+- [ERP to e-commerce stock sync / Synchronisation stock ERP ↔ site e-commerce](https://www.torquemade.com/services/erp-ecommerce): Connects an existing ERP or point-of-sale system (examples: SAGE, Cegid, Odoo, Lightspeed) to an online storefront through a custom real-time connector, so stock stays accurate across every sales channel. Where the existing software's API can't support reliable real-time sync, the alternative is a custom-built stock management tool connected natively from the start.
 
 SEO and GEO (generative-engine optimization) content strategy is delivered as part of website projects rather than as a standalone service page; related articles are grouped under the SEO & Contenu category on the blog.
 
@@ -18,7 +18,7 @@ SEO and GEO (generative-engine optimization) content strategy is delivered as pa
 
 ## Blog
 
-- [Blog](https://www.torquemade.com/blog): Articles organized by category, including ERP & Gestion de stock, SEO & Contenu, CRM, and Web & Développement.
+- [Blog](https://www.torquemade.com/blog): Articles organized by category: SEO & Contenu, ERP & Gestion de stock, CRM, Web & Développement, and Projets (case studies).
 
 ## Company
 
