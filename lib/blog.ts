@@ -1094,4 +1094,19 @@ export const posts: Post[] = [
     category: 'SEO & Contenu',
     readingTime: 8,
   },
+  {
+    slug: 'litige-poisson-mort-doa',
+    title: {
+      fr: 'Comment remporter un litige pour un poisson mort à la livraison',
+      en: 'How to Win a Dead-on-Arrival Dispute for a Fish',
+    },
+    description: {
+      fr: "Gagner un litige DOA sur un poisson mort à la livraison se joue sur la preuve réunie avant l'envoi. Ce que Stripe et Square exigent réellement, et comment l'automatiser.",
+      en: "Winning a DOA dispute on a fish that arrived dead comes down to evidence gathered before shipment. What Stripe and Square actually require, and how to automate it.",
+    },
+    date: { fr: '22 juillet 2026', en: 'July 22, 2026' },
+    publishedAt: '2026-07-22',
+    category: 'ERP & Gestion de stock',
+    readingTime: 7,
+  },
 ]
