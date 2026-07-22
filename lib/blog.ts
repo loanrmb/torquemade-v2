@@ -999,22 +999,6 @@ export const posts: Post[] = [
     readingTime: 6,
   },
   {
-    slug: 'prouver-poisson-arrive-vivant-retrofacturation',
-    title: {
-      fr: "Comment prouver qu'un poisson est arrivé vivant pour contester une rétrofacturation ?",
-      en: 'How Do You Prove a Fish Arrived Alive to Fight a Chargeback?',
-    },
-    description: {
-      fr: "Gagner une contestation de rétrofacturation sur un animal vivant se joue sur la preuve. Le dossier numérique (fiche spécimen, photo d'emballage, preuve de livraison) à constituer automatiquement.",
-      en: 'A chargeback on a live animal is won on evidence. The digital file (specimen record, packing photo, delivery proof) you should build automatically.',
-    },
-    date: { fr: '9 juillet 2026', en: 'July 9, 2026' },
-    publishedAt: '2026-07-09',
-    updatedAt: '2026-07-10',
-    category: 'ERP & Gestion de stock',
-    readingTime: 6,
-  },
-  {
     slug: 'erp-specialise-boutique-poissons-coraux',
     title: {
       fr: 'Existe-t-il un ERP spécialisé pour les boutiques de poissons et coraux ?',
@@ -1043,22 +1027,6 @@ export const posts: Post[] = [
     date: { fr: '10 juillet 2026', en: 'July 10, 2026' },
     publishedAt: '2026-07-10',
     updatedAt: '2026-07-14',
-    category: 'ERP & Gestion de stock',
-    readingTime: 6,
-  },
-  {
-    slug: 'preuves-litige-paiement-poisson-vivant',
-    title: {
-      fr: 'Quelles preuves conserver pour gagner un litige de paiement sur un poisson vivant ?',
-      en: 'What Evidence Do You Need to Win a Payment Dispute Over a Live Animal?',
-    },
-    description: {
-      fr: "Un litige de paiement sur un animal vivant se gagne avec un dossier structuré : fiche du spécimen, photo horodatée, preuve de livraison liée à la commande. Quoi conserver, et comment l'automatiser.",
-      en: 'A payment dispute over a live animal is won with a structured file: specimen record, timestamped photo, delivery proof linked to the order. What to keep, and how to automate it.',
-    },
-    date: { fr: '10 juillet 2026', en: 'July 10, 2026' },
-    publishedAt: '2026-07-10',
-    updatedAt: '2026-07-16',
     category: 'ERP & Gestion de stock',
     readingTime: 6,
   },
@@ -1125,5 +1093,20 @@ export const posts: Post[] = [
     updatedAt: '2026-07-18',
     category: 'SEO & Contenu',
     readingTime: 8,
+  },
+  {
+    slug: 'litige-poisson-mort-doa',
+    title: {
+      fr: 'Comment remporter un litige pour un poisson mort à la livraison',
+      en: 'How to Win a Dead-on-Arrival Dispute for a Fish',
+    },
+    description: {
+      fr: "Gagner un litige DOA sur un poisson mort à la livraison se joue sur la preuve réunie avant l'envoi. Ce que Stripe et Square exigent réellement, et comment l'automatiser.",
+      en: "Winning a DOA dispute on a fish that arrived dead comes down to evidence gathered before shipment. What Stripe and Square actually require, and how to automate it.",
+    },
+    date: { fr: '22 juillet 2026', en: 'July 22, 2026' },
+    publishedAt: '2026-07-22',
+    category: 'ERP & Gestion de stock',
+    readingTime: 7,
   },
 ]

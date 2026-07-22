@@ -48,7 +48,7 @@ const CONTENT = {
     cardArrival: 'Arrivée',
     cardSupplier: 'Fournisseur',
     cardTank: 'Cuve',
-    cardArrivalValue: '12 mai · Sunda Aquatics',
+    cardArrivalValue: '12 mai · Fournisseur A',
     cardTankValue: 'A-03',
     cardPublished: 'Publié sur la boutique en ligne',
     cardUnique: 'Pièce unique',
@@ -57,7 +57,7 @@ const CONTENT = {
     cardSkuSubtitle: 'Poisson clown · 4 cm',
     cardStockQty: '14 en stock',
     cardBatch: 'Lot',
-    cardBatchValue: '12 mai · Sunda Aquatics',
+    cardBatchValue: '12 mai · Fournisseur A',
     cardZone: 'Zone',
     cardZoneValue: 'B-02',
 
@@ -76,7 +76,7 @@ const CONTENT = {
 
     traceTitle: 'Traçabilité',
     traceSteps: [
-      { label: 'Réception fournisseur · Sunda Aquatics', time: '12 mai · 14:02' },
+      { label: 'Réception fournisseur · Fournisseur A', time: '12 mai · 14:02' },
       { label: 'Acclimatation cuve A-03', time: '12 mai · 15:20' },
       { label: 'Photo avant expédition', time: '15 mai · 09:47', photo: 'IMG_2841.jpg' },
       { label: 'Remis au transporteur', time: '15 mai · 11:05' },
@@ -132,7 +132,7 @@ const CONTENT = {
     cardArrival: 'Arrived',
     cardSupplier: 'Supplier',
     cardTank: 'Tank',
-    cardArrivalValue: 'May 12 · Sunda Aquatics',
+    cardArrivalValue: 'May 12 · Supplier A',
     cardTankValue: 'A-03',
     cardPublished: 'Published to the online store',
     cardUnique: 'One of a kind',
@@ -141,7 +141,7 @@ const CONTENT = {
     cardSkuSubtitle: 'Clownfish · 4 cm',
     cardStockQty: '14 in stock',
     cardBatch: 'Batch',
-    cardBatchValue: 'May 12 · Sunda Aquatics',
+    cardBatchValue: 'May 12 · Supplier A',
     cardZone: 'Zone',
     cardZoneValue: 'B-02',
 
@@ -160,7 +160,7 @@ const CONTENT = {
 
     traceTitle: 'Traceability',
     traceSteps: [
-      { label: 'Received from supplier · Sunda Aquatics', time: 'May 12 · 14:02' },
+      { label: 'Received from supplier · Supplier A', time: 'May 12 · 14:02' },
       { label: 'Acclimated in tank A-03', time: 'May 12 · 15:20' },
       { label: 'Pre-shipping photo', time: 'May 15 · 09:47', photo: 'IMG_2841.jpg' },
       { label: 'Handed to carrier', time: 'May 15 · 11:05' },
