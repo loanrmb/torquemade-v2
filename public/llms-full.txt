@@ -1,0 +1,61 @@
+# Torquemade
+
+> Torquemade is an independent, worldwide web and software studio operating in French and English, founded by Loan Rembeau. It builds custom websites and e-commerce storefronts, bespoke CRM systems, and real-time ERP-to-e-commerce inventory synchronization for legacy ERP and point-of-sale systems. Primary markets are French-speaking Switzerland (Romandie), Belgium/Wallonia including Brussels, and Luxembourg, with a secondary focus on the US/English-speaking market. This is the expanded reference file; for the compact index, see [/llms.txt](https://www.torquemade.com/llms.txt).
+
+Site is bilingual: every URL below serves both French and English (language toggle on the page). No separate locale URLs.
+
+## Approach
+
+- Solo studio: Loan Rembeau is the single point of contact for scoping, build, and delivery on every project, with no account managers or agency layers in between.
+- Stack: Next.js, TypeScript, Vercel, Prisma, and Postgres/Supabase. Code is documented and has no dependency on a proprietary platform that could shut down or change terms.
+- SEO and GEO (generative-engine optimization for AI answer engines such as ChatGPT, Perplexity, and Claude) are treated as one discipline built into every site from the first line of code, not added after launch: semantic markup, auto-generated sitemap, FAQ/Article schema, Core Web Vitals checked before go-live, and an llms.txt file for AI crawlers.
+
+## Services
+
+### Custom websites & e-commerce
+
+Two build paths depending on the project:
+
+- Custom-coded Next.js site: for service businesses, studios, agencies, and brands (construction/trades, professional practices, restaurants, craftspeople, agencies, studios, SaaS products) that need full design freedom, lead generation, or custom integrations with other tools (CRM, ERP, business software). No template, no platform lock-in.
+- Shopify e-commerce build: for stores selling products online (online-only shops, retailers with both physical and digital sales, product brands, resellers), delivered end to end: custom design, catalogue migration, full store configuration.
+
+Delivered on every project regardless of path: custom design, mobile-first and SEO-optimized, migration from an existing site where one exists, fully responsive, handoff training, and post-launch support.
+
+### Custom CRM
+
+Business management software built around the client's real workflow instead of a generic schema the client has to adapt to. Typical scope: booking/appointment systems, quotes that convert into orders, real-time dashboards, and follow-up automation, including the edge cases a business usually still handles by hand.
+
+Built in five phases: scoping the real workflow before any code is written, designing the data model around it, an iterative build with client feedback on intermediate versions, launch with existing data carried over, then ongoing evolution as the business changes.
+
+Ownership model: delivered as a one-time investment. The client owns the source code and database outright and hosts them wherever they choose, rather than renting per-user access on a generic subscription CRM (Salesforce, HubSpot) that charges monthly per seat indefinitely and never transfers ownership of the code or data.
+
+### ERP to e-commerce stock sync
+
+Connects an existing ERP or point-of-sale system to an online storefront so a sale on either channel updates stock everywhere in real time, removing the manual re-entry and channel discrepancies that come from disconnected systems. Legacy systems referenced in past work and published articles include SAGE (including SAGE 100 via its Business Object Interface), Cegid, Odoo, and Lightspeed.
+
+Every engagement starts with an audit of the existing software's API, which determines one of two paths:
+
+- A custom real-time connector, bidirectional, handling automatic stock deduction per order and product variants (size, colour, etc.), while the client keeps using their existing ERP or POS.
+- Where the API can't support reliable real-time sync, a custom-built stock management tool connected natively to the storefront from the start.
+
+## Blog
+
+Categories:
+
+- SEO & Contenu (SEO & Content)
+- ERP & Gestion de stock (stock-to-site connection)
+- CRM
+- Web & Développement (Web & Development)
+- Projets (case studies)
+
+- [Blog](https://www.torquemade.com/blog): Full article index, filterable by category.
+
+## Products
+
+- [TankLogic](https://www.torquemade.com/tanklogic): Inventory-sync and chargeback-evidence software built specifically for mail-order live fish and coral retailers, where every specimen is a unique, non-fungible unit rather than a quantity count. See [/tanklogic/llms.txt](https://www.torquemade.com/tanklogic/llms.txt) for full product detail, articles, and its Canada/US/French-speaking Europe market scope.
+
+## Company
+
+- [Homepage](https://www.torquemade.com): Torquemade overview and entry point to all services.
+- [Legal notice / Mentions légales](https://www.torquemade.com/mentions-legales): Legal information about the company.
+- Contact: hello@torquemade.com
