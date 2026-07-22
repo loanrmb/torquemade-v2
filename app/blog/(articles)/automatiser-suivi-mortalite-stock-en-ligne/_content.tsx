@@ -92,11 +92,6 @@ export function AutomatiserSuiviMortaliteContent() {
             </Link>
           </li>
           <li>
-            <Link href="/blog/prouver-poisson-arrive-vivant-retrofacturation">
-              How do you prove a fish arrived alive to fight a chargeback?
-            </Link>
-          </li>
-          <li>
             <Link href="/blog/erp-specialise-boutique-poissons-coraux">
               Is there ERP software built specifically for fish and coral shops?
             </Link>
@@ -192,11 +187,6 @@ export function AutomatiserSuiviMortaliteContent() {
           <li>
             <Link href="/blog/synchroniser-stock-aquariophilie-site-ecommerce">
               Comment synchroniser le stock de ma boutique aquariophilie avec mon site e-commerce ?
-            </Link>
-          </li>
-          <li>
-            <Link href="/blog/prouver-poisson-arrive-vivant-retrofacturation">
-              Comment prouver qu'un poisson est arrivé vivant pour contester une rétrofacturation ?
             </Link>
           </li>
           <li>
