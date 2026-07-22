@@ -42,7 +42,7 @@ export function LitigePoissonMortDoaContent() {
 
       <h2>The 3 pieces of evidence that turn a dispute</h2>
 
-      <div className="not-prose my-8 grid grid-cols-1 gap-4 min-720:grid-cols-3">
+      <div className="not-prose my-8 grid grid-cols-1 gap-4">
         <div className="rounded-2xl border border-border-subtle bg-bg-secondary p-6">
           <h3 className="mb-2 text-base font-semibold text-text-primary">
             Timestamped photo or video before shipment
@@ -254,7 +254,7 @@ export function LitigePoissonMortDoaContent() {
 
       <h2>Les 3 preuves qui font basculer un litige</h2>
 
-      <div className="not-prose my-8 grid grid-cols-1 gap-4 min-720:grid-cols-3">
+      <div className="not-prose my-8 grid grid-cols-1 gap-4">
         <div className="rounded-2xl border border-border-subtle bg-bg-secondary p-6">
           <h3 className="mb-2 text-base font-semibold text-text-primary">
             Photo ou vidéo horodatée avant expédition
