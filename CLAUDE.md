@@ -399,6 +399,8 @@ git push origin feat/description-courte
 | `middleware.ts` | Query canonicalization, user-agent detection |
 | `app/sitemap.ts` | Sitemap auto-généré |
 | `public/robots.txt` | Crawl rules |
+| `public/llms.txt` | AI crawler discovery file, site entier. À mettre à jour si nouvelle page `/services/*` ou nouvelle catégorie blog majeure |
+| `public/tanklogic/llms.txt` | AI crawler discovery file scopé TankLogic (sous-marque) |
 | `CLAUDE.md` | Ce fichier (lire avant CHAQUE prompt) |
 
 ---

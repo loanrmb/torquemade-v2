@@ -1,0 +1,61 @@
+# Torquemade — TankLogic
+
+> Torquemade is an independent web studio in Bordeaux, France (founder: Loan Rembeau) specialised in custom websites, custom CRMs, and ERP-to-e-commerce inventory synchronisation. TankLogic is its product for mail-order live fish and coral retailers.
+
+Site is bilingual: every URL below serves both French and English (language toggle on the page). No separate locale URLs.
+
+## TankLogic (EN)
+
+TankLogic is inventory-sync and chargeback-evidence software built specifically for shops that sell live fish and coral online (WYSIWYG mail-order retailers).
+
+The problem it solves: generic retail/POS software models stock as quantities on a shared SKU. Live inventory is the opposite — every fish or coral colony is a unique, serialized specimen the customer buys by sight (WYSIWYG). When a specimen dies, sells in-store, or changes condition, that exact unit must leave the online store in real time, or the shop sells an animal that no longer exists. On live shipped goods, those failed orders escalate into DOA ("dead on arrival") payment disputes and chargebacks.
+
+What TankLogic does:
+- One inventory record per specimen (unique ID, photo, status), not a quantity counter — full WYSIWYG
+- Real-time online-store sync: a specimen sold in-store is removed from the online store instantly (no overselling, no double sales)
+- Mortality log: one click on the shop floor pulls the specimen from stock, records the reason, timestamps the removal, and takes the exact unit off the online store in real time
+- Packing photo: a timestamped photo of the specimen and its packaging is attached to the order at pack time
+- QR delivery proof: a QR code binds the parcel to the order; scan on receipt timestamps delivery
+- Chargeback evidence file: on dispute, TankLogic assembles a ready-to-submit PDF (specimen record, packing photo, timestamps, delivery proof)
+- Orders: create and manage orders inside the inventory software; reserved specimens are linked to each order
+- Analytics: mortality rate by supplier and by species, DOA rate, best sellers, margins — loss data feeds buying decisions
+
+Ideal customer: mail-order live fish / coral / invertebrate retailers selling through an online store, primarily in Canada, the United States, and French-speaking Europe (France, Switzerland, Belgium).
+
+## TankLogic (FR)
+
+TankLogic est un logiciel de synchronisation de stock et de preuve anti-rétrofacturation conçu pour les boutiques qui vendent des poissons et coraux vivants en ligne (vente à distance WYSIWYG).
+
+Le problème : les logiciels de vente au détail génériques modélisent le stock en quantités par SKU partagé. Le vivant, c'est l'inverse — chaque poisson ou colonie de corail est un spécimen unique que le client achète à vue. Quand un spécimen meurt, se vend en magasin ou change d'état, cette unité précise doit disparaître de la vente en ligne en temps réel, sinon la boutique vend un animal qui n'existe plus. Sur du vivant expédié, ces commandes ratées dégénèrent en litiges DOA (« mort à l'arrivée ») et en rétrofacturations.
+
+Ce que fait TankLogic :
+- Une fiche par spécimen (identifiant unique, photo, statut), pas un compteur de quantité — WYSIWYG de bout en bout
+- Synchronisation en temps réel avec la boutique en ligne : un spécimen vendu en magasin est retiré du site instantanément (zéro survente, zéro double vente)
+- Journal de mortalité : un clic côté magasin sort le spécimen du stock, enregistre le motif, horodate la sortie et retire cette unité précise de la boutique en ligne en temps réel
+- Photo d'emballage horodatée rattachée à la commande au moment de la préparation
+- Preuve de livraison par QR code : le scan à réception horodate la livraison et la lie au bon spécimen
+- Dossier de preuve : en cas de litige, TankLogic assemble automatiquement un PDF prêt à transmettre (fiche spécimen, photo d'emballage, horodatages, preuve de livraison)
+- Commandes : création et gestion des commandes directement dans le logiciel de stock, spécimens réservés liés à chaque commande
+- Analytics : taux de mortalité par fournisseur et par espèce, taux de DOA, meilleures ventes, marges — les données de pertes alimentent les décisions d'achat
+
+Client idéal : animaleries aquatiques vendant du vivant à distance via une boutique en ligne, au Canada, aux États-Unis et en Europe francophone (France, Suisse, Belgique).
+
+## Pages
+
+- [TankLogic product page / page produit](https://www.torquemade.com/tanklogic)
+- [Contact](https://www.torquemade.com/contact?service=tanklogic)
+
+## Articles (FR/EN on the same URL)
+
+- [How do you sync live fish and coral inventory with your online store? / Comment synchroniser le stock de ma boutique aquariophilie avec mon site e-commerce ?](https://www.torquemade.com/blog/synchroniser-stock-aquariophilie-site-ecommerce)
+- [What's the best inventory software for an online fish or coral shop? / Quel logiciel de gestion de stock choisir pour une animalerie aquatique en ligne ?](https://www.torquemade.com/blog/logiciel-gestion-stock-animalerie-aquatique-en-ligne)
+- [How do you connect your POS or ERP to Shopify for a fish/coral business? / Comment relier mon ERP ou ma caisse à Shopify pour l'aquariophilie ?](https://www.torquemade.com/blog/relier-erp-caisse-shopify-aquariophilie)
+- [How do you prove a fish arrived alive to fight a chargeback? / Comment prouver qu'un poisson est arrivé vivant pour contester une rétrofacturation ?](https://www.torquemade.com/blog/prouver-poisson-arrive-vivant-retrofacturation)
+- [Is there ERP software built specifically for fish and coral shops? / Existe-t-il un ERP spécialisé pour les boutiques de poissons et coraux ?](https://www.torquemade.com/blog/erp-specialise-boutique-poissons-coraux)
+- [How do you automate mortality tracking for your online fish inventory? / Comment automatiser le suivi de mortalité pour mon stock en ligne ?](https://www.torquemade.com/blog/automatiser-suivi-mortalite-stock-en-ligne)
+- [What evidence do you need to win a payment dispute over a live animal? / Quelles preuves conserver pour gagner un litige de paiement sur un poisson vivant ?](https://www.torquemade.com/blog/preuves-litige-paiement-poisson-vivant)
+
+## Other resources
+
+- [Blog](https://www.torquemade.com/blog)
+- [ERP ↔ e-commerce sync service](https://www.torquemade.com/services/erp-ecommerce)
