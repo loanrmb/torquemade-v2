@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useLang } from '@/components/app-provider'
-import { TraceabilityTimelineDemo } from '@/components/blog/traceability-timeline-demo'
+import { Reveal, TraceMock } from '@/app/tanklogic/_mocks'
 
 export function LitigePoissonMortDoaContent() {
   const lang = useLang()
@@ -42,35 +42,44 @@ export function LitigePoissonMortDoaContent() {
 
       <h2>The 3 pieces of evidence that turn a dispute</h2>
 
-      <h3>Timestamped photo or video before shipment</h3>
-
-      <p>
-        A photo taken &quot;on shipping day&quot; proves nothing if nothing shows it was actually
-        taken that day. What matters is a verifiable timestamp, tied to the exact order, not an
-        editable file date. A short video of the animal inside its packaging, right before
-        sealing, is harder to dispute than a single photo: it shows movement, meaning life, at
-        the precise moment of dispatch.
-      </p>
-
-      <h3>Transit data (temperature, delay)</h3>
-
-      <p>
-        An animal can arrive dead without any fault in its condition at dispatch: transit itself
-        can be the cause. A temperature logger inside the parcel, or failing that the exact
-        carrier handoff time compared to the delivery time, helps distinguish a transit problem
-        from a dispatch defect. In a dispute, that distinction often decides who pays: the
-        seller, or the carrier.
-      </p>
-
-      <h3>A clear contractual claim window</h3>
-
-      <p>
-        A vague claim window (&quot;contact us promptly&quot;) protects no one. A precise window,
-        spelled out in the terms of sale and repeated in the confirmation email (for example:
-        claim within 2 hours of delivery, with a supporting photo), gives a frame the buyer
-        can&apos;t dispute after the fact, and one the seller can point to if the claim arrives
-        too late.
-      </p>
+      <div className="not-prose my-8 grid grid-cols-1 gap-4 min-720:grid-cols-3">
+        <div className="rounded-2xl border border-border-subtle bg-bg-secondary p-6">
+          <h3 className="mb-2 text-base font-semibold text-text-primary">
+            Timestamped photo or video before shipment
+          </h3>
+          <div className="text-sm leading-relaxed text-text-secondary">
+            A photo taken &quot;on shipping day&quot; proves nothing if nothing shows it was
+            actually taken that day. What matters is a verifiable timestamp, tied to the exact
+            order, not an editable file date. A short video of the animal inside its packaging,
+            right before sealing, is harder to dispute than a single photo: it shows movement,
+            meaning life, at the precise moment of dispatch.
+          </div>
+        </div>
+        <div className="rounded-2xl border border-border-subtle bg-bg-secondary p-6">
+          <h3 className="mb-2 text-base font-semibold text-text-primary">
+            Transit data (temperature, delay)
+          </h3>
+          <div className="text-sm leading-relaxed text-text-secondary">
+            An animal can arrive dead without any fault in its condition at dispatch: transit
+            itself can be the cause. A temperature logger inside the parcel, or failing that the
+            exact carrier handoff time compared to the delivery time, helps distinguish a transit
+            problem from a dispatch defect. In a dispute, that distinction often decides who pays:
+            the seller, or the carrier.
+          </div>
+        </div>
+        <div className="rounded-2xl border border-border-subtle bg-bg-secondary p-6">
+          <h3 className="mb-2 text-base font-semibold text-text-primary">
+            A clear contractual claim window
+          </h3>
+          <div className="text-sm leading-relaxed text-text-secondary">
+            A vague claim window (&quot;contact us promptly&quot;) protects no one. A precise
+            window, spelled out in the terms of sale and repeated in the confirmation email (for
+            example: claim within 2 hours of delivery, with a supporting photo), gives a frame the
+            buyer can&apos;t dispute after the fact, and one the seller can point to if the claim
+            arrives too late.
+          </div>
+        </div>
+      </div>
 
       <h2>What isn&apos;t enough</h2>
 
@@ -111,7 +120,9 @@ export function LitigePoissonMortDoaContent() {
         seller, it&apos;s part of the normal handling routine, not an added administrative task.
       </p>
 
-      <TraceabilityTimelineDemo />
+      <Reveal className="not-prose my-10">
+        <TraceMock />
+      </Reveal>
 
       <p>
         The advantage isn&apos;t just having the evidence, it&apos;s being able to produce it
@@ -132,16 +143,6 @@ export function LitigePoissonMortDoaContent() {
       <h2>FAQ</h2>
 
       <h3 className="text-base font-semibold text-text-primary mt-6 mb-2">
-        How long do I have to file a DOA claim?
-      </h3>
-      <p>
-        It depends on your own sales policy, but a short window, generally between 30 minutes and
-        2 hours after receipt, is standard in the live-goods trade. That window needs to be
-        spelled out in your terms of sale and repeated to the customer at delivery, otherwise it
-        can&apos;t be enforced in a dispute.
-      </p>
-
-      <h3 className="text-base font-semibold text-text-primary mt-6 mb-2">
         Who pays for return shipping?
       </h3>
       <p>
@@ -156,9 +157,10 @@ export function LitigePoissonMortDoaContent() {
       </h3>
       <p>
         Yes, as long as evidence capture is built into the shipping workflow rather than bolted
-        on afterward. A system that automatically timestamps the photo, the carrier handoff, and
-        delivery, then assembles those into an exportable file, replaces manual reconstruction
-        under pressure once the dispute lands.
+        on afterward. A system like <strong>TankLogic</strong> automatically timestamps the
+        photo, the carrier handoff, and delivery at each handling step, then assembles those into
+        a ready-to-submit PDF, replacing manual reconstruction under pressure once the dispute
+        lands.
       </p>
 
       <h3 className="text-base font-semibold text-text-primary mt-6 mb-2">
@@ -252,36 +254,47 @@ export function LitigePoissonMortDoaContent() {
 
       <h2>Les 3 preuves qui font basculer un litige</h2>
 
-      <h3>Photo ou vidéo horodatée avant expédition</h3>
-
-      <p>
-        Une photo prise « le jour de l&apos;envoi » ne vaut rien si rien ne prouve qu&apos;elle a
-        été prise ce jour-là. Ce qui compte, c&apos;est un horodatage vérifiable, lié à la
-        commande exacte, pas à une date de fichier modifiable. Une vidéo courte de l&apos;animal
-        dans son emballage, juste avant fermeture, est plus difficile à contester qu&apos;une
-        photo isolée : elle montre le mouvement, donc la vie, au moment précis du départ.
-      </p>
-
-      <h3>Données de transit (température, délai)</h3>
-
-      <p>
-        Un animal peut arriver mort sans qu&apos;aucune preuve d&apos;état au départ ne soit en
-        cause : le transport lui-même peut être la cause. Un enregistreur de température dans le
-        colis, ou à défaut l&apos;heure exacte de remise au transporteur comparée à l&apos;heure
-        de livraison, aide à distinguer un problème de transit d&apos;un défaut au départ. Sur un
-        litige, cette distinction détermine souvent qui doit payer : le vendeur, ou le
-        transporteur.
-      </p>
-
-      <h3>Fenêtre de réclamation contractuelle claire</h3>
-
-      <p>
-        Un délai de réclamation flou (« contactez-nous rapidement ») ne protège personne. Une
-        fenêtre précise, écrite noir sur blanc dans les conditions de vente et rappelée dans
-        l&apos;email de confirmation (par exemple : réclamation dans les 2 heures suivant la
-        livraison, avec photo à l&apos;appui), donne un cadre que le client ne peut pas contester
-        après coup, et que le vendeur peut opposer si la réclamation arrive trop tard.
-      </p>
+      <div className="not-prose my-8 grid grid-cols-1 gap-4 min-720:grid-cols-3">
+        <div className="rounded-2xl border border-border-subtle bg-bg-secondary p-6">
+          <h3 className="mb-2 text-base font-semibold text-text-primary">
+            Photo ou vidéo horodatée avant expédition
+          </h3>
+          <div className="text-sm leading-relaxed text-text-secondary">
+            Une photo prise « le jour de l&apos;envoi » ne vaut rien si rien ne prouve qu&apos;elle
+            a été prise ce jour-là. Ce qui compte, c&apos;est un horodatage vérifiable, lié à la
+            commande exacte, pas à une date de fichier modifiable. Une vidéo courte de
+            l&apos;animal dans son emballage, juste avant fermeture, est plus difficile à
+            contester qu&apos;une photo isolée : elle montre le mouvement, donc la vie, au moment
+            précis du départ.
+          </div>
+        </div>
+        <div className="rounded-2xl border border-border-subtle bg-bg-secondary p-6">
+          <h3 className="mb-2 text-base font-semibold text-text-primary">
+            Données de transit (température, délai)
+          </h3>
+          <div className="text-sm leading-relaxed text-text-secondary">
+            Un animal peut arriver mort sans qu&apos;aucune preuve d&apos;état au départ ne soit
+            en cause : le transport lui-même peut être la cause. Un enregistreur de température
+            dans le colis, ou à défaut l&apos;heure exacte de remise au transporteur comparée à
+            l&apos;heure de livraison, aide à distinguer un problème de transit d&apos;un défaut
+            au départ. Sur un litige, cette distinction détermine souvent qui doit payer : le
+            vendeur, ou le transporteur.
+          </div>
+        </div>
+        <div className="rounded-2xl border border-border-subtle bg-bg-secondary p-6">
+          <h3 className="mb-2 text-base font-semibold text-text-primary">
+            Fenêtre de réclamation contractuelle claire
+          </h3>
+          <div className="text-sm leading-relaxed text-text-secondary">
+            Un délai de réclamation flou (« contactez-nous rapidement ») ne protège personne. Une
+            fenêtre précise, écrite noir sur blanc dans les conditions de vente et rappelée dans
+            l&apos;email de confirmation (par exemple : réclamation dans les 2 heures suivant la
+            livraison, avec photo à l&apos;appui), donne un cadre que le client ne peut pas
+            contester après coup, et que le vendeur peut opposer si la réclamation arrive trop
+            tard.
+          </div>
+        </div>
+      </div>
 
       <h2>Ce qui ne suffit pas</h2>
 
@@ -324,7 +337,9 @@ export function LitigePoissonMortDoaContent() {
         d&apos;une tâche administrative en plus.
       </p>
 
-      <TraceabilityTimelineDemo />
+      <Reveal className="not-prose my-10">
+        <TraceMock />
+      </Reveal>
 
       <p>
         L&apos;avantage n&apos;est pas seulement d&apos;avoir la preuve, c&apos;est de pouvoir la
@@ -345,16 +360,6 @@ export function LitigePoissonMortDoaContent() {
       <h2>FAQ</h2>
 
       <h3 className="text-base font-semibold text-text-primary mt-6 mb-2">
-        Combien de temps ai-je pour déclarer un DOA ?
-      </h3>
-      <p>
-        Ça dépend de votre propre politique de vente, mais un délai court, généralement entre 30
-        minutes et 2 heures après réception, est standard dans le secteur du vivant. Ce délai doit
-        être écrit noir sur blanc dans vos conditions de vente et rappelé au client à la
-        livraison, sinon il ne peut pas être opposé en cas de litige.
-      </p>
-
-      <h3 className="text-base font-semibold text-text-primary mt-6 mb-2">
         Qui paie les frais de retour ?
       </h3>
       <p>
@@ -369,9 +374,10 @@ export function LitigePoissonMortDoaContent() {
       </h3>
       <p>
         Oui, à condition que la capture de preuve soit intégrée au workflow d&apos;expédition
-        plutôt qu&apos;ajoutée après coup. Un système qui horodate automatiquement la photo, la
-        remise au transporteur et la livraison, puis assemble ces éléments en un document
-        exportable, remplace la reconstitution manuelle sous pression au moment du litige.
+        plutôt qu&apos;ajoutée après coup. Un système comme <strong>TankLogic</strong> horodate
+        automatiquement la photo, la remise au transporteur et la livraison à chaque étape de
+        manutention, puis assemble ces éléments en un PDF prêt à transmettre, ce qui remplace la
+        reconstitution manuelle sous pression au moment du litige.
       </p>
 
       <h3 className="text-base font-semibold text-text-primary mt-6 mb-2">

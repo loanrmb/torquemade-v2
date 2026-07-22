@@ -540,19 +540,6 @@ export const strings = {
       ctaEyebrow: 'Un projet ?',
       ctaTitle: 'Parlons de votre site web ou de votre CRM.',
       ctaButton: 'Prendre contact →',
-      traceabilityDemo: {
-        label: 'Traçabilité',
-        ref: 'RÉF. 0042',
-        steps: [
-          { title: 'Reçu du fournisseur', detail: 'Fournisseur A', time: 'Lun 08:14' },
-          { title: 'Acclimaté en bac', detail: 'Bac Q3', time: 'Lun 09:40' },
-          { title: 'Photo avant expédition', detail: 'Emballage scellé', time: 'Mar 07:52', file: 'IMG_0417.jpg' },
-          { title: 'Remis au transporteur', detail: 'Transporteur B', time: 'Mar 08:15' },
-          { title: 'Livré · scan QR', detail: 'Confirmé par le client', time: 'Mer 11:30' },
-        ],
-        exportButton: 'Exporter le fichier de preuve PDF',
-        demoNote: 'Aperçu de démonstration',
-      },
     },
     seoSection: {
       title: 'SEO & Optimisation IA',
@@ -1318,19 +1305,6 @@ export const strings = {
       ctaEyebrow: 'A project in mind?',
       ctaTitle: 'Let\'s talk about your website or CRM.',
       ctaButton: 'Get in touch →',
-      traceabilityDemo: {
-        label: 'Traceability',
-        ref: 'REF-0042',
-        steps: [
-          { title: 'Received from supplier', detail: 'Supplier A', time: 'Mon 08:14' },
-          { title: 'Acclimated in tank', detail: 'Tank Q3', time: 'Mon 09:40' },
-          { title: 'Pre-shipping photo', detail: 'Packaging sealed', time: 'Tue 07:52', file: 'IMG_0417.jpg' },
-          { title: 'Handed to carrier', detail: 'Carrier B', time: 'Tue 08:15' },
-          { title: 'Delivered · QR scan', detail: 'Confirmed by customer', time: 'Wed 11:30' },
-        ],
-        exportButton: 'Export the PDF evidence file',
-        demoNote: 'Demo preview',
-      },
     },
     seoSection: {
       title: 'SEO & AI Optimisation',
