@@ -66,8 +66,9 @@ export function RelierErpCaisseShopifyContent() {
         Shopify is very doable. If it doesn't, connecting it to Shopify just propagates the
         wrong model faster. In that case the fix is upstream: a system that treats each fish
         and coral as its own record, then syncs. <strong>TankLogic</strong> is exactly that:
-        the specimen model and the Shopify sync in one, so the integration carries the right
-        data instead of flattening it.
+        the specimen model and the sync layer in one, built platform-agnostic at setup, so
+        it carries the right data whether it's talking to Shopify (the most common case in
+        this niche), PrestaShop, WooCommerce, or a custom site, instead of flattening it.
       </p>
 
       <hr />
@@ -165,8 +166,11 @@ export function RelierErpCaisseShopifyContent() {
         Shopify est tout à fait faisable. Sinon, le relier à Shopify ne fait que propager le
         mauvais modèle plus vite. Dans ce cas, la correction est en amont : un système qui traite
         chaque poisson et chaque corail comme sa propre fiche, puis synchronise.
-        <strong> TankLogic</strong> est exactement cela: le modèle par spécimen et la synchro
-        Shopify réunis, pour que l'intégration transporte la bonne donnée au lieu de l'aplatir.
+        <strong> TankLogic</strong> est exactement cela: le modèle par spécimen et la couche de
+        synchro réunis, construits sur mesure au moment de la mise en place, quelle que soit
+        votre plateforme e-commerce (Shopify, le cas le plus courant dans ce secteur, PrestaShop,
+        WooCommerce, ou un site sur mesure), pour que l'intégration transporte la bonne donnée au
+        lieu de l'aplatir.
       </p>
 
       <hr />
