@@ -277,7 +277,7 @@ function Window({
       <header className="flex items-center justify-between border-b border-[#ececee] bg-[#fafafa] px-4 py-3">
         <span className="min-w-0 truncate text-[13px] font-semibold tracking-tight">{title}</span>
         {tag && (
-          <span className="ml-3 flex-shrink-0 font-mono text-[10px] uppercase tracking-[0.14em] text-[#8a8a8e]">
+          <span className="ml-3 flex-shrink-0 font-['Helvetica'] font-light text-[10px] uppercase tracking-[0.14em] text-[#8a8a8e]">
             {tag}
           </span>
         )}
@@ -392,7 +392,7 @@ export function HeroInventoryMock() {
         </div>
 
         {/* Column headers */}
-        <div className="grid grid-cols-[32px_1fr_auto_auto] items-center gap-3 border-b border-[#ececee] bg-[#fafafa] px-4 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4] min-720:grid-cols-[32px_1.3fr_110px_90px_64px_auto]">
+        <div className="grid grid-cols-[32px_1fr_auto_auto] items-center gap-3 border-b border-[#ececee] bg-[#fafafa] px-4 py-2 font-['Helvetica'] font-light text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4] min-720:grid-cols-[32px_1.3fr_110px_90px_64px_auto]">
           <span />
           <span>{t.colSpecimen}</span>
           <span className="hidden min-720:block">{t.colId}</span>
@@ -531,7 +531,7 @@ export function SpecimenCardMock({ variant = 'unique' }: { variant?: 'unique' | 
       <div className="border-t border-[#f2f2f3] px-4 py-3">
         {config.rows.map(([label, value], i) => (
           <div key={label} className={`flex items-baseline justify-between py-1.5 ${i === 0 ? '' : 'border-t border-[#f7f7f8]'}`}>
-            <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">{label}</span>
+            <span className="font-['Helvetica'] font-light text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">{label}</span>
             <span className="text-[12px] text-[#1a1a1a]">{value}</span>
           </div>
         ))}
@@ -623,7 +623,7 @@ export function SyncMock() {
       {/* Connector */}
       <div className="flex items-center justify-center px-1 py-1 min-720:px-3" aria-hidden>
         <div className="flex rotate-90 items-center gap-1.5 min-720:rotate-0">
-          <span className="hidden font-mono text-[10px] uppercase tracking-[0.14em] text-text-tertiary min-720:block">
+          <span className="hidden font-['Helvetica'] font-light text-[10px] uppercase tracking-[0.14em] text-text-tertiary min-720:block">
             {p === 'syncing' ? t.syncing : t.synced}
           </span>
           <svg width="44" height="10" viewBox="0 0 44 10" fill="none" className="text-text-tertiary">
@@ -727,10 +727,10 @@ export function MortalityMock() {
           transition={{ duration: 0.5, delay: 1.05, ease: EASE_OUT }}
         >
           <div className="flex items-baseline justify-between">
-            <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">
+            <span className="font-['Helvetica'] font-light text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">
               {t.mortalityReasonLabel}
             </span>
-            <span className="font-mono text-[11px] tabular-nums text-[#8a8a8e]">{t.mortalityTime}</span>
+            <span className="font-['Helvetica'] font-light text-[11px] tabular-nums text-[#8a8a8e]">{t.mortalityTime}</span>
           </div>
           <div className="mt-1 text-[12.5px] font-medium text-[#1a1a1a]">{t.mortalityReason}</div>
           <div className="mt-2.5 flex items-center gap-1.5 border-t border-[#ececee] pt-2.5 text-[12px] text-[#616161]">
@@ -798,7 +798,7 @@ export function TraceMock() {
                   <span className={`text-[12.5px] tracking-tight ${done ? 'font-semibold' : 'font-medium'} text-[#1a1a1a]`}>
                     {step.label}
                   </span>
-                  <span className="font-mono text-[10.5px] tabular-nums text-[#a0a0a4]">{step.time}</span>
+                  <span className="font-['Helvetica'] font-light text-[10.5px] tabular-nums text-[#a0a0a4]">{step.time}</span>
                 </span>
                 {'photo' in step && step.photo && (
                   <span className="mt-1.5 flex items-center gap-2 rounded-lg border border-[#ececee] bg-[#fafafa] px-2.5 py-1.5">
@@ -809,7 +809,7 @@ export function TraceMock() {
                     >
                       {s.emoji}
                     </span>
-                    <span className="font-mono text-[10.5px] text-[#8a8a8e]">{step.photo}</span>
+                    <span className="font-['Helvetica'] font-light text-[10.5px] text-[#8a8a8e]">{step.photo}</span>
                   </span>
                 )}
               </span>
@@ -863,12 +863,12 @@ export function OrdersMock() {
           >
             <span className="min-w-0">
               <span className="flex items-baseline gap-2">
-                <span className="font-mono text-[12px] font-medium tabular-nums text-[#1a1a1a]">{o.num}</span>
+                <span className="font-['Helvetica'] font-light text-[12px] tabular-nums text-[#1a1a1a]">{o.num}</span>
                 <span className="truncate text-[12.5px] text-[#616161]">{o.client}</span>
               </span>
               <span className="mt-0.5 flex flex-wrap gap-1">
                 {o.ids.map((id) => (
-                  <span key={id} className="rounded-md border border-[#ececee] bg-[#fafafa] px-1.5 py-0.5 font-mono text-[10px] text-[#8a8a8e]">
+                  <span key={id} className="rounded-md border border-[#ececee] bg-[#fafafa] px-1.5 py-0.5 font-['Helvetica'] font-light text-[10px] text-[#8a8a8e]">
                     {id}
                   </span>
                 ))}
@@ -906,7 +906,7 @@ function BarRow({ name, value, pct, emphasized }: { name: string; value: string;
     <div className="py-1.5">
       <div className="flex items-baseline justify-between gap-3">
         <span className={`truncate text-[12px] ${emphasized ? 'font-semibold text-[#1a1a1a]' : 'text-[#616161]'}`}>{name}</span>
-        <span className="font-mono text-[11.5px] tabular-nums text-[#1a1a1a]">{value}</span>
+        <span className="font-['Helvetica'] font-light text-[11.5px] tabular-nums text-[#1a1a1a]">{value}</span>
       </div>
       <div className="mt-1 h-[5px] overflow-hidden rounded-full bg-[#f0f0f1]">
         <motion.div
