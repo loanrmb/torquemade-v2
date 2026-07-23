@@ -21,6 +21,7 @@
  */
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { motion, useInView, useReducedMotion } from 'framer-motion'
 import { useRef } from 'react'
 import { useLang } from '@/components/app-provider'
@@ -207,22 +208,98 @@ interface Specimen {
   id: string
   name: string
   variant?: string
-  emoji: string
+  image: string
+  alt: { fr: string; en: string }
   size: { fr: string; en: string }
   price: number
   status: StatusKey
 }
 
 const SPECIMENS: Specimen[] = [
-  { id: 'ACRO-0042', name: 'Acropora tenuis', variant: 'Blue Sky', emoji: '🪸', size: { fr: 'Frag 4 cm', en: '4 cm frag' }, price: 129, status: 'stock' },
-  { id: 'ZOA-0118', name: 'Zoanthus sp.', variant: 'Rasta', emoji: '🪸', size: { fr: '25+ polypes', en: '25+ polyps' }, price: 49, status: 'stock' },
-  { id: 'WRS-0201', name: 'Cirrhilabrus scottorum', emoji: '🐠', size: { fr: '8 cm', en: '8 cm' }, price: 189, status: 'reserved' },
-  { id: 'EUPH-0073', name: 'Euphyllia glabrescens', variant: 'Gold Torch', emoji: '🪸', size: { fr: '2 têtes', en: '2 heads' }, price: 159, status: 'shipped' },
-  { id: 'CLWN-0342', name: 'Amphiprion percula', emoji: '🐠', size: { fr: '4 cm', en: '4 cm' }, price: 85, status: 'stock' },
-  { id: 'PARA-0056', name: 'Paracanthurus hepatus', emoji: '🐠', size: { fr: '6 cm', en: '6 cm' }, price: 79, status: 'stock' },
-  { id: 'CHRY-0089', name: 'Chrysiptera cyanea', emoji: '🐠', size: { fr: '4 cm', en: '4 cm' }, price: 25, status: 'stock' },
-  { id: 'PTER-0127', name: 'Pterapogon kauderni', emoji: '🐠', size: { fr: '6 cm', en: '6 cm' }, price: 65, status: 'reserved' },
-  { id: 'GRAM-0164', name: 'Gramma loreto', emoji: '🐠', size: { fr: '5 cm', en: '5 cm' }, price: 45, status: 'stock' },
+  {
+    id: 'ACRO-0042',
+    name: 'Acropora tenuis',
+    variant: 'Blue Sky',
+    image: '/images/tanklogic/acropora-tenuis-blue-sky-tanklogic.png',
+    alt: { fr: 'Corail Acropora tenuis, variante Blue Sky', en: 'Acropora tenuis coral, Blue Sky variant' },
+    size: { fr: 'Frag 4 cm', en: '4 cm frag' },
+    price: 129,
+    status: 'stock',
+  },
+  {
+    id: 'ZOA-0118',
+    name: 'Zoanthus sp.',
+    variant: 'Rasta',
+    image: '/images/tanklogic/zoanthus-rasta-tanklogic.png',
+    alt: { fr: 'Zoanthaire, variante Rasta', en: 'Zoanthid coral, Rasta variant' },
+    size: { fr: '25+ polypes', en: '25+ polyps' },
+    price: 49,
+    status: 'stock',
+  },
+  {
+    id: 'WRS-0201',
+    name: 'Cirrhilabrus scottorum',
+    image: '/images/tanklogic/cirrhilabrus-scottorum-tanklogic.png',
+    alt: { fr: 'Labre fée (Cirrhilabrus scottorum)', en: "Scott's fairy wrasse (Cirrhilabrus scottorum)" },
+    size: { fr: '8 cm', en: '8 cm' },
+    price: 189,
+    status: 'reserved',
+  },
+  {
+    id: 'EUPH-0073',
+    name: 'Euphyllia glabrescens',
+    variant: 'Gold Torch',
+    image: '/images/tanklogic/euphyllia-glabrescens-gold-torch-tanklogic.png',
+    alt: { fr: 'Corail torche dorée (Euphyllia glabrescens)', en: 'Gold torch coral (Euphyllia glabrescens)' },
+    size: { fr: '2 têtes', en: '2 heads' },
+    price: 159,
+    status: 'shipped',
+  },
+  {
+    id: 'CLWN-0342',
+    name: 'Amphiprion percula',
+    image: '/images/tanklogic/amphiprion-percula-tanklogic.png',
+    alt: { fr: 'Poisson-clown (Amphiprion percula)', en: 'Clownfish (Amphiprion percula)' },
+    size: { fr: '4 cm', en: '4 cm' },
+    price: 85,
+    status: 'stock',
+  },
+  {
+    id: 'PARA-0056',
+    name: 'Paracanthurus hepatus',
+    image: '/images/tanklogic/paracanthurus-hepatus-tanklogic.png',
+    alt: { fr: 'Chirurgien bleu (Paracanthurus hepatus)', en: 'Blue tang (Paracanthurus hepatus)' },
+    size: { fr: '6 cm', en: '6 cm' },
+    price: 79,
+    status: 'stock',
+  },
+  {
+    id: 'CHRY-0089',
+    name: 'Chrysiptera cyanea',
+    image: '/images/tanklogic/chrysiptera-cyanea-tanklogic.png',
+    alt: { fr: 'Demoiselle bleue (Chrysiptera cyanea)', en: 'Blue damselfish (Chrysiptera cyanea)' },
+    size: { fr: '4 cm', en: '4 cm' },
+    price: 25,
+    status: 'stock',
+  },
+  {
+    id: 'PTER-0127',
+    name: 'Pterapogon kauderni',
+    image: '/images/tanklogic/pterapogon-kauderni-tanklogic.png',
+    alt: { fr: 'Poisson-cardinal de Banggai (Pterapogon kauderni)', en: 'Banggai cardinalfish (Pterapogon kauderni)' },
+    size: { fr: '6 cm', en: '6 cm' },
+    price: 65,
+    status: 'reserved',
+  },
+  {
+    id: 'GRAM-0164',
+    name: 'Gramma loreto',
+    image: '/images/tanklogic/gramma-loreto-tanklogic.png',
+    alt: { fr: 'Gramma royal (Gramma loreto)', en: 'Royal gramma (Gramma loreto)' },
+    size: { fr: '5 cm', en: '5 cm' },
+    price: 45,
+    status: 'stock',
+  },
 ]
 
 function price(n: number, lang: 'fr' | 'en') {
@@ -327,20 +404,18 @@ function Badge({ status, t }: { status: StatusKey; t: T }) {
   )
 }
 
-/** Emoji thumb on a neutral gradient (home EcomPanel precedent). */
-function Thumb({ emoji, size = 32 }: { emoji: string; size?: number }) {
+/** Specimen thumb on a neutral gradient (home EcomPanel precedent). */
+function Thumb({ image, alt, size = 32 }: { image: string; alt: string; size?: number }) {
   return (
     <span
-      className="flex flex-shrink-0 items-center justify-center overflow-hidden rounded-[7px] border border-[#e6e6e8] leading-none"
+      className="relative flex flex-shrink-0 items-center justify-center overflow-hidden rounded-[7px] border border-[#e6e6e8]"
       style={{
         width: size,
         height: size,
-        fontSize: size * 0.52,
         background: 'linear-gradient(135deg,#f4f4f5 0%,#e8e8ea 100%)',
       }}
-      aria-hidden
     >
-      {emoji}
+      <Image src={image} alt={alt} fill sizes={`${size}px`} className="object-cover object-center" />
     </span>
   )
 }
@@ -410,7 +485,7 @@ export function HeroInventoryMock() {
                 i < SPECIMENS.length - 1 ? 'border-b border-[#f2f2f3]' : ''
               }`}
             >
-              <Thumb emoji={s.emoji} />
+              <Thumb image={s.image} alt={s.alt[lang]} />
               <span className="min-w-0">
                 <span className="block truncate text-[13px] font-medium tracking-tight">
                   {s.name}
@@ -475,7 +550,8 @@ export function SpecimenCardMock({ variant = 'unique' }: { variant?: 'unique' | 
     variant === 'sku'
       ? {
           id: 'AMPH-PERC',
-          emoji: '🐠',
+          image: '/images/tanklogic/amphiprion-percula-tanklogic.png',
+          alt: { fr: 'Poisson-clown (Amphiprion percula)', en: 'Clownfish (Amphiprion percula)' }[lang],
           name: 'Amphiprion percula',
           subtitle: t.cardSkuSubtitle,
           price: 35,
@@ -488,7 +564,8 @@ export function SpecimenCardMock({ variant = 'unique' }: { variant?: 'unique' | 
         }
       : {
           id: s.id,
-          emoji: s.emoji,
+          image: s.image,
+          alt: s.alt[lang],
           name: s.name,
           subtitle: `« ${s.variant} » · SPS · ${s.size[lang]}`,
           price: s.price,
@@ -504,12 +581,16 @@ export function SpecimenCardMock({ variant = 'unique' }: { variant?: 'unique' | 
     <Window title={config.id} tag={config.tag}>
       {/* Photo area */}
       <div
-        className="relative flex h-40 items-center justify-center border-b border-[#ececee] min-720:h-48"
+        className="relative flex h-40 items-center justify-center overflow-hidden border-b border-[#ececee] min-720:h-48"
         style={{ background: 'linear-gradient(135deg,#f6f6f7 0%,#e9e9eb 100%)' }}
       >
-        <span className="text-[56px] leading-none min-720:text-[64px]" aria-hidden>
-          {config.emoji}
-        </span>
+        <Image
+          src={config.image}
+          alt={config.alt}
+          fill
+          sizes="(min-width: 720px) 480px, 100vw"
+          className="object-cover object-center"
+        />
         <span className="absolute left-3 top-3 rounded-md bg-white/85 px-2 py-1 font-['Helvetica'] font-light text-[10px] tracking-[0.08em] text-[#616161] backdrop-blur-sm">
           {config.id}
         </span>
@@ -592,7 +673,7 @@ export function SyncMock() {
         <div className="px-4 py-3">
           <div className="flex items-center justify-between rounded-lg border border-[#ececee] px-3 py-2.5">
             <span className="flex min-w-0 items-center gap-2.5">
-              <Thumb emoji={target.emoji} size={28} />
+              <Thumb image={target.image} alt={target.alt[lang]} size={28} />
               <span className="min-w-0">
                 <span className="block truncate text-[12.5px] font-medium tracking-tight">
                   {target.name} « {target.variant} »
@@ -659,7 +740,7 @@ export function SyncMock() {
                 style={{ opacity: pulled ? 0.42 : 1 }}
               >
                 <span className="flex min-w-0 items-center gap-2.5">
-                  <Thumb emoji={s.emoji} size={28} />
+                  <Thumb image={s.image} alt={s.alt[lang]} size={28} />
                   <span className="min-w-0">
                     <span className={`block truncate text-[12.5px] font-medium tracking-tight ${pulled ? 'line-through decoration-[#c9c9cc]' : ''}`}>
                       {s.name}
@@ -696,7 +777,7 @@ export function MortalityMock() {
         {/* Specimen line */}
         <div className="flex items-center justify-between">
           <span className="flex min-w-0 items-center gap-2.5">
-            <Thumb emoji={s.emoji} />
+            <Thumb image={s.image} alt={s.alt[lang]} />
             <span className="min-w-0">
               <span className="block truncate text-[13px] font-medium tracking-tight">
                 {s.name} « {s.variant} »
@@ -803,11 +884,10 @@ export function TraceMock() {
                 {'photo' in step && step.photo && (
                   <span className="mt-1.5 flex items-center gap-2 rounded-lg border border-[#ececee] bg-[#fafafa] px-2.5 py-1.5">
                     <span
-                      className="flex h-7 w-9 flex-shrink-0 items-center justify-center rounded-[5px] border border-[#e6e6e8] text-[12px]"
+                      className="relative flex h-7 w-9 flex-shrink-0 items-center justify-center overflow-hidden rounded-[5px] border border-[#e6e6e8]"
                       style={{ background: 'linear-gradient(135deg,#f4f4f5,#e8e8ea)' }}
-                      aria-hidden
                     >
-                      {s.emoji}
+                      <Image src={s.image} alt={s.alt[lang]} fill sizes="36px" className="object-cover object-center" />
                     </span>
                     <span className="font-['Helvetica'] font-light text-[10.5px] text-[#8a8a8e]">{step.photo}</span>
                   </span>

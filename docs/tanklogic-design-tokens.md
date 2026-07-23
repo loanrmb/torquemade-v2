@@ -142,7 +142,7 @@ linear-gradient(135deg, #f4f4f5, #e8e8ea)           /* TraceMock photo-evidence 
 | Mortality one-click button | `rounded-xl` | `12px` |
 | Mortality log-entry panel | `rounded-xl` | `12px` |
 | Order-ID chip | `rounded-md` | `6px` |
-| `Thumb` emoji tile | `rounded-[7px]` (arbitrary) | `7px` |
+| `Thumb` product-photo tile | `rounded-[7px]` (arbitrary) | `7px` |
 | Trace photo-evidence chip inner tile | `rounded-[5px]` (arbitrary) | `5px` |
 | Trace photo-evidence outer chip | `rounded-lg` | `8px` |
 
