@@ -35,12 +35,13 @@ Next.js 15 (App Router)
 TypeScript (strict mode)
 Tailwind CSS v3 (light-only, no dark: variants)
 Framer Motion v12.40.0 (animations)
-shadcn/ui (new-york, neutral)
-Prisma 6 (MUST stay v6, v7 removed directUrl support)
-Supabase Postgres + Auth + Storage
+Resend (transactional email — /api/contact)
+google-auth-library (Google Indexing API — /api/indexing)
 Vercel (deployment)
 GitHub (source control)
 ```
+
+**Note :** ce repo n'a ni Supabase, ni Prisma, ni Stripe — aucune base de données. Seulement 3 API routes (`/api/contact`, `/api/indexing`, `/api/revalidate`) plus `/api/og`. Ce stack Supabase/Prisma appartient au projet séparé `moto-crm-demo`, absent de ce working directory.
 
 ### Packages Importants
 - `@react-pdf/renderer` — Devis/quotes PDF generation (Vercel serverless compatible)

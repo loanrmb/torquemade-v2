@@ -1,10 +1,20 @@
 import { NextResponse } from 'next/server';
 import { GoogleAuth } from 'google-auth-library';
+import { isValidSecret } from '@/lib/auth';
 
 const SCOPES = ['https://www.googleapis.com/auth/indexing'];
 const ENDPOINT = 'https://indexing.googleapis.com/v3/urlNotifications:publish';
 
 export async function POST(req: Request) {
+  const secret = process.env.REVALIDATE_SECRET;
+  if (!secret) {
+    return NextResponse.json({ error: 'REVALIDATE_SECRET non configuré' }, { status: 500 });
+  }
+
+  if (!isValidSecret(req.headers.get('x-revalidate-secret'), secret)) {
+    return NextResponse.json({ error: 'Non autorisé' }, { status: 401 });
+  }
+
   const { url } = await req.json();
 
   if (!url || typeof url !== 'string' || !url.startsWith('https://')) {
