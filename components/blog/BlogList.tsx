@@ -234,7 +234,7 @@ export function BlogList() {
         )}
 
         {/* ── FILTRES — pill sticky liquid glass + recherche sur la même ligne ── */}
-        <div ref={filterBarRef} className="sticky top-20 z-40 mb-16 flex flex-wrap items-center gap-3">
+        <div ref={filterBarRef} className="sticky top-20 z-40 mb-16 flex flex-wrap items-start gap-x-3 gap-y-3">
           {/* ── Trigger mobile — remplace pills catégories + tri par un sheet ── */}
           <button
             type="button"
@@ -268,9 +268,9 @@ export function BlogList() {
             )}
           </button>
 
-          <div className="hidden flex-1 min-w-0 overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0 md:flex md:justify-center scrollbar-hide">
+          <div className="hidden md:flex md:flex-1 md:justify-center">
             <div
-              className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 flex-shrink-0"
+              className="flex flex-wrap items-center gap-1 rounded-full px-2 py-1.5"
               style={{
                 background: 'hsl(var(--bg-secondary))',
                 border: '1px solid hsl(var(--border-subtle))',
