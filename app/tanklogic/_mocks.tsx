@@ -275,14 +275,7 @@ function Window({
       style={{ WebkitFontSmoothing: 'antialiased' }}
     >
       <header className="flex items-center justify-between border-b border-[#ececee] bg-[#fafafa] px-4 py-3">
-        <span className="flex items-center gap-2.5 min-w-0">
-          <span className="flex gap-1.5 flex-shrink-0" aria-hidden>
-            <span className="block h-[9px] w-[9px] rounded-full bg-[#e2e2e4]" />
-            <span className="block h-[9px] w-[9px] rounded-full bg-[#e2e2e4]" />
-            <span className="block h-[9px] w-[9px] rounded-full bg-[#e2e2e4]" />
-          </span>
-          <span className="truncate text-[13px] font-semibold tracking-tight">{title}</span>
-        </span>
+        <span className="min-w-0 truncate text-[13px] font-semibold tracking-tight">{title}</span>
         {tag && (
           <span className="ml-3 flex-shrink-0 font-mono text-[10px] uppercase tracking-[0.14em] text-[#8a8a8e]">
             {tag}
@@ -354,7 +347,7 @@ function Thumb({ emoji, size = 32 }: { emoji: string; size?: number }) {
 
 function MonoId({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <span className={`font-mono text-[11px] tracking-[0.03em] text-[#8a8a8e] ${className ?? ''}`}>
+    <span className={`font-['Helvetica'] font-light text-[11px] tracking-[0.03em] text-[#8a8a8e] ${className ?? ''}`}>
       {children}
     </span>
   )
@@ -424,15 +417,15 @@ export function HeroInventoryMock() {
                 </span>
                 <span className="block truncate text-[11px] text-[#8a8a8e]">
                   {s.variant ? `« ${s.variant} »` : ''}
-                  <span className="font-mono min-720:hidden">
+                  <span className="font-['Helvetica'] font-light min-720:hidden">
                     {s.variant ? ' · ' : ''}
                     {s.id}
                   </span>
                 </span>
               </span>
               <MonoId className="hidden min-720:block">{s.id}</MonoId>
-              <span className="hidden text-[12px] text-[#616161] min-720:block">{s.size[lang]}</span>
-              <span className="text-right font-mono text-[12.5px] tabular-nums text-[#1a1a1a]">
+              <span className="hidden font-['Helvetica'] font-light text-[12px] text-[#616161] min-720:block">{s.size[lang]}</span>
+              <span className="text-right font-['Helvetica'] font-light text-[12.5px] tabular-nums text-[#1a1a1a]">
                 {price(s.price, lang)}
               </span>
               <span className="flex justify-end">
@@ -517,7 +510,7 @@ export function SpecimenCardMock({ variant = 'unique' }: { variant?: 'unique' | 
         <span className="text-[56px] leading-none min-720:text-[64px]" aria-hidden>
           {config.emoji}
         </span>
-        <span className="absolute left-3 top-3 rounded-md bg-white/85 px-2 py-1 font-mono text-[10px] tracking-[0.08em] text-[#616161] backdrop-blur-sm">
+        <span className="absolute left-3 top-3 rounded-md bg-white/85 px-2 py-1 font-['Helvetica'] font-light text-[10px] tracking-[0.08em] text-[#616161] backdrop-blur-sm">
           {config.id}
         </span>
       </div>
@@ -529,7 +522,7 @@ export function SpecimenCardMock({ variant = 'unique' }: { variant?: 'unique' | 
           <span className="block text-[12px] text-[#8a8a8e]">{config.subtitle}</span>
         </span>
         <span className="text-right">
-          <span className="block font-mono text-[15px] font-medium tabular-nums">{price(config.price, lang)}</span>
+          <span className="block font-['Helvetica'] font-light text-[15px] tabular-nums">{price(config.price, lang)}</span>
           {config.statusBadge}
         </span>
       </div>
@@ -608,7 +601,7 @@ export function SyncMock() {
               </span>
             </span>
             <span className="ml-3 flex-shrink-0 text-right">
-              <span className="block font-mono text-[12.5px] tabular-nums">{price(target.price, lang)}</span>
+              <span className="block font-['Helvetica'] font-light text-[12.5px] tabular-nums">{price(target.price, lang)}</span>
             </span>
           </div>
 
@@ -622,7 +615,7 @@ export function SyncMock() {
             }}
           >
             <span className="font-medium">{t.posSaleLine}</span>
-            <span className="font-mono tabular-nums">{soldSide ? price(target.price, lang) : '—'}</span>
+            <span className="font-['Helvetica'] font-light tabular-nums">{soldSide ? price(target.price, lang) : '—'}</span>
           </div>
         </div>
       </Window>
@@ -853,7 +846,7 @@ export function OrdersMock() {
   return (
     <Window title={t.ordersTitle} tag="03">
       <div className="flex items-center justify-between border-b border-[#ececee] px-4 py-2.5">
-        <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">
+        <span className="font-['Helvetica'] font-light text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">
           {t.colOrder} · {t.colClient} · {t.colSpecimens}
         </span>
         <span className="whitespace-nowrap rounded-lg bg-[#161616] px-3 py-1.5 text-[11.5px] font-medium text-white">
@@ -882,7 +875,7 @@ export function OrdersMock() {
               </span>
             </span>
             <span className="flex flex-shrink-0 items-center gap-3">
-              <span className="hidden font-mono text-[12.5px] tabular-nums text-[#1a1a1a] min-720:block">
+              <span className="hidden font-['Helvetica'] font-light text-[12.5px] tabular-nums text-[#1a1a1a] min-720:block">
                 {price(o.total, lang)}
               </span>
               <span
@@ -942,7 +935,7 @@ export function AnalyticsMock() {
             key={kpi.label}
             className="rounded-2xl border border-[#e4e4e6] bg-white px-4 py-3.5 shadow-card min-720:px-5 min-720:py-4"
           >
-            <span className="block font-mono text-[9.5px] uppercase leading-snug tracking-[0.1em] text-[#a0a0a4] min-720:text-[10px]">
+            <span className="block font-['Helvetica'] font-light text-[9.5px] uppercase leading-snug tracking-[0.1em] text-[#a0a0a4] min-720:text-[10px]">
               {kpi.label}
             </span>
             <span className="mt-1 block text-[20px] font-semibold tabular-nums tracking-tight text-[#1a1a1a] min-720:text-[26px]">
@@ -954,7 +947,7 @@ export function AnalyticsMock() {
 
       {/* Mortality by supplier */}
       <div className="rounded-2xl border border-[#e4e4e6] bg-white px-4 py-4 shadow-card min-720:col-span-2 min-720:px-5">
-        <span className="block border-b border-[#f2f2f3] pb-2.5 font-mono text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">
+        <span className="block border-b border-[#f2f2f3] pb-2.5 font-['Helvetica'] font-light text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">
           {t.mortalityBySupplier}
         </span>
         <div className="pt-2">
@@ -966,7 +959,7 @@ export function AnalyticsMock() {
 
       {/* Best sellers */}
       <div className="rounded-2xl border border-[#e4e4e6] bg-white px-4 py-4 shadow-card min-720:px-5">
-        <span className="block border-b border-[#f2f2f3] pb-2.5 font-mono text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">
+        <span className="block border-b border-[#f2f2f3] pb-2.5 font-['Helvetica'] font-light text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">
           {t.bestSellers}
         </span>
         <div className="pt-2">
