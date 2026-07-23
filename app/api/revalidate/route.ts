@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { isValidSecret } from '@/lib/auth'
 import { TOPIC_CLUSTERS, revalidateCluster, type ClusterId } from '@/lib/revalidate'
 
 const VALID_CLUSTERS = Object.keys(TOPIC_CLUSTERS) as ClusterId[]
@@ -18,7 +19,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'REVALIDATE_SECRET non configuré' }, { status: 500 })
   }
 
-  if (req.headers.get('x-revalidate-secret') !== secret) {
+  if (!isValidSecret(req.headers.get('x-revalidate-secret'), secret)) {
     return NextResponse.json({ error: 'Non autorisé' }, { status: 401 })
   }
 
