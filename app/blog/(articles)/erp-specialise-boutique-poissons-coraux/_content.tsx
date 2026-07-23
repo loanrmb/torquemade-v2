@@ -55,15 +55,17 @@ export function ErpSpecialiseBoutiquePoissonsContent() {
         permanent friction and workaround costs. <strong>Build fully custom</strong>: correct,
         but expensive and slow if you start from a blank page. Or <strong>use software already
         built for livestock</strong>, where the specimen-and-mortality model is native and the
-        Shopify sync ships with it. For most independent fish and coral shops, the third path is
-        the only one that's both correct and affordable.
+        sync to your storefront, Shopify, PrestaShop, WooCommerce, or a custom site, ships with
+        it. For most independent fish and coral shops, the third path is the only one that's
+        both correct and affordable.
       </p>
 
       <p>
         That's the category <strong>TankLogic</strong> occupies: not a generic ERP with livestock
         bolted on, but a system whose core is the unique specimen and its lifecycle, syncing to
-        Shopify out of the box. The "specialized ERP" you were looking for is one built around the
-        two things generic systems can't represent.
+        your storefront out of the box, Shopify most commonly in this niche, but PrestaShop,
+        WooCommerce, or a custom build just as readily. The "specialized ERP" you were looking
+        for is one built around the two things generic systems can't represent.
       </p>
 
       <hr />
@@ -149,16 +151,19 @@ export function ErpSpecialiseBoutiquePoissonsContent() {
         friction permanente et le coût des contournements. <strong>Construire entièrement sur
         mesure</strong>: correct, mais cher et lent si vous partez d'une page blanche. Ou
         <strong> utiliser un logiciel déjà conçu pour le vivant</strong>, où le modèle
-        spécimen-et-mortalité est natif et la synchro Shopify livrée avec. Pour la plupart des
-        boutiques indépendantes de poissons et coraux, la troisième voie est la seule à la fois
-        correcte et abordable.
+        spécimen-et-mortalité est natif et la synchro vers votre boutique, Shopify, PrestaShop,
+        WooCommerce, ou un site sur mesure, livrée avec. Pour la plupart des boutiques
+        indépendantes de poissons et coraux, la troisième voie est la seule à la fois correcte
+        et abordable.
       </p>
 
       <p>
         C'est la catégorie qu'occupe <strong>TankLogic</strong> : pas un ERP générique avec du
         vivant greffé, mais un système dont le cœur est le spécimen unique et son cycle de vie, qui
-        se synchronise avec Shopify d'emblée. L'« ERP spécialisé » que vous cherchiez, c'est celui
-        bâti autour des deux choses que les systèmes génériques ne savent pas représenter.
+        se synchronise avec votre boutique d'emblée, Shopify le plus souvent dans ce secteur, mais
+        aussi bien PrestaShop, WooCommerce, ou un site sur mesure. L'« ERP spécialisé » que vous
+        cherchiez, c'est celui bâti autour des deux choses que les systèmes génériques ne savent
+        pas représenter.
       </p>
 
       <hr />

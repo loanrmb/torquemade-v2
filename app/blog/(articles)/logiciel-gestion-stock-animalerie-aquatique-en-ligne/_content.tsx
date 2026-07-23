@@ -44,7 +44,7 @@ export function LogicielGestionStockAnimalerieContent() {
         <li><strong>Per-specimen records.</strong> Unique ID, photo, and status for each animal, not a shared counter.</li>
         <li><strong>Mortality as a real event.</strong> Marking a specimen dead must remove exactly that unit from every sales channel in real time, not require a manual stock adjustment.</li>
         <li><strong>WYSIWYG listings.</strong> The online product is tied to the individual specimen, so two customers can't buy the same coral.</li>
-        <li><strong>Real-time push to your storefront.</strong> Status changes reach Shopify in seconds, not on an hourly batch that leaves a window for double-sells.</li>
+        <li><strong>Real-time push to your storefront.</strong> Status changes reach your online store, Shopify, PrestaShop, WooCommerce, or a custom build, in seconds, not on an hourly batch that leaves a window for double-sells.</li>
         <li><strong>An audit trail.</strong> Every status change timestamped, the raw material for fighting a chargeback later.</li>
       </ul>
 
@@ -64,14 +64,15 @@ export function LogicielGestionStockAnimalerieContent() {
       <ol>
         <li><strong>Generic software + heavy customization.</strong> Possible, but you pay in plugin subscriptions and fragile workarounds, and the specimen model is never native.</li>
         <li><strong>Spreadsheets.</strong> Flexible enough to model specimens, but there's no real-time sync and no dispute evidence: the manual work and the double-sell risk stay with you.</li>
-        <li><strong>Purpose-built livestock software.</strong> A system whose data model <em>starts</em> from unique specimens and mortality, and syncs to Shopify natively. Fewer moving parts, no fighting the tool.</li>
+        <li><strong>Purpose-built livestock software.</strong> A system whose data model <em>starts</em> from unique specimens and mortality, with the sync built on top of whichever platform you actually run, Shopify most often, but PrestaShop, WooCommerce, or a custom site just as natively. Fewer moving parts, no fighting the tool.</li>
       </ol>
 
       <p>
         <strong>TankLogic</strong> is the third option: built specifically for fish and coral
-        shops selling online, with per-specimen records, real-time mortality removal, and
-        native Shopify sync. Not a generic tool with livestock bolted on, the model starts
-        where your business does.
+        shops selling online, with per-specimen records, real-time mortality removal, and a
+        sync layer wired to your storefront at setup, whether that's Shopify (the most common
+        case in this niche), PrestaShop, WooCommerce, or a custom build. Not a generic tool
+        with livestock bolted on, the model starts where your business does.
       </p>
 
       <hr />
@@ -144,7 +145,7 @@ export function LogicielGestionStockAnimalerieContent() {
         <li><strong>Fiches par spécimen.</strong> Un identifiant unique, une photo et un statut pour chaque animal, pas un compteur partagé.</li>
         <li><strong>La mortalité comme vrai événement.</strong> Marquer un spécimen mort doit retirer exactement cette unité de tous les canaux de vente en temps réel, sans ajustement manuel de stock.</li>
         <li><strong>Annonces WYSIWYG.</strong> Le produit en ligne est lié au spécimen individuel : deux clients ne peuvent pas acheter le même corail.</li>
-        <li><strong>Push temps réel vers votre boutique.</strong> Les changements de statut atteignent Shopify en secondes, pas via un batch horaire qui laisse une fenêtre de double vente.</li>
+        <li><strong>Push temps réel vers votre boutique.</strong> Les changements de statut atteignent votre boutique en ligne, Shopify, PrestaShop, WooCommerce, ou un site sur mesure, en secondes, pas via un batch horaire qui laisse une fenêtre de double vente.</li>
         <li><strong>Une piste d'audit.</strong> Chaque changement de statut horodaté : la matière première pour contester une rétrofacturation plus tard.</li>
       </ul>
 
@@ -165,13 +166,15 @@ export function LogicielGestionStockAnimalerieContent() {
       <ol>
         <li><strong>Logiciel générique + grosse personnalisation.</strong> Possible, mais vous payez en abonnements de plugins et bricolages fragiles, et le modèle par spécimen n'est jamais natif.</li>
         <li><strong>Tableurs.</strong> Assez souples pour modéliser des spécimens, mais aucune synchro temps réel et aucune preuve de litige : le travail manuel et le risque de double vente restent pour vous.</li>
-        <li><strong>Logiciel dédié au vivant.</strong> Un système dont le modèle de données <em>part</em> des spécimens uniques et de la mortalité, et se synchronise nativement avec Shopify. Moins de pièces mobiles, aucune lutte contre l'outil.</li>
+        <li><strong>Logiciel dédié au vivant.</strong> Un système dont le modèle de données <em>part</em> des spécimens uniques et de la mortalité, avec une synchro construite sur la plateforme que vous utilisez déjà, Shopify le plus souvent, mais tout aussi nativement sur PrestaShop, WooCommerce ou un site sur mesure. Moins de pièces mobiles, aucune lutte contre l'outil.</li>
       </ol>
 
       <p>
         <strong>TankLogic</strong>, c'est la troisième voie : conçu spécifiquement pour les
         boutiques de poissons et coraux qui vendent en ligne, avec des fiches par spécimen, un
-        retrait en temps réel à la mortalité et une synchro Shopify native. Pas un outil
+        retrait en temps réel à la mortalité et une synchro construite sur mesure au moment de
+        la mise en place, quelle que soit votre plateforme e-commerce (Shopify, le cas le plus
+        courant dans ce secteur, PrestaShop, WooCommerce, ou un site sur mesure). Pas un outil
         générique avec du vivant greffé dessus : le modèle part de là où part votre activité.
       </p>
 

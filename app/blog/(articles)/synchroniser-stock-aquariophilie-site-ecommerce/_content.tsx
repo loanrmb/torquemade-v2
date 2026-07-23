@@ -82,7 +82,9 @@ export function SynchroniserStockAquariophilieContent() {
       <p>
         This is precisely the architecture <strong>TankLogic</strong> is built on: unique
         specimens, real-time removal on mortality, and a single source of truth pushing to
-        Shopify. If that's the problem you're fighting, that's the tool.
+        your storefront, whether that's Shopify (the most common case in this niche),
+        PrestaShop, WooCommerce, or a custom build. If that's the problem you're fighting,
+        that's the tool.
       </p>
 
       <hr />
@@ -193,7 +195,9 @@ export function SynchroniserStockAquariophilieContent() {
       <p>
         C'est exactement l'architecture sur laquelle repose <strong>TankLogic</strong> :
         spécimens uniques, retrait en temps réel à la mortalité, et une source de vérité unique
-        qui pousse vers Shopify. Si c'est le problème que vous combattez, c'est l'outil.
+        qui pousse vers votre boutique, que ce soit Shopify (le cas le plus courant dans ce
+        secteur), PrestaShop, WooCommerce, ou un site sur mesure. Si c'est le problème que vous
+        combattez, c'est l'outil.
       </p>
 
       <hr />
