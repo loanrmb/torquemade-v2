@@ -279,29 +279,34 @@ export function NavPill() {
             backdropFilter: 'blur(8px)',
             WebkitBackdropFilter: 'blur(8px)',
             opacity: menuOpen ? 1 : 0,
-            transition: 'opacity 220ms ease',
+            transition: prefersReducedMotion ? 'none' : 'opacity 220ms ease',
             pointerEvents: menuOpen ? 'auto' : 'none',
           }}
           onClick={() => setMenuOpen(false)}
         />
 
         <div
-          className="absolute left-1/2 top-4 w-[calc(100%-2rem)] max-w-md rounded-3xl border p-4 max-h-[calc(100vh-2rem)] overflow-y-auto"
+          className="absolute left-1/2 top-4 w-[calc(100%-2rem)] max-w-md rounded-3xl border flex flex-col overflow-hidden"
           style={{
             background: 'hsl(var(--bg-primary))',
             borderColor: 'hsl(var(--border-subtle))',
             boxShadow: '0 12px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06)',
+            maxHeight: 'calc(100dvh - 2rem - env(safe-area-inset-bottom))',
             opacity: menuOpen ? 1 : 0,
-            transform: menuOpen
+            transform: prefersReducedMotion
+              ? 'translateX(-50%)'
+              : menuOpen
               ? 'translateX(-50%) translateY(0) scale(1)'
               : 'translateX(-50%) translateY(-8px) scale(0.98)',
-            transition: menuOpen
+            transition: prefersReducedMotion
+              ? 'none'
+              : menuOpen
               ? 'opacity 220ms ease, transform 220ms ease'
               : 'opacity 180ms ease, transform 180ms ease',
             pointerEvents: menuOpen ? 'auto' : 'none',
           }}
         >
-            <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center justify-between p-4 pb-2 flex-shrink-0">
               <Link
                 href="/"
                 onClick={() => setMenuOpen(false)}
@@ -325,7 +330,10 @@ export function NavPill() {
               </button>
             </div>
 
-            <nav className="flex flex-col gap-0.5 mt-2">
+            <nav
+              className="flex flex-col gap-0.5 px-4 pt-2 overflow-y-auto"
+              style={{ paddingBottom: 'calc(1rem + env(safe-area-inset-bottom))' }}
+            >
               <MobileLink
                 href="/work"
                 label={t.work}
