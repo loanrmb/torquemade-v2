@@ -179,39 +179,45 @@ export default function HomePage() {
               viewport={{ once: true, margin: '-80px' }}
             >
               {featuredProjects.slice(0, 4).map((project) => (
-                <motion.div
-                  key={project.id}
-                  variants={fadeUpVariants}
-                  className="card overflow-hidden"
-                >
-                  <div className="work-card-img">
-                    <img
-                      src={project.imageHero}
-                      alt={project.client}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                  <div className="p-5">
-                    <p
-                      className="text-caption font-semibold uppercase tracking-wider mb-1"
-                      style={{ color: 'hsl(var(--text-tertiary))' }}
-                    >
-                      {project.type[lang]}
-                    </p>
-                    <h3
-                      className="text-base font-semibold tracking-tight mb-1"
-                      style={{ color: 'hsl(var(--text-primary))' }}
-                    >
-                      {project.headline[lang]}
-                    </h3>
-                    <p
-                      className="text-sm"
-                      style={{ color: 'hsl(var(--text-tertiary))' }}
-                    >
-                      {project.location}
-                    </p>
-                  </div>
+                <motion.div key={project.id} variants={fadeUpVariants}>
+                  <Link
+                    href={`/work/${project.slug}`}
+                    aria-label={
+                      lang === 'fr'
+                        ? `Voir le projet ${project.client}`
+                        : `View project ${project.client}`
+                    }
+                    className="card overflow-hidden block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[hsl(var(--text-primary))] focus-visible:ring-offset-[hsl(var(--bg-secondary))]"
+                  >
+                    <div className="work-card-img">
+                      <img
+                        src={project.imageHero}
+                        alt={project.client}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <div className="p-5">
+                      <p
+                        className="text-caption font-semibold uppercase tracking-wider mb-1"
+                        style={{ color: 'hsl(var(--text-tertiary))' }}
+                      >
+                        {project.type[lang]}
+                      </p>
+                      <h3
+                        className="text-base font-semibold tracking-tight mb-1"
+                        style={{ color: 'hsl(var(--text-primary))' }}
+                      >
+                        {project.headline[lang]}
+                      </h3>
+                      <p
+                        className="text-sm"
+                        style={{ color: 'hsl(var(--text-tertiary))' }}
+                      >
+                        {project.location}
+                      </p>
+                    </div>
+                  </Link>
                 </motion.div>
               ))}
             </motion.div>
