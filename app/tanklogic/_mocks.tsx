@@ -352,16 +352,9 @@ function Window({
       style={{ WebkitFontSmoothing: 'antialiased' }}
     >
       <header className="flex items-center justify-between border-b border-[#ececee] bg-[#fafafa] px-4 py-3">
-        <span className="flex items-center gap-2.5 min-w-0">
-          <span className="flex gap-1.5 flex-shrink-0" aria-hidden>
-            <span className="block h-[9px] w-[9px] rounded-full bg-[#e2e2e4]" />
-            <span className="block h-[9px] w-[9px] rounded-full bg-[#e2e2e4]" />
-            <span className="block h-[9px] w-[9px] rounded-full bg-[#e2e2e4]" />
-          </span>
-          <span className="truncate text-[13px] font-semibold tracking-tight">{title}</span>
-        </span>
+        <span className="min-w-0 truncate text-[13px] font-semibold tracking-tight">{title}</span>
         {tag && (
-          <span className="ml-3 flex-shrink-0 font-mono text-[10px] uppercase tracking-[0.14em] text-[#8a8a8e]">
+          <span className="ml-3 flex-shrink-0 font-['Helvetica'] font-light text-[10px] uppercase tracking-[0.14em] text-[#8a8a8e]">
             {tag}
           </span>
         )}
@@ -429,7 +422,7 @@ function Thumb({ image, alt, size = 32 }: { image: string; alt: string; size?: n
 
 function MonoId({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <span className={`font-mono text-[11px] tracking-[0.03em] text-[#8a8a8e] ${className ?? ''}`}>
+    <span className={`font-['Helvetica'] font-light text-[11px] tracking-[0.03em] text-[#8a8a8e] ${className ?? ''}`}>
       {children}
     </span>
   )
@@ -474,7 +467,7 @@ export function HeroInventoryMock() {
         </div>
 
         {/* Column headers */}
-        <div className="grid grid-cols-[32px_1fr_auto_auto] items-center gap-3 border-b border-[#ececee] bg-[#fafafa] px-4 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4] min-720:grid-cols-[32px_1.3fr_110px_90px_64px_auto]">
+        <div className="grid grid-cols-[32px_1fr_auto_auto] items-center gap-3 border-b border-[#ececee] bg-[#fafafa] px-4 py-2 font-['Helvetica'] font-light text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4] min-720:grid-cols-[32px_1.3fr_110px_90px_64px_auto]">
           <span />
           <span>{t.colSpecimen}</span>
           <span className="hidden min-720:block">{t.colId}</span>
@@ -499,15 +492,15 @@ export function HeroInventoryMock() {
                 </span>
                 <span className="block truncate text-[11px] text-[#8a8a8e]">
                   {s.variant ? `« ${s.variant} »` : ''}
-                  <span className="font-mono min-720:hidden">
+                  <span className="font-['Helvetica'] font-light min-720:hidden">
                     {s.variant ? ' · ' : ''}
                     {s.id}
                   </span>
                 </span>
               </span>
               <MonoId className="hidden min-720:block">{s.id}</MonoId>
-              <span className="hidden text-[12px] text-[#616161] min-720:block">{s.size[lang]}</span>
-              <span className="text-right font-mono text-[12.5px] tabular-nums text-[#1a1a1a]">
+              <span className="hidden font-['Helvetica'] font-light text-[12px] text-[#616161] min-720:block">{s.size[lang]}</span>
+              <span className="text-right font-['Helvetica'] font-light text-[12.5px] tabular-nums text-[#1a1a1a]">
                 {price(s.price, lang)}
               </span>
               <span className="flex justify-end">
@@ -598,7 +591,7 @@ export function SpecimenCardMock({ variant = 'unique' }: { variant?: 'unique' | 
           sizes="(min-width: 720px) 480px, 100vw"
           className="object-cover object-center"
         />
-        <span className="absolute left-3 top-3 rounded-md bg-white/85 px-2 py-1 font-mono text-[10px] tracking-[0.08em] text-[#616161] backdrop-blur-sm">
+        <span className="absolute left-3 top-3 rounded-md bg-white/85 px-2 py-1 font-['Helvetica'] font-light text-[10px] tracking-[0.08em] text-[#616161] backdrop-blur-sm">
           {config.id}
         </span>
       </div>
@@ -610,7 +603,7 @@ export function SpecimenCardMock({ variant = 'unique' }: { variant?: 'unique' | 
           <span className="block text-[12px] text-[#8a8a8e]">{config.subtitle}</span>
         </span>
         <span className="text-right">
-          <span className="block font-mono text-[15px] font-medium tabular-nums">{price(config.price, lang)}</span>
+          <span className="block font-['Helvetica'] font-light text-[15px] tabular-nums">{price(config.price, lang)}</span>
           {config.statusBadge}
         </span>
       </div>
@@ -619,7 +612,7 @@ export function SpecimenCardMock({ variant = 'unique' }: { variant?: 'unique' | 
       <div className="border-t border-[#f2f2f3] px-4 py-3">
         {config.rows.map(([label, value], i) => (
           <div key={label} className={`flex items-baseline justify-between py-1.5 ${i === 0 ? '' : 'border-t border-[#f7f7f8]'}`}>
-            <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">{label}</span>
+            <span className="font-['Helvetica'] font-light text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">{label}</span>
             <span className="text-[12px] text-[#1a1a1a]">{value}</span>
           </div>
         ))}
@@ -689,7 +682,7 @@ export function SyncMock() {
               </span>
             </span>
             <span className="ml-3 flex-shrink-0 text-right">
-              <span className="block font-mono text-[12.5px] tabular-nums">{price(target.price, lang)}</span>
+              <span className="block font-['Helvetica'] font-light text-[12.5px] tabular-nums">{price(target.price, lang)}</span>
             </span>
           </div>
 
@@ -703,7 +696,7 @@ export function SyncMock() {
             }}
           >
             <span className="font-medium">{t.posSaleLine}</span>
-            <span className="font-mono tabular-nums">{soldSide ? price(target.price, lang) : '—'}</span>
+            <span className="font-['Helvetica'] font-light tabular-nums">{soldSide ? price(target.price, lang) : '—'}</span>
           </div>
         </div>
       </Window>
@@ -711,7 +704,7 @@ export function SyncMock() {
       {/* Connector */}
       <div className="flex items-center justify-center px-1 py-1 min-720:px-3" aria-hidden>
         <div className="flex rotate-90 items-center gap-1.5 min-720:rotate-0">
-          <span className="hidden font-mono text-[10px] uppercase tracking-[0.14em] text-text-tertiary min-720:block">
+          <span className="hidden font-['Helvetica'] font-light text-[10px] uppercase tracking-[0.14em] text-text-tertiary min-720:block">
             {p === 'syncing' ? t.syncing : t.synced}
           </span>
           <svg width="44" height="10" viewBox="0 0 44 10" fill="none" className="text-text-tertiary">
@@ -815,10 +808,10 @@ export function MortalityMock() {
           transition={{ duration: 0.5, delay: 1.05, ease: EASE_OUT }}
         >
           <div className="flex items-baseline justify-between">
-            <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">
+            <span className="font-['Helvetica'] font-light text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">
               {t.mortalityReasonLabel}
             </span>
-            <span className="font-mono text-[11px] tabular-nums text-[#8a8a8e]">{t.mortalityTime}</span>
+            <span className="font-['Helvetica'] font-light text-[11px] tabular-nums text-[#8a8a8e]">{t.mortalityTime}</span>
           </div>
           <div className="mt-1 text-[12.5px] font-medium text-[#1a1a1a]">{t.mortalityReason}</div>
           <div className="mt-2.5 flex items-center gap-1.5 border-t border-[#ececee] pt-2.5 text-[12px] text-[#616161]">
@@ -886,7 +879,7 @@ export function TraceMock() {
                   <span className={`text-[12.5px] tracking-tight ${done ? 'font-semibold' : 'font-medium'} text-[#1a1a1a]`}>
                     {step.label}
                   </span>
-                  <span className="font-mono text-[10.5px] tabular-nums text-[#a0a0a4]">{step.time}</span>
+                  <span className="font-['Helvetica'] font-light text-[10.5px] tabular-nums text-[#a0a0a4]">{step.time}</span>
                 </span>
                 {'photo' in step && step.photo && (
                   <span className="mt-1.5 flex items-center gap-2 rounded-lg border border-[#ececee] bg-[#fafafa] px-2.5 py-1.5">
@@ -896,7 +889,7 @@ export function TraceMock() {
                     >
                       <Image src={s.image} alt={s.alt[lang]} fill sizes="36px" className="object-cover object-center" />
                     </span>
-                    <span className="font-mono text-[10.5px] text-[#8a8a8e]">{step.photo}</span>
+                    <span className="font-['Helvetica'] font-light text-[10.5px] text-[#8a8a8e]">{step.photo}</span>
                   </span>
                 )}
               </span>
@@ -933,7 +926,7 @@ export function OrdersMock() {
   return (
     <Window title={t.ordersTitle} tag="03">
       <div className="flex items-center justify-between border-b border-[#ececee] px-4 py-2.5">
-        <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">
+        <span className="font-['Helvetica'] font-light text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">
           {t.colOrder} · {t.colClient} · {t.colSpecimens}
         </span>
         <span className="whitespace-nowrap rounded-lg bg-[#161616] px-3 py-1.5 text-[11.5px] font-medium text-white">
@@ -950,19 +943,19 @@ export function OrdersMock() {
           >
             <span className="min-w-0">
               <span className="flex items-baseline gap-2">
-                <span className="font-mono text-[12px] font-medium tabular-nums text-[#1a1a1a]">{o.num}</span>
+                <span className="font-['Helvetica'] font-light text-[12px] tabular-nums text-[#1a1a1a]">{o.num}</span>
                 <span className="truncate text-[12.5px] text-[#616161]">{o.client}</span>
               </span>
               <span className="mt-0.5 flex flex-wrap gap-1">
                 {o.ids.map((id) => (
-                  <span key={id} className="rounded-md border border-[#ececee] bg-[#fafafa] px-1.5 py-0.5 font-mono text-[10px] text-[#8a8a8e]">
+                  <span key={id} className="rounded-md border border-[#ececee] bg-[#fafafa] px-1.5 py-0.5 font-['Helvetica'] font-light text-[10px] text-[#8a8a8e]">
                     {id}
                   </span>
                 ))}
               </span>
             </span>
             <span className="flex flex-shrink-0 items-center gap-3">
-              <span className="hidden font-mono text-[12.5px] tabular-nums text-[#1a1a1a] min-720:block">
+              <span className="hidden font-['Helvetica'] font-light text-[12.5px] tabular-nums text-[#1a1a1a] min-720:block">
                 {price(o.total, lang)}
               </span>
               <span
@@ -993,7 +986,7 @@ function BarRow({ name, value, pct, emphasized }: { name: string; value: string;
     <div className="py-1.5">
       <div className="flex items-baseline justify-between gap-3">
         <span className={`truncate text-[12px] ${emphasized ? 'font-semibold text-[#1a1a1a]' : 'text-[#616161]'}`}>{name}</span>
-        <span className="font-mono text-[11.5px] tabular-nums text-[#1a1a1a]">{value}</span>
+        <span className="font-['Helvetica'] font-light text-[11.5px] tabular-nums text-[#1a1a1a]">{value}</span>
       </div>
       <div className="mt-1 h-[5px] overflow-hidden rounded-full bg-[#f0f0f1]">
         <motion.div
@@ -1022,7 +1015,7 @@ export function AnalyticsMock() {
             key={kpi.label}
             className="rounded-2xl border border-[#e4e4e6] bg-white px-4 py-3.5 shadow-card min-720:px-5 min-720:py-4"
           >
-            <span className="block font-mono text-[9.5px] uppercase leading-snug tracking-[0.1em] text-[#a0a0a4] min-720:text-[10px]">
+            <span className="block font-['Helvetica'] font-light text-[9.5px] uppercase leading-snug tracking-[0.1em] text-[#a0a0a4] min-720:text-[10px]">
               {kpi.label}
             </span>
             <span className="mt-1 block text-[20px] font-semibold tabular-nums tracking-tight text-[#1a1a1a] min-720:text-[26px]">
@@ -1034,7 +1027,7 @@ export function AnalyticsMock() {
 
       {/* Mortality by supplier */}
       <div className="rounded-2xl border border-[#e4e4e6] bg-white px-4 py-4 shadow-card min-720:col-span-2 min-720:px-5">
-        <span className="block border-b border-[#f2f2f3] pb-2.5 font-mono text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">
+        <span className="block border-b border-[#f2f2f3] pb-2.5 font-['Helvetica'] font-light text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">
           {t.mortalityBySupplier}
         </span>
         <div className="pt-2">
@@ -1046,7 +1039,7 @@ export function AnalyticsMock() {
 
       {/* Best sellers */}
       <div className="rounded-2xl border border-[#e4e4e6] bg-white px-4 py-4 shadow-card min-720:px-5">
-        <span className="block border-b border-[#f2f2f3] pb-2.5 font-mono text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">
+        <span className="block border-b border-[#f2f2f3] pb-2.5 font-['Helvetica'] font-light text-[10px] uppercase tracking-[0.12em] text-[#a0a0a4]">
           {t.bestSellers}
         </span>
         <div className="pt-2">
