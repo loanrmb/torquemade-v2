@@ -18,6 +18,12 @@ import {
 import { ShaderBackground } from '@/components/ui/shader-background'
 import { WaveBackground } from '@/components/ui/wave-background'
 import { HeroHeading, HeroRevealBlock } from '@/components/ui/hero-heading'
+import { FaqSection } from '@/components/faq-section'
+
+const webDevFaqItems = strings.fr.webDev.faq.map((item, i) => ({
+  question: { fr: item.q, en: strings.en.webDev.faq[i].q },
+  answer: { fr: item.a, en: strings.en.webDev.faq[i].a },
+}))
 
 const CAROUSEL_ILLUSTRATIONS = [
   <SeoIllustration key="seo" />,
@@ -390,58 +396,14 @@ export default function WebDevPage() {
         )}
 
         {/* FAQ */}
-        <section
-          className="px-5 py-20 min-720:py-24"
-          style={{ background: 'hsl(var(--bg-secondary))' }}
-        >
-          <div className="mx-auto max-w-3xl">
-            <h2
-              className="fade-up mb-8 text-title-2 font-semibold tracking-tight min-720:mb-10 text-center"
-              style={{ color: 'hsl(var(--text-primary))' }}
-            >
-              {t.faqTitle}
-            </h2>
-            <div
-              className="fade-up overflow-hidden rounded-2xl"
-              style={{
-                background: 'hsl(var(--bg-primary))',
-                border: '1px solid hsl(var(--border-subtle))',
-              }}
-            >
-              {t.faq.map((item, i) => (
-                <details
-                  key={i}
-                  className="group"
-                  style={{
-                    borderTop: i === 0 ? 'none' : '1px solid hsl(var(--border-subtle))',
-                  }}
-                >
-                  <summary className="flex cursor-pointer list-none items-baseline justify-between gap-4 px-5 py-4 min-720:px-7 min-720:py-5 [&::-webkit-details-marker]:hidden">
-                    <h3
-                      className="text-body font-semibold leading-snug"
-                      style={{ color: 'hsl(var(--text-primary))' }}
-                    >
-                      {item.q}
-                    </h3>
-                    <span
-                      aria-hidden="true"
-                      className="flex-shrink-0 self-center text-lg font-light leading-none transition-transform duration-200 ease-out group-open:rotate-45"
-                      style={{ color: 'hsl(var(--text-tertiary))' }}
-                    >
-                      +
-                    </span>
-                  </summary>
-                  <p
-                    className="px-5 pb-5 text-body leading-relaxed min-720:px-7 min-720:pb-6"
-                    style={{ color: 'hsl(var(--text-secondary))' }}
-                  >
-                    {item.a}
-                  </p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
+        <FaqSection
+          title={{ fr: strings.fr.webDev.faqTitle, en: strings.en.webDev.faqTitle }}
+          description={{ fr: strings.fr.webDev.faqDescription, en: strings.en.webDev.faqDescription }}
+          items={webDevFaqItems}
+          contactHref="/contact"
+          contactText={{ fr: strings.fr.webDev.faqContactText, en: strings.en.webDev.faqContactText }}
+          contactLinkText={{ fr: strings.fr.webDev.faqContactLinkText, en: strings.en.webDev.faqContactLinkText }}
+        />
 
         {/* CTA */}
         <section className="px-5 pb-20 min-720:pb-24">
