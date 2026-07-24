@@ -695,9 +695,9 @@ export const strings = {
         'Créez et gérez vos commandes directement depuis le logiciel de stock. Les spécimens réservés sont liés à la commande : plus de jonglage entre tableur, boîte mail et back-office.',
       ],
 
-      analyticsTitle: 'Vos pertes deviennent des décisions.',
+      analyticsTitle: 'Réduisez vos pertes.',
       analyticsBody: [
-        'Taux de mortalité par fournisseur et par espèce, taux de DOA, meilleures ventes, marges. Les données saisies au fil de l’eau ressortent en décisions d’achat : quel fournisseur garder, quelle espèce arrêter, quoi recommander.',
+        'Suivez le taux de DOA, la mortalité par fournisseur et par espèce, les marges. Repérez les tendances au fil de l’eau et ajustez vos achats en conséquence.',
       ],
 
       faqTitle: 'Questions fréquentes',
@@ -1528,9 +1528,9 @@ export const strings = {
         'Create and manage orders right inside your inventory software. Reserved specimens are linked to the order: no more juggling spreadsheets, inbox, and back office.',
       ],
 
-      analyticsTitle: 'Losses become decisions.',
+      analyticsTitle: 'Cut your losses.',
       analyticsBody: [
-        'Mortality rate by supplier and by species, DOA rate, best sellers, margins. The data you log day to day comes back as buying decisions: which supplier to keep, which species to drop, what to reorder.',
+        'Track your DOA rate, mortality by supplier and species, and margins. Spot the trends as they happen and adjust your purchasing accordingly.',
       ],
 
       faqTitle: 'Frequently asked questions',
