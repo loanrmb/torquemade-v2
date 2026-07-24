@@ -1,5 +1,6 @@
 'use client'
 
+import type { CSSProperties } from 'react'
 import Link from 'next/link'
 import { NavPill } from '@/components/nav-pill'
 import { Footer } from '@/components/footer'
@@ -259,7 +260,11 @@ export default function CrmPage() {
             {/* vertical phase timeline */}
             <ol className="relative mx-auto max-w-3xl">
               {t.buildPhases.map((phase, i) => (
-                <li key={phase.num} className="fade-up relative grid grid-cols-[auto_1fr] gap-5 min-720:gap-8 pb-10 last:pb-0">
+                <li
+                  key={phase.num}
+                  className="fade-up stagger-up relative grid grid-cols-[auto_1fr] gap-5 min-720:gap-8 pb-10 last:pb-0"
+                  style={{ '--stagger-i': i } as CSSProperties}
+                >
                   {/* rail */}
                   <div className="relative flex flex-col items-center">
                     <span
