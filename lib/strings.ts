@@ -285,6 +285,9 @@ export const strings = {
       relatedTitle: 'À lire aussi',
       relatedCta: 'Lire l\'article',
       faqTitle: 'Questions fréquentes',
+      faqDescription: 'Les questions qu\'on nous pose le plus souvent avant de se lancer : délais, budget, propriété du code, SEO et évolutions après la mise en ligne.',
+      faqContactText: 'Vous ne trouvez pas la réponse à votre question ?',
+      faqContactLinkText: 'Contactez-nous',
       faq: [
         { q: 'Pourquoi un site sur mesure coûte-t-il plus cher qu\'un template ?', a: 'Un template mutualise ses coûts sur des milliers de clients. Un site sur mesure est construit uniquement pour vos besoins : la différence de prix reflète le travail réel.' },
         { q: 'Combien de temps prend la création d\'un site ?', a: 'Entre 4 et 8 semaines selon la complexité, du cadrage à la mise en ligne.' },
@@ -334,6 +337,9 @@ export const strings = {
       relatedCta: 'Lire l\'article',
 
       faqTitle: 'Questions fréquentes',
+      faqDescription: 'Les questions qu\'on nous pose le plus souvent avant de choisir entre un abonnement générique et un outil construit sur mesure.',
+      faqContactText: 'Vous ne trouvez pas la réponse à votre question ?',
+      faqContactLinkText: 'Contactez-nous',
       faq: [
         { q: 'CRM sur mesure ou logiciel générique, que choisir ?', a: 'Un logiciel générique convient si vos besoins sont standards et que vous acceptez d\'adapter votre façon de travailler à l\'outil. Un CRM sur mesure se justifie dès que vos processus ont des particularités, que vous voulez posséder vos données, ou que les mensualités par utilisateur deviennent lourdes dans le temps.' },
         { q: 'Combien coûte un CRM sur mesure ?', a: 'Le coût dépend du périmètre, mais il prend la forme d\'un investissement de départ payé une fois, et non d\'un abonnement mensuel par utilisateur. Sur plusieurs années, l\'absence de mensualité qui augmente fait souvent pencher la balance vers le sur mesure.' },
@@ -459,6 +465,9 @@ export const strings = {
       relatedCta: 'Lire l\'article',
 
       faqTitle: 'Questions fréquentes',
+      faqDescription: 'Les questions qu\'on nous pose le plus souvent sur la connexion entre votre ERP ou caisse et votre site en ligne.',
+      faqContactText: 'Vous ne trouvez pas la réponse à votre question ?',
+      faqContactLinkText: 'Contactez-nous',
       faq: [
         { q: 'Combien de temps prend la mise en place d\'une synchronisation stock ↔ site ?', a: 'Entre 3 et 6 semaines selon la complexité de votre ERP ou caisse actuelle, de l\'audit de l\'API jusqu\'à la mise en production.' },
         { q: 'Est-ce compatible avec mon ERP ou ma caisse actuelle (SAGE, Cegid, Odoo, Lightspeed...) ?', a: 'Dans la grande majorité des cas, oui. On commence toujours par un audit de l\'API de votre logiciel actuel pour déterminer la meilleure approche : connecteur direct ou migration si l\'API est trop limitée.' },
@@ -701,6 +710,9 @@ export const strings = {
       ],
 
       faqTitle: 'Questions fréquentes',
+      faqDescription: 'Les questions qu\'on nous pose le plus souvent sur la gestion des spécimens vivants, la synchro boutique et les litiges DOA.',
+      faqContactText: 'Vous ne trouvez pas la réponse à votre question ?',
+      faqContactLinkText: 'Contactez-nous',
       faq: [
         {
           q: 'Comment éviter les chargebacks DOA quand je vends du corail à distance ?',
@@ -1050,6 +1062,9 @@ export const strings = {
       relatedTitle: 'Related reading',
       relatedCta: 'Read the article',
       faqTitle: 'Frequently asked questions',
+      faqDescription: 'The questions we get asked most before getting started: timelines, budget, code ownership, SEO, and changes after launch.',
+      faqContactText: "Can't find the answer to your question?",
+      faqContactLinkText: 'Contact us',
       faq: [
         { q: 'Why does a custom website cost more than a template?', a: 'A template spreads its cost across thousands of customers. A custom site is built solely for your needs: the price difference reflects the actual work involved.' },
         { q: 'How long does it take to build a website?', a: 'Between 4 and 8 weeks depending on complexity, from discovery to launch.' },
@@ -1099,6 +1114,9 @@ export const strings = {
       relatedCta: 'Read the article',
 
       faqTitle: 'Frequently asked questions',
+      faqDescription: 'The questions we get asked most when choosing between a generic subscription and a tool built around your business.',
+      faqContactText: "Can't find the answer to your question?",
+      faqContactLinkText: 'Contact us',
       faq: [
         { q: 'Custom CRM or generic software, which to choose?', a: 'Generic software works if your needs are standard and you accept adapting your way of working to the tool. A custom CRM makes sense as soon as your processes have particularities, you want to own your data, or per-user monthly fees become heavy over time.' },
         { q: 'How much does a custom CRM cost?', a: 'The cost depends on scope, but it takes the form of an upfront investment paid once, not a monthly per-user subscription. Over several years, the absence of a fee that keeps rising often tips the balance toward custom.' },
@@ -1224,6 +1242,9 @@ export const strings = {
       relatedCta: 'Read the article',
 
       faqTitle: 'Frequently asked questions',
+      faqDescription: 'The questions we get asked most about connecting your ERP or POS system to your online store.',
+      faqContactText: "Can't find the answer to your question?",
+      faqContactLinkText: 'Contact us',
       faq: [
         { q: 'How long does it take to set up a stock ↔ site synchronization?', a: 'Between 3 and 6 weeks depending on the complexity of your current ERP or POS, from the API audit to go-live.' },
         { q: 'Is it compatible with my current ERP or POS (SAGE, Cegid, Odoo, Lightspeed...)?', a: 'In the vast majority of cases, yes. We always start with an audit of your current software\'s API to determine the best approach: direct connector or migration if the API is too limited.' },
@@ -1534,6 +1555,9 @@ export const strings = {
       ],
 
       faqTitle: 'Frequently asked questions',
+      faqDescription: 'The questions we get asked most about managing live specimens, store sync, and DOA disputes.',
+      faqContactText: "Can't find the answer to your question?",
+      faqContactLinkText: 'Contact us',
       faq: [
         {
           q: 'How do I avoid DOA chargebacks when I sell coral by mail order?',
