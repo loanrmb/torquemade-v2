@@ -83,7 +83,7 @@ export default function WebDevPage() {
         <section className="px-5 py-20 min-720:py-24">
           <div className="mx-auto max-w-3xl text-center">
             <h2
-              className="fade-up text-title-2 font-semibold tracking-tight mb-5"
+              className="fade-up text-headline font-semibold mb-5"
               style={{ color: 'hsl(var(--text-primary))' }}
             >
               {t.reframeTitle}
@@ -102,14 +102,28 @@ export default function WebDevPage() {
           className="px-5 py-20 min-720:py-24"
           style={{ background: 'hsl(var(--bg-secondary))' }}
         >
-          <div className="fade-up">
-            <SeoFeatureCarousel steps={t.carouselSteps} illustrations={CAROUSEL_ILLUSTRATIONS} />
+          <div className="mx-auto max-w-4xl">
+            <h2
+              className="fade-up text-title-2 font-semibold tracking-tight mb-10 text-center"
+              style={{ color: 'hsl(var(--text-primary))' }}
+            >
+              {t.carouselTitle}
+            </h2>
+            <div className="fade-up">
+              <SeoFeatureCarousel steps={t.carouselSteps} illustrations={CAROUSEL_ILLUSTRATIONS} />
+            </div>
           </div>
         </section>
 
         {/* TWO TYPES OF SITES */}
         <section className="px-5 py-20 min-720:py-24">
           <div className="mx-auto max-w-5xl">
+            <h2
+              className="fade-up text-title-2 font-semibold tracking-tight mb-10 text-center"
+              style={{ color: 'hsl(var(--text-primary))' }}
+            >
+              {t.sitesCompareTitle}
+            </h2>
             <div className="grid grid-cols-1 min-720:grid-cols-2 gap-4">
               <div
                 className="fade-up p-8 min-720:p-10 rounded-2xl flex flex-col gap-4"
@@ -330,22 +344,6 @@ export default function WebDevPage() {
           </div>
         </section>
 
-        {/* STACK BANNER */}
-        <section
-          className="px-5 py-8"
-          style={{
-            borderTop: '1px solid hsl(var(--border-subtle))',
-            borderBottom: '1px solid hsl(var(--border-subtle))',
-          }}
-        >
-          <p
-            className="fade-up mx-auto max-w-3xl text-center text-sm leading-relaxed"
-            style={{ color: 'hsl(var(--text-tertiary))' }}
-          >
-            {t.stackBanner}
-          </p>
-        </section>
-
         {/* RELATED ARTICLES */}
         {relatedPosts.length > 0 && (
           <section className="px-5 py-20 min-720:py-24">
@@ -406,7 +404,7 @@ export default function WebDevPage() {
         />
 
         {/* CTA */}
-        <section className="px-5 pb-20 min-720:pb-24">
+        <section className="px-5 pb-20 pt-16 min-720:pb-24 min-720:pt-20">
           <div className="mx-auto max-w-5xl">
             <div className="cta-card p-10 min-720:p-16 text-center fade-up">
               <ShaderBackground className="absolute inset-0 z-0" />
