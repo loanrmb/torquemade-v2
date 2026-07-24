@@ -77,7 +77,7 @@ export default function WebDevPage() {
         <section className="px-5 py-20 min-720:py-24">
           <div className="mx-auto max-w-3xl text-center">
             <h2
-              className="fade-up text-title-2 font-semibold tracking-tight mb-5"
+              className="fade-up text-headline font-semibold mb-5"
               style={{ color: 'hsl(var(--text-primary))' }}
             >
               {t.reframeTitle}
