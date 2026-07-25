@@ -1,5 +1,6 @@
 'use client'
 
+import type { CSSProperties } from 'react'
 import Link from 'next/link'
 import { NavPill } from '@/components/nav-pill'
 import { Footer } from '@/components/footer'
@@ -69,8 +70,9 @@ export default function CrmPage() {
         </section>
 
         {/* COMPARISON: subscription vs custom build */}
-        <section className="px-5 py-20 min-720:py-24">
-          <div className="mx-auto max-w-5xl">
+        <section className="relative px-5 py-20 min-720:py-24">
+          <div className="noise-overlay" aria-hidden="true" />
+          <div className="relative z-10 mx-auto max-w-5xl">
             <div className="mx-auto mb-12 max-w-2xl text-center">
               <h2
                 className="fade-up text-title-2 font-semibold tracking-tight mb-4"
@@ -175,7 +177,10 @@ export default function CrmPage() {
                   border: '1px solid hsl(var(--border-subtle))',
                 }}
               >
-                <CostCurveIllustration />
+                <CostCurveIllustration
+                  axisCost={t.compareChartAxisCost}
+                  axisYears={t.compareChartAxisYears}
+                />
                 <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
                   <span className="flex items-center gap-2 text-sm" style={{ color: 'hsl(var(--text-secondary))' }}>
                     <span aria-hidden="true" className="inline-block h-[2px] w-6 rounded" style={{ background: 'hsl(var(--text-primary))' }} />
@@ -231,7 +236,12 @@ export default function CrmPage() {
                 </p>
               </div>
               <div className="mx-auto w-full max-w-md">
-                <OwnershipIllustration />
+                <OwnershipIllustration
+                  rentedLabel={t.compareOwnRentedLabel}
+                  rentedSub={t.compareOwnRentedSub}
+                  ownedLabel={t.compareOwnOwnedLabel}
+                  ownedSub={t.compareOwnOwnedSub}
+                />
               </div>
             </div>
           </div>
@@ -265,7 +275,11 @@ export default function CrmPage() {
             {/* vertical phase timeline */}
             <ol className="relative mx-auto max-w-3xl">
               {t.buildPhases.map((phase, i) => (
-                <li key={phase.num} className="fade-up relative grid grid-cols-[auto_1fr] gap-5 min-720:gap-8 pb-10 last:pb-0">
+                <li
+                  key={phase.num}
+                  className="fade-up stagger-up relative grid grid-cols-[auto_1fr] gap-5 min-720:gap-8 pb-10 last:pb-0"
+                  style={{ '--stagger-i': i } as CSSProperties}
+                >
                   {/* rail */}
                   <div className="relative flex flex-col items-center">
                     <span
