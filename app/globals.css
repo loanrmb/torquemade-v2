@@ -140,6 +140,37 @@ h1, h2, h3, h4, h5, h6 {
   .js-reveal .fade-up { opacity: 1; transform: none; transition: none; }
 }
 
+/* Subtle film-grain texture, to keep large flat sections from reading as dead
+   space. Pure luminance noise, so it carries no colour of its own and stays
+   inside the monochrome system.
+
+   Derived from the fractalNoise overlay on the dark ERP feature block
+   (components/erp-feature-section.tsx) but retuned, because that one does not
+   actually resolve: at baseFrequency 0.9 over a 256-unit viewBox painted into
+   a 128px tile the noise sits past Nyquist and averages to flat grey — it only
+   darkens the surface, it adds no grain. Measured luminance stddev there is
+   ~0, i.e. no texture at any opacity.
+
+   So: 1 user unit = 1 device-independent pixel (256-unit viewBox, 256px tile)
+   and a frequency whose features survive rasterisation. Opacity is then the
+   only dial. Measured grain (luminance stddev, flat white, DPR 2):
+     0.025 -> 0.3   invisible, below the ~1-level perception threshold
+     0.05  -> 0.6   barely there
+     0.08  -> 0.9   reads as texture            <- default
+     0.15  -> 1.7   visibly dirty
+   Usage: put it on an `aria-hidden` div inside a `position: relative` parent
+   and lift the real content above it with `relative z-10`. Override
+   `--noise-opacity` per section. Static texture — nothing to gate behind
+   prefers-reduced-motion. */
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--noise-opacity, 0.08);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
 /* ============================================================
    BUTTONS
    ============================================================ */

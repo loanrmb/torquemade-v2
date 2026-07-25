@@ -316,9 +316,15 @@ export const strings = {
       ],
       compareCalcLabel: 'Le calcul sur cinq ans',
       compareCalc: 'Une équipe de cinq personnes qui paie 50 $ par utilisateur et par mois pour un CRM générique dépense 3 000 $ par an, soit 15 000 $ sur cinq ans, sans rien posséder au bout du compte, là où un CRM développé sur mesure est un coût unique qui reste la propriété de l\'entreprise.',
+      compareChartAxisCost: 'Coût',
+      compareChartAxisYears: 'Années',
 
       compareOwnTitle: 'Louer un accès ou posséder un outil',
       compareOwnBody: 'Avec un abonnement, vous ne possédez rien : vos données vivent sur l\'infrastructure de quelqu\'un d\'autre, et le jour où vous arrêtez de payer, l\'accès se ferme. Avec un développement sur mesure, le code et les données appartiennent au client, entièrement. C\'est la différence entre payer un loyer indéfiniment et détenir un actif.',
+      compareOwnRentedLabel: 'Abonnement',
+      compareOwnRentedSub: 'accès seulement',
+      compareOwnOwnedLabel: 'Sur mesure',
+      compareOwnOwnedSub: 'propriété complète',
 
       buildTitle: 'Comment un CRM sur mesure se construit',
       buildIntro: 'Un logiciel générique part d\'une base commune à des milliers d\'entreprises. Un outil sur mesure part de la vôtre. Voici les cinq étapes, dans l\'ordre.',
@@ -1081,9 +1087,15 @@ export const strings = {
       ],
       compareCalcLabel: 'The five-year math',
       compareCalc: 'A five-person team paying $50 per user per month for a generic CRM spends $3,000 a year, or $15,000 over five years, and owns nothing at the end, whereas a custom-built CRM is a one-time cost that stays the property of the business.',
+      compareChartAxisCost: 'Cost',
+      compareChartAxisYears: 'Years',
 
       compareOwnTitle: 'Renting access or owning a tool',
       compareOwnBody: 'With a subscription you own nothing: your data lives on someone else\'s infrastructure, and the day you stop paying, access closes. With a custom build, the code and the data belong to the client, entirely. It is the difference between paying rent indefinitely and holding an asset.',
+      compareOwnRentedLabel: 'Subscription',
+      compareOwnRentedSub: 'access only',
+      compareOwnOwnedLabel: 'Custom build',
+      compareOwnOwnedSub: 'full ownership',
 
       buildTitle: 'How a custom CRM is built',
       buildIntro: 'Generic software starts from a base shared by thousands of businesses. A custom tool starts from yours. Here are the five stages, in order.',

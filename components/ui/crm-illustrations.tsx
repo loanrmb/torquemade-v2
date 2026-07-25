@@ -4,172 +4,422 @@
  * with the root <svg> setting color from the design-system tokens
  * (hsl(var(--text-primary))). Secondary tones use stroke/fill-opacity so the
  * illustrations stay legible in both light and dark token sets. No hardcoded
- * hex, no color, no words baked in (captions live in lib/strings.ts).
+ * hex, no color, and no words baked in — every label is passed in as a prop
+ * from lib/strings.ts so the illustrations stay bilingual.
  *
- * Scroll-triggered reveals below use the site's Framer Motion conventions
- * (lib/motion.ts) — `initial={reducedMotion ? false : ...}` so the reduced
- * tree mounts already in its settled `whileInView` state (no subscription,
- * no animation), matching the bar-draw in app/tanklogic/_mocks.tsx.
+ * ── Scroll trigger ────────────────────────────────────────────────────────
+ * The viewport observer is declared ONCE, on the <motion.svg> root, and every
+ * animated child is driven by `variants`.
+ *
+ * This matters: Framer's `whileInView` puts an IntersectionObserver on the very
+ * node it is declared on, and SVG *children* cannot be observed reliably —
+ * a <g> has no CSS layout box, and anything inside <defs>/<clipPath> is never
+ * rendered at all, so the threshold reads as satisfied at mount and the
+ * animation plays on page load instead of on scroll. The <svg> root, by
+ * contrast, is a replaced element with a real box. Variants then reach the
+ * children through React context (not the DOM tree), so even the clip-path
+ * rect inside <defs> stays in lockstep without its own observer.
+ *
+ * ── Reduced motion ────────────────────────────────────────────────────────
+ * Under prefers-reduced-motion the root swaps the scroll trigger for a plain
+ * `initial={false} animate="visible"` — every child resolves to its settled
+ * state on mount with no transition and no observer. Fully static, not a
+ * softened fade. (Same "branch before wiring" rule as lib/motion.ts.)
  */
 
 'use client'
 
-import { motion } from 'framer-motion'
-import { EASE_OUT, EASE_OUT_EXPO, springSnappy, useReducedMotionSafe } from '@/lib/motion'
+import { motion, type Variants } from 'framer-motion'
+import { EASE_OUT, springSnappy, springSoft, useReducedMotionSafe } from '@/lib/motion'
+
+/** Trigger once, as soon as ~a third of the illustration has entered view. */
+const VIEWPORT = { once: true, amount: 0.3 } as const
+
+type RevealRootProps = {
+  initial: 'hidden' | false
+  animate?: 'visible'
+  whileInView?: 'visible'
+  viewport?: typeof VIEWPORT
+}
+
+/* `fill-box` scopes the transform origin to the element's own geometry, so a
+   scaled element grows about its own centre rather than the SVG viewBox origin.
+   No explicit origin needed with this — Framer's default (50% 50%) is already
+   the centre. Anything off-centre must use originX/originY, NOT the CSS
+   `transformOrigin`, which Framer overwrites. */
+const groupOrigin = { transformBox: 'fill-box' } as const
+
+function revealRoot(reducedMotion: boolean): RevealRootProps {
+  // `initial={false}` means "mount straight at the animate target, don't play
+  // the enter animation" — so the reduced tree is settled and static.
+  //
+  // It must be an explicit `animate="visible"`, not merely the absence of
+  // initial/whileInView: useReducedMotion() returns null on the first render
+  // (to stay SSR-safe) and only flips to true after mount, so the children
+  // have already mounted into `hidden`. With no target to resolve to they
+  // would stay hidden forever and the illustrations would render blank.
+  if (reducedMotion) return { initial: false, animate: 'visible' }
+  return { initial: 'hidden', whileInView: 'visible', viewport: VIEWPORT }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   COST CURVE — cost (y) over years (x)
+   ══════════════════════════════════════════════════════════════════════════
+   A subscription cost that starts near zero and keeps accelerating upward
+   (curve + soft area), versus a custom build paid once (flat threshold line).
+   The marked point is where the running subscription cost overtakes the
+   one-time build cost.
+
+   Geometry: plot area spans x 76→446 (year 0 → year 5) and y 246→58.
+   The break-even x=282 is the computed intersection of the cubic with y=190.
+*/
+const PLOT_LEFT = 76
+const PLOT_BASELINE = 246
+const TICK_STEP = 70
+const CUSTOM_LINE_Y = 190
+const BREAK_EVEN_X = 282
+
+const COST_CURVE = 'M76 246 C216 242, 326 182, 426 72'
 
 const LINE_DRAW_DURATION = 1.1
 const MARKER_DELAY = LINE_DRAW_DURATION
 const MARKER_DURATION = 0.35
 
-/* Break-even over time: a subscription cost that starts near zero and keeps
-   accelerating upward (curve + soft area), versus a custom build paid once
-   (flat threshold line). The marked point is where the running subscription
-   cost overtakes the one-time build cost. */
-export function CostCurveIllustration() {
+/* Left-to-right sweep, pinned to the rect's own left edge.
+   `transformBox: 'fill-box'` scopes the origin to the rect's geometry, and the
+   origin itself MUST be set with Framer's `originX`/`originY` — Framer builds
+   `transform-origin` from those and overwrites any raw CSS `transformOrigin`
+   with its 50% 50% default, which is what made the sweep expand outward from
+   the middle of the chart instead of drawing from year 0. */
+const sweepVariants: Variants = {
+  hidden: { scaleX: 0 },
+  visible: { scaleX: 1, transition: { duration: LINE_DRAW_DURATION, ease: EASE_OUT } },
+}
+
+const breakEvenLineVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: MARKER_DURATION, delay: MARKER_DELAY, ease: EASE_OUT },
+  },
+}
+
+const breakEvenDotVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.7 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { ...springSnappy, delay: MARKER_DELAY + 0.06 },
+  },
+}
+
+export function CostCurveIllustration({
+  axisCost,
+  axisYears,
+}: {
+  axisCost: string
+  axisYears: string
+}) {
   const reducedMotion = useReducedMotionSafe()
   const gradId = 'crm-cost-grad'
   const clipId = 'crm-cost-reveal'
-  const curve = 'M70 250 C210 246 320 186 442 68'
+
   return (
-    <svg
-      viewBox="0 0 480 300"
+    <motion.svg
+      viewBox="0 0 480 308"
       role="img"
       aria-hidden="true"
       className="h-auto w-full"
       style={{ color: 'hsl(var(--text-primary))' }}
+      {...revealRoot(reducedMotion)}
     >
       <defs>
         <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="currentColor" stopOpacity="0.16" />
           <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
         </linearGradient>
-        {/* Left-to-right reveal for the two comparison lines below. A clipped
-            rect scaling on X (not stroke-dasharray/pathLength) — the custom
-            line keeps its "5 6" dash pattern, which Framer's pathLength would
-            otherwise flatten into a single solid dash. */}
         <clipPath id={clipId}>
           <motion.rect
-            x="66"
-            y="58"
-            width="392"
-            height="200"
-            style={{ transformOrigin: '66px 0px' }}
-            initial={reducedMotion ? false : { scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: LINE_DRAW_DURATION, ease: EASE_OUT }}
+            x="70"
+            y="50"
+            width="384"
+            height="204"
+            style={{ transformBox: 'fill-box', originX: 0, originY: 0.5 }}
+            variants={sweepVariants}
           />
         </clipPath>
       </defs>
 
-      {/* subscription area */}
-      <path d={`${curve} L442 250 Z`} fill={`url(#${gradId})`} />
+      {/* ── axes ───────────────────────────────────────────────────────── */}
+      {/* y axis */}
+      <path
+        d={`M${PLOT_LEFT} 58 L${PLOT_LEFT} ${PLOT_BASELINE}`}
+        fill="none"
+        stroke="currentColor"
+        strokeOpacity="0.22"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      {/* x axis */}
+      <path
+        d={`M${PLOT_LEFT} ${PLOT_BASELINE} L446 ${PLOT_BASELINE}`}
+        fill="none"
+        stroke="currentColor"
+        strokeOpacity="0.22"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
 
-      {/* baseline */}
-      <path d="M70 250 L452 250" fill="none" stroke="currentColor" strokeOpacity="0.22" strokeWidth="1.5" strokeLinecap="round" />
+      {/* y axis label — reads bottom-to-top alongside the axis */}
+      <text
+        transform="rotate(-90 26 152)"
+        x="26"
+        y="152"
+        textAnchor="middle"
+        fontSize="13"
+        fontWeight="600"
+        letterSpacing="0.08em"
+        fill="currentColor"
+        fillOpacity="0.5"
+      >
+        {axisCost}
+      </text>
 
       {/* year ticks */}
       {[1, 2, 3, 4, 5].map((yr) => {
-        const x = 70 + yr * 74
+        const x = PLOT_LEFT + yr * TICK_STEP
         return (
           <g key={yr}>
-            <path d={`M${x} 250 L${x} 256`} stroke="currentColor" strokeOpacity="0.28" strokeWidth="1.5" />
-            <text x={x} y={273} textAnchor="middle" fontSize="12" fill="currentColor" fillOpacity="0.42">
+            <path
+              d={`M${x} ${PLOT_BASELINE} L${x} ${PLOT_BASELINE + 6}`}
+              stroke="currentColor"
+              strokeOpacity="0.28"
+              strokeWidth="1.5"
+            />
+            <text
+              x={x}
+              y={PLOT_BASELINE + 22}
+              textAnchor="middle"
+              fontSize="12"
+              fill="currentColor"
+              fillOpacity="0.42"
+            >
               {yr}
             </text>
           </g>
         )
       })}
 
-      {/* the two comparison lines draw left to right together */}
+      {/* x axis label */}
+      <text
+        x="261"
+        y={PLOT_BASELINE + 48}
+        textAnchor="middle"
+        fontSize="13"
+        fontWeight="600"
+        letterSpacing="0.08em"
+        fill="currentColor"
+        fillOpacity="0.5"
+      >
+        {axisYears}
+      </text>
+
+      {/* ── data, revealed left to right from year 0 ───────────────────── */}
       <g clipPath={`url(#${clipId})`}>
-        <path d="M70 198 L442 198" fill="none" stroke="currentColor" strokeOpacity="0.55" strokeWidth="2" strokeDasharray="5 6" strokeLinecap="round" />
-        <circle cx="70" cy="198" r="4.5" fill="currentColor" />
-        <path d={curve} fill="none" stroke="currentColor" strokeWidth="2.75" strokeLinecap="round" />
+        {/* subscription area */}
+        <path d={`${COST_CURVE} L426 ${PLOT_BASELINE} Z`} fill={`url(#${gradId})`} />
+        {/* custom build: flat one-time threshold */}
+        <path
+          d={`M${PLOT_LEFT} ${CUSTOM_LINE_Y} L426 ${CUSTOM_LINE_Y}`}
+          fill="none"
+          stroke="currentColor"
+          strokeOpacity="0.55"
+          strokeWidth="2"
+          strokeDasharray="5 6"
+          strokeLinecap="round"
+        />
+        <circle cx={PLOT_LEFT} cy={CUSTOM_LINE_Y} r="4.5" fill="currentColor" />
+        {/* subscription curve */}
+        <path
+          d={COST_CURVE}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.75"
+          strokeLinecap="round"
+        />
       </g>
 
-      {/* break-even marker — settles in after the lines finish drawing */}
+      {/* break-even: where the running subscription cost passes the build cost */}
       <motion.path
-        d="M262 198 L262 250"
+        d={`M${BREAK_EVEN_X} ${CUSTOM_LINE_Y} L${BREAK_EVEN_X} ${PLOT_BASELINE}`}
         stroke="currentColor"
         strokeOpacity="0.3"
         strokeWidth="1.5"
         strokeDasharray="3 4"
-        initial={reducedMotion ? false : { opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: MARKER_DURATION, delay: MARKER_DELAY, ease: EASE_OUT }}
+        variants={breakEvenLineVariants}
       />
       <motion.circle
-        cx="262"
-        cy="198"
+        cx={BREAK_EVEN_X}
+        cy={CUSTOM_LINE_Y}
         r="6.5"
         fill="hsl(var(--bg-secondary))"
         stroke="currentColor"
         strokeWidth="2.5"
-        style={{ transformOrigin: '262px 198px' }}
-        initial={reducedMotion ? false : { opacity: 0, scale: 0.7 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: MARKER_DURATION, delay: MARKER_DELAY + 0.08, ease: EASE_OUT }}
+        style={groupOrigin}
+        variants={breakEvenDotVariants}
       />
-    </svg>
+    </motion.svg>
   )
 }
 
-const OWNERSHIP_BOX_STAGGER = 0.12
-const OWNERSHIP_BOX_DURATION = 0.5
-const OWNERSHIP_BADGE_DELAY = OWNERSHIP_BOX_STAGGER + OWNERSHIP_BOX_DURATION
+/* ══════════════════════════════════════════════════════════════════════════
+   OWNERSHIP — renting access vs owning the tool
+   ══════════════════════════════════════════════════════════════════════════
+   A rented database lives on someone else's infrastructure behind a lock the
+   vendor controls (dashed boundary, left); an owned database lives on your own
+   infrastructure with the key in hand and verified (solid, right).
+*/
+const OWN_STAGGER = 0.12
+const OWN_CAPTION_DELAY = 0.34
+const OWN_BADGE_DELAY = 0.74
 
-/* Ownership: a rented database lives on someone else's infrastructure behind a
-   lock the vendor controls (dashed boundary, left); an owned database lives on
-   your own infrastructure with the key in hand and verified (solid, right). */
-export function OwnershipIllustration() {
+function boxVariants(settledOpacity: number, delay: number): Variants {
+  return {
+    hidden: { opacity: 0, scale: 0.92, y: 12 },
+    visible: {
+      opacity: settledOpacity,
+      scale: 1,
+      y: 0,
+      transition: { ...springSoft, delay },
+    },
+  }
+}
+
+function captionVariants(delay: number): Variants {
+  return {
+    hidden: { opacity: 0, y: 6 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4, delay, ease: EASE_OUT } },
+  }
+}
+
+const badgeVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { opacity: 1, scale: 1, transition: { ...springSnappy, delay: OWN_BADGE_DELAY } },
+}
+
+export function OwnershipIllustration({
+  rentedLabel,
+  rentedSub,
+  ownedLabel,
+  ownedSub,
+}: {
+  rentedLabel: string
+  rentedSub: string
+  ownedLabel: string
+  ownedSub: string
+}) {
   const reducedMotion = useReducedMotionSafe()
+
   return (
-    <svg
-      viewBox="0 0 460 240"
+    <motion.svg
+      viewBox="0 0 460 262"
       role="img"
       aria-hidden="true"
       className="h-auto w-full"
       style={{ color: 'hsl(var(--text-primary))' }}
+      {...revealRoot(reducedMotion)}
     >
       {/* LEFT — rented */}
-      <motion.g
-        initial={reducedMotion ? false : { opacity: 0, y: 10 }}
-        whileInView={{ opacity: 0.85, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: OWNERSHIP_BOX_DURATION, ease: EASE_OUT_EXPO }}
-      >
-        <rect x="34" y="46" width="158" height="152" rx="18" fill="none" stroke="currentColor" strokeOpacity="0.5" strokeWidth="2" strokeDasharray="8 7" />
+      <motion.g opacity={0.85} style={groupOrigin} variants={boxVariants(0.85, 0)}>
+        <rect
+          x="34"
+          y="46"
+          width="158"
+          height="152"
+          rx="18"
+          fill="none"
+          stroke="currentColor"
+          strokeOpacity="0.5"
+          strokeWidth="2"
+          strokeDasharray="8 7"
+        />
         <Padlock cx={113} cy={82} />
         <Database cx={113} top={132} />
       </motion.g>
 
       {/* RIGHT — owned */}
-      <motion.g
-        initial={reducedMotion ? false : { opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: OWNERSHIP_BOX_DURATION, delay: OWNERSHIP_BOX_STAGGER, ease: EASE_OUT_EXPO }}
-      >
-        <rect x="268" y="46" width="158" height="152" rx="18" fill="none" stroke="currentColor" strokeWidth="2.5" />
+      <motion.g style={groupOrigin} variants={boxVariants(1, OWN_STAGGER)}>
+        <rect
+          x="268"
+          y="46"
+          width="158"
+          height="152"
+          rx="18"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+        />
         <Database cx={347} top={94} />
         <Key cx={347} cy={168} />
       </motion.g>
 
-      {/* verified badge — pops in after the "owned" box settles, drawing the eye to it as the correct choice */}
-      <motion.g
-        style={{ transformOrigin: '412px 58px' }}
-        initial={reducedMotion ? false : { opacity: 0, scale: 0.8 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ ...springSnappy, delay: OWNERSHIP_BADGE_DELAY }}
-      >
+      {/* captions */}
+      <Caption
+        cx={113}
+        label={rentedLabel}
+        sub={rentedSub}
+        variants={captionVariants(OWN_CAPTION_DELAY)}
+      />
+      <Caption
+        cx={347}
+        label={ownedLabel}
+        sub={ownedSub}
+        variants={captionVariants(OWN_CAPTION_DELAY + OWN_STAGGER)}
+      />
+
+      {/* verified badge — lands last, marking the owned side as the answer */}
+      <motion.g style={groupOrigin} variants={badgeVariants}>
         <circle cx="412" cy="58" r="15" fill="currentColor" />
-        <path d="M405 58 l5 5 l9 -10" fill="none" stroke="hsl(var(--bg-secondary))" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" />
+        <path
+          d="M405 58 l5 5 l9 -10"
+          fill="none"
+          stroke="hsl(var(--bg-secondary))"
+          strokeWidth="2.3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </motion.g>
-    </svg>
+    </motion.svg>
+  )
+}
+
+function Caption({
+  cx,
+  label,
+  sub,
+  variants,
+}: {
+  cx: number
+  label: string
+  sub: string
+  variants: Variants
+}) {
+  return (
+    <motion.g variants={variants}>
+      <text
+        x={cx}
+        y={226}
+        textAnchor="middle"
+        fontSize="14"
+        fontWeight="600"
+        fill="hsl(var(--text-secondary))"
+      >
+        {label}
+      </text>
+      <text x={cx} y={246} textAnchor="middle" fontSize="13" fill="hsl(var(--text-tertiary))">
+        {sub}
+      </text>
+    </motion.g>
   )
 }
 
@@ -212,9 +462,13 @@ function Key({ cx, cy }: { cx: number; cy: number }) {
   )
 }
 
-/* Five-phase build sequence: a single flowing path threading five numbered
-   nodes, each carrying a distinct glyph, laid out as a real progression rather
-   than an icon-arrow-icon row. */
+/* ══════════════════════════════════════════════════════════════════════════
+   BUILD FLOW — five-phase sequence
+   ══════════════════════════════════════════════════════════════════════════
+   A single flowing path threading five numbered nodes, each carrying a
+   distinct glyph, laid out as a real progression rather than an
+   icon-arrow-icon row.
+*/
 const PHASE_NODES = [
   { x: 100, y: 158 },
   { x: 300, y: 96 },
@@ -228,18 +482,41 @@ const BUILD_NODE_BASE_DELAY = 0.16
 const BUILD_NODE_STAGGER = 0.18
 const BUILD_NODE_DURATION = 0.4
 
+/* `pathLength` is Framer's stroke-dasharray/stroke-dashoffset draw — safe on
+   this path because it carries no dasharray of its own to clobber. */
+const flowLineVariants: Variants = {
+  hidden: { pathLength: 0 },
+  visible: { pathLength: 1, transition: { duration: BUILD_LINE_DURATION, ease: EASE_OUT } },
+}
+
+function nodeVariants(index: number): Variants {
+  return {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: BUILD_NODE_DURATION,
+        delay: BUILD_NODE_BASE_DELAY + index * BUILD_NODE_STAGGER,
+        ease: EASE_OUT,
+      },
+    },
+  }
+}
+
 export function BuildFlowDiagram() {
   const reducedMotion = useReducedMotionSafe()
+
   return (
-    <svg
+    <motion.svg
       viewBox="0 0 1000 240"
       role="img"
       aria-hidden="true"
       className="h-auto w-full"
       style={{ color: 'hsl(var(--text-primary))' }}
+      {...revealRoot(reducedMotion)}
     >
-      {/* connecting flow — draws left to right (no dasharray on this path, so
-          Framer's pathLength stroke-draw applies cleanly) */}
+      {/* connecting flow — draws left to right, the nodes follow it */}
       <motion.path
         d="M100 158 C 180 158, 200 96, 300 96 S 420 158, 500 158 S 620 96, 700 96 S 820 158, 900 158"
         fill="none"
@@ -247,24 +524,10 @@ export function BuildFlowDiagram() {
         strokeOpacity="0.28"
         strokeWidth="2"
         strokeLinecap="round"
-        initial={reducedMotion ? false : { pathLength: 0 }}
-        whileInView={{ pathLength: 1 }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: BUILD_LINE_DURATION, ease: EASE_OUT }}
+        variants={flowLineVariants}
       />
       {PHASE_NODES.map((n, i) => (
-        <motion.g
-          key={i}
-          style={{ transformOrigin: `${n.x}px ${n.y}px` }}
-          initial={reducedMotion ? false : { opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{
-            duration: BUILD_NODE_DURATION,
-            delay: BUILD_NODE_BASE_DELAY + i * BUILD_NODE_STAGGER,
-            ease: EASE_OUT,
-          }}
-        >
+        <motion.g key={i} style={groupOrigin} variants={nodeVariants(i)}>
           <circle cx={n.x} cy={n.y} r="38" fill="hsl(var(--bg-primary))" stroke="currentColor" strokeWidth="2" />
           <g transform={`translate(${n.x}, ${n.y})`} stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
             <PhaseGlyph index={i} />
@@ -284,7 +547,7 @@ export function BuildFlowDiagram() {
           </text>
         </motion.g>
       ))}
-    </svg>
+    </motion.svg>
   )
 }
 
