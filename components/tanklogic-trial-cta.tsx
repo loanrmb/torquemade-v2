@@ -59,6 +59,7 @@ function TrialModal({
   const [storeUrl, setStoreUrl] = useState('')
   const [message, setMessage] = useState('')
   const [website, setWebsite] = useState('') // honeypot
+  const [errors, setErrors] = useState<{ name?: string; email?: string; storeName?: string; message?: string }>({})
   const [state, setState] = useState<FormState>(() =>
     typeof window !== 'undefined' && sessionStorage.getItem(SESSION_LOCK_KEY) === 'true'
       ? 'success'
@@ -81,9 +82,21 @@ function TrialModal({
 
   const phoneCountry = PHONE_COUNTRIES.find((c) => c.iso === phoneIso) ?? PHONE_COUNTRIES[0]
 
+  const validate = () => {
+    const next: typeof errors = {}
+    if (!name.trim()) next.name = form.requiredError
+    if (!email.trim()) next.email = form.requiredError
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) next.email = form.emailError
+    if (!storeName.trim()) next.storeName = form.requiredError
+    if (!message.trim()) next.message = form.requiredError
+    setErrors(next)
+    return Object.keys(next).length === 0
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (state === 'success' || state === 'loading') return
+    if (!validate()) return
     setState('loading')
 
     try {
@@ -178,21 +191,29 @@ function TrialModal({
                       {title}
                     </h3>
 
-                    <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+                    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-3">
                       <div className="grid grid-cols-1 gap-3 min-720:grid-cols-2">
                         <FormInput
                           type="text"
                           required
                           placeholder={form.namePlaceholder}
                           value={name}
-                          onChange={setName}
+                          onChange={(v) => {
+                            setName(v)
+                            if (errors.name) setErrors((prev) => ({ ...prev, name: undefined }))
+                          }}
+                          error={errors.name}
                         />
                         <FormInput
                           type="email"
                           required
                           placeholder={form.emailPlaceholder}
                           value={email}
-                          onChange={setEmail}
+                          onChange={(v) => {
+                            setEmail(v)
+                            if (errors.email) setErrors((prev) => ({ ...prev, email: undefined }))
+                          }}
+                          error={errors.email}
                         />
                       </div>
 
@@ -229,7 +250,11 @@ function TrialModal({
                           required
                           placeholder={form.storeNamePlaceholder}
                           value={storeName}
-                          onChange={setStoreName}
+                          onChange={(v) => {
+                            setStoreName(v)
+                            if (errors.storeName) setErrors((prev) => ({ ...prev, storeName: undefined }))
+                          }}
+                          error={errors.storeName}
                         />
                         <FormInput
                           type="url"
@@ -246,23 +271,33 @@ function TrialModal({
                           rows={4}
                           placeholder={form.messagePlaceholder}
                           value={message}
-                          onChange={(e) => setMessage(e.target.value)}
+                          onChange={(e) => {
+                            setMessage(e.target.value)
+                            if (errors.message) setErrors((prev) => ({ ...prev, message: undefined }))
+                          }}
                           className="w-full resize-none rounded-xl px-4 py-3 text-sm outline-none transition-colors duration-150"
                           style={{
                             background: 'hsl(var(--bg-secondary))',
-                            border: '1px solid hsl(var(--border-subtle))',
+                            border: `1px solid hsl(var(${errors.message ? '--text-primary' : '--border-subtle'}))`,
                             color: 'hsl(var(--text-primary))',
                             transition: 'border-color 150ms var(--ease-out)',
                           }}
                           onFocus={(e) => (e.currentTarget.style.borderColor = 'hsl(var(--border-hover))')}
-                          onBlur={(e) => (e.currentTarget.style.borderColor = 'hsl(var(--border-subtle))')}
+                          onBlur={(e) =>
+                            (e.currentTarget.style.borderColor = errors.message
+                              ? 'hsl(var(--text-primary))'
+                              : 'hsl(var(--border-subtle))')
+                          }
                         />
-                        <span
-                          className="self-end text-caption"
-                          style={{ color: 'hsl(var(--text-tertiary))' }}
-                        >
-                          {message.length}/500
-                        </span>
+                        <div className="flex items-start justify-between gap-3">
+                          {errors.message ? <FieldError message={errors.message} /> : <span />}
+                          <span
+                            className="shrink-0 text-caption"
+                            style={{ color: 'hsl(var(--text-tertiary))' }}
+                          >
+                            {message.length}/500
+                          </span>
+                        </div>
                       </div>
 
                       {/* Honeypot — hidden from real users, bots tend to fill every field */}
@@ -304,7 +339,7 @@ function TrialModal({
 }
 
 function FormInput({
-  type, required = false, placeholder, value, onChange, wrapperClassName = '',
+  type, required = false, placeholder, value, onChange, wrapperClassName = '', error,
 }: {
   type: string
   required?: boolean
@@ -312,23 +347,40 @@ function FormInput({
   value: string
   onChange: (value: string) => void
   wrapperClassName?: string
+  error?: string
 }) {
+  const restingBorder = error ? 'hsl(var(--text-primary))' : 'hsl(var(--border-subtle))'
   return (
-    <input
-      type={type}
-      required={required}
-      placeholder={placeholder}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      className={`w-full rounded-xl px-4 py-3 text-sm outline-none transition-colors duration-150 ${wrapperClassName}`}
-      style={{
-        background: 'hsl(var(--bg-secondary))',
-        border: '1px solid hsl(var(--border-subtle))',
-        color: 'hsl(var(--text-primary))',
-        transition: 'border-color 150ms var(--ease-out)',
-      }}
-      onFocus={(e) => (e.currentTarget.style.borderColor = 'hsl(var(--border-hover))')}
-      onBlur={(e) => (e.currentTarget.style.borderColor = 'hsl(var(--border-subtle))')}
-    />
+    <div className={wrapperClassName}>
+      <input
+        type={type}
+        required={required}
+        aria-invalid={error ? true : undefined}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full rounded-xl px-4 py-3 text-sm outline-none transition-colors duration-150"
+        style={{
+          background: 'hsl(var(--bg-secondary))',
+          border: `1px solid ${restingBorder}`,
+          color: 'hsl(var(--text-primary))',
+          transition: 'border-color 150ms var(--ease-out)',
+        }}
+        onFocus={(e) => (e.currentTarget.style.borderColor = 'hsl(var(--border-hover))')}
+        onBlur={(e) => (e.currentTarget.style.borderColor = restingBorder)}
+      />
+      {error && <FieldError message={error} />}
+    </div>
+  )
+}
+
+function FieldError({ message }: { message: string }) {
+  return (
+    <p
+      className="mt-1.5 whitespace-normal break-words text-caption"
+      style={{ color: 'hsl(var(--text-primary))' }}
+    >
+      {message}
+    </p>
   )
 }
