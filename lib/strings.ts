@@ -745,6 +745,8 @@ export const strings = {
         success: 'Reçu : on vous recontacte sous 24h.',
         error: 'Erreur d’envoi, réessayez.',
         close: 'Fermer',
+        requiredError: 'Veuillez renseigner ce champ.',
+        emailError: 'Veuillez indiquer une adresse email valide.',
       },
       trialCtas: {
         serial: {
@@ -1578,6 +1580,8 @@ export const strings = {
         success: 'Got it: we’ll reach out within 24h.',
         error: 'Something went wrong, try again.',
         close: 'Close',
+        requiredError: 'Please fill in this field.',
+        emailError: 'Please enter a valid email address.',
       },
       trialCtas: {
         serial: {
