@@ -133,7 +133,7 @@ function TrialModal({
           />
 
           <motion.div
-            className="tanklogic-glass-modal relative w-full max-w-lg"
+            className="tanklogic-glass-modal relative mx-auto w-[calc(100vw-2rem)] max-w-lg"
             initial={{ opacity: 0, scale: reducedMotion ? 1 : 0.96, y: reducedMotion ? 0 : 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: reducedMotion ? 1 : 0.96, y: reducedMotion ? 0 : 12 }}
@@ -196,12 +196,12 @@ function TrialModal({
                         />
                       </div>
 
-                      <div className="flex gap-2">
+                      <div className="grid grid-cols-1 gap-2 min-720:grid-cols-[7.5rem_1fr]">
                         <select
                           value={phoneIso}
                           onChange={(e) => setPhoneIso(e.target.value)}
                           aria-label={form.phonePlaceholder}
-                          className="max-w-[7.5rem] rounded-xl px-2 text-sm outline-none"
+                          className="w-full min-w-0 rounded-xl px-2 text-sm outline-none"
                           style={{
                             background: 'hsl(var(--bg-secondary))',
                             border: '1px solid hsl(var(--border-subtle))',
@@ -219,7 +219,7 @@ function TrialModal({
                           placeholder={form.phonePlaceholder}
                           value={phone}
                           onChange={setPhone}
-                          wrapperClassName="flex-1"
+                          wrapperClassName="w-full min-w-0"
                         />
                       </div>
 
