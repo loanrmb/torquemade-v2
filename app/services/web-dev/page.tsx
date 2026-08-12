@@ -112,6 +112,22 @@ export default function WebDevPage() {
             <div className="fade-up">
               <SeoFeatureCarousel steps={t.carouselSteps} illustrations={CAROUSEL_ILLUSTRATIONS} />
             </div>
+            {/* Persistent counterpart to the in-carousel links: only the active
+                step is mounted, so the SEO and GEO steps' own links are not
+                reliably in the server HTML. This one always is. */}
+            <p
+              className="fade-up mt-8 text-center text-body leading-relaxed"
+              style={{ color: 'hsl(var(--text-secondary))' }}
+            >
+              {t.carouselFootnote}{' '}
+              <Link
+                href="/services/seo-geo"
+                className="font-semibold underline-offset-4 hover:underline"
+                style={{ color: 'hsl(var(--text-primary))' }}
+              >
+                {t.carouselFootnoteLink} →
+              </Link>
+            </p>
           </div>
         </section>
 

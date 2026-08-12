@@ -8,7 +8,7 @@ import { SITE_URL as baseUrl } from '@/lib/site'
  * at /sitemap_index.xml.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  return ['web-dev', 'crm', 'erp-ecommerce', 'aquarium-erp-sync-quebec', 'aquarium-erp-sync-en'].map((slug) => ({
+  return ['web-dev', 'crm', 'erp-ecommerce', 'seo-geo', 'aquarium-erp-sync-quebec', 'aquarium-erp-sync-en'].map((slug) => ({
     url: `${baseUrl}/services/${slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly',

@@ -25,6 +25,7 @@ import {
   useState,
   type ReactNode,
 } from 'react'
+import Link from 'next/link'
 import clsx from 'clsx'
 import {
   AnimatePresence,
@@ -37,6 +38,12 @@ interface Step {
   name: string
   title: string
   desc: string
+  /** Optional "read more" link rendered under the step copy. Only the active
+   *  step is mounted, so a link here is not guaranteed to be in the server
+   *  HTML — pair it with a persistent link outside the carousel when the
+   *  destination matters for crawling. */
+  linkHref?: string
+  linkLabel?: string
 }
 
 interface SeoFeatureCarouselProps {
@@ -151,6 +158,15 @@ function FeatureCard({
               >
                 {step.desc}
               </p>
+              {step.linkHref && step.linkLabel && (
+                <Link
+                  href={step.linkHref}
+                  className="mt-3 inline-flex w-fit items-center gap-1.5 text-sm font-semibold underline-offset-4 transition-opacity duration-150 hover:opacity-70 hover:underline"
+                  style={{ color: 'hsl(var(--text-primary))' }}
+                >
+                  {step.linkLabel} →
+                </Link>
+              )}
             </motion.div>
           </motion.div>
         </AnimatePresence>
