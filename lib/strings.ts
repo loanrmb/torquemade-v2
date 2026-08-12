@@ -308,7 +308,7 @@ export const strings = {
     seoGeo: {
       eyebrow: 'Services',
       hero: 'Référencement Google et visibilité dans les réponses IA',
-      intro: 'Deux canaux, deux logiques. Être bien classé sur Google reste un travail de structure et de contenu. Être cité par ChatGPT, Perplexity ou les AI Overviews en est un autre, avec ses propres règles. Nous construisons les deux dans le code, et nous mesurons ce qui en sort.',
+      intro: 'Deux canaux, deux logiques. Être bien classé sur Google reste un travail de structure et de contenu. Être cité par ChatGPT, Perplexity ou les AI Overviews en est un autre, avec ses propres règles. Nous construisons les deux, et nous mesurons ce qui en sort.',
 
       defTitle: 'Qu\'est-ce que le GEO ?',
       defBody: 'Le GEO (Generative Engine Optimization) consiste à structurer un site pour qu\'il soit sélectionné et cité comme source dans les réponses de ChatGPT, Perplexity, Claude, Gemini et les AI Overviews de Google. Il ne remplace pas le SEO : il s\'y ajoute, avec ses propres règles d\'extraction et sa propre mesure.',
@@ -405,25 +405,6 @@ export const strings = {
           desc: 'Le rapport IA générative de Search Console indique quelles pages remontent dans les réponses. Nous le relevons, et nous vérifions à la main ce que les moteurs disent effectivement de vous.',
         },
       ],
-
-      proofTitle: 'Ce qu\'on a mesuré',
-      proofIntro: 'Les chiffres ci-dessous sont un relevé du rapport IA générative de Google Search Console effectué en juillet 2026, sur quatre sites en ligne depuis moins de trois mois. C\'est une photographie à un instant donné, pas un état actuel ni une projection.',
-      proofCaption: 'Impressions issues du rapport IA générative de Google Search Console, relevé de juillet 2026.',
-      proofHeaderSite: 'Site',
-      proofHeaderImpressions: 'Impressions IA générative',
-      proofRows: [
-        { site: 'Sprint Motors', value: '660', href: '/work/sprint-motors' },
-        { site: 'BordeauxRide', value: '558', href: '/work/bordeaux-ride' },
-        { site: 'Voge Bordeaux', value: '218', href: '/work/voge-bordeaux' },
-        { site: 'MotoPassion65', value: '108', href: '/work/motopassion-65' },
-      ],
-      proofNotes: [
-        'À cette date, la France ne représentait que 1 à 3 % des impressions, les AI Overviews n\'y étant pas encore déployés. Ces sites étaient donc déjà cités avant même que leur marché principal soit ouvert.',
-        'La répartition compte autant que le volume. Sur BordeauxRide, un seul article de FAQ en anglais captait 71 % des impressions. Sur Voge Bordeaux, un seul article éditorial en captait 70 %. Dans les deux cas, le contenu éditorial est nettement mieux capté que les fiches produits.',
-        'MotoPassion65 affichait le volume le plus faible, mais la répartition la plus équilibrée entre ses pages. C\'est le profil le plus sain à long terme : un site qui ne dépend pas d\'une seule page pour exister dans les réponses.',
-      ],
-      overviewTitle: 'Quand l\'IA se trompe sur vous',
-      overviewBody: 'Torquemade est cité dans l\'AI Overview de Google sur la requête « comment connecter mon stock magasin à mon site ». Cette réponse a d\'abord décrit TankLogic comme réservé à Shopify, ce qui est faux. Nous avons corrigé le contenu source, puis suivi la réextraction jusqu\'à ce que la description soit juste. Publier ne suffit pas : il faut relever ce que l\'IA retient, et corriger quand elle se trompe.',
 
       faqTitle: 'Questions fréquentes',
       faqDescription: 'Ce qu\'on nous demande le plus souvent sur le référencement et la visibilité dans les réponses IA : périmètre, délais, mesure, et ce qu\'on peut faire sur un site existant.',
@@ -777,7 +758,7 @@ export const strings = {
       },
       seoGeo: {
         title: 'Référencement Google et visibilité IA (SEO & GEO) | Torquemade',
-        description: 'Être bien classé sur Google et être cité par ChatGPT, Perplexity et les AI Overviews. SEO technique et GEO construits dans le code, avec mesure des résultats.',
+        description: 'Être bien classé sur Google et être cité par ChatGPT, Perplexity et les AI Overviews. SEO technique et GEO construits dès la base, avec mesure des résultats.',
       },
       aquariumQc: {
         title: 'Synchro stock aquariophilie ↔ e-commerce (Québec) | Torquemade',
@@ -1261,7 +1242,7 @@ export const strings = {
     seoGeo: {
       eyebrow: 'Services',
       hero: 'Google rankings and visibility in AI answers',
-      intro: 'Two channels, two logics. Ranking on Google is still a matter of structure and content. Being cited by ChatGPT, Perplexity or AI Overviews is a separate job, with its own rules. We build both into the code, and we measure what comes out.',
+      intro: 'Two channels, two logics. Ranking on Google is still a matter of structure and content. Being cited by ChatGPT, Perplexity or AI Overviews is a separate job, with its own rules. We build both, and we measure what comes out.',
 
       defTitle: 'What is GEO?',
       defBody: 'GEO (Generative Engine Optimization) means structuring a site so it gets selected and cited as a source in answers from ChatGPT, Perplexity, Claude, Gemini and Google\'s AI Overviews. It does not replace SEO: it sits alongside it, with its own extraction rules and its own measurement.',
@@ -1358,25 +1339,6 @@ export const strings = {
           desc: 'Search Console\'s generative AI report shows which pages surface in answers. We track it, and we check by hand what the engines actually say about you.',
         },
       ],
-
-      proofTitle: 'What we measured',
-      proofIntro: 'The figures below are a reading of Google Search Console\'s generative AI report taken in July 2026, across four sites live for under three months. It is a snapshot at one point in time, not a current state and not a projection.',
-      proofCaption: 'Impressions from Google Search Console\'s generative AI report, reading taken July 2026.',
-      proofHeaderSite: 'Site',
-      proofHeaderImpressions: 'Generative AI impressions',
-      proofRows: [
-        { site: 'Sprint Motors', value: '660', href: '/work/sprint-motors' },
-        { site: 'BordeauxRide', value: '558', href: '/work/bordeaux-ride' },
-        { site: 'Voge Bordeaux', value: '218', href: '/work/voge-bordeaux' },
-        { site: 'MotoPassion65', value: '108', href: '/work/motopassion-65' },
-      ],
-      proofNotes: [
-        'At that date France accounted for only 1 to 3% of impressions, as AI Overviews had not yet rolled out there. These sites were already being cited before their main market had even opened.',
-        'Distribution matters as much as volume. On BordeauxRide, a single English-language FAQ article captured 71% of impressions. On Voge Bordeaux, a single editorial article captured 70%. In both cases editorial content is picked up far more readily than product pages.',
-        'MotoPassion65 had the lowest volume but the most even spread across its pages. That is the healthier long-term profile: a site that does not depend on one single page to exist in answers.',
-      ],
-      overviewTitle: 'When the AI gets you wrong',
-      overviewBody: 'Torquemade is cited in Google\'s AI Overview for the query "comment connecter mon stock magasin à mon site". That answer initially described TankLogic as Shopify-only, which is false. We corrected the source content, then tracked the re-extraction until the description was accurate. Publishing is not enough: you have to track what the AI retains, and correct it when it gets things wrong.',
 
       faqTitle: 'Frequently asked questions',
       faqDescription: 'What we get asked most about search rankings and visibility in AI answers: scope, timelines, measurement, and what can be done on an existing site.',
@@ -1730,7 +1692,7 @@ export const strings = {
       },
       seoGeo: {
         title: 'Google Rankings and AI Visibility (SEO & GEO) | Torquemade',
-        description: 'Ranking on Google and getting cited by ChatGPT, Perplexity and AI Overviews. Technical SEO and GEO built into the code, with the results measured.',
+        description: 'Ranking on Google and getting cited by ChatGPT, Perplexity and AI Overviews. Technical SEO and GEO built in from the ground up, with the results measured.',
       },
       aquariumEn: {
         title: 'Coral & Livestock Inventory Sync for Aquarium Shops | Torquemade',
