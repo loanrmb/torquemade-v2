@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useLang } from '@/components/app-provider'
 import { strings } from '@/lib/strings'
 
@@ -32,6 +33,21 @@ export function SeoFeaturesSection() {
             style={{ color: 'hsl(var(--text-secondary))' }}
           >
             {t.subtitle}
+          </p>
+          {/* These six cards used to be a dead end: the offer had no page of
+              its own to link to. */}
+          <p
+            className="mt-6 text-sm leading-relaxed"
+            style={{ color: 'hsl(var(--text-secondary))' }}
+          >
+            {t.ctaText}{' '}
+            <Link
+              href="/services/seo-geo"
+              className="font-semibold underline-offset-4 hover:underline"
+              style={{ color: 'hsl(var(--text-primary))' }}
+            >
+              {t.ctaLink} →
+            </Link>
           </p>
         </div>
 

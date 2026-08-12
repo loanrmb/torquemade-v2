@@ -16,6 +16,7 @@ export const strings = {
         { label: 'Développement Web', href: '/services/web-dev', subtitle: 'Site vitrine ou e-commerce, pensé pour avoir un réel impact.' },
         { label: 'CRM sur mesure', href: '/services/crm', subtitle: 'On construit **votre** CRM/logiciel sur mesure pour votre activité, et il vous appartient.' },
         { label: 'Connexion Stock Magasin <> Site e-commerce', href: '/services/erp-ecommerce', subtitle: 'Connectez votre stock magasin à votre site internet en temps réel.' },
+        { label: 'SEO & Visibilité IA', href: '/services/seo-geo', subtitle: 'Être bien classé sur Google, et cité par ChatGPT, Perplexity et les AI Overviews.' },
       ],
       produitsItems: [
         { label: 'TankLogic', href: '/tanklogic', subtitle: 'Le Logiciel dédié aux magasins de poissons et aquarium. Connecter vos êtres vivants en magasin à votre plateforme de vente en ligne en temps réel.' },
@@ -277,12 +278,14 @@ export const strings = {
       reframeBody: 'Livrer vite n\'a jamais été la partie difficile, et ça compte encore moins aujourd\'hui. Ce qui compte, c\'est ce qu\'il y a dessous : une architecture qui tient dans le temps, un code que les moteurs de recherche savent lire, un site qui reste bien référencé même quand l\'algorithme de Google change. C\'est cette profondeur technique que la plupart des sites rapides sautent, et c\'est exactement là que Torquemade intervient.',
       carouselTitle: 'Ce qu\'on surveille',
       carouselSteps: [
-        { name: 'SEO', title: 'Le SEO technique, concrètement', desc: 'On a tous croisé un site magnifique niveau design, mais invisible sur Google. Le SEO technique, c\'est justement ça : le travail qu\'on ne voit pas, mais que les moteurs de recherche lisent en premier. Balisage sémantique, sitemap généré automatiquement, meta descriptions uniques, temps de chargement travaillé au chrono. On ne rajoute pas ça après coup en croisant les doigts, on le construit directement dans le code, dès la première ligne.' },
-        { name: 'GEO', title: 'Le GEO, une discipline à part', desc: 'Depuis quelques années, le nouvel enjeu, c\'est d\'être cité dans les réponses des intelligences artificielles. ChatGPT, Perplexity, Claude, ces outils ne lisent pas un site comme Google : ils cherchent une réponse claire à recopier, pas dix liens à explorer. On s\'est penché sérieusement sur le sujet : schema FAQ et Article, réponses posées dès le premier paragraphe, fichier llms.txt dédié aux robots IA. L\'idée est simple : que votre site soit la source que l\'IA cite, pas celle qu\'elle ignore.' },
+        { name: 'SEO', title: 'Le SEO technique, concrètement', desc: 'On a tous croisé un site magnifique niveau design, mais invisible sur Google. Le SEO technique, c\'est justement ça : le travail qu\'on ne voit pas, mais que les moteurs de recherche lisent en premier. Balisage sémantique, sitemap généré automatiquement, meta descriptions uniques, temps de chargement travaillé au chrono. On ne rajoute pas ça après coup en croisant les doigts, on le construit directement dans le code, dès la première ligne. Le détail de ce travail, et de son pendant côté moteurs génératifs, est sur la page SEO & Visibilité IA.', linkHref: '/services/seo-geo', linkLabel: 'Voir le détail SEO et GEO' },
+        { name: 'GEO', title: 'Le GEO, une discipline à part', desc: 'Depuis quelques années, le nouvel enjeu, c\'est d\'être cité dans les réponses des intelligences artificielles. ChatGPT, Perplexity, Claude, ces outils ne lisent pas un site comme Google : ils cherchent une réponse claire à recopier, pas dix liens à explorer. On s\'est penché sérieusement sur le sujet : schema FAQ et Article, réponses posées dès le premier paragraphe, fichier llms.txt dédié aux robots IA. L\'idée est simple : que votre site soit la source que l\'IA cite, pas celle qu\'elle ignore. C\'est une discipline qu\'on traite à part entière, avec sa propre mesure : le rapport IA générative de Search Console, et une vérification manuelle de ce que les moteurs disent réellement.', linkHref: '/services/seo-geo', linkLabel: 'Notre approche GEO en détail' },
         { name: 'Indexation', title: 'L\'indexation suivie de près', desc: 'Être en ligne, ce n\'est pas la même chose qu\'être indexé. Beaucoup de sites tournent depuis des mois sans jamais vraiment apparaître dans Google, simplement parce que personne n\'a vérifié. Chez nous, chaque page est soumise à Google Search Console dès sa mise en ligne, et on surveille les erreurs d\'exploration derrière. Publier une page, c\'est facile. S\'assurer qu\'elle est vraiment lue par Google, c\'est le vrai travail.' },
         { name: 'Performance', title: 'La performance mesurée, pas devinée', desc: 'Un site qui met trois secondes à charger, c\'est un visiteur qui est déjà reparti. On ne devine pas la performance, on la mesure : images optimisées, chargement différé, hébergement sur un réseau Edge au plus proche de vos visiteurs. Chaque page passe les Core Web Vitals avant sa mise en ligne, pas après que vous ayez remarqué que ça rame.' },
         { name: 'Architecture', title: 'Un code propre, qui vous appartient', desc: 'Un beau site avec du code bâclé derrière, c\'est une maison avec de belles peintures sur des fondations fragiles. On code en TypeScript, on documente les composants, et surtout : aucune dépendance à une plateforme propriétaire qui pourrait fermer boutique demain. Le site reste à vous, simple à faire évoluer, que ce soit nous qui continuions à le faire grandir, ou une autre équipe dans cinq ans.' },
       ],
+      carouselFootnote: 'Le référencement Google et la visibilité dans les réponses IA sont traités en détail sur leur propre page, avec les chiffres que nous avons relevés.',
+      carouselFootnoteLink: 'SEO & Visibilité IA',
       relatedTitle: 'À lire aussi',
       relatedCta: 'Lire l\'article',
       faqTitle: 'Questions fréquentes',
@@ -300,6 +303,146 @@ export const strings = {
       ],
       ctaTitle: 'Prêt pour un site qui convertit ?',
       ctaSub: 'Parlez-nous de votre projet. Nous revenons vers vous dans les 24h.',
+      ctaButton: 'Démarrer une conversation',
+    },
+    seoGeo: {
+      eyebrow: 'Services',
+      hero: 'Référencement Google et visibilité dans les réponses IA',
+      intro: 'Deux canaux, deux logiques. Être bien classé sur Google reste un travail de structure et de contenu. Être cité par ChatGPT, Perplexity ou les AI Overviews en est un autre, avec ses propres règles. Nous construisons les deux, et nous mesurons ce qui en sort.',
+
+      defTitle: 'Qu\'est-ce que le GEO ?',
+      defBody: 'Le GEO (Generative Engine Optimization) consiste à structurer un site pour qu\'il soit sélectionné et cité comme source dans les réponses de ChatGPT, Perplexity, Claude, Gemini et les AI Overviews de Google. Il ne remplace pas le SEO : il s\'y ajoute, avec ses propres règles d\'extraction et sa propre mesure.',
+
+      compareTitle: 'SEO et GEO : ce qui change, ce qui ne change pas',
+      compareIntro: 'Les deux disciplines partagent la même base technique. Elles divergent sur ce que le moteur sélectionne, et sur la façon dont on le vérifie.',
+      compareCaption: 'Comparaison des objectifs, unités de sélection et méthodes de mesure du SEO et du GEO.',
+      compareHeaderAspect: 'Ce qu\'on regarde',
+      compareHeaderSeo: 'SEO',
+      compareHeaderGeo: 'GEO',
+      compareRows: [
+        {
+          aspect: 'Objectif',
+          seo: 'Obtenir un clic vers votre site depuis une page de résultats.',
+          geo: 'Être retenu comme source dans une réponse rédigée par le moteur.',
+        },
+        {
+          aspect: 'Unité sélectionnée',
+          seo: 'La page. Le moteur classe des URLs les unes par rapport aux autres.',
+          geo: 'Le paragraphe. Le moteur extrait un passage et le recompose avec d\'autres sources.',
+        },
+        {
+          aspect: 'Rôle du maillage interne',
+          seo: 'Distribue l\'autorité entre les pages et guide l\'exploration.',
+          geo: 'Relie les entités entre elles pour lever les ambiguïtés sur qui fait quoi.',
+        },
+        {
+          aspect: 'Rôle des données structurées',
+          seo: 'Optionnelles. Elles enrichissent l\'affichage du résultat.',
+          geo: 'Structurantes. Elles délimitent ce qui peut être cité, et à quel titre.',
+        },
+        {
+          aspect: 'Mesure',
+          seo: 'Impressions, clics et positions dans Search Console.',
+          geo: 'Rapport IA générative de Search Console, complété par une vérification manuelle des réponses.',
+        },
+        {
+          aspect: 'Horizon de résultat',
+          seo: 'Plusieurs mois, avec une progression qui se cumule.',
+          geo: 'Variable. Une citation peut apparaître, puis disparaître d\'une réextraction à l\'autre.',
+        },
+      ],
+
+      workTitle: 'Ce qu\'on fait concrètement',
+      seoBlockTitle: 'Côté SEO',
+      seoBlockIntro: 'Le socle. Sans lui, il n\'y a rien à citer : un moteur génératif s\'appuie sur des pages qu\'il a d\'abord fallu explorer et indexer.',
+      seoItems: [
+        {
+          title: 'Balises et métadonnées',
+          desc: 'Un title et une meta description uniques par page, et une hiérarchie de titres qui suit réellement le plan du document. C\'est ce balisage que les moteurs lisent en premier, et c\'est lui qui découpe la page en blocs exploitables.',
+        },
+        {
+          title: 'Mots-clés',
+          desc: 'Recherche des requêtes réellement tapées dans votre secteur et votre zone, puis attribution d\'une intention par page. Une page qui vise trois intentions à la fois n\'en sert correctement aucune.',
+        },
+        {
+          title: 'Structure d\'URL et redirections',
+          desc: 'Des URLs lisibles, une arborescence qui reflète l\'offre, et des redirections 301 posées à chaque changement. Une URL modifiée sans redirection perd tout l\'historique qu\'elle avait accumulé.',
+        },
+        {
+          title: 'Core Web Vitals et performance',
+          desc: 'LCP, INP et CLS mesurés sur les données terrain, pas seulement en laboratoire. La vitesse est un facteur de classement, et c\'est aussi ce qui décide si un visiteur reste ou repart.',
+        },
+        {
+          title: 'Articles de blog',
+          desc: 'Des contenus qui répondent à une question précise plutôt que des pages généralistes. Ils captent des recherches longue traîne et restent visibles des mois après leur publication.',
+        },
+      ],
+      geoBlockTitle: 'Côté GEO',
+      geoBlockIntro: 'La couche au-dessus. Elle décide si un passage de votre site est extractible, attribuable, et cité sous le bon nom.',
+      geoItems: [
+        {
+          title: 'Paragraphes-réponses et hiérarchie de titres',
+          desc: 'Chaque section s\'ouvre sur une réponse complète en deux ou trois phrases, sous un titre formulé comme la question posée. Un moteur génératif extrait un passage, pas une page entière : ce passage doit rester compréhensible seul.',
+        },
+        {
+          title: 'Données structurées',
+          desc: 'Organization, Service, FAQPage et BlogPosting posés en JSON-LD, cohérents avec ce que la page affiche réellement. Un balisage qui décrit autre chose que le contenu visible est ignoré, au mieux.',
+        },
+        {
+          title: 'Fichier llms.txt',
+          desc: 'Un fichier en texte brut qui décrit le site à destination des robots des moteurs génératifs. Il ne remplace pas le contenu : il fournit un point d\'entrée lisible et une description que vous contrôlez.',
+        },
+        {
+          title: 'Cohérence d\'entité',
+          desc: 'Le même nom, la même description et la même adresse sur tout le site, dans le balisage comme dans le texte visible. Deux formulations divergentes de la même entreprise obligent le moteur à trancher, et il tranche parfois mal.',
+        },
+        {
+          title: 'FAQ calquée sur les requêtes réelles',
+          desc: 'Les questions sont reprises telles qu\'elles sont posées, pas reformulées en langage commercial. Une FAQ écrite pour la marque plutôt que pour la requête ne se fait pas extraire.',
+        },
+        {
+          title: 'Suivi des citations',
+          desc: 'Le rapport IA générative de Search Console indique quelles pages remontent dans les réponses. Nous le relevons, et nous vérifions à la main ce que les moteurs disent effectivement de vous.',
+        },
+      ],
+
+      faqTitle: 'Questions fréquentes',
+      faqDescription: 'Ce qu\'on nous demande le plus souvent sur le référencement et la visibilité dans les réponses IA : périmètre, délais, mesure, et ce qu\'on peut faire sur un site existant.',
+      faqContactText: 'Vous ne trouvez pas la réponse à votre question ?',
+      faqContactLinkText: 'Contactez-nous',
+      faq: [
+        {
+          q: 'Le GEO remplace-t-il le SEO ?',
+          a: 'Non, les deux fonctionnent ensemble. Un moteur génératif s\'appuie sur des pages qu\'il a d\'abord fallu explorer et indexer, ce qui reste le travail du SEO. Le GEO agit sur la couche au-dessus : la façon dont le contenu est structuré, découpé et attribué, pour qu\'un passage puisse être extrait et cité.',
+        },
+        {
+          q: 'Comment savoir si mon site est cité par ChatGPT ou par Google ?',
+          a: 'Le rapport IA générative de Google Search Console recense les impressions venues des AI Overviews et du mode IA. Pour ChatGPT et Perplexity, il n\'existe pas d\'équivalent : la vérification se fait en posant les requêtes qui comptent pour votre activité et en relevant ce qui est cité. Nous faisons les deux.',
+        },
+        {
+          q: 'Combien de temps avant d\'apparaître dans les réponses IA ?',
+          a: 'Nous ne donnons pas de délai. Sur les sites que nous avons mesurés, les premières impressions IA sont apparues en moins de trois mois, mais cela dépend du volume de requêtes du secteur, de la concurrence sur ces réponses et du rythme de réextraction des moteurs. Une citation peut aussi disparaître, puis revenir.',
+        },
+        {
+          q: 'Faut-il un fichier llms.txt ?',
+          a: 'C\'est utile, mais secondaire. Aucun moteur n\'a confirmé s\'en servir comme signal de classement. Le fichier donne une description du site en texte brut, que vous contrôlez, à un endroit prévisible, et il coûte peu à maintenir. Il ne compense jamais un contenu mal structuré : la structure des pages reste ce qui décide de l\'extraction.',
+        },
+        {
+          q: 'Est-ce que ça marche pour une activité locale ?',
+          a: 'Oui, et c\'est souvent là que l\'écart est le plus net. Les requêtes locales sont formulées en langage naturel et appellent une réponse unique plutôt qu\'une liste de liens. Une fiche établissement à jour, des pages de zone distinctes et un balisage d\'entité cohérent y pèsent davantage que le volume de contenu publié.',
+        },
+        {
+          q: 'Mon site actuel peut-il être optimisé, ou faut-il le refaire ?',
+          a: 'Dans la plupart des cas, il peut être optimisé. La hiérarchie de titres, les données structurées, les paragraphes-réponses et le llms.txt s\'ajoutent à un site existant, quelle que soit sa technologie. Une refonte ne se justifie que si la base technique bloque le travail : contenu inaccessible aux robots, rendu entièrement côté client, ou performance impossible à redresser.',
+        },
+        {
+          q: 'Travaillez-vous le GEO seul, sans refonte de site ?',
+          a: 'Oui. Le GEO peut être mené sur un site existant comme intervention à part : audit de la structure, reprise des titres et des paragraphes, ajout des données structurées, mise en place du suivi. Nous partons de ce qui est en ligne et nous mesurons l\'écart avant de toucher quoi que ce soit.',
+        },
+      ],
+
+      ctaTitle: 'Vous voulez savoir où vous en êtes ?',
+      ctaSub: 'Envoyez-nous l\'adresse de votre site. Nous regardons ce que Google et les moteurs génératifs en font aujourd\'hui, et nous vous disons ce qui se corrige.',
       ctaButton: 'Démarrer une conversation',
     },
     crm: {
@@ -498,7 +641,7 @@ export const strings = {
       email: 'Email',
       company: 'Entreprise / Projet',
       serviceLabel: 'Ce que vous cherchez',
-      services: ['Site web', 'CRM sur mesure', 'SEO & Contenu', 'Connexion stock - site en ligne', 'TankLogic : poissons & coraux', 'Pas encore sûr(e)'],
+      services: ['Site web', 'CRM sur mesure', 'SEO & Visibilité IA', 'Connexion stock - site en ligne', 'TankLogic : poissons & coraux', 'Pas encore sûr(e)'],
       budgetLabel: 'Quel budget allouez-vous à ce projet ?',
       budgetOptional: '(optionnel)',
       currencyLabel: 'Devise',
@@ -532,6 +675,7 @@ export const strings = {
         { label: 'Développement Web', href: '/services/web-dev' },
         { label: 'Connexion Stock Magasin <> Site e-commerce', href: '/services/erp-ecommerce' },
         { label: 'CRM sur mesure', href: '/services/crm' },
+        { label: 'SEO & Visibilité IA', href: '/services/seo-geo' },
         { label: 'TankLogic', href: '/tanklogic' },
       ],
       tanklogicColumnTitle: 'TankLogic',
@@ -596,6 +740,8 @@ export const strings = {
         title: 'Cité par les IA',
         desc: 'Structure sémantique et contenu d\'autorité conçus pour apparaître dans les réponses ChatGPT, Perplexity, Claude et Gemini.',
       },
+      ctaText: 'Le détail de la méthode, la différence entre SEO et GEO et les chiffres que nous avons relevés :',
+      ctaLink: 'Voir la page SEO & Visibilité IA',
     },
     meta: {
       webDev: {
@@ -609,6 +755,10 @@ export const strings = {
       erp: {
         title: 'Synchronisation stock ERP ↔ site e-commerce | Torquemade',
         description: 'Connexion en temps réel entre votre ERP (SAGE, Cegid…) et Shopify. Fin de la ressaisie : chaque vente déduit automatiquement votre stock réel.',
+      },
+      seoGeo: {
+        title: 'Référencement Google et visibilité IA (SEO & GEO) | Torquemade',
+        description: 'Être bien classé sur Google et être cité par ChatGPT, Perplexity et les AI Overviews. SEO technique et GEO construits dès la base, avec mesure des résultats.',
       },
       aquariumQc: {
         title: 'Synchro stock aquariophilie ↔ e-commerce (Québec) | Torquemade',
@@ -800,6 +950,7 @@ export const strings = {
         { label: 'Web Development', href: '/services/web-dev', subtitle: 'A showcase or e-commerce site, built to make a real impact.' },
         { label: 'Custom CRM', href: '/services/crm', subtitle: 'We build **your** custom CRM/software for your business, and you own it.' },
         { label: 'In-Store Inventory <> E-commerce Website Real-Time Sync', href: '/services/erp-ecommerce', subtitle: 'Connect your in-store stock to your website in real time.' },
+        { label: 'SEO & AI Visibility', href: '/services/seo-geo', subtitle: 'Rank on Google, and get cited by ChatGPT, Perplexity and AI Overviews.' },
       ],
       produitsItems: [
         { label: 'TankLogic', href: '/tanklogic', subtitle: 'Software built for fish and aquarium stores. Sync your live inventory in-store with your online sales platform in real time.' },
@@ -1061,12 +1212,14 @@ export const strings = {
       reframeBody: 'Shipping a site fast stopped being the hard part years ago. The hard part is what comes after: architecture that holds up, code search engines can actually read, a site that keeps ranking as Google\'s algorithm shifts. That technical depth is what most quick builds skip, and it\'s exactly where Torquemade comes in.',
       carouselTitle: 'We keep an eye on',
       carouselSteps: [
-        { name: 'SEO', title: 'Technical SEO, in practice', desc: 'We\'ve all landed on a beautifully designed site that\'s nowhere to be found on Google. Technical SEO is exactly that: the work you don\'t see, but search engines read first. Semantic markup, an auto-generated sitemap, unique meta descriptions, load times timed down to the millisecond. We don\'t bolt this on afterward and hope for the best. It gets built into the code from line one.' },
-        { name: 'GEO', title: 'GEO, a discipline of its own', desc: 'Over the past couple of years, the new game has been getting cited in AI answers. ChatGPT, Perplexity, Claude, these tools don\'t read a site the way Google does: they\'re looking for one clear answer to quote, not ten links to click through. We take this seriously: FAQ and Article schema, answers stated in the first paragraph, a dedicated llms.txt file for AI crawlers. The goal is simple: we want your site to be the source the AI cites, not the one it skips.' },
+        { name: 'SEO', title: 'Technical SEO, in practice', desc: 'We\'ve all landed on a beautifully designed site that\'s nowhere to be found on Google. Technical SEO is exactly that: the work you don\'t see, but search engines read first. Semantic markup, an auto-generated sitemap, unique meta descriptions, load times timed down to the millisecond. We don\'t bolt this on afterward and hope for the best. It gets built into the code from line one. The detail of that work, and of its counterpart on the generative engine side, is on the SEO & AI Visibility page.', linkHref: '/services/seo-geo', linkLabel: 'See the SEO and GEO detail' },
+        { name: 'GEO', title: 'GEO, a discipline of its own', desc: 'Over the past couple of years, the new game has been getting cited in AI answers. ChatGPT, Perplexity, Claude, these tools don\'t read a site the way Google does: they\'re looking for one clear answer to quote, not ten links to click through. We take this seriously: FAQ and Article schema, answers stated in the first paragraph, a dedicated llms.txt file for AI crawlers. The goal is simple: we want your site to be the source the AI cites, not the one it skips. We treat it as a discipline in its own right, with its own measurement: Search Console\'s generative AI report, plus manual checks of what the engines actually say.', linkHref: '/services/seo-geo', linkLabel: 'Our GEO approach in detail' },
         { name: 'Indexing', title: 'Indexing, tracked closely', desc: 'Being online isn\'t the same as being indexed. Plenty of sites run for months without ever really showing up in Google, simply because nobody checked. We submit every page to Google Search Console the moment it goes live, and we keep an eye on crawl errors after that. Publishing a page is easy. Making sure Google actually reads it is the real work.' },
         { name: 'Performance', title: 'Performance, measured not guessed', desc: 'A site that takes three seconds to load has already lost the visitor. We don\'t guess at performance, we measure it: optimized images, lazy loading, hosting on an edge network close to your visitors. Every page passes Core Web Vitals before it ships, not after you notice it\'s dragging.' },
         { name: 'Architecture', title: 'Clean code that\'s yours', desc: 'A beautiful site with sloppy code behind it is a house with a fresh coat of paint on shaky foundations. We write TypeScript, document our components, and above all: no dependency on a proprietary platform that could shut down tomorrow. The site stays yours, easy to evolve, whether we keep building on it or another team picks it up in five years.' },
       ],
+      carouselFootnote: 'Google rankings and visibility in AI answers are covered in detail on their own page, with the figures we recorded.',
+      carouselFootnoteLink: 'SEO & AI Visibility',
       relatedTitle: 'Related reading',
       relatedCta: 'Read the article',
       faqTitle: 'Frequently asked questions',
@@ -1084,6 +1237,146 @@ export const strings = {
       ],
       ctaTitle: 'Ready for a site that converts?',
       ctaSub: 'Tell us about your project. We\'ll get back to you within 24h.',
+      ctaButton: 'Start a conversation',
+    },
+    seoGeo: {
+      eyebrow: 'Services',
+      hero: 'Google rankings and visibility in AI answers',
+      intro: 'Two channels, two logics. Ranking on Google is still a matter of structure and content. Being cited by ChatGPT, Perplexity or AI Overviews is a separate job, with its own rules. We build both, and we measure what comes out.',
+
+      defTitle: 'What is GEO?',
+      defBody: 'GEO (Generative Engine Optimization) means structuring a site so it gets selected and cited as a source in answers from ChatGPT, Perplexity, Claude, Gemini and Google\'s AI Overviews. It does not replace SEO: it sits alongside it, with its own extraction rules and its own measurement.',
+
+      compareTitle: 'SEO and GEO: what changes, what doesn\'t',
+      compareIntro: 'Both disciplines share the same technical foundation. They diverge on what the engine selects, and on how you verify it.',
+      compareCaption: 'Comparison of the goals, selection units and measurement methods of SEO and GEO.',
+      compareHeaderAspect: 'What we look at',
+      compareHeaderSeo: 'SEO',
+      compareHeaderGeo: 'GEO',
+      compareRows: [
+        {
+          aspect: 'Goal',
+          seo: 'Earn a click through to your site from a results page.',
+          geo: 'Get picked as a source inside an answer the engine writes.',
+        },
+        {
+          aspect: 'Unit selected',
+          seo: 'The page. The engine ranks URLs against one another.',
+          geo: 'The paragraph. The engine extracts a passage and recomposes it with other sources.',
+        },
+        {
+          aspect: 'Role of internal linking',
+          seo: 'Distributes authority across pages and guides crawling.',
+          geo: 'Connects entities to each other, resolving ambiguity about who does what.',
+        },
+        {
+          aspect: 'Role of structured data',
+          seo: 'Optional. It enriches how the result is displayed.',
+          geo: 'Structural. It defines what can be cited, and in what capacity.',
+        },
+        {
+          aspect: 'Measurement',
+          seo: 'Impressions, clicks and positions in Search Console.',
+          geo: 'Search Console\'s generative AI report, plus manual checks of the answers themselves.',
+        },
+        {
+          aspect: 'Time horizon',
+          seo: 'Several months, with gains that compound.',
+          geo: 'Variable. A citation can appear, then vanish from one re-extraction to the next.',
+        },
+      ],
+
+      workTitle: 'What we actually do',
+      seoBlockTitle: 'On the SEO side',
+      seoBlockIntro: 'The foundation. Without it there is nothing to cite: a generative engine relies on pages that had to be crawled and indexed first.',
+      seoItems: [
+        {
+          title: 'Tags and metadata',
+          desc: 'A unique title and meta description per page, and a heading hierarchy that actually follows the document outline. Engines read this markup first, and it is what splits the page into usable blocks.',
+        },
+        {
+          title: 'Keywords',
+          desc: 'Research into the queries people actually type in your sector and your area, then one intent assigned per page. A page chasing three intents at once serves none of them properly.',
+        },
+        {
+          title: 'URL structure and redirects',
+          desc: 'Readable URLs, a tree that reflects the offering, and 301 redirects put in place at every change. A URL changed without a redirect loses all the history it had built up.',
+        },
+        {
+          title: 'Core Web Vitals and performance',
+          desc: 'LCP, INP and CLS measured on field data, not just in the lab. Speed is a ranking factor, and it also decides whether a visitor stays or leaves.',
+        },
+        {
+          title: 'Blog articles',
+          desc: 'Content that answers one specific question rather than general-purpose pages. It captures long-tail searches and stays visible for months after publication.',
+        },
+      ],
+      geoBlockTitle: 'On the GEO side',
+      geoBlockIntro: 'The layer above. It decides whether a passage of your site is extractable, attributable, and cited under the right name.',
+      geoItems: [
+        {
+          title: 'Answer-first paragraphs and heading hierarchy',
+          desc: 'Every section opens with a complete answer in two or three sentences, under a heading phrased as the question being asked. A generative engine extracts a passage, not a whole page: that passage has to stand on its own.',
+        },
+        {
+          title: 'Structured data',
+          desc: 'Organization, Service, FAQPage and BlogPosting laid down in JSON-LD, consistent with what the page actually displays. Markup describing something other than the visible content gets ignored, at best.',
+        },
+        {
+          title: 'llms.txt file',
+          desc: 'A plain-text file describing the site for generative engine crawlers. It does not replace the content: it provides a readable entry point and a description you control.',
+        },
+        {
+          title: 'Entity consistency',
+          desc: 'The same name, description and address across the whole site, in the markup as well as the visible text. Two diverging descriptions of the same company force the engine to pick one, and it sometimes picks wrong.',
+        },
+        {
+          title: 'FAQ built on real queries',
+          desc: 'Questions are kept as people phrase them, not rewritten into marketing language. An FAQ written for the brand rather than for the query does not get extracted.',
+        },
+        {
+          title: 'Citation tracking',
+          desc: 'Search Console\'s generative AI report shows which pages surface in answers. We track it, and we check by hand what the engines actually say about you.',
+        },
+      ],
+
+      faqTitle: 'Frequently asked questions',
+      faqDescription: 'What we get asked most about search rankings and visibility in AI answers: scope, timelines, measurement, and what can be done on an existing site.',
+      faqContactText: 'Can\'t find the answer to your question?',
+      faqContactLinkText: 'Contact us',
+      faq: [
+        {
+          q: 'Does GEO replace SEO?',
+          a: 'No, the two work together. A generative engine relies on pages that had to be crawled and indexed first, which remains SEO work. GEO acts on the layer above: how content is structured, segmented and attributed, so that a passage can be extracted and cited.',
+        },
+        {
+          q: 'How do I know if my site is cited by ChatGPT or by Google?',
+          a: 'Google Search Console\'s generative AI report lists impressions coming from AI Overviews and AI Mode. For ChatGPT and Perplexity there is no equivalent report: checking means running the queries that matter to your business and recording what gets cited. We do both.',
+        },
+        {
+          q: 'How long before I appear in AI answers?',
+          a: 'We do not quote a timeline. On the sites we measured, the first AI impressions appeared within three months, but that depends on query volume in the sector, competition for those answers, and how often the engines re-extract. A citation can also disappear, then come back.',
+        },
+        {
+          q: 'Do I need an llms.txt file?',
+          a: 'It helps, but it is secondary. No engine has confirmed using it as a ranking signal. The file gives a plain-text description of the site, one you control, in a predictable place, and it costs little to maintain. It never makes up for badly structured content: page structure is still what decides extraction.',
+        },
+        {
+          q: 'Does this work for a local business?',
+          a: 'Yes, and that is often where the gap is widest. Local queries are phrased in natural language and call for a single answer rather than a list of links. An up-to-date business listing, distinct area pages and consistent entity markup count for more there than sheer volume of published content.',
+        },
+        {
+          q: 'Can my current site be optimized, or does it need rebuilding?',
+          a: 'In most cases it can be optimized. Heading hierarchy, structured data, answer-first paragraphs and llms.txt can be added to an existing site whatever its technology. A rebuild is only warranted when the technical base blocks the work: content inaccessible to crawlers, fully client-side rendering, or performance that cannot be recovered.',
+        },
+        {
+          q: 'Do you do GEO on its own, without rebuilding the site?',
+          a: 'Yes. GEO can be run on an existing site as a standalone engagement: structure audit, rework of headings and paragraphs, structured data added, tracking put in place. We start from what is live and measure the gap before touching anything.',
+        },
+      ],
+
+      ctaTitle: 'Want to know where you stand?',
+      ctaSub: 'Send us your site address. We\'ll look at what Google and the generative engines currently make of it, and tell you what can be fixed.',
       ctaButton: 'Start a conversation',
     },
     crm: {
@@ -1282,7 +1575,7 @@ export const strings = {
       email: 'Email',
       company: 'Company / Project',
       serviceLabel: 'What you\'re looking for',
-      services: ['Website', 'Custom CRM', 'SEO & Content', 'Stock sync - online shop', 'TankLogic: fish & coral', 'Not sure yet'],
+      services: ['Website', 'Custom CRM', 'SEO & AI Visibility', 'Stock sync - online shop', 'TankLogic: fish & coral', 'Not sure yet'],
       budgetLabel: 'What budget do you allocate to this project?',
       budgetOptional: '(optional)',
       currencyLabel: 'Currency',
@@ -1316,6 +1609,7 @@ export const strings = {
         { label: 'Web Development', href: '/services/web-dev' },
         { label: 'In-Store Inventory <> E-commerce Website Real-Time Sync', href: '/services/erp-ecommerce' },
         { label: 'Custom CRM', href: '/services/crm' },
+        { label: 'SEO & AI Visibility', href: '/services/seo-geo' },
         { label: 'TankLogic', href: '/tanklogic' },
       ],
       tanklogicColumnTitle: 'TankLogic',
@@ -1380,6 +1674,8 @@ export const strings = {
         title: 'Cited by AI',
         desc: 'Semantic structure and authority content designed to surface in ChatGPT, Perplexity, Claude and Gemini answers.',
       },
+      ctaText: 'The full method, the difference between SEO and GEO, and the figures we recorded:',
+      ctaLink: 'See the SEO & AI Visibility page',
     },
     meta: {
       webDev: {
@@ -1393,6 +1689,10 @@ export const strings = {
       erp: {
         title: 'ERP ↔ E-commerce Inventory Sync | Torquemade',
         description: 'Real-time connection between your ERP (SAGE, Cegid…) and Shopify. No more re-keying: every online sale deducts from your real stock automatically.',
+      },
+      seoGeo: {
+        title: 'Google Rankings and AI Visibility (SEO & GEO) | Torquemade',
+        description: 'Ranking on Google and getting cited by ChatGPT, Perplexity and AI Overviews. Technical SEO and GEO built in from the ground up, with the results measured.',
       },
       aquariumEn: {
         title: 'Coral & Livestock Inventory Sync for Aquarium Shops | Torquemade',

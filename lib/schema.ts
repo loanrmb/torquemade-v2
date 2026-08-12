@@ -73,6 +73,13 @@ export const organizationGraph = {
       url: `${SITE_URL}/services/erp-ecommerce`,
       provider: { '@id': ORG_ID },
     },
+    {
+      '@type': 'Service',
+      name: 'SEO & GEO',
+      serviceType: 'Search engine optimization and generative engine optimization',
+      url: `${SITE_URL}/services/seo-geo`,
+      provider: { '@id': ORG_ID },
+    },
   ],
 }
 
