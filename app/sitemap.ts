@@ -33,6 +33,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
+  // Legal notice: indexable and linked from every footer, but low priority and
+  // rarely edited, so it gets its own entry rather than joining the block above.
+  const legalPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/mentions-legales`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+  ]
+
   const projectPages: MetadataRoute.Sitemap = projects.map((project) => ({
     url: `${baseUrl}/work/${project.slug}`,
     lastModified: new Date(),
@@ -40,5 +51,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...homepage, ...otherStaticPages, ...projectPages]
+  return [...homepage, ...otherStaticPages, ...legalPages, ...projectPages]
 }
