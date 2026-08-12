@@ -2,12 +2,22 @@
 
 import { Fragment, useEffect, useRef, useState, type CSSProperties } from 'react'
 import Link from 'next/link'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useLang } from '@/components/app-provider'
 import { strings } from '@/lib/strings'
 import { posts } from '@/lib/blog'
 import { FeaturedPosts } from '@/components/blog/FeaturedPosts'
+import { useBlogFilters } from '@/components/blog/blog-filters'
 import { ScrollRevealGroup } from '@/lib/use-scroll-reveal'
+
+/**
+ * Article list + filter bar.
+ *
+ * This component no longer calls `useSearchParams()` — it reads filter state
+ * from `useBlogFilters()` instead. That is what keeps the 89 cards in the
+ * static HTML: the hook stays quarantined in `SearchParamsSync`, so this
+ * subtree prerenders with the default state (all categories, newest first, no
+ * query), which is exactly the `/blog` view. See components/blog/blog-filters.tsx.
+ */
 
 const LABELS = {
   fr: {
@@ -64,8 +74,6 @@ const CATEGORY_ORDER = [
   'projets',
 ]
 
-const SEARCH_DEBOUNCE_MS = 300
-
 // Case- and accent-insensitive comparison key: strip diacritics via NFD so
 // "esthéticienne" matches "estheticienne".
 function normalize(value: string): string {
@@ -82,26 +90,22 @@ export function BlogList() {
   const tBlog = strings[lang].blog
   const ALL = t.all
 
-  const router = useRouter()
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-  // Lets the debounce timeout read the freshest searchParams (e.g. an
-  // in-flight category change) without re-arming the timer on every render.
-  const searchParamsRef = useRef(searchParams)
-  searchParamsRef.current = searchParams
+  const {
+    activeKey,
+    sortOrder,
+    query,
+    inputValue,
+    setInputValue,
+    setCategory,
+    setSort,
+    clearQuery,
+    reset,
+  } = useBlogFilters()
 
-  const activeKey = searchParams.get('cat') ?? 'all'
-  const urlQuery = searchParams.get('q') ?? ''
-  // 'oldest' = ascending by publishedAt; default (no param) = newest first.
-  const sortOrder = searchParams.get('sort') === 'oldest' ? 'oldest' : 'newest'
-  const isSearching = urlQuery.trim().length > 0
+  const isSearching = query.trim().length > 0
 
   const filterBarRef = useRef<HTMLDivElement>(null)
   const searchInputRef = useRef<HTMLInputElement>(null)
-
-  // Local, controlled value for typing responsiveness — the URL (urlQuery)
-  // is what actually drives filtering, synced from this with a debounce.
-  const [inputValue, setInputValue] = useState(urlQuery)
 
   // Mobile-only filter sheet (category + sort). Presentation state only —
   // filtering/sorting itself still flows through handleFilter/handleSort.
@@ -124,27 +128,6 @@ export function BlogList() {
     }
   }, [mobileFilterOpen])
 
-  // Reconcile the input with the URL when it changes from outside typing:
-  // back/forward navigation, a direct link with ?q=, or our own debounced
-  // commit landing.
-  useEffect(() => {
-    setInputValue(urlQuery)
-  }, [urlQuery])
-
-  useEffect(() => {
-    if (inputValue === urlQuery) return
-    const timer = setTimeout(() => {
-      const params = new URLSearchParams(searchParamsRef.current.toString())
-      if (inputValue.trim()) {
-        params.set('q', inputValue)
-      } else {
-        params.delete('q')
-      }
-      router.replace(`${pathname}?${params.toString()}`, { scroll: false })
-    }, SEARCH_DEBOUNCE_MS)
-    return () => clearTimeout(timer)
-  }, [inputValue, urlQuery, pathname, router])
-
   // Scroll the filter/sort bar to its sticky resting spot (top-20 = 80px)
   // rather than the list top, which would slide the first articles behind
   // the sticky bar. Fixed offset → consistent across viewport heights.
@@ -157,39 +140,18 @@ export function BlogList() {
   }
 
   function handleFilter(key: string) {
-    const params = new URLSearchParams(searchParams.toString())
-    if (key === 'all') {
-      params.delete('cat')
-    } else {
-      params.set('cat', key)
-    }
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false })
+    setCategory(key)
     scrollToFilterBar()
   }
 
   function handleSort(order: 'newest' | 'oldest') {
-    const params = new URLSearchParams(searchParams.toString())
-    if (order === 'newest') {
-      // Newest is the default — keep the URL clean (matches middleware canon).
-      params.delete('sort')
-    } else {
-      params.set('sort', 'oldest')
-    }
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false })
+    setSort(order)
     scrollToFilterBar()
   }
 
   function handleClear() {
-    setInputValue('')
-    const params = new URLSearchParams(searchParams.toString())
-    params.delete('q')
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false })
+    clearQuery()
     searchInputRef.current?.focus()
-  }
-
-  function handleReset() {
-    setInputValue('')
-    router.replace(pathname, { scroll: false })
   }
 
   const allCategories = Array.from(new Set(posts.map((p) => p.category)))
@@ -202,7 +164,7 @@ export function BlogList() {
   const featuredPosts = posts.filter((p) => p.featured)
   const showFeatured = activeKey === 'all' && !isSearching
 
-  const nq = normalize(urlQuery)
+  const nq = normalize(query)
   const filtered = posts
     .filter((p) => {
       if (activeKey === 'all') {
@@ -545,7 +507,7 @@ export function BlogList() {
         <div className="min-h-[60vh]" style={{ borderTop: '1px solid hsl(var(--border-subtle))' }}>
           {/* Keyed on category + sort + query so the reveal observer re-scans
               freshly-mounted cards whenever the filtered set changes. */}
-          <ScrollRevealGroup resetKey={`${activeKey}|${sortOrder}|${urlQuery}`}>
+          <ScrollRevealGroup resetKey={`${activeKey}|${sortOrder}|${query}`}>
           {filtered.length === 0 && (
             <div className="text-center py-16">
               <p
@@ -555,7 +517,7 @@ export function BlogList() {
                 {tBlog.emptyResults}
               </p>
               <button
-                onClick={handleReset}
+                onClick={reset}
                 className="font-mono text-[10px] uppercase tracking-widest px-4 py-2 rounded-full border transition-colors hover:bg-[hsl(var(--bg-tertiary))]"
                 style={{ borderColor: 'hsl(var(--border-subtle))', color: 'hsl(var(--text-primary))' }}
               >

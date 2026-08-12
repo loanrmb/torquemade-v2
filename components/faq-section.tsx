@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useLang } from '@/components/app-provider'
@@ -36,10 +37,13 @@ interface FaqSectionProps {
  * here — Radix's own height animation on AccordionContent already clips the
  * reveal boundary, so a second clip-path would fight it.
  *
- * Radix unmounts AccordionContent on close by default, so this remounts
- * (and replays) every time the item opens — no open-state tracking needed.
+ * AccordionContent now uses `forceMount` so the answer text is in the server
+ * HTML (see components/ui/accordion.tsx). That means this no longer remounts
+ * on open, so the reveal is driven off the `isOpen` prop instead — same
+ * animation, replayed on every open. `initial={false}` keeps it from firing
+ * for all items at once on page load.
  */
-function FaqAnswer({ text }: { text: string }) {
+function FaqAnswer({ text, isOpen }: { text: string; isOpen: boolean }) {
   const reducedMotion = useReducedMotionSafe()
 
   if (reducedMotion) {
@@ -57,8 +61,12 @@ function FaqAnswer({ text }: { text: string }) {
     <motion.p
       className="pb-5 text-body leading-relaxed min-720:pb-6"
       style={{ color: 'hsl(var(--text-secondary))' }}
-      initial={{ opacity: 0, y: 6, filter: 'blur(4px)' }}
-      animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+      initial={false}
+      animate={
+        isOpen
+          ? { opacity: 1, y: 0, filter: 'blur(0px)' }
+          : { opacity: 0, y: 6, filter: 'blur(4px)' }
+      }
       transition={{ duration: 0.4, ease: EASE_OUT }}
     >
       {text}
@@ -75,6 +83,9 @@ export function FaqSection({
   contactLinkText,
 }: FaqSectionProps) {
   const lang = useLang()
+  // Controlled so FaqAnswer can read the open state — AccordionContent is
+  // force-mounted, so it can no longer rely on remounting to replay its reveal.
+  const [openItem, setOpenItem] = useState('')
 
   return (
     <section
@@ -119,7 +130,12 @@ export function FaqSection({
             border: '1px solid hsl(var(--border-subtle))',
           }}
         >
-          <Accordion type="single" collapsible>
+          <Accordion
+            type="single"
+            collapsible
+            value={openItem}
+            onValueChange={setOpenItem}
+          >
             {items.map((item, i) => (
               <AccordionItem
                 key={i}
@@ -137,7 +153,10 @@ export function FaqSection({
                   </h3>
                 </AccordionTrigger>
                 <AccordionContent className="px-5 min-720:px-7">
-                  <FaqAnswer text={item.answer[lang]} />
+                  <FaqAnswer
+                    text={item.answer[lang]}
+                    isOpen={openItem === `item-${i}`}
+                  />
                 </AccordionContent>
               </AccordionItem>
             ))}

@@ -5,8 +5,17 @@
 
 import { strings } from '@/lib/strings'
 
-export const SITE_URL = 'https://torquemade.com'
+/**
+ * Canonical host — must match the `alternates.canonical` on every page, the
+ * sitemaps and robots.txt, all of which use the www host. It previously read
+ * `https://torquemade.com`, which made every Service node's `url` point at a
+ * host that no canonical claims — a needless entity-resolution ambiguity.
+ */
+export const SITE_URL = 'https://www.torquemade.com'
 export const ORG_ID = `${SITE_URL}/#organization`
+
+/** Single source of truth for the contact address across schema and UI. */
+export const CONTACT_EMAIL = 'hello@torquemade.com'
 
 /**
  * Organization + Service graph. Global — rendered once from the root layout so
@@ -21,7 +30,13 @@ export const organizationGraph = {
       name: 'Torquemade',
       url: SITE_URL,
       logo: `${SITE_URL}/favicon.svg`,
+      email: CONTACT_EMAIL,
+      description:
+        'Studio web indépendant basé à Bordeaux. Développement web sur mesure (Next.js, Shopify), CRM sur mesure, connexion ERP ↔ site e-commerce pour synchroniser le stock en temps réel, et optimisation pour les moteurs de recherche comme pour les moteurs génératifs.',
       founder: { '@type': 'Person', name: 'Loan Rembeau' },
+      // `sameAs` intentionally omitted: no Torquemade-owned social profile
+      // exists yet. An empty or personal-account `sameAs` weakens entity
+      // resolution rather than helping it — add it when a profile goes live.
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Bordeaux',

@@ -510,7 +510,7 @@ export const strings = {
       submit: 'Envoyer →',
       success: '✓ Message envoyé, nous revenons vers vous dans les 24h.',
       successSub: 'Vérifiez votre boîte mail, nous répondons sous 24h ouvrées.',
-      error: 'Une erreur s\'est produite. Envoyez-nous un email : loanrmb@gmail.com',
+      error: 'Une erreur s\'est produite. Envoyez-nous un email : hello@torquemade.com',
       next: 'Suivant →',
       back: '← Retour',
       stepLabel: 'Étape',
@@ -1301,7 +1301,7 @@ export const strings = {
       sending: 'Sending...',
       submit: 'Send →',
       success: '✓ Message sent, I\'ll get back to you within 24h.',
-      error: 'Something went wrong. Email me directly: loanrmb@gmail.com',
+      error: 'Something went wrong. Email me directly: hello@torquemade.com',
     },
     footer: {
       tagline: 'Custom websites, custom CRM and real-time ERP <> e-commerce stock sync.',
