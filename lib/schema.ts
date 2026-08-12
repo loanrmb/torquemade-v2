@@ -4,14 +4,15 @@
  */
 
 import { strings } from '@/lib/strings'
+import { SITE_URL, siteUrl } from '@/lib/site'
 
 /**
- * Canonical host — must match the `alternates.canonical` on every page, the
- * sitemaps and robots.txt, all of which use the www host. It previously read
- * `https://torquemade.com`, which made every Service node's `url` point at a
- * host that no canonical claims — a needless entity-resolution ambiguity.
+ * The canonical host now lives in `lib/site.ts` — it is shared with the
+ * sitemaps, robots.txt, `metadataBase` and every per-page canonical, so it
+ * can't belong to the JSON-LD module. Re-exported here because callers of
+ * these builders reasonably expect to find it alongside them.
  */
-export const SITE_URL = 'https://www.torquemade.com'
+export { SITE_URL }
 export const ORG_ID = `${SITE_URL}/#organization`
 
 /** Single source of truth for the contact address across schema and UI. */
@@ -79,11 +80,8 @@ export const organizationGraph = {
  * TankLogic product page graph (/tanklogic): Service node linked back to the
  * org, plus a BreadcrumbList (Home → TankLogic). Rendered server-side from
  * app/tanklogic/page.tsx so it is present in the initial HTML.
- *
- * URL uses the www host to match the page's canonical
- * (https://www.torquemade.com/tanklogic).
  */
-const TANKLOGIC_URL = 'https://www.torquemade.com/tanklogic'
+const TANKLOGIC_URL = siteUrl('/tanklogic')
 
 export const tanklogicSchema = {
   '@context': 'https://schema.org',
@@ -154,7 +152,7 @@ export function blogPostingSchema(post: {
    *  must mirror on-page content; FR is the server-rendered default language). */
   faq?: readonly { q: string; a: string }[]
 }) {
-  const url = `https://www.torquemade.com/blog/${post.slug}`
+  const url = siteUrl(`/blog/${post.slug}`)
   const blogPosting = {
     '@type': 'BlogPosting',
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
@@ -172,7 +170,7 @@ export function blogPostingSchema(post: {
     },
     publisher: { '@id': ORG_ID },
     ...(opts?.image
-      ? { image: opts.image.startsWith('http') ? opts.image : `https://www.torquemade.com${opts.image}` }
+      ? { image: opts.image.startsWith('http') ? opts.image : siteUrl(opts.image) }
       : {}),
   }
 

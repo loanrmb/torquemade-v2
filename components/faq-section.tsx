@@ -144,13 +144,20 @@ export function FaqSection({
                   borderTop: i === 0 ? 'none' : '1px solid hsl(var(--border-subtle))',
                 }}
               >
+                {/* `span`, not `h3`: Radix's AccordionHeader already renders
+                    the h3 that wraps this trigger (see ui/accordion.tsx), so a
+                    heading here produced `h3 > button > h3` — one question,
+                    two nested headings. Generative engines segment a page on
+                    its heading hierarchy, so a corrupted one yields
+                    mis-delimited blocks and badly chosen extracts. The visual
+                    result is unchanged; only the tag differs. */}
                 <AccordionTrigger className="px-5 py-4 min-720:px-7 min-720:py-5 hover:bg-[hsl(var(--bg-secondary))]">
-                  <h3
+                  <span
                     className="text-body font-semibold leading-snug"
                     style={{ color: 'hsl(var(--text-primary))' }}
                   >
                     {item.question[lang]}
-                  </h3>
+                  </span>
                 </AccordionTrigger>
                 <AccordionContent className="px-5 min-720:px-7">
                   <FaqAnswer

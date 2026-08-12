@@ -1,5 +1,8 @@
 import type { NextConfig } from 'next'
 import createMDX from '@next/mdx'
+// Relative, not the `@/` alias: next.config.ts is loaded by Next's own config
+// loader, which does not apply the tsconfig path aliases.
+import { SITE_URL } from './lib/site'
 
 // script-src needs 'unsafe-inline': Next.js App Router streams the RSC
 // hydration payload as multiple `self.__next_f.push(...)` inline <script>
@@ -61,6 +64,25 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Apex → www, path preserved. The site canonicalizes on the www host
+      // (see lib/site.ts), so the apex must not serve a 200.
+      //
+      // NOTE: as of this commit the apex answers 307 (temporary), which comes
+      // from Vercel's *domain-level* redirect in Project Settings → Domains.
+      // That runs at the edge, before the request reaches this app, so it
+      // takes precedence over the rule below and the rule alone will not
+      // change the observed status code. Either set that domain redirect to
+      // 308, or remove it so apex requests fall through to this rule. No loop
+      // risk in the meantime: the rule only matches the apex host.
+      //
+      // `statusCode: 301` rather than `permanent: true` (which emits 308)
+      // purely because 301 is the status the redirect was specified as.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'torquemade.com' }],
+        destination: `${SITE_URL}/:path*`,
+        statusCode: 301,
+      },
       {
         source: '/blog/preuves-litige-paiement-poisson-vivant',
         destination: '/blog/litige-poisson-mort-doa',

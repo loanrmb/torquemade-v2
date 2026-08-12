@@ -4,12 +4,13 @@ import { GeistMono } from 'geist/font/mono'
 import { AppProvider } from '@/components/app-provider'
 import { SchemaRenderer } from '@/components/schema-renderer'
 import { organizationGraph } from '@/lib/schema'
+import { SITE_URL } from '@/lib/site'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://torquemade.com'),
+  metadataBase: new URL(SITE_URL),
   title: 'Torquemade: Web Dev & CRM sur mesure',
   description:
     'Studio de développement web et CRM sur mesure. Sites Shopify et Next.js, logiciels de réservation, SEO et optimisation IA.',
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     title: 'Torquemade: Web Dev & CRM sur mesure',
     description:
       'Studio de développement web et CRM sur mesure. Sites Shopify et Next.js, logiciels de réservation, SEO et optimisation IA.',
-    url: 'https://torquemade.com',
+    url: SITE_URL,
     siteName: 'Torquemade',
     locale: 'fr_FR',
     type: 'website',

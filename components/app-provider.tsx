@@ -22,6 +22,24 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     if (savedLang === 'fr' || savedLang === 'en') setLang(savedLang)
   }, [])
 
+  /**
+   * Keep `<html lang>` in step with the language actually being rendered.
+   *
+   * The root layout hard-codes `lang="fr"`, so toggling to English used to
+   * leave the document declaring French while serving English — a page whose
+   * declared language contradicts its content, for screen readers and for any
+   * engine that trusts the attribute.
+   *
+   * Deliberately an effect rather than a render-time value: the server has no
+   * access to localStorage, so `fr` (the default) is the only thing it can
+   * honestly emit. Writing the attribute after hydration means React never
+   * diffs it and no hydration warning is possible — the DOM mutation happens
+   * strictly after the tree has been matched against the server HTML.
+   */
+  useEffect(() => {
+    document.documentElement.lang = lang
+  }, [lang])
+
   const toggleLang = () => {
     setLang((prev) => {
       const next = prev === 'fr' ? 'en' : 'fr'

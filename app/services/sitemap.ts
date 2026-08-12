@@ -1,6 +1,5 @@
 import { MetadataRoute } from 'next'
-
-const baseUrl = 'https://www.torquemade.com'
+import { SITE_URL as baseUrl } from '@/lib/site'
 
 /**
  * Services sitemap → /services/sitemap.xml

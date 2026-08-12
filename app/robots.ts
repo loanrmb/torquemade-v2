@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { SITE_URL as baseUrl } from '@/lib/site'
 
 /**
  * Dynamic robots.txt (Next.js Metadata Route).
@@ -13,7 +14,6 @@ import { MetadataRoute } from 'next'
  * ÉTAPE 3 — Everyone else: default allow (minus /admin), strip UTM-tagged URLs.
  */
 
-const baseUrl = 'https://www.torquemade.com'
 
 export default function robots(): MetadataRoute.Robots {
   return {

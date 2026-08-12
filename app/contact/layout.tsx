@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
+import { siteUrl } from '@/lib/site'
 
 /**
  * app/contact/page.tsx is a client component (contact form + useLang), so it
  * can't export `metadata` itself — without this layout the page silently
  * inherits the homepage title/description from the root layout.
  */
-const url = 'https://www.torquemade.com/contact'
+const url = siteUrl('/contact')
 const title = 'Contact : parlons de votre projet | Torquemade'
 const description =
   'Studio web à Bordeaux. Décrivez votre projet, nous revenons vers vous sous 24h. Sites sur mesure, CRM, connexion ERP.'

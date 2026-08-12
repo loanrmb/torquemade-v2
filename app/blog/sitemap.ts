@@ -1,7 +1,6 @@
 import { MetadataRoute } from 'next'
 import { posts } from '@/lib/blog'
-
-const baseUrl = 'https://www.torquemade.com'
+import { SITE_URL as baseUrl } from '@/lib/site'
 
 /**
  * Blog sitemap → /blog/sitemap.xml

@@ -4,8 +4,9 @@ import { Footer } from '@/components/footer'
 import { BlogHero } from '@/components/blog/BlogHero'
 import { BlogList } from '@/components/blog/BlogList'
 import { BlogFilterProvider } from '@/components/blog/blog-filters'
+import { siteUrl } from '@/lib/site'
 
-const url = 'https://www.torquemade.com/blog'
+const url = siteUrl('/blog')
 const title = 'Blog : SEO, CRM et connexion ERP | Torquemade'
 const description =
   "Analyses et retours d'expérience sur le référencement, les CRM sur mesure et la synchronisation stock ERP vers e-commerce."
