@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import { projects } from '@/lib/projects'
 import { CaseStudyContent } from './_content'
-
-const baseUrl = 'https://www.torquemade.com'
+import { siteUrl } from '@/lib/site'
 
 export function generateStaticParams() {
   return projects
@@ -18,7 +17,7 @@ export async function generateMetadata({
   const { slug } = await params
   const project = projects.find((p) => p.slug === slug)
 
-  const canonical = `${baseUrl}/work/${slug}`
+  const canonical = siteUrl(`/work/${slug}`)
 
   if (!project) {
     return { alternates: { canonical } }

@@ -15,6 +15,12 @@ const AccordionItem = React.forwardRef<
 ))
 AccordionItem.displayName = 'AccordionItem'
 
+/**
+ * Heading level note: `AccordionPrimitive.Header` renders an `<h3>` of its own
+ * (Radix default). That h3 *is* the question's heading — callers must pass
+ * non-heading children (a `span`), or the markup becomes `h3 > button > h3`
+ * and the document outline gains a phantom level per question.
+ */
 const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>

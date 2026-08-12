@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import { SchemaRenderer } from '@/components/schema-renderer'
 import { tanklogicSchema } from '@/lib/schema'
 import { TankLogicContent } from './_content'
+import { siteUrl } from '@/lib/site'
 
-const url = 'https://www.torquemade.com/tanklogic'
+const url = siteUrl('/tanklogic')
 
 export const metadata: Metadata = {
   title: 'TankLogic: Inventory software for live fish & coral shops | Torquemade',

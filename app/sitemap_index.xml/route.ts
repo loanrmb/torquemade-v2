@@ -1,4 +1,4 @@
-const baseUrl = 'https://www.torquemade.com'
+import { SITE_URL as baseUrl } from '@/lib/site'
 
 /**
  * Sitemap index → /sitemap_index.xml

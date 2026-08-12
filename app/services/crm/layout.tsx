@@ -2,9 +2,10 @@ import { Metadata } from 'next'
 import { strings } from '@/lib/strings'
 import { SchemaRenderer } from '@/components/schema-renderer'
 import { serviceSchema } from '@/lib/schema'
+import { siteUrl } from '@/lib/site'
 
 const meta = strings.fr.meta.crm
-const url = 'https://www.torquemade.com/services/crm'
+const url = siteUrl('/services/crm')
 
 const schema = serviceSchema({
   name: 'CRM sur mesure',

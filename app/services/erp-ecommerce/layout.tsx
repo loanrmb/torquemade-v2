@@ -2,9 +2,10 @@ import { Metadata } from 'next'
 import { strings } from '@/lib/strings'
 import { SchemaRenderer } from '@/components/schema-renderer'
 import { serviceSchema } from '@/lib/schema'
+import { siteUrl } from '@/lib/site'
 
 const meta = strings.fr.meta.erp
-const url = 'https://www.torquemade.com/services/erp-ecommerce'
+const url = siteUrl('/services/erp-ecommerce')
 
 const schema = serviceSchema({
   name: 'Synchronisation ERP ↔ E-commerce',

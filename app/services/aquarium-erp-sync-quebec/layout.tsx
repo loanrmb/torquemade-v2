@@ -2,12 +2,13 @@ import { Metadata } from 'next'
 import { strings } from '@/lib/strings'
 import { SchemaRenderer } from '@/components/schema-renderer'
 import { serviceSchema } from '@/lib/schema'
+import { siteUrl } from '@/lib/site'
 
 const meta = strings.fr.meta.aquariumQc
-const url = 'https://www.torquemade.com/services/aquarium-erp-sync-quebec'
+const url = siteUrl('/services/aquarium-erp-sync-quebec')
 // English-market counterpart (page #2). Paired via hreflang so search engines
 // treat the two as language variants, not competing pages.
-const enUrl = 'https://www.torquemade.com/services/aquarium-erp-sync-en'
+const enUrl = siteUrl('/services/aquarium-erp-sync-en')
 
 const schema = serviceSchema({
   name: 'Synchronisation stock aquariophilie ↔ e-commerce (Québec)',
